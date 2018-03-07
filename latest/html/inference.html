@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC bc9a5e documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC bc9a5e documentation" href="index.html"/>
+        <link rel="next" title="Plotting the posteriors (pycbc_inference_plot_posterior)" href="inference/viz.html"/>
+        <link rel="prev" title="pycbc_make_offline_grb_workflow: A GRB triggered CBC analysis workflow generator" href="workflow/pygrb.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.9.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PyCBC inference documentation (<code class="docutils literal notranslate"><span class="pre">pycbc.inference</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sampling-the-parameter-space-pycbc-inference">Sampling the parameter space (<code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options-for-samplers-likelihood-models-and-priors">Options for samplers, likelihood models, and priors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file-syntax">Configuration file syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-on-an-analytic-distribution">Running on an analytic distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bbh-software-injection-example">BBH software injection example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gw150914-example">GW150914 example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hdf-output-file-handler-pycbc-io-inferencefile">HDF output file handler (<code class="docutils literal notranslate"><span class="pre">pycbc.io.InferenceFile</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualizing-the-posteriors">Visualizing the Posteriors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inference/viz.html">Plotting the posteriors (<code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_posterior</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inference/viz.html#making-a-movie-pycbc-inference-plot-movie">Making a movie (<code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_movie</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/pycbc_make_inference_inj_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal notranslate"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="catalog.html">Catalog of Observed Gravitational-wave Mergers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal notranslate"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>PyCBC inference documentation (<code class="docutils literal notranslate"><span class="pre">pycbc.inference</span></code>)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/inference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pycbc-inference-documentation-pycbc-inference">
+<h1>PyCBC inference documentation (<code class="docutils literal notranslate"><span class="pre">pycbc.inference</span></code>)<a class="headerlink" href="#pycbc-inference-documentation-pycbc-inference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This page gives details on how to use the various parameter estimation
+executables and modules available in PyCBC. The <code class="docutils literal notranslate"><span class="pre">pycbc.inference</span></code> subpackage
+contains classes and functions for evaluating probability distributions,
+likelihoods, and running Bayesian samplers.</p>
+</div>
+<div class="section" id="sampling-the-parameter-space-pycbc-inference">
+<h2>Sampling the parameter space (<code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code>)<a class="headerlink" href="#sampling-the-parameter-space-pycbc-inference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>The executable <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code> is designed to sample the parameter space
+and save the samples in an HDF file. A high-level description of the
+<code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code> algorithm is</p>
+<ol class="arabic simple">
+<li>Estimate a PSD from a model or data.</li>
+<li>Read gravitational-wave strain from a gravitational-wave model or use recolored fake strain.</li>
+<li>Read priors from configuration file.</li>
+<li>Construct prior-weighted likelihood function from PSD, gravitational-wave strain, and priors.</li>
+<li>Run sampler that walks around parameter space and calculates the prior-weighted likelihood function.</li>
+</ol>
+</div>
+<div class="section" id="options-for-samplers-likelihood-models-and-priors">
+<h3>Options for samplers, likelihood models, and priors<a class="headerlink" href="#options-for-samplers-likelihood-models-and-priors" title="Permalink to this headline">¶</a></h3>
+<p>For a full listing of all options run <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span> <span class="pre">--help</span></code>. In this subsection we reference documentation for Python classes that contain more information about choices for samplers, likelihood models, and priors.</p>
+<p>The user specifies the sampler on the command line with the <code class="docutils literal notranslate"><span class="pre">--sampler</span></code> option.
+A complete list of samplers is given in <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span> <span class="pre">--help</span></code>.
+These samplers are described in <a class="reference internal" href="pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler" title="pycbc.inference.sampler_kombine.KombineSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.sampler_kombine.KombineSampler</span></code></a>, <a class="reference internal" href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler" title="pycbc.inference.sampler_emcee.EmceeEnsembleSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.sampler_emcee.EmceeEnsembleSampler</span></code></a>, and <a class="reference internal" href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler" title="pycbc.inference.sampler_emcee.EmceePTSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.sampler_emcee.EmceePTSampler</span></code></a>.
+In addition to <code class="docutils literal notranslate"><span class="pre">--sampler</span></code> the user will need to specify the number of walkers to use <code class="docutils literal notranslate"><span class="pre">--nwalkers</span></code>, and for parallel-tempered samplers the number of temperatures <code class="docutils literal notranslate"><span class="pre">--ntemps</span></code>. You also need to either specify the number of iterations to run for using <code class="docutils literal notranslate"><span class="pre">--niterations</span></code> <strong>or</strong> the number of independent samples to collect using <code class="docutils literal notranslate"><span class="pre">--n-independent-samples</span></code>. For the latter, a burn-in function must be specified using <code class="docutils literal notranslate"><span class="pre">--burn-in-function</span></code>. In this case, the program will run until the sampler has burned in, at which point the number of independent samples equals the number of walkers. If the number of independent samples desired is greater than the number of walkers, the program will continue to run until it has collected the specified number of independent samples (to do this, an autocorrelation length is computed at each checkpoint to determine how many iterations need to be skipped to obtain independent samples).</p>
+<p>The user specifies the likelihood model on the command line with the <code class="docutils literal notranslate"><span class="pre">--likelihood-evaluator</span></code> option. Any choice that starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code> is an analytic test distribution that requires no data or waveform generation; see the section below on running on an analytic distribution for more details. For running on data, use <code class="docutils literal notranslate"><span class="pre">--likelihood-evaluator</span> <span class="pre">gaussian</span></code>; this uses <a class="reference internal" href="pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood" title="pycbc.inference.likelihood.GaussianLikelihood"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.GaussianLikelihood</span></code></a> for evaluating posteriors. Examples of using this on a BBH injection and on GW150914 are given below.</p>
+<p>The user specifies a configuration file that defines the priors with the <code class="docutils literal notranslate"><span class="pre">--config-files</span></code> option.
+The syntax of the configuration file is described in the following subsection.</p>
+</div>
+<div class="section" id="configuration-file-syntax">
+<h3>Configuration file syntax<a class="headerlink" href="#configuration-file-syntax" title="Permalink to this headline">¶</a></h3>
+<p>Configuration files follow the <code class="docutils literal notranslate"><span class="pre">ConfigParser</span></code> syntax.
+There are two required sections.
+One is a <code class="docutils literal notranslate"><span class="pre">[variable_args]</span></code> section that contains a list of parameters that we will vary to obtain a posterior distribution and the other is <code class="docutils literal notranslate"><span class="pre">[static_args]</span></code> section that contains a list of parameters are held fixed through out the run.</p>
+<p>Each parameter in <code class="docutils literal notranslate"><span class="pre">[variable_args]</span></code> must have a subsection in <code class="docutils literal notranslate"><span class="pre">[prior]</span></code>.
+To create a subsection use the <code class="docutils literal notranslate"><span class="pre">-</span></code> char, e.g. for one of the mass parameters do <code class="docutils literal notranslate"><span class="pre">[prior-mass1]</span></code>.</p>
+<p>Each prior subsection must have a <code class="docutils literal notranslate"><span class="pre">name</span></code> option that identifies what prior to use.
+These distributions are described in <a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions" title="pycbc.distributions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.distributions</span></code></a>.
+A list of all distributions that can be used is found with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">distributions</span>
+<span class="c1"># print all distribution names</span>
+<span class="nb">print</span> <span class="n">distributions</span><span class="o">.</span><span class="n">distribs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python ../examples/distributions/list_distributions.py
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+[&#39;uniform_power_law&#39;, &#39;gaussian&#39;, &#39;uniform_log10&#39;, &#39;uniform_solidangle&#39;, &#39;uniform_sky&#39;, &#39;cos_angle&#39;, &#39;uniform_radius&#39;, &#39;independent_chip_chieff&#39;, &#39;sin_angle&#39;, &#39;uniform&#39;, &#39;uniform_angle&#39;, &#39;arbitrary&#39;, &#39;fromfile&#39;]
+</pre></div>
+</div>
+<p>One or more of the <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> may be transformed to a different parameter space for purposes of sampling. This is done by specifying a <code class="docutils literal notranslate"><span class="pre">[sampling_parameters]</span></code> section. This section specifies which <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> to replace with which parameters for sampling. This must be followed by one or more <code class="docutils literal notranslate"><span class="pre">[sampling_transforms-{sampling_params}]</span></code> sections that provide the transform class to use. For example, the following would cause the sampler to sample in chirp mass (<code class="docutils literal notranslate"><span class="pre">mchirp</span></code>) and mass ratio (<code class="docutils literal notranslate"><span class="pre">q</span></code>) instead of <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">sampling_parameters</span><span class="p">]</span>
+<span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">:</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">q</span>
+
+<span class="p">[</span><span class="n">sampling_transforms</span><span class="o">-</span><span class="n">mchirp</span><span class="o">+</span><span class="n">q</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">mass1_mass2_to_mchirp_q</span>
+</pre></div>
+</div>
+<p>For a list of all possible transforms see <a class="reference internal" href="pycbc.html#module-pycbc.transforms" title="pycbc.transforms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.transforms</span></code></a>.</p>
+<p>There can be any number of <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> with any name. No parameter name is special (with the exception of parameters that start with <code class="docutils literal notranslate"><span class="pre">calib_</span></code>; see below). However, in order to generate waveforms, certain parameters must be provided for waveform generation. If you would like to specify a <code class="docutils literal notranslate"><span class="pre">variable_arg</span></code> that is not one of these parameters, then you must provide a <code class="docutils literal notranslate"><span class="pre">[waveforms_transforms-{param}]</span></code> section that provides a transform from the arbitrary <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> to the needed waveform parameter(s) <code class="docutils literal notranslate"><span class="pre">{param}</span></code>. For example, in the following we provide a prior on <code class="docutils literal notranslate"><span class="pre">chirp_distance</span></code>. Since <code class="docutils literal notranslate"><span class="pre">distance</span></code>, not <code class="docutils literal notranslate"><span class="pre">chirp_distance</span></code>, is recognized by the CBC waveforms module, we provide a transform to go from <code class="docutils literal notranslate"><span class="pre">chirp_distance</span></code> to <code class="docutils literal notranslate"><span class="pre">distance</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">variable_args</span><span class="p">]</span>
+<span class="n">chirp_distance</span> <span class="o">=</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">chirp_distance</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">chirp_distance</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">chirp_distance</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="p">[</span><span class="n">waveform_transforms</span><span class="o">-</span><span class="n">distance</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">chirp_distance_to_distance</span>
+</pre></div>
+</div>
+<p>Any class in the transforms module may be used. A useful transform for these purposes is the <a class="reference internal" href="pycbc.html#pycbc.transforms.CustomTransform" title="pycbc.transforms.CustomTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.CustomTransform</span></code></a>, which allows for arbitrary transforms using any function in the <a class="reference internal" href="pycbc.html#module-pycbc.conversions" title="pycbc.conversions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.conversions</span></code></a>, <a class="reference internal" href="pycbc.html#module-pycbc.coordinates" title="pycbc.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.coordinates</span></code></a>, or <a class="reference internal" href="pycbc.html#module-pycbc.cosmology" title="pycbc.cosmology"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.cosmology</span></code></a> modules, along with numpy math functions. For example, the following would use the I-Love-Q relationship <a class="reference internal" href="pycbc.html#pycbc.conversions.dquadmon_from_lambda" title="pycbc.conversions.dquadmon_from_lambda"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pycbc.conversions.dquadmon_from_lambda()</span></code></a> to relate the quadrupole moment of a neutron star <code class="docutils literal notranslate"><span class="pre">dquad_mon1</span></code> to its tidal deformation <code class="docutils literal notranslate"><span class="pre">lambda1</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">variable_args</span><span class="p">]</span>
+<span class="n">lambda1</span> <span class="o">=</span>
+
+<span class="p">[</span><span class="n">waveform_transforms</span><span class="o">-</span><span class="n">dquad_mon1</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">custom</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">lambda1</span>
+<span class="n">dquad_mon1</span> <span class="o">=</span> <span class="n">dquadmon_from_lambda</span><span class="p">(</span><span class="n">lambda1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A list of all parameters that are understood by the CBC waveform generator can be found with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">parameters</span>
+<span class="c1"># print base parameters for CBC waveform</span>
+<span class="nb">print</span> <span class="n">parameters</span><span class="o">.</span><span class="n">fd_waveform_params</span> <span class="o">+</span> <span class="n">parameters</span><span class="o">.</span><span class="n">location_params</span> <span class="o">+</span> \
+    <span class="n">parameters</span><span class="o">.</span><span class="n">calibration_params</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python ../examples/inference/list_parameters.py
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+[&#39;mass1&#39;, &#39;mass2&#39;, &#39;spin1x&#39;, &#39;spin1y&#39;, &#39;spin1z&#39;, &#39;spin2x&#39;, &#39;spin2y&#39;, &#39;spin2z&#39;, &#39;eccentricity&#39;, &#39;lambda1&#39;, &#39;lambda2&#39;, &#39;dquad_mon1&#39;, &#39;dquad_mon2&#39;, &#39;lambda_octu1&#39;, &#39;lambda_octu2&#39;, &#39;quadfmode1&#39;, &#39;quadfmode2&#39;, &#39;octufmode1&#39;, &#39;octufmode2&#39;, &#39;distance&#39;, &#39;coa_phase&#39;, &#39;inclination&#39;, &#39;long_asc_nodes&#39;, &#39;mean_per_ano&#39;, &#39;delta_f&#39;, &#39;f_lower&#39;, &#39;approximant&#39;, &#39;f_ref&#39;, &#39;phase_order&#39;, &#39;spin_order&#39;, &#39;tidal_order&#39;, &#39;amplitude_order&#39;, &#39;eccentricity_order&#39;, &#39;frame_axis&#39;, &#39;modes_choice&#39;, &#39;side_bands&#39;, &#39;mode_array&#39;, &#39;f_final&#39;, &#39;f_final_func&#39;, &#39;tc&#39;, &#39;ra&#39;, &#39;dec&#39;, &#39;polarization&#39;, &#39;calib_delta_fc&#39;, &#39;calib_delta_fs&#39;, &#39;calib_delta_qinv&#39;, &#39;calib_kappa_c&#39;, &#39;calib_kappa_tst_re&#39;, &#39;calib_kappa_tst_im&#39;, &#39;calib_kappa_pu_re&#39;, &#39;calib_kappa_pu_im&#39;]
+</pre></div>
+</div>
+<p>Some common transforms are pre-defined in the code. These are: the mass parameters <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code> can be substituted with <code class="docutils literal notranslate"><span class="pre">mchirp</span></code> and <code class="docutils literal notranslate"><span class="pre">eta</span></code> or <code class="docutils literal notranslate"><span class="pre">mchirp</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code>.
+The component spin parameters <code class="docutils literal notranslate"><span class="pre">spin1x</span></code>, <code class="docutils literal notranslate"><span class="pre">spin1y</span></code>, and <code class="docutils literal notranslate"><span class="pre">spin1z</span></code> can be substituted for polar coordinates <code class="docutils literal notranslate"><span class="pre">spin1_a</span></code>, <code class="docutils literal notranslate"><span class="pre">spin1_azimuthal</span></code>, and <code class="docutils literal notranslate"><span class="pre">spin1_polar</span></code> (ditto for <code class="docutils literal notranslate"><span class="pre">spin2</span></code>).</p>
+<p>If any calibration parameters are used (prefix <code class="docutils literal notranslate"><span class="pre">calib_</span></code>), a <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must be included. This section must have a <code class="docutils literal notranslate"><span class="pre">name</span></code> option that identifies what calibration model to use. The models are described in <a class="reference internal" href="pycbc.calibration.html#module-pycbc.calibration" title="pycbc.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.calibration</span></code></a>. The <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must also include reference values <code class="docutils literal notranslate"><span class="pre">fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">fs0</span></code>, and <code class="docutils literal notranslate"><span class="pre">qinv0</span></code>, as well as paths to ASCII transfer function files for the test mass actuation, penultimate mass actuation, sensing function, and digital filter for each IFO being used in the analysis. E.g. for an analysis using H1 only, the required options would be <code class="docutils literal notranslate"><span class="pre">h1-fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-fs0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-qinv0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-tst</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-pu</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-c</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-d</span></code>.</p>
+<p>Simple examples are given in the subsections below.</p>
+</div>
+<div class="section" id="running-on-an-analytic-distribution">
+<h3>Running on an analytic distribution<a class="headerlink" href="#running-on-an-analytic-distribution" title="Permalink to this headline">¶</a></h3>
+<p>Several analytic distributions are available to run tests on. These can be run quickly on a laptop to check that a sampler is working properly.</p>
+<p>This example demonstrates how to sample a 2D normal distribution with the <code class="docutils literal notranslate"><span class="pre">emcee</span></code> sampler. First, create the following configuration file (named <code class="docutils literal notranslate"><span class="pre">normal2d.ini</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">variable_args</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span>
+<span class="n">y</span> <span class="o">=</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">x</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">y</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>Then run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pycbc_inference</span> <span class="o">--</span><span class="n">verbose</span> \
+    <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">files</span> <span class="n">normal2d</span><span class="o">.</span><span class="n">ini</span> \
+    <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">file</span> <span class="n">normal2d</span><span class="o">.</span><span class="n">hdf</span> \
+    <span class="o">--</span><span class="n">sampler</span> <span class="n">emcee</span> \
+    <span class="o">--</span><span class="n">niterations</span> <span class="mi">100</span> \
+    <span class="o">--</span><span class="n">nwalkers</span> <span class="mi">5000</span> \
+    <span class="o">--</span><span class="n">likelihood</span><span class="o">-</span><span class="n">evaluator</span> <span class="n">test_normal</span>
+</pre></div>
+</div>
+<p>This will run the <code class="docutils literal notranslate"><span class="pre">emcee</span></code> sampler on the 2D analytic normal distribution with 5000 walkers for 100 iterations.</p>
+<p>To plot the posterior distribution after the last iteration, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pycbc_inference_plot_posterior</span> <span class="o">--</span><span class="n">verbose</span> \
+    <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">file</span> <span class="n">normal2d</span><span class="o">.</span><span class="n">hdf</span> \
+    <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">file</span> <span class="n">posterior</span><span class="o">-</span><span class="n">normal2d</span><span class="o">.</span><span class="n">png</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">scatter</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">contours</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">marginal</span> \
+    <span class="o">--</span><span class="n">z</span><span class="o">-</span><span class="n">arg</span> <span class="n">loglr</span> \
+    <span class="o">--</span><span class="n">iteration</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>This will plot each walker’s position as a single point colored by the log likelihood ratio at that point, with the 50th and 90th percentile contours drawn. See below for more information about using <code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_posterior</span></code>.</p>
+<p>To make a movie showing how the walkers evolved, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pycbc_inference_plot_movie</span> <span class="o">--</span><span class="n">verbose</span> \
+    <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">file</span> <span class="n">normal2d</span><span class="o">.</span><span class="n">hdf</span> \
+    <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">prefix</span> <span class="n">frames</span><span class="o">-</span><span class="n">normal2d</span> \
+    <span class="o">--</span><span class="n">movie</span><span class="o">-</span><span class="n">file</span> <span class="n">normal2d_mcmc_evolution</span><span class="o">.</span><span class="n">mp4</span> \
+    <span class="o">--</span><span class="n">cleanup</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">scatter</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">contours</span> \
+    <span class="o">--</span><span class="n">plot</span><span class="o">-</span><span class="n">marginal</span> \
+    <span class="o">--</span><span class="n">z</span><span class="o">-</span><span class="n">arg</span> <span class="n">loglr</span> \
+    <span class="o">--</span><span class="n">frame</span><span class="o">-</span><span class="n">step</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> you need <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> installed for the mp4 to be created. See below for more information on using <code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_movie</span></code>.</p>
+<p>The number of dimensions of the distribution is set by the number of <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> in the configuration file. The names of the <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> do not matter, just that the prior sections use the same names (in this example <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> were used, but <code class="docutils literal notranslate"><span class="pre">foo</span></code> and <code class="docutils literal notranslate"><span class="pre">bar</span></code> would be equally valid). A higher (or lower) dimensional distribution can be tested by simply adding more (or less) <code class="docutils literal notranslate"><span class="pre">variable_args</span></code>.</p>
+<p>Which analytic distribution is used is set by the <code class="docutils literal notranslate"><span class="pre">--likelihood-evaluator</span></code> option. By setting to <code class="docutils literal notranslate"><span class="pre">test_normal</span></code> we used <a class="reference internal" href="pycbc.inference.html#pycbc.inference.likelihood.TestNormal" title="pycbc.inference.likelihood.TestNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.TestNormal</span></code></a>. To see the list of available likelihood classes run <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span> <span class="pre">--help</span></code>; any choice for <code class="docutils literal notranslate"><span class="pre">--likelihood-evaluator</span></code> that starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code> is analytic. The other analytic distributions available are: <a class="reference internal" href="pycbc.inference.html#pycbc.inference.likelihood.TestEggbox" title="pycbc.inference.likelihood.TestEggbox"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.TestEggbox</span></code></a>, <a class="reference internal" href="pycbc.inference.html#pycbc.inference.likelihood.TestRosenbrock" title="pycbc.inference.likelihood.TestRosenbrock"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.TestRosenbrock</span></code></a>, and <a class="reference internal" href="pycbc.inference.html#pycbc.inference.likelihood.TestVolcano" title="pycbc.inference.likelihood.TestVolcano"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.TestVolcano</span></code></a>. As with <code class="docutils literal notranslate"><span class="pre">test_normal</span></code>, the dimensionality of these test distributions is set by the number of <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> in the configuration file. The <code class="docutils literal notranslate"><span class="pre">test_volcano</span></code> distribution must be two dimensional, but all of the other distributions can have any number of dimensions. The configuration file syntax for the other test distributions is the same as in this example. Indeed, with this configuration file one only needs to change the <code class="docutils literal notranslate"><span class="pre">--likelihood-evaluator</span></code> argument to try (2D versions of) the other distributions.</p>
+</div>
+<div class="section" id="bbh-software-injection-example">
+<h3>BBH software injection example<a class="headerlink" href="#bbh-software-injection-example" title="Permalink to this headline">¶</a></h3>
+<p>This example recovers the parameters of a precessing binary black-hole (BBH).</p>
+<p>An example configuration file (named <code class="docutils literal notranslate"><span class="pre">inference.ini</span></code>) is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">variable_args</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">waveform</span> <span class="n">parameters</span> <span class="n">that</span> <span class="n">will</span> <span class="n">vary</span> <span class="ow">in</span> <span class="n">MCMC</span>
+<span class="n">tc</span> <span class="o">=</span>
+<span class="n">mass1</span> <span class="o">=</span>
+<span class="n">mass2</span> <span class="o">=</span>
+<span class="n">spin1_a</span> <span class="o">=</span>
+<span class="n">spin1_azimuthal</span> <span class="o">=</span>
+<span class="n">spin1_polar</span> <span class="o">=</span>
+<span class="n">spin2_a</span> <span class="o">=</span>
+<span class="n">spin2_azimuthal</span> <span class="o">=</span>
+<span class="n">spin2_polar</span> <span class="o">=</span>
+<span class="n">distance</span> <span class="o">=</span>
+<span class="n">coa_phase</span> <span class="o">=</span>
+<span class="n">inclination</span> <span class="o">=</span>
+<span class="n">polarization</span> <span class="o">=</span>
+<span class="n">ra</span> <span class="o">=</span>
+<span class="n">dec</span> <span class="o">=</span>
+
+<span class="p">[</span><span class="n">static_args</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">waveform</span> <span class="n">parameters</span> <span class="n">that</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">change</span> <span class="ow">in</span> <span class="n">MCMC</span>
+<span class="n">approximant</span> <span class="o">=</span> <span class="n">IMRPhenomPv2</span>
+<span class="n">f_lower</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">f_ref</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">tc</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">coalescence</span> <span class="n">time</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">tc</span> <span class="o">=</span> <span class="mf">1126259461.8</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">tc</span> <span class="o">=</span> <span class="mf">1126259462.2</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">mass1</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">mass1</span> <span class="o">=</span> <span class="mf">10.</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">mass1</span> <span class="o">=</span> <span class="mf">80.</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">mass2</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">mass2</span> <span class="o">=</span> <span class="mf">10.</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">mass2</span> <span class="o">=</span> <span class="mf">80.</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">spin1_a</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">spin1_a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">spin1_a</span> <span class="o">=</span> <span class="mf">0.99</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">spin1_polar</span><span class="o">+</span><span class="n">spin1_azimuthal</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_solidangle</span>
+<span class="n">polar</span><span class="o">-</span><span class="n">angle</span> <span class="o">=</span> <span class="n">spin1_polar</span>
+<span class="n">azimuthal</span><span class="o">-</span><span class="n">angle</span> <span class="o">=</span> <span class="n">spin1_azimuthal</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">spin2_a</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">spin2_a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">spin2_a</span> <span class="o">=</span> <span class="mf">0.99</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">spin2_polar</span><span class="o">+</span><span class="n">spin2_azimuthal</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_solidangle</span>
+<span class="n">polar</span><span class="o">-</span><span class="n">angle</span> <span class="o">=</span> <span class="n">spin2_polar</span>
+<span class="n">azimuthal</span><span class="o">-</span><span class="n">angle</span> <span class="o">=</span> <span class="n">spin2_azimuthal</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">distance</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">following</span> <span class="n">gives</span> <span class="n">a</span> <span class="n">uniform</span> <span class="n">volume</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_radius</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">coa_phase</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">coalescence</span> <span class="n">phase</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_angle</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">inclination</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">inclination</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">sin_angle</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">ra</span><span class="o">+</span><span class="n">dec</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">sky</span> <span class="n">position</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_sky</span>
+
+<span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">polarization</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">polarization</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform_angle</span>
+
+<span class="p">;</span>
+<span class="p">;</span>   <span class="n">Sampling</span> <span class="n">transforms</span>
+<span class="p">;</span>
+<span class="p">[</span><span class="n">sampling_parameters</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">parameters</span> <span class="n">on</span> <span class="n">the</span> <span class="n">left</span> <span class="n">will</span> <span class="n">be</span> <span class="n">sampled</span> <span class="ow">in</span>
+<span class="p">;</span> <span class="n">parametes</span> <span class="n">on</span> <span class="n">the</span> <span class="n">right</span>
+<span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span> <span class="p">:</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">q</span>
+
+<span class="p">[</span><span class="n">sampling_transforms</span><span class="o">-</span><span class="n">mchirp</span><span class="o">+</span><span class="n">q</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">inputs</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span>
+<span class="p">;</span> <span class="n">outputs</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">q</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">mass1_mass2_to_mchirp_q</span>
+</pre></div>
+</div>
+<p>An example of generating an injection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># define waveform parameters
+TRIGGER_TIME=1126259462.0
+INJ_APPROX=SEOBNRv2threePointFivePN
+MASS1=37.
+MASS2=32.
+RA=2.21535724066
+DEC=-1.23649695537
+INC=2.5
+COA_PHASE=1.5
+POLARIZATION=1.75
+DISTANCE=100000 # in kpc
+INJ_F_MIN=18.
+TAPER=&quot;start&quot;
+
+# path of injection file that will be created in the example
+INJ_PATH=injection.xml.gz
+
+# lalapps_inspinj requires degrees on the command line
+LONGITUDE=`python -c &quot;import numpy; print ${RA} * 180/numpy.pi&quot;`
+LATITUDE=`python -c &quot;import numpy; print ${DEC} * 180/numpy.pi&quot;`
+INC=`python -c &quot;import numpy; print ${INC} * 180/numpy.pi&quot;`
+POLARIZATION=`python -c &quot;import numpy; print ${POLARIZATION} * 180/numpy.pi&quot;`
+COA_PHASE=`python -c &quot;import numpy; print ${COA_PHASE} * 180/numpy.pi&quot;`
+
+# create injection file
+lalapps_inspinj \
+    --output ${INJ_PATH} \
+    --seed 1000 \
+    --f-lower ${INJ_F_MIN} \
+    --waveform ${INJ_APPROX} \
+    --amp-order 7 \
+    --gps-start-time ${TRIGGER_TIME} \
+    --gps-end-time ${TRIGGER_TIME} \
+    --time-step 1 \
+    --t-distr fixed \
+    --l-distr fixed \
+    --longitude ${LONGITUDE} \
+    --latitude ${LATITUDE} \
+    --d-distr uniform \
+    --min-distance ${DISTANCE} \
+    --max-distance ${DISTANCE} \
+    --i-distr fixed \
+    --fixed-inc ${INC} \
+    --coa-phase-distr fixed \
+    --fixed-coa-phase ${COA_PHASE} \
+    --polarization ${POLARIZATION} \
+    --m-distr fixMasses \
+    --fixed-mass1 ${MASS1} \
+    --fixed-mass2 ${MASS2} \
+    --taper-injection ${TAPER} \
+    --disable-spin
+</pre></div>
+</div>
+<p>An example of running <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code> to analyze the injection in fake data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># injection parameters
+TRIGGER_TIME=1126259462.0
+INJ_PATH=injection.xml.gz
+
+# sampler parameters
+CONFIG_PATH=inference.ini
+OUTPUT_PATH=inference.hdf
+SEGLEN=8
+PSD_INVERSE_LENGTH=4
+IFOS=&quot;H1 L1&quot;
+STRAIN=&quot;H1:aLIGOZeroDetHighPower L1:aLIGOZeroDetHighPower&quot;
+SAMPLE_RATE=2048
+F_MIN=20
+N_UPDATE=500
+N_WALKERS=5000
+N_SAMPLES=5000
+N_CHECKPOINT=1000
+PROCESSING_SCHEME=cpu
+
+# the following sets the number of cores to use; adjust as needed to
+# your computer&#39;s capabilities
+NPROCS=12
+
+# get coalescence time as an integer
+TRIGGER_TIME_INT=${TRIGGER_TIME%.*}
+
+# start and end time of data to read in
+GPS_START_TIME=$((${TRIGGER_TIME_INT} - ${SEGLEN}))
+GPS_END_TIME=$((${TRIGGER_TIME_INT} + ${SEGLEN}))
+
+# run sampler
+# specifies the number of threads for OpenMP
+# Running with OMP_NUM_THREADS=1 stops lalsimulation
+# to spawn multiple jobs that would otherwise be used
+# by pycbc_inference and cause a reduced runtime.
+OMP_NUM_THREADS=1 \
+pycbc_inference --verbose \
+    --seed 12 \
+    --instruments ${IFOS} \
+    --gps-start-time ${GPS_START_TIME} \
+    --gps-end-time ${GPS_END_TIME} \
+    --psd-model ${STRAIN} \
+    --psd-inverse-length ${PSD_INVERSE_LENGTH} \
+    --fake-strain ${STRAIN} \
+    --fake-strain-seed 44 \
+    --sample-rate ${SAMPLE_RATE} \
+    --low-frequency-cutoff ${F_MIN} \
+    --channel-name H1:FOOBAR L1:FOOBAR \
+    --injection-file ${INJ_PATH} \
+    --config-file ${CONFIG_PATH} \
+    --output-file ${OUTPUT_PATH} \
+    --processing-scheme ${PROCESSING_SCHEME} \
+    --sampler kombine \
+    --burn-in-function max_posterior \
+    --update-interval ${N_UPDATE} \
+    --likelihood-evaluator gaussian \
+    --nwalkers ${N_WALKERS} \
+    --n-independent-samples ${N_SAMPLES} \
+    --checkpoint-interval ${N_CHECKPOINT} \
+    --nprocesses ${NPROCS} \
+    --save-strain \
+    --save-psd \
+    --save-stilde \
+    --force
+</pre></div>
+</div>
+</div>
+<div class="section" id="gw150914-example">
+<h3>GW150914 example<a class="headerlink" href="#gw150914-example" title="Permalink to this headline">¶</a></h3>
+<p>With a minor change to the <code class="docutils literal notranslate"><span class="pre">tc</span></code> prior, you can reuse <code class="docutils literal notranslate"><span class="pre">inference.ini</span></code> from the previous example to analyze the data containing GW150914. Change the <code class="docutils literal notranslate"><span class="pre">[prior-tc]</span></code> section to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">prior</span><span class="o">-</span><span class="n">tc</span><span class="p">]</span>
+<span class="p">;</span> <span class="n">coalescence</span> <span class="n">time</span> <span class="n">prior</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">uniform</span>
+<span class="nb">min</span><span class="o">-</span><span class="n">tc</span> <span class="o">=</span> <span class="mf">1126259462.32</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">tc</span> <span class="o">=</span> <span class="mf">1126259462.52</span>
+</pre></div>
+</div>
+<p>Next, you need to obtain the real LIGO data containing GW150914. Do one of
+the following:</p>
+<ul>
+<li><p class="first"><strong>If you are a LIGO member and are running on a LIGO Data Grid cluster:</strong>
+you can use the LIGO data server to automatically obtain the frame files.
+Simply set the following environment variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FRAMES</span><span class="o">=</span><span class="s2">&quot;--frame-type H1:H1_HOFT_C02 L1:L1_HOFT_C02&quot;</span>
+<span class="n">CHANNELS</span><span class="o">=</span><span class="s2">&quot;H1:H1:DCS-CALIB_STRAIN_C02 L1:L1:DCS-CALIB_STRAIN_C02&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>If you are not a LIGO member, or are not running on a LIGO Data Grid
+cluster:</strong> you need to obtain the data from the
+<a class="reference external" href="https://losc.ligo.org">LIGO Open Science Center</a>. First run the following
+commands to download the needed frame files to your working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">losc</span><span class="o">.</span><span class="n">ligo</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">events</span><span class="o">/</span><span class="n">GW150914</span><span class="o">/</span><span class="n">H</span><span class="o">-</span><span class="n">H1_LOSC_4_V2</span><span class="o">-</span><span class="mi">1126257414</span><span class="o">-</span><span class="mf">4096.</span><span class="n">gwf</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">losc</span><span class="o">.</span><span class="n">ligo</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">events</span><span class="o">/</span><span class="n">GW150914</span><span class="o">/</span><span class="n">L</span><span class="o">-</span><span class="n">L1_LOSC_4_V2</span><span class="o">-</span><span class="mi">1126257414</span><span class="o">-</span><span class="mf">4096.</span><span class="n">gwf</span>
+</pre></div>
+</div>
+<p>Then set the following enviornment variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FRAMES</span><span class="o">=</span><span class="s2">&quot;--frame-files H1:H-H1_LOSC_4_V2-1126257414-4096.gwf L1:L-L1_LOSC_4_V2-1126257414-4096.gwf&quot;</span>
+<span class="n">CHANNELS</span><span class="o">=</span><span class="s2">&quot;H1:LOSC-STRAIN L1:LOSC-STRAIN&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Now run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># trigger parameters
+TRIGGER_TIME=1126259462.42
+
+# data to use
+# the longest waveform covered by the prior must fit in these times
+SEARCH_BEFORE=6
+SEARCH_AFTER=2
+
+# use an extra number of seconds of data in addition to the data specified
+PAD_DATA=8
+
+# PSD estimation options
+PSD_ESTIMATION=&quot;H1:median L1:median&quot;
+PSD_INVLEN=4
+PSD_SEG_LEN=16
+PSD_STRIDE=8
+PSD_DATA_LEN=1024
+
+# sampler parameters
+CONFIG_PATH=inference.ini
+OUTPUT_PATH=inference.hdf
+IFOS=&quot;H1 L1&quot;
+SAMPLE_RATE=2048
+F_HIGHPASS=15
+F_MIN=20
+N_UPDATE=500
+N_WALKERS=5000
+N_SAMPLES=5000
+N_CHECKPOINT=1000
+PROCESSING_SCHEME=cpu
+
+# the following sets the number of cores to use; adjust as needed to
+# your computer&#39;s capabilities
+NPROCS=12
+
+# get coalescence time as an integer
+TRIGGER_TIME_INT=${TRIGGER_TIME%.*}
+
+# start and end time of data to read in
+GPS_START_TIME=$((${TRIGGER_TIME_INT} - ${SEARCH_BEFORE} - ${PSD_INVLEN}))
+GPS_END_TIME=$((${TRIGGER_TIME_INT} + ${SEARCH_AFTER} + ${PSD_INVLEN}))
+
+# start and end time of data to read in for PSD estimation
+PSD_START_TIME=$((${TRIGGER_TIME_INT} - ${PSD_DATA_LEN}/2))
+PSD_END_TIME=$((${TRIGGER_TIME_INT} + ${PSD_DATA_LEN}/2))
+
+# run sampler
+# specifies the number of threads for OpenMP
+# Running with OMP_NUM_THREADS=1 stops lalsimulation
+# to spawn multiple jobs that would otherwise be used
+# by pycbc_inference and cause a reduced runtime.
+OMP_NUM_THREADS=1 \
+pycbc_inference --verbose \
+    --seed 12 \
+    --instruments ${IFOS} \
+    --gps-start-time ${GPS_START_TIME} \
+    --gps-end-time ${GPS_END_TIME} \
+    --channel-name ${CHANNELS} \
+    ${FRAMES} \
+    --strain-high-pass ${F_HIGHPASS} \
+    --pad-data ${PAD_DATA} \
+    --psd-estimation ${PSD_ESTIMATION} \
+    --psd-start-time ${PSD_START_TIME} \
+    --psd-end-time ${PSD_END_TIME} \
+    --psd-segment-length ${PSD_SEG_LEN} \
+    --psd-segment-stride ${PSD_STRIDE} \
+    --psd-inverse-length ${PSD_INVLEN} \
+    --sample-rate ${SAMPLE_RATE} \
+    --low-frequency-cutoff ${F_MIN} \
+    --config-file ${CONFIG_PATH} \
+    --output-file ${OUTPUT_PATH} \
+    --processing-scheme ${PROCESSING_SCHEME} \
+    --sampler kombine \
+    --burn-in-function max_posterior \
+    --update-interval ${N_UPDATE} \
+    --likelihood-evaluator gaussian \
+    --nwalkers ${N_WALKERS} \
+    --n-independent-samples ${N_SAMPLES} \
+    --checkpoint-interval ${N_CHECKPOINT} \
+    --nprocesses ${NPROCS} \
+    --save-strain \
+    --save-psd \
+    --save-stilde \
+    --force
+</pre></div>
+</div>
+</div>
+<div class="section" id="hdf-output-file-handler-pycbc-io-inferencefile">
+<h3>HDF output file handler (<code class="docutils literal notranslate"><span class="pre">pycbc.io.InferenceFile</span></code>)<a class="headerlink" href="#hdf-output-file-handler-pycbc-io-inferencefile" title="Permalink to this headline">¶</a></h3>
+<p>The executable <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code> will write a HDF file with all the samples from each walker along with the PSDs and some meta-data about the sampler.
+There is a handler class <code class="docutils literal notranslate"><span class="pre">pycbc.io.InferenceFile</span></code> that extends <code class="docutils literal notranslate"><span class="pre">h5py.File</span></code>.
+To read the output file you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">InferenceFile</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="s2">&quot;cbc_example-n1e4.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get all samples for <code class="docutils literal notranslate"><span class="pre">distance</span></code> from the first walker you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">samples</span><span class="o">.</span><span class="n">distance</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">InferenceFile.read_samples</span></code> includes the options to thin the samples.
+By default the function will return samples beginning at the end of the burn-in to the last written sample, and will use the autocorrelation length (ACL) calculated by <code class="docutils literal notranslate"><span class="pre">pycbc_inference</span></code> to select the indepdedent samples.
+You can supply <code class="docutils literal notranslate"><span class="pre">thin_start</span></code>, <code class="docutils literal notranslate"><span class="pre">thin_end</span></code>, and <code class="docutils literal notranslate"><span class="pre">thin_interval</span></code> to override this. To read all samples you would do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">samples</span><span class="o">.</span><span class="n">distance</span>
+</pre></div>
+</div>
+<p>Some standard parameters that are derived from the variable arguments (listed via <code class="docutils literal notranslate"><span class="pre">fp.variable_args</span></code>) can also be retrieved. For example, if <code class="docutils literal notranslate"><span class="pre">fp.variable_args</span></code> includes <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>, then you can retrieve the chirp mass with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="s2">&quot;mchirp&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">samples</span><span class="o">.</span><span class="n">mchirp</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">fp.read_samples</span></code> will retrieve <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code> (since they are needed to compute chirp mass); <code class="docutils literal notranslate"><span class="pre">samples.mchirp</span></code> then returns an array of the chirp mass computed from <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>.</p>
+<p>For more information, including the list of predefined derived parameters, see <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.io.InferenceFile</span></code>.</p>
+</div>
+</div>
+<div class="section" id="visualizing-the-posteriors">
+<h2>Visualizing the Posteriors<a class="headerlink" href="#visualizing-the-posteriors" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inference/viz.html">Plotting the posteriors (<code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_posterior</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference/viz.html#making-a-movie-pycbc-inference-plot-movie">Making a movie (<code class="docutils literal notranslate"><span class="pre">pycbc_inference_plot_movie</span></code>)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="workflows">
+<h2>Workflows<a class="headerlink" href="#workflows" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_inj_workflow.html"><code class="docutils literal notranslate"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="inference/viz.html" class="btn btn-neutral float-right" title="Plotting the posteriors (pycbc_inference_plot_posterior)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="workflow/pygrb.html" class="btn btn-neutral" title="pycbc_make_offline_grb_workflow: A GRB triggered CBC analysis workflow generator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Mar 07, 2018.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'bc9a5e',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
