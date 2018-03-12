@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.trigger_fits &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.events.trigger_fits &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -257,6 +257,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">kstest</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">pnutils</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
 
 <span class="n">fitalpha_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;exponential&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">vals</span><span class="p">,</span> <span class="n">thresh</span> <span class="p">:</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="n">thresh</span><span class="p">),</span>
@@ -466,6 +467,10 @@
         <span class="n">parvals</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;mtotal&#39;</span><span class="p">:</span>
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span>
+    <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span><span class="s1">&#39;eta&#39;</span><span class="p">:</span>
+        <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;chi_eff&#39;</span><span class="p">:</span>
+        <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_eff</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;template_duration&#39;</span><span class="p">:</span>
         <span class="c1"># default to SEOBNRv4 duration function</span>
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">get_imr_duration</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">f_lower</span><span class="p">,</span>
@@ -532,7 +537,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -554,7 +559,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

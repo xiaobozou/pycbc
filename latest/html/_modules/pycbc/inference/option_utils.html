@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.option_utils &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.inference.option_utils &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -228,6 +228,8 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">pycbc.inference.sampler</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">inject</span>
+<span class="kn">from</span> <span class="nn">pycbc.io.record</span> <span class="k">import</span> <span class="n">FieldArray</span>
 <span class="kn">from</span> <span class="nn">pycbc.inference</span> <span class="k">import</span> <span class="n">burn_in</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
@@ -864,8 +866,6 @@
         <span class="n">input_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_files</span><span class="p">]</span>
 
     <span class="c1"># loop over all input files</span>
-    <span class="n">input_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">opts</span><span class="o">.</span><span class="n">input_file</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">input_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> \
-                                                           <span class="k">else</span> <span class="n">opts</span><span class="o">.</span><span class="n">input_file</span>
     <span class="k">for</span> <span class="n">input_file</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Reading input file </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
 
@@ -1045,7 +1045,17 @@
                              <span class="s2">&quot;args in the input file.&quot;</span><span class="p">)</span>
     <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--expected-parameters-color&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;What to color the expected-parameters cross. &quot;</span>
-                             <span class="s2">&quot;Default is red.&quot;</span><span class="p">)</span></div>
+                             <span class="s2">&quot;Default is red.&quot;</span><span class="p">)</span>
+    <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--plot-injection-parameters&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Get the expected parameters from the injection &quot;</span>
+                             <span class="s2">&quot;in the input file. There must be only a single &quot;</span>
+                             <span class="s2">&quot;injection in the file to work. Any values &quot;</span>
+                             <span class="s2">&quot;specified by expected-parameters will override &quot;</span>
+                             <span class="s2">&quot;the values obtained for the injection.&quot;</span><span class="p">)</span>
+    <span class="c1"># FIXME: the following should be made an attribute of the results file</span>
+    <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--injection-hdf-group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;H1/injections&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF group that contains injection values.&quot;</span><span class="p">)</span></div>
     <span class="k">return</span> <span class="n">pgroup</span>
 
 
@@ -1082,6 +1092,45 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;option --maxs not specified correctly; see help&quot;</span><span class="p">)</span>
         <span class="n">maxs</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
     <span class="k">return</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span>
+
+
+<div class="viewcode-block" id="injections_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.injections_from_cli">[docs]</a><span class="k">def</span> <span class="nf">injections_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets injection parameters from the inference file(s).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    opts : argparser</span>
+<span class="sd">        Argparser object that has the command-line objects to parse.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    FieldArray</span>
+<span class="sd">        Array of the injection parameters from all of the input files given</span>
+<span class="sd">        by ``opts.input_file``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_files</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">input_file</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">input_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_files</span><span class="p">]</span>
+    <span class="n">parameters</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_parameters_opt</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="n">input_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span>
+    <span class="n">injections</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># loop over all input files getting the injection files</span>
+    <span class="k">for</span> <span class="n">input_file</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">:</span>
+        <span class="c1"># read injections from HDF input file as FieldArray</span>
+        <span class="n">these_injs</span> <span class="o">=</span> <span class="n">inject</span><span class="o">.</span><span class="n">InjectionSet</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span>
+            <span class="n">hdf_group</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">injection_hdf_group</span><span class="p">)</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">FieldArray</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">injections</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">injections</span> <span class="o">=</span> <span class="n">these_injs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">injections</span> <span class="o">=</span> <span class="n">injections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">these_injs</span><span class="p">)</span>
+    <span class="c1"># check if need extra parameters than parameters stored in injection file</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">get_common_cbc_transforms</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
+                                                 <span class="n">injections</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">)</span>
+    <span class="c1"># add parameters not included in injection file</span>
+    <span class="n">injections</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">injections</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">injections</span>
 
 
 <div class="viewcode-block" id="expected_parameters_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.expected_parameters_from_cli">[docs]</a><span class="k">def</span> <span class="nf">expected_parameters_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -1180,7 +1229,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -1202,7 +1251,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

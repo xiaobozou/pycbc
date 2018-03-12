@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.psd &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.psd &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -383,6 +383,19 @@
                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;(Optional) The maximum length of the &quot;</span>
                              <span class="s2">&quot;impulse response of the overwhitening &quot;</span>
                              <span class="s2">&quot;filter (s)&quot;</span><span class="p">)</span>
+    <span class="c1"># Options for PSD variation</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_short_segment&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                             <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Length of short segment &quot;</span>
+                             <span class="s2">&quot;when calculating the PSD variability.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_long_segment&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                             <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Length of long segment &quot;</span>
+                             <span class="s2">&quot;when calculating the PSD variability.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_overlap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span>                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sample length of the PSD.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_low_freq&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;HERTZ&quot;</span><span class="p">,</span>                               <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Minimum frequency to consider in PSD &quot;</span>
+                             <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_high_freq&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;HERTZ&quot;</span><span class="p">,</span>                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum frequency to consider in PSD &quot;</span>
+                             <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">include_data_options</span> <span class="p">:</span>
         <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psd-estimation&quot;</span><span class="p">,</span>
                                  <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Measure PSD from the data, using &quot;</span>
@@ -465,6 +478,19 @@
     <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psd-output&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
                           <span class="n">action</span><span class="o">=</span><span class="n">MultiDetOptionAction</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;IFO:FILE&#39;</span><span class="p">,</span>
                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;(Optional) Write PSD to specified file&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Options for PSD variation</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_short_segment&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                             <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Length of short segment &quot;</span>
+                             <span class="s2">&quot;when calculating the PSD variability.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_long_segment&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                             <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Length of long segment &quot;</span>
+                             <span class="s2">&quot;when calculating the PSD variability.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_overlap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECONDS&quot;</span><span class="p">,</span>                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sample length of the PSD.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_low_freq&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;HERTZ&quot;</span><span class="p">,</span>                               <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Minimum frequency to consider in PSD &quot;</span>
+                             <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
+    <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_high_freq&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;HERTZ&quot;</span><span class="p">,</span>                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum frequency to consider in PSD &quot;</span>
+                             <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
 </div>
     <span class="k">return</span> <span class="n">psd_options</span>
 
@@ -710,7 +736,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -732,7 +758,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

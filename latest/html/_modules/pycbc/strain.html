@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.strain &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -487,13 +487,6 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognized precision </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_short_segment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calculating PSD variation&quot;</span><span class="p">)</span>
-            <span class="n">psd_var</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">calc_psd_variation</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span>
-                    <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_short_segment</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_long_segment</span><span class="p">,</span>
-                    <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_overlap</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_low_freq</span><span class="p">,</span>
-                    <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_high_freq</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">gating_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Gating glitches&quot;</span><span class="p">)</span>
             <span class="n">gate_params</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">gating_file</span><span class="p">)</span>
@@ -629,11 +622,8 @@
     <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">injection_file</span><span class="p">:</span>
         <span class="n">strain</span><span class="o">.</span><span class="n">injections</span> <span class="o">=</span> <span class="n">injections</span>
     <span class="n">strain</span><span class="o">.</span><span class="n">gating_info</span> <span class="o">=</span> <span class="n">gating_info</span>
-
-    <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">psdvar_short_segment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">strain</span><span class="p">,</span> <span class="n">psd_var</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">strain</span>  
+</div>
+    <span class="k">return</span> <span class="n">strain</span>  
 
 <div class="viewcode-block" id="from_cli_single_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.from_cli_single_ifo">[docs]</a><span class="k">def</span> <span class="nf">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -797,27 +787,7 @@
                          <span class="s2">&quot;  functions and the associated channel names&quot;</span><span class="p">)</span>
     <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--witness-filter-length&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;filter length in seconds for the transfer function&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Options for PSD variation</span>
-    <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--psdvar_short_segment&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                                    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SECONDS&#39;</span><span class="p">,</span>
-                                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Length of short segment when &#39;</span>
-                                         <span class="s1">&#39;calculating the PSD variability.&#39;</span><span class="p">)</span>
-    <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--psdvar_long_segment&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                                    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SECONDS&#39;</span><span class="p">,</span>
-                                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Length of long segment when &#39;</span>
-                                         <span class="s1">&#39;calculating the PSD variability.&#39;</span><span class="p">)</span>
-    <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--psdvar_overlap&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                                    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;SECONDS&#39;</span><span class="p">,</span>
-                                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Sample length of the PSD.&#39;</span><span class="p">)</span>
-    <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--psdvar_low_freq&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                                    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;HERTZ&#39;</span><span class="p">,</span>
-                                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Minimum frequency to consider in &#39;</span>
-                                         <span class="s1">&#39;PSD comparison.&#39;</span><span class="p">)</span>
-    <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--psdvar_high_freq&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                                    <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;HERTZ&#39;</span><span class="p">,</span>
-                                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Maximum frequency to consider in &#39;</span>
-                                         <span class="s1">&#39;PSD comparison.&#39;</span><span class="p">)</span></div>
+</div>
     <span class="k">return</span> <span class="n">data_reading_group</span>
 
 <span class="c1"># FIXME: This repeats almost all of the options above. Any nice way of reducing</span>
@@ -1848,7 +1818,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -1870,7 +1840,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.scatter_histograms &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.results.scatter_histograms &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -819,6 +819,12 @@
             <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
             <span class="n">mins</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">mins</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
             <span class="n">maxs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+        <span class="c1"># also remove from expected parameters, if they were provided</span>
+        <span class="k">if</span> <span class="n">expected_parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">expected_parameters</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">-=</span> <span class="n">offset</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
 
     <span class="c1"># create the axis grid</span>
     <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">axis_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -982,7 +988,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -1004,7 +1010,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

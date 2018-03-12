@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC bc9a5e documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC bb6bdc documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC bc9a5e documentation" href="index.html"/>
+    <link rel="top" title="PyCBC bb6bdc documentation" href="index.html"/>
         <link rel="up" title="pycbc package" href="pycbc.html"/>
         <link rel="next" title="pycbc.inject package" href="pycbc.inject.html"/>
         <link rel="prev" title="pycbc.frame package" href="pycbc.frame.html"/> 
@@ -1574,6 +1574,25 @@ raised.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.inference.option_utils.injections_from_cli">
+<code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">injections_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#injections_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.injections_from_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets injection parameters from the inference file(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opts</strong> (<em>argparser</em>) – Argparser object that has the command-line objects to parse.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Array of the injection parameters from all of the input files given
+by <code class="docutils literal notranslate"><span class="pre">opts.input_file</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.inference.option_utils.low_frequency_cutoff_from_cli">
 <code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">low_frequency_cutoff_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#low_frequency_cutoff_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.low_frequency_cutoff_from_cli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the low frequency cutoff from the given options.</p>
@@ -1946,6 +1965,8 @@ None.</p>
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.n_independent_samples">
 <em class="property">classmethod </em><code class="descname">n_independent_samples</code><span class="sig-paren">(</span><em>fp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.n_independent_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.n_independent_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of independent samples stored in a file.</p>
+<p>The number of independent samples are counted starting from after
+burn-in. If the sampler hasn’t burned in yet, then 0 is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3103,7 +3124,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 07, 2018.
+      Last updated on Mar 12, 2018.
 
     </p>
   </div>
@@ -3125,7 +3146,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'bc9a5e',
+            VERSION:'bb6bdc',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
