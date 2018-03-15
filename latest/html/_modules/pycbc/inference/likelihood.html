@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.likelihood &mdash; PyCBC e2805d documentation</title>
+  <title>pycbc.inference.likelihood &mdash; PyCBC 13fbc6 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC e2805d documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 13fbc6 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -242,6 +242,7 @@
 <span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">FieldArray</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">special</span>
 
 <span class="c1"># Used to manage a likelihood instance across multiple cores or MPI</span>
 <span class="n">_global_instance</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1170,11 +1171,116 @@
                                   <span class="n">logjacobian</span><span class="o">=</span><span class="n">lj</span><span class="p">)</span>
 
 
+<span class="k">class</span> <span class="nc">MarginalizedPhaseGaussianLikelihood</span><span class="p">(</span><span class="n">GaussianLikelihood</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The likelihood is analytically marginalized over phase.</span>
+
+<span class="sd">    This class can be used with signal models that can be written as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \tilde{h}(f; \Theta, \phi) = A(f; \Theta)e^{i\Psi(f; \Theta) + i \phi},</span>
+
+<span class="sd">    where :math:`\phi` is an arbitrary phase constant. This phase constant</span>
+<span class="sd">    can be analytically marginalized over with a uniform prior as follows:</span>
+<span class="sd">    assuming the noise is stationary and Gaussian (see `GaussianLikelihood`</span>
+<span class="sd">    for details), the posterior is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        p(\Theta,\phi|d) &amp;\propto p(\Theta)p(\phi)p(d|\Theta,\phi) \\</span>
+<span class="sd">                         &amp;\propto p(\Theta)\frac{1}{2\pi}\exp\left[-\frac{1}{2}\sum_{i}^{N_D} \left&lt;h_i(\Theta,\phi) - d_i, h_i(\Theta,\phi) - d_i\right&gt;\right].</span>
+
+<span class="sd">    Here, the sum is over the number of detectors :math:`N_D`, :math:`d_i`</span>
+<span class="sd">    and :math:`h_i` are the data and signal in the :math:`i`th detector,</span>
+<span class="sd">    respectively, and we have assumed a uniform prior on :math:`phi \in [0,</span>
+<span class="sd">    2\pi)`. With the form of the signal model given above, the inner product</span>
+<span class="sd">    in the exponent can be written as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">    -\frac{1}{2}\left&lt;h_i - d_i, h_i- d_i\right&gt; &amp;= \left&lt;h_i, d_i\right&gt; - \frac{1}{2}\left&lt;h_i, h_i\right&gt; - \frac{1}{2}\left&lt;d_i, d_i\right&gt; \\</span>
+<span class="sd">    &amp;= \Re\left\{O(h^0_i, d_i)e^{-i\phi}\right\} - \frac{1}{2}\left&lt;h^0_i, h^0_i\right&gt; - \frac{1}{2}\left&lt;d_i, d_i\right&gt;,</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        h_i^0 &amp;\equiv \tilde{h}_i(f; \Theta, \phi=0); \\</span>
+<span class="sd">        O(h^0_i, d_i) &amp;\equiv 4 \int_0^\infty \frac{\tilde{h}_i^*(f; \Theta,0) \tilde{d}_i(f)}{S_n(f)}\mathrm{d}f.</span>
+
+<span class="sd">    Gathering all of the terms that are not dependent on :math:`\phi` together:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">    </span>
+<span class="sd">        \alpha(\Theta, d) \equiv \exp\left[-\frac{1}{2}\sum_i \left&lt;h^0_i, h^0_i\right&gt; + &lt;d_i, d_i\right&gt;\right],</span>
+
+<span class="sd">    we can marginalize the posterior over :math:`\phi`:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        p(\Theta|d) &amp;\propto p(\Theta)\alpha(\Theta,d)\frac{1}{2\pi}\int_{0}^{2\pi}\exp\left[\Re \left\{ e^{-i\phi} \sum_i O(h^0_i, d_i)\right\}\right]\mathrm{d}\phi \\</span>
+<span class="sd">        &amp;\propto p(\Theta)\alpha(\Theta, d)\frac{1}{2\pi} \int_{0}^{2\pi}\exp\left[x(\Theta,d)\cos(\phi) + y(\Theta, d)\sin(\phi)\right]\mathrm{d}\phi.</span>
+<span class="sd">    </span>
+<span class="sd">    The integral in the last line is equal to :math:`2\pi I_0(\sqrt{x^2+y^2})`,</span>
+<span class="sd">    where :math:`I_0` is the modified Bessel function of the first kind. Thus</span>
+<span class="sd">    the marginalized log posterior is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \log p(\Theta|d) \propto \log p(\Theta) + I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\sum_i\left[ \left&lt;h^0_i, h^0_i\right&gt; - \left&lt;d_i, d_i\right&gt; \right]</span>
+
+<span class="sd">    This class computes the above expression for the log likelihood.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;marginalized_phase&#39;</span>
+
+    <span class="k">def</span> <span class="nf">loglr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the log likelihood ratio,</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \log \mathcal{L}(\Theta) = I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\left&lt;h^0_i, h^0_i\right&gt;,</span>
+
+<span class="sd">        at the given point in parameter space :math:`\Theta`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        \**params :</span>
+<span class="sd">            The keyword arguments should give the values of each parameter to</span>
+<span class="sd">            evaluate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.float64</span>
+<span class="sd">            The value of the log likelihood ratio evaluated at the given point.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">NoWaveformError</span><span class="p">:</span>
+            <span class="c1"># if no waveform was generated, just return 0</span>
+            <span class="k">return</span> <span class="mf">0.</span>
+        <span class="n">hh</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">hd</span> <span class="o">=</span> <span class="mi">0</span><span class="n">j</span>
+        <span class="k">for</span> <span class="n">det</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">wfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># the kmax of the waveforms may be different than internal kmax</span>
+            <span class="n">kmax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kmax</span><span class="p">)</span>
+            <span class="c1"># whiten the waveform</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span> <span class="o">&gt;=</span> <span class="n">kmax</span><span class="p">:</span>
+                <span class="c1"># if the waveform terminates before the filtering low frequency</span>
+                <span class="c1"># cutoff, there is nothing to filter, so just go onto the next</span>
+                <span class="k">continue</span>
+            <span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span>
+            <span class="n">hh</span> <span class="o">+=</span> <span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">])</span><span class="o">.</span><span class="n">real</span>
+            <span class="n">hd</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">])</span>
+        <span class="n">hd</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">hd</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">special</span><span class="o">.</span><span class="n">i0e</span><span class="p">(</span><span class="n">hd</span><span class="p">))</span> <span class="o">+</span> <span class="n">hd</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">hh</span>
+
 <span class="n">likelihood_evaluators</span> <span class="o">=</span> <span class="p">{</span><span class="n">TestEggbox</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">TestEggbox</span><span class="p">,</span>
                          <span class="n">TestNormal</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">TestNormal</span><span class="p">,</span>
                          <span class="n">TestRosenbrock</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">TestRosenbrock</span><span class="p">,</span>
                          <span class="n">TestVolcano</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">TestVolcano</span><span class="p">,</span>
-                         <span class="n">GaussianLikelihood</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">GaussianLikelihood</span><span class="p">}</span>
+                         <span class="n">GaussianLikelihood</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">GaussianLikelihood</span><span class="p">,</span>
+                         <span class="n">MarginalizedPhaseGaussianLikelihood</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> \
+                            <span class="n">MarginalizedPhaseGaussianLikelihood</span><span class="p">}</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BaseLikelihoodEvaluator&#39;</span><span class="p">,</span> <span class="s1">&#39;TestNormal&#39;</span><span class="p">,</span> <span class="s1">&#39;TestEggbox&#39;</span><span class="p">,</span> <span class="s1">&#39;TestVolcano&#39;</span><span class="p">,</span>
            <span class="s1">&#39;TestRosenbrock&#39;</span><span class="p">,</span> <span class="s1">&#39;GaussianLikelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;likelihood_evaluators&#39;</span><span class="p">]</span>
@@ -1215,7 +1321,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'e2805d',
+            VERSION:'13fbc6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
