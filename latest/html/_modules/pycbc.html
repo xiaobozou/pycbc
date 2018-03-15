@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc &mdash; PyCBC bf127e documentation</title>
+  <title>pycbc &mdash; PyCBC 524423 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyCBC bf127e documentation" href="../index.html"/>
+    <link rel="top" title="PyCBC 524423 documentation" href="../index.html"/>
         <link rel="up" title="Module code" href="index.html"/> 
 
   
@@ -341,10 +341,9 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">pycbc.fft.mkl</span>
     <span class="n">HAVE_MKL</span><span class="o">=</span><span class="kc">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">HAVE_MKL</span><span class="o">=</span><span class="kc">False</span>
-    
+
 
 <span class="c1"># Check for site-local flags to pass to gcc</span>
 <span class="n">WEAVE_FLAGS</span> <span class="o">=</span> <span class="s1">&#39;-march=native -O3 -w &#39;</span>
@@ -375,7 +374,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 14, 2018.
+      Last updated on Mar 15, 2018.
 
     </p>
   </div>
@@ -397,7 +396,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'bf127e',
+            VERSION:'524423',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
