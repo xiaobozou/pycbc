@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Running PyCBC under Docker &mdash; PyCBC 022da4 documentation</title>
+  <title>Running PyCBC under Docker &mdash; PyCBC c275fa documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC 022da4 documentation" href="index.html"/>
+    <link rel="top" title="PyCBC c275fa documentation" href="index.html"/>
         <link rel="next" title="Installing PyCBC" href="install.html"/>
         <link rel="prev" title="Use of PyCBC in Scientific Publications" href="credit.html"/> 
 
@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#graphics-on-linux">Graphics on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sharing-user-files-and-ssh-keys">Sharing user files and SSH keys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-display-graphics">Using SSH to display graphics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-jupyter-notebook-within-docker">Using jupyter-notebook within docker</a></li>
 </ul>
 </li>
 </ul>
@@ -272,6 +273,18 @@ docker exec -u root -it pycbc /usr/bin/pycbc-sshd
 </pre></div>
 </div>
 </div>
+<div class="section" id="using-jupyter-notebook-within-docker">
+<h2>Using jupyter-notebook within docker<a class="headerlink" href="#using-jupyter-notebook-within-docker" title="Permalink to this headline">¶</a></h2>
+<p>One can start a jupyter notebook within docker and then port forward to your
+computer environment.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="o">--</span><span class="n">name</span> <span class="n">pycbc_test</span> <span class="n">pycbc</span><span class="o">/</span><span class="n">pycbc</span><span class="o">-</span><span class="n">el7</span><span class="p">:</span><span class="n">latest</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>Within the docker environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">ip</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -297,7 +310,7 @@ docker exec -u root -it pycbc /usr/bin/pycbc-sshd
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 16, 2018.
+      Last updated on Mar 20, 2018.
 
     </p>
   </div>
@@ -319,7 +332,7 @@ docker exec -u root -it pycbc /usr/bin/pycbc-sshd
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'022da4',
+            VERSION:'c275fa',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
