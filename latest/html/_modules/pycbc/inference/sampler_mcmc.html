@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler_mcmc &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.sampler_mcmc &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -289,8 +289,8 @@
 <span class="sd">        -------</span>
 <span class="sd">        MCMCSampler</span>
 <span class="sd">            A MCMC sampler initialized based on the given arguments.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -318,8 +318,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># store the iteration that the clear is occuring on</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lastclear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_chain</span> <span class="o">=</span> <span class="p">[]</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_blobs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chain</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_blobs</span> <span class="o">=</span> <span class="p">[]</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">niterations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -409,14 +409,14 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastsample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chain</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastblob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blobs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</div>
-        <span class="k">return</span>
+
+        <span class="k">return</span></div>
 
 <div class="viewcode-block" id="MCMCSampler.write_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_mcmc.MCMCSampler.write_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                   <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># Overwrite the BaseMCMCSampler function since we do not compute the</span>
-        <span class="c1"># required acceptance fraction.</span></div></div>
-        <span class="k">pass</span>
+        <span class="c1"># required acceptance fraction.</span>
+        <span class="k">pass</span></div></div>
 </pre></div>
 
            </div>
@@ -432,7 +432,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -454,7 +454,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

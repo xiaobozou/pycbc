@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.grb_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.grb_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -270,8 +270,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;start-time&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
     <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;end-time&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">cp</span>
+
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 
 <div class="viewcode-block" id="get_coh_PTF_files"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.grb_utils.get_coh_PTF_files">[docs]</a><span class="k">def</span> <span class="nf">get_coh_PTF_files</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">run_dir</span><span class="p">,</span> <span class="n">bank_veto</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">summary_files</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -339,8 +339,8 @@
                                <span class="n">file_url</span><span class="o">=</span><span class="n">summary_css_url</span><span class="p">)</span>
             <span class="n">summary_css</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">summary_css</span><span class="o">.</span><span class="n">cache_entry</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
             <span class="n">file_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">FileList</span><span class="p">([</span><span class="n">summary_css</span><span class="p">]))</span>
-</div>
-        <span class="k">return</span> <span class="n">file_list</span>
+
+        <span class="k">return</span> <span class="n">file_list</span></div>
 
 
 <div class="viewcode-block" id="make_exttrig_file"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.grb_utils.make_exttrig_file">[docs]</a><span class="k">def</span> <span class="nf">make_exttrig_file</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">sci_seg</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">):</span>
@@ -406,8 +406,8 @@
     <span class="n">xml_file_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s2">&quot;file:&quot;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">xml_file_path</span><span class="p">))</span>
     <span class="n">xml_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">ifos</span><span class="p">,</span> <span class="n">xml_file_name</span><span class="p">,</span> <span class="n">sci_seg</span><span class="p">,</span> <span class="n">file_url</span><span class="o">=</span><span class="n">xml_file_url</span><span class="p">)</span>
     <span class="n">xml_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">xml_file_url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
-    </div>
-    <span class="k">return</span> <span class="n">xml_file</span>
+    
+    <span class="k">return</span> <span class="n">xml_file</span></div>
 
 
 <div class="viewcode-block" id="get_ipn_sky_files"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.grb_utils.get_ipn_sky_files">[docs]</a><span class="k">def</span> <span class="nf">get_ipn_sky_files</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">file_url</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -437,8 +437,8 @@
     <span class="n">sky_points_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="s2">&quot;IPN_SKY_POINTS&quot;</span><span class="p">,</span>
             <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="n">file_url</span><span class="o">=</span><span class="n">sky_points_url</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">sky_points_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">sky_points_url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">sky_points_file</span>
+
+    <span class="k">return</span> <span class="n">sky_points_file</span></div>
 
 <div class="viewcode-block" id="make_gating_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.grb_utils.make_gating_node">[docs]</a><span class="k">def</span> <span class="nf">make_gating_node</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">datafind_files</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -483,8 +483,8 @@
                 <span class="n">condition_strain_jobs</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="n">condition_strain_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">condition_strain_node</span><span class="p">)</span>
         <span class="n">condition_strain_outs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">FileList</span><span class="p">([</span><span class="n">condition_strain_out</span><span class="p">]))</span>
-</div>
-    <span class="k">return</span> <span class="n">condition_strain_nodes</span><span class="p">,</span> <span class="n">condition_strain_outs</span>
+
+    <span class="k">return</span> <span class="n">condition_strain_nodes</span><span class="p">,</span> <span class="n">condition_strain_outs</span></div>
 </pre></div>
 
            </div>
@@ -500,7 +500,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -522,7 +522,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fftw_pruned &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.fft.fftw_pruned &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -275,8 +275,8 @@
                   <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
                   <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
                   <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span></div>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">iodim</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">vin</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">vout</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">FFTW_MEASURE</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">iodim</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">vin</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">vout</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">FFTW_MEASURE</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="plan_first_phase"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.plan_first_phase">[docs]</a><span class="k">def</span> <span class="nf">plan_first_phase</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -307,8 +307,8 @@
                   <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">]</span>
     <span class="n">f</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span>
     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="n">N2</span><span class="p">)),</span> <span class="n">N1</span><span class="p">,</span>
-             <span class="n">vin</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span></div>
-             <span class="n">vout</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">FFTW_BACKWARD</span><span class="p">,</span> <span class="n">FFTW_MEASURE</span><span class="p">)</span>
+             <span class="n">vin</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span>
+             <span class="n">vout</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">FFTW_BACKWARD</span><span class="p">,</span> <span class="n">FFTW_MEASURE</span><span class="p">)</span></div>
 
 <span class="n">_theplan</span> <span class="o">=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="first_phase"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.first_phase">[docs]</a><span class="k">def</span> <span class="nf">first_phase</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">):</span>
@@ -329,8 +329,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">_theplan</span>
     <span class="k">if</span> <span class="n">_theplan</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">_theplan</span> <span class="o">=</span> <span class="n">plan_first_phase</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">)</span></div>
-    <span class="n">fexecute</span><span class="p">(</span><span class="n">_theplan</span><span class="p">,</span> <span class="n">invec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span>
+        <span class="n">_theplan</span> <span class="o">=</span> <span class="n">plan_first_phase</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">)</span>
+    <span class="n">fexecute</span><span class="p">(</span><span class="n">_theplan</span><span class="p">,</span> <span class="n">invec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="second_phase"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.second_phase">[docs]</a><span class="k">def</span> <span class="nf">second_phase</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -377,8 +377,8 @@
 <span class="s2">        }</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">weave</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;N1&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="s1">&#39;NI&#39;</span><span class="p">,</span> <span class="s1">&#39;indices&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;invec&#39;</span><span class="p">],</span>
-                      <span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+                      <span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="fast_second_phase"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.fast_second_phase">[docs]</a><span class="k">def</span> <span class="nf">fast_second_phase</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -432,8 +432,8 @@
 <span class="s2">        }</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">weave</span><span class="o">.</span><span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;N1&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="s1">&#39;NI&#39;</span><span class="p">,</span> <span class="s1">&#39;indices&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;invec&#39;</span><span class="p">],</span>
-                       <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+                       <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <span class="n">_thetransposeplan</span> <span class="o">=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="fft_transpose_fftw"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.fft_transpose_fftw">[docs]</a><span class="k">def</span> <span class="nf">fft_transpose_fftw</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
@@ -456,8 +456,8 @@
     <span class="k">if</span> <span class="n">_theplan</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span> <span class="o">=</span> <span class="n">splay</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
         <span class="n">_thetransposeplan</span> <span class="o">=</span> <span class="n">plan_transpose</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">)</span>
-    <span class="n">ftexecute</span><span class="p">(</span><span class="n">_thetransposeplan</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span></div>
-    <span class="k">return</span>  <span class="n">outvec</span>
+    <span class="n">ftexecute</span><span class="p">(</span><span class="n">_thetransposeplan</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span>
+    <span class="k">return</span>  <span class="n">outvec</span></div>
 
 <div class="viewcode-block" id="fft_transpose_numpy"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.fft_transpose_numpy">[docs]</a><span class="k">def</span> <span class="nf">fft_transpose_numpy</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -474,8 +474,8 @@
 <span class="sd">    outvec : array</span>
 <span class="sd">        Transposed output array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span> <span class="o">=</span> <span class="n">splay</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span> <span class="n">N1</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span> <span class="o">=</span> <span class="n">splay</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N2</span><span class="p">,</span> <span class="n">N1</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span></div>
 
 <span class="n">fft_transpose</span> <span class="o">=</span> <span class="n">fft_transpose_fftw</span>
 
@@ -483,8 +483,8 @@
     <span class="sd">&quot;&quot;&quot; Determine two lengths to split stride the input vector by</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">N2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">N1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="o">/</span> <span class="n">N2</span></div>
-    <span class="k">return</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span>
+    <span class="n">N1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="o">/</span> <span class="n">N2</span>
+    <span class="k">return</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span></div>
 
 <div class="viewcode-block" id="pruned_c2cifft"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.pruned_c2cifft">[docs]</a><span class="k">def</span> <span class="nf">pruned_c2cifft</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">pretransposed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -516,8 +516,8 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">pretransposed</span><span class="p">:</span>
         <span class="n">invec</span> <span class="o">=</span> <span class="n">fft_transpose</span><span class="p">(</span><span class="n">invec</span><span class="p">)</span>
     <span class="n">first_phase</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">,</span> <span class="n">N1</span><span class="o">=</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="o">=</span><span class="n">N2</span><span class="p">)</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">fast_second_phase</span><span class="p">(</span><span class="n">outvec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">N1</span><span class="o">=</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="o">=</span><span class="n">N2</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">fast_second_phase</span><span class="p">(</span><span class="n">outvec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">N1</span><span class="o">=</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="o">=</span><span class="n">N2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 </pre></div>
 
            </div>
@@ -533,7 +533,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -555,7 +555,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

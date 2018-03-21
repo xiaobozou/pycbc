@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.coord_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.coord_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -276,8 +276,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">lambdas</span> <span class="o">=</span> <span class="n">get_conv_params</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span>
                                   <span class="n">fUpper</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lambdas</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lambdas</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_random_mass_point_particles"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_random_mass_point_particles">[docs]</a><span class="k">def</span> <span class="nf">get_random_mass_point_particles</span><span class="p">(</span><span class="n">numPoints</span><span class="p">,</span> <span class="n">massRangeParams</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -387,8 +387,8 @@
         <span class="n">mspin</span> <span class="o">+=</span> <span class="n">massRangeParams</span><span class="o">.</span><span class="n">maxNSSpinMag</span>
         <span class="n">mspin</span><span class="p">[</span><span class="n">mass2</span> <span class="o">&gt;</span> <span class="n">boundary_mass</span><span class="p">]</span> <span class="o">=</span> <span class="n">massRangeParams</span><span class="o">.</span><span class="n">maxBHSpinMag</span>
         <span class="n">spin2z</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">numPoints</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">mspin</span>
-</div>
-    <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span>
+
+    <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span></div>
 
 <div class="viewcode-block" id="get_random_mass"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_random_mass">[docs]</a><span class="k">def</span> <span class="nf">get_random_mass</span><span class="p">(</span><span class="n">numPoints</span><span class="p">,</span> <span class="n">massRangeParams</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -496,8 +496,8 @@
         <span class="n">mass2</span> <span class="o">=</span> <span class="n">mass2_out</span>
         <span class="n">spin1z</span> <span class="o">=</span> <span class="n">spin1z_out</span>
         <span class="n">spin2z</span> <span class="o">=</span> <span class="n">spin2z_out</span>
-</div>
-    <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span>
+
+    <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span></div>
 
 <div class="viewcode-block" id="get_cov_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_cov_params">[docs]</a><span class="k">def</span> <span class="nf">get_cov_params</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">,</span>
                    <span class="n">lambda1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lambda2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quadparam1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -538,8 +538,8 @@
                           <span class="n">lambda1</span><span class="o">=</span><span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="o">=</span><span class="n">lambda2</span><span class="p">,</span>
                           <span class="n">quadparam1</span><span class="o">=</span><span class="n">quadparam1</span><span class="p">,</span> <span class="n">quadparam2</span><span class="o">=</span><span class="n">quadparam2</span><span class="p">)</span>
     <span class="c1"># and then mus -&gt; xis</span>
-    <span class="n">xis</span> <span class="o">=</span> <span class="n">get_covaried_params</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">evecsCV</span><span class="p">[</span><span class="n">fUpper</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">xis</span>
+    <span class="n">xis</span> <span class="o">=</span> <span class="n">get_covaried_params</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">evecsCV</span><span class="p">[</span><span class="n">fUpper</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">xis</span></div>
 
 <div class="viewcode-block" id="get_conv_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_conv_params">[docs]</a><span class="k">def</span> <span class="nf">get_conv_params</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">,</span>
                     <span class="n">lambda1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lambda2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quadparam1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -580,8 +580,8 @@
                                <span class="n">lambda1</span><span class="o">=</span><span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="o">=</span><span class="n">lambda2</span><span class="p">,</span>
                                <span class="n">quadparam1</span><span class="o">=</span><span class="n">quadparam1</span><span class="p">,</span> <span class="n">quadparam2</span><span class="o">=</span><span class="n">quadparam2</span><span class="p">)</span>
     <span class="c1"># and lambdas -&gt; mus</span>
-    <span class="n">mus</span> <span class="o">=</span> <span class="n">get_mu_params</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">mus</span>
+    <span class="n">mus</span> <span class="o">=</span> <span class="n">get_mu_params</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mus</span></div>
 
 <div class="viewcode-block" id="get_mu_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_mu_params">[docs]</a><span class="k">def</span> <span class="nf">get_mu_params</span><span class="p">(</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -625,8 +625,8 @@
 
     <span class="k">if</span> <span class="n">resize_needed</span><span class="p">:</span>
         <span class="n">mus</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">mus</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">mus</span>
+
+    <span class="k">return</span> <span class="n">mus</span></div>
 
 <div class="viewcode-block" id="get_covaried_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_covaried_params">[docs]</a><span class="k">def</span> <span class="nf">get_covaried_params</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">evecsCV</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -658,8 +658,8 @@
 
     <span class="k">if</span> <span class="n">resize_needed</span><span class="p">:</span>
         <span class="n">xis</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">xis</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">xis</span>
+
+    <span class="k">return</span> <span class="n">xis</span></div>
 
 <div class="viewcode-block" id="rotate_vector"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.rotate_vector">[docs]</a><span class="k">def</span> <span class="nf">rotate_vector</span><span class="p">(</span><span class="n">evecs</span><span class="p">,</span> <span class="n">old_vector</span><span class="p">,</span> <span class="n">rescale_factor</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -686,8 +686,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">evecs</span><span class="p">)):</span>
-        <span class="n">temp</span> <span class="o">+=</span> <span class="p">(</span><span class="n">evecs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">index</span><span class="p">]</span> <span class="o">*</span> <span class="n">rescale_factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">old_vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">temp</span>
+        <span class="n">temp</span> <span class="o">+=</span> <span class="p">(</span><span class="n">evecs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">index</span><span class="p">]</span> <span class="o">*</span> <span class="n">rescale_factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">old_vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">temp</span></div>
 
 <div class="viewcode-block" id="get_point_distance"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_point_distance">[docs]</a><span class="k">def</span> <span class="nf">get_point_distance</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -744,8 +744,8 @@
     <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">aXis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bXis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">aXis</span><span class="p">)):</span>
         <span class="n">dist</span> <span class="o">+=</span> <span class="p">(</span><span class="n">aXis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">bXis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
-</div>
-    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">aXis</span><span class="p">,</span> <span class="n">bXis</span>
+
+    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">aXis</span><span class="p">,</span> <span class="n">bXis</span></div>
 
 <div class="viewcode-block" id="calc_point_dist"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.calc_point_dist">[docs]</a><span class="k">def</span> <span class="nf">calc_point_dist</span><span class="p">(</span><span class="n">vsA</span><span class="p">,</span> <span class="n">entryA</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -766,8 +766,8 @@
 <span class="sd">        The metric distance between the two points.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">chi_diffs</span> <span class="o">=</span> <span class="n">vsA</span> <span class="o">-</span> <span class="n">entryA</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="p">((</span><span class="n">chi_diffs</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi_diffs</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">val</span> 
+    <span class="n">val</span> <span class="o">=</span> <span class="p">((</span><span class="n">chi_diffs</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi_diffs</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">val</span> </div>
 
 <div class="viewcode-block" id="test_point_dist"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.test_point_dist">[docs]</a><span class="k">def</span> <span class="nf">test_point_dist</span><span class="p">(</span><span class="n">point_1_chis</span><span class="p">,</span> <span class="n">point_2_chis</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -783,8 +783,8 @@
 <span class="sd">        An array of point 2&#39;s position in the \chi_i coordinate system</span>
 <span class="sd">    distance_threshold : float</span>
 <span class="sd">        The distance threshold to use.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">calc_point_dist</span><span class="p">(</span><span class="n">point_1_chis</span><span class="p">,</span> <span class="n">point_2_chis</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_threshold</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">calc_point_dist</span><span class="p">(</span><span class="n">point_1_chis</span><span class="p">,</span> <span class="n">point_2_chis</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">distance_threshold</span></div>
 
 
 <div class="viewcode-block" id="calc_point_dist_vary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.calc_point_dist_vary">[docs]</a><span class="k">def</span> <span class="nf">calc_point_dist_vary</span><span class="p">(</span><span class="n">mus1</span><span class="p">,</span> <span class="n">fUpper1</span><span class="p">,</span> <span class="n">mus2</span><span class="p">,</span> <span class="n">fUpper2</span><span class="p">,</span> <span class="n">fMap</span><span class="p">,</span> <span class="n">norm_map</span><span class="p">,</span> <span class="n">MMdistA</span><span class="p">):</span>
@@ -833,8 +833,8 @@
         <span class="k">return</span> <span class="kc">False</span>
     <span class="c1"># Reduce match to account for normalization.</span>
     <span class="n">norm_fac</span> <span class="o">=</span> <span class="n">norm_map</span><span class="p">[</span><span class="n">f_upper</span><span class="p">]</span> <span class="o">/</span> <span class="n">norm_map</span><span class="p">[</span><span class="n">f_other</span><span class="p">]</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span><span class="o">*</span><span class="n">norm_fac</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">MMdistA</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">val</span><span class="p">)</span><span class="o">*</span><span class="n">norm_fac</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">MMdistA</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="find_max_and_min_frequencies"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.find_max_and_min_frequencies">[docs]</a><span class="k">def</span> <span class="nf">find_max_and_min_frequencies</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mass_range_params</span><span class="p">,</span> <span class="n">freqs</span><span class="p">):</span>
@@ -890,8 +890,8 @@
         <span class="n">warn_msg</span> <span class="o">+=</span> <span class="s2">&quot;for the metric: </span><span class="si">%s</span><span class="s2"> Hz. &quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">freqs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
         <span class="n">warn_msg</span> <span class="o">+=</span> <span class="s2">&quot;Distances for these waveforms will be calculated at &quot;</span>
         <span class="n">warn_msg</span> <span class="o">+=</span> <span class="s2">&quot;the largest available metric frequency.&quot;</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warn_msg</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">find_closest_calculated_frequencies</span><span class="p">(</span><span class="n">cutoffs</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warn_msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">find_closest_calculated_frequencies</span><span class="p">(</span><span class="n">cutoffs</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="return_nearest_cutoff"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.return_nearest_cutoff">[docs]</a><span class="k">def</span> <span class="nf">return_nearest_cutoff</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mass_dict</span><span class="p">,</span> <span class="n">freqs</span><span class="p">):</span>
@@ -926,8 +926,8 @@
         <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> not recognized as a valid cutoff frequency choice.&quot;</span> <span class="o">%</span><span class="n">name</span>
         <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;Recognized choices: &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cutoff_fns</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
-    <span class="n">f_cutoff</span> <span class="o">=</span> <span class="n">cutoff_fns</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">mass_dict</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">find_closest_calculated_frequencies</span><span class="p">(</span><span class="n">f_cutoff</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+    <span class="n">f_cutoff</span> <span class="o">=</span> <span class="n">cutoff_fns</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">mass_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">find_closest_calculated_frequencies</span><span class="p">(</span><span class="n">f_cutoff</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="find_closest_calculated_frequencies"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.find_closest_calculated_frequencies">[docs]</a><span class="k">def</span> <span class="nf">find_closest_calculated_frequencies</span><span class="p">(</span><span class="n">input_freqs</span><span class="p">,</span> <span class="n">metric_freqs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -980,8 +980,8 @@
             <span class="n">logicArrB</span> <span class="o">=</span> <span class="n">input_freqs</span> <span class="o">&lt;</span> <span class="p">((</span><span class="n">metric_freqs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">metric_freqs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
             <span class="n">logicArr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">logicArrA</span><span class="p">,</span><span class="n">logicArrB</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">logicArr</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-            <span class="n">refEv</span><span class="p">[</span><span class="n">logicArr</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric_freqs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">refEv</span>
+            <span class="n">refEv</span><span class="p">[</span><span class="n">logicArr</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric_freqs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">refEv</span></div>
 
 
 <div class="viewcode-block" id="outspiral_loop"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.outspiral_loop">[docs]</a><span class="k">def</span> <span class="nf">outspiral_loop</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -1010,8 +1010,8 @@
    
     <span class="c1"># And order correctly</span>
     <span class="n">sorted_out_arr</span> <span class="o">=</span> <span class="n">out_arr</span><span class="p">[:,</span><span class="n">out_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()]</span>
-</div>
-    <span class="k">return</span> <span class="n">sorted_out_arr</span><span class="p">[:</span><span class="mi">2</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">return</span> <span class="n">sorted_out_arr</span><span class="p">[:</span><span class="mi">2</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span></div>
 </pre></div>
 
            </div>
@@ -1027,7 +1027,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1049,7 +1049,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler_base &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.sampler_base &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -587,8 +587,8 @@
         <span class="c1"># convert to 2D array</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_args</span><span class="p">):</span>
             <span class="n">p0</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_p0</span> <span class="o">=</span> <span class="n">p0</span></div>
-        <span class="k">return</span> <span class="n">p0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p0</span> <span class="o">=</span> <span class="n">p0</span>
+        <span class="k">return</span> <span class="n">p0</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">p0</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -664,8 +664,8 @@
 <span class="sd">            All keyword args are written to the file&#39;s ``attrs``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BaseMCMCSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="c1"># add info about walkers, burn in</span></div>
-        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;nwalkers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nwalkers</span>
+        <span class="c1"># add info about walkers, burn in</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;nwalkers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nwalkers</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_samples_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_samples_group">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">write_samples_group</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
@@ -726,8 +726,8 @@
                 <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">niterations</span>
                 <span class="n">fp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">istop</span><span class="p">),</span>
                                   <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">max_iterations</span><span class="p">),</span>
-                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
-            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,</span><span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,</span><span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_chain"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_chain">[docs]</a>    <span class="k">def</span> <span class="nf">write_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes the samples from the current chain to the given file.</span>
@@ -762,8 +762,8 @@
         <span class="n">samples_group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span>
         <span class="c1"># write data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_samples_group</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
-                                 <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span></div>
-                                 <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+                                 <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
+                                 <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_likelihood_stats"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_likelihood_stats">[docs]</a>    <span class="k">def</span> <span class="nf">write_likelihood_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -809,8 +809,8 @@
         <span class="c1"># write data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_samples_group</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
                                  <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
-                                 <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">samples</span>
+                                 <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">samples</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Write acceptance_fraction data to file. Results are written to</span>
@@ -825,8 +825,8 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="c1"># dataset doesn&#39;t exist yet, create it</span></div>
-            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span>
+            <span class="c1"># dataset doesn&#39;t exist yet, create it</span>
+            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_results"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_results">[docs]</a>    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">):</span>
@@ -855,8 +855,8 @@
                          <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_likelihood_stats</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
                                     <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_read_oldstyle_fields</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fields_group</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">array_class</span><span class="p">,</span>
@@ -1037,8 +1037,8 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_fields</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">loadfields</span><span class="p">,</span> <span class="n">array_class</span><span class="p">,</span>
                                 <span class="n">thin_start</span><span class="o">=</span><span class="n">thin_start</span><span class="p">,</span>
                                 <span class="n">thin_interval</span><span class="o">=</span><span class="n">thin_interval</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="n">thin_end</span><span class="p">,</span>
-                                <span class="n">iteration</span><span class="o">=</span><span class="n">iteration</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="n">walkers</span><span class="p">,</span></div>
-                                <span class="n">flatten</span><span class="o">=</span><span class="n">flatten</span><span class="p">)</span>
+                                <span class="n">iteration</span><span class="o">=</span><span class="n">iteration</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="n">walkers</span><span class="p">,</span>
+                                <span class="n">flatten</span><span class="o">=</span><span class="n">flatten</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.n_independent_samples"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.n_independent_samples">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">n_independent_samples</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
@@ -1061,8 +1061,8 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">fp</span><span class="o">.</span><span class="n">is_burned_in</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="c1"># we&#39;ll just read a single parameter from the file</span>
-        <span class="n">samples</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="n">samples</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">samples</span><span class="o">.</span><span class="n">size</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.read_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.read_acceptance_fraction">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1086,8 +1086,8 @@
             <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-            <span class="n">wmask</span><span class="p">[</span><span class="n">walkers</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
-        <span class="k">return</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="p">][</span><span class="n">wmask</span><span class="p">]</span>
+            <span class="n">wmask</span><span class="p">[</span><span class="n">walkers</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="p">][</span><span class="n">wmask</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.compute_acfs"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.compute_acfs">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">compute_acfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1149,8 +1149,8 @@
                                            <span class="n">walkers</span><span class="o">=</span><span class="n">walkers</span><span class="p">,</span>
                                            <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
                 <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">autocorrelation</span><span class="o">.</span><span class="n">calculate_acf</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acfs</span><span class="p">)</span>
+                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">autocorrelation</span><span class="o">.</span><span class="n">calculate_acf</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acfs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.compute_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.compute_acls">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">compute_acls</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1188,8 +1188,8 @@
             <span class="n">acl</span> <span class="o">=</span> <span class="n">autocorrelation</span><span class="o">.</span><span class="n">calculate_acl</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">acl</span><span class="p">):</span>
                 <span class="n">acl</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">size</span>
-            <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">acl</span></div>
-        <span class="k">return</span> <span class="n">acls</span>
+            <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">acl</span>
+        <span class="k">return</span> <span class="n">acls</span></div>
 
 <div class="viewcode-block" id="BaseMCMCSampler.write_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.write_acls">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">write_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">acls</span><span class="p">):</span>
@@ -1222,8 +1222,8 @@
                 <span class="c1"># dataset doesn&#39;t exist yet</span>
                 <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)]</span> <span class="o">=</span> <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
         <span class="c1"># write the maximum over all params</span>
-        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">acls</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">acls</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_oldstyle_read_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
@@ -1258,8 +1258,8 @@
 <span class="sd">        dict</span>
 <span class="sd">            A dictionary of the ACLs, keyed by the parameter name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="s1">&#39;acls&#39;</span><span class="p">]</span></div></div>
-        <span class="k">return</span> <span class="p">{</span><span class="n">param</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="n">param</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="s1">&#39;acls&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">param</span><span class="p">:</span> <span class="n">group</span><span class="p">[</span><span class="n">param</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span></div></div>
 </pre></div>
 
            </div>
@@ -1275,7 +1275,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1297,7 +1297,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

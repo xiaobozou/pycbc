@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.psd &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.psd &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -328,8 +328,8 @@
         <span class="k">return</span> <span class="n">psd</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">float64</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;If provided the precision kwarg must be either &#39;single&#39; &quot;</span>
-        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;or &#39;double&#39;. You provided </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span></div>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;or &#39;double&#39;. You provided </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="from_cli_single_ifo"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.from_cli_single_ifo">[docs]</a><span class="k">def</span> <span class="nf">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
              <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -337,8 +337,8 @@
 <span class="sd">    Get the PSD for a single ifo when using the multi-detector CLI</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">single_det_opt</span> <span class="o">=</span> <span class="n">copy_opts_for_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">from_cli</span><span class="p">(</span><span class="n">single_det_opt</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span></div>
-                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">from_cli</span><span class="p">(</span><span class="n">single_det_opt</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="from_cli_multi_ifos"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.from_cli_multi_ifos">[docs]</a><span class="k">def</span> <span class="nf">from_cli_multi_ifos</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">length_dict</span><span class="p">,</span> <span class="n">delta_f_dict</span><span class="p">,</span>
                         <span class="n">low_frequency_cutoff_dict</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">strain_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -354,8 +354,8 @@
             <span class="n">strain</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">psd</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">length_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">delta_f_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span>
                                        <span class="n">low_frequency_cutoff_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">ifo</span><span class="p">,</span>
-                                       <span class="n">strain</span><span class="o">=</span><span class="n">strain</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">psd</span>
+                                       <span class="n">strain</span><span class="o">=</span><span class="n">strain</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">psd</span></div>
 
 <div class="viewcode-block" id="insert_psd_option_group"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.insert_psd_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_psd_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_data_options</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -420,8 +420,8 @@
     <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
         <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psd-output&quot;</span><span class="p">,</span>
                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;(Optional) Write PSD to specified file&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">psd_options</span>
+
+    <span class="k">return</span> <span class="n">psd_options</span></div>
 
 <div class="viewcode-block" id="insert_psd_option_group_multi_ifo"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.insert_psd_option_group_multi_ifo">[docs]</a><span class="k">def</span> <span class="nf">insert_psd_option_group_multi_ifo</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -491,8 +491,8 @@
                              <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
     <span class="n">psd_options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--psdvar_high_freq&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;HERTZ&quot;</span><span class="p">,</span>                              <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum frequency to consider in PSD &quot;</span>
                              <span class="s2">&quot;comparison.&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">psd_options</span>
+
+    <span class="k">return</span> <span class="n">psd_options</span></div>
 
 <span class="n">ensure_one_opt_groups</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">ensure_one_opt_groups</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;--psd-file&#39;</span><span class="p">,</span> <span class="s1">&#39;--psd-model&#39;</span><span class="p">,</span>
@@ -521,8 +521,8 @@
 
     <span class="k">if</span> <span class="n">psd_estimation</span><span class="p">:</span>
         <span class="n">required_opts</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span>
-                      <span class="p">[</span><span class="s1">&#39;--psd-segment-stride&#39;</span><span class="p">,</span> <span class="s1">&#39;--psd-segment-length&#39;</span><span class="p">],</span></div>
-                      <span class="n">required_by</span> <span class="o">=</span> <span class="s2">&quot;--psd-estimation&quot;</span><span class="p">)</span>
+                      <span class="p">[</span><span class="s1">&#39;--psd-segment-stride&#39;</span><span class="p">,</span> <span class="s1">&#39;--psd-segment-length&#39;</span><span class="p">],</span>
+                      <span class="n">required_by</span> <span class="o">=</span> <span class="s2">&quot;--psd-estimation&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="verify_psd_options_multi_ifo"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.verify_psd_options_multi_ifo">[docs]</a><span class="k">def</span> <span class="nf">verify_psd_options_multi_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses the CLI options and verifies that they are consistent and</span>
@@ -543,8 +543,8 @@
 
         <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">psd_estimation</span><span class="p">[</span><span class="n">ifo</span><span class="p">]:</span>
             <span class="n">required_opts_multi_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
-                      <span class="p">[</span><span class="s1">&#39;--psd-segment-stride&#39;</span><span class="p">,</span> <span class="s1">&#39;--psd-segment-length&#39;</span><span class="p">],</span></div>
-                          <span class="n">required_by</span> <span class="o">=</span> <span class="s2">&quot;--psd-estimation&quot;</span><span class="p">)</span>
+                      <span class="p">[</span><span class="s1">&#39;--psd-segment-stride&#39;</span><span class="p">,</span> <span class="s1">&#39;--psd-segment-length&#39;</span><span class="p">],</span>
+                          <span class="n">required_by</span> <span class="o">=</span> <span class="s2">&quot;--psd-estimation&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="generate_overlapping_psds"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.generate_overlapping_psds">[docs]</a><span class="k">def</span> <span class="nf">generate_overlapping_psds</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">gwstrain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span>
                               <span class="n">dyn_range_factor</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -631,8 +631,8 @@
         <span class="n">strain_part</span> <span class="o">=</span> <span class="n">gwstrain</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">]</span>
         <span class="n">psd</span> <span class="o">=</span> <span class="n">from_cli</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">strain</span><span class="o">=</span><span class="n">strain_part</span><span class="p">,</span>
                        <span class="n">dyn_range_factor</span><span class="o">=</span><span class="n">dyn_range_factor</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
-        <span class="n">psds_and_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">,</span> <span class="n">psd</span><span class="p">)</span> <span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">psds_and_times</span>
+        <span class="n">psds_and_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">,</span> <span class="n">psd</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">psds_and_times</span></div>
 
 <div class="viewcode-block" id="associate_psds_to_segments"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.associate_psds_to_segments">[docs]</a><span class="k">def</span> <span class="nf">associate_psds_to_segments</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">fd_segments</span><span class="p">,</span> <span class="n">gwstrain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span>
                                <span class="n">dyn_range_factor</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -685,8 +685,8 @@
                     <span class="n">best_psd</span> <span class="o">=</span> <span class="n">psd</span>
         <span class="k">if</span> <span class="n">best_psd</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;No PSDs found intersecting segment!&quot;</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
-        <span class="n">fd_segment</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="n">best_psd</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+        <span class="n">fd_segment</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="n">best_psd</span></div>
 
 <div class="viewcode-block" id="associate_psds_to_single_ifo_segments"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.associate_psds_to_single_ifo_segments">[docs]</a><span class="k">def</span> <span class="nf">associate_psds_to_single_ifo_segments</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">fd_segments</span><span class="p">,</span> <span class="n">gwstrain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span>
                                           <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
@@ -697,8 +697,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">single_det_opt</span> <span class="o">=</span> <span class="n">copy_opts_for_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span>
     <span class="n">associate_psds_to_segments</span><span class="p">(</span><span class="n">single_det_opt</span><span class="p">,</span> <span class="n">fd_segments</span><span class="p">,</span> <span class="n">gwstrain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span>
-                               <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">dyn_range_factor</span><span class="o">=</span><span class="n">dyn_range_factor</span><span class="p">,</span></div>
-                               <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+                               <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">dyn_range_factor</span><span class="o">=</span><span class="n">dyn_range_factor</span><span class="p">,</span>
+                               <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="associate_psds_to_multi_ifo_segments"><a class="viewcode-back" href="../../pycbc.psd.html#pycbc.psd.associate_psds_to_multi_ifo_segments">[docs]</a><span class="k">def</span> <span class="nf">associate_psds_to_multi_ifo_segments</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">fd_segments</span><span class="p">,</span> <span class="n">gwstrain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span>
                                          <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span>
@@ -718,8 +718,8 @@
             <span class="n">segments</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="n">associate_psds_to_single_ifo_segments</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span>
-                <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">dyn_range_factor</span><span class="o">=</span><span class="n">dyn_range_factor</span><span class="p">,</span></div>
-                <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+                <span class="n">delta_f</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">dyn_range_factor</span><span class="o">=</span><span class="n">dyn_range_factor</span><span class="p">,</span>
+                <span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span></div>
 
 </pre></div>
 
@@ -736,7 +736,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -758,7 +758,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

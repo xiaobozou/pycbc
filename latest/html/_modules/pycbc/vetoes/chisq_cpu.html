@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes.chisq_cpu &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.vetoes.chisq_cpu &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -242,8 +242,8 @@
     <span class="n">omp_libs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">omp_flags</span> <span class="o">=</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="chisq_accum_bin_numpy"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_numpy">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_numpy</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span></div>
-    <span class="n">chisq</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span>
+<div class="viewcode-block" id="chisq_accum_bin_numpy"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_numpy">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_numpy</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">chisq</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span></div>
     
 <div class="viewcode-block" id="chisq_accum_bin_inline"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_inline">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_inline</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     
@@ -258,8 +258,8 @@
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
-                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span></div>
-          <span class="p">)</span>
+                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
+          <span class="p">)</span></div>
           
 <span class="n">chisq_accum_bin</span> <span class="o">=</span> <span class="n">chisq_accum_bin_inline</span>
 
@@ -379,8 +379,8 @@
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                     <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
           <span class="p">)</span>
-          </div>
-    <span class="k">return</span>  <span class="n">chisq</span>
+          
+    <span class="k">return</span>  <span class="n">chisq</span></div>
 </pre></div>
 
            </div>
@@ -396,7 +396,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -418,7 +418,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

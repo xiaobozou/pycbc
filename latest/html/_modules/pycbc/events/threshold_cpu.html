@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.threshold_cpu &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.threshold_cpu &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -240,8 +240,8 @@
 <div class="viewcode-block" id="threshold_numpy"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.threshold_cpu.threshold_numpy">[docs]</a><span class="k">def</span> <span class="nf">threshold_numpy</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">data</span>
     <span class="n">locs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">arr</span><span class="o">.</span><span class="n">imag</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">value</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">locs</span><span class="p">,</span> <span class="n">vals</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">locs</span><span class="p">,</span> <span class="n">vals</span></div>
 
 <span class="n">threshold_only</span> <span class="o">=</span> <span class="n">threshold_numpy</span>
 
@@ -297,8 +297,8 @@
     <span class="n">num</span> <span class="o">=</span> <span class="n">count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">outl</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">num</span><span class="p">],</span> <span class="n">outv</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">num</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span></div>
 
 <span class="n">threshold</span><span class="o">=</span><span class="n">threshold_inline</span>
 
@@ -330,8 +330,8 @@
                             <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">],</span> <span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span></div></div>
 
 <span class="k">def</span> <span class="nf">_threshold_cluster_factory</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">CPUThresholdCluster</span>
@@ -350,7 +350,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -372,7 +372,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.psd &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.psd &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -252,8 +252,8 @@
                          <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--psd-files&#39;</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        </div>
 
 <div class="viewcode-block" id="setup_psd_calculate"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.psd.setup_psd_calculate">[docs]</a><span class="k">def</span> <span class="nf">setup_psd_calculate</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">frame_files</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">segments</span><span class="p">,</span>
                         <span class="n">segment_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -284,8 +284,8 @@
     
     <span class="k">if</span> <span class="n">num_parts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">merge_psds</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">psd_files</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">psd_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">psd_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
     
 <div class="viewcode-block" id="make_psd_file"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.psd.make_psd_file">[docs]</a><span class="k">def</span> <span class="nf">make_psd_file</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">frame_files</span><span class="p">,</span> <span class="n">segment_file</span><span class="p">,</span> <span class="n">segment_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                   <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -302,8 +302,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--frame-files&#39;</span><span class="p">,</span> <span class="n">frame_files</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <span class="k">class</span> <span class="nc">AvgPSDExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">FINAL_RESULT</span>
@@ -323,8 +323,8 @@
     <span class="n">node</span><span class="o">.</span><span class="n">new_multiifo_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--time-avg-file&#39;</span><span class="p">,</span> <span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                                  <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="n">output_fmt</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
 
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <span class="c1"># keep namespace clean</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;make_psd_file&#39;</span><span class="p">,</span> <span class="s1">&#39;make_average_psd&#39;</span><span class="p">,</span> <span class="s1">&#39;setup_psd_calculate&#39;</span><span class="p">,</span> <span class="s1">&#39;merge_psds&#39;</span><span class="p">]</span>
@@ -343,7 +343,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -365,7 +365,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

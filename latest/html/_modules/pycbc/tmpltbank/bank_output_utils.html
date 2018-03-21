@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.bank_output_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.bank_output_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -256,8 +256,8 @@
             <span class="k">elif</span> <span class="n">entry</span> <span class="o">==</span> <span class="s1">&#39;event_id&#39;</span><span class="p">:</span>
                 <span class="n">sngl</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">ilwd</span><span class="o">.</span><span class="n">ilwdchar</span><span class="p">(</span><span class="s2">&quot;sngl_inspiral:event_id:0&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Column </span><span class="si">%s</span><span class="s2"> not recognized&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">sngl</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Column </span><span class="si">%s</span><span class="s2"> not recognized&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sngl</span></div>
 
 <div class="viewcode-block" id="return_search_summary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.return_search_summary">[docs]</a><span class="k">def</span> <span class="nf">return_search_summary</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nevents</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                           <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -308,8 +308,8 @@
         <span class="n">search_summary</span><span class="o">.</span><span class="n">out_start_time_ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start_time</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">)</span>
         <span class="n">search_summary</span><span class="o">.</span><span class="n">out_end_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span>
         <span class="n">search_summary</span><span class="o">.</span><span class="n">out_end_time_ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">search_summary</span>
+
+    <span class="k">return</span> <span class="n">search_summary</span></div>
 
 <div class="viewcode-block" id="convert_to_sngl_inspiral_table"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.convert_to_sngl_inspiral_table">[docs]</a><span class="k">def</span> <span class="nf">convert_to_sngl_inspiral_table</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">proc_id</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -345,8 +345,8 @@
         <span class="n">tmplt</span><span class="o">.</span><span class="n">template_duration</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># FIXME</span>
         <span class="n">tmplt</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">sngl_inspiral_table</span><span class="o">.</span><span class="n">get_next_id</span><span class="p">()</span>
         <span class="n">sngl_inspiral_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmplt</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">sngl_inspiral_table</span>
+
+    <span class="k">return</span> <span class="n">sngl_inspiral_table</span></div>
 
 <div class="viewcode-block" id="calculate_ethinca_metric_comps"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.calculate_ethinca_metric_comps">[docs]</a><span class="k">def</span> <span class="nf">calculate_ethinca_metric_comps</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">ethincaParams</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> 
                                    <span class="n">spin1z</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">spin2z</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">full_ethinca</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -498,8 +498,8 @@
     <span class="n">gammaVals</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">gammaVals</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">gammaVals</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-</div>
-    <span class="k">return</span> <span class="n">fMax_theor</span><span class="p">,</span> <span class="n">gammaVals</span>
+
+    <span class="k">return</span> <span class="n">fMax_theor</span><span class="p">,</span> <span class="n">gammaVals</span></div>
 
 <div class="viewcode-block" id="output_sngl_inspiral_table"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.output_sngl_inspiral_table">[docs]</a><span class="k">def</span> <span class="nf">output_sngl_inspiral_table</span><span class="p">(</span><span class="n">outputFile</span><span class="p">,</span> <span class="n">tempBank</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span>
                                <span class="n">ethincaParams</span><span class="p">,</span> <span class="n">programName</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">optDict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -598,8 +598,8 @@
     <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">search_summary_table</span><span class="p">)</span>
 
     <span class="c1"># write the xml doc to disk</span>
-    <span class="n">ligolw_utils</span><span class="o">.</span><span class="n">write_filename</span><span class="p">(</span><span class="n">outdoc</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">,</span></div>
-                                <span class="n">gz</span><span class="o">=</span><span class="n">outputFile</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gz&#39;</span><span class="p">))</span>
+    <span class="n">ligolw_utils</span><span class="o">.</span><span class="n">write_filename</span><span class="p">(</span><span class="n">outdoc</span><span class="p">,</span> <span class="n">outputFile</span><span class="p">,</span>
+                                <span class="n">gz</span><span class="o">=</span><span class="n">outputFile</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.gz&#39;</span><span class="p">))</span></div>
 </pre></div>
 
            </div>
@@ -615,7 +615,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -637,7 +637,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

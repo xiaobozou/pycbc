@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inject.inject &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inject.inject &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -253,8 +253,8 @@
 <span class="p">}</span>
 
 <span class="c1"># dummy class needed for loading LIGOLW files</span>
-<div class="viewcode-block" id="LIGOLWContentHandler"><a class="viewcode-back" href="../../../pycbc.inject.html#pycbc.inject.inject.LIGOLWContentHandler">[docs]</a><span class="k">class</span> <span class="nc">LIGOLWContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span></div>
-    <span class="k">pass</span>
+<div class="viewcode-block" id="LIGOLWContentHandler"><a class="viewcode-back" href="../../../pycbc.inject.html#pycbc.inject.inject.LIGOLWContentHandler">[docs]</a><span class="k">class</span> <span class="nc">LIGOLWContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 
 <span class="n">lsctables</span><span class="o">.</span><span class="n">use_in</span><span class="p">(</span><span class="n">LIGOLWContentHandler</span><span class="p">)</span>
 
@@ -269,8 +269,8 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Could not read phase order from string, using default&quot;</span><span class="p">)</span>
         <span class="n">order</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">GetStringFromApproximant</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">GetApproximantFromString</span><span class="p">(</span><span class="n">apx</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">order</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">GetStringFromApproximant</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">GetApproximantFromString</span><span class="p">(</span><span class="n">apx</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">order</span></div>
     
 
 <span class="k">class</span> <span class="nc">_HDFInjectionSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -675,8 +675,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">extra_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">extra_args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">apply</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">make_strain_from_inj_object</span> <span class="o">=</span> \
-            <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">make_strain_from_inj_object</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">end_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">end_times</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">make_strain_from_inj_object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_injhandler</span><span class="o">.</span><span class="n">end_times</span></div>
 
 
 <div class="viewcode-block" id="SGBurstInjectionSet"><a class="viewcode-back" href="../../../pycbc.inject.html#pycbc.inject.inject.SGBurstInjectionSet">[docs]</a><span class="k">class</span> <span class="nc">SGBurstInjectionSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -768,8 +768,8 @@
             <span class="n">strain</span> <span class="o">=</span> <span class="n">wfutils</span><span class="o">.</span><span class="n">taper_timeseries</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="n">inj</span><span class="o">.</span><span class="n">taper</span><span class="p">)</span>
             <span class="n">signal_lal</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">strain</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">()</span>
             <span class="n">add_injection</span><span class="p">(</span><span class="n">lalstrain</span><span class="p">,</span> <span class="n">signal_lal</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-</div></div>
-        <span class="n">strain</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lalstrain</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+        <span class="n">strain</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lalstrain</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span></div></div>
 
 <div class="viewcode-block" id="RingdownInjectionSet"><a class="viewcode-back" href="../../../pycbc.inject.html#pycbc.inject.inject.RingdownInjectionSet">[docs]</a><span class="k">class</span> <span class="nc">RingdownInjectionSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -830,8 +830,8 @@
         <span class="n">signal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">strain</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">signal_lal</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">lal</span><span class="p">()</span>
         <span class="n">add_injection</span><span class="p">(</span><span class="n">lalstrain</span><span class="p">,</span> <span class="n">signal_lal</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-</div>
-        <span class="n">strain</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lalstrain</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+        <span class="n">strain</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">lalstrain</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span></div>
 
 <div class="viewcode-block" id="RingdownInjectionSet.make_strain_from_inj_object"><a class="viewcode-back" href="../../../pycbc.inject.html#pycbc.inject.inject.RingdownInjectionSet.make_strain_from_inj_object">[docs]</a>    <span class="k">def</span> <span class="nf">make_strain_from_inj_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inj</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">detector_name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Make a h(t) strain time-series from an injection object as read from</span>
@@ -863,8 +863,8 @@
         <span class="c1"># compute the detector response and add it to the strain</span>
         <span class="n">signal</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">project_wave</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span>
                              <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;ra&#39;</span><span class="p">],</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;dec&#39;</span><span class="p">],</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;polarization&#39;</span><span class="p">])</span>
-</div></div>
-        <span class="k">return</span> <span class="n">signal</span>
+
+        <span class="k">return</span> <span class="n">signal</span></div></div>
 </pre></div>
 
            </div>
@@ -880,7 +880,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -902,7 +902,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

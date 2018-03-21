@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.datafind &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.datafind &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -246,8 +246,8 @@
 <span class="kn">from</span> <span class="nn">pycbc.workflow.core</span> <span class="k">import</span> <span class="n">SegFile</span><span class="p">,</span> <span class="n">File</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">make_analysis_dir</span>
 <span class="kn">from</span> <span class="nn">pycbc.frame</span> <span class="k">import</span> <span class="n">datafind_connection</span>
 
-<div class="viewcode-block" id="ContentHandler"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.ContentHandler">[docs]</a><span class="k">class</span> <span class="nc">ContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span></div>
-    <span class="k">pass</span>
+<div class="viewcode-block" id="ContentHandler"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.ContentHandler">[docs]</a><span class="k">class</span> <span class="nc">ContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 
 <span class="n">lsctables</span><span class="o">.</span><span class="n">use_in</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">)</span>
 
@@ -559,8 +559,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">datafindouts</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">(</span><span class="n">datafindouts</span><span class="p">)</span> 
 
-</div>
-    <span class="k">return</span> <span class="n">datafindouts</span><span class="p">,</span> <span class="n">sci_avlble_file</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span> <span class="n">sci_avlble_name</span>
+
+    <span class="k">return</span> <span class="n">datafindouts</span><span class="p">,</span> <span class="n">sci_avlble_file</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span> <span class="n">sci_avlble_name</span></div>
 
 
 <div class="viewcode-block" id="setup_datafind_runtime_cache_multi_calls_perifo"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_runtime_cache_multi_calls_perifo">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_runtime_cache_multi_calls_perifo</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span>
@@ -640,8 +640,8 @@
                                            <span class="n">connection</span><span class="p">,</span> <span class="n">observatory</span><span class="p">,</span> <span class="n">frameType</span><span class="p">,</span>
                                            <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
             <span class="n">datafindouts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache_file</span><span class="p">)</span>
-            <span class="n">datafindcaches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span>
+            <span class="n">datafindcaches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span></div>
 
 <div class="viewcode-block" id="setup_datafind_runtime_cache_single_call_perifo"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_runtime_cache_single_call_perifo">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_runtime_cache_single_call_perifo</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span> <span class="n">outputDir</span><span class="p">,</span>
                                               <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -720,8 +720,8 @@
                                        <span class="n">endTime</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
 
         <span class="n">datafindouts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache_file</span><span class="p">)</span>
-        <span class="n">datafindcaches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span>
+        <span class="n">datafindcaches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span></div>
 
 <div class="viewcode-block" id="setup_datafind_runtime_frames_single_call_perifo"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_runtime_frames_single_call_perifo">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_runtime_frames_single_call_perifo</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span>
                                               <span class="n">outputDir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -770,8 +770,8 @@
                                                         <span class="n">outputDir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
 
     <span class="n">datafindouts</span> <span class="o">=</span> <span class="n">convert_cachelist_to_filelist</span><span class="p">(</span><span class="n">datafindcaches</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span>
+
+    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span></div>
 
 <div class="viewcode-block" id="setup_datafind_runtime_frames_multi_calls_perifo"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_runtime_frames_multi_calls_perifo">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_runtime_frames_multi_calls_perifo</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">scienceSegs</span><span class="p">,</span>
                                                      <span class="n">outputDir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -820,8 +820,8 @@
                                                         <span class="n">outputDir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
 
     <span class="n">datafindouts</span> <span class="o">=</span> <span class="n">convert_cachelist_to_filelist</span><span class="p">(</span><span class="n">datafindcaches</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span>
+
+    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span></div>
 
 <div class="viewcode-block" id="setup_datafind_from_pregenerated_lcf_files"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_from_pregenerated_lcf_files">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_from_pregenerated_lcf_files</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">outputDir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -866,8 +866,8 @@
         <span class="n">curr_cache</span><span class="o">.</span><span class="n">ifo</span> <span class="o">=</span> <span class="n">ifo</span>
         <span class="n">datafindcaches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_cache</span><span class="p">)</span>
     <span class="n">datafindouts</span> <span class="o">=</span> <span class="n">convert_cachelist_to_filelist</span><span class="p">(</span><span class="n">datafindcaches</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span>
+
+    <span class="k">return</span> <span class="n">datafindcaches</span><span class="p">,</span> <span class="n">datafindouts</span></div>
 
 <div class="viewcode-block" id="convert_cachelist_to_filelist"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.convert_cachelist_to_filelist">[docs]</a><span class="k">def</span> <span class="nf">convert_cachelist_to_filelist</span><span class="p">(</span><span class="n">datafindcache_list</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -929,8 +929,8 @@
                         <span class="s1">&#39;gsiftp://ldas-grid.ligo.caltech.edu/hdfs/&#39;</span><span class="p">),</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;osg&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;notlocal&#39;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">datafind_filelist</span>
+
+    <span class="k">return</span> <span class="n">datafind_filelist</span></div>
 
 
 <div class="viewcode-block" id="get_science_segs_from_datafind_outs"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.get_science_segs_from_datafind_outs">[docs]</a><span class="k">def</span> <span class="nf">get_science_segs_from_datafind_outs</span><span class="p">(</span><span class="n">datafindcaches</span><span class="p">):</span>
@@ -959,8 +959,8 @@
                 <span class="n">newScienceSegs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">groupSegs</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">newScienceSegs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">groupSegs</span><span class="p">)</span>
-                <span class="n">newScienceSegs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">newScienceSegs</span>
+                <span class="n">newScienceSegs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">newScienceSegs</span></div>
 
 <div class="viewcode-block" id="get_missing_segs_from_frame_file_cache"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.get_missing_segs_from_frame_file_cache">[docs]</a><span class="k">def</span> <span class="nf">get_missing_segs_from_frame_file_cache</span><span class="p">(</span><span class="n">datafindcaches</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1003,8 +1003,8 @@
                 <span class="c1"># NOTE: This .coalesce probably isn&#39;t needed as the segments</span>
                 <span class="c1"># should be disjoint. If speed becomes an issue maybe remove it?</span>
                 <span class="n">missingFrameSegs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span>
-                <span class="n">missingFrames</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">currMissingFrames</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">missingFrameSegs</span><span class="p">,</span> <span class="n">missingFrames</span>
+                <span class="n">missingFrames</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">currMissingFrames</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">missingFrameSegs</span><span class="p">,</span> <span class="n">missingFrames</span></div>
 
 <div class="viewcode-block" id="setup_datafind_server_connection"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.setup_datafind_server_connection">[docs]</a><span class="k">def</span> <span class="nf">setup_datafind_server_connection</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1029,8 +1029,8 @@
                                         <span class="s2">&quot;datafind-ligo-datafind-server&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">datafind_server</span> <span class="o">=</span> <span class="kc">None</span>
-</div>
-    <span class="k">return</span> <span class="n">datafind_connection</span><span class="p">(</span><span class="n">datafind_server</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">datafind_connection</span><span class="p">(</span><span class="n">datafind_server</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_segment_summary_times"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.get_segment_summary_times">[docs]</a><span class="k">def</span> <span class="nf">get_segment_summary_times</span><span class="p">(</span><span class="n">scienceFile</span><span class="p">,</span> <span class="n">segmentName</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1083,8 +1083,8 @@
             <span class="n">segment</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
             <span class="n">summSegList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
     <span class="n">summSegList</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span>
-</div>
-    <span class="k">return</span> <span class="n">summSegList</span>
+
+    <span class="k">return</span> <span class="n">summSegList</span></div>
 
 <div class="viewcode-block" id="run_datafind_instance"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.run_datafind_instance">[docs]</a><span class="k">def</span> <span class="nf">run_datafind_instance</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">outputDir</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">observatory</span><span class="p">,</span> <span class="n">frameType</span><span class="p">,</span>
                           <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1176,8 +1176,8 @@
               <span class="o">%</span> <span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">observatory</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">url</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">fP</span><span class="p">)</span>
         <span class="n">entry</span><span class="o">.</span><span class="n">segment</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">segment</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">segment</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
-    <span class="n">fP</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">dfCache</span><span class="p">,</span> <span class="n">cache_file</span>
+    <span class="n">fP</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dfCache</span><span class="p">,</span> <span class="n">cache_file</span></div>
 
 
 <div class="viewcode-block" id="log_datafind_command"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.log_datafind_command">[docs]</a><span class="k">def</span> <span class="nf">log_datafind_command</span><span class="p">(</span><span class="n">observatory</span><span class="p">,</span> <span class="n">frameType</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">,</span>
@@ -1212,8 +1212,8 @@
                <span class="o">%</span><span class="p">(</span><span class="n">observatory</span><span class="p">,</span> <span class="n">frameType</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="o">-</span><span class="n">startTime</span><span class="p">)</span>
     <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outputDir</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
     <span class="n">fP</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">fP</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gw_command</span><span class="p">))</span></div>
-    <span class="n">fP</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">fP</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gw_command</span><span class="p">))</span>
+    <span class="n">fP</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="datafind_keep_unique_backups"><a class="viewcode-back" href="../../../workflow/datafind.html#pycbc.workflow.datafind.datafind_keep_unique_backups">[docs]</a><span class="k">def</span> <span class="nf">datafind_keep_unique_backups</span><span class="p">(</span><span class="n">backup_outs</span><span class="p">,</span> <span class="n">orig_outs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function will take a list of backup datafind files, presumably</span>
@@ -1253,8 +1253,8 @@
             <span class="c1"># This shouldn&#39;t happen, but catch if it does</span>
             <span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pfns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">orig_out</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">pfns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;notlocal&#39;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">return_list</span>
+
+    <span class="k">return</span> <span class="n">return_list</span></div>
 </pre></div>
 
            </div>
@@ -1270,7 +1270,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1292,7 +1292,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

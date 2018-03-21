@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.metadata &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.results.metadata &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -227,23 +227,23 @@
     <span class="n">unescape_table</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
     
 <div class="viewcode-block" id="html_escape"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.html_escape">[docs]</a><span class="k">def</span> <span class="nf">html_escape</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Sanitize text for html parsing &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">escape</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">escape_table</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Sanitize text for html parsing &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">escape</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">escape_table</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MetaParser"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.MetaParser">[docs]</a><span class="k">class</span> <span class="nc">MetaParser</span><span class="p">(</span><span class="n">HTMLParser</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">HTMLParser</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="MetaParser.handle_data"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.MetaParser.handle_data">[docs]</a>    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="MetaParser.handle_data"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.MetaParser.handle_data">[docs]</a>    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="MetaParser.handle_starttag"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.MetaParser.handle_starttag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="n">attr</span><span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="n">attr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;div&#39;</span> <span class="ow">and</span> <span class="s1">&#39;class&#39;</span> <span class="ow">in</span> <span class="n">attr</span> <span class="ow">and</span> <span class="n">attr</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pycbc-meta&#39;</span><span class="p">:</span></div></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span> <span class="n">unescape_table</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;div&#39;</span> <span class="ow">and</span> <span class="s1">&#39;class&#39;</span> <span class="ow">in</span> <span class="n">attr</span> <span class="ow">and</span> <span class="n">attr</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pycbc-meta&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="n">attr</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span> <span class="n">unescape_table</span><span class="p">)</span></div></div>
         
 
 <div class="viewcode-block" id="save_html_with_metadata"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.save_html_with_metadata">[docs]</a><span class="k">def</span> <span class="nf">save_html_with_metadata</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">fig_kwds</span><span class="p">,</span> <span class="n">kwds</span><span class="p">):</span>
@@ -259,8 +259,8 @@
         <span class="n">value</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">escape_table</span><span class="p">)</span>
         <span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;&lt;div class=pycbc-meta key=</span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s2"> value=</span><span class="se">\&quot;</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s2">&gt;&lt;/div&gt;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span> 
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>    
-</div>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="load_html_metadata"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.load_html_metadata">[docs]</a><span class="k">def</span> <span class="nf">load_html_metadata</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get metadata from html file &quot;&quot;&quot;</span>
@@ -271,8 +271,8 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LOADING HTML FILE </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">cp</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-    <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">cp</span>
+    <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 <div class="viewcode-block" id="save_png_with_metadata"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.save_png_with_metadata">[docs]</a><span class="k">def</span> <span class="nf">save_png_with_metadata</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">fig_kwds</span><span class="p">,</span> <span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Save a matplotlib figure to a png with metadata</span>
@@ -285,15 +285,15 @@
     
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwds</span><span class="p">:</span>
         <span class="n">meta</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">kwds</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>       
-         </div>
-    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">pnginfo</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span>
+         
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">pnginfo</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="load_png_metadata"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.load_png_metadata">[docs]</a><span class="k">def</span> <span class="nf">load_png_metadata</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">PngImagePlugin</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">info</span>
     <span class="n">cp</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">cp</span>
+    <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cp</span></div>
     
 <span class="n">_metadata_saver</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.png&#39;</span><span class="p">:</span><span class="n">save_png_with_metadata</span><span class="p">,</span>
                    <span class="s1">&#39;.html&#39;</span><span class="p">:</span><span class="n">save_html_with_metadata</span><span class="p">,</span>
@@ -320,8 +320,8 @@
         <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">git_verbose_msg</span>
         <span class="n">_metadata_saver</span><span class="p">[</span><span class="n">extension</span><span class="p">](</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">fig_kwds</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot save file </span><span class="si">%s</span><span class="s1"> with metadata, extension </span><span class="si">%s</span><span class="s1"> not &#39;</span> </div>
-                        <span class="s1">&#39;supported at this time&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot save file </span><span class="si">%s</span><span class="s1"> with metadata, extension </span><span class="si">%s</span><span class="s1"> not &#39;</span> 
+                        <span class="s1">&#39;supported at this time&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="load_metadata_from_file"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.metadata.load_metadata_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_metadata_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Load the plot related metadata saved in a file</span>
@@ -340,8 +340,8 @@
         <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">_metadata_loader</span><span class="p">[</span><span class="n">extension</span><span class="p">](</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot read metadata from file </span><span class="si">%s</span><span class="s1">, extension </span><span class="si">%s</span><span class="s1"> not &#39;</span> </div>
-                        <span class="s1">&#39;supported at this time&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">))</span>    
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot read metadata from file </span><span class="si">%s</span><span class="s1">, extension </span><span class="si">%s</span><span class="s1"> not &#39;</span> 
+                        <span class="s1">&#39;supported at this time&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span><span class="p">))</span>    </div>
 </pre></div>
 
            </div>
@@ -357,7 +357,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -379,7 +379,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

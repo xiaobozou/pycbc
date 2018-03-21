@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.option_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.option_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -255,8 +255,8 @@
                 <span class="n">initial_indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span>
                 <span class="n">subsequent_indent</span><span class="o">=</span><span class="n">indent</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">]</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_bits</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span></div>
-        <span class="k">return</span> <span class="n">result</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_bits</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="IndentedHelpFormatterWithNL.format_option"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.IndentedHelpFormatterWithNL.format_option">[docs]</a>    <span class="k">def</span> <span class="nf">format_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -298,8 +298,8 @@
             <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">%*s%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">help_position</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">help_lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
         <span class="k">elif</span> <span class="n">opts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="get_options_from_group"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.get_options_from_group">[docs]</a><span class="k">def</span> <span class="nf">get_options_from_group</span><span class="p">(</span><span class="n">option_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -312,8 +312,8 @@
         <span class="n">option_strings</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">option_strings</span>
         <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">option_strings</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">):</span>
-                <span class="n">command_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">command_lines</span>
+                <span class="n">command_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">command_lines</span></div>
 
 <div class="viewcode-block" id="insert_base_bank_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.insert_base_bank_options">[docs]</a><span class="k">def</span> <span class="nf">insert_base_bank_options</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -338,8 +338,8 @@
             <span class="s1">&#39;-O&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Output file name. Required.&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--f-low-column&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;If given, store the lower frequency cutoff into &#39;</span></div>
-                             <span class="s1">&#39;column NAME of the single-inspiral table.&#39;</span><span class="p">)</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;If given, store the lower frequency cutoff into &#39;</span>
+                             <span class="s1">&#39;column NAME of the single-inspiral table.&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="insert_metric_calculation_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.insert_metric_calculation_options">[docs]</a><span class="k">def</span> <span class="nf">insert_metric_calculation_options</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -380,8 +380,8 @@
                      <span class="s2">&quot;UNITS=Hz&quot;</span><span class="p">)</span>
     <span class="n">metricOpts</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--write-metric&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
                 <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;If given write the metric components &quot;</span>
-                     <span class="s2">&quot;to disk as they are calculated.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">metricOpts</span>
+                     <span class="s2">&quot;to disk as they are calculated.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">metricOpts</span></div>
 
 <div class="viewcode-block" id="verify_metric_calculation_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.verify_metric_calculation_options">[docs]</a><span class="k">def</span> <span class="nf">verify_metric_calculation_options</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -395,8 +395,8 @@
 <span class="sd">    parser : object</span>
 <span class="sd">        The OptionParser instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="o">.</span><span class="n">pn_order</span><span class="p">:</span></div>
-        <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Must supply --pn-order&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="o">.</span><span class="n">pn_order</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Must supply --pn-order&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="metricParameters"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.metricParameters">[docs]</a><span class="k">class</span> <span class="nc">metricParameters</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -437,8 +437,8 @@
 <span class="sd">        verify_metric_calculation_options</span>
 <span class="sd">        have already been called before initializing the class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">pn_order</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">f_low</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">f_upper</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>\</div>
-                   <span class="n">f0</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">f0</span><span class="p">,</span> <span class="n">write_metric</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">write_metric</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">pn_order</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">f_low</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">f_upper</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>\
+                   <span class="n">f0</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">f0</span><span class="p">,</span> <span class="n">write_metric</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">write_metric</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">psd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -621,8 +621,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">write_metric</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="n">inEvecs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="n">numpy</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;covariance_evecs_</span><span class="si">%d</span><span class="s2">.dat&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">frequency</span><span class="p">),</span>
-                              <span class="n">inEvecs</span><span class="p">[</span><span class="n">frequency</span><span class="p">])</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_evecsCV</span> <span class="o">=</span> <span class="n">inEvecs</span>
+                              <span class="n">inEvecs</span><span class="p">[</span><span class="n">frequency</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evecsCV</span> <span class="o">=</span> <span class="n">inEvecs</span></div>
 
 
 <div class="viewcode-block" id="insert_mass_range_option_group"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.insert_mass_range_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_mass_range_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="n">nonSpin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -751,8 +751,8 @@
                        <span class="s2">&quot;to the black hole spin restriction and the lighter &quot;</span>
                        <span class="s2">&quot;to the neutron star spin restriction, regardless of &quot;</span>
                        <span class="s2">&quot;mass.  OPTIONAL.  If set, the value of &quot;</span>
-                       <span class="s2">&quot;--ns-bh-boundary-mass will be ignored.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">massOpts</span>
+                       <span class="s2">&quot;--ns-bh-boundary-mass will be ignored.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">massOpts</span></div>
 
 <div class="viewcode-block" id="verify_mass_range_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.verify_mass_range_options">[docs]</a><span class="k">def</span> <span class="nf">verify_mass_range_options</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">nonSpin</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1066,8 +1066,8 @@
                 <span class="n">massRangeParameters</span><span class="o">.</span><span class="n">default_nsbh_boundary_mass</span><span class="p">):</span>
             <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Must supply --max-bh-spin-mag for the chosen&quot;</span>
                          <span class="s2">&quot; value of --max_mass1&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="n">opts</span><span class="o">.</span><span class="n">max_bh_spin_mag</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_ns_spin_mag</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">opts</span><span class="o">.</span><span class="n">max_bh_spin_mag</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">max_ns_spin_mag</span></div>
 
 <div class="viewcode-block" id="massRangeParameters"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.massRangeParameters">[docs]</a><span class="k">class</span> <span class="nc">massRangeParameters</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1199,8 +1199,8 @@
                        <span class="n">min_chirp_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">min_chirp_mass</span><span class="p">,</span>
                        <span class="n">ns_bh_boundary_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ns_bh_boundary_mass</span><span class="p">,</span>
                        <span class="n">remnant_mass_threshold</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">remnant_mass_threshold</span><span class="p">,</span>
-                       <span class="n">ns_eos</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ns_eos</span><span class="p">,</span> <span class="n">use_eos_max_ns_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_eos_max_ns_mass</span><span class="p">,</span></div>
-                       <span class="n">delta_bh_spin</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">delta_bh_spin</span><span class="p">,</span> <span class="n">delta_ns_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">delta_ns_mass</span><span class="p">)</span>
+                       <span class="n">ns_eos</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">ns_eos</span><span class="p">,</span> <span class="n">use_eos_max_ns_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_eos_max_ns_mass</span><span class="p">,</span>
+                       <span class="n">delta_bh_spin</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">delta_bh_spin</span><span class="p">,</span> <span class="n">delta_ns_mass</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">delta_ns_mass</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="massRangeParameters.is_outside_range"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.massRangeParameters.is_outside_range">[docs]</a>    <span class="k">def</span> <span class="nf">is_outside_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1261,8 +1261,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
                 <span class="ow">and</span> <span class="n">chirp_mass</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_chirp_mass</span> <span class="o">*</span> <span class="mf">1.001</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
-</div></div>
-        <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="mi">0</span></div></div>
 
 <div class="viewcode-block" id="ethincaParameters"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.ethincaParameters">[docs]</a><span class="k">class</span> <span class="nc">ethincaParameters</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1313,8 +1313,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">ethinca_pn_order</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">filter_cutoff</span><span class="p">,</span>
             <span class="n">opts</span><span class="o">.</span><span class="n">ethinca_frequency_step</span><span class="p">,</span> <span class="n">fLow</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">full_ethinca</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">calculate_ethinca_metric</span><span class="p">,</span></div></div>
-            <span class="n">time_ethinca</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">calculate_time_metric_components</span><span class="p">)</span>
+            <span class="n">full_ethinca</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">calculate_ethinca_metric</span><span class="p">,</span>
+            <span class="n">time_ethinca</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">calculate_time_metric_components</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="insert_ethinca_metric_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.insert_ethinca_metric_options">[docs]</a><span class="k">def</span> <span class="nf">insert_ethinca_metric_options</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1360,8 +1360,8 @@
                     <span class="s2">&quot;template is assigned the metric for the f_max closest to &quot;</span>
                     <span class="s2">&quot;its analytical cutoff formula. OPTIONAL, default=10. &quot;</span>
                     <span class="s2">&quot;UNITS=Hz&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">ethincaGroup</span>
+
+    <span class="k">return</span> <span class="n">ethincaGroup</span></div>
 
 <div class="viewcode-block" id="verify_ethinca_metric_options"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.verify_ethinca_metric_options">[docs]</a><span class="k">def</span> <span class="nf">verify_ethinca_metric_options</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1386,8 +1386,8 @@
                      <span class="s2">&quot;ethinca!&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">calculate_ethinca_metric</span> <span class="ow">or</span>\
               <span class="n">opts</span><span class="o">.</span><span class="n">calculate_time_metric_components</span><span class="p">)</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">ethinca_pn_order</span><span class="p">:</span>
-        <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Can&#39;t specify an ethinca PN order if not &quot;</span></div>
-                     <span class="s2">&quot;calculating ethinca metric!&quot;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Can&#39;t specify an ethinca PN order if not &quot;</span>
+                     <span class="s2">&quot;calculating ethinca metric!&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="check_ethinca_against_bank_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.check_ethinca_against_bank_params">[docs]</a><span class="k">def</span> <span class="nf">check_ethinca_against_bank_params</span><span class="p">(</span><span class="n">ethincaParams</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1410,8 +1410,8 @@
                              <span class="s2">&quot;support a f-low value different from the bank &quot;</span>
                              <span class="s2">&quot;metric!&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ethincaParams</span><span class="o">.</span><span class="n">pnOrder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">ethincaParams</span><span class="o">.</span><span class="n">pnOrder</span> <span class="o">=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">pnOrder</span></div>
-    <span class="k">else</span><span class="p">:</span> <span class="k">pass</span>
+            <span class="n">ethincaParams</span><span class="o">.</span><span class="n">pnOrder</span> <span class="o">=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">pnOrder</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">pass</span></div>
 </pre></div>
 
            </div>
@@ -1427,7 +1427,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1449,7 +1449,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

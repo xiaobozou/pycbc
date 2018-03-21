@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.waveform &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.waveform.waveform &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -252,8 +252,8 @@
 <div class="viewcode-block" id="NoWaveformError"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.NoWaveformError">[docs]</a><span class="k">class</span> <span class="nc">NoWaveformError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This should be raised if generating a waveform would just result in all</span>
 <span class="sd">    zeros being returned, e.g., if a requested `f_final` is &lt;= `f_lower`.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">pass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
 
 <span class="c1"># If this is set to True, waveform generation codes will try to regenerate</span>
 <span class="c1"># waveforms with known failure conditions to try to avoid the failure. For</span>
@@ -482,45 +482,45 @@
     <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_lalsim_td_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA Approximants&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_cuda_td_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></div>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_cuda_td_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="print_fd_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.print_fd_approximants">[docs]</a><span class="k">def</span> <span class="nf">print_fd_approximants</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LalSimulation Approximants&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_lalsim_fd_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA Approximants&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_cuda_fd_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></div>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_cuda_fd_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="print_sgburst_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.print_sgburst_approximants">[docs]</a><span class="k">def</span> <span class="nf">print_sgburst_approximants</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LalSimulation Approximants&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_lalsim_sgburst_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></div>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">approx</span> <span class="ow">in</span> <span class="n">_lalsim_sgburst_approximants</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">+</span> <span class="n">approx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="td_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.td_approximants">[docs]</a><span class="k">def</span> <span class="nf">td_approximants</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a list containing the available time domain approximants for</span>
 <span class="sd">       the given processing scheme.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">td_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">td_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="fd_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.fd_approximants">[docs]</a><span class="k">def</span> <span class="nf">fd_approximants</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a list containing the available fourier domain approximants for</span>
 <span class="sd">       the given processing scheme.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">fd_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">fd_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="sgburst_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.sgburst_approximants">[docs]</a><span class="k">def</span> <span class="nf">sgburst_approximants</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a list containing the available time domain sgbursts for</span>
 <span class="sd">       the given processing scheme.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">sgburst_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sgburst_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="filter_approximants"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.filter_approximants">[docs]</a><span class="k">def</span> <span class="nf">filter_approximants</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a list of fourier domain approximants including those</span>
 <span class="sd">       written specifically as templates.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">filter_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filter_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">scheme</span><span class="p">)]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
 
 <span class="c1"># Input parameter handling ###################################################</span>
 
@@ -633,8 +633,8 @@
                <span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;inclination&#39;</span><span class="p">]),</span>
                <span class="n">lal_pars</span><span class="p">,</span>
                <span class="n">_lalsim_enum</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]],</span>
-               <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sample_points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lal</span><span class="p">())</span></div>
-    <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">Array</span><span class="p">(</span><span class="n">hc</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+               <span class="n">p</span><span class="p">[</span><span class="s1">&#39;sample_points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lal</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">Array</span><span class="p">(</span><span class="n">hc</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
 <span class="n">get_fd_waveform_sequence</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">get_fd_waveform_sequence</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">fd_waveform_sequence_params</span><span class="o">.</span><span class="n">docstr</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">,</span>
@@ -661,8 +661,8 @@
     <span class="n">wav_gen</span> <span class="o">=</span> <span class="n">td_wav</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="p">)]</span>
     <span class="k">if</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">wav_gen</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Approximant </span><span class="si">%s</span><span class="s2"> not available&quot;</span> <span class="o">%</span>
-                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span></div>
-    <span class="k">return</span> <span class="n">wav_gen</span><span class="p">[</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">wav_gen</span><span class="p">[</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span></div>
 
 <span class="n">get_td_waveform</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">get_td_waveform</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">td_waveform_params</span><span class="o">.</span><span class="n">docstr</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">,</span>
@@ -704,8 +704,8 @@
                 <span class="k">raise</span> <span class="n">NoWaveformError</span><span class="p">(</span><span class="s2">&quot;cannot generate waveform: f_lower &gt;= f_final&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="k">pass</span>
-</div>
-    <span class="k">return</span> <span class="n">wav_gen</span><span class="p">[</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wav_gen</span><span class="p">[</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span></div>
 
 <span class="n">get_fd_waveform</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">get_fd_waveform</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">fd_waveform_params</span><span class="o">.</span><span class="n">docstr</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">,</span>
@@ -808,8 +808,8 @@
     <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">sgburst_required_args</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">arg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">input_params</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please provide &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">_lalsim_sgburst_waveform</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_lalsim_sgburst_waveform</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span></div>
 
 <span class="c1"># Waveform filter routines ###################################################</span>
 
@@ -954,8 +954,8 @@
         <span class="k">return</span> <span class="n">td_waveform_to_fd_waveform</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Approximant </span><span class="si">%s</span><span class="s2"> not available&quot;</span> <span class="o">%</span></div>
-                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Approximant </span><span class="si">%s</span><span class="s2"> not available&quot;</span> <span class="o">%</span>
+                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span></div>
 
 <div class="viewcode-block" id="td_waveform_to_fd_waveform"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.td_waveform_to_fd_waveform">[docs]</a><span class="k">def</span> <span class="nf">td_waveform_to_fd_waveform</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                <span class="n">buffer_length</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -1002,8 +1002,8 @@
     <span class="n">htilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">fft</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">real_same_precision_as</span><span class="p">(</span><span class="n">htilde</span><span class="p">)),</span> <span class="n">htilde</span><span class="p">)</span>
     <span class="n">htilde</span><span class="o">.</span><span class="n">length_in_time</span> <span class="o">=</span> <span class="n">tmplt_length</span>
-    <span class="n">htilde</span><span class="o">.</span><span class="n">chirp_length</span> <span class="o">=</span> <span class="n">tChirp</span></div>
-    <span class="k">return</span> <span class="n">htilde</span>
+    <span class="n">htilde</span><span class="o">.</span><span class="n">chirp_length</span> <span class="o">=</span> <span class="n">tChirp</span>
+    <span class="k">return</span> <span class="n">htilde</span></div>
 
 <div class="viewcode-block" id="get_two_pol_waveform_filter"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_two_pol_waveform_filter">[docs]</a><span class="k">def</span> <span class="nf">get_two_pol_waveform_filter</span><span class="p">(</span><span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a frequency domain waveform filter for the specified approximant.</span>
@@ -1068,14 +1068,14 @@
         <span class="n">hc_tilde</span><span class="o">.</span><span class="n">chirp_length</span> <span class="o">=</span> <span class="n">tChirp</span>
         <span class="k">return</span> <span class="n">hp_tilde</span><span class="p">,</span> <span class="n">hc_tilde</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Approximant </span><span class="si">%s</span><span class="s2"> not available&quot;</span> <span class="o">%</span></div>
-                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Approximant </span><span class="si">%s</span><span class="s2"> not available&quot;</span> <span class="o">%</span>
+                            <span class="p">(</span><span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span></div>
 
 <div class="viewcode-block" id="waveform_norm_exists"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.waveform_norm_exists">[docs]</a><span class="k">def</span> <span class="nf">waveform_norm_exists</span><span class="p">(</span><span class="n">approximant</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="n">_filter_norms</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="get_template_amplitude_norm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_template_amplitude_norm">[docs]</a><span class="k">def</span> <span class="nf">get_template_amplitude_norm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return additional constant template normalization. This only affects</span>
@@ -1087,8 +1087,8 @@
 
     <span class="k">if</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="n">_template_amplitude_norms</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_template_amplitude_norms</span><span class="p">[</span><span class="n">approximant</span><span class="p">](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 <span class="k">def</span> <span class="nf">get_waveform_filter_precondition</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the data preconditioning factor for this approximant.</span>
@@ -1103,8 +1103,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="n">_filter_norms</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_filter_norms</span><span class="p">[</span><span class="n">approximant</span><span class="p">](</span><span class="n">psd</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="get_waveform_end_frequency"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_waveform_end_frequency">[docs]</a><span class="k">def</span> <span class="nf">get_waveform_end_frequency</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the stop frequency of a template</span>
@@ -1114,8 +1114,8 @@
 
     <span class="k">if</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="n">_filter_ends</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_filter_ends</span><span class="p">[</span><span class="n">approximant</span><span class="p">](</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="get_waveform_filter_length_in_time"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_waveform_filter_length_in_time">[docs]</a><span class="k">def</span> <span class="nf">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;For filter templates, return the length in time of the template.</span>
@@ -1124,8 +1124,8 @@
 
     <span class="k">if</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="n">_filter_time_lengths</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">approximant</span><span class="p">](</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_td_waveform&quot;</span><span class="p">,</span> <span class="s2">&quot;get_fd_waveform&quot;</span><span class="p">,</span> <span class="s2">&quot;get_fd_waveform_sequence&quot;</span><span class="p">,</span>
            <span class="s2">&quot;print_td_approximants&quot;</span><span class="p">,</span> <span class="s2">&quot;print_fd_approximants&quot;</span><span class="p">,</span>
@@ -1152,7 +1152,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1174,7 +1174,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

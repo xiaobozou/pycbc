@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.bank &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.waveform.bank &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -289,12 +289,12 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="s1">&#39;invsqrt&#39;</span><span class="p">):</span>
                 <span class="n">psd</span><span class="o">.</span><span class="n">invsqrt</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">psd</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sslice</span><span class="p">]</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_sigmasq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma_view</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">psd</span><span class="o">.</span><span class="n">invsqrt</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmasq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sigmasq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma_view</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">psd</span><span class="o">.</span><span class="n">invsqrt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigmasq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
 <span class="c1"># dummy class needed for loading LIGOLW files</span>
-<div class="viewcode-block" id="LIGOLWContentHandler"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LIGOLWContentHandler">[docs]</a><span class="k">class</span> <span class="nc">LIGOLWContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span></div>
-    <span class="k">pass</span>
+<div class="viewcode-block" id="LIGOLWContentHandler"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LIGOLWContentHandler">[docs]</a><span class="k">class</span> <span class="nc">LIGOLWContentHandler</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGOLWContentHandler</span><span class="p">):</span>
+    <span class="k">pass</span></div>
 <span class="n">lsctables</span><span class="o">.</span><span class="n">use_in</span><span class="p">(</span><span class="n">LIGOLWContentHandler</span><span class="p">)</span>
 
 <span class="c1"># helper function for parsing approximant strings</span>
@@ -319,8 +319,8 @@
 <span class="sd">        can be passed directly to `FieldArray.parse_boolargs`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">approximant_strs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">approximant_strs</span> <span class="o">=</span> <span class="p">[</span><span class="n">approximant_strs</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">approximant_strs</span><span class="p">]</span>
+        <span class="n">approximant_strs</span> <span class="o">=</span> <span class="p">[</span><span class="n">approximant_strs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">approximant_strs</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="add_approximant_arg"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.add_approximant_arg">[docs]</a><span class="k">def</span> <span class="nf">add_approximant_arg</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -358,8 +358,8 @@
              <span class="s2">&quot;operations may also be used on parameters; syntax is python, &quot;</span>
              <span class="s2">&quot;with any operation recognized by numpy.&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--approximant&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
-                        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;APPRX[:COND]&#39;</span><span class="p">,</span></div>
-                        <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">)</span>
+                        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;APPRX[:COND]&#39;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="n">help</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="parse_approximant_arg"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.parse_approximant_arg">[docs]</a><span class="k">def</span> <span class="nf">parse_approximant_arg</span><span class="p">(</span><span class="n">approximant_arg</span><span class="p">,</span> <span class="n">warray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given an approximant arg (see add_approximant_arg) and a field</span>
@@ -379,8 +379,8 @@
 <span class="sd">    array</span>
 <span class="sd">        A numpy array listing the approximants to use for each element in</span>
 <span class="sd">        the warray.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">warray</span><span class="o">.</span><span class="n">parse_boolargs</span><span class="p">(</span><span class="n">boolargs_from_apprxstr</span><span class="p">(</span><span class="n">approximant_arg</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">warray</span><span class="o">.</span><span class="n">parse_boolargs</span><span class="p">(</span><span class="n">boolargs_from_apprxstr</span><span class="p">(</span><span class="n">approximant_arg</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TemplateBank"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank">[docs]</a><span class="k">class</span> <span class="nc">TemplateBank</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -530,8 +530,8 @@
 
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">hash_fields</span> <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]</span>
         <span class="n">template_hash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">hash</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-                                  <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">])])</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">add_fields</span><span class="p">(</span><span class="n">template_hash</span><span class="p">,</span> <span class="s1">&#39;template_hash&#39;</span><span class="p">)</span>
+                                  <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">])])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">add_fields</span><span class="p">(</span><span class="n">template_hash</span><span class="p">,</span> <span class="s1">&#39;template_hash&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateBank.write_to_hdf"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank.write_to_hdf">[docs]</a>    <span class="k">def</span> <span class="nf">write_to_hdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                      <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -585,8 +585,8 @@
                 <span class="n">compressed_waveform</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">compress</span><span class="o">.</span><span class="n">CompressedWaveform</span><span class="o">.</span><span class="n">from_hdf</span><span class="p">(</span>
                                         <span class="bp">self</span><span class="o">.</span><span class="n">filehandler</span><span class="p">,</span> <span class="n">tmplt_hash</span><span class="p">,</span>
                                         <span class="n">load_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">compressed_waveform</span><span class="o">.</span><span class="n">write_to_hdf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tmplt_hash</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">f</span>
+                <span class="n">compressed_waveform</span><span class="o">.</span><span class="n">write_to_hdf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tmplt_hash</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span></div>
 
 <div class="viewcode-block" id="TemplateBank.end_frequency"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank.end_frequency">[docs]</a>    <span class="k">def</span> <span class="nf">end_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the end frequency of the waveform at the given index value</span>
@@ -595,23 +595,23 @@
 
         <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">get_waveform_end_frequency</span><span class="p">(</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
-                                <span class="n">approximant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">approximant</span><span class="p">(</span><span class="n">index</span><span class="p">),</span></div>
-                                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_args</span><span class="p">)</span>
+                                <span class="n">approximant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">approximant</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+                                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_args</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateBank.parse_approximant"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank.parse_approximant">[docs]</a>    <span class="k">def</span> <span class="nf">parse_approximant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">approximant</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parses the given approximant argument, returning the approximant to</span>
 <span class="sd">        use for each template in self. This is done by calling</span>
 <span class="sd">        `parse_approximant_arg` using self&#39;s table as the array; see that</span>
-<span class="sd">        function for more details.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">parse_approximant_arg</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+<span class="sd">        function for more details.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">parse_approximant_arg</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateBank.approximant"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank.approximant">[docs]</a>    <span class="k">def</span> <span class="nf">approximant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the name of the approximant ot use at the given index</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s1">&#39;approximant&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;approximant not found in input file and no &quot;</span>
-                <span class="s2">&quot;approximant was specified on initialization&quot;</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;approximant&quot;</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
+                <span class="s2">&quot;approximant was specified on initialization&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;approximant&quot;</span><span class="p">][</span><span class="n">index</span><span class="p">]</span></div>
 
     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
@@ -639,8 +639,8 @@
             <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inj_indices</span><span class="p">)</span>
             <span class="n">indices_combined</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 
-        <span class="n">indices_unique</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_combined</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">indices_unique</span><span class="p">]</span>
+        <span class="n">indices_unique</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_combined</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">indices_unique</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="TemplateBank.ensure_standard_filter_columns"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.TemplateBank.ensure_standard_filter_columns">[docs]</a>    <span class="k">def</span> <span class="nf">ensure_standard_filter_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -666,8 +666,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">low_frequency_cutoff</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">min_f_lower</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_f_lower</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">:</span></div></div>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid low-frequency cutoff settings&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_f_lower</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid low-frequency cutoff settings&#39;</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="LiveFilterBank"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LiveFilterBank">[docs]</a><span class="k">class</span> <span class="nc">LiveFilterBank</span><span class="p">(</span><span class="n">TemplateBank</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">minimum_buffer</span><span class="p">,</span>
@@ -705,13 +705,13 @@
 <span class="sd">        the discreteness of the rounding.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">inc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">increment</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">/</span> <span class="n">inc</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="n">inc</span></div>
-        <span class="k">return</span> <span class="n">size</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">/</span> <span class="n">inc</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="n">inc</span>
+        <span class="k">return</span> <span class="n">size</span></div>
 
 <div class="viewcode-block" id="LiveFilterBank.getslice"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LiveFilterBank.getslice">[docs]</a>    <span class="k">def</span> <span class="nf">getslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sindex</span><span class="p">):</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">instance</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">sindex</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">instance</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">sindex</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">instance</span></div>
 
 <div class="viewcode-block" id="LiveFilterBank.id_from_hash"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LiveFilterBank.id_from_hash">[docs]</a>    <span class="k">def</span> <span class="nf">id_from_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hash_value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the index of this template based on its hash value</span>
@@ -725,8 +725,8 @@
 <span class="sd">        --------</span>
 <span class="sd">        index : int</span>
 <span class="sd">            The ordered index that this template has in the template bank.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash_lookup</span><span class="p">[</span><span class="n">hash_value</span><span class="p">]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash_lookup</span><span class="p">[</span><span class="n">hash_value</span><span class="p">]</span></div>
 
     <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
@@ -792,8 +792,8 @@
         <span class="n">htilde</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_from_hash</span><span class="p">(</span><span class="nb">hash</span><span class="p">((</span><span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span>
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass2</span><span class="p">,</span>
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">spin1z</span><span class="p">,</span>
-                                      <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">spin2z</span><span class="p">)))</span></div>
-        <span class="k">return</span> <span class="n">htilde</span>
+                                      <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">spin2z</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">htilde</span></div>
 
 <div class="viewcode-block" id="FilterBank"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.FilterBank">[docs]</a><span class="k">class</span> <span class="nc">FilterBank</span><span class="p">(</span><span class="n">TemplateBank</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">filter_length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span>
@@ -864,8 +864,8 @@
         <span class="k">if</span> <span class="n">tmpltdur</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tmpltdur</span><span class="o">==</span><span class="mf">0.0</span> <span class="p">:</span>
             <span class="n">tmpltdur</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="o">**</span><span class="n">p</span><span class="p">)</span>
         <span class="n">hdecomp</span><span class="o">.</span><span class="n">chirp_length</span> <span class="o">=</span> <span class="n">tmpltdur</span>
-        <span class="n">hdecomp</span><span class="o">.</span><span class="n">length_in_time</span> <span class="o">=</span> <span class="n">hdecomp</span><span class="o">.</span><span class="n">chirp_length</span></div>
-        <span class="k">return</span> <span class="n">hdecomp</span>
+        <span class="n">hdecomp</span><span class="o">.</span><span class="n">length_in_time</span> <span class="o">=</span> <span class="n">hdecomp</span><span class="o">.</span><span class="n">chirp_length</span>
+        <span class="k">return</span> <span class="n">hdecomp</span></div>
 
 <div class="viewcode-block" id="FilterBank.generate_with_delta_f_and_max_freq"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.FilterBank.generate_with_delta_f_and_max_freq">[docs]</a>    <span class="k">def</span> <span class="nf">generate_with_delta_f_and_max_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_num</span><span class="p">,</span> <span class="n">max_freq</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span>
                                            <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -892,8 +892,8 @@
             <span class="n">htilde</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">get_waveform_filter</span><span class="p">(</span>
                 <span class="n">cached_mem</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">t_num</span><span class="p">],</span> <span class="n">approximant</span><span class="o">=</span><span class="n">approximant</span><span class="p">,</span>
                 <span class="n">f_lower</span><span class="o">=</span><span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">f_final</span><span class="o">=</span><span class="n">max_freq</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span>
-                <span class="n">distance</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">DYN_RANGE_FAC</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">max_freq</span><span class="p">))</span></div>
-        <span class="k">return</span> <span class="n">htilde</span>
+                <span class="n">distance</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">DYN_RANGE_FAC</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">max_freq</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">htilde</span></div>
 
     <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="c1"># Make new memory for templates if we aren&#39;t given output memory</span>
@@ -958,8 +958,8 @@
 
         <span class="c1"># Add sigmasq as a method of this instance</span>
         <span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">sigma_cached</span><span class="p">,</span> <span class="n">htilde</span><span class="p">)</span>
-        <span class="n">htilde</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="p">{}</span></div>
-        <span class="k">return</span> <span class="n">htilde</span>
+        <span class="n">htilde</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="n">htilde</span></div>
 
 <div class="viewcode-block" id="find_variable_start_frequency"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.find_variable_start_frequency">[docs]</a><span class="k">def</span> <span class="nf">find_variable_start_frequency</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">f_start</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span>
                                   <span class="n">delta_f</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
@@ -971,8 +971,8 @@
     <span class="k">while</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">max_length</span><span class="p">:</span>
         <span class="n">f</span> <span class="o">+=</span> <span class="n">delta_f</span>
         <span class="n">l</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">waveform</span><span class="o">.</span><span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="n">approximant</span><span class="p">,</span>
-                                                      <span class="n">parameters</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">f</span>
+                                                      <span class="n">parameters</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span></div>
 
 
 <div class="viewcode-block" id="FilterBankSkyMax"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.FilterBankSkyMax">[docs]</a><span class="k">class</span> <span class="nc">FilterBankSkyMax</span><span class="p">(</span><span class="n">TemplateBank</span><span class="p">):</span>
@@ -1065,8 +1065,8 @@
         <span class="n">hplus</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">hcross</span><span class="o">.</span><span class="n">sigmasq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">sigma_cached</span><span class="p">,</span> <span class="n">hcross</span><span class="p">)</span>
         <span class="n">hcross</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="p">{}</span>
-</div>
-        <span class="k">return</span> <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span>
+
+        <span class="k">return</span> <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span></div>
 </pre></div>
 
            </div>
@@ -1082,7 +1082,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1104,7 +1104,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

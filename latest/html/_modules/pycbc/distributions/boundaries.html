@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.boundaries &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.distributions.boundaries &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.distributions" href="../distributions.html"/> 
 
   
@@ -265,12 +265,12 @@
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;open&#39;</span>
 
 <div class="viewcode-block" id="OpenBound.larger"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.OpenBound.larger">[docs]</a>    <span class="k">def</span> <span class="nf">larger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns True if `other` is `&gt;`, False otherwise&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">other</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if `other` is `&gt;`, False otherwise&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">other</span></div>
 
 <div class="viewcode-block" id="OpenBound.smaller"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.OpenBound.smaller">[docs]</a>    <span class="k">def</span> <span class="nf">smaller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns True if `other` is `&lt;`, False otherwise.&quot;&quot;&quot;</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if `other` is `&lt;`, False otherwise.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span></div></div>
 
 
 <div class="viewcode-block" id="ClosedBound"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ClosedBound">[docs]</a><span class="k">class</span> <span class="nc">ClosedBound</span><span class="p">(</span><span class="n">_Bound</span><span class="p">):</span>
@@ -278,11 +278,11 @@
 
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;closed&#39;</span>
 
-<div class="viewcode-block" id="ClosedBound.larger"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ClosedBound.larger">[docs]</a>    <span class="k">def</span> <span class="nf">larger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;=</span> <span class="n">other</span>
+<div class="viewcode-block" id="ClosedBound.larger"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ClosedBound.larger">[docs]</a>    <span class="k">def</span> <span class="nf">larger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&gt;=</span> <span class="n">other</span></div>
 
-<div class="viewcode-block" id="ClosedBound.smaller"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ClosedBound.smaller">[docs]</a>    <span class="k">def</span> <span class="nf">smaller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span>
+<div class="viewcode-block" id="ClosedBound.smaller"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ClosedBound.smaller">[docs]</a>    <span class="k">def</span> <span class="nf">smaller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span></div></div>
 
 
 <div class="viewcode-block" id="ReflectedBound"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ReflectedBound">[docs]</a><span class="k">class</span> <span class="nc">ReflectedBound</span><span class="p">(</span><span class="n">ClosedBound</span><span class="p">):</span>
@@ -290,20 +290,20 @@
 
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;reflected&#39;</span>
 
-<div class="viewcode-block" id="ReflectedBound.reflect"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ReflectedBound.reflect">[docs]</a>    <span class="k">def</span> <span class="nf">reflect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span> <span class="o">-</span> <span class="n">value</span>
+<div class="viewcode-block" id="ReflectedBound.reflect"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ReflectedBound.reflect">[docs]</a>    <span class="k">def</span> <span class="nf">reflect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="bp">self</span> <span class="o">-</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="ReflectedBound.reflect_left"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ReflectedBound.reflect_left">[docs]</a>    <span class="k">def</span> <span class="nf">reflect_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Only reflects the value if is &gt; self.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">value</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div>
 
 <div class="viewcode-block" id="ReflectedBound.reflect_right"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.ReflectedBound.reflect_right">[docs]</a>    <span class="k">def</span> <span class="nf">reflect_right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Only reflects the value if is &lt; self.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">value</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reflect</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span></div></div>
 
 
 <span class="n">boundary_types</span> <span class="o">=</span> <span class="p">{</span>
@@ -332,8 +332,8 @@
 <span class="sd">    -------</span>
 <span class="sd">    float</span>
 <span class="sd">        The value after the cyclic bounds are applied.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="p">)</span> <span class="o">%</span><span class="p">(</span><span class="n">bounds</span><span class="o">.</span><span class="n">_max</span> <span class="o">-</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="p">)</span> <span class="o">%</span><span class="p">(</span><span class="n">bounds</span><span class="o">.</span><span class="n">_max</span> <span class="o">-</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span></div>
 
 <div class="viewcode-block" id="reflect_well"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.reflect_well">[docs]</a><span class="k">def</span> <span class="nf">reflect_well</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">bounds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given some boundaries, reflects the value until it falls within both</span>
@@ -356,8 +356,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">while</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bounds</span><span class="p">:</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_max</span><span class="o">.</span><span class="n">reflect_left</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="o">.</span><span class="n">reflect_right</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">value</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">_min</span><span class="o">.</span><span class="n">reflect_right</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span></div>
 
 
 <span class="k">def</span> <span class="nf">_pass</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
@@ -610,8 +610,8 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">retval</span> <span class="o">=</span> <span class="n">retval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-                <span class="n">retval</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">retval</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">retval</span>
+                <span class="n">retval</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">retval</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">retval</span></div>
 
 <div class="viewcode-block" id="Bounds.contains_conditioned"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.boundaries.Bounds.contains_conditioned">[docs]</a>    <span class="k">def</span> <span class="nf">contains_conditioned</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Runs `apply_conditions` on the given value before testing whether it</span>
@@ -628,8 +628,8 @@
 <span class="sd">        bool</span>
 <span class="sd">            Whether or not the value is within the bounds after the boundary</span>
 <span class="sd">            conditions are applied.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_conditions</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_conditions</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span></div></div>
 </pre></div>
 
            </div>
@@ -645,7 +645,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -667,7 +667,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

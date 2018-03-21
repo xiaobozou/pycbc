@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.veto &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.veto &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -214,13 +214,13 @@
 <span class="kn">from</span> <span class="nn">pycbc_glue.segments</span> <span class="k">import</span> <span class="n">segment</span><span class="p">,</span> <span class="n">segmentlist</span>
 
 
-<div class="viewcode-block" id="start_end_to_segments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.start_end_to_segments">[docs]</a><span class="k">def</span> <span class="nf">start_end_to_segments</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)])</span>
+<div class="viewcode-block" id="start_end_to_segments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.start_end_to_segments">[docs]</a><span class="k">def</span> <span class="nf">start_end_to_segments</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">segmentlist</span><span class="p">([</span><span class="n">segment</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)])</span></div>
 
 <div class="viewcode-block" id="segments_to_start_end"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.segments_to_start_end">[docs]</a><span class="k">def</span> <span class="nf">segments_to_start_end</span><span class="p">(</span><span class="n">segs</span><span class="p">):</span>
     <span class="n">segs</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">]),</span> </div>
-            <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">]),</span> 
+            <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">]))</span></div>
 
 <div class="viewcode-block" id="start_end_from_segments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.start_end_from_segments">[docs]</a><span class="k">def</span> <span class="nf">start_end_from_segments</span><span class="p">(</span><span class="n">segment_file</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -241,8 +241,8 @@
     <span class="n">start</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">segment_table</span><span class="o">.</span><span class="n">getColumnByName</span><span class="p">(</span><span class="s1">&#39;start_time&#39;</span><span class="p">))</span>
     <span class="n">start_ns</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">segment_table</span><span class="o">.</span><span class="n">getColumnByName</span><span class="p">(</span><span class="s1">&#39;start_time_ns&#39;</span><span class="p">))</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">segment_table</span><span class="o">.</span><span class="n">getColumnByName</span><span class="p">(</span><span class="s1">&#39;end_time&#39;</span><span class="p">))</span>
-    <span class="n">end_ns</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">segment_table</span><span class="o">.</span><span class="n">getColumnByName</span><span class="p">(</span><span class="s1">&#39;end_time_ns&#39;</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">start</span> <span class="o">+</span> <span class="n">start_ns</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="n">end_ns</span> <span class="o">*</span> <span class="mf">1e-9</span>
+    <span class="n">end_ns</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">segment_table</span><span class="o">.</span><span class="n">getColumnByName</span><span class="p">(</span><span class="s1">&#39;end_time_ns&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">start</span> <span class="o">+</span> <span class="n">start_ns</span> <span class="o">*</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">end</span> <span class="o">+</span> <span class="n">end_ns</span> <span class="o">*</span> <span class="mf">1e-9</span></div>
 
 
 <div class="viewcode-block" id="indices_within_times"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.indices_within_times">[docs]</a><span class="k">def</span> <span class="nf">indices_within_times</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
@@ -273,8 +273,8 @@
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">tsort</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">))]</span>
+
+    <span class="k">return</span> <span class="n">tsort</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">))]</span></div>
 
 <div class="viewcode-block" id="indices_outside_times"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.indices_outside_times">[docs]</a><span class="k">def</span> <span class="nf">indices_outside_times</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -295,8 +295,8 @@
 <span class="sd">        Array of indices into times</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">exclude</span> <span class="o">=</span> <span class="n">indices_within_times</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">exclude</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">exclude</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="select_segments_by_definer"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.select_segments_by_definer">[docs]</a><span class="k">def</span> <span class="nf">select_segments_by_definer</span><span class="p">(</span><span class="n">segment_file</span><span class="p">,</span> <span class="n">segment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the list of segments that match the segment name</span>
@@ -341,8 +341,8 @@
     <span class="n">keep</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="ow">in</span> <span class="n">valid_id</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">did</span><span class="p">])</span>
     <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">start_end_to_segments</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span> <span class="n">end</span><span class="p">[</span><span class="n">keep</span><span class="p">])</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">segmentlist</span><span class="p">([])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">segmentlist</span><span class="p">([])</span></div>
 
 <div class="viewcode-block" id="indices_within_segments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.indices_within_segments">[docs]</a><span class="k">def</span> <span class="nf">indices_within_segments</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">segment_files</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">segment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the list of indices that should be vetoed by the segments in the</span>
@@ -376,8 +376,8 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">indices_within_times</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
         <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">union1d</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">indices</span><span class="p">,</span> <span class="n">veto_segs</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">indices</span><span class="p">,</span> <span class="n">veto_segs</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()</span></div>
  
 <div class="viewcode-block" id="indices_outside_segments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.indices_outside_segments">[docs]</a><span class="k">def</span> <span class="nf">indices_outside_segments</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">segment_files</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">segment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the list of indices that are outside the segments in the</span>
@@ -403,8 +403,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">exclude</span><span class="p">,</span> <span class="n">segs</span> <span class="o">=</span> <span class="n">indices_within_segments</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">segment_files</span><span class="p">,</span>
                                          <span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">,</span> <span class="n">segment_name</span><span class="o">=</span><span class="n">segment_name</span><span class="p">)</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">exclude</span><span class="p">),</span> <span class="n">segs</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">exclude</span><span class="p">),</span> <span class="n">segs</span></div>
 
 <div class="viewcode-block" id="get_segment_definer_comments"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.veto.get_segment_definer_comments">[docs]</a><span class="k">def</span> <span class="nf">get_segment_definer_comments</span><span class="p">(</span><span class="n">xml_file</span><span class="p">,</span> <span class="n">include_version</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a dict with the comment column as the value for each segment&quot;&quot;&quot;</span>
@@ -431,8 +431,8 @@
                                           <span class="nb">str</span><span class="p">(</span><span class="n">seg_def</span><span class="o">.</span><span class="n">name</span><span class="p">)])</span>
 
         <span class="n">comment_dict</span><span class="p">[</span><span class="n">full_channel_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">seg_def</span><span class="o">.</span><span class="n">comment</span>
-</div>
-    <span class="k">return</span> <span class="n">comment_dict</span>
+
+    <span class="k">return</span> <span class="n">comment_dict</span></div>
 </pre></div>
 
            </div>
@@ -448,7 +448,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -470,7 +470,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

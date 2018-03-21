@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.nltides &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.waveform.nltides &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -236,8 +236,8 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">f</span> <span class="o">/</span> <span class="mf">100.0</span>
     <span class="n">mc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
     <span class="n">dphi</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="p">(</span><span class="n">mc</span> <span class="o">/</span> <span class="mf">1.2</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>
-    <span class="n">dphi</span> <span class="o">*=</span> <span class="p">(</span><span class="n">x0</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">dphi</span>
+    <span class="n">dphi</span> <span class="o">*=</span> <span class="p">(</span><span class="n">x0</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dphi</span></div>
 
 <div class="viewcode-block" id="nonlinear_tidal_spa"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.nltides.nonlinear_tidal_spa">[docs]</a><span class="k">def</span> <span class="nf">nonlinear_tidal_spa</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">waveform</span>
@@ -254,8 +254,8 @@
                <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span> <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])),</span>
                <span class="n">dtype</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">hp</span><span class="p">[</span><span class="n">kmin</span><span class="p">:]</span> <span class="o">*=</span> <span class="n">pd</span>
-    <span class="n">hc</span><span class="p">[</span><span class="n">kmin</span><span class="p">:]</span> <span class="o">*=</span> <span class="n">pd</span></div>
-    <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span>
+    <span class="n">hc</span><span class="p">[</span><span class="n">kmin</span><span class="p">:]</span> <span class="o">*=</span> <span class="n">pd</span>
+    <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span></div>
 </pre></div>
 
            </div>
@@ -271,7 +271,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -293,7 +293,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

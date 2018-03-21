@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.noise.reproduceable &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.noise.reproduceable &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -254,8 +254,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num</span> <span class="o">=</span> <span class="n">SAMPLE_RATE</span> <span class="o">*</span> <span class="n">BLOCK_SIZE</span>
     <span class="n">rng</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span> <span class="o">%</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">)</span>
-    <span class="n">variance</span> <span class="o">=</span> <span class="n">SAMPLE_RATE</span> <span class="o">/</span> <span class="mi">2</span></div>
-    <span class="k">return</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">variance</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">SAMPLE_RATE</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">variance</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="normal"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.reproduceable.normal">[docs]</a><span class="k">def</span> <span class="nf">normal</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Generate data with a white Gaussian (normal) distribution</span>
@@ -284,8 +284,8 @@
 
     <span class="n">sv</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">50</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">block</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">sv</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-    <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">SAMPLE_RATE</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">start</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">SAMPLE_RATE</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ts</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="colored_noise"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.reproduceable.colored_noise">[docs]</a><span class="k">def</span> <span class="nf">colored_noise</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise from a PSD</span>
@@ -366,8 +366,8 @@
     <span class="n">white_noise</span> <span class="o">*=</span> <span class="n">asd</span>
     <span class="k">del</span> <span class="n">asd</span>
     <span class="n">colored</span> <span class="o">=</span> <span class="n">white_noise</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
-    <span class="k">del</span> <span class="n">white_noise</span></div>
-    <span class="k">return</span> <span class="n">colored</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">white_noise</span>
+    <span class="k">return</span> <span class="n">colored</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="noise_from_string"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.reproduceable.noise_from_string">[docs]</a><span class="k">def</span> <span class="nf">noise_from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise from an analytic PSD</span>
@@ -397,8 +397,8 @@
     <span class="n">flen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">SAMPLE_RATE</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">psd</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">colored_noise</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
-                         <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span></div>
-                         <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">low_frequency_cutoff</span><span class="p">)</span>
+                         <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+                         <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">low_frequency_cutoff</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -414,7 +414,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -436,7 +436,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

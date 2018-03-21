@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -282,8 +282,8 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1 and mass2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">mp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
-    <span class="n">mp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">mp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="secondary_mass"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_mass">[docs]</a><span class="k">def</span> <span class="nf">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
@@ -295,33 +295,33 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1 and mass2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">ms</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
-    <span class="n">ms</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">ms</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mtotal_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mtotal_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">mtotal_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the total mass from mass1 and mass2.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span>
+    <span class="sd">&quot;&quot;&quot;Returns the total mass from mass1 and mass2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span></div>
 
 
 <div class="viewcode-block" id="q_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.q_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">q_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the mass ratio m1/m2, where m1 &gt;= m2.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="n">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Returns the mass ratio m1/m2, where m1 &gt;= m2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="n">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="invq_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.invq_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">invq_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the inverse mass ratio m2/m1, where m1 &gt;= m2.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="n">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Returns the inverse mass ratio m2/m1, where m1 &gt;= m2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="n">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="eta_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.eta_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the symmetric mass ratio from mass1 and mass2.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mass1</span><span class="o">*</span><span class="n">mass2</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass1</span><span class="o">+</span><span class="n">mass2</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span>
+    <span class="sd">&quot;&quot;&quot;Returns the symmetric mass ratio from mass1 and mass2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mass1</span><span class="o">*</span><span class="n">mass2</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass1</span><span class="o">+</span><span class="n">mass2</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span></div>
 
 
 <div class="viewcode-block" id="mchirp_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mchirp_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the chirp mass from mass1 and mass2.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">mass1</span><span class="o">+</span><span class="n">mass2</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Returns the chirp mass from mass1 and mass2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">mass1</span><span class="o">+</span><span class="n">mass2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_mtotal_q"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_mtotal_q">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_mtotal_q</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
@@ -330,8 +330,8 @@
 <span class="sd">    If the mass ratio q is &gt;= 1, the returned mass will be the primary</span>
 <span class="sd">    (heavier) mass. If q &lt; 1, the returned mass will be the secondary</span>
 <span class="sd">    (lighter) mass.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">q</span><span class="o">*</span><span class="n">mtotal</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">*</span><span class="n">mtotal</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass2_from_mtotal_q"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass2_from_mtotal_q">[docs]</a><span class="k">def</span> <span class="nf">mass2_from_mtotal_q</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
@@ -340,42 +340,42 @@
 <span class="sd">    If the mass ratio q is &gt;= 1, the returned mass will be the secondary</span>
 <span class="sd">    (lighter) mass. If q &lt; 1, the returned mass will be the primary (heavier)</span>
 <span class="sd">    mass.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mtotal</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mtotal</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_mtotal_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_mtotal_eta">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the primary mass from the total mass and symmetric mass</span>
 <span class="sd">    ratio.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass2_from_mtotal_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass2_from_mtotal_eta">[docs]</a><span class="k">def</span> <span class="nf">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the secondary mass from the total mass and symmetric mass</span>
 <span class="sd">    ratio.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mtotal_from_mchirp_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mtotal_from_mchirp_eta">[docs]</a><span class="k">def</span> <span class="nf">mtotal_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the total mass from the chirp mass and symmetric mass ratio.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mchirp</span> <span class="o">/</span> <span class="p">(</span><span class="n">eta</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">5.</span><span class="p">))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mchirp</span> <span class="o">/</span> <span class="p">(</span><span class="n">eta</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">5.</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_mchirp_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_mchirp_eta">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the primary mass from the chirp mass and symmetric mass ratio.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">mass1_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass1_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass2_from_mchirp_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass2_from_mchirp_eta">[docs]</a><span class="k">def</span> <span class="nf">mass2_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the primary mass from the chirp mass and symmetric mass ratio.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_mass2_from_mchirp_mass1</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">mass1</span><span class="p">):</span>
@@ -452,16 +452,16 @@
     <span class="sd">&quot;&quot;&quot;Returns the secondary mass from the primary mass and symmetric mass</span>
 <span class="sd">    ratio.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">mass_from_knownmass_eta</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">known_is_secondary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></div>
-                                   <span class="n">force_real</span><span class="o">=</span><span class="n">force_real</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass_from_knownmass_eta</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">known_is_secondary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                   <span class="n">force_real</span><span class="o">=</span><span class="n">force_real</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_mass2_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_mass2_eta">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_mass2_eta</span><span class="p">(</span><span class="n">mass2</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">force_real</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the primary mass from the secondary mass and symmetric mass</span>
 <span class="sd">    ratio.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">mass_from_knownmass_eta</span><span class="p">(</span><span class="n">mass2</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">known_is_secondary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></div>
-                                   <span class="n">force_real</span><span class="o">=</span><span class="n">force_real</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass_from_knownmass_eta</span><span class="p">(</span><span class="n">mass2</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">known_is_secondary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                   <span class="n">force_real</span><span class="o">=</span><span class="n">force_real</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="eta_from_q"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.eta_from_q">[docs]</a><span class="k">def</span> <span class="nf">eta_from_q</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
@@ -473,18 +473,18 @@
 <span class="sd">        \eta = \frac{q}{(1+q)^2}.</span>
 
 <span class="sd">    Note that the mass ratio may be either &lt; 1 or &gt; 1.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">q</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">q</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_mchirp_q"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_mchirp_q">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_mchirp_q</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the primary mass from the given chirp mass and mass ratio.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mass1_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta_from_q</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="sd">&quot;&quot;&quot;Returns the primary mass from the given chirp mass and mass ratio.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mass1_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta_from_q</span><span class="p">(</span><span class="n">q</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="mass2_from_mchirp_q"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass2_from_mchirp_q">[docs]</a><span class="k">def</span> <span class="nf">mass2_from_mchirp_q</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the secondary mass from the given chirp mass and mass ratio.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mass2_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta_from_q</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="sd">&quot;&quot;&quot;Returns the secondary mass from the given chirp mass and mass ratio.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mass2_from_mchirp_eta</span><span class="p">(</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">eta_from_q</span><span class="p">(</span><span class="n">q</span><span class="p">))</span></div>
 
 
 <span class="k">def</span> <span class="nf">_a0</span><span class="p">(</span><span class="n">f_lower</span><span class="p">):</span>
@@ -504,8 +504,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># convert to seconds</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span>
-    <span class="c1"># formulae from arxiv.org:0706.4437</span></div>
-    <span class="k">return</span> <span class="n">_a0</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="c1"># formulae from arxiv.org:0706.4437</span>
+    <span class="k">return</span> <span class="n">_a0</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="tau3_from_mtotal_eta"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau3_from_mtotal_eta">[docs]</a><span class="k">def</span> <span class="nf">tau3_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
@@ -514,24 +514,24 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># convert to seconds</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span>
-    <span class="c1"># formulae from arxiv.org:0706.4437</span></div>
-    <span class="k">return</span> <span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="c1"># formulae from arxiv.org:0706.4437</span>
+    <span class="k">return</span> <span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="tau0_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau0_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">tau0_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns :math:`\tau_0` from the component masses and given frequency.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">tau0_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tau0_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="tau3_from_mass1_mass2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau3_from_mass1_mass2">[docs]</a><span class="k">def</span> <span class="nf">tau3_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns :math:`\tau_3` from the component masses and given frequency.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">tau3_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tau3_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mtotal_from_tau0_tau3"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mtotal_from_tau0_tau3">[docs]</a><span class="k">def</span> <span class="nf">mtotal_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">,</span>
@@ -540,30 +540,30 @@
     <span class="n">mtotal</span> <span class="o">=</span> <span class="p">(</span><span class="n">tau3</span> <span class="o">/</span> <span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">tau0</span> <span class="o">/</span> <span class="n">_a0</span><span class="p">(</span><span class="n">f_lower</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">in_seconds</span><span class="p">:</span>
         <span class="c1"># convert back to solar mass units</span>
-        <span class="n">mtotal</span> <span class="o">/=</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span></div>
-    <span class="k">return</span> <span class="n">mtotal</span>
+        <span class="n">mtotal</span> <span class="o">/=</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span>
+    <span class="k">return</span> <span class="n">mtotal</span></div>
 
 
 <div class="viewcode-block" id="eta_from_tau0_tau3"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.eta_from_tau0_tau3">[docs]</a><span class="k">def</span> <span class="nf">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns symmetric mass ratio from :math:`\tau_0, \tau_3`.&quot;&quot;&quot;</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">,</span>
                                    <span class="n">in_seconds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau3</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">eta</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">mtotal</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">eta</span></div>
 
 
 <div class="viewcode-block" id="mass1_from_tau0_tau3"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass1_from_tau0_tau3">[docs]</a><span class="k">def</span> <span class="nf">mass1_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the primary mass from the given :math:`\tau_0, \tau_3`.&quot;&quot;&quot;</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">mass1_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass1_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="mass2_from_tau0_tau3"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.mass2_from_tau0_tau3">[docs]</a><span class="k">def</span> <span class="nf">mass2_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the secondary mass from the given :math:`\tau_0, \tau_3`.&quot;&quot;&quot;</span>
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="lambda_tilde"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.lambda_tilde">[docs]</a><span class="k">def</span> <span class="nf">lambda_tilde</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The effective lambda parameter</span>
@@ -580,8 +580,8 @@
     <span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
     <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">lsum</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">7.</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">-</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">**</span> <span class="mf">2.0</span><span class="p">)</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">-</span> <span class="mi">11</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">**</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ldiff</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="mf">8.0</span> <span class="o">/</span> <span class="mf">13.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span><span class="p">),</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">eta</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">-</span> <span class="mi">11</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">**</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ldiff</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="mf">8.0</span> <span class="o">/</span> <span class="mf">13.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span><span class="p">),</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -591,8 +591,8 @@
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
 <div class="viewcode-block" id="chi_eff"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_eff">[docs]</a><span class="k">def</span> <span class="nf">chi_eff</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the effective spin from mass1, mass2, spin1z, and spin2z.&quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">spin1z</span> <span class="o">*</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">spin2z</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Returns the effective spin from mass1, mass2, spin1z, and spin2z.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">spin1z</span> <span class="o">*</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">spin2z</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_a">[docs]</a><span class="k">def</span> <span class="nf">chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the aligned mass-weighted spin difference from mass1, mass2,</span>
@@ -601,30 +601,30 @@
     <span class="n">m_p</span> <span class="o">=</span> <span class="n">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="n">spin_p</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">)</span>
     <span class="n">m_s</span> <span class="o">=</span> <span class="n">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
-    <span class="n">spin_s</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">spin_s</span> <span class="o">*</span> <span class="n">m_s</span> <span class="o">-</span> <span class="n">spin_p</span> <span class="o">*</span> <span class="n">m_p</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m_s</span> <span class="o">+</span> <span class="n">m_p</span><span class="p">)</span>
+    <span class="n">spin_s</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">spin_s</span> <span class="o">*</span> <span class="n">m_s</span> <span class="o">-</span> <span class="n">spin_p</span> <span class="o">*</span> <span class="n">m_p</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">m_s</span> <span class="o">+</span> <span class="n">m_p</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="chi_p"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p">[docs]</a><span class="k">def</span> <span class="nf">chi_p</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin from mass1, mass2, spin1x,</span>
 <span class="sd">    spin1y, spin2x, and spin2y.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">xi1</span> <span class="o">=</span> <span class="n">secondary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
-    <span class="n">xi2</span> <span class="o">=</span> <span class="n">primary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
+    <span class="n">xi2</span> <span class="o">=</span> <span class="n">primary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="phi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_a">[docs]</a><span class="k">def</span> <span class="nf">phi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the angle between the in-plane perpendicular spins.&quot;&quot;&quot;</span>
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">),</span>
                                 <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">))</span>
     <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">),</span>
-                                <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">-</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+                                <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">-</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi_s</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the sum of the in-plane perpendicular spins.&quot;&quot;&quot;</span>
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">)</span>
-    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">+</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">+</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="primary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_spin">[docs]</a><span class="k">def</span> <span class="nf">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the primary mass.&quot;&quot;&quot;</span>
@@ -638,8 +638,8 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1, mass2, spin1, spin2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">sp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spin1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
-    <span class="n">sp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">sp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="secondary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_spin">[docs]</a><span class="k">def</span> <span class="nf">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the secondary mass.&quot;&quot;&quot;</span>
@@ -653,28 +653,28 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1, mass2, spin1, spin2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">ss</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spin2</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
-    <span class="n">ss</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">ss</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="primary_xi"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_xi">[docs]</a><span class="k">def</span> <span class="nf">primary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the larger mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spinx</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">)</span>
-    <span class="n">spiny</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span>
+    <span class="n">spiny</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="secondary_xi"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_xi">[docs]</a><span class="k">def</span> <span class="nf">secondary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the smaller mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spinx</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">)</span>
-    <span class="n">spiny</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">xi2_from_mass1_mass2_spin2x_spin2y</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span>
+    <span class="n">spiny</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xi2_from_mass1_mass2_spin2x_spin2y</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="xi1_from_spin1x_spin1y"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.xi1_from_spin1x_spin1y">[docs]</a><span class="k">def</span> <span class="nf">xi1_from_spin1x_spin1y</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the larger mass.</span>
 <span class="sd">    This function assumes it&#39;s given spins of the primary mass.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="xi2_from_mass1_mass2_spin2x_spin2y"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.xi2_from_mass1_mass2_spin2x_spin2y">[docs]</a><span class="k">def</span> <span class="nf">xi2_from_mass1_mass2_spin2x_spin2y</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the smaller mass.</span>
@@ -682,13 +682,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">q_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="n">a1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">q</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">a1</span> <span class="o">/</span> <span class="p">(</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span><span class="p">)</span> <span class="o">*</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a1</span> <span class="o">/</span> <span class="p">(</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span><span class="p">)</span> <span class="o">*</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="chi_perp_from_spinx_spiny"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_perp_from_spinx_spiny">[docs]</a><span class="k">def</span> <span class="nf">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the in-plane spin from the x/y components of the spin.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">spinx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">spiny</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">spinx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">spiny</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="chi_perp_from_mass1_mass2_xi2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_perp_from_mass1_mass2_xi2">[docs]</a><span class="k">def</span> <span class="nf">chi_perp_from_mass1_mass2_xi2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the in-plane spin from mass1, mass2, and xi2 for the</span>
@@ -696,8 +696,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">q_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="n">a1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">q</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span> <span class="o">/</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">xi2</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span> <span class="o">/</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">xi2</span></div>
 
 <div class="viewcode-block" id="chi_p_from_xi1_xi2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p_from_xi1_xi2">[docs]</a><span class="k">def</span> <span class="nf">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns effective precession spin from xi1 and xi2.</span>
@@ -709,62 +709,62 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;xi1, xi2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">chi_p</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xi1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">xi1</span> <span class="o">&lt;</span> <span class="n">xi2</span>
-    <span class="n">chi_p</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">chi_p</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+    <span class="n">chi_p</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">chi_p</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="phi1_from_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi1_from_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane</span>
 <span class="sd">    spin for the primary mass from phi_s and phi_a.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">+</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">+</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span></div>
 
 <div class="viewcode-block" id="phi2_from_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi2_from_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane</span>
 <span class="sd">    spin for the secondary mass from phi_s and phi_a.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">-</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">-</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span></div>
 
 <div class="viewcode-block" id="phi_from_spinx_spiny"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_from_spinx_spiny">[docs]</a><span class="k">def</span> <span class="nf">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane spin.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">spiny</span><span class="p">,</span> <span class="n">spinx</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">phi</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">spiny</span><span class="p">,</span> <span class="n">spinx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">phi</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin1z_from_mass1_mass2_chi_eff_chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1z_from_mass1_mass2_chi_eff_chi_a">[docs]</a><span class="k">def</span> <span class="nf">spin1z_from_mass1_mass2_chi_eff_chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns spin1z.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">-</span> <span class="n">chi_a</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">-</span> <span class="n">chi_a</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin2z_from_mass1_mass2_chi_eff_chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2z_from_mass1_mass2_chi_eff_chi_a">[docs]</a><span class="k">def</span> <span class="nf">spin2z_from_mass1_mass2_chi_eff_chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns spin2z.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">+</span> <span class="n">chi_a</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">+</span> <span class="n">chi_a</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin1x_from_xi1_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1x_from_xi1_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin1x_from_xi1_phi_a_phi_s</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns x-component spin for primary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span>
+    <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin1y_from_xi1_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1y_from_xi1_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin1y_from_xi1_phi_a_phi_s</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns y-component spin for primary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_s</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span>
+    <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_s</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin2x_from_mass1_mass2_xi2_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2x_from_mass1_mass2_xi2_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin2x_from_mass1_mass2_xi2_phi_a_phi_s</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns x-component spin for secondary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">chi_perp</span> <span class="o">=</span> <span class="n">chi_perp_from_mass1_mass2_xi2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
-    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spin2y_from_mass1_mass2_xi2_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2y_from_mass1_mass2_xi2_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin2y_from_mass1_mass2_xi2_phi_a_phi_s</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns y-component spin for secondary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">chi_perp</span> <span class="o">=</span> <span class="n">chi_perp_from_mass1_mass2_xi2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
-    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span>
+    <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dquadmon_from_lambda"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.dquadmon_from_lambda">[docs]</a><span class="k">def</span> <span class="nf">dquadmon_from_lambda</span><span class="p">(</span><span class="n">lambdav</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the quadrupole moment of a neutron star given its lambda</span>
@@ -784,8 +784,8 @@
     <span class="n">ci</span> <span class="o">=</span> <span class="mf">0.0474</span>
     <span class="n">di</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.21</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**-</span><span class="mf">3.0</span>
     <span class="n">ei</span> <span class="o">=</span> <span class="mf">1.23</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**-</span><span class="mf">4.0</span>
-    <span class="n">ln_quad_moment</span> <span class="o">=</span> <span class="n">ai</span> <span class="o">+</span> <span class="n">bi</span><span class="o">*</span><span class="n">ll</span> <span class="o">+</span> <span class="n">ci</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">di</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">3.0</span> <span class="o">+</span> <span class="n">ei</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">4.0</span></div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ln_quad_moment</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">ln_quad_moment</span> <span class="o">=</span> <span class="n">ai</span> <span class="o">+</span> <span class="n">bi</span><span class="o">*</span><span class="n">ll</span> <span class="o">+</span> <span class="n">ci</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">di</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">3.0</span> <span class="o">+</span> <span class="n">ei</span><span class="o">*</span><span class="n">ll</span><span class="o">**</span><span class="mf">4.0</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ln_quad_moment</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span></div>
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -796,8 +796,8 @@
 <span class="c1">#</span>
 <div class="viewcode-block" id="chirp_distance"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chirp_distance">[docs]</a><span class="k">def</span> <span class="nf">chirp_distance</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">ref_mass</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the chirp distance given the luminosity distance and chirp mass.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">dist</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dist</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">distance_from_chirp_distance_mchirp</span><span class="p">(</span><span class="n">chirp_distance</span><span class="p">,</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">ref_mass</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the luminosity distance given a chirp distance and chirp mass.</span>
@@ -868,8 +868,8 @@
     <span class="n">numpy</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">numpysettings</span><span class="p">)</span>
     <span class="n">snrs</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">snrs</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="k">if</span> <span class="n">singleval</span><span class="p">:</span>
-        <span class="n">snrs</span> <span class="o">=</span> <span class="n">snrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">snrs</span>
+        <span class="n">snrs</span> <span class="o">=</span> <span class="n">snrs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">snrs</span></div>
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -889,11 +889,11 @@
 
     <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span>
 
-<div class="viewcode-block" id="freq_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.freq_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">freq_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="viewcode-block" id="freq_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.freq_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">freq_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dquadmon_from_lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda_tilde&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;secondary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;mtotal_from_mass1_mass2&#39;</span><span class="p">,</span>
@@ -939,7 +939,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -961,7 +961,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

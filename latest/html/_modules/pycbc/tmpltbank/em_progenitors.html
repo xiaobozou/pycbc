@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.em_progenitors &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.em_progenitors &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -256,8 +256,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    float</span>
 <span class="sd">        (r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2)</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">14</span><span class="p">)</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">14</span><span class="p">)</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
 <span class="c1"># Equation that determines the ISCO radius (in BH mass units):</span>
 <span class="c1"># arguments and sign are inverted wrt to ISCO_eq</span>
@@ -281,8 +281,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    float</span>
 <span class="sd">        -((r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2))</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="o">-</span><span class="n">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">)</span></div>
 
 <span class="c1"># Equation that determines the ISSO radius (in BH mass units) at one of the</span>
 <span class="c1"># poles</span>
@@ -304,8 +304,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    float</span>
 <span class="sd">        r**3*(r**2*(r-6)+chi**2*(3*r+4))+chi**4*(3*r*(r-2)+chi**2)</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
 <span class="c1"># Equation that determines the ISSO radius (in BH mass units) for a generic</span>
 <span class="c1"># orbital inclination</span>
@@ -339,8 +339,8 @@
     <span class="n">X</span><span class="o">=</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">28</span><span class="p">))</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">Y</span><span class="o">=</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">+</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">36</span><span class="p">))</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">6</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
     <span class="n">Z</span><span class="o">=</span><span class="n">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">Z</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">Z</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="p">)</span></div>
 
 <span class="c1"># ISSO radius solver</span>
 <div class="viewcode-block" id="PG_ISSO_solver"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.PG_ISSO_solver">[docs]</a><span class="k">def</span> <span class="nf">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">):</span>
@@ -396,8 +396,8 @@
         <span class="k">if</span> <span class="n">solution</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">solution</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
             <span class="n">initial_guess</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rISCO_limit</span><span class="p">,</span><span class="n">rISSO_at_pole_limit</span><span class="p">)</span>
             <span class="n">solution</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">PG_ISSO_eq</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">ci</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">solution</span>
+
+    <span class="k">return</span> <span class="n">solution</span></div>
 
 <span class="c1">############################################################################</span>
 <span class="c1"># Effective aligned spin of a NS-BH binary with tilted BH spin, as defined #</span>
@@ -433,8 +433,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">rISSO</span> <span class="o">=</span> <span class="n">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">)</span>
         <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISCO_eq_chi_first</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rISSO</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">chi_eff</span>
+
+    <span class="k">return</span> <span class="n">chi_eff</span></div>
 
 <span class="c1"># Solution to rISCO(chi_eff) = rISSO(chi,incl) with the correct sign</span>
 <div class="viewcode-block" id="bh_effective_spin"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.bh_effective_spin">[docs]</a><span class="k">def</span> <span class="nf">bh_effective_spin</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">):</span>
@@ -473,8 +473,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">initial_guess</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISCO_eq_chi_first</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rISSO</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">chi_eff</span>
+
+    <span class="k">return</span> <span class="n">chi_eff</span></div>
 
 <span class="c1">############################################################################</span>
 <span class="c1"># 2H 2-piecewise polytropic EOS, NS non-rotating equilibrium sequence      #</span>
@@ -520,8 +520,8 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unsupported EOS!&#39;</span><span class="p">)</span>
 
     <span class="n">max_ns_g_mass</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-</div>
-    <span class="k">return</span> <span class="p">(</span><span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">)</span></div>
 
 <span class="c1">####################################################################################</span>
 <span class="c1"># Given an NS equilibrium sequence and gravitational mass (in Msun), return the NS #</span>
@@ -549,8 +549,8 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span></div>
 
 <span class="c1">####################################################################################</span>
 <span class="c1"># Given an NS equilibrium sequence and gravitational mass (in Msun), return the NS #</span>
@@ -578,8 +578,8 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span></div>
 
 <span class="c1">########################################################################################</span>
 <span class="c1"># Physical parameters passed to remnant_mass (see later) must not be unphysical        #</span>
@@ -615,8 +615,8 @@
 <span class="sd">    float</span>
 <span class="sd">        x**3*(x**2-3*kappa*x+2*chi_eff*kappa*sqrt[kappa*x)</span>
 <span class="sd">        -3*q*(x**2-2*kappa*x+(chi_eff*kappa)**2)</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="p">))</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="p">))</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="remnant_mass"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.remnant_mass">[docs]</a><span class="k">def</span> <span class="nf">remnant_mass</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">,</span> <span class="n">shift</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -694,8 +694,8 @@
 
     <span class="c1"># The remnant mass in the same units as the NS rest mass (presumably solar masses)</span>
     <span class="n">remnant_mass</span> <span class="o">=</span> <span class="n">remnant_mass</span><span class="o">*</span><span class="n">ns_b_mass</span> <span class="o">-</span> <span class="n">shift</span>
-</div>
-    <span class="k">return</span> <span class="n">remnant_mass</span>
+
+    <span class="k">return</span> <span class="n">remnant_mass</span></div>
 
 <span class="c1">######################################################################################</span>
 <span class="c1"># Calculate an upper limit to the remnant mass by setting the BH spin magnitude to 1 #</span>
@@ -752,8 +752,8 @@
         <span class="n">remnant_mass_upper_limit</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">tmpltbank</span><span class="o">.</span><span class="n">em_progenitors</span><span class="o">.</span><span class="n">remnant_mass</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">bh_spin_magnitude</span><span class="p">,</span> <span class="n">bh_spin_inclination</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">remnant_mass_upper_limit</span> <span class="o">=</span> <span class="n">default_remnant_mass</span>
-</div>
-    <span class="k">return</span> <span class="n">remnant_mass_upper_limit</span>
+
+    <span class="k">return</span> <span class="n">remnant_mass_upper_limit</span></div>
 
 <span class="c1">################################################################################</span>
 <span class="c1"># Given a NS mass, a BH spin z-component, and and EOS, find the minimum value  #</span>
@@ -813,8 +813,8 @@
             <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_min</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_max</span>
-</div>
-    <span class="k">return</span> <span class="n">eta_sol</span>
+
+    <span class="k">return</span> <span class="n">eta_sol</span></div>
 
 <span class="c1">################################################################################</span>
 <span class="c1"># Vectorized version of find_em_constraint_data_point.  Numpy v1.7 and above   #</span>
@@ -900,8 +900,8 @@
     <span class="c1"># Save the results</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;constraint_em_bright&#39;</span><span class="p">,</span> <span class="n">mNS_pts</span><span class="o">=</span><span class="n">mNS_locations</span><span class="p">,</span> <span class="n">sBH_pts</span><span class="o">=</span><span class="n">sBH_locations</span><span class="p">,</span> <span class="n">eta_mins</span><span class="o">=</span><span class="n">eta_sol</span><span class="p">)</span>
     <span class="c1"># Cast the results in a format that is quick to plot from textfile</span>
-    <span class="n">constraint_data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mNS_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">sBH_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">eta_sol</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span></div>
-    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;constraint_em_bright.dat&#39;</span><span class="p">,</span> <span class="n">constraint_data</span><span class="p">)</span>
+    <span class="n">constraint_data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mNS_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">sBH_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">eta_sol</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;constraint_em_bright.dat&#39;</span><span class="p">,</span> <span class="n">constraint_data</span><span class="p">)</span></div>
 
 <span class="c1">################################################################################</span>
 <span class="c1"># Given a BH spin z-component and an NS mass, return the minumum symmetric     #</span>
@@ -958,8 +958,8 @@
     <span class="c1"># Else (assuming ns_g_mass and bh_spin_z are single numbers)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">eta_min</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">bh_spin_z</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">eta_min</span>
+
+    <span class="k">return</span> <span class="n">eta_min</span></div>
 </pre></div>
 
            </div>
@@ -975,7 +975,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -997,7 +997,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

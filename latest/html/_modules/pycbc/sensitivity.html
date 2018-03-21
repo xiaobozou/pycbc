@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.sensitivity &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.sensitivity &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -236,8 +236,8 @@
     <span class="c1"># compute binomial uncertainties in each bin</span>
     <span class="n">err_arr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">eff</span><span class="o">.</span><span class="n">array</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">eff</span><span class="o">.</span><span class="n">array</span><span class="p">)</span><span class="o">/</span><span class="n">bins</span><span class="o">.</span><span class="n">denominator</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
     <span class="n">err</span> <span class="o">=</span> <span class="n">bin_utils</span><span class="o">.</span><span class="n">BinnedArray</span><span class="p">(</span><span class="n">bin_utils</span><span class="o">.</span><span class="n">NDBins</span><span class="p">(</span><span class="n">ndbins</span><span class="p">),</span> <span class="n">array</span><span class="o">=</span><span class="n">err_arr</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">eff</span><span class="p">,</span> <span class="n">err</span>
+
+    <span class="k">return</span> <span class="n">eff</span><span class="p">,</span> <span class="n">err</span></div>
 
 
 <div class="viewcode-block" id="compute_search_volume_in_bins"><a class="viewcode-back" href="../../pycbc.html#pycbc.sensitivity.compute_search_volume_in_bins">[docs]</a><span class="k">def</span> <span class="nf">compute_search_volume_in_bins</span><span class="p">(</span><span class="n">found</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">ndbins</span><span class="p">,</span> <span class="n">sim_to_bins_function</span><span class="p">):</span>
@@ -264,8 +264,8 @@
     <span class="n">errors</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
         <span class="p">((</span><span class="mi">4</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">err</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">dx</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">errors</span>
+
+    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">errors</span></div>
 
 
 <div class="viewcode-block" id="volume_to_distance_with_errors"><a class="viewcode-back" href="../../pycbc.html#pycbc.sensitivity.volume_to_distance_with_errors">[docs]</a><span class="k">def</span> <span class="nf">volume_to_distance_with_errors</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">vol_err</span><span class="p">):</span>
@@ -286,8 +286,8 @@
     <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">vol</span> <span class="o">*</span> <span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
     <span class="n">ehigh</span> <span class="o">=</span> <span class="p">((</span><span class="n">vol</span> <span class="o">+</span> <span class="n">vol_err</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">dist</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vol</span> <span class="o">&gt;=</span> <span class="n">vol_err</span><span class="p">,</span> <span class="n">vol</span> <span class="o">-</span> <span class="n">vol_err</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">elow</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">-</span> <span class="p">(</span><span class="n">delta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">ehigh</span><span class="p">,</span> <span class="n">elow</span>
+    <span class="n">elow</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">-</span> <span class="p">(</span><span class="n">delta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">ehigh</span><span class="p">,</span> <span class="n">elow</span></div>
 
 
 <div class="viewcode-block" id="volume_montecarlo"><a class="viewcode-back" href="../../pycbc.html#pycbc.sensitivity.volume_montecarlo">[docs]</a><span class="k">def</span> <span class="nf">volume_montecarlo</span><span class="p">(</span><span class="n">found_d</span><span class="p">,</span> <span class="n">missed_d</span><span class="p">,</span> <span class="n">found_mchirp</span><span class="p">,</span> <span class="n">missed_mchirp</span><span class="p">,</span>
@@ -436,8 +436,8 @@
     <span class="c1"># return MC integral and its standard deviation; variance of mc_sum scales</span>
     <span class="c1"># relative to sample variance by Ninj (Bienayme&#39; rule)</span>
     <span class="n">vol</span> <span class="o">=</span> <span class="n">mc_prefactor</span> <span class="o">*</span> <span class="n">mc_sum</span>
-    <span class="n">vol_err</span> <span class="o">=</span> <span class="n">mc_prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ninj</span> <span class="o">*</span> <span class="n">mc_sample_variance</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span></div>
-    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">vol_err</span>
+    <span class="n">vol_err</span> <span class="o">=</span> <span class="n">mc_prefactor</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ninj</span> <span class="o">*</span> <span class="n">mc_sample_variance</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">vol_err</span></div>
 
 
 <div class="viewcode-block" id="volume_binned_pylal"><a class="viewcode-back" href="../../pycbc.html#pycbc.sensitivity.volume_binned_pylal">[docs]</a><span class="k">def</span> <span class="nf">volume_binned_pylal</span><span class="p">(</span><span class="n">f_dist</span><span class="p">,</span> <span class="n">m_dist</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
@@ -463,8 +463,8 @@
     <span class="n">total</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">f_dist</span><span class="p">,</span> <span class="n">m_dist</span><span class="p">])</span>
     <span class="n">ndbins</span> <span class="o">=</span> <span class="n">bin_utils</span><span class="o">.</span><span class="n">NDBins</span><span class="p">([</span><span class="n">bin_utils</span><span class="o">.</span><span class="n">LinearBins</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="n">bins</span><span class="p">),</span>
                                <span class="n">bin_utils</span><span class="o">.</span><span class="n">LinearBins</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-    <span class="n">vol</span><span class="p">,</span> <span class="n">verr</span> <span class="o">=</span> <span class="n">compute_search_volume_in_bins</span><span class="p">(</span><span class="n">f_dist</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">ndbins</span><span class="p">,</span> <span class="n">sims_to_bin</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">vol</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">verr</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vol</span><span class="p">,</span> <span class="n">verr</span> <span class="o">=</span> <span class="n">compute_search_volume_in_bins</span><span class="p">(</span><span class="n">f_dist</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">ndbins</span><span class="p">,</span> <span class="n">sims_to_bin</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vol</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">verr</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="volume_shell"><a class="viewcode-back" href="../../pycbc.html#pycbc.sensitivity.volume_shell">[docs]</a><span class="k">def</span> <span class="nf">volume_shell</span><span class="p">(</span><span class="n">f_dist</span><span class="p">,</span> <span class="n">m_dist</span><span class="p">):</span>
@@ -504,8 +504,8 @@
             <span class="n">vol_err</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">bin_width</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span>
 
         <span class="n">low</span> <span class="o">=</span> <span class="n">high</span>
-    <span class="n">vol_err</span> <span class="o">=</span> <span class="n">vol_err</span> <span class="o">**</span> <span class="mf">0.5</span></div>
-    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">vol_err</span>
+    <span class="n">vol_err</span> <span class="o">=</span> <span class="n">vol_err</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">vol</span><span class="p">,</span> <span class="n">vol_err</span></div>
 </pre></div>
 
            </div>
@@ -521,7 +521,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -543,7 +543,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

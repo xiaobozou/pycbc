@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.trigger_fits &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.trigger_fits &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -304,8 +304,8 @@
         <span class="n">thresh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">vals</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">]</span>
-    <span class="n">alpha</span> <span class="o">=</span> <span class="n">fitalpha_dict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">vals</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">fitstd_dict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">vals</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">fitalpha_dict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">vals</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">fitstd_dict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">vals</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span></div>
 
 
 <span class="n">fitfn_dict</span> <span class="o">=</span> <span class="p">{</span>
@@ -338,8 +338,8 @@
     <span class="n">xvals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
     <span class="n">fit</span> <span class="o">=</span> <span class="n">fitfn_dict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">xvals</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
     <span class="c1"># set fitted values below threshold to 0</span>
-    <span class="n">numpy</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">xvals</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">fit</span>
+    <span class="n">numpy</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">xvals</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fit</span></div>
 
 
 <span class="n">cum_fndict</span> <span class="o">=</span> <span class="p">{</span>
@@ -371,8 +371,8 @@
     <span class="n">xvals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
     <span class="n">cum_fit</span> <span class="o">=</span> <span class="n">cum_fndict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">xvals</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
     <span class="c1"># set fitted values below threshold to 0</span>
-    <span class="n">numpy</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">cum_fit</span><span class="p">,</span> <span class="n">xvals</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">cum_fit</span>
+    <span class="n">numpy</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">cum_fit</span><span class="p">,</span> <span class="n">xvals</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cum_fit</span></div>
 
 
 <div class="viewcode-block" id="tail_threshold"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.trigger_fits.tail_threshold">[docs]</a><span class="k">def</span> <span class="nf">tail_threshold</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
@@ -380,8 +380,8 @@
     <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Not enough input values to determine threshold&#39;</span><span class="p">)</span>
-    <span class="n">vals</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="o">-</span><span class="n">N</span><span class="p">:])</span>
+    <span class="n">vals</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="o">-</span><span class="n">N</span><span class="p">:])</span></div>
 
 
 <div class="viewcode-block" id="KS_test"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.trigger_fits.KS_test">[docs]</a><span class="k">def</span> <span class="nf">KS_test</span><span class="p">(</span><span class="n">distr</span><span class="p">,</span> <span class="n">vals</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -418,8 +418,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">vals</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">]</span>
     <span class="k">def</span> <span class="nf">cdf_fn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cum_fndict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">kstest</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">cdf_fn</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cum_fndict</span><span class="p">[</span><span class="n">distr</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kstest</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">cdf_fn</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_masses"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.trigger_fits.get_masses">[docs]</a><span class="k">def</span> <span class="nf">get_masses</span><span class="p">(</span><span class="n">bank</span><span class="p">,</span> <span class="n">tid</span><span class="p">):</span>
@@ -441,8 +441,8 @@
     <span class="n">m1</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:][</span><span class="n">tid</span><span class="p">]</span>
     <span class="n">m2</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:][</span><span class="n">tid</span><span class="p">]</span>
     <span class="n">s1z</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:][</span><span class="n">tid</span><span class="p">]</span>
-    <span class="n">s2z</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:][</span><span class="n">tid</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span>
+    <span class="n">s2z</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:][</span><span class="n">tid</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span></div>
 
 
 <div class="viewcode-block" id="get_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.trigger_fits.get_param">[docs]</a><span class="k">def</span> <span class="nf">get_param</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">):</span>
@@ -481,8 +481,8 @@
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">frequency_cutoff_from_name</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># try asking for a LALSimulation frequency function</span>
-        <span class="n">parvals</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">get_freq</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">parvals</span>
+        <span class="n">parvals</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">get_freq</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parvals</span></div>
 
 
 <div class="viewcode-block" id="which_bin"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.trigger_fits.which_bin">[docs]</a><span class="k">def</span> <span class="nf">which_bin</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">minpar</span><span class="p">,</span> <span class="n">maxpar</span><span class="p">,</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -519,8 +519,8 @@
     <span class="n">binind</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">frac</span> <span class="o">*</span> <span class="n">nbins</span><span class="p">)</span>
     <span class="c1"># corner case</span>
     <span class="k">if</span> <span class="n">par</span> <span class="o">==</span> <span class="n">maxpar</span><span class="p">:</span>
-        <span class="n">binind</span> <span class="o">=</span> <span class="n">nbins</span> <span class="o">-</span> <span class="mi">1</span></div>
-    <span class="k">return</span> <span class="n">binind</span>
+        <span class="n">binind</span> <span class="o">=</span> <span class="n">nbins</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">binind</span></div>
 
 </pre></div>
 
@@ -537,7 +537,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -559,7 +559,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

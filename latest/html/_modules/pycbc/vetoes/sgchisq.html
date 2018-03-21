@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes.sgchisq &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.vetoes.sgchisq &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -266,14 +266,14 @@
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The frequencies and quality factors of the sine-gaussians&quot;</span>
                  <span class="s2">&quot; to use. The format is &#39;region-boolean:q1-offset1,q2-offset2&#39;.&quot;</span>
                  <span class="s2">&quot;The offset is relative to the end frequency of the approximant.&quot;</span>
-                 <span class="s2">&quot;The region is a boolean expresion such as &#39;mtotal&gt;40&#39; and indicates &quot;</span></div>
-                 <span class="s2">&quot;where to apply this set of sine-Gaussians.&quot;</span><span class="p">)</span>
+                 <span class="s2">&quot;The region is a boolean expresion such as &#39;mtotal&gt;40&#39; and indicates &quot;</span>
+                 <span class="s2">&quot;where to apply this set of sine-Gaussians.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SingleDetSGChisq.from_cli"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.sgchisq.SingleDetSGChisq.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span> <span class="n">chisq_bins</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">bank</span><span class="p">,</span> <span class="n">chisq_bins</span><span class="p">,</span>
-                   <span class="n">args</span><span class="o">.</span><span class="n">sgchisq_snr_threshold</span><span class="p">,</span></div>
-                   <span class="n">args</span><span class="o">.</span><span class="n">sgchisq_locations</span><span class="p">)</span>
+                   <span class="n">args</span><span class="o">.</span><span class="n">sgchisq_snr_threshold</span><span class="p">,</span>
+                   <span class="n">args</span><span class="o">.</span><span class="n">sgchisq_locations</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SingleDetSGChisq.values"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.sgchisq.SingleDetSGChisq.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">snrv</span><span class="p">,</span> <span class="n">snr_norm</span><span class="p">,</span>
                      <span class="n">bchisq</span><span class="p">,</span> <span class="n">bchisq_dof</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
@@ -381,8 +381,8 @@
                 <span class="n">chisq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">chisq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">dof</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Found chisq </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">chisq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span></div></div>
-        <span class="k">return</span> <span class="n">chisq</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Found chisq </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">chisq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">chisq</span></div></div>
 
 </pre></div>
 
@@ -399,7 +399,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -421,7 +421,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

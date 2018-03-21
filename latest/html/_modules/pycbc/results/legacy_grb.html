@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.legacy_grb &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.results.legacy_grb &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -258,8 +258,8 @@
     <span class="n">page</span> <span class="o">=</span> <span class="n">markup</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;strict_html&quot;</span><span class="p">)</span>
     <span class="n">page</span><span class="o">.</span><span class="n">_escape</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">page</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">css</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">script</span><span class="o">=</span><span class="n">script</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_banner"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_banner">[docs]</a><span class="k">def</span> <span class="nf">write_banner</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&amp;nbsp;&#39;</span><span class="p">):</span>
@@ -284,8 +284,8 @@
     <span class="n">page</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="n">page</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_table"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_table">[docs]</a><span class="k">def</span> <span class="nf">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cl</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
@@ -329,8 +329,8 @@
             <span class="n">page</span><span class="o">.</span><span class="n">tr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="n">page</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_summary"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_summary">[docs]</a><span class="k">def</span> <span class="nf">write_summary</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">skyError</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ipn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ipnError</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -399,8 +399,8 @@
             <span class="n">td</span> <span class="o">=</span> <span class="p">[</span> <span class="n">gps</span><span class="p">,</span> <span class="n">grbdate</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">ifos</span> <span class="p">]</span>
 
         <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_antenna"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_antenna">[docs]</a><span class="k">def</span> <span class="nf">write_antenna</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">seg_plot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ipn</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -525,8 +525,8 @@
 <span class="c1">#    td2.append(plot())</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th2</span><span class="p">,</span> <span class="n">td2</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_offsource"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_offsource">[docs]</a><span class="k">def</span> <span class="nf">write_offsource</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">grbtag</span><span class="p">,</span> <span class="n">onsource</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -568,8 +568,8 @@
         <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plot</span><span class="p">())</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_chisq"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_chisq">[docs]</a><span class="k">def</span> <span class="nf">write_chisq</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">injList</span><span class="p">,</span> <span class="n">grbtag</span><span class="p">):</span>
@@ -602,8 +602,8 @@
         <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_inj_snrs"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_inj_snrs">[docs]</a><span class="k">def</span> <span class="nf">write_inj_snrs</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">injList</span><span class="p">,</span> <span class="n">grbtag</span><span class="p">):</span>
@@ -636,8 +636,8 @@
         <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_found_missed"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_found_missed">[docs]</a><span class="k">def</span> <span class="nf">write_found_missed</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">injList</span><span class="p">):</span>
@@ -691,8 +691,8 @@
                <span class="s1">&#39;here&lt;/a&gt;&#39;</span> <span class="o">%</span> <span class="n">inj</span> <span class="k">for</span> <span class="n">inj</span> <span class="ow">in</span> <span class="n">injList</span><span class="p">])</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_recovery"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_recovery">[docs]</a><span class="k">def</span> <span class="nf">write_recovery</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">injList</span><span class="p">):</span>
@@ -723,8 +723,8 @@
         <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_loudest_events"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_loudest_events">[docs]</a><span class="k">def</span> <span class="nf">write_loudest_events</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">onsource</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -775,8 +775,8 @@
     <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;here.&#39;</span><span class="p">)</span>
     <span class="n">page</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="write_exclusion_distances"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.write_exclusion_distances">[docs]</a><span class="k">def</span> <span class="nf">write_exclusion_distances</span><span class="p">(</span><span class="n">page</span> <span class="p">,</span> <span class="n">trial</span><span class="p">,</span> <span class="n">injList</span><span class="p">,</span> <span class="n">massbins</span><span class="p">,</span> <span class="n">reduced</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -859,8 +859,8 @@
         <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
 
     <span class="n">page</span><span class="o">.</span><span class="n">h3</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</div>
-    <span class="k">return</span> <span class="n">page</span>
+
+    <span class="k">return</span> <span class="n">page</span></div>
 
 
 <div class="viewcode-block" id="make_grb_segments_plot"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.make_grb_segments_plot">[docs]</a><span class="k">def</span> <span class="nf">make_grb_segments_plot</span><span class="p">(</span><span class="n">wkflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> <span class="n">trigger_time</span><span class="p">,</span> <span class="n">trigger_name</span><span class="p">,</span>
@@ -944,8 +944,8 @@
     <span class="n">plot_name</span> <span class="o">=</span> <span class="s1">&#39;GRB</span><span class="si">%s</span><span class="s1">_segments.png&#39;</span> <span class="o">%</span> <span class="n">trigger_name</span>
     <span class="n">plot_url</span> <span class="o">=</span> <span class="s1">&#39;file://localhost</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="p">[</span><span class="n">ifos</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">plot_url</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">ifos</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">plot_url</span><span class="p">]</span></div>
 </pre></div>
 
            </div>
@@ -961,7 +961,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -983,7 +983,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

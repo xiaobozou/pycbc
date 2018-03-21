@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.frame.losc &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.frame.losc &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -269,8 +269,8 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Failed to find gwf files for &#39;</span></div>
-            <span class="s1">&#39;ifo=</span><span class="si">%s</span><span class="s1">, run=</span><span class="si">%s</span><span class="s1">, between </span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Failed to find gwf files for &#39;</span>
+            <span class="s1">&#39;ifo=</span><span class="si">%s</span><span class="s1">, run=</span><span class="si">%s</span><span class="s1">, between </span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">))</span></div>
            
 <div class="viewcode-block" id="losc_frame_urls"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.losc_frame_urls">[docs]</a><span class="k">def</span> <span class="nf">losc_frame_urls</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get a list of urls to losc frame files</span>
@@ -290,8 +290,8 @@
 <span class="sd">        A dictionary containing information about the files that span the</span>
 <span class="sd">        requested times.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">losc_frame_json</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)[</span><span class="s1">&#39;strain&#39;</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gwf&#39;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">losc_frame_json</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)[</span><span class="s1">&#39;strain&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gwf&#39;</span><span class="p">]</span></div>
     
 <div class="viewcode-block" id="read_frame_losc"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.read_frame_losc">[docs]</a><span class="k">def</span> <span class="nf">read_frame_losc</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Read channels from losc data</span>
@@ -332,8 +332,8 @@
            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">ts</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ts</span></div>
            
 <div class="viewcode-block" id="read_strain_losc"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.read_strain_losc">[docs]</a><span class="k">def</span> <span class="nf">read_strain_losc</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get the strain data from the LOSC data</span>
@@ -351,8 +351,8 @@
 <span class="sd">    -------</span>
 <span class="sd">    ts: TimeSeries</span>
 <span class="sd">        Returns a timeseries with the strain data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>   </div>
-    <span class="k">return</span> <span class="n">read_frame_losc</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:LOSC-STRAIN&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
+    <span class="k">return</span> <span class="n">read_frame_losc</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:LOSC-STRAIN&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span></div>
     
 </pre></div>
 
@@ -369,7 +369,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -391,7 +391,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

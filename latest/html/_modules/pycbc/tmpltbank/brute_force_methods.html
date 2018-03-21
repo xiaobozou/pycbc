@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.brute_force_methods &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.brute_force_methods &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -325,8 +325,8 @@
             <span class="n">scaleFactor</span> <span class="o">*=</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="n">scaleFactor</span> <span class="o">&gt;</span> <span class="mi">64</span><span class="p">:</span>
             <span class="n">scaleFactor</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1"># Shouldn&#39;t be here!</span></div>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span>
+    <span class="c1"># Shouldn&#39;t be here!</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span></div>
 
 <div class="viewcode-block" id="get_mass_distribution"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.brute_force_methods.get_mass_distribution">[docs]</a><span class="k">def</span> <span class="nf">get_mass_distribution</span><span class="p">(</span><span class="n">bestMasses</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">,</span> <span class="n">massRangeParams</span><span class="p">,</span>
                           <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">,</span>
@@ -550,8 +550,8 @@
 
     <span class="c1"># Then map to xis</span>
     <span class="n">new_xis</span> <span class="o">=</span> <span class="n">get_cov_params</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span>
-                             <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">totmass</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">new_xis</span>
+                             <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">totmass</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">new_xis</span></div>
 
 <div class="viewcode-block" id="stack_xi_direction_brute"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.brute_force_methods.stack_xi_direction_brute">[docs]</a><span class="k">def</span> <span class="nf">stack_xi_direction_brute</span><span class="p">(</span><span class="n">xis</span><span class="p">,</span> <span class="n">bestMasses</span><span class="p">,</span> <span class="n">bestXis</span><span class="p">,</span> <span class="n">direction_num</span><span class="p">,</span>
                              <span class="n">req_match</span><span class="p">,</span> <span class="n">massRangeParams</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">,</span>
@@ -622,8 +622,8 @@
                                   <span class="n">fUpper</span><span class="p">,</span> <span class="n">find_minimum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> \
                                   <span class="n">scaleFactor</span><span class="o">=</span><span class="n">scaleFactor</span><span class="p">,</span> \
                                   <span class="n">numIterations</span><span class="o">=</span><span class="n">numIterations</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">ximin</span><span class="p">,</span> <span class="n">ximax</span>
+
+    <span class="k">return</span> <span class="n">ximin</span><span class="p">,</span> <span class="n">ximax</span></div>
 
 <div class="viewcode-block" id="find_xi_extrema_brute"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.brute_force_methods.find_xi_extrema_brute">[docs]</a><span class="k">def</span> <span class="nf">find_xi_extrema_brute</span><span class="p">(</span><span class="n">xis</span><span class="p">,</span> <span class="n">bestMasses</span><span class="p">,</span> <span class="n">bestXis</span><span class="p">,</span> <span class="n">direction_num</span><span class="p">,</span> <span class="n">req_match</span><span class="p">,</span> \
                           <span class="n">massRangeParams</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">,</span> \
@@ -718,8 +718,8 @@
                 <span class="n">bestMasses</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">eta</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
                 <span class="n">bestMasses</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin1z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
                 <span class="n">bestMasses</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin2z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-                <span class="n">bestChirpmass</span> <span class="o">=</span> <span class="n">bestMasses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">bestMasses</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">xiextrema</span>
+                <span class="n">bestChirpmass</span> <span class="o">=</span> <span class="n">bestMasses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">bestMasses</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xiextrema</span></div>
 
 </pre></div>
 
@@ -736,7 +736,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -758,7 +758,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

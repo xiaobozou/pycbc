@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.inference_followups &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.inference_followups &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -323,8 +323,8 @@
     <span class="c1"># make dax a child of the inference workflow generator node</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
-</div>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving inference module&quot;</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving inference module&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="make_inference_prior_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_prior_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_prior_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                     <span class="n">sections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_prior&quot;</span><span class="p">,</span>
@@ -377,8 +377,8 @@
 
     <span class="c1"># add node to workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-</div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="make_inference_summary_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_summary_table">[docs]</a><span class="k">def</span> <span class="nf">make_inference_summary_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                     <span class="n">variable_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_table&quot;</span><span class="p">,</span>
@@ -429,8 +429,8 @@
 
     <span class="c1"># add node to workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-</div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="make_inference_posterior_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_posterior_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_posterior_plot</span><span class="p">(</span>
                     <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -483,8 +483,8 @@
 
     <span class="c1"># add node to workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-</div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="make_inference_1d_posterior_plots"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_1d_posterior_plots">[docs]</a><span class="k">def</span> <span class="nf">make_inference_1d_posterior_plots</span><span class="p">(</span>
                     <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -495,8 +495,8 @@
         <span class="n">files</span> <span class="o">+=</span> <span class="n">make_inference_posterior_plot</span><span class="p">(</span>
                     <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">parameter</span><span class="p">],</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="n">analysis_seg</span><span class="p">,</span>
-                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">parameter</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_inference_samples_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_samples_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_samples_plot</span><span class="p">(</span>
                     <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -521,8 +521,8 @@
 
     <span class="c1"># add node to workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-</div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 
 <div class="viewcode-block" id="make_inference_acceptance_rate_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_acceptance_rate_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_acceptance_rate_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
@@ -570,8 +570,8 @@
 
     <span class="c1"># add node to workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-</div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="make_inference_inj_plots"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_inj_plots">[docs]</a><span class="k">def</span> <span class="nf">make_inference_inj_plots</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inference_files</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                              <span class="n">parameters</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_recovery&quot;</span><span class="p">,</span>
@@ -622,8 +622,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--parameters&quot;</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
         <span class="n">output_files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
-</div>
-    <span class="k">return</span> <span class="n">output_files</span>
+
+    <span class="k">return</span> <span class="n">output_files</span></div>
 </pre></div>
 
            </div>
@@ -639,7 +639,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -661,7 +661,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

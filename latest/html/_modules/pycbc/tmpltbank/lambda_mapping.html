@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.lambda_mapping &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.lambda_mapping &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -291,8 +291,8 @@
     <span class="c1">#if order == &#39;tidalTesting&#39;:</span>
     <span class="c1">#    mapping[&#39;Lambda10&#39;] = 8</span>
     <span class="c1">#    mapping[&#39;Lambda12&#39;] = 9</span>
-    <span class="c1">#    return mapping</span></div>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Order </span><span class="si">%s</span><span class="s2"> is not understood.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
+    <span class="c1">#    return mapping</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Order </span><span class="si">%s</span><span class="s2"> is not understood.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">order</span><span class="p">))</span></div>
 
 <span class="c1"># Override doc so the PN orders are added automatically to online docs</span>
 <span class="n">generate_mapping</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> \
@@ -321,8 +321,8 @@
     <span class="n">inv_mapping</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">inv_mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-</div>
-    <span class="k">return</span> <span class="n">inv_mapping</span>
+
+    <span class="k">return</span> <span class="n">inv_mapping</span></div>
 
 <span class="n">generate_inverse_mapping</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> \
     <span class="n">generate_inverse_mapping</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pycbcValidOrdersHelpDescriptions</span><span class="p">)</span>
@@ -339,8 +339,8 @@
                       <span class="s2">&quot;twoPointFivePN&quot;</span>   <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
                       <span class="s2">&quot;threePN&quot;</span>          <span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
                       <span class="s2">&quot;threePointFivePN&quot;</span> <span class="p">:</span> <span class="mi">7</span>
-                     <span class="p">}</span></div>
-    <span class="k">return</span> <span class="n">ethinca_orders</span>
+                     <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ethinca_orders</span></div>
 
 <div class="viewcode-block" id="ethinca_order_from_string"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.lambda_mapping.ethinca_order_from_string">[docs]</a><span class="k">def</span> <span class="nf">ethinca_order_from_string</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -358,8 +358,8 @@
     <span class="k">if</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">get_ethinca_orders</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">get_ethinca_orders</span><span class="p">()[</span><span class="n">order</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Order &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">order</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; is not valid for ethinca&quot;</span>
-                           <span class="s2">&quot;calculation! Valid orders: &quot;</span><span class="o">+</span></div>
-                           <span class="nb">str</span><span class="p">(</span><span class="n">get_ethinca_orders</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+                           <span class="s2">&quot;calculation! Valid orders: &quot;</span><span class="o">+</span>
+                           <span class="nb">str</span><span class="p">(</span><span class="n">get_ethinca_orders</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
 
 <div class="viewcode-block" id="get_chirp_params"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.lambda_mapping.get_chirp_params">[docs]</a><span class="k">def</span> <span class="nf">get_chirp_params</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span>
                      <span class="n">quadparam1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quadparam2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lambda1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -497,8 +497,8 @@
 
     <span class="k">if</span> <span class="n">sngl_inp</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lambdas</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">lambdas</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lambdas</span></div>
 
 <span class="n">get_chirp_params</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> \
     <span class="n">get_chirp_params</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pycbcValidOrdersHelpDescriptions</span><span class="p">)</span>
@@ -517,7 +517,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -539,7 +539,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

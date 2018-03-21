@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.tmpltbank &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.tmpltbank &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -360,8 +360,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> to </span><span class="si">{1}</span><span class="s2"> conversion is not &quot;</span>
                                       <span class="s2">&quot;supported.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">return_format</span><span class="p">))</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving template bank generation module.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">tmplt_banks_return</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving template bank generation module.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tmplt_banks_return</span></div>
 
 <div class="viewcode-block" id="setup_tmpltbank_dax_generated"><a class="viewcode-back" href="../../../workflow/template_bank.html#pycbc.workflow.tmpltbank.setup_tmpltbank_dax_generated">[docs]</a><span class="k">def</span> <span class="nf">setup_tmpltbank_dax_generated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span>
                                   <span class="n">output_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -459,8 +459,8 @@
                            <span class="n">science_segs</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">datafind_outs</span><span class="p">,</span>
                            <span class="n">link_job_instance</span><span class="o">=</span><span class="n">link_job_instance</span><span class="p">,</span>
                            <span class="n">allow_overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                           <span class="n">compatibility_mode</span><span class="o">=</span><span class="n">compatibility_mode</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">tmplt_banks</span>
+                           <span class="n">compatibility_mode</span><span class="o">=</span><span class="n">compatibility_mode</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tmplt_banks</span></div>
 
 <div class="viewcode-block" id="setup_tmpltbank_without_frames"><a class="viewcode-back" href="../../../workflow/template_bank.html#pycbc.workflow.tmpltbank.setup_tmpltbank_without_frames">[docs]</a><span class="k">def</span> <span class="nf">setup_tmpltbank_without_frames</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                                    <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">independent_ifos</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -534,8 +534,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">job_instance</span><span class="o">.</span><span class="n">create_nodata_node</span><span class="p">(</span><span class="n">fullSegment</span><span class="p">)</span>
         <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
         <span class="n">tmplt_banks</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
-</div>
-    <span class="k">return</span> <span class="n">tmplt_banks</span>
+
+    <span class="k">return</span> <span class="n">tmplt_banks</span></div>
 
 <div class="viewcode-block" id="setup_tmpltbank_pregenerated"><a class="viewcode-back" href="../../../workflow/template_bank.html#pycbc.workflow.tmpltbank.setup_tmpltbank_pregenerated">[docs]</a><span class="k">def</span> <span class="nf">setup_tmpltbank_pregenerated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -604,8 +604,8 @@
                 <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;I looked for &#39;tmpltbank-pregenerated-bank&#39; option &quot;</span>
                 <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;and &#39;tmpltbank-pregenerated-bank-</span><span class="si">%s</span><span class="s2">&#39;.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ifo</span><span class="p">,)</span>
                 <span class="k">raise</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">tmplt_banks</span>
+
+    <span class="k">return</span> <span class="n">tmplt_banks</span></div>
 
 </pre></div>
 
@@ -622,7 +622,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -644,7 +644,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

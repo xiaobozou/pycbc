@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.gate &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.gate &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -252,15 +252,15 @@
 <div class="viewcode-block" id="gates_from_cli"><a class="viewcode-back" href="../../pycbc.html#pycbc.gate.gates_from_cli">[docs]</a><span class="k">def</span> <span class="nf">gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses the --gate option into something understandable by</span>
 <span class="sd">    `strain.gate_data`.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s1">&#39;gate&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="psd_gates_from_cli"><a class="viewcode-back" href="../../pycbc.html#pycbc.gate.psd_gates_from_cli">[docs]</a><span class="k">def</span> <span class="nf">psd_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses the --psd-gate option into something understandable by</span>
 <span class="sd">    `strain.gate_data`.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s1">&#39;psd_gate&#39;</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s1">&#39;psd_gate&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="apply_gates_to_td"><a class="viewcode-back" href="../../pycbc.html#pycbc.gate.apply_gates_to_td">[docs]</a><span class="k">def</span> <span class="nf">apply_gates_to_td</span><span class="p">(</span><span class="n">strain_dict</span><span class="p">,</span> <span class="n">gates</span><span class="p">):</span>
@@ -284,8 +284,8 @@
     <span class="c1"># copy data to new dictionary</span>
     <span class="n">outdict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">strain_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">:</span>
-        <span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">strain</span><span class="o">.</span><span class="n">gate_data</span><span class="p">(</span><span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">gates</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">outdict</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">strain</span><span class="o">.</span><span class="n">gate_data</span><span class="p">(</span><span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">gates</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">outdict</span></div>
 
 
 <div class="viewcode-block" id="apply_gates_to_fd"><a class="viewcode-back" href="../../pycbc.html#pycbc.gate.apply_gates_to_fd">[docs]</a><span class="k">def</span> <span class="nf">apply_gates_to_fd</span><span class="p">(</span><span class="n">stilde_dict</span><span class="p">,</span> <span class="n">gates</span><span class="p">):</span>
@@ -315,8 +315,8 @@
     <span class="n">strain_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([[</span><span class="n">ifo</span><span class="p">,</span> <span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()]</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">])</span>
     <span class="c1"># apply gates and fft back to the frequency domain</span>
     <span class="k">for</span> <span class="n">ifo</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">apply_gates_to_td</span><span class="p">(</span><span class="n">strain_dict</span><span class="p">,</span> <span class="n">gates</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">outdict</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">outdict</span></div>
 
 
 <div class="viewcode-block" id="add_gate_option_group"><a class="viewcode-back" href="../../pycbc.html#pycbc.gate.add_gate_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_gate_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -343,8 +343,8 @@
                             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Apply one or more gates to the data used &quot;</span>
                                  <span class="s2">&quot;for computing the PSD. Gates are applied &quot;</span>
                                  <span class="s2">&quot;prior to FFT-ing the data for PSD &quot;</span>
-                                 <span class="s2">&quot;estimation.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">gate_group</span>
+                                 <span class="s2">&quot;estimation.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gate_group</span></div>
 </pre></div>
 
            </div>
@@ -360,7 +360,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -382,7 +382,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

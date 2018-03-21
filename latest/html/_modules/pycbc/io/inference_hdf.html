@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.inference_hdf &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.io.inference_hdf &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -514,8 +514,8 @@
         <span class="c1"># get the appropriate sampler class</span>
         <span class="n">samples_group</span> <span class="o">=</span> <span class="n">samples_group</span> <span class="k">if</span> <span class="n">samples_group</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples_group</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples_parser</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span>
-                                                <span class="n">samples_group</span><span class="o">=</span><span class="n">samples_group</span><span class="p">,</span></div>
-                                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                                                <span class="n">samples_group</span><span class="o">=</span><span class="n">samples_group</span><span class="p">,</span>
+                                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.read_likelihood_stats"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.read_likelihood_stats">[docs]</a>    <span class="k">def</span> <span class="nf">read_likelihood_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads likelihood stats from self.</span>
@@ -534,8 +534,8 @@
 <span class="sd">            group.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">stats_group</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">samples_group</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stats_group</span><span class="p">,</span></div>
-                                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">samples_group</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stats_group</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.read_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.read_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">read_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the acceptance fraction that was written to the file.</span>
@@ -549,14 +549,14 @@
 <span class="sd">        -------</span>
 <span class="sd">        numpy.array</span>
 <span class="sd">            The acceptance fraction.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler_class</span><span class="o">.</span><span class="n">read_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler_class</span><span class="o">.</span><span class="n">read_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.read_acls"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.read_acls">[docs]</a>    <span class="k">def</span> <span class="nf">read_acls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns all of the individual chains&#39; acls. See the `read_acls`</span>
 <span class="sd">        function of this file&#39;s sampler for more details.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler_class</span><span class="o">.</span><span class="n">read_acls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler_class</span><span class="o">.</span><span class="n">read_acls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.read_label"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.read_label">[docs]</a>    <span class="k">def</span> <span class="nf">read_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">error_on_none</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the label for the parameter.</span>
@@ -592,8 +592,8 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot find a label for paramter </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span>
                     <span class="n">parameter</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">parameter</span></div>
-        <span class="k">return</span> <span class="n">label</span>
+                <span class="k">return</span> <span class="n">parameter</span>
+        <span class="k">return</span> <span class="n">label</span></div>
 
 <div class="viewcode-block" id="InferenceFile.read_random_state"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.read_random_state">[docs]</a>    <span class="k">def</span> <span class="nf">read_random_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Reads the state of the random number generator from the file.</span>
@@ -614,8 +614,8 @@
         <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">]</span>
         <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span>
         <span class="n">has_gauss</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;has_gauss&quot;</span><span class="p">]</span>
-        <span class="n">cached_gauss</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cached_gauss&quot;</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">has_gauss</span><span class="p">,</span> <span class="n">cached_gauss</span>
+        <span class="n">cached_gauss</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cached_gauss&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">has_gauss</span><span class="p">,</span> <span class="n">cached_gauss</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_strain"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_strain">[docs]</a>    <span class="k">def</span> <span class="nf">write_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain_dict</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes strain for each IFO to file.</span>
@@ -636,8 +636,8 @@
         <span class="k">for</span> <span class="n">ifo</span><span class="p">,</span><span class="n">strain</span> <span class="ow">in</span> <span class="n">strain_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span> <span class="o">=</span> <span class="n">strain</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">strain</span><span class="o">.</span><span class="n">delta_t</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span> <span class="o">=</span> \</div>
-                <span class="nb">float</span><span class="p">(</span><span class="n">strain</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="nb">float</span><span class="p">(</span><span class="n">strain</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_stilde"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_stilde">[docs]</a>    <span class="k">def</span> <span class="nf">write_stilde</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes stilde for each IFO to file.</span>
@@ -657,8 +657,8 @@
             <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">group</span><span class="p">,</span> <span class="n">subgroup</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">ifo</span><span class="p">,</span><span class="n">stilde</span> <span class="ow">in</span> <span class="n">stilde_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span> <span class="o">=</span> <span class="n">stilde</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stilde</span><span class="o">.</span><span class="n">delta_f</span></div>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stilde</span><span class="o">.</span><span class="n">delta_f</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_psd"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_psd">[docs]</a>    <span class="k">def</span> <span class="nf">write_psd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psds</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes PSD for each IFO to file.</span>
@@ -681,8 +681,8 @@
             <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">group</span><span class="p">,</span> <span class="n">subgroup</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;low_frequency_cutoff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">low_frequency_cutoff</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">psds</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span></div>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">delta_f</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">delta_f</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_data"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">psd_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low_frequency_cutoff_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -724,8 +724,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">write_stilde</span><span class="p">(</span><span class="n">stilde_dict</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
 
         <span class="c1"># save strain if desired</span>
-        <span class="k">if</span> <span class="n">strain_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">write_strain</span><span class="p">(</span><span class="n">strain_dict</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">strain_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_strain</span><span class="p">(</span><span class="n">strain_dict</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_injections"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_injections">[docs]</a>    <span class="k">def</span> <span class="nf">write_injections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Writes injection parameters for an IFO to file.</span>
@@ -745,8 +745,8 @@
                     <span class="bp">self</span><span class="p">[</span><span class="n">subgroup</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)][</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">param</span><span class="p">][:]</span>
                 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                     <span class="bp">self</span><span class="p">[</span><span class="n">subgroup</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span></div>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Could not read </span><span class="si">%s</span><span class="s2"> as an HDF file&quot;</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Could not read </span><span class="si">%s</span><span class="s2"> as an HDF file&quot;</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_command_line"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_command_line">[docs]</a>    <span class="k">def</span> <span class="nf">write_command_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes command line to attributes.</span>
@@ -765,8 +765,8 @@
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
                 <span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">previous</span> <span class="o">=</span> <span class="p">[]</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cmd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="n">previous</span>
+            <span class="n">previous</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cmd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="n">previous</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_resume_point"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_resume_point">[docs]</a>    <span class="k">def</span> <span class="nf">write_resume_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Keeps a list of the number of iterations that were in a file when a</span>
@@ -779,8 +779,8 @@
             <span class="n">niterations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">niterations</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">resume_pts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">niterations</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;resume_points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resume_pts</span>
+        <span class="n">resume_pts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">niterations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;resume_points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resume_pts</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_random_state"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_random_state">[docs]</a>    <span class="k">def</span> <span class="nf">write_random_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Writes the state of the random number generator from the file.</span>
@@ -806,8 +806,8 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">arr</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos</span>
-        <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;has_gauss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">has_gauss</span></div>
-        <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cached_gauss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cached_gauss</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;has_gauss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">has_gauss</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;cached_gauss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cached_gauss</span></div>
 
 <div class="viewcode-block" id="InferenceFile.get_slice"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.get_slice">[docs]</a>    <span class="k">def</span> <span class="nf">get_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Formats a slice using the given arguments that can be used to</span>
@@ -850,8 +850,8 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">thin_interval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">acl</span><span class="p">))</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">pass</span></div>
-        <span class="k">return</span> <span class="nb">slice</span><span class="p">(</span><span class="n">thin_start</span><span class="p">,</span> <span class="n">thin_end</span><span class="p">,</span> <span class="n">thin_interval</span><span class="p">)</span>
+                <span class="k">pass</span>
+        <span class="k">return</span> <span class="nb">slice</span><span class="p">(</span><span class="n">thin_start</span><span class="p">,</span> <span class="n">thin_end</span><span class="p">,</span> <span class="n">thin_interval</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="InferenceFile.copy_metadata"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.copy_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">copy_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Copies all metadata from this file to the other file.</span>
@@ -870,8 +870,8 @@
             <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats_group</span><span class="p">]:</span>
                 <span class="nb">super</span><span class="p">(</span><span class="n">InferenceFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
         <span class="c1"># copy attributes</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></div>
-            <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="InferenceFile.copy"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameter_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -954,8 +954,8 @@
         <span class="k">if</span> <span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span><span class="p">:</span>
             <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;burn_in_iterations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;niterations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>
-        <span class="k">return</span> <span class="n">other</span>
+            <span class="n">other</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;niterations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">other</span></div></div>
 
 
 <div class="viewcode-block" id="check_integrity"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.check_integrity">[docs]</a><span class="k">def</span> <span class="nf">check_integrity</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -1003,8 +1003,8 @@
         <span class="n">firstidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
         <span class="n">lastidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
-            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">firstidx</span><span class="p">]</span></div>
-            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">lastidx</span><span class="p">]</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">firstidx</span><span class="p">]</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">lastidx</span><span class="p">]</span></div>
 </pre></div>
 
            </div>
@@ -1020,7 +1020,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1042,7 +1042,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

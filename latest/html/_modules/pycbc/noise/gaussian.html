@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.noise.gaussian &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.noise.gaussian &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -277,8 +277,8 @@
     <span class="n">noise</span><span class="p">[</span><span class="n">not_zero</span><span class="p">]</span> <span class="o">=</span> <span class="n">noise_red</span>
     
     <span class="k">return</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span>
-                           <span class="n">delta_f</span><span class="o">=</span><span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span></div>
-                           <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span> 
+                           <span class="n">delta_f</span><span class="o">=</span><span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
+                           <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span> </div>
 
 <div class="viewcode-block" id="noise_from_psd"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.gaussian.noise_from_psd">[docs]</a><span class="k">def</span> <span class="nf">noise_from_psd</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise with a given psd.</span>
@@ -331,8 +331,8 @@
     
         <span class="n">length_generated</span> <span class="o">+=</span> <span class="n">stride</span>
         <span class="n">SimNoise</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">randomness</span><span class="p">)</span>
-        </div>
-    <span class="k">return</span> <span class="n">noise_ts</span>
+        
+    <span class="k">return</span> <span class="n">noise_ts</span></div>
   
 <div class="viewcode-block" id="noise_from_string"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.gaussian.noise_from_string">[docs]</a><span class="k">def</span> <span class="nf">noise_from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise from an analytic PSD</span>
@@ -364,8 +364,8 @@
     <span class="c1"># We just need enough resolution to resolve lines</span>
     <span class="n">delta_f</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">8</span>
     <span class="n">flen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span> <span class="o">/</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">psd</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">noise_from_psd</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">psd</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">noise_from_psd</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -381,7 +381,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -403,7 +403,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

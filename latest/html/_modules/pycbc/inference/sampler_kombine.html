@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler_kombine &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.sampler_kombine &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -319,8 +319,8 @@
 <span class="sd">            A kombine sampler initialized based on the given arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
-                   <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">,</span></div>
-                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">update_interval</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">update_interval</span><span class="p">)</span>
+                   <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">update_interval</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">update_interval</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KombineSampler.run"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Advance the sampler for a number of samples.</span>
@@ -360,8 +360,8 @@
         <span class="c1"># update the positions</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">return_meta</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_currentblob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">lnprop</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_currentblob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">lnprop</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">lnpost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -391,8 +391,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">_chain</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">stored_iterations</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="c1"># clear the blobs</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">_blobs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># clear the blobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">_blobs</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="KombineSampler.burn_in"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler.burn_in">[docs]</a>    <span class="k">def</span> <span class="nf">burn_in</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Use kombine&#39;s `burnin` routine to advance the sampler.</span>
@@ -427,8 +427,8 @@
         <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">burnin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="p">,</span> <span class="n">blob0</span><span class="o">=</span><span class="n">blob0</span><span class="p">)</span>
         <span class="c1"># store the number of iterations used</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_iterations</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">niterations</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">)</span>
-        <span class="n">p</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">q</span>
+        <span class="n">p</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">q</span></div>
 
     <span class="k">def</span> <span class="nf">_write_kde</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">kde</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes the given kde to the file.&quot;&quot;&quot;</span>
@@ -474,8 +474,8 @@
         <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clustered_kde</span><span class="o">.</span><span class="n">_std</span>
         <span class="c1"># save individual KDE data</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kde</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clustered_kde</span><span class="o">.</span><span class="n">_kdes</span><span class="p">):</span>
-            <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">fp</span><span class="o">.</span><span class="n">sampler_group</span><span class="p">,</span> <span class="s2">&quot;kde&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_write_kde</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">kde</span><span class="p">)</span>
+            <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">fp</span><span class="o">.</span><span class="n">sampler_group</span><span class="p">,</span> <span class="s2">&quot;kde&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_write_kde</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">kde</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="KombineSampler.set_state_from_file"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler.set_state_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">set_state_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
@@ -515,8 +515,8 @@
             <span class="n">clustered_kde</span><span class="o">.</span><span class="n">_kdes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                                 <span class="n">kombine</span><span class="o">.</span><span class="n">clustered_kde</span><span class="o">.</span><span class="n">KDE</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:]))</span>
 
-        <span class="c1"># overwrite ClusteredKDE in Sampler instance</span></div></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">_kde</span> <span class="o">=</span> <span class="n">clustered_kde</span>
+        <span class="c1"># overwrite ClusteredKDE in Sampler instance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">_kde</span> <span class="o">=</span> <span class="n">clustered_kde</span></div></div>
 </pre></div>
 
            </div>
@@ -532,7 +532,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -554,7 +554,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

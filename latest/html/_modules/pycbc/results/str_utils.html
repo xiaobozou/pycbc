@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.str_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.results.str_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -252,8 +252,8 @@
 <span class="sd">    -------</span>
 <span class="sd">    header: str</span>
 <span class="sd">        The necessary html head needed to use latex on an html page.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">mjax_header</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mjax_header</span></div>
 
 <div class="viewcode-block" id="drop_trailing_zeros"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.str_utils.drop_trailing_zeros">[docs]</a><span class="k">def</span> <span class="nf">drop_trailing_zeros</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -262,8 +262,8 @@
     <span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
     <span class="n">txt</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">txt</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
-        <span class="n">txt</span> <span class="o">=</span> <span class="n">txt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">txt</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="n">txt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">txt</span></div>
 
 <div class="viewcode-block" id="get_signum"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.str_utils.get_signum">[docs]</a><span class="k">def</span> <span class="nf">get_signum</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">max_sig</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -295,8 +295,8 @@
                 <span class="n">loop_count</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">if</span> <span class="n">loop_count</span> <span class="o">&gt;</span> <span class="n">max_recursion</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Maximum recursion depth hit! Input &quot;</span> <span class="o">+</span>\
-                        <span class="s2">&quot;values are: val = </span><span class="si">%f</span><span class="s2">, err = </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span></div>
-        <span class="k">return</span> <span class="n">drop_trailing_zeros</span><span class="p">(</span><span class="n">return_val</span><span class="p">)</span>
+                        <span class="s2">&quot;values are: val = </span><span class="si">%f</span><span class="s2">, err = </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">drop_trailing_zeros</span><span class="p">(</span><span class="n">return_val</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="format_value"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.str_utils.format_value">[docs]</a><span class="k">def</span> <span class="nf">format_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">plus_error</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_scientific_notation</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
         <span class="n">include_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_relative_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ndecs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -437,8 +437,8 @@
                 <span class="n">txt</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">^{+</span><span class="si">%s</span><span class="s1">}_{-</span><span class="si">%s</span><span class="s1">}</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">valtxt</span><span class="p">,</span> <span class="n">plus_err_txt</span><span class="p">,</span>
                     <span class="n">minus_err_txt</span><span class="p">,</span> <span class="n">powfactor</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">txt</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">valtxt</span><span class="p">,</span> <span class="n">powfactor</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">txt</span> 
+        <span class="n">txt</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">valtxt</span><span class="p">,</span> <span class="n">powfactor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">txt</span> </div>
 </pre></div>
 
            </div>
@@ -454,7 +454,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -476,7 +476,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

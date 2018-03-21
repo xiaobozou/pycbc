@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.plotting &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.plotting &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -242,13 +242,13 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">substr</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">substr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">tags</span> <span class="o">=</span> <span class="n">excludestr</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">substr</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-        <span class="n">substr</span> <span class="o">=</span> <span class="n">substr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="p">[</span><span class="n">tag</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">substr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tag</span><span class="p">]</span>
+        <span class="n">substr</span> <span class="o">=</span> <span class="n">substr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tag</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">substr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tag</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="requirestr"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.requirestr">[docs]</a><span class="k">def</span> <span class="nf">requirestr</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">substr</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">substr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">tags</span></div>
-    <span class="k">return</span> <span class="p">[</span><span class="n">tag</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">substr</span> <span class="ow">in</span> <span class="n">tag</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tags</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tag</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">substr</span> <span class="ow">in</span> <span class="n">tag</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="PlotExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.PlotExecutable">[docs]</a><span class="k">class</span> <span class="nc">PlotExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; plot executable</span>
@@ -259,8 +259,8 @@
     <span class="c1"># on the job queue</span>
 <div class="viewcode-block" id="PlotExecutable.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.PlotExecutable.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">set_priority</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_priority</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="make_template_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_template_plot">[docs]</a><span class="k">def</span> <span class="nf">make_template_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
@@ -274,8 +274,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--background-bins&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_range_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_range_plot">[docs]</a><span class="k">def</span> <span class="nf">make_range_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">psd_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -290,8 +290,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--psd-files&#39;</span><span class="p">,</span> <span class="n">psd_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_spectrum_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_spectrum_plot">[docs]</a><span class="k">def</span> <span class="nf">make_spectrum_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">psd_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">precalc_psd_files</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -305,8 +305,8 @@
     <span class="k">if</span> <span class="n">precalc_psd_files</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">precalc_psd_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--psd-file&#39;</span><span class="p">,</span> <span class="n">precalc_psd_files</span><span class="p">)</span>
 
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_segments_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_segments_plot">[docs]</a><span class="k">def</span> <span class="nf">make_segments_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">seg_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
@@ -314,8 +314,8 @@
     <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;plot_segments&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                          <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--segment-files&#39;</span><span class="p">,</span> <span class="n">seg_files</span><span class="p">)</span>
-    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span></div>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="make_gating_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_gating_plot">[docs]</a><span class="k">def</span> <span class="nf">make_gating_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">insp_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
@@ -323,8 +323,8 @@
     <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;plot_gating&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                           <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--input-file&#39;</span><span class="p">,</span> <span class="n">insp_files</span><span class="p">)</span>
-    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span></div>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="make_throughput_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_throughput_plot">[docs]</a><span class="k">def</span> <span class="nf">make_throughput_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">insp_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
@@ -332,8 +332,8 @@
     <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;plot_throughput&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                           <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--input-file&#39;</span><span class="p">,</span> <span class="n">insp_files</span><span class="p">)</span>
-    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span></div>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="make_foreground_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_foreground_table">[docs]</a><span class="k">def</span> <span class="nf">make_foreground_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">ftag</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                           <span class="n">singles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -358,8 +358,8 @@
     <span class="k">if</span> <span class="n">singles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--single-detector-triggers&#39;</span><span class="p">,</span> <span class="n">singles</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">bank_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_sensitivity_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_sensitivity_plot">[docs]</a><span class="k">def</span> <span class="nf">make_sensitivity_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -374,8 +374,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--injection-file&#39;</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_coinc_snrchi_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_coinc_snrchi_plot">[docs]</a><span class="k">def</span> <span class="nf">make_coinc_snrchi_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">inj_trig</span><span class="p">,</span> <span class="n">stat_file</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">,</span>
                           <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -393,8 +393,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--single-trigger-file&#39;</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_inj_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_inj_table">[docs]</a><span class="k">def</span> <span class="nf">make_inj_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">missed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">singles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                   <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -411,8 +411,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_multiifo_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--single-trigger-files&#39;</span><span class="p">,</span> <span class="n">singles</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_seg_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_seg_table">[docs]</a><span class="k">def</span> <span class="nf">make_seg_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">seg_files</span><span class="p">,</span> <span class="n">seg_names</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                   <span class="n">title_text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -435,8 +435,8 @@
     <span class="k">if</span> <span class="n">title_text</span><span class="p">:</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--title-text&#39;</span><span class="p">,</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">title_text</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_veto_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_veto_table">[docs]</a><span class="k">def</span> <span class="nf">make_veto_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">vetodef_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Creates a node in the workflow for writing the veto_definer</span>
@@ -459,8 +459,8 @@
                     <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--veto-definer-file&#39;</span><span class="p">,</span> <span class="n">vdf_file</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_seg_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_seg_plot">[docs]</a><span class="k">def</span> <span class="nf">make_seg_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">seg_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">seg_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Creates a node in the workflow for plotting science, and veto segments.</span>
@@ -477,8 +477,8 @@
         <span class="n">quoted_seg_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--segment-names&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quoted_seg_names</span><span class="p">))</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_ifar_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_ifar_plot">[docs]</a><span class="k">def</span> <span class="nf">make_ifar_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trigger_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">hierarchical_level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -501,8 +501,8 @@
     <span class="k">if</span> <span class="n">hierarchical_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--use-hierarchical-level&#39;</span><span class="p">,</span> <span class="n">hierarchical_level</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_snrchi_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_snrchi_plot">[docs]</a><span class="k">def</span> <span class="nf">make_snrchi_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
                      <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -524,8 +524,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--veto-file&#39;</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">)</span>
             <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">trig_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
             <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_foundmissed_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_foundmissed_plot">[docs]</a><span class="k">def</span> <span class="nf">make_foundmissed_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -541,8 +541,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--injection-file&#39;</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_snrratehist_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_snrratehist_plot">[docs]</a><span class="k">def</span> <span class="nf">make_snrratehist_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">closed_box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                          <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hierarchical_level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -566,8 +566,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--closed-box&#39;</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">bg_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_snrifar_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_snrifar_plot">[docs]</a><span class="k">def</span> <span class="nf">make_snrifar_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">closed_box</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                      <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hierarchical_level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -594,8 +594,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--not-cumulative&#39;</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">bg_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="make_results_web_page"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_results_web_page">[docs]</a><span class="k">def</span> <span class="nf">make_results_web_page</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">,</span> <span class="n">explicit_dependencies</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">template_path</span> <span class="o">=</span> <span class="s1">&#39;templates/orange.html&#39;</span>
@@ -611,8 +611,8 @@
         <span class="kn">import</span> <span class="nn">Pegasus.DAX3</span> <span class="k">as</span> <span class="nn">dax</span>
         <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">explicit_dependencies</span><span class="p">:</span>
             <span class="n">dax_dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">dep</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span>
-                                     <span class="n">child</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">)</span></div>
-            <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dax_dep</span><span class="p">)</span>
+                                     <span class="n">child</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">)</span>
+            <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dax_dep</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="make_single_hist"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_single_hist">[docs]</a><span class="k">def</span> <span class="nf">make_single_hist</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
                      <span class="n">out_dir</span><span class="p">,</span> <span class="n">bank_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -634,8 +634,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--bank-file&#39;</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">trig_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_binned_hist"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_binned_hist">[docs]</a><span class="k">def</span> <span class="nf">make_binned_hist</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
                      <span class="n">out_dir</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -657,8 +657,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--bank-file&#39;</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">trig_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_singles_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.plotting.make_singles_plot">[docs]</a><span class="k">def</span> <span class="nf">make_singles_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
                      <span class="n">out_dir</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -682,8 +682,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--single-trig-file&#39;</span><span class="p">,</span> <span class="n">trig_file</span><span class="p">)</span>
             <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">trig_file</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
             <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 </pre></div>
 
            </div>
@@ -699,7 +699,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -721,7 +721,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

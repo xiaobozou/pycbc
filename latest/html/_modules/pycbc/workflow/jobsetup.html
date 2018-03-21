@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.jobsetup &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.jobsetup &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -253,8 +253,8 @@
     <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">gpsNanoSeconds</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">gpsSeconds</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Need an integer GPS time, got </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Need an integer GPS time, got </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="select_tmpltbank_class"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.select_tmpltbank_class">[docs]</a><span class="k">def</span> <span class="nf">select_tmpltbank_class</span><span class="p">(</span><span class="n">curr_exe</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function returns a class that is appropriate for setting up</span>
@@ -281,8 +281,8 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">exe_to_class_map</span><span class="p">[</span><span class="n">curr_exe</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span></div>
-            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">curr_exe</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">curr_exe</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="select_matchedfilter_class"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.select_matchedfilter_class">[docs]</a><span class="k">def</span> <span class="nf">select_matchedfilter_class</span><span class="p">(</span><span class="n">curr_exe</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function returns a class that is appropriate for setting up</span>
@@ -310,8 +310,8 @@
         <span class="k">return</span> <span class="n">exe_to_class_map</span><span class="p">[</span><span class="n">curr_exe</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="c1"># also conceivable to introduce a default class??</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span></div>
-            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">curr_exe</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">curr_exe</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="select_generic_executable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.select_generic_executable">[docs]</a><span class="k">def</span> <span class="nf">select_generic_executable</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">exe_tag</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns a class that is appropriate for setting up jobs to run executables</span>
@@ -371,8 +371,8 @@
         <span class="k">return</span> <span class="n">exe_to_class_map</span><span class="p">[</span><span class="n">exe_name</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="c1"># Should we try some sort of default class??</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span></div>
-            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">exe_name</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;No job class exists for executable </span><span class="si">%s</span><span class="s2">, exiting&quot;</span> <span class="o">%</span> <span class="n">exe_name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="sngl_ifo_job_setup"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.sngl_ifo_job_setup">[docs]</a><span class="k">def</span> <span class="nf">sngl_ifo_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">out_files</span><span class="p">,</span> <span class="n">curr_exe_job</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span>
                        <span class="n">datafind_outs</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -512,8 +512,8 @@
                 <span class="n">curr_out_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">curr_out_files</span> <span class="k">if</span> <span class="s1">&#39;PSD_FILE&#39;</span>\
                                                                  <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
                 <span class="n">out_files</span> <span class="o">+=</span> <span class="n">curr_out_files</span>
-</div>
-    <span class="k">return</span> <span class="n">out_files</span>
+
+    <span class="k">return</span> <span class="n">out_files</span></div>
 
 <div class="viewcode-block" id="multi_ifo_coherent_job_setup"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.multi_ifo_coherent_job_setup">[docs]</a><span class="k">def</span> <span class="nf">multi_ifo_coherent_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">out_files</span><span class="p">,</span> <span class="n">curr_exe_job</span><span class="p">,</span>
                                  <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
@@ -567,8 +567,8 @@
     <span class="n">curr_out_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">curr_out_files</span> <span class="k">if</span> <span class="s1">&#39;PSD_FILE&#39;</span>\
                       <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span>
     <span class="n">out_files</span> <span class="o">+=</span> <span class="n">curr_out_files</span>
-</div>
-    <span class="k">return</span> <span class="n">out_files</span>
+
+    <span class="k">return</span> <span class="n">out_files</span></div>
 
 <div class="viewcode-block" id="identify_needed_data"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.identify_needed_data">[docs]</a><span class="k">def</span> <span class="nf">identify_needed_data</span><span class="p">(</span><span class="n">curr_exe_job</span><span class="p">,</span> <span class="n">link_job_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function will identify the length of data that a specific executable</span>
@@ -641,8 +641,8 @@
         <span class="c1"># Which one is now longer? Use this is valid_length</span>
         <span class="k">if</span> <span class="n">link_valid_length</span> <span class="o">&lt;</span> <span class="n">valid_lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">valid_lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_valid_length</span>
-</div>
-    <span class="k">return</span> <span class="n">data_lengths</span><span class="p">,</span> <span class="n">valid_chunks</span><span class="p">,</span> <span class="n">valid_lengths</span>
+
+    <span class="k">return</span> <span class="n">data_lengths</span><span class="p">,</span> <span class="n">valid_chunks</span><span class="p">,</span> <span class="n">valid_lengths</span></div>
 
 
 <div class="viewcode-block" id="JobSegmenter"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter">[docs]</a><span class="k">class</span> <span class="nc">JobSegmenter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -707,16 +707,16 @@
             <span class="n">pick</span><span class="p">,</span> <span class="n">pick_diff</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">valid_lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">target_size</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valid_lengths</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="n">target_size</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">pick_diff</span><span class="p">:</span>
-                    <span class="n">pick</span><span class="p">,</span> <span class="n">pick_diff</span>  <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="n">target_size</span><span class="p">)</span></div>
-            <span class="k">return</span> <span class="n">data_lengths</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">valid_chunks</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">valid_lengths</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span>
+                    <span class="n">pick</span><span class="p">,</span> <span class="n">pick_diff</span>  <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="n">target_size</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data_lengths</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">valid_chunks</span><span class="p">[</span><span class="n">pick</span><span class="p">],</span> <span class="n">valid_lengths</span><span class="p">[</span><span class="n">pick</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_valid_times_for_job"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_valid_times_for_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_times_for_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">,</span> <span class="n">allow_overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the times for which this job is valid. &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">compatibility_mode</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_valid_times_for_job_legacy</span><span class="p">(</span><span class="n">num_job</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_valid_times_for_job_workflow</span><span class="p">(</span><span class="n">num_job</span><span class="p">,</span></div>
-                                                   <span class="n">allow_overlap</span><span class="o">=</span><span class="n">allow_overlap</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_valid_times_for_job_workflow</span><span class="p">(</span><span class="n">num_job</span><span class="p">,</span>
+                                                   <span class="n">allow_overlap</span><span class="o">=</span><span class="n">allow_overlap</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_valid_times_for_job_workflow"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_valid_times_for_job_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_times_for_job_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">,</span> <span class="n">allow_overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the times for which the job num_job will be valid, using workflow&#39;s</span>
@@ -745,8 +745,8 @@
                           <span class="s2">&quot;from a job at times where it is not valid.&quot;</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
             <span class="n">job_valid_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">([</span><span class="n">lower_boundary</span><span class="p">,</span>
-                                              <span class="n">upper_boundary</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="n">job_valid_seg</span>
+                                              <span class="n">upper_boundary</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">job_valid_seg</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_valid_times_for_job_legacy"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_valid_times_for_job_legacy">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_times_for_job_legacy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the times for which the job num_job will be valid, using the method</span>
@@ -761,8 +761,8 @@
             <span class="n">dataPushBack</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_length</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_chunk</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">job_valid_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">job_valid_seg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                                <span class="bp">self</span><span class="o">.</span><span class="n">curr_seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataPushBack</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">job_valid_seg</span>
+
+        <span class="k">return</span> <span class="n">job_valid_seg</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_data_times_for_job"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_data_times_for_job">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_times_for_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the data that this job will read in. &quot;&quot;&quot;</span>
@@ -786,8 +786,8 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exe_class</span><span class="p">,</span> <span class="s1">&#39;zero_pad_data_extend&#39;</span><span class="p">):</span>
             <span class="n">job_data_seg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exe_class</span><span class="o">.</span><span class="n">zero_pad_data_extend</span><span class="p">(</span><span class="n">job_data_seg</span><span class="p">,</span>
                                                                  <span class="bp">self</span><span class="o">.</span><span class="n">curr_seg</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">job_data_seg</span>
+
+        <span class="k">return</span> <span class="n">job_data_seg</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_data_times_for_job_workflow"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_data_times_for_job_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_times_for_job_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the data that this job will need to read in. &quot;&quot;&quot;</span>
@@ -795,8 +795,8 @@
         <span class="c1"># miss a second at end of segments.</span>
         <span class="n">shift_dur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_time_shift</span> <span class="o">*</span> <span class="n">num_job</span>\
                                            <span class="o">+</span> <span class="mf">0.0001</span><span class="p">)</span>
-        <span class="n">job_data_seg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_chunk</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">shift_dur</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">job_data_seg</span>
+        <span class="n">job_data_seg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_chunk</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">shift_dur</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">job_data_seg</span></div>
 
 <div class="viewcode-block" id="JobSegmenter.get_data_times_for_job_legacy"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.get_data_times_for_job_legacy">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_times_for_job_legacy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_job</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Get the data that this job will need to read in. &quot;&quot;&quot;</span>
@@ -810,8 +810,8 @@
             <span class="k">assert</span> <span class="n">dataPushBack</span> <span class="o">&gt;=</span> <span class="mi">0</span>
             <span class="n">job_data_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">job_data_seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dataPushBack</span><span class="p">,</span>
                                                  <span class="bp">self</span><span class="o">.</span><span class="n">curr_seg</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">assert</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">job_data_seg</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_length</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">job_data_seg</span>
+            <span class="k">assert</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">job_data_seg</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_length</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">job_data_seg</span></div></div>
 
 <div class="viewcode-block" id="PyCBCInspiralExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCInspiralExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCInspiralExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class used to create jobs for pycbc_inspiral Executable. &quot;&quot;&quot;</span>
@@ -864,8 +864,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--bank-file&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dfParents</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--frame-files&#39;</span><span class="p">,</span> <span class="n">dfParents</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">node</span>
+
+        <span class="k">return</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="PyCBCInspiralExecutable.get_valid_times"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCInspiralExecutable.get_valid_times">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_times</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Determine possible dimensions of needed input and valid output</span>
@@ -955,8 +955,8 @@
             <span class="k">if</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">:</span>
                 <span class="n">data_lengths</span> <span class="o">+=</span> <span class="p">[</span><span class="n">data_length</span><span class="p">]</span>
                 <span class="n">valid_regions</span> <span class="o">+=</span> <span class="p">[</span><span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span>
-</div>
-        <span class="k">return</span> <span class="n">data_lengths</span><span class="p">,</span> <span class="n">valid_regions</span>
+
+        <span class="k">return</span> <span class="n">data_lengths</span><span class="p">,</span> <span class="n">valid_regions</span></div>
 
 <div class="viewcode-block" id="PyCBCInspiralExecutable.zero_pad_data_extend"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCInspiralExecutable.zero_pad_data_extend">[docs]</a>    <span class="k">def</span> <span class="nf">zero_pad_data_extend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_data_seg</span><span class="p">,</span> <span class="n">curr_seg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;When using zero padding, *all* data is analysable, but the setup</span>
@@ -973,8 +973,8 @@
             <span class="n">end_pad</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_opt</span><span class="p">(</span><span class="s1">&#39;segment-end-pad&#39;</span><span class="p">))</span>
             <span class="n">new_data_start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">curr_seg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">job_data_seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">start_pad</span><span class="p">)</span>
             <span class="n">new_data_end</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">curr_seg</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">job_data_seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">end_pad</span><span class="p">)</span>
-            <span class="n">new_data_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">([</span><span class="n">new_data_start</span><span class="p">,</span> <span class="n">new_data_end</span><span class="p">])</span></div></div>
-            <span class="k">return</span> <span class="n">new_data_seg</span>
+            <span class="n">new_data_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">([</span><span class="n">new_data_start</span><span class="p">,</span> <span class="n">new_data_end</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">new_data_seg</span></div></div>
 
 
 <div class="viewcode-block" id="PyCBCTmpltbankExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCTmpltbankExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCTmpltbankExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
@@ -1020,8 +1020,8 @@
                                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;PSD_FILE&#39;</span><span class="p">],</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">valid_seg</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
                                  <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--frame-files&#39;</span><span class="p">,</span> <span class="n">dfParents</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--frame-files&#39;</span><span class="p">,</span> <span class="n">dfParents</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="PyCBCTmpltbankExecutable.create_nodata_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCTmpltbankExecutable.create_nodata_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_nodata_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_seg</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; A simplified version of create_node that creates a node that does not</span>
@@ -1063,8 +1063,8 @@
 
             <span class="k">if</span> <span class="n">should_add</span><span class="p">:</span>
                 <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--psd-file&#39;</span><span class="p">,</span> <span class="n">psd_file</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">node</span>
+
+        <span class="k">return</span> <span class="n">node</span></div>
 
 <div class="viewcode-block" id="PyCBCTmpltbankExecutable.get_valid_times"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PyCBCTmpltbankExecutable.get_valid_times">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_times</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">pad_data</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_opt</span><span class="p">(</span> <span class="s1">&#39;pad-data&#39;</span><span class="p">))</span>
@@ -1073,8 +1073,8 @@
         <span class="c1">#FIXME this should not be hard coded</span>
         <span class="n">data_length</span> <span class="o">=</span> <span class="n">analysis_length</span> <span class="o">+</span> <span class="n">pad_data</span> <span class="o">*</span> <span class="mi">2</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">pad_data</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">data_length</span> <span class="o">-</span> <span class="n">pad_data</span></div></div>
-        <span class="k">return</span> <span class="p">[</span><span class="n">data_length</span><span class="p">],</span> <span class="p">[</span><span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">data_length</span> <span class="o">-</span> <span class="n">pad_data</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">data_length</span><span class="p">],</span> <span class="p">[</span><span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span></div></div>
 
 <div class="viewcode-block" id="LigoLWCombineSegsExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LigoLWCombineSegsExecutable">[docs]</a><span class="k">class</span> <span class="nc">LigoLWCombineSegsExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This class is used to create nodes for the ligolw_combine_segments</span>
@@ -1089,8 +1089,8 @@
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">veto_files</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">valid_seg</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
-                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="LigolwAddExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LigolwAddExecutable">[docs]</a><span class="k">class</span> <span class="nc">LigolwAddExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class used to create nodes for the ligolw_add Executable. &quot;&quot;&quot;</span>
@@ -1123,8 +1123,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">jobSegment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
                                     <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">,</span>
-                                    <span class="n">use_tmp_subdirs</span><span class="o">=</span><span class="n">use_tmp_subdirs</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                    <span class="n">use_tmp_subdirs</span><span class="o">=</span><span class="n">use_tmp_subdirs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="LigolwSSthincaExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LigolwSSthincaExecutable">[docs]</a><span class="k">class</span> <span class="nc">LigolwSSthincaExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for making jobs for ligolw_sstinca. &quot;&quot;&quot;</span>
@@ -1164,8 +1164,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">jobSegment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;--likelihood-output-file&#39;</span><span class="p">,</span>
                         <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DIST_STATS&#39;</span><span class="p">]</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">+</span><span class="n">tags</span><span class="p">,</span>
-                        <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                        <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcSqliteSimplifyExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcSqliteSimplifyExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcSqliteSimplifyExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for making jobs for pycbc_sqlite_simplify. &quot;&quot;&quot;</span>
@@ -1228,8 +1228,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--injection-file&quot;</span><span class="p">,</span> <span class="n">injFile</span><span class="p">)</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--simulation-tag&quot;</span><span class="p">,</span> <span class="n">injString</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.sqlite&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
-                        <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">+</span><span class="n">extra_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                        <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">+</span><span class="n">extra_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="SQLInOutExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.SQLInOutExecutable">[docs]</a><span class="k">class</span> <span class="nc">SQLInOutExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1252,15 +1252,15 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.sqlite&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
-                        <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">+</span><span class="n">extra_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                        <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">+</span><span class="n">extra_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcCalculateFarExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcCalculateFarExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcCalculateFarExecutable</span><span class="p">(</span><span class="n">SQLInOutExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The class responsible for making jobs for the FAR calculation code. This</span>
 <span class="sd">    only raises the default retention level</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">current_retention_level</span><span class="o">=</span><span class="n">Executable</span><span class="o">.</span><span class="n">FINAL_RESULT</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">current_retention_level</span><span class="o">=</span><span class="n">Executable</span><span class="o">.</span><span class="n">FINAL_RESULT</span></div>
 
 <div class="viewcode-block" id="ExtractToXMLExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.ExtractToXMLExecutable">[docs]</a><span class="k">class</span> <span class="nc">ExtractToXMLExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1278,8 +1278,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--database&#39;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;--extract&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="ComputeDurationsExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.ComputeDurationsExecutable">[docs]</a><span class="k">class</span> <span class="nc">ComputeDurationsExecutable</span><span class="p">(</span><span class="n">SQLInOutExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1291,8 +1291,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--segment-file&#39;</span><span class="p">,</span> <span class="n">summary_xml_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.sqlite&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="InspinjfindExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.InspinjfindExecutable">[docs]</a><span class="k">class</span> <span class="nc">InspinjfindExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1309,8 +1309,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--input-file&#39;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcSplitInspinjExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcSplitInspinjExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcSplitInspinjExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1344,8 +1344,8 @@
                             <span class="n">tags</span><span class="o">=</span><span class="n">curr_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
             <span class="n">out_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
 
-        <span class="n">node</span><span class="o">.</span><span class="n">add_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--output-files&#39;</span><span class="p">,</span> <span class="n">out_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--output-files&#39;</span><span class="p">,</span> <span class="n">out_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcPickleHorizonDistsExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcPickleHorizonDistsExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcPickleHorizonDistsExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1366,8 +1366,8 @@
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">trigger_files</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcCombineLikelihoodExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcCombineLikelihoodExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcCombineLikelihoodExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1387,8 +1387,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--likelihood-urls&#39;</span><span class="p">,</span> <span class="n">likelihood_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--horizon-dist-file&#39;</span><span class="p">,</span> <span class="n">horizon_dist_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcGenerateRankingDataExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcGenerateRankingDataExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcGenerateRankingDataExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1410,8 +1410,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--likelihood-file&#39;</span><span class="p">,</span> <span class="n">likelihood_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--horizon-dist-file&#39;</span><span class="p">,</span> <span class="n">horizon_dist_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcCalculateLikelihoodExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcCalculateLikelihoodExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcCalculateLikelihoodExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1440,8 +1440,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--likelihood-file&#39;</span><span class="p">,</span> <span class="n">likelihood_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.sqlite&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
                                  <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">+</span> <span class="n">extra_tags</span><span class="p">,</span>
-                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalMarginalizeLikelihoodExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalMarginalizeLikelihoodExecutable">[docs]</a><span class="k">class</span> <span class="nc">GstlalMarginalizeLikelihoodExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1458,8 +1458,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
-                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalFarfromsnrchisqhistExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalFarfromsnrchisqhistExecutable">[docs]</a><span class="k">class</span> <span class="nc">GstlalFarfromsnrchisqhistExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1486,8 +1486,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">job_segment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span>
                                   <span class="s2">&quot;--background-bins-out-file&quot;</span><span class="p">,</span>
                                   <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POSTMARG&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span>
-                                  <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                  <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalPlotSensitivity"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalPlotSensitivity">[docs]</a><span class="k">class</span> <span class="nc">GstlalPlotSensitivity</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1505,8 +1505,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--zero-lag-database&quot;</span><span class="p">,</span> <span class="n">non_inj_db</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">injection_dbs</span><span class="p">:</span>
-            <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalPlotSummary"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalPlotSummary">[docs]</a><span class="k">class</span> <span class="nc">GstlalPlotSummary</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1524,8 +1524,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">non_inj_db</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">injection_dbs</span><span class="p">:</span>
-            <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalPlotBackground"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalPlotBackground">[docs]</a><span class="k">class</span> <span class="nc">GstlalPlotBackground</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1542,8 +1542,8 @@
 <div class="viewcode-block" id="GstlalPlotBackground.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalPlotBackground.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">non_inj_db</span><span class="p">,</span> <span class="n">likelihood_file</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--database&quot;</span><span class="p">,</span> <span class="n">non_inj_db</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">likelihood_file</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">likelihood_file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="GstlalSummaryPage"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.GstlalSummaryPage">[docs]</a><span class="k">class</span> <span class="nc">GstlalSummaryPage</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1565,8 +1565,8 @@
         <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parent_nodes</span><span class="p">:</span>
             <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">)</span>
-            <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+            <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="LalappsInspinjExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LalappsInspinjExecutable">[docs]</a><span class="k">class</span> <span class="nc">LalappsInspinjExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1623,8 +1623,8 @@
                                  <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
 
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--gps-start-time&#39;</span><span class="p">,</span> <span class="n">int_gps_time_to_str</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--gps-end-time&#39;</span><span class="p">,</span> <span class="n">int_gps_time_to_str</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--gps-end-time&#39;</span><span class="p">,</span> <span class="n">int_gps_time_to_str</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcDarkVsBrightInjectionsExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcDarkVsBrightInjectionsExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcDarkVsBrightInjectionsExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1665,8 +1665,8 @@
         <span class="n">tag</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DIM_ONLY&#39;</span><span class="p">]</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span>
                                  <span class="n">ext</span><span class="p">,</span> <span class="s1">&#39;--output-dim&#39;</span><span class="p">,</span>
-                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="LigolwCBCJitterSkylocExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LigolwCBCJitterSkylocExecutable">[docs]</a><span class="k">class</span> <span class="nc">LigolwCBCJitterSkylocExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1695,8 +1695,8 @@
                            <span class="n">segment</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                            <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_output_opt</span><span class="p">(</span><span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
-</div></div>
-        <span class="k">return</span> <span class="n">node</span>
+
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="LigolwCBCAlignTotalSpinExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.LigolwCBCAlignTotalSpinExecutable">[docs]</a><span class="k">class</span> <span class="nc">LigolwCBCAlignTotalSpinExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1724,8 +1724,8 @@
                            <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">,</span>
                            <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_output_opt</span><span class="p">(</span><span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_arg</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcTimeslidesExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcTimeslidesExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcTimeslidesExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1736,8 +1736,8 @@
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.xml.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-files&#39;</span><span class="p">,</span>
-                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+                                 <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcSplitBankExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcSplitBankExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcSplitBankExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for creating jobs for pycbc_hdf5_splitbank. &quot;&quot;&quot;</span>
@@ -1781,13 +1781,13 @@
                             <span class="n">extension</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">extension</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span>
                             <span class="n">tags</span><span class="o">=</span><span class="n">curr_tags</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">)</span>
             <span class="n">out_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">add_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--output-filenames&#39;</span><span class="p">,</span> <span class="n">out_files</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--output-filenames&#39;</span><span class="p">,</span> <span class="n">out_files</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
 
 <div class="viewcode-block" id="PycbcSplitBankXmlExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcSplitBankXmlExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcSplitBankXmlExecutable</span><span class="p">(</span><span class="n">PycbcSplitBankExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Subclass resonsible for creating jobs for pycbc_splitbank. &quot;&quot;&quot;</span>
-</div>
-    <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.xml.gz&#39;</span>
+
+    <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.xml.gz&#39;</span></div>
 
 <div class="viewcode-block" id="PycbcConditionStrainExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcConditionStrainExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcConditionStrainExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for creating jobs for pycbc_condition_strain. &quot;&quot;&quot;</span>
@@ -1820,8 +1820,8 @@
                               <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;txt&#39;</span><span class="p">,</span>
                               <span class="n">store_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">retain_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_output_opt</span><span class="p">(</span><span class="s1">&#39;--output-gates-file&#39;</span><span class="p">,</span> <span class="n">out_gates_file</span><span class="p">)</span>
-</div></div>
-        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">out_file</span>
+
+        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">out_file</span></div></div>
 
 <div class="viewcode-block" id="PycbcCreateInjectionsExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcCreateInjectionsExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcCreateInjectionsExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for creating jobs</span>
@@ -1869,8 +1869,8 @@
         <span class="n">injection_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_time</span><span class="p">,</span>
                                                   <span class="s2">&quot;.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">,</span>
                                                   <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
-</div></div>
-        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">injection_file</span>
+
+        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">injection_file</span></div></div>
 
 <div class="viewcode-block" id="PycbcInferenceExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.jobsetup.PycbcInferenceExecutable">[docs]</a><span class="k">class</span> <span class="nc">PycbcInferenceExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The class responsible for creating jobs for ``pycbc_inference``.</span>
@@ -1941,8 +1941,8 @@
         <span class="n">inference_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_time</span><span class="p">,</span>
                                                   <span class="s2">&quot;.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">,</span>
                                                   <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
-</div></div>
-        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">inference_file</span>
+
+        <span class="k">return</span> <span class="n">node</span><span class="p">,</span> <span class="n">inference_file</span></div></div>
 </pre></div>
 
            </div>
@@ -1958,7 +1958,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1980,7 +1980,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

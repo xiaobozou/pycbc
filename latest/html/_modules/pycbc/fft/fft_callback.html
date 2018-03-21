@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fft_callback &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.fft.fft_callback &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -404,8 +404,8 @@
     
     <span class="n">hash_file</span> <span class="o">=</span> <span class="n">cache</span> <span class="o">+</span> <span class="s2">&quot;.hash&quot;</span>
     <span class="n">fhash</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">hash_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-    <span class="n">fhash</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span></div>
-    <span class="k">return</span> <span class="n">lib_file</span>
+    <span class="n">fhash</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">lib_file</span></div>
  
 <div class="viewcode-block" id="get_fn_plan"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.get_fn_plan">[docs]</a><span class="k">def</span> <span class="nf">get_fn_plan</span><span class="p">(</span><span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pycbc_cufft&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get the IFFT execute and plan functions</span>
@@ -419,13 +419,13 @@
     <span class="n">fn</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
     <span class="n">plan</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">create_plan</span>
     <span class="n">plan</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span>
-    <span class="n">plan</span><span class="o">.</span><span class="n">argyptes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">fn</span><span class="p">,</span> <span class="n">plan</span>
+    <span class="n">plan</span><span class="o">.</span><span class="n">argyptes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">fn</span><span class="p">,</span> <span class="n">plan</span></div>
 
 <span class="n">_plans</span> <span class="o">=</span> <span class="p">{}</span>
 
-<div class="viewcode-block" id="param"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.param">[docs]</a><span class="k">class</span> <span class="nc">param</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span></div>
-    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;htilde&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">)]</span>
+<div class="viewcode-block" id="param"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.param">[docs]</a><span class="k">class</span> <span class="nc">param</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;htilde&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">)]</span></div>
 <span class="n">hparam</span> <span class="o">=</span> <span class="n">param</span><span class="p">()</span>
     
 <div class="viewcode-block" id="c2c_correlate_ifft"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.c2c_correlate_ifft">[docs]</a><span class="k">def</span> <span class="nf">c2c_correlate_ifft</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">outvec</span><span class="p">):</span>
@@ -435,14 +435,14 @@
         <span class="n">plan</span> <span class="o">=</span> <span class="n">pfn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outvec</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">))</span>
         <span class="n">_plans</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">))</span>
     <span class="n">fn</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_plans</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-    <span class="n">hparam</span><span class="o">.</span><span class="n">htilde</span> <span class="o">=</span> <span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span></div>
-    <span class="n">fn</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">outvec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">hparam</span><span class="p">))</span>
+    <span class="n">hparam</span><span class="o">.</span><span class="n">htilde</span> <span class="o">=</span> <span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span>
+    <span class="n">fn</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">outvec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">hparam</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="param2"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.param2">[docs]</a><span class="k">class</span> <span class="nc">param2</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
     <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;htilde&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
                 <span class="p">(</span><span class="s2">&quot;in_kmax&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
-                <span class="p">(</span><span class="s2">&quot;out_kmin&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span></div>
-                <span class="p">(</span><span class="s2">&quot;out_kmax&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">)]</span>
+                <span class="p">(</span><span class="s2">&quot;out_kmin&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;out_kmax&quot;</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_uint</span><span class="p">)]</span></div>
 <span class="n">hparam_zeros</span> <span class="o">=</span> <span class="n">param2</span><span class="p">()</span>
 
 <div class="viewcode-block" id="c2c_half_correlate_ifft"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fft_callback.c2c_half_correlate_ifft">[docs]</a><span class="k">def</span> <span class="nf">c2c_half_correlate_ifft</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">outvec</span><span class="p">):</span>
@@ -460,8 +460,8 @@
     <span class="n">hparam_zeros</span><span class="o">.</span><span class="n">htilde</span> <span class="o">=</span> <span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span>
     <span class="n">hparam_zeros</span><span class="o">.</span><span class="n">in_kmax</span> <span class="o">=</span> <span class="n">htilde</span><span class="o">.</span><span class="n">end_idx</span>
     <span class="n">hparam_zeros</span><span class="o">.</span><span class="n">out_kmin</span> <span class="o">=</span> <span class="n">stilde</span><span class="o">.</span><span class="n">analyze</span><span class="o">.</span><span class="n">start</span>
-    <span class="n">hparam_zeros</span><span class="o">.</span><span class="n">out_kmax</span> <span class="o">=</span> <span class="n">stilde</span><span class="o">.</span><span class="n">analyze</span><span class="o">.</span><span class="n">stop</span></div>
-    <span class="n">fn</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">outvec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">hparam_zeros</span><span class="p">))</span>
+    <span class="n">hparam_zeros</span><span class="o">.</span><span class="n">out_kmax</span> <span class="o">=</span> <span class="n">stilde</span><span class="o">.</span><span class="n">analyze</span><span class="o">.</span><span class="n">stop</span>
+    <span class="n">fn</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">outvec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gpudata</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">hparam_zeros</span><span class="p">))</span></div>
     
 </pre></div>
 
@@ -478,7 +478,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -500,7 +500,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

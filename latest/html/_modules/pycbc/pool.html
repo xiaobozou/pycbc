@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.pool &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.pool &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -267,8 +267,8 @@
 <span class="sd">            The arguments for Pool.map</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_lockstep_fcn</span><span class="p">,</span> <span class="p">[(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">fcn</span><span class="p">,</span> <span class="n">args</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        <span class="n">_numdone</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span></div>
-        <span class="k">return</span> <span class="n">results</span>
+        <span class="n">_numdone</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">results</span></div>
 
 <div class="viewcode-block" id="BroadcastPool.map"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.BroadcastPool.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Catch keyboard interuppts to allow the pool to exit cleanly.</span>
@@ -290,18 +290,18 @@
                 <span class="k">pass</span>
             <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div></div>
-                <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span></div></div>
 
 <span class="k">def</span> <span class="nf">_dummy_broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>    
 
 <div class="viewcode-block" id="SinglePool"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.SinglePool">[docs]</a><span class="k">class</span> <span class="nc">SinglePool</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<div class="viewcode-block" id="SinglePool.broadcast"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.SinglePool.broadcast">[docs]</a>    <span class="k">def</span> <span class="nf">broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fcn</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fcn</span><span class="p">,</span> <span class="p">[</span><span class="n">args</span><span class="p">])</span>
+<div class="viewcode-block" id="SinglePool.broadcast"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.SinglePool.broadcast">[docs]</a>    <span class="k">def</span> <span class="nf">broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fcn</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fcn</span><span class="p">,</span> <span class="p">[</span><span class="n">args</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="SinglePool.map"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.SinglePool.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span></div></div>
-        <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span>
+<div class="viewcode-block" id="SinglePool.map"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.SinglePool.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]</span></div></div>
 
 <div class="viewcode-block" id="choose_pool"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.choose_pool">[docs]</a><span class="k">def</span> <span class="nf">choose_pool</span><span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="n">mpi</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">mpi</span><span class="p">:</span>
@@ -316,8 +316,8 @@
     <span class="k">elif</span> <span class="n">processes</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">pool</span> <span class="o">=</span> <span class="n">SinglePool</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pool</span> <span class="o">=</span> <span class="n">BroadcastPool</span><span class="p">(</span><span class="n">processes</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">pool</span>
+        <span class="n">pool</span> <span class="o">=</span> <span class="n">BroadcastPool</span><span class="p">(</span><span class="n">processes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pool</span></div>
 
 
 </pre></div>
@@ -335,7 +335,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -357,7 +357,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.arbitrary &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.distributions.arbitrary &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.distributions" href="../distributions.html"/> 
 
   
@@ -376,8 +376,8 @@
                     <span class="n">tdraws</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="k">pass</span>
-            <span class="n">arr</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">draws</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">arr</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">draws</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">arr</span></div>
 
 <div class="viewcode-block" id="Arbitrary.get_kde_from_arrays"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_kde_from_arrays</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">):</span>
@@ -387,16 +387,16 @@
 <span class="sd">            Each argument should be a 1D numpy array to construct the kde from.</span>
 <span class="sd">            The resulting KDE will have dimension given by the number of</span>
 <span class="sd">            parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">arrays</span><span class="p">))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">arrays</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Arbitrary.from_config"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.Arbitrary.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Raises a NotImplementedError; to load from a config file, use</span>
 <span class="sd">        `FromFile`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This class does not support loading from a &quot;</span></div></div>
-                                  <span class="s2">&quot;config file. Use `FromFile` instead.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This class does not support loading from a &quot;</span>
+                                  <span class="s2">&quot;config file. Use `FromFile` instead.&quot;</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="FromFile"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.FromFile">[docs]</a><span class="k">class</span> <span class="nc">FromFile</span><span class="p">(</span><span class="n">Arbitrary</span><span class="p">):</span>
@@ -482,8 +482,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
         <span class="n">params_values</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">f</span><span class="p">[</span><span class="n">p</span><span class="p">][:]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">}</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">params_values</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">params_values</span></div>
 
 <div class="viewcode-block" id="FromFile.from_config"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.FromFile.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">):</span>
@@ -522,8 +522,8 @@
 <span class="sd">        BoundedDist</span>
 <span class="sd">            A distribution instance from the pycbc.inference.prior module.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">bounded</span><span class="o">.</span><span class="n">bounded_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">,</span></div></div>
-                                           <span class="n">bounds_required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bounded</span><span class="o">.</span><span class="n">bounded_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">,</span>
+                                           <span class="n">bounds_required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Arbitrary&#39;</span><span class="p">,</span> <span class="s1">&#39;FromFile&#39;</span><span class="p">]</span>
 </pre></div>
@@ -541,7 +541,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -563,7 +563,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

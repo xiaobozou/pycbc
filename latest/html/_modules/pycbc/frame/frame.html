@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.frame.frame &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.frame.frame &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -421,8 +421,8 @@
             <span class="n">lalframe</span><span class="o">.</span><span class="n">FrStreamSeek</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
             <span class="n">all_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">all_data</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">_read_channel</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_read_channel</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="datafind_connection"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.frame.datafind_connection">[docs]</a><span class="k">def</span> <span class="nf">datafind_connection</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return a connection to the datafind server</span>
@@ -471,8 +471,8 @@
                 <span class="n">host</span><span class="o">=</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">cert_file</span><span class="o">=</span><span class="n">cert_file</span><span class="p">,</span> <span class="n">key_file</span><span class="o">=</span><span class="n">key_file</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">connection</span> <span class="o">=</span> <span class="n">pycbc_glue</span><span class="o">.</span><span class="n">datafind</span><span class="o">.</span><span class="n">GWDataFindHTTPConnection</span><span class="p">(</span>
-                <span class="n">host</span><span class="o">=</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">connection</span>
+                <span class="n">host</span><span class="o">=</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">connection</span></div>
     
 <div class="viewcode-block" id="frame_paths"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.frame.frame_paths">[docs]</a><span class="k">def</span> <span class="nf">frame_paths</span><span class="p">(</span><span class="n">frame_type</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">url_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the paths to a span of frame files</span>
@@ -506,8 +506,8 @@
     <span class="n">connection</span><span class="o">.</span><span class="n">find_times</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">frame_type</span><span class="p">,</span>
                           <span class="n">gpsstart</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">gpsend</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span>
     <span class="n">cache</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">find_frame_urls</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">frame_type</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span><span class="n">urltype</span><span class="o">=</span><span class="n">url_type</span><span class="p">)</span>
-    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">paths</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span><span class="o">.</span><span class="n">path</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">paths</span></div>
     
 <div class="viewcode-block" id="query_and_read_frame"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.frame.query_and_read_frame">[docs]</a><span class="k">def</span> <span class="nf">query_and_read_frame</span><span class="p">(</span><span class="n">frame_type</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
                          <span class="n">sieve</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -557,8 +557,8 @@
     <span class="k">return</span> <span class="n">read_frame</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> 
                       <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> 
                       <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">,</span>
-                      <span class="n">sieve</span><span class="o">=</span><span class="n">sieve</span><span class="p">,</span></div>
-                      <span class="n">check_integrity</span><span class="o">=</span><span class="n">check_integrity</span><span class="p">)</span>
+                      <span class="n">sieve</span><span class="o">=</span><span class="n">sieve</span><span class="p">,</span>
+                      <span class="n">check_integrity</span><span class="o">=</span><span class="n">check_integrity</span><span class="p">)</span></div>
     
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;read_frame&#39;</span><span class="p">,</span> <span class="s1">&#39;frame_paths&#39;</span><span class="p">,</span> 
            <span class="s1">&#39;datafind_connection&#39;</span><span class="p">,</span> 
@@ -997,7 +997,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1019,7 +1019,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

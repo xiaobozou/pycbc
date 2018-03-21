@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.events &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.events &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -246,28 +246,28 @@
 <div class="viewcode-block" id="threshold"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.threshold">[docs]</a><span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.events.threshold_&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return list of values and indices values over threshold in series.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
     
 <div class="viewcode-block" id="threshold_only"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.threshold_only">[docs]</a><span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.events.threshold_&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">threshold_only</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return list of values and indices whose values in series are</span>
 <span class="sd">       larger (in absolute value) than value</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
 
 <span class="c1">#FIXME: This should be under schemed, but I don&#39;t understand that yet!</span>
 <div class="viewcode-block" id="threshold_real_numpy"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.threshold_real_numpy">[docs]</a><span class="k">def</span> <span class="nf">threshold_real_numpy</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">data</span>
     <span class="n">locs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">locs</span><span class="p">,</span> <span class="n">vals</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">locs</span><span class="p">,</span> <span class="n">vals</span></div>
 
 <div class="viewcode-block" id="threshold_and_cluster"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.threshold_and_cluster">[docs]</a><span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.events.threshold_&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">threshold_and_cluster</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return list of values and indices values over threshold in series.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span></div>
 
 <span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.events.threshold_&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_threshold_cluster_factory</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
@@ -283,8 +283,8 @@
 <span class="sd">      points above threshold that are then clustered</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">real_cls</span> <span class="o">=</span> <span class="n">_threshold_cluster_factory</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">real_cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># pylint:disable=not-callable</span>
+        <span class="n">real_cls</span> <span class="o">=</span> <span class="n">_threshold_cluster_factory</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">real_cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># pylint:disable=not-callable</span></div>
 
 <span class="c1"># The class below should serve as the parent for all schemed classes.</span>
 <span class="c1"># The intention is that this class serves simply as the location for</span>
@@ -361,8 +361,8 @@
 <span class="s2">        k[0] = j;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">,</span> <span class="s1">&#39;absvalues&#39;</span><span class="p">,</span> <span class="s1">&#39;window_length&#39;</span><span class="p">,</span> <span class="s1">&#39;indices&#39;</span><span class="p">,</span> <span class="s1">&#39;tlen&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">],</span>
-                 <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                 <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="cluster_reduce"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.cluster_reduce">[docs]</a><span class="k">def</span> <span class="nf">cluster_reduce</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">snr</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Reduce the events by clustering over a window</span>
@@ -383,8 +383,8 @@
 <span class="sd">    snr: Array</span>
 <span class="sd">        The list of SNR values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">findchirp_cluster_over_window</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">snr</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="n">snr</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">findchirp_cluster_over_window</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">snr</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="n">snr</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="newsnr"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.newsnr">[docs]</a><span class="k">def</span> <span class="nf">newsnr</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="n">reduced_x2</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">6.</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mf">2.</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the re-weighted SNR statistic (&#39;newSNR&#39;) from given SNR and</span>
@@ -401,8 +401,8 @@
     <span class="c1"># If snr input is float, return a float. Otherwise return numpy array.</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">newsnr</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">newsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">newsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="newsnr_sgveto"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.newsnr_sgveto">[docs]</a><span class="k">def</span> <span class="nf">newsnr_sgveto</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="n">bchisq</span><span class="p">,</span> <span class="n">sgchisq</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Combined SNR derived from NewSNR and Sine-Gaussian Chisq&quot;&quot;&quot;</span>
@@ -417,8 +417,8 @@
     <span class="c1"># If snr input is float, return a float. Otherwise return numpy array.</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">nsnr</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">nsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="effsnr"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.effsnr">[docs]</a><span class="k">def</span> <span class="nf">effsnr</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="n">reduced_x2</span><span class="p">,</span> <span class="n">fac</span><span class="o">=</span><span class="mf">250.</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the effective SNR statistic. See (S5y1 paper) for definition.</span>
@@ -431,8 +431,8 @@
     <span class="c1"># If snr input is float, return a float. Otherwise return numpy array.</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">effsnr</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">effsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">effsnr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="EventManager"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager">[docs]</a><span class="k">class</span> <span class="nc">EventManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">column_types</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
@@ -460,16 +460,16 @@
         <span class="n">opt_dict</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">arg</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">opt_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                <span class="nb">setattr</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">arg</span><span class="p">)[</span><span class="n">ifo</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">column_types</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">arg</span><span class="p">)[</span><span class="n">ifo</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">column_types</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.chisq_threshold"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.chisq_threshold">[docs]</a>    <span class="k">def</span> <span class="nf">chisq_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="n">remove</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">):</span>
             <span class="n">xi</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">xi</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">:</span>
-                <span class="n">remove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">remove</span><span class="p">)</span>
+                <span class="n">remove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">remove</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.newsnr_threshold"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.newsnr_threshold">[docs]</a>    <span class="k">def</span> <span class="nf">newsnr_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Remove events with newsnr smaller than given threshold</span>
@@ -478,8 +478,8 @@
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Chi-square test must be enabled in order to use newsnr threshold&#39;</span><span class="p">)</span>
 
         <span class="n">remove</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="k">if</span> \
-            <span class="n">newsnr</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]),</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">remove</span><span class="p">)</span>
+            <span class="n">newsnr</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]),</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">remove</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="EventManager.keep_near_injection"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.keep_near_injection">[docs]</a>    <span class="k">def</span> <span class="nf">keep_near_injection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">injections</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">pycbc.events.veto</span> <span class="k">import</span> <span class="n">indices_within_times</span>
@@ -489,8 +489,8 @@
         <span class="n">inj_time</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">injections</span><span class="o">.</span><span class="n">end_times</span><span class="p">())</span>
         <span class="n">gpstime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="s1">&#39;time_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
         <span class="n">gpstime</span> <span class="o">=</span> <span class="n">gpstime</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">gps_start_time</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">indices_within_times</span><span class="p">(</span><span class="n">gpstime</span><span class="p">,</span> <span class="n">inj_time</span> <span class="o">-</span> <span class="n">window</span><span class="p">,</span> <span class="n">inj_time</span> <span class="o">+</span> <span class="n">window</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">indices_within_times</span><span class="p">(</span><span class="n">gpstime</span><span class="p">,</span> <span class="n">inj_time</span> <span class="o">-</span> <span class="n">window</span><span class="p">,</span> <span class="n">inj_time</span> <span class="o">+</span> <span class="n">window</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="EventManager.keep_loudest_in_interval"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.keep_loudest_in_interval">[docs]</a>    <span class="k">def</span> <span class="nf">keep_loudest_in_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">num_keep</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -508,8 +508,8 @@
             <span class="n">bloc</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">wtime</span> <span class="o">==</span> <span class="n">b</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">bloudest</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[</span><span class="n">bloc</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="o">-</span><span class="n">num_keep</span><span class="p">:]</span>
             <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bloc</span><span class="p">[</span><span class="n">bloudest</span><span class="p">])</span>
-        <span class="n">keep</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span>
+        <span class="n">keep</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="EventManager.maximize_over_bank"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.maximize_over_bank">[docs]</a>    <span class="k">def</span> <span class="nf">maximize_over_bank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tcolumn</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -551,8 +551,8 @@
                     <span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.add_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.add_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">add_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">vectors</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Add a vector indexed &quot;&quot;&quot;</span>
@@ -571,33 +571,33 @@
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Array</span><span class="p">):</span>
                     <span class="n">new_events</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">new_events</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">,</span> <span class="n">new_events</span><span class="p">)</span>
+                    <span class="n">new_events</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">,</span> <span class="n">new_events</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.cluster_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.cluster_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">cluster_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tcolumn</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Cluster the internal events over the named column</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cvec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
         <span class="n">tvec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">[</span><span class="n">tcolumn</span><span class="p">]</span>
-        <span class="n">indices</span> <span class="o">=</span> <span class="n">findchirp_cluster_over_window</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">findchirp_cluster_over_window</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.new_template"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.new_template">[docs]</a>    <span class="k">def</span> <span class="nf">new_template</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kwds</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_index</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="EventManager.add_template_params"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.add_template_params">[docs]</a>    <span class="k">def</span> <span class="nf">add_template_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds</span><span class="p">)</span>
+<div class="viewcode-block" id="EventManager.add_template_params"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.add_template_params">[docs]</a>    <span class="k">def</span> <span class="nf">add_template_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.finalize_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.finalize_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.make_output_dir"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.make_output_dir">[docs]</a>    <span class="k">def</span> <span class="nf">make_output_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">path</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span></div>
-                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.save_performance"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.save_performance">[docs]</a>    <span class="k">def</span> <span class="nf">save_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ncores</span><span class="p">,</span> <span class="n">nfilters</span><span class="p">,</span> <span class="n">ntemplates</span><span class="p">,</span> <span class="n">run_time</span><span class="p">,</span>
                          <span class="n">setup_time</span><span class="p">):</span>
@@ -608,8 +608,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">setup_time</span> <span class="o">=</span> <span class="n">setup_time</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ncores</span> <span class="o">=</span> <span class="n">ncores</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nfilters</span> <span class="o">=</span> <span class="n">nfilters</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ntemplates</span> <span class="o">=</span> <span class="n">ntemplates</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_performance</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ntemplates</span> <span class="o">=</span> <span class="n">ntemplates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_performance</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="EventManager.write_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.write_events">[docs]</a>    <span class="k">def</span> <span class="nf">write_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Write the found events to a sngl inspiral table</span>
@@ -618,8 +618,8 @@
 
         <span class="k">if</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">in</span> <span class="n">outname</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">write_to_hdf</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot write to this format&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot write to this format&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.write_to_hdf"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.write_to_hdf">[docs]</a>    <span class="k">def</span> <span class="nf">write_to_hdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="k">class</span> <span class="nc">fw</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -742,8 +742,8 @@
                             <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
                     <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/width&#39;</span><span class="p">]</span> <span class="o">=</span> \
                             <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
-                    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/pad&#39;</span><span class="p">]</span> <span class="o">=</span> \</div></div>
-                            <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
+                    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/pad&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                            <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span></div></div>
 
 <div class="viewcode-block" id="EventManagerMultiDet"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManagerMultiDet">[docs]</a><span class="k">class</span> <span class="nc">EventManagerMultiDet</span><span class="p">(</span><span class="n">EventManager</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">column_types</span><span class="p">,</span> <span class="n">psd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -782,8 +782,8 @@
         <span class="c1"># Just call through to the standard function</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_template_events</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">vectors</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="EventManagerMultiDet.cluster_template_events_single_ifo"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManagerMultiDet.cluster_template_events_single_ifo">[docs]</a>    <span class="k">def</span> <span class="nf">cluster_template_events_single_ifo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tcolumn</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span>
                                           <span class="n">ifo</span><span class="p">):</span>
@@ -792,8 +792,8 @@
         <span class="c1"># Just call through to the standard function</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cluster_template_events</span><span class="p">(</span><span class="n">tcolumn</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="EventManagerMultiDet.finalize_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManagerMultiDet.finalize_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perform_coincidence</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                  <span class="n">coinc_window</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
@@ -832,8 +832,8 @@
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span></div>
-                                                        <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">template_event_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span>
+                                                        <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManagerMultiDet.write_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManagerMultiDet.write_events">[docs]</a>    <span class="k">def</span> <span class="nf">write_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Write the found events to a sngl inspiral table</span>
@@ -842,8 +842,8 @@
  
         <span class="k">if</span> <span class="s1">&#39;.hdf&#39;</span> <span class="ow">in</span> <span class="n">outname</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">write_to_hdf</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot write to this format&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot write to this format&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManagerMultiDet.write_to_hdf"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManagerMultiDet.write_to_hdf">[docs]</a>    <span class="k">def</span> <span class="nf">write_to_hdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="k">class</span> <span class="nc">fw</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -969,8 +969,8 @@
                                              <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
                         <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/width&#39;</span><span class="p">]</span> <span class="o">=</span> \
                                 <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
-                        <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/pad&#39;</span><span class="p">]</span> <span class="o">=</span> \</div></div>
-                                <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span>
+                        <span class="n">f</span><span class="p">[</span><span class="s1">&#39;gating/&#39;</span> <span class="o">+</span> <span class="n">gate_type</span> <span class="o">+</span> <span class="s1">&#39;/pad&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                                <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">gating_info</span><span class="p">[</span><span class="n">gate_type</span><span class="p">]])</span></div></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;threshold_and_cluster&#39;</span><span class="p">,</span> <span class="s1">&#39;newsnr&#39;</span><span class="p">,</span> <span class="s1">&#39;effsnr&#39;</span><span class="p">,</span> <span class="s1">&#39;newsnr_sgveto&#39;</span><span class="p">,</span>
            <span class="s1">&#39;findchirp_cluster_over_window&#39;</span><span class="p">,</span>
@@ -992,7 +992,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1014,7 +1014,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

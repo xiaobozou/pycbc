@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.spins &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.distributions.spins &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.distributions" href="../distributions.html"/> 
 
   
@@ -437,8 +437,8 @@
         <span class="n">arr</span><span class="p">[</span><span class="s1">&#39;xi2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span>
         <span class="k">return</span> <span class="n">arr</span>
 
-<div class="viewcode-block" id="IndependentChiPChiEff.apply_boundary_conditions"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.spins.IndependentChiPChiEff.apply_boundary_conditions">[docs]</a>    <span class="k">def</span> <span class="nf">apply_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="n">kwargs</span>
+<div class="viewcode-block" id="IndependentChiPChiEff.apply_boundary_conditions"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.spins.IndependentChiPChiEff.apply_boundary_conditions">[docs]</a>    <span class="k">def</span> <span class="nf">apply_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">kwargs</span></div>
 
 
 <div class="viewcode-block" id="IndependentChiPChiEff.rvs"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.spins.IndependentChiPChiEff.rvs">[docs]</a>    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -455,8 +455,8 @@
             <span class="n">addpts</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
             <span class="n">arr</span><span class="p">[</span><span class="n">keepidx</span><span class="p">:</span><span class="n">keepidx</span><span class="o">+</span><span class="n">addpts</span><span class="p">]</span> <span class="o">=</span> <span class="n">draws</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
             <span class="n">keepidx</span> <span class="o">+=</span> <span class="n">addpts</span>
-            <span class="n">remaining</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">keepidx</span></div>
-        <span class="k">return</span> <span class="n">arr</span>
+            <span class="n">remaining</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">keepidx</span>
+        <span class="k">return</span> <span class="n">arr</span></div>
 
 
 <div class="viewcode-block" id="IndependentChiPChiEff.from_config"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.spins.IndependentChiPChiEff.from_config">[docs]</a>    <span class="nd">@classmethod</span>
@@ -497,8 +497,8 @@
             <span class="n">nsamples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">section</span><span class="p">,</span> <span class="n">tag</span><span class="p">]),</span> <span class="s1">&#39;nsamples&#39;</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">nsamples</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="o">=</span><span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="o">=</span><span class="n">chi_a</span><span class="p">,</span></div></div>
-                   <span class="n">xi_bounds</span><span class="o">=</span><span class="n">xi_bounds</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="n">nsamples</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="o">=</span><span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="o">=</span><span class="n">chi_a</span><span class="p">,</span>
+                   <span class="n">xi_bounds</span><span class="o">=</span><span class="n">xi_bounds</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="n">nsamples</span><span class="p">)</span></div></div>
 
 
 </pre></div>
@@ -516,7 +516,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -538,7 +538,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.versioning &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.results.versioning &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -319,8 +319,8 @@
     <span class="n">pycbcinfo</span><span class="p">[</span><span class="s1">&#39;Committer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">git_committer</span>
     <span class="n">pycbcinfo</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">git_build_date</span>
     <span class="n">library_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pycbcinfo</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">library_list</span>
+
+    <span class="k">return</span> <span class="n">library_list</span></div>
 
 <div class="viewcode-block" id="write_library_information"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.versioning.write_library_information">[docs]</a><span class="k">def</span> <span class="nf">write_library_information</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="n">library_list</span> <span class="o">=</span> <span class="n">get_library_version_info</span><span class="p">()</span>
@@ -333,8 +333,8 @@
                 <span class="s1">&#39;title&#39;</span> <span class="p">:</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> Version Information&#39;</span><span class="o">%</span><span class="n">lib_name</span><span class="p">,</span>
         <span class="p">}</span>
         
-        <span class="n">save_fig_with_metadata</span><span class="p">(</span><span class="n">html_escape</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> </div>
-          <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_version_information.html&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">lib_name</span><span class="p">)),</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="n">save_fig_with_metadata</span><span class="p">(</span><span class="n">html_escape</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> 
+          <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_version_information.html&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">lib_name</span><span class="p">)),</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_code_version_numbers"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.versioning.get_code_version_numbers">[docs]</a><span class="k">def</span> <span class="nf">get_code_version_numbers</span><span class="p">(</span><span class="n">cp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Will extract the version information from the executables listed in</span>
@@ -362,8 +362,8 @@
                 <span class="n">version_string</span> <span class="o">=</span> <span class="s2">&quot;Executable fails on </span><span class="si">%s</span><span class="s2"> --version&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
                 <span class="n">version_string</span> <span class="o">=</span> <span class="s2">&quot;Executable doesn&#39;t seem to exist(!)&quot;</span>
-            <span class="n">code_version_dict</span><span class="p">[</span><span class="n">exe_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">version_string</span></div>
-    <span class="k">return</span> <span class="n">code_version_dict</span>
+            <span class="n">code_version_dict</span><span class="p">[</span><span class="n">exe_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">version_string</span>
+    <span class="k">return</span> <span class="n">code_version_dict</span></div>
 
 <div class="viewcode-block" id="write_code_versions"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.versioning.write_code_versions">[docs]</a><span class="k">def</span> <span class="nf">write_code_versions</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
     <span class="n">code_version_dict</span> <span class="o">=</span> <span class="n">get_code_version_numbers</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
@@ -373,16 +373,16 @@
     <span class="n">kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;render-function&#39;</span> <span class="p">:</span> <span class="s1">&#39;render_text&#39;</span><span class="p">,</span>
             <span class="s1">&#39;title&#39;</span> <span class="p">:</span> <span class="s1">&#39;Version Information from Executables&#39;</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="n">save_fig_with_metadata</span><span class="p">(</span><span class="n">html_escape</span><span class="p">(</span><span class="n">html_text</span><span class="p">),</span> </div>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;version_information_from_executables.html&#39;</span><span class="p">),</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="n">save_fig_with_metadata</span><span class="p">(</span><span class="n">html_escape</span><span class="p">(</span><span class="n">html_text</span><span class="p">),</span> 
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;version_information_from_executables.html&#39;</span><span class="p">),</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="create_versioning_page"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.versioning.create_versioning_page">[docs]</a><span class="k">def</span> <span class="nf">create_versioning_page</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Entering versioning module&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">write_library_information</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="n">write_code_versions</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cp</span><span class="p">)</span></div>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving versioning module&quot;</span><span class="p">)</span>
+    <span class="n">write_code_versions</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cp</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving versioning module&quot;</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -398,7 +398,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -420,7 +420,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.future &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.future &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -254,8 +254,8 @@
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
         <span class="n">out</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="n">rr</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="n">c</span> <span class="o">+</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">r</span> <span class="o">+=</span> <span class="n">rr</span>
-        <span class="n">c</span> <span class="o">+=</span> <span class="n">cc</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="n">cc</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="zpk2sos"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.zpk2sos">[docs]</a><span class="k">def</span> <span class="nf">zpk2sos</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">pairing</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stolen from scipy, please kill me and upgrade scipy...</span>
@@ -358,8 +358,8 @@
     <span class="n">gains</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
     <span class="k">for</span> <span class="n">si</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sections</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">zpk2tf</span><span class="p">(</span><span class="n">z_sos</span><span class="p">[</span><span class="n">si</span><span class="p">],</span> <span class="n">p_sos</span><span class="p">[</span><span class="n">si</span><span class="p">],</span> <span class="n">gains</span><span class="p">[</span><span class="n">si</span><span class="p">])</span>
-        <span class="n">sos</span><span class="p">[</span><span class="n">si</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">sos</span>
+        <span class="n">sos</span><span class="p">[</span><span class="n">si</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sos</span></div>
 
 <div class="viewcode-block" id="sosfilt"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.sosfilt">[docs]</a><span class="k">def</span> <span class="nf">sosfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">zi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stolen from scipy, please kill me and upgrade scipy...</span>
@@ -398,8 +398,8 @@
                                      <span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">zi</span><span class="o">=</span><span class="n">zi</span><span class="p">[</span><span class="n">section</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">lfilter</span><span class="p">(</span><span class="n">sos</span><span class="p">[</span><span class="n">section</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">sos</span><span class="p">[</span><span class="n">section</span><span class="p">,</span> <span class="mi">3</span><span class="p">:],</span> <span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zf</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_zi</span> <span class="k">else</span> <span class="n">x</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zf</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_zi</span> <span class="k">else</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <span class="k">def</span> <span class="nf">_cplxreal</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
@@ -541,8 +541,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="s2">&quot;, at line </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="s2">&quot;, column </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">result</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="s2">&quot;, column </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 
 
 <div class="viewcode-block" id="HTMLParser"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser">[docs]</a><span class="k">class</span> <span class="nc">HTMLParser</span><span class="p">(</span><span class="n">markupbase</span><span class="o">.</span><span class="n">ParserBase</span><span class="p">):</span>
@@ -577,8 +577,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lasttag</span> <span class="o">=</span> <span class="s1">&#39;???&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting_normal</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="kc">None</span></div>
-        <span class="n">markupbase</span><span class="o">.</span><span class="n">ParserBase</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">markupbase</span><span class="o">.</span><span class="n">ParserBase</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HTMLParser.feed"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.feed">[docs]</a>    <span class="k">def</span> <span class="nf">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Feed data to the parser.</span>
@@ -586,29 +586,29 @@
 <span class="sd">        Call this as often as you want, with as little or as much text</span>
 <span class="sd">        as you want (may include &#39;\n&#39;).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">+</span> <span class="n">data</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">goahead</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">+</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goahead</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HTMLParser.close"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Handle any buffered data.&quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">goahead</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Handle any buffered data.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goahead</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="HTMLParser.error"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span></div>
-        <span class="k">raise</span> <span class="n">HTMLParseError</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">getpos</span><span class="p">())</span>
+<div class="viewcode-block" id="HTMLParser.error"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.error">[docs]</a>    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">HTMLParseError</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">getpos</span><span class="p">())</span></div>
 
     <span class="n">__starttag_text</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="HTMLParser.get_starttag_text"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.get_starttag_text">[docs]</a>    <span class="k">def</span> <span class="nf">get_starttag_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return full source of start tag: &#39;&lt;...&gt;&#39;.&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__starttag_text</span>
+        <span class="sd">&quot;&quot;&quot;Return full source of start tag: &#39;&lt;...&gt;&#39;.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__starttag_text</span></div>
 
 <div class="viewcode-block" id="HTMLParser.set_cdata_mode"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.set_cdata_mode">[docs]</a>    <span class="k">def</span> <span class="nf">set_cdata_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">interesting</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;/\s*</span><span class="si">%s</span><span class="s1">\s*&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interesting</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;/\s*</span><span class="si">%s</span><span class="s1">\s*&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HTMLParser.clear_cdata_mode"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.clear_cdata_mode">[docs]</a>    <span class="k">def</span> <span class="nf">clear_cdata_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting_normal</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting_normal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="c1"># Internal -- handle data as far as reasonable.  May leave state</span>
     <span class="c1"># and data to be processed by a subsequent call.  If &#39;end&#39; is</span>
@@ -701,8 +701,8 @@
         <span class="c1"># end while</span>
         <span class="k">if</span> <span class="n">end</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdata_elem</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">handle_data</span><span class="p">(</span><span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">n</span><span class="p">])</span>
-            <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updatepos</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">=</span> <span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">updatepos</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawdata</span> <span class="o">=</span> <span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="p">:]</span></div>
 
     <span class="c1"># Internal -- parse html declarations, return length or -1 if not terminated</span>
     <span class="c1"># See w3.org/TR/html5/tokenization.html#markup-declaration-open-state</span>
@@ -723,8 +723,8 @@
                 <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">handle_decl</span><span class="p">(</span><span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span><span class="n">gtpos</span><span class="p">])</span>
             <span class="k">return</span> <span class="n">gtpos</span><span class="o">+</span><span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_bogus_comment</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_bogus_comment</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div>
 
     <span class="c1"># Internal -- parse bogus comment, return length or -1 if not terminated</span>
     <span class="c1"># see http://www.w3.org/TR/html5/tokenization.html#bogus-comment-state</span>
@@ -736,8 +736,8 @@
         <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">if</span> <span class="n">report</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">handle_comment</span><span class="p">(</span><span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span><span class="n">pos</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_comment</span><span class="p">(</span><span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span><span class="n">pos</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span></div>
 
     <span class="c1"># Internal -- parse processing instr, return end or -1 if not terminated</span>
 <div class="viewcode-block" id="HTMLParser.parse_pi"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.parse_pi">[docs]</a>    <span class="k">def</span> <span class="nf">parse_pi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -748,8 +748,8 @@
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
         <span class="n">j</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">handle_pi</span><span class="p">(</span><span class="n">rawdata</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span> <span class="n">j</span><span class="p">])</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">j</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">j</span></div>
 
     <span class="c1"># Internal -- handle starttag, return end or -1 if not terminated</span>
 <div class="viewcode-block" id="HTMLParser.parse_starttag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.parse_starttag">[docs]</a>    <span class="k">def</span> <span class="nf">parse_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -799,8 +799,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">handle_starttag</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">CDATA_CONTENT_ELEMENTS</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">set_cdata_mode</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">endpos</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_cdata_mode</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">endpos</span></div>
 
     <span class="c1"># Internal -- check to see if we have a complete starttag; return end</span>
     <span class="c1"># or -1 if incomplete.</span>
@@ -832,8 +832,8 @@
             <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">j</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span></div>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;we should not get here!&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;we should not get here!&quot;</span><span class="p">)</span></div>
 
     <span class="c1"># Internal -- parse endtag, return end or -1 if incomplete</span>
 <div class="viewcode-block" id="HTMLParser.parse_endtag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.parse_endtag">[docs]</a>    <span class="k">def</span> <span class="nf">parse_endtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -872,48 +872,48 @@
                 <span class="k">return</span> <span class="n">gtpos</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">handle_endtag</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">clear_cdata_mode</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">gtpos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_cdata_mode</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">gtpos</span></div>
 
     <span class="c1"># Overridable -- finish processing of start+end tag: &lt;tag.../&gt;</span>
 <div class="viewcode-block" id="HTMLParser.handle_startendtag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_startendtag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_startendtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">handle_starttag</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">handle_endtag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_starttag</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle_endtag</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span></div>
 
     <span class="c1"># Overridable -- handle start tag</span>
-<div class="viewcode-block" id="HTMLParser.handle_starttag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_starttag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_starttag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_starttag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle end tag</span>
-<div class="viewcode-block" id="HTMLParser.handle_endtag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_endtag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_endtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_endtag"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_endtag">[docs]</a>    <span class="k">def</span> <span class="nf">handle_endtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle character reference</span>
-<div class="viewcode-block" id="HTMLParser.handle_charref"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_charref">[docs]</a>    <span class="k">def</span> <span class="nf">handle_charref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_charref"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_charref">[docs]</a>    <span class="k">def</span> <span class="nf">handle_charref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle entity reference</span>
-<div class="viewcode-block" id="HTMLParser.handle_entityref"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_entityref">[docs]</a>    <span class="k">def</span> <span class="nf">handle_entityref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_entityref"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_entityref">[docs]</a>    <span class="k">def</span> <span class="nf">handle_entityref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle data</span>
-<div class="viewcode-block" id="HTMLParser.handle_data"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_data">[docs]</a>    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_data"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_data">[docs]</a>    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle comment</span>
-<div class="viewcode-block" id="HTMLParser.handle_comment"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_comment">[docs]</a>    <span class="k">def</span> <span class="nf">handle_comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_comment"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_comment">[docs]</a>    <span class="k">def</span> <span class="nf">handle_comment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle declaration</span>
-<div class="viewcode-block" id="HTMLParser.handle_decl"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_decl">[docs]</a>    <span class="k">def</span> <span class="nf">handle_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">decl</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_decl"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_decl">[docs]</a>    <span class="k">def</span> <span class="nf">handle_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">decl</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Overridable -- handle processing instruction</span>
-<div class="viewcode-block" id="HTMLParser.handle_pi"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_pi">[docs]</a>    <span class="k">def</span> <span class="nf">handle_pi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.handle_pi"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.handle_pi">[docs]</a>    <span class="k">def</span> <span class="nf">handle_pi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="HTMLParser.unknown_decl"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.unknown_decl">[docs]</a>    <span class="k">def</span> <span class="nf">unknown_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="HTMLParser.unknown_decl"><a class="viewcode-back" href="../../pycbc.html#pycbc.future.HTMLParser.unknown_decl">[docs]</a>    <span class="k">def</span> <span class="nf">unknown_decl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
     <span class="c1"># Internal -- helper to remove special character quoting</span>
     <span class="n">entitydefs</span> <span class="o">=</span> <span class="kc">None</span>
@@ -944,8 +944,8 @@
                     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">entitydefs</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
                 <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                     <span class="k">return</span> <span class="s1">&#39;&amp;&#39;</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;;&#39;</span>
-</div></div>
-        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&amp;(#?[xX]?(?:[0-9a-fA-F]+|\w{1,8}));&quot;</span><span class="p">,</span> <span class="n">replaceEntities</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&amp;(#?[xX]?(?:[0-9a-fA-F]+|\w{1,8}));&quot;</span><span class="p">,</span> <span class="n">replaceEntities</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span></div></div>
 
 <span class="c1"># What follows are a list of colormaps for matplolib, which were introduced in</span>
 <span class="c1"># later matplotlib versions. This contains the raw data, so is at the bottom</span>
@@ -2007,7 +2007,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -2029,7 +2029,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

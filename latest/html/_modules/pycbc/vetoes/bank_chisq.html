@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes.bank_chisq &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.vetoes.bank_chisq &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -265,8 +265,8 @@
         <span class="n">snrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span>
         <span class="c1"># Template normalization factor stored here</span>
         <span class="n">norms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">snrs</span><span class="p">,</span> <span class="n">norms</span>
+
+    <span class="k">return</span> <span class="n">snrs</span><span class="p">,</span> <span class="n">norms</span></div>
 
 <div class="viewcode-block" id="template_overlaps"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.template_overlaps">[docs]</a><span class="k">def</span> <span class="nf">template_overlaps</span><span class="p">(</span><span class="n">bank_filters</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This functions calculates the overlaps between the template and the</span>
@@ -301,8 +301,8 @@
             <span class="n">errMsg</span> <span class="o">+=</span> <span class="s2">&quot;Masses of bank filter template: </span><span class="si">%e</span><span class="s2"> </span><span class="si">%e</span><span class="se">\n</span><span class="s2">&quot;</span> \
                       <span class="o">%</span><span class="p">(</span><span class="n">bank_template</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span> <span class="n">bank_template</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass2</span><span class="p">)</span>
             <span class="n">errMsg</span> <span class="o">+=</span> <span class="s2">&quot;Overlap: </span><span class="si">%e</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">overlaps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">errMsg</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">overlaps</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">errMsg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">overlaps</span></div>
 
 <div class="viewcode-block" id="bank_chisq_from_filters"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.bank_chisq_from_filters">[docs]</a><span class="k">def</span> <span class="nf">bank_chisq_from_filters</span><span class="p">(</span><span class="n">tmplt_snr</span><span class="p">,</span> <span class="n">tmplt_norm</span><span class="p">,</span> <span class="n">bank_snrs</span><span class="p">,</span> <span class="n">bank_norms</span><span class="p">,</span>
         <span class="n">tmplt_bank_matches</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -367,8 +367,8 @@
     <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">bank_chisq</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">bank_chisq</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">tmplt_snr</span><span class="o">.</span><span class="n">delta_t</span><span class="p">,</span></div>
-                          <span class="n">epoch</span><span class="o">=</span><span class="n">tmplt_snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">bank_chisq</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">tmplt_snr</span><span class="o">.</span><span class="n">delta_t</span><span class="p">,</span>
+                          <span class="n">epoch</span><span class="o">=</span><span class="n">tmplt_snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SingleDetBankVeto"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.SingleDetBankVeto">[docs]</a><span class="k">class</span> <span class="nc">SingleDetBankVeto</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class reads in a template bank file for a bank veto, handles the</span>
@@ -408,16 +408,16 @@
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment_snrs_cache</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Precalculate the bank veto template snrs&quot;</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">segment_snrs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_low</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_segment_snrs_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment_snrs_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_segment_snrs_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_segment_snrs_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="SingleDetBankVeto.cache_overlaps"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.SingleDetBankVeto.cache_overlaps">[docs]</a>    <span class="k">def</span> <span class="nf">cache_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">):</span>
         <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">params</span><span class="p">),</span> <span class="nb">id</span><span class="p">(</span><span class="n">psd</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_cache</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;...Calculate bank veto overlaps&quot;</span><span class="p">)</span>
             <span class="n">o</span> <span class="o">=</span> <span class="n">template_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_low</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="SingleDetBankVeto.values"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.SingleDetBankVeto.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">snrv</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -437,8 +437,8 @@
                                             <span class="n">bank_veto_norms</span><span class="p">,</span> <span class="n">overlaps</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> 
             <span class="n">dof</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dof</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">chisq</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">chisq</span><span class="p">,</span> <span class="n">dof</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>      
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>      </div></div>
 
 <div class="viewcode-block" id="SingleDetSkyMaxBankVeto"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.SingleDetSkyMaxBankVeto">[docs]</a><span class="k">class</span> <span class="nc">SingleDetSkyMaxBankVeto</span><span class="p">(</span><span class="n">SingleDetBankVeto</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stub for precessing bank veto if anyone ever wants to code it up.</span>
@@ -452,8 +452,8 @@
             <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;been written. If you want to use it, why not help &quot;</span>
             <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;write it?&quot;</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div></div>
 </pre></div>
 
            </div>
@@ -469,7 +469,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -491,7 +491,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.opt &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.opt &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -319,8 +319,8 @@
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;getconf&#39;</span><span class="p">,</span> <span class="n">confvar</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
 <div class="viewcode-block" id="getconf"><a class="viewcode-back" href="../../pycbc.html#pycbc.opt.getconf">[docs]</a>        <span class="k">def</span> <span class="nf">getconf</span><span class="p">(</span><span class="n">confvar</span><span class="p">):</span>
-            <span class="n">retlist</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="s1">&#39;getconf &#39;</span> <span class="o">+</span> <span class="n">confvar</span><span class="p">)</span></div>
-            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">retlist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">retlist</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="s1">&#39;getconf &#39;</span> <span class="o">+</span> <span class="n">confvar</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">retlist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
     <span class="n">LEVEL1_DCACHE_SIZE</span> <span class="o">=</span> <span class="n">getconf</span><span class="p">(</span><span class="s1">&#39;LEVEL1_DCACHE_SIZE&#39;</span><span class="p">)</span>
     <span class="n">LEVEL1_DCACHE_ASSOC</span> <span class="o">=</span> <span class="n">getconf</span><span class="p">(</span><span class="s1">&#39;LEVEL1_DCACHE_ASSOC&#39;</span><span class="p">)</span>
@@ -350,8 +350,8 @@
 <span class="s2">                    to pass to taskset.&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">optimization_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--cpu-affinity-from-env&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">                    The name of an enivornment variable containing a set</span>
-<span class="s2">                    of CPUs on which to run,  specified in a format suitable</span></div>
-<span class="s2">                    to pass to taskset.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">                    of CPUs on which to run,  specified in a format suitable</span>
+<span class="s2">                    to pass to taskset.&quot;&quot;&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="verify_optimization_options"><a class="viewcode-back" href="../../pycbc.html#pycbc.opt.verify_optimization_options">[docs]</a><span class="k">def</span> <span class="nf">verify_optimization_options</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
@@ -398,8 +398,8 @@
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;taskset command &lt;</span><span class="si">%s</span><span class="s1">&gt; failed with return code </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> \
                           <span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">retcode</span><span class="p">))</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</div>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pinned to CPUs </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">requested_cpus</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pinned to CPUs </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">requested_cpus</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -415,7 +415,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -437,7 +437,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

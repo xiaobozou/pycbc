@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.transforms &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.transforms &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -252,24 +252,24 @@
 
 <div class="viewcode-block" id="BaseTransform.transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This function transforms from inputs to outputs.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not added.&quot;</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not added.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseTransform.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; The inverse conversions of transform. This function transforms from</span>
 <span class="sd">        outputs to inputs.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not added.&quot;</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Not added.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseTransform.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; The Jacobian for the inputs to outputs transformation.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Jacobian transform not implemented.&quot;</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Jacobian transform not implemented.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseTransform.inverse_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.inverse_jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; The Jacobian for the outputs to inputs transformation.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Jacobian transform not implemented.&quot;</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Jacobian transform not implemented.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseTransform.format_output"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.format_output">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">format_output</span><span class="p">(</span><span class="n">old_maps</span><span class="p">,</span> <span class="n">new_maps</span><span class="p">):</span>
@@ -307,8 +307,8 @@
             <span class="k">return</span> <span class="n">out</span>
 
         <span class="c1"># else error</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input type must be FieldArray or dict.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input type must be FieldArray or dict.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseTransform.from_config"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.BaseTransform.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">skip_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -364,8 +364,8 @@
         <span class="c1"># check that the outputs matches</span>
         <span class="k">if</span> <span class="n">outputs</span><span class="o">-</span><span class="n">out</span><span class="o">.</span><span class="n">outputs</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">()</span> <span class="ow">or</span> <span class="n">out</span><span class="o">.</span><span class="n">outputs</span><span class="o">-</span><span class="n">outputs</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;outputs of class do not match outputs specified &quot;</span>
-                             <span class="s2">&quot;in section&quot;</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">out</span>
+                             <span class="s2">&quot;in section&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div></div>
 
 
 <div class="viewcode-block" id="CustomTransform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CustomTransform">[docs]</a><span class="k">class</span> <span class="nc">CustomTransform</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -476,8 +476,8 @@
         <span class="n">getslice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getslice</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
         <span class="c1"># evaluate the functions</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scratch</span><span class="p">[</span><span class="n">func</span><span class="p">][</span><span class="n">getslice</span><span class="p">]</span>
-               <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_functions</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+               <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_functions</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CustomTransform.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CustomTransform.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jacobian</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -486,8 +486,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_copytoscratch</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scratch</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_jacobian</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_getslice</span><span class="p">(</span><span class="n">maps</span><span class="p">)]</span></div>
-        <span class="k">return</span> <span class="n">out</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_getslice</span><span class="p">(</span><span class="n">maps</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="CustomTransform.from_config"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CustomTransform.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
@@ -518,8 +518,8 @@
         <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;jacobian&#39;</span><span class="p">):</span>
             <span class="n">jacobian</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;jacobian&#39;</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">jacobian</span> <span class="o">=</span> <span class="kc">None</span></div></div>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">transform_functions</span><span class="p">,</span> <span class="n">jacobian</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+            <span class="n">jacobian</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">transform_functions</span><span class="p">,</span> <span class="n">jacobian</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span></div></div>
 
 
 <span class="c1">#</span>
@@ -568,8 +568,8 @@
                                                 <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">q</span><span class="p">])</span>
         <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass2</span><span class="p">]</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">mass2_from_mchirp_q</span><span class="p">(</span>
                                                 <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mchirp</span><span class="p">],</span>
-                                                <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">q</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+                                                <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">q</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MchirpQToMass1Mass2.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.MchirpQToMass1Mass2.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function transforms from component masses to chirp mass and</span>
@@ -604,24 +604,24 @@
                                        <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass2</span><span class="p">])</span>
         <span class="n">m_s</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">secondary_mass</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass1</span><span class="p">],</span>
                                          <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass2</span><span class="p">])</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_p</span> <span class="o">/</span> <span class="n">m_s</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_p</span> <span class="o">/</span> <span class="n">m_s</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MchirpQToMass1Mass2.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.MchirpQToMass1Mass2.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the Jacobian for transforming mchirp and q to mass1 and</span>
 <span class="sd">        mass2.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">mchirp</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mchirp&#39;</span><span class="p">]</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">mchirp</span> <span class="o">*</span> <span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="n">q</span><span class="o">**</span><span class="mf">3.</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">mchirp</span> <span class="o">*</span> <span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="n">q</span><span class="o">**</span><span class="mf">3.</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MchirpQToMass1Mass2.inverse_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.MchirpQToMass1Mass2.inverse_jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the Jacobian for transforming mass1 and mass2 to</span>
 <span class="sd">        mchirp and q.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">m1</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">primary_mass</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
-        <span class="n">m2</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">secondary_mass</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span></div></div>
-        <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span><span class="o">/</span><span class="n">m2</span><span class="o">**</span><span class="mf">2.</span>
+        <span class="n">m2</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">secondary_mass</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span><span class="o">/</span><span class="n">m2</span><span class="o">**</span><span class="mf">2.</span></div></div>
 
 
 <div class="viewcode-block" id="ChirpDistanceToDistance"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.ChirpDistanceToDistance">[docs]</a><span class="k">class</span> <span class="nc">ChirpDistanceToDistance</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -665,8 +665,8 @@
                 <span class="n">conversions</span><span class="o">.</span><span class="n">distance_from_chirp_distance_mchirp</span><span class="p">(</span>
                                                     <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">chirp_distance</span><span class="p">],</span>
                                                     <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mchirp</span><span class="p">],</span>
-                                                    <span class="n">ref_mass</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+                                                    <span class="n">ref_mass</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ChirpDistanceToDistance.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.ChirpDistanceToDistance.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function transforms from luminosity distance to chirp distance,</span>
@@ -695,24 +695,24 @@
         <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">chirp_distance</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="n">conversions</span><span class="o">.</span><span class="n">chirp_distance</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">distance</span><span class="p">],</span>
-                                            <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mchirp</span><span class="p">],</span> <span class="n">ref_mass</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+                                            <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mchirp</span><span class="p">],</span> <span class="n">ref_mass</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ChirpDistanceToDistance.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.ChirpDistanceToDistance.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the Jacobian for transforming chirp distance to</span>
 <span class="sd">        luminosity distance, given the chirp mass.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ref_mass</span><span class="o">=</span><span class="mf">1.4</span>
-        <span class="n">mchirp</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mchirp&#39;</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">mchirp</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mchirp&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ChirpDistanceToDistance.inverse_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.ChirpDistanceToDistance.inverse_jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the Jacobian for transforming luminosity distance to</span>
 <span class="sd">        chirp distance, given the chirp mass.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ref_mass</span><span class="o">=</span><span class="mf">1.4</span>
-        <span class="n">mchirp</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mchirp&#39;</span><span class="p">]</span></div></div>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">mchirp</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="s1">&#39;mchirp&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SphericalSpin1ToCartesianSpin1"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.SphericalSpin1ToCartesianSpin1">[docs]</a><span class="k">class</span> <span class="nc">SphericalSpin1ToCartesianSpin1</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -751,8 +751,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">po</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">spherical_to_cartesian</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">az</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">po</span><span class="p">])</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SphericalSpin1ToCartesianSpin1.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.SphericalSpin1ToCartesianSpin1.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This function transforms from cartesian to spherical spins.</span>
@@ -769,8 +769,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="n">sz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">cartesian_to_spherical</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">sx</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">sy</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">sz</span><span class="p">])</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SphericalSpin2ToCartesianSpin2"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.SphericalSpin2ToCartesianSpin2">[docs]</a><span class="k">class</span> <span class="nc">SphericalSpin2ToCartesianSpin2</span><span class="p">(</span><span class="n">SphericalSpin1ToCartesianSpin1</span><span class="p">):</span>
@@ -780,8 +780,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;spherical_spin_2_to_cartesian_spin_2&quot;</span>
     <span class="n">_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2_a</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">spin2_azimuthal</span><span class="p">,</span>
-               <span class="n">parameters</span><span class="o">.</span><span class="n">spin2_polar</span><span class="p">]</span></div>
-    <span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">spin2z</span><span class="p">]</span>
+               <span class="n">parameters</span><span class="o">.</span><span class="n">spin2_polar</span><span class="p">]</span>
+    <span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">spin2z</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="DistanceToRedshift"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.DistanceToRedshift">[docs]</a><span class="k">class</span> <span class="nc">DistanceToRedshift</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -816,8 +816,8 @@
 <span class="sd">            of transformed values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">parameters</span><span class="o">.</span><span class="n">redshift</span> <span class="p">:</span> <span class="n">cosmology</span><span class="o">.</span><span class="n">redshift</span><span class="p">(</span>
-                                                    <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">distance</span><span class="p">])}</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+                                                    <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">distance</span><span class="p">])}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="AlignedMassSpinToCartesianSpin"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.AlignedMassSpinToCartesianSpin">[docs]</a><span class="k">class</span> <span class="nc">AlignedMassSpinToCartesianSpin</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -863,8 +863,8 @@
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">same_idx</span><span class="p">):</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin1z</span><span class="p">]</span>
             <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin1z</span><span class="p">][</span><span class="n">same_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2z</span><span class="p">]</span>
-            <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2z</span><span class="p">][</span><span class="n">same_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">same_idx</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2z</span><span class="p">][</span><span class="n">same_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">same_idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="AlignedMassSpinToCartesianSpin.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.AlignedMassSpinToCartesianSpin.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This function transforms from component masses and cartesian spins</span>
@@ -894,8 +894,8 @@
             <span class="n">parameters</span><span class="o">.</span><span class="n">chi_eff</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_eff</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span>
                                                      <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">),</span>
             <span class="s2">&quot;chi_a&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">),</span>
-        <span class="p">}</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="PrecessionMassSpinToCartesianSpin"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.PrecessionMassSpinToCartesianSpin">[docs]</a><span class="k">class</span> <span class="nc">PrecessionMassSpinToCartesianSpin</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -973,8 +973,8 @@
             <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin1y</span><span class="p">]</span> <span class="o">=</span> <span class="n">spiny_s</span>
             <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2x</span><span class="p">]</span> <span class="o">=</span> <span class="n">spinx_p</span>
             <span class="n">out</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2y</span><span class="p">]</span> <span class="o">=</span> <span class="n">spiny_p</span>
-</div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PrecessionMassSpinToCartesianSpin.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.PrecessionMassSpinToCartesianSpin.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
@@ -1028,8 +1028,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">out</span><span class="p">[</span><span class="s2">&quot;xi1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span>
             <span class="n">out</span><span class="p">[</span><span class="s2">&quot;xi2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi1</span>
-</div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="CartesianSpinToChiP"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpinToChiP">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpinToChiP</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -1063,8 +1063,8 @@
         <span class="n">out</span><span class="p">[</span><span class="s2">&quot;chi_p&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_p</span><span class="p">(</span>
                              <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass1</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">mass2</span><span class="p">],</span>
                              <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin1x</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin1y</span><span class="p">],</span>
-                             <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2x</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2y</span><span class="p">])</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+                             <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2x</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">spin2y</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="Logit"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit">[docs]</a><span class="k">class</span> <span class="nc">Logit</span><span class="p">(</span><span class="n">BaseTransform</span><span class="p">):</span>
@@ -1141,8 +1141,8 @@
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
 <span class="sd">            The logit of x.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">x</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Logit.logistic"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.logistic">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
@@ -1173,8 +1173,8 @@
 <span class="sd">        float</span>
 <span class="sd">            The logistic of x.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">expx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">expx</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">expx</span><span class="p">)</span>
+        <span class="n">expx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">expx</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">expx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Logit.transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes :math:`\mathrm{logit}(x; a, b)`.</span>
@@ -1200,8 +1200,8 @@
             <span class="n">isin</span> <span class="o">=</span> <span class="n">isin</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">isin</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;one or more values are not in bounds&quot;</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">)}</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Logit.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes :math:`y = \mathrm{logistic}(x; a,b)`.</span>
@@ -1221,8 +1221,8 @@
 <span class="sd">            with the original variable name and value(s).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span><span class="p">]</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">logistic</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">)}</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputvar</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">logistic</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Logit.jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of :math:`y = \mathrm{logit}(x; a,b)`.</span>
@@ -1252,8 +1252,8 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">isin</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">isin</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;one or more values are not in bounds&quot;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">isin</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is not in bounds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is not in bounds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Logit.inverse_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.inverse_jacobian">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the Jacobian of :math:`y = \mathrm{logistic}(x; a,b)`.</span>
@@ -1278,8 +1278,8 @@
 <span class="sd">            The value of the jacobian at the given point(s).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">maps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputvar</span><span class="p">]</span>
-        <span class="n">expx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">expx</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">expx</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span>
+        <span class="n">expx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">expx</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">expx</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span></div>
 
 <div class="viewcode-block" id="Logit.from_config"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logit.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">skip_opts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1347,8 +1347,8 @@
                              <span class="s2">&quot;a max(min)-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inputvar</span><span class="p">,</span> <span class="n">inputvar</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">additional_opts</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))})</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Logit</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">skip_opts</span><span class="p">,</span></div></div>
-                                             <span class="n">additional_opts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Logit</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">skip_opts</span><span class="p">,</span>
+                                             <span class="n">additional_opts</span><span class="p">)</span></div></div>
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -1366,8 +1366,8 @@
     <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
     <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
-    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span></div>
-    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
 <div class="viewcode-block" id="DistanceToChirpDistance"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.DistanceToChirpDistance">[docs]</a><span class="k">class</span> <span class="nc">DistanceToChirpDistance</span><span class="p">(</span><span class="n">ChirpDistanceToDistance</span><span class="p">):</span>
@@ -1379,8 +1379,8 @@
     <span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="o">.</span><span class="n">chirp_distance</span><span class="p">]</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
     <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
-    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span></div>
-    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
 <div class="viewcode-block" id="CartesianSpin1ToSphericalSpin1"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpin1ToSphericalSpin1">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpin1ToSphericalSpin1</span><span class="p">(</span><span class="n">SphericalSpin1ToCartesianSpin1</span><span class="p">):</span>
@@ -1408,8 +1408,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="n">sz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">cartesian_to_spherical</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">sx</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">sy</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">sz</span><span class="p">])</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CartesianSpin1ToSphericalSpin1.inverse_transform"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpin1ToSphericalSpin1.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This function transforms from spherical to cartesian spins.</span>
@@ -1426,8 +1426,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">az</span><span class="p">,</span> <span class="n">po</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">spherical_to_cartesian</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">az</span><span class="p">],</span> <span class="n">maps</span><span class="p">[</span><span class="n">po</span><span class="p">])</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span> <span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">data</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_output</span><span class="p">(</span><span class="n">maps</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="CartesianSpin2ToSphericalSpin2"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpin2ToSphericalSpin2">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpin2ToSphericalSpin2</span><span class="p">(</span><span class="n">CartesianSpin1ToSphericalSpin1</span><span class="p">):</span>
@@ -1435,8 +1435,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;cartesian_spin_2_to_spherical_spin_2&quot;</span>
     <span class="n">inverse</span> <span class="o">=</span> <span class="n">SphericalSpin2ToCartesianSpin2</span>
-    <span class="n">_inputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_outputs</span></div>
-    <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span>
+    <span class="n">_inputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_outputs</span>
+    <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span></div>
 
 
 <div class="viewcode-block" id="CartesianSpinToAlignedMassSpin"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpinToAlignedMassSpin">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpinToAlignedMassSpin</span><span class="p">(</span><span class="n">AlignedMassSpinToCartesianSpin</span><span class="p">):</span>
@@ -1447,8 +1447,8 @@
     <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
     <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
-    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span></div>
-    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
 <div class="viewcode-block" id="CartesianSpinToPrecessionMassSpin"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.CartesianSpinToPrecessionMassSpin">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpinToPrecessionMassSpin</span><span class="p">(</span><span class="n">PrecessionMassSpinToCartesianSpin</span><span class="p">):</span>
@@ -1460,8 +1460,8 @@
     <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
     <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
-    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span></div>
-    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
 <div class="viewcode-block" id="ChiPToCartesianSpin"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.ChiPToCartesianSpin">[docs]</a><span class="k">class</span> <span class="nc">ChiPToCartesianSpin</span><span class="p">(</span><span class="n">CartesianSpinToChiP</span><span class="p">):</span>
@@ -1473,8 +1473,8 @@
     <span class="n">_outputs</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">_inputs</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_transform</span>
     <span class="n">inverse_transform</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">transform</span>
-    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span></div>
-    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">inverse_jacobian</span>
+    <span class="n">inverse_jacobian</span> <span class="o">=</span> <span class="n">inverse</span><span class="o">.</span><span class="n">jacobian</span></div>
 
 
 <div class="viewcode-block" id="Logistic"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.Logistic">[docs]</a><span class="k">class</span> <span class="nc">Logistic</span><span class="p">(</span><span class="n">Logit</span><span class="p">):</span>
@@ -1577,8 +1577,8 @@
                              <span class="s2">&quot;a max(min)-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outputvar</span><span class="p">,</span> <span class="n">outputvar</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">additional_opts</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;codomain&#39;</span><span class="p">:</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))})</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Logistic</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span></div></div>
-                                                <span class="n">skip_opts</span><span class="p">,</span> <span class="n">additional_opts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Logistic</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span>
+                                                <span class="n">skip_opts</span><span class="p">,</span> <span class="n">additional_opts</span><span class="p">)</span></div></div>
 
 
 <span class="c1"># set the inverse of the forward transforms to the inverse transforms</span>
@@ -1708,8 +1708,8 @@
     <span class="c1"># get list of transforms that converts sampling parameters to the base</span>
     <span class="c1"># parameters and then converts base parameters to the derived parameters</span>
     <span class="n">all_c</span> <span class="o">=</span> <span class="n">to_base_c</span> <span class="o">+</span> <span class="n">from_base_c</span>
-</div>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">requested_params</span><span class="p">),</span> <span class="n">all_c</span>
+
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">requested_params</span><span class="p">),</span> <span class="n">all_c</span></div>
 
 
 <div class="viewcode-block" id="apply_transforms"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.apply_transforms">[docs]</a><span class="k">def</span> <span class="nf">apply_transforms</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1740,8 +1740,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">samples</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-            <span class="k">continue</span></div>
-    <span class="k">return</span> <span class="n">samples</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="n">samples</span></div>
 
 
 <div class="viewcode-block" id="compute_jacobian"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.compute_jacobian">[docs]</a><span class="k">def</span> <span class="nf">compute_jacobian</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1769,8 +1769,8 @@
             <span class="n">j</span> <span class="o">*=</span> <span class="n">t</span><span class="o">.</span><span class="n">inverse_jacobian</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
-            <span class="n">j</span> <span class="o">*=</span> <span class="n">t</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">j</span>
+            <span class="n">j</span> <span class="o">*=</span> <span class="n">t</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">j</span></div>
 
 
 <div class="viewcode-block" id="order_transforms"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.order_transforms">[docs]</a><span class="k">def</span> <span class="nf">order_transforms</span><span class="p">(</span><span class="n">transforms</span><span class="p">):</span>
@@ -1803,8 +1803,8 @@
                 <span class="n">outputs</span> <span class="o">-=</span> <span class="n">t</span><span class="o">.</span><span class="n">outputs</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">leftover</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">remaining</span> <span class="o">=</span> <span class="n">leftover</span></div>
-    <span class="k">return</span> <span class="n">out</span>
+        <span class="n">remaining</span> <span class="o">=</span> <span class="n">leftover</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="read_transforms_from_config"><a class="viewcode-back" href="../../pycbc.html#pycbc.transforms.read_transforms_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_transforms_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;transforms&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a list of PyCBC transform instances for a section in the</span>
@@ -1830,8 +1830,8 @@
     <span class="k">for</span> <span class="n">subsection</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
-        <span class="n">trans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">order_transforms</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
+        <span class="n">trans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">order_transforms</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -1847,7 +1847,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1869,7 +1869,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

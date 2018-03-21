@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.strain &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -260,8 +260,8 @@
 <span class="sd">    m : int</span>
 <span class="sd">        Smallest integer power of 2 larger than n.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># TODO use 1 &lt;&lt; n.bit_length() after Python 2.6 is gone</span></div>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># TODO use 1 &lt;&lt; n.bit_length() after Python 2.6 is gone</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="detect_loud_glitches"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.detect_loud_glitches">[docs]</a><span class="k">def</span> <span class="nf">detect_loud_glitches</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="n">psd_duration</span><span class="o">=</span><span class="mf">4.</span><span class="p">,</span> <span class="n">psd_stride</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span>
                          <span class="n">psd_avg_method</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">low_freq_cutoff</span><span class="o">=</span><span class="mf">30.</span><span class="p">,</span>
@@ -387,8 +387,8 @@
             <span class="n">indices</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mag</span><span class="p">[</span><span class="n">indices</span><span class="p">]),</span>
             <span class="nb">int</span><span class="p">(</span><span class="n">cluster_window</span><span class="o">*</span><span class="n">strain</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">))</span>
     <span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="o">*</span> <span class="n">strain</span><span class="o">.</span><span class="n">delta_t</span> <span class="o">+</span> <span class="n">strain</span><span class="o">.</span><span class="n">start_time</span> \
-             <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">[</span><span class="n">cluster_idx</span><span class="p">]]</span></div>
-    <span class="k">return</span> <span class="n">times</span>
+             <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">[</span><span class="n">cluster_idx</span><span class="p">]]</span>
+    <span class="k">return</span> <span class="n">times</span></div>
 
 <div class="viewcode-block" id="from_cli"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.from_cli">[docs]</a><span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">dyn_range_fac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span>
              <span class="n">inj_filter_rejector</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -622,15 +622,15 @@
     <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">injection_file</span><span class="p">:</span>
         <span class="n">strain</span><span class="o">.</span><span class="n">injections</span> <span class="o">=</span> <span class="n">injections</span>
     <span class="n">strain</span><span class="o">.</span><span class="n">gating_info</span> <span class="o">=</span> <span class="n">gating_info</span>
-</div>
-    <span class="k">return</span> <span class="n">strain</span>  
+
+    <span class="k">return</span> <span class="n">strain</span>  </div>
 
 <div class="viewcode-block" id="from_cli_single_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.from_cli_single_ifo">[docs]</a><span class="k">def</span> <span class="nf">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the strain for a single ifo when using the multi-detector CLI</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">single_det_opt</span> <span class="o">=</span> <span class="n">copy_opts_for_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">from_cli</span><span class="p">(</span><span class="n">single_det_opt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">single_det_opt</span> <span class="o">=</span> <span class="n">copy_opts_for_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">from_cli</span><span class="p">(</span><span class="n">single_det_opt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="from_cli_multi_ifos"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.from_cli_multi_ifos">[docs]</a><span class="k">def</span> <span class="nf">from_cli_multi_ifos</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -638,8 +638,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">strain</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
-        <span class="n">strain</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">strain</span>
+        <span class="n">strain</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">strain</span></div>
 
 
 <div class="viewcode-block" id="insert_strain_option_group"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.insert_strain_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_strain_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">gps_times</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -787,8 +787,8 @@
                          <span class="s2">&quot;  functions and the associated channel names&quot;</span><span class="p">)</span>
     <span class="n">data_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--witness-filter-length&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;filter length in seconds for the transfer function&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">data_reading_group</span>
+
+    <span class="k">return</span> <span class="n">data_reading_group</span></div>
 
 <span class="c1"># FIXME: This repeats almost all of the options above. Any nice way of reducing</span>
 <span class="c1">#        this?</span>
@@ -970,8 +970,8 @@
                      <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;IFO:VALUE&#39;</span><span class="p">,</span>
                      <span class="n">help</span><span class="o">=</span><span class="s2">&quot;(optional) Zero-pole-gain (zpk) filter strain. &quot;</span>
                          <span class="s2">&quot;Transfer function gain&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">data_reading_group_multi</span>
+
+    <span class="k">return</span> <span class="n">data_reading_group_multi</span></div>
 
 
 <span class="n">ensure_one_opt_groups</span> <span class="o">=</span> <span class="p">[]</span>
@@ -998,8 +998,8 @@
 <span class="sd">        OptionParser instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">opt_group</span> <span class="ow">in</span> <span class="n">ensure_one_opt_groups</span><span class="p">:</span>
-        <span class="n">ensure_one_opt</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">opt_group</span><span class="p">)</span></div>
-    <span class="n">required_opts</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">required_opts_list</span><span class="p">)</span>
+        <span class="n">ensure_one_opt</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">opt_group</span><span class="p">)</span>
+    <span class="n">required_opts</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">required_opts_list</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="verify_strain_options_multi_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.verify_strain_options_multi_ifo">[docs]</a><span class="k">def</span> <span class="nf">verify_strain_options_multi_ifo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sanity check provided strain arguments.</span>
@@ -1021,8 +1021,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">opt_group</span> <span class="ow">in</span> <span class="n">ensure_one_opt_groups</span><span class="p">:</span>
-            <span class="n">ensure_one_opt_multi_ifo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">opt_group</span><span class="p">)</span></div>
-        <span class="n">required_opts_multi_ifo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">required_opts_list</span><span class="p">)</span>
+            <span class="n">ensure_one_opt_multi_ifo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">opt_group</span><span class="p">)</span>
+        <span class="n">required_opts_multi_ifo</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">required_opts_list</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="gate_data"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.gate_data">[docs]</a><span class="k">def</span> <span class="nf">gate_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gate_params</span><span class="p">):</span>
@@ -1072,8 +1072,8 @@
         <span class="n">idx1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">offset</span><span class="p">)</span>
         <span class="n">idx2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="n">offset</span><span class="p">)</span>
         <span class="n">temp</span><span class="p">[</span><span class="n">idx1</span><span class="o">+</span><span class="n">offset</span><span class="p">:</span><span class="n">idx2</span><span class="o">+</span><span class="n">offset</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">idx1</span><span class="p">:</span><span class="n">idx2</span><span class="p">]</span>
-</div>
-    <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
 
 <div class="viewcode-block" id="StrainSegments"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments">[docs]</a><span class="k">class</span> <span class="nc">StrainSegments</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Class for managing manipulation of strain data for the purpose of</span>
@@ -1251,8 +1251,8 @@
                 <span class="n">freq_seg</span><span class="o">.</span><span class="n">cumulative_index</span> <span class="o">=</span> <span class="n">seg_slice</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">ana</span><span class="o">.</span><span class="n">start</span>
                 <span class="n">freq_seg</span><span class="o">.</span><span class="n">seg_slice</span> <span class="o">=</span> <span class="n">seg_slice</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_fourier_segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">freq_seg</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fourier_segments</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fourier_segments</span></div>
 
 <div class="viewcode-block" id="StrainSegments.from_cli"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">strain</span><span class="p">):</span>
@@ -1265,8 +1265,8 @@
                    <span class="n">trigger_start</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">trig_start_time</span><span class="p">,</span>
                    <span class="n">trigger_end</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">trig_end_time</span><span class="p">,</span>
                    <span class="n">filter_inj_only</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">filter_inj_only</span><span class="p">,</span>
-                   <span class="n">injection_window</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">injection_window</span><span class="p">,</span></div>
-                   <span class="n">allow_zero_padding</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">allow_zero_padding</span><span class="p">)</span>
+                   <span class="n">injection_window</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">injection_window</span><span class="p">,</span>
+                   <span class="n">allow_zero_padding</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">allow_zero_padding</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StrainSegments.insert_segment_option_group"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.insert_segment_option_group">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">insert_segment_option_group</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
@@ -1301,8 +1301,8 @@
 <span class="s2">                          to speed up a coherent search or a search where we</span>
 <span class="s2">                          initially filter at lower sample rate, and then</span>
 <span class="s2">                          filter at full rate where needed. NOTE: Reverts to</span>
-<span class="s2">                          full analysis if two injections are in the same</span></div>
-<span class="s2">                          segment.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">                          full analysis if two injections are in the same</span>
+<span class="s2">                          segment.&quot;&quot;&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="StrainSegments.from_cli_single_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.from_cli_single_ifo">[docs]</a>    <span class="nd">@classmethod</span>
@@ -1315,8 +1315,8 @@
                    <span class="n">segment_end_pad</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">segment_end_pad</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span>
                    <span class="n">trigger_start</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">trig_start_time</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span>
                    <span class="n">trigger_end</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">trig_end_time</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span>
-                   <span class="n">filter_inj_only</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">filter_inj_only</span><span class="p">,</span></div>
-                   <span class="n">allow_zero_padding</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">allow_zero_padding</span><span class="p">)</span>
+                   <span class="n">filter_inj_only</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">filter_inj_only</span><span class="p">,</span>
+                   <span class="n">allow_zero_padding</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">allow_zero_padding</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StrainSegments.from_cli_multi_ifos"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.from_cli_multi_ifos">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_cli_multi_ifos</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">strain_dict</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
@@ -1326,8 +1326,8 @@
         <span class="n">strain_segments</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
             <span class="n">strain_segments</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_cli_single_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span>
-                                                         <span class="n">strain_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">ifo</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">strain_segments</span>
+                                                         <span class="n">strain_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">ifo</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">strain_segments</span></div>
 
 <div class="viewcode-block" id="StrainSegments.insert_segment_option_group_multi_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.insert_segment_option_group_multi_ifo">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">insert_segment_option_group_multi_ifo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
@@ -1359,8 +1359,8 @@
                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Allow for zero padding of data to analyze &quot;</span>
                           <span class="s2">&quot;requested times, if needed.&quot;</span><span class="p">)</span>
         <span class="n">segment_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--filter-inj-only&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Analyze only segments that contain &quot;</span></div>
-                                        <span class="s2">&quot;an injection.&quot;</span><span class="p">)</span>
+                                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Analyze only segments that contain &quot;</span>
+                                        <span class="s2">&quot;an injection.&quot;</span><span class="p">)</span></div>
 
     <span class="n">required_opts_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--segment-length&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;--segment-start-pad&#39;</span><span class="p">,</span>
@@ -1368,13 +1368,13 @@
                    <span class="p">]</span>
 
 <div class="viewcode-block" id="StrainSegments.verify_segment_options"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.verify_segment_options">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">verify_segment_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span></div>
-        <span class="n">required_opts</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">required_opts_list</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">verify_segment_options</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="n">required_opts</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">required_opts_list</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StrainSegments.verify_segment_options_multi_ifo"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainSegments.verify_segment_options_multi_ifo">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">verify_segment_options_multi_ifo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span></div></div>
-            <span class="n">required_opts_multi_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">required_opts_list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
+            <span class="n">required_opts_multi_ifo</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">required_opts_list</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="StrainBuffer"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer">[docs]</a><span class="k">class</span> <span class="nc">StrainBuffer</span><span class="p">(</span><span class="n">pycbc</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataBuffer</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_src</span><span class="p">,</span> <span class="n">channel_name</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span>
@@ -1577,14 +1577,14 @@
         <span class="sd">&quot;&quot;&quot; Reset the countdown timer, so that we don&#39;t analyze data long enough</span>
 <span class="sd">        to generate a new PSD.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wait_duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_corruption</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">+</span>  <span class="bp">self</span><span class="o">.</span><span class="n">psd_duration</span><span class="p">))</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">invalidate_psd</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_corruption</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">+</span>  <span class="bp">self</span><span class="o">.</span><span class="n">psd_duration</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalidate_psd</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="StrainBuffer.invalidate_psd"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.invalidate_psd">[docs]</a>    <span class="k">def</span> <span class="nf">invalidate_psd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Make the current PSD invalid. A new one will be generated when</span>
 <span class="sd">        it is next required &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="kc">None</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">psds</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">psds</span> <span class="o">=</span> <span class="p">{}</span></div>
 
 <div class="viewcode-block" id="StrainBuffer.recalculate_psd"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.recalculate_psd">[docs]</a>    <span class="k">def</span> <span class="nf">recalculate_psd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Recalculate the psd </span>
@@ -1616,8 +1616,8 @@
         <span class="c1"># If the new estimate replaces the current one, invalide the ineterpolate PSDs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="n">psd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">psds</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Recalculating </span><span class="si">%s</span><span class="s2"> PSD, </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="p">,</span> <span class="n">psd</span><span class="o">.</span><span class="n">dist</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="kc">True</span>   
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Recalculating </span><span class="si">%s</span><span class="s2"> PSD, </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="p">,</span> <span class="n">psd</span><span class="o">.</span><span class="n">dist</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>   </div>
 
 <div class="viewcode-block" id="StrainBuffer.overwhitened_data"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.overwhitened_data">[docs]</a>    <span class="k">def</span> <span class="nf">overwhitened_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return overwhitened data</span>
@@ -1677,8 +1677,8 @@
             <span class="n">fseries_trimmed</span><span class="o">.</span><span class="n">psd</span> <span class="o">=</span> <span class="n">psd</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">delta_f</span><span class="p">]</span> <span class="o">=</span> <span class="n">fseries_trimmed</span>
             
-        <span class="n">stilde</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">delta_f</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">stilde</span>  
+        <span class="n">stilde</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">delta_f</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">stilde</span>  </div>
 
 <div class="viewcode-block" id="StrainBuffer.near_hwinj"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.near_hwinj">[docs]</a>    <span class="k">def</span> <span class="nf">near_hwinj</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check that the current set of triggers could be influenced by</span>
@@ -1693,8 +1693,8 @@
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocksize</span><span class="p">,</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">NO_HWINJ</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span></div>
-        <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="StrainBuffer.null_advance_strain"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.null_advance_strain">[docs]</a>    <span class="k">def</span> <span class="nf">null_advance_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocksize</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Advance and insert zeros</span>
@@ -1712,8 +1712,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">strain</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strain</span><span class="p">)</span> <span class="o">-</span> <span class="n">csize</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">corruption</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">strain</span><span class="o">.</span><span class="n">start_time</span> <span class="o">+=</span> <span class="n">blocksize</span>
         
-        <span class="c1"># The next time we need strain will need to be tapered</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">taper_immediate_strain</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># The next time we need strain will need to be tapered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">taper_immediate_strain</span> <span class="o">=</span> <span class="kc">True</span></div>
        
 <div class="viewcode-block" id="StrainBuffer.advance"><a class="viewcode-back" href="../../pycbc.html#pycbc.strain.StrainBuffer.advance">[docs]</a>    <span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">blocksize</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Advanced buffer blocksize seconds.</span>
@@ -1801,8 +1801,8 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait_duration</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div></div>
 </pre></div>
 
            </div>
@@ -1818,7 +1818,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1840,7 +1840,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

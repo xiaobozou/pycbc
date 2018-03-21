@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.single &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.single &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -227,16 +227,16 @@
     <span class="k">def</span> <span class="nf">insert_args</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-newsnr-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-reduced-chisq-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-fixed-ifar&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span></div>
-        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-duration-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-fixed-ifar&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--single-duration-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveSingleFarThreshold.from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.single.LiveSingleFarThreshold.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">newsnr_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">single_newsnr_threshold</span><span class="p">,</span>
                    <span class="n">reduced_chisq_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">single_reduced_chisq_threshold</span><span class="p">,</span>
                    <span class="n">fixed_ifar</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">single_fixed_ifar</span><span class="p">,</span>
-                   <span class="n">duration_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">single_duration_threshold</span><span class="p">,</span></div>
-                   <span class="p">)</span>
+                   <span class="n">duration_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">single_duration_threshold</span><span class="p">,</span>
+                   <span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveSingleFarThreshold.check"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.single.LiveSingleFarThreshold.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">triggers</span><span class="p">,</span> <span class="n">data_reader</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Look for a single detector trigger that passes the thresholds in </span>
@@ -261,8 +261,8 @@
             <span class="k">return</span> <span class="n">SingleForGraceDB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> 
                                     <span class="n">hardware_injection</span><span class="o">=</span><span class="n">data_reader</span><span class="o">.</span><span class="n">near_hwinj</span><span class="p">(),</span> 
                                     <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="kc">None</span>        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>        </div></div>
 </pre></div>
 
            </div>
@@ -278,7 +278,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -300,7 +300,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

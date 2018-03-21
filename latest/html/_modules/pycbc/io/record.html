@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.record &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.io.record &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -1123,8 +1123,8 @@
             <span class="n">numpy</span><span class="o">.</span><span class="n">recarray</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot process more than one order field&quot;</span><span class="p">)</span></div>
-            <span class="bp">self</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">order</span><span class="p">])]</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot process more than one order field&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">order</span><span class="p">])]</span></div>
 
 <div class="viewcode-block" id="FieldArray.addattr"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.addattr">[docs]</a>    <span class="k">def</span> <span class="nf">addattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrname</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adds an attribute to self. If persistent is True, the attribute will</span>
@@ -1134,8 +1134,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrname</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="c1"># add as persistent</span>
-        <span class="k">if</span> <span class="n">persistent</span> <span class="ow">and</span> <span class="n">attrname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__persistent_attributes__</span><span class="p">:</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__persistent_attributes__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attrname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">persistent</span> <span class="ow">and</span> <span class="n">attrname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__persistent_attributes__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__persistent_attributes__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attrname</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldArray.add_methods"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.add_methods">[docs]</a>    <span class="k">def</span> <span class="nf">add_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adds the given method(s) as instance method(s) of self. The</span>
@@ -1144,8 +1144,8 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)):</span>
             <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">names</span><span class="p">]</span>
             <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">methods</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span></div>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span></div>
         
 <div class="viewcode-block" id="FieldArray.add_properties"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.add_properties">[docs]</a>    <span class="k">def</span> <span class="nf">add_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a view of self with the given methods added as properties.</span>
@@ -1158,8 +1158,8 @@
             <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">names</span><span class="p">]</span>
             <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">methods</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">method</span><span class="p">))</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">method</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldArray.add_virtualfields"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.add_virtualfields">[docs]</a>    <span class="k">def</span> <span class="nf">add_virtualfields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a view of this array with the given methods added as virtual</span>
@@ -1174,8 +1174,8 @@
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_properties</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">_virtualfields</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">_virtualfields</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">_virtualfields</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">names</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">out</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_virtualfields</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="FieldArray.add_functions"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.add_functions">[docs]</a>    <span class="k">def</span> <span class="nf">add_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">functions</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adds the given functions to the function library.</span>
@@ -1195,8 +1195,8 @@
             <span class="n">functions</span> <span class="o">=</span> <span class="p">[</span><span class="n">functions</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number of provided names must be same as number &quot;</span>
-                             <span class="s2">&quot;of functions&quot;</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_functionlib</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">functions</span><span class="p">)))</span>
+                             <span class="s2">&quot;of functions&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_functionlib</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">functions</span><span class="p">)))</span></div>
 
 <div class="viewcode-block" id="FieldArray.del_functions"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.del_functions">[docs]</a>    <span class="k">def</span> <span class="nf">del_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Removes the specified function names from the function library.</span>
@@ -1211,8 +1211,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)):</span>
             <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">names</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_functionlib</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_functionlib</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldArray.from_arrays"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.from_arrays">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_arrays</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">arrays</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1237,8 +1237,8 @@
 <span class="sd">            data is from the given array(s).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="p">)</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span></div>
-        <span class="k">return</span> <span class="n">obj</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
 
 <div class="viewcode-block" id="FieldArray.from_records"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.from_records">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_records</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">records</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1269,8 +1269,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">fromrecords</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span>
             <span class="nb">type</span><span class="o">=</span><span class="bp">cls</span><span class="p">)</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span></div>
-        <span class="k">return</span> <span class="n">obj</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
 
 <div class="viewcode-block" id="FieldArray.from_kwargs"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.from_kwargs">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_kwargs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1303,8 +1303,8 @@
                     <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">vals</span><span class="p">]</span>
                 <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
             <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
-            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+            <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="FieldArray.from_ligolw_table"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.from_ligolw_table">[docs]</a>    <span class="nd">@classmethod</span>
@@ -1358,8 +1358,8 @@
             <span class="n">input_array</span> <span class="o">=</span> \
                 <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="p">]</span>
         <span class="c1"># return the values as an instance of cls</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">input_array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span></div>
-            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">input_array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldArray.to_array"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.to_array">[docs]</a>    <span class="k">def</span> <span class="nf">to_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns an `numpy.ndarray` of self in which the fields are included</span>
@@ -1385,8 +1385,8 @@
         <span class="k">if</span> <span class="n">fields</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fieldnames</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)):</span>
-            <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">fields</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">fields</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fieldnames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1462,8 +1462,8 @@
 <span class="sd">            A copy of this array with the desired fields added.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">newself</span> <span class="o">=</span> <span class="n">add_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arrays</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">assubarray</span><span class="o">=</span><span class="n">assubarray</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__copy_attributes__</span><span class="p">(</span><span class="n">newself</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">newself</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__copy_attributes__</span><span class="p">(</span><span class="n">newself</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">newself</span></div>
 
 <div class="viewcode-block" id="FieldArray.parse_boolargs"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.parse_boolargs">[docs]</a>    <span class="k">def</span> <span class="nf">parse_boolargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns an array populated by given values, with the indices of</span>
@@ -1582,8 +1582,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">mask</span> <span class="o">=</span> <span class="n">leftovers</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="p">[</span><span class="n">boolarg</span><span class="p">]</span> 
             <span class="n">out</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
-            <span class="n">leftovers</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">mask</span></div>
-        <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">leftovers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">leftovers</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">mask</span>
+        <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">leftovers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="FieldArray.append"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.append">[docs]</a>    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Appends another array to this array.</span>
@@ -1636,8 +1636,8 @@
             <span class="n">new_dt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">new_dt</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">new_dt</span><span class="p">),</span>
-                <span class="n">other</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">new_dt</span><span class="p">)</span></div>
-                <span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">new_dt</span><span class="p">)</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FieldArray.parse_parameters"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.parse_parameters">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">parse_parameters</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">possible_fields</span><span class="p">):</span>
@@ -1664,8 +1664,8 @@
         <span class="c1"># we&#39;ll just use float as the dtype, as we just need this for names</span>
         <span class="n">arr</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">possible_fields</span><span class="p">,</span>
                                <span class="nb">len</span><span class="p">(</span><span class="n">possible_fields</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="nb">float</span><span class="p">]))</span>
-        <span class="c1"># try to perserve order</span></div></div>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_needed_fieldnames</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">parameters</span><span class="p">))</span>
+        <span class="c1"># try to perserve order</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_needed_fieldnames</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">parameters</span><span class="p">))</span></div></div>
 
 <span class="k">def</span> <span class="nf">_isstring</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given a numpy dtype, determines whether it is a string. Returns True</span>
@@ -2077,8 +2077,8 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">spin2_polar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the polar spin angle of mass 2.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">cartesian_to_spherical_polar</span><span class="p">(</span></div>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">coordinates</span><span class="o">.</span><span class="n">cartesian_to_spherical_polar</span><span class="p">(</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2z</span><span class="p">)</span></div>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FieldArray&#39;</span><span class="p">,</span> <span class="s1">&#39;WaveformArray&#39;</span><span class="p">]</span>
@@ -2097,7 +2097,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -2119,7 +2119,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

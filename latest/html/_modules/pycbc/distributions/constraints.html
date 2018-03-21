@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.constraints &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.distributions.constraints &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.distributions" href="../distributions.html"/> 
 
   
@@ -268,8 +268,8 @@
 
     <span class="k">def</span> <span class="nf">_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Evaluates constraint function.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint_arg</span><span class="p">]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">constraint_arg</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MtotalLT"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.constraints.MtotalLT">[docs]</a><span class="k">class</span> <span class="nc">MtotalLT</span><span class="p">(</span><span class="n">Constraint</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Pre-defined constraint that check if total mass is less than a value.</span>
@@ -279,8 +279,8 @@
 
     <span class="k">def</span> <span class="nf">_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Evaluates constraint function.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mass1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mass2&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mtotal</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mass1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mass2&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mtotal</span></div>
 
 <div class="viewcode-block" id="CartesianSpinSpace"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.constraints.CartesianSpinSpace">[docs]</a><span class="k">class</span> <span class="nc">CartesianSpinSpace</span><span class="p">(</span><span class="n">Constraint</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Pre-defined constraint that check if Cartesian parameters</span>
@@ -299,8 +299,8 @@
         <span class="k">elif</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;spin2x&quot;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;spin2y&quot;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                   <span class="n">params</span><span class="p">[</span><span class="s2">&quot;spin2z&quot;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="EffectiveSpinSpace"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.constraints.EffectiveSpinSpace">[docs]</a><span class="k">class</span> <span class="nc">EffectiveSpinSpace</span><span class="p">(</span><span class="n">Constraint</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Pre-defined constraint that check if effective spin parameters</span>
@@ -332,8 +332,8 @@
                  <span class="o">*</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;chi_eff&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;chi_a&quot;</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-</div>
-        <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
 
 <span class="c1"># list of all constraints</span>
 <span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span>
@@ -357,7 +357,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -379,7 +379,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

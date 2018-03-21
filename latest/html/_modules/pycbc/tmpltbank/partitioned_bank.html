@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.partitioned_bank &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.tmpltbank.partitioned_bank &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -353,8 +353,8 @@
         <span class="n">mass1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">][</span><span class="s1">&#39;mass1s&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">mass2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">][</span><span class="s1">&#39;mass2s&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">spin1z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">][</span><span class="s1">&#39;spin1s&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
-        <span class="n">spin2z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">][</span><span class="s1">&#39;spin2s&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span>
+        <span class="n">spin2z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">][</span><span class="s1">&#39;spin2s&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.get_freq_map_and_normalizations"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.get_freq_map_and_normalizations">[docs]</a>    <span class="k">def</span> <span class="nf">get_freq_map_and_normalizations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequency_list</span><span class="p">,</span>
                                         <span class="n">upper_freq_formula</span><span class="p">):</span>
@@ -379,8 +379,8 @@
 
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">frequency_map</span><span class="p">[</span><span class="n">frequency</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">normalization_map</span><span class="p">[</span><span class="n">frequency</span><span class="p">]</span> <span class="o">=</span> \</div>
-                             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_params</span><span class="o">.</span><span class="n">moments</span><span class="p">[</span><span class="s1">&#39;I7&#39;</span><span class="p">][</span><span class="n">frequency</span><span class="p">])</span><span class="o">**</span><span class="mf">0.5</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">normalization_map</span><span class="p">[</span><span class="n">frequency</span><span class="p">]</span> <span class="o">=</span> \
+                             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_params</span><span class="o">.</span><span class="n">moments</span><span class="p">[</span><span class="s1">&#39;I7&#39;</span><span class="p">][</span><span class="n">frequency</span><span class="p">])</span><span class="o">**</span><span class="mf">0.5</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.find_point_bin"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.find_point_bin">[docs]</a>    <span class="k">def</span> <span class="nf">find_point_bin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -403,8 +403,8 @@
         <span class="c1"># Identify bin</span>
         <span class="n">chi1_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">chi_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">chi1_min</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_spacing</span><span class="p">)</span> 
         <span class="n">chi2_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">chi_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">chi2_min</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_spacing</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">check_bin_existence</span><span class="p">(</span><span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_bin_existence</span><span class="p">(</span><span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span></div>
 
 
 <div class="viewcode-block" id="PartitionedTmpltbank.check_bin_existence"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.check_bin_existence">[docs]</a>    <span class="k">def</span> <span class="nf">check_bin_existence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span><span class="p">):</span>
@@ -436,8 +436,8 @@
                     <span class="k">if</span> <span class="n">temp_chi2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">]:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">][</span><span class="n">temp_chi2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">][</span><span class="n">temp_chi2</span><span class="p">][</span><span class="s1">&#39;mass1s&#39;</span><span class="p">]</span> <span class="o">=</span>\
-                                                                <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span></div>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">][</span><span class="n">temp_chi2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                                                                <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">][</span><span class="n">temp_chi2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.calc_point_distance"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.calc_point_distance">[docs]</a>    <span class="k">def</span> <span class="nf">calc_point_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -468,8 +468,8 @@
                 <span class="n">dist</span> <span class="o">=</span> <span class="n">coord_utils</span><span class="o">.</span><span class="n">calc_point_dist</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">,</span> <span class="n">bank_chis</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
                     <span class="n">min_dist</span> <span class="o">=</span> <span class="n">dist</span>
-                    <span class="n">indexes</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_chi1_bin</span><span class="p">,</span> <span class="n">curr_chi2_bin</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span>            
+                    <span class="n">indexes</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_chi1_bin</span><span class="p">,</span> <span class="n">curr_chi2_bin</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span>            </div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.test_point_distance"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.test_point_distance">[docs]</a>    <span class="k">def</span> <span class="nf">test_point_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -499,8 +499,8 @@
                 <span class="n">dist</span> <span class="o">=</span> <span class="n">coord_utils</span><span class="o">.</span><span class="n">calc_point_dist</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">,</span> <span class="n">bank_chis</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">distance_threshold</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.calc_point_distance_vary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.calc_point_distance_vary">[docs]</a>    <span class="k">def</span> <span class="nf">calc_point_distance_vary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">point_fupper</span><span class="p">,</span> <span class="n">mus</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -565,8 +565,8 @@
             <span class="k">if</span> <span class="n">curr_min_dist</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
                 <span class="n">min_dist</span> <span class="o">=</span> <span class="n">curr_min_dist</span>
                 <span class="n">indexes</span> <span class="o">=</span> <span class="n">curr_chi1_bin</span><span class="p">,</span> <span class="n">curr_chi2_bin</span><span class="p">,</span> <span class="n">renormed_dists</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
-</div>
-        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span>
+
+        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.test_point_distance_vary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.test_point_distance_vary">[docs]</a>    <span class="k">def</span> <span class="nf">test_point_distance_vary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">point_fupper</span><span class="p">,</span> <span class="n">mus</span><span class="p">,</span> 
                                  <span class="n">distance_threshold</span><span class="p">):</span>
@@ -634,8 +634,8 @@
             <span class="n">renormed_dists</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">dists</span><span class="p">)</span><span class="o">*</span><span class="n">norm_fac</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">renormed_dists</span> <span class="o">&lt;</span> <span class="n">distance_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
                 <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.add_point_by_chi_coords"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.add_point_by_chi_coords">[docs]</a>    <span class="k">def</span> <span class="nf">add_point_by_chi_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span>
                           <span class="n">point_fupper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mus</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -699,8 +699,8 @@
             <span class="c1"># Axis 0: Template index</span>
             <span class="c1"># Axis 1: Frequency cutoff index</span>
             <span class="c1"># Axis 2: Mu coordinate index</span>
-            <span class="k">if</span> <span class="n">mus</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span></div>
-                <span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mus</span><span class="p">[:,:]])</span>
+            <span class="k">if</span> <span class="n">mus</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mus</span><span class="p">[:,:]])</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.add_point_by_masses"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.add_point_by_masses">[docs]</a>    <span class="k">def</span> <span class="nf">add_point_by_masses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span>
                             <span class="n">vary_fupper</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -773,8 +773,8 @@
             <span class="n">freq_cutoff</span><span class="o">=</span><span class="kc">None</span>
             <span class="n">mus</span><span class="o">=</span><span class="kc">None</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_chi_coords</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span></div>
-                               <span class="n">point_fupper</span><span class="o">=</span><span class="n">freq_cutoff</span><span class="p">,</span> <span class="n">mus</span><span class="o">=</span><span class="n">mus</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_chi_coords</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span>
+                               <span class="n">point_fupper</span><span class="o">=</span><span class="n">freq_cutoff</span><span class="p">,</span> <span class="n">mus</span><span class="o">=</span><span class="n">mus</span><span class="p">)</span></div>
    
 
 <div class="viewcode-block" id="PartitionedTmpltbank.add_tmpltbank_from_xml_table"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.add_tmpltbank_from_xml_table">[docs]</a>    <span class="k">def</span> <span class="nf">add_tmpltbank_from_xml_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sngl_table</span><span class="p">,</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -791,8 +791,8 @@
 <span class="sd">            distances with a varying upper frequency cutoff.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">sngl</span> <span class="ow">in</span> <span class="n">sngl_table</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_masses</span><span class="p">(</span><span class="n">sngl</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass2</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">spin1z</span><span class="p">,</span></div>
-                                     <span class="n">sngl</span><span class="o">.</span><span class="n">spin2z</span><span class="p">,</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="n">vary_fupper</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_masses</span><span class="p">(</span><span class="n">sngl</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass2</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">spin1z</span><span class="p">,</span>
+                                     <span class="n">sngl</span><span class="o">.</span><span class="n">spin2z</span><span class="p">,</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="n">vary_fupper</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.add_tmpltbank_from_hdf_file"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.add_tmpltbank_from_hdf_file">[docs]</a>    <span class="k">def</span> <span class="nf">add_tmpltbank_from_hdf_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hdf_fp</span><span class="p">,</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -813,8 +813,8 @@
         <span class="n">spin1zs</span> <span class="o">=</span> <span class="n">hdf_fp</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:]</span>
         <span class="n">spin2zs</span> <span class="o">=</span> <span class="n">hdf_fp</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:]</span>
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass1s</span><span class="p">)):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_masses</span><span class="p">(</span><span class="n">mass1s</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">mass2s</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">spin1zs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span></div>
-                                     <span class="n">spin2zs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="n">vary_fupper</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_masses</span><span class="p">(</span><span class="n">mass1s</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">mass2s</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">spin1zs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+                                     <span class="n">spin2zs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="n">vary_fupper</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.output_all_points"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.output_all_points">[docs]</a>    <span class="k">def</span> <span class="nf">output_all_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return all points in the bank.</span>
@@ -844,8 +844,8 @@
                     <span class="n">mass2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mass2s&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
                     <span class="n">spin1z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;spin1s&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
                     <span class="n">spin2z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;spin2s&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
-</div></div>
-        <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span>
+
+        <span class="k">return</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span></div></div>
 </pre></div>
 
            </div>
@@ -861,7 +861,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -883,7 +883,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

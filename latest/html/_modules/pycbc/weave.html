@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.weave &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.weave &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -266,8 +266,8 @@
 
     <span class="n">fcntl</span><span class="o">.</span><span class="n">lockf</span><span class="p">(</span><span class="n">lockfile</span><span class="p">,</span> <span class="n">fcntl</span><span class="o">.</span><span class="n">LOCK_UN</span><span class="p">)</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;the lock has been released&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">func</span>
+
+    <span class="k">return</span> <span class="n">func</span></div>
 
 <span class="n">inline_tools</span><span class="o">.</span><span class="n">compile_function</span> <span class="o">=</span> <span class="n">pycbc_compile_function</span>
 <span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
@@ -307,8 +307,8 @@
     <span class="n">optimization_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--fixed-weave-cache&quot;</span><span class="p">,</span>
                     <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
                     <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;If given, use fixed directory PWD/pycbc_inspiral for &quot;</span></div>
-                         <span class="s2">&quot; the weave cache&quot;</span><span class="p">)</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;If given, use fixed directory PWD/pycbc_inspiral for &quot;</span>
+                         <span class="s2">&quot; the weave cache&quot;</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_clear_weave_cache</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Deletes the weave cache specified in os.environ[&#39;PYTHONCOMPILED&#39;]&quot;&quot;&quot;</span>
@@ -369,8 +369,8 @@
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">clear_weave_cache_at_end</span><span class="p">:</span>
-        <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">_clear_weave_cache</span><span class="p">)</span></div>
-        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">_clear_weave_cache</span><span class="p">)</span>
+        <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">_clear_weave_cache</span><span class="p">)</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">_clear_weave_cache</span><span class="p">)</span></div>
 
 
 
@@ -389,7 +389,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -411,7 +411,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

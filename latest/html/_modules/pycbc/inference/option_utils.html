@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.option_utils &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.option_utils &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -265,8 +265,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">lstring</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;[&#39;</span> <span class="ow">and</span> <span class="n">lstring</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;]&#39;</span><span class="p">:</span>
         <span class="n">lstring</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">lstring</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">))</span>
-                      <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lstring</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))]</span></div>
-    <span class="k">return</span> <span class="n">lstring</span>
+                      <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lstring</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))]</span>
+    <span class="k">return</span> <span class="n">lstring</span></div>
 
 
 <div class="viewcode-block" id="add_config_opts_to_parser"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_config_opts_to_parser">[docs]</a><span class="k">def</span> <span class="nf">add_config_opts_to_parser</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -277,8 +277,8 @@
                              <span class="s2">&quot;pycbc.workflow.WorkflowConfigParser.&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--config-overrides&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
                         <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECTION:OPTION:VALUE&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List of section:option:value combinations to &quot;</span></div>
-                             <span class="s2">&quot;add into the configuration file.&quot;</span><span class="p">)</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List of section:option:value combinations to &quot;</span>
+                             <span class="s2">&quot;add into the configuration file.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="config_parser_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.config_parser_from_cli">[docs]</a><span class="k">def</span> <span class="nf">config_parser_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -291,8 +291,8 @@
     <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">overrides</span> <span class="o">=</span> <span class="p">[</span><span class="n">override</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">override</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">overrides</span> <span class="o">=</span> <span class="kc">None</span></div>
-    <span class="k">return</span> <span class="n">WorkflowConfigParser</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">config_files</span><span class="p">,</span> <span class="n">overrides</span><span class="p">)</span>
+        <span class="n">overrides</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">WorkflowConfigParser</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">config_files</span><span class="p">,</span> <span class="n">overrides</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="read_args_from_config"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.read_args_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior_section</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">):</span>
@@ -375,8 +375,8 @@
             <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
         <span class="n">cons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">constraints</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">variable_args</span><span class="p">,</span>
                                                   <span class="n">constraint_arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">static_args</span><span class="p">,</span> <span class="n">cons</span>
+
+    <span class="k">return</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">static_args</span><span class="p">,</span> <span class="n">cons</span></div>
 
 <div class="viewcode-block" id="read_sampling_args_from_config"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.read_sampling_args_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_sampling_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                    <span class="n">section</span><span class="o">=</span><span class="s1">&#39;sampling_parameters&#39;</span><span class="p">):</span>
@@ -427,8 +427,8 @@
     <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
         <span class="n">map_args</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
         <span class="n">sampling_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">map_args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span>
-        <span class="n">replaced_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span> </div>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">sampling_params</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">replaced_params</span><span class="p">)</span>
+        <span class="n">replaced_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span> 
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">sampling_params</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">replaced_params</span><span class="p">)</span></div>
 
 
 <span class="c1">#-----------------------------------------------------------------------------</span>
@@ -497,8 +497,8 @@
     <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--nprocesses&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of processes to use. If not given then use maximum.&quot;</span><span class="p">)</span>
     <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--use-mpi&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use MPI to parallelize the sampler&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">sampler_group</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use MPI to parallelize the sampler&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sampler_group</span></div>
 
 
 <div class="viewcode-block" id="sampler_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.sampler_from_cli">[docs]</a><span class="k">def</span> <span class="nf">sampler_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -530,8 +530,8 @@
     <span class="k">if</span> <span class="n">pool</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">pool</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">nprocesses</span>
 
-    <span class="k">return</span> <span class="n">sclass</span><span class="o">.</span><span class="n">from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span></div>
-                           <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sclass</span><span class="o">.</span><span class="n">from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span>
+                           <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
 
 
 <span class="c1">#-----------------------------------------------------------------------------</span>
@@ -617,8 +617,8 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checkpoint invalid; copying backup file&quot;</span><span class="p">)</span>
         <span class="c1"># copy the backup to the checkpoint</span>
         <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">backup_file</span><span class="p">,</span> <span class="n">checkpoint_file</span><span class="p">)</span>
-        <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">True</span></div>
-    <span class="k">return</span> <span class="n">checkpoint_valid</span>
+        <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">checkpoint_valid</span></div>
 
 
 <div class="viewcode-block" id="add_low_frequency_cutoff_opt"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_low_frequency_cutoff_opt">[docs]</a><span class="k">def</span> <span class="nf">add_low_frequency_cutoff_opt</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -626,8 +626,8 @@
     <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
     <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
     <span class="c1"># will require (minor) changes to the Likelihood class</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span></div>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff for each IFO.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff for each IFO.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="low_frequency_cutoff_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.low_frequency_cutoff_from_cli">[docs]</a><span class="k">def</span> <span class="nf">low_frequency_cutoff_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -640,8 +640,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
     <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
-    <span class="c1"># will require (minor) changes to the Likelihood class</span></div>
-    <span class="k">return</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">}</span>
+    <span class="c1"># will require (minor) changes to the Likelihood class</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="data_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.data_from_cli">[docs]</a><span class="k">def</span> <span class="nf">data_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -723,8 +723,8 @@
         <span class="c1"># unwhiten the data for the likelihood generator</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">:</span>
             <span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">*=</span> <span class="n">psd_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
-</div>
-    <span class="k">return</span> <span class="n">strain_dict</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="p">,</span> <span class="n">psd_dict</span>
+
+    <span class="k">return</span> <span class="n">strain_dict</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="p">,</span> <span class="n">psd_dict</span></div>
 
 
 
@@ -790,8 +790,8 @@
             <span class="n">default</span><span class="o">=</span><span class="n">InferenceFile</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span>
             <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="n">InferenceFile</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span> <span class="n">InferenceFile</span><span class="o">.</span><span class="n">stats_group</span><span class="p">],</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Group in the HDF InferenceFile to look for parameters.&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">results_reading_group</span>
+
+    <span class="k">return</span> <span class="n">results_reading_group</span></div>
 
 
 <div class="viewcode-block" id="parse_parameters_opt"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.parse_parameters_opt">[docs]</a><span class="k">def</span> <span class="nf">parse_parameters_opt</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
@@ -817,8 +817,8 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">p</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
             <span class="n">parameters</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
-            <span class="n">labels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span></div>
-    <span class="k">return</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">labels</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="k">return</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">labels</span></div>
 
 
 <div class="viewcode-block" id="results_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.results_from_cli">[docs]</a><span class="k">def</span> <span class="nf">results_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">load_samples</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -921,8 +921,8 @@
             <span class="n">parameters_all</span> <span class="o">=</span> <span class="n">parameters</span>
             <span class="n">labels_all</span> <span class="o">=</span> <span class="n">labels</span>
             <span class="n">samples_all</span> <span class="o">=</span> <span class="n">samples</span>
-</div>
-    <span class="k">return</span> <span class="n">fp_all</span><span class="p">,</span> <span class="n">parameters_all</span><span class="p">,</span> <span class="n">labels_all</span><span class="p">,</span> <span class="n">samples_all</span>
+
+    <span class="k">return</span> <span class="n">fp_all</span><span class="p">,</span> <span class="n">parameters_all</span><span class="p">,</span> <span class="n">labels_all</span><span class="p">,</span> <span class="n">samples_all</span></div>
 
 <div class="viewcode-block" id="get_file_type"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.get_file_type">[docs]</a><span class="k">def</span> <span class="nf">get_file_type</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns I/O object to use for file.</span>
@@ -944,8 +944,8 @@
             <span class="k">return</span> <span class="n">InferenceFile</span>
     <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">txt_extensions</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">InferenceTXTFile</span></div>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Extension is not supported.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">InferenceTXTFile</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Extension is not supported.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_zvalues"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.get_zvalues">[docs]</a><span class="k">def</span> <span class="nf">get_zvalues</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">likelihood_stats</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reads the data for the z-value of the plots from the inference file.</span>
@@ -986,8 +986,8 @@
         <span class="n">zvals</span> <span class="o">=</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">prior</span>
         <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\log p(\vec{\vartheta})$&#39;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognized arg </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">zlbl</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognized arg </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">zlbl</span></div>
 
 
 <div class="viewcode-block" id="add_plot_posterior_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_plot_posterior_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_plot_posterior_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -1055,8 +1055,8 @@
                              <span class="s2">&quot;the values obtained for the injection.&quot;</span><span class="p">)</span>
     <span class="c1"># FIXME: the following should be made an attribute of the results file</span>
     <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--injection-hdf-group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;H1/injections&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF group that contains injection values.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">pgroup</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF group that contains injection values.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pgroup</span></div>
 
 
 <div class="viewcode-block" id="plot_ranges_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.plot_ranges_from_cli">[docs]</a><span class="k">def</span> <span class="nf">plot_ranges_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -1090,8 +1090,8 @@
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;option --maxs not specified correctly; see help&quot;</span><span class="p">)</span>
-        <span class="n">maxs</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span>
+        <span class="n">maxs</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span></div>
 
 
 <div class="viewcode-block" id="injections_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.injections_from_cli">[docs]</a><span class="k">def</span> <span class="nf">injections_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -1129,8 +1129,8 @@
     <span class="n">_</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">get_common_cbc_transforms</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
                                                  <span class="n">injections</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">)</span>
     <span class="c1"># add parameters not included in injection file</span>
-    <span class="n">injections</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">injections</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">injections</span>
+    <span class="n">injections</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">injections</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">injections</span></div>
 
 
 <div class="viewcode-block" id="expected_parameters_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.expected_parameters_from_cli">[docs]</a><span class="k">def</span> <span class="nf">expected_parameters_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -1155,8 +1155,8 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;option --expected-paramters not specified &quot;</span>
                              <span class="s2">&quot;correctly; see help&quot;</span><span class="p">)</span>
-        <span class="n">expected</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">expected</span>
+        <span class="n">expected</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">expected</span></div>
 
 
 <div class="viewcode-block" id="add_scatter_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_scatter_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_scatter_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -1186,8 +1186,8 @@
     <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--scatter-cmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the colormap to use for points. Default is &quot;</span>
                          <span class="s2">&quot;plasma.&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">scatter_group</span>
+
+    <span class="k">return</span> <span class="n">scatter_group</span></div>
 
 
 <div class="viewcode-block" id="add_density_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_density_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_density_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -1212,8 +1212,8 @@
                     <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use kombine&#39;s KDE for determining contours. Default &quot;</span>
                          <span class="s2">&quot;is to use scipy&#39;s gaussian_kde.&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">density_group</span>
+
+    <span class="k">return</span> <span class="n">density_group</span></div>
 </pre></div>
 
            </div>
@@ -1229,7 +1229,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1251,7 +1251,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

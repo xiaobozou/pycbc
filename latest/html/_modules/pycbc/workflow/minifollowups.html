@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.minifollowups &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.minifollowups &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -234,8 +234,8 @@
 <div class="viewcode-block" id="grouper"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.grouper">[docs]</a><span class="k">def</span> <span class="nf">grouper</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create a list of n length tuples</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span></div>
-    <span class="k">return</span> <span class="n">izip_longest</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">fillvalue</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">izip_longest</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">fillvalue</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="setup_foreground_minifollowups"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.setup_foreground_minifollowups">[docs]</a><span class="k">def</span> <span class="nf">setup_foreground_minifollowups</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_file</span><span class="p">,</span> <span class="n">single_triggers</span><span class="p">,</span>
                        <span class="n">tmpltbank_file</span><span class="p">,</span> <span class="n">insp_segs</span><span class="p">,</span> <span class="n">insp_data_name</span><span class="p">,</span>
@@ -317,8 +317,8 @@
     <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span></div>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving minifollowups module&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving minifollowups module&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="setup_single_det_minifollowups"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.setup_single_det_minifollowups">[docs]</a><span class="k">def</span> <span class="nf">setup_single_det_minifollowups</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">single_trig_file</span><span class="p">,</span> <span class="n">tmpltbank_file</span><span class="p">,</span>
                                   <span class="n">insp_segs</span><span class="p">,</span> <span class="n">insp_data_name</span><span class="p">,</span> <span class="n">insp_anal_name</span><span class="p">,</span>
@@ -410,8 +410,8 @@
     <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span></div>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving minifollowups module&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving minifollowups module&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="setup_injection_minifollowups"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.setup_injection_minifollowups">[docs]</a><span class="k">def</span> <span class="nf">setup_injection_minifollowups</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">,</span>
@@ -494,31 +494,31 @@
     <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span></div>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving injection minifollowups module&#39;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Leaving injection minifollowups module&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SingleTemplateExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.SingleTemplateExecutable">[docs]</a><span class="k">class</span> <span class="nc">SingleTemplateExecutable</span><span class="p">(</span><span class="n">PlotExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class to be used for to create workflow.Executable instances for the</span>
 <span class="sd">    pycbc_single_template executable. Basically inherits directly from</span>
 <span class="sd">    PlotExecutable but adds the file_input_options.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="SingleTimeFreqExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.SingleTimeFreqExecutable">[docs]</a><span class="k">class</span> <span class="nc">SingleTimeFreqExecutable</span><span class="p">(</span><span class="n">PlotExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class to be used for to create workflow.Executable instances for the</span>
 <span class="sd">    pycbc_plot_singles_timefreq executable. Basically inherits directly from</span>
 <span class="sd">    PlotExecutable but adds the file_input_options.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="PlotQScanExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.PlotQScanExecutable">[docs]</a><span class="k">class</span> <span class="nc">PlotQScanExecutable</span><span class="p">(</span><span class="n">PlotExecutable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class to be used for to create workflow.Executable instances for the</span>
 <span class="sd">    pycbc_plot_qscan executable. Basically inherits directly from</span>
 <span class="sd">    PlotExecutable but adds the file_input_options.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--gating-file&#39;</span><span class="p">]</span></div>
     
 
 <div class="viewcode-block" id="make_single_template_plots"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_single_template_plots">[docs]</a><span class="k">def</span> <span class="nf">make_single_template_plots</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">segs</span><span class="p">,</span> <span class="n">data_read_name</span><span class="p">,</span> <span class="n">analyzed_name</span><span class="p">,</span>
@@ -647,8 +647,8 @@
                          <span class="n">params</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">])</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--plot-caption&#39;</span><span class="p">,</span> <span class="n">caption</span><span class="p">)</span>
             <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+            <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_plot_waveform_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_plot_waveform_plot">[docs]</a><span class="k">def</span> <span class="nf">make_plot_waveform_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">require</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -678,8 +678,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span>
                                      <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_inj_info"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_inj_info">[docs]</a><span class="k">def</span> <span class="nf">make_inj_info</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">,</span> <span class="n">injection_index</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                   <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -694,8 +694,8 @@
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--n-nearest&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_coinc_info"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_coinc_info">[docs]</a><span class="k">def</span> <span class="nf">make_coinc_info</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">singles</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span> <span class="n">coinc</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                     <span class="n">n_loudest</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trig_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_substring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -717,8 +717,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--statmap-file-subspace-name&#39;</span><span class="p">,</span> <span class="n">file_substring</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_sngl_ifo"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_sngl_ifo">[docs]</a><span class="k">def</span> <span class="nf">make_sngl_ifo</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">sngl_file</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">trigger_id</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
                   <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -738,8 +738,8 @@
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--instrument&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+    <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 
 <div class="viewcode-block" id="make_trigger_timeseries"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_trigger_timeseries">[docs]</a><span class="k">def</span> <span class="nf">make_trigger_timeseries</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">singles</span><span class="p">,</span> <span class="n">ifo_times</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">special_tids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -761,8 +761,8 @@
             <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--special-trigger-ids&#39;</span><span class="p">,</span> <span class="n">special_tids</span><span class="p">)</span>
         
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
-    <span class="k">return</span> <span class="n">files</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_qscan_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_qscan_plot">[docs]</a><span class="k">def</span> <span class="nf">make_qscan_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">trig_time</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">injection_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">data_segments</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_window</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -845,8 +845,8 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--injection-file&#39;</span><span class="p">,</span> <span class="n">injection_file</span><span class="p">)</span>
 
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="make_singles_timefreq"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.make_singles_timefreq">[docs]</a><span class="k">def</span> <span class="nf">make_singles_timefreq</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">single</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">trig_time</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                           <span class="n">veto_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">data_segments</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -946,8 +946,8 @@
         
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--detector&#39;</span><span class="p">,</span> <span class="n">single</span><span class="o">.</span><span class="n">ifo</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
-    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span></div>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="create_noop_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.minifollowups.create_noop_node">[docs]</a><span class="k">def</span> <span class="nf">create_noop_node</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -961,8 +961,8 @@
     <span class="n">exe</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">Executable</span><span class="p">(</span><span class="s1">&#39;NOOP&#39;</span><span class="p">)</span>
     <span class="n">pfn</span> <span class="o">=</span> <span class="n">distutils</span><span class="o">.</span><span class="n">spawn</span><span class="o">.</span><span class="n">find_executable</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
     <span class="n">exe</span><span class="o">.</span><span class="n">add_pfn</span><span class="p">(</span><span class="n">pfn</span><span class="p">)</span>
-    <span class="n">node</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">exe</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">node</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">exe</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">node</span></div>
 </pre></div>
 
            </div>
@@ -978,7 +978,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1000,7 +1000,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

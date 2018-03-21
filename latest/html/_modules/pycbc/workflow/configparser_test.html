@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.configparser_test &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.configparser_test &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -253,8 +253,8 @@
         <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">parsed_filepath</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
         <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</div>
-    <span class="k">return</span> <span class="n">cp</span>
+
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 
 <div class="viewcode-block" id="read_ini_file"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.read_ini_file">[docs]</a><span class="k">def</span> <span class="nf">read_ini_file</span><span class="p">(</span><span class="n">cpFile</span><span class="p">):</span>
@@ -277,8 +277,8 @@
     <span class="c1"># Read the file</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cpFile</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
     <span class="n">cp</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">cp</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 <div class="viewcode-block" id="perform_extended_interpolation"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.perform_extended_interpolation">[docs]</a><span class="k">def</span> <span class="nf">perform_extended_interpolation</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">preserve_orig_file</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Filter through an ini file and replace all examples of </span>
@@ -321,8 +321,8 @@
              <span class="n">newStr</span> <span class="o">=</span> <span class="n">interpolate_string</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">cp</span><span class="p">,</span><span class="n">section</span><span class="p">)</span>
              <span class="k">if</span> <span class="n">newStr</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
                  <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">section</span><span class="p">,</span><span class="n">option</span><span class="p">,</span><span class="n">newStr</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">cp</span>
+
+    <span class="k">return</span> <span class="n">cp</span></div>
         
 <div class="viewcode-block" id="interpolate_string"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.interpolate_string">[docs]</a><span class="k">def</span> <span class="nf">interpolate_string</span><span class="p">(</span><span class="n">testString</span><span class="p">,</span><span class="n">cp</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Take a string and replace all example of ExtendedInterpolation formatting</span>
@@ -368,8 +368,8 @@
             <span class="n">testString</span> <span class="o">=</span> <span class="n">testString</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;${&#39;</span><span class="o">+</span><span class="n">repString</span><span class="o">+</span><span class="s1">&#39;}&#39;</span><span class="p">,</span>\
                                     <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">splitString</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">splitString</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="n">reObj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\$\{.*?\}&quot;</span><span class="p">,</span> <span class="n">testString</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">testString</span>
+
+    <span class="k">return</span> <span class="n">testString</span></div>
 
 <div class="viewcode-block" id="split_multi_sections"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.split_multi_sections">[docs]</a><span class="k">def</span> <span class="nf">split_multi_sections</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">preserve_orig_file</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parse through a supplied ConfigParser object and splits any sections</span>
@@ -406,8 +406,8 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="n">newSec</span><span class="p">):</span>
                 <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="n">newSec</span><span class="p">)</span>
             <span class="n">add_options_to_section</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">newSec</span><span class="p">,</span><span class="n">cp</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">section</span><span class="p">))</span>
-        <span class="n">cp</span><span class="o">.</span><span class="n">remove_section</span><span class="p">(</span><span class="n">section</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">cp</span>
+        <span class="n">cp</span><span class="o">.</span><span class="n">remove_section</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 <div class="viewcode-block" id="sanity_check_subsections"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.sanity_check_subsections">[docs]</a><span class="k">def</span> <span class="nf">sanity_check_subsections</span><span class="p">(</span><span class="n">cp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function goes through the ConfigParset and checks that any options</span>
@@ -428,8 +428,8 @@
         <span class="k">for</span> <span class="n">section2</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">sections</span><span class="p">():</span>
             <span class="c1"># Check if any are subsections of section</span>
             <span class="k">if</span> <span class="n">section2</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">section</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
-                <span class="c1"># Check for duplicate options whenever this exists</span></div>
-                <span class="n">check_duplicate_options</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">section</span><span class="p">,</span><span class="n">section2</span><span class="p">,</span><span class="n">raise_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="c1"># Check for duplicate options whenever this exists</span>
+                <span class="n">check_duplicate_options</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">section</span><span class="p">,</span><span class="n">section2</span><span class="p">,</span><span class="n">raise_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="add_options_to_section"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.add_options_to_section">[docs]</a><span class="k">def</span> <span class="nf">add_options_to_section</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">section</span><span class="p">,</span><span class="n">items</span><span class="p">,</span><span class="n">preserve_orig_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>\
                            <span class="n">overwrite_options</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -474,8 +474,8 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Option </span><span class="si">%s</span><span class="s1"> exists in both original&#39;</span> <span class="o">+</span> \
                                  <span class="s1">&#39;ConfigParser and input list&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">option</span><span class="p">,))</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">section</span><span class="p">,</span><span class="n">option</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">cp</span>
+
+    <span class="k">return</span> <span class="n">cp</span></div>
 
 <div class="viewcode-block" id="check_duplicate_options"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.configparser_test.check_duplicate_options">[docs]</a><span class="k">def</span> <span class="nf">check_duplicate_options</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">section1</span><span class="p">,</span><span class="n">section2</span><span class="p">,</span><span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Check for duplicate options in two sections, section1 and section2.</span>
@@ -514,8 +514,8 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The following options appear in both section &#39;</span> <span class="o">+</span>\
                          <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> \
                          <span class="o">%</span><span class="p">(</span><span class="n">section1</span><span class="p">,</span><span class="n">section2</span><span class="p">,</span><span class="n">duplicates</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
-    </div>
-    <span class="k">return</span> <span class="n">duplicates</span>
+    
+    <span class="k">return</span> <span class="n">duplicates</span></div>
 </pre></div>
 
            </div>
@@ -531,7 +531,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -553,7 +553,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

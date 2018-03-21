@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.psd.variation &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.psd.variation &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.psd" href="../psd.html"/> 
 
   
@@ -295,8 +295,8 @@
             <span class="n">psd_var</span><span class="p">[</span><span class="n">ind</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
 
         <span class="n">ind</span> <span class="o">=</span> <span class="n">ind</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">psd_var</span>
+
+    <span class="k">return</span> <span class="n">psd_var</span></div>
 
 <div class="viewcode-block" id="find_trigger_value"><a class="viewcode-back" href="../../../pycbc.psd.html#pycbc.psd.variation.find_trigger_value">[docs]</a><span class="k">def</span> <span class="nf">find_trigger_value</span><span class="p">(</span><span class="n">psd_var</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Find the PSD variation value at a particular time</span>
@@ -323,8 +323,8 @@
     <span class="c1"># Find where in the psd variation time series the trigger belongs</span>
     <span class="n">ind</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">psd_var</span><span class="o">.</span><span class="n">sample_times</span><span class="p">)</span>
     <span class="n">ind</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="n">psd_var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">vals</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">psd_var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">vals</span></div>
 </pre></div>
 
            </div>
@@ -340,7 +340,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -362,7 +362,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

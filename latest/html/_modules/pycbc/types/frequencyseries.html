@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.frequencyseries &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.types.frequencyseries &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -304,22 +304,22 @@
 
 <div class="viewcode-block" id="FrequencySeries.get_delta_f"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.get_delta_f">[docs]</a>    <span class="k">def</span> <span class="nf">get_delta_f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return frequency between consecutive samples in Hertz.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span></div>
     <span class="n">delta_f</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_delta_f</span><span class="p">,</span>
                        <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Frequency between consecutive samples in Hertz.&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="FrequencySeries.get_epoch"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.get_epoch">[docs]</a>    <span class="k">def</span> <span class="nf">get_epoch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return frequency series epoch as a LIGOTimeGPS.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span></div>
     <span class="n">epoch</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_epoch</span><span class="p">,</span>
                      <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Frequency series epoch as a LIGOTimeGPS.&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="FrequencySeries.get_sample_frequencies"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.get_sample_frequencies">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample_frequencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an Array containing the sample frequencies.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span></div>
     <span class="n">sample_frequencies</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_sample_frequencies</span><span class="p">,</span>
                                   <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Array of the sample frequencies.&quot;</span><span class="p">)</span>
 
@@ -467,8 +467,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_epoch</span> <span class="ow">and</span>
                         <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span><span class="o">-</span><span class="n">other</span><span class="o">.</span><span class="n">_delta_f</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dtol</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.almost_equal_norm"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.almost_equal_norm">[docs]</a>    <span class="k">def</span> <span class="nf">almost_equal_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">relative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dtol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -525,8 +525,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_epoch</span> <span class="ow">and</span>
                         <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta_f</span><span class="o">-</span><span class="n">other</span><span class="o">.</span><span class="n">_delta_f</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dtol</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.lal"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.lal">[docs]</a>    <span class="nd">@_convert</span>
     <span class="k">def</span> <span class="nf">lal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -562,8 +562,8 @@
             <span class="n">lal_data</span> <span class="o">=</span> <span class="n">_lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16FrequencySeries</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">ep</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span><span class="n">_lal</span><span class="o">.</span><span class="n">SecondUnit</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="n">lal_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-</div>
-        <span class="k">return</span> <span class="n">lal_data</span>
+
+        <span class="k">return</span> <span class="n">lal_data</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.save"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="s1">&#39;P1&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -627,8 +627,8 @@
             <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span>
             <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Path must end with .npy, .txt, .xml, .xml.gz &#39;</span></div>
-                             <span class="s1">&#39;or .hdf&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Path must end with .npy, .txt, .xml, .xml.gz &#39;</span>
+                             <span class="s1">&#39;or .hdf&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.to_timeseries"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.to_timeseries">[docs]</a>    <span class="nd">@_noreal</span>
     <span class="k">def</span> <span class="nf">to_timeseries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -672,8 +672,8 @@
         <span class="n">f</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">tlen</span><span class="p">,</span> 
                            <span class="n">dtype</span><span class="o">=</span><span class="n">real_same_precision_as</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span>
                            <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
-        <span class="n">ifft</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">f</span>
+        <span class="n">ifft</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.cyclic_time_shift"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.cyclic_time_shift">[docs]</a>    <span class="nd">@_noreal</span>
     <span class="k">def</span> <span class="nf">cyclic_time_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
@@ -698,8 +698,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">apply_fseries_time_shift</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">apply_fseries_time_shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
-        <span class="n">data</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">-</span> <span class="n">dt</span></div>
-        <span class="k">return</span> <span class="n">data</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">-</span> <span class="n">dt</span>
+        <span class="k">return</span> <span class="n">data</span></div>
 
 <div class="viewcode-block" id="FrequencySeries.match"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.match">[docs]</a>    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">psd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
               <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">high_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -748,8 +748,8 @@
             <span class="n">psd</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">psd</span><span class="o">=</span><span class="n">psd</span><span class="p">,</span>
-                     <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">low_frequency_cutoff</span><span class="p">,</span></div></div>
-                     <span class="n">high_frequency_cutoff</span><span class="o">=</span><span class="n">high_frequency_cutoff</span><span class="p">)</span>
+                     <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">low_frequency_cutoff</span><span class="p">,</span>
+                     <span class="n">high_frequency_cutoff</span><span class="o">=</span><span class="n">high_frequency_cutoff</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="load_frequencyseries"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.frequencyseries.load_frequencyseries">[docs]</a><span class="k">def</span> <span class="nf">load_frequencyseries</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -796,8 +796,8 @@
         <span class="k">return</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span>
                                <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File has </span><span class="si">%s</span><span class="s1"> dimensions, cannot convert to Array, </span><span class="se">\</span></div>
-<span class="s1">                          must be 2 (real) or 3 (complex)&#39;</span> <span class="o">%</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File has </span><span class="si">%s</span><span class="s1"> dimensions, cannot convert to Array, </span><span class="se">\</span>
+<span class="s1">                          must be 2 (real) or 3 (complex)&#39;</span> <span class="o">%</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -813,7 +813,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -835,7 +835,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

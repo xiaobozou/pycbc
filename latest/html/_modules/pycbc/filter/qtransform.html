@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.qtransform &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.filter.qtransform &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -288,8 +288,8 @@
     <span class="n">plane</span> <span class="o">=</span> <span class="n">qplanes</span><span class="p">[</span><span class="n">max_key</span><span class="p">]</span> 
     <span class="n">frequencies</span> <span class="o">=</span> <span class="n">qplane_tile_dict</span><span class="p">[</span><span class="n">max_key</span><span class="p">]</span>
     <span class="n">times</span> <span class="o">=</span> <span class="n">plane</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sample_times</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">plane</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">v</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">plane</span><span class="p">])</span></div>
-    <span class="k">return</span> <span class="n">max_key</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plane</span><span class="p">)</span>
+    <span class="n">plane</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">v</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">plane</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">max_key</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plane</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="qtiling"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.qtransform.qtiling">[docs]</a><span class="k">def</span> <span class="nf">qtiling</span><span class="p">(</span><span class="n">fseries</span><span class="p">,</span> <span class="n">qrange</span><span class="p">,</span> <span class="n">frange</span><span class="p">,</span> <span class="n">mismatch</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Iterable constructor of QTile tuples</span>
@@ -315,8 +315,8 @@
     <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
         <span class="n">qtilefreq</span> <span class="o">=</span> <span class="n">_iter_frequencies</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">frange</span><span class="p">,</span> <span class="n">mismatch</span><span class="p">,</span> <span class="n">fseries</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
         <span class="n">qplane_tile_dict</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">qtilefreq</span><span class="p">))</span>
-        </div>
-    <span class="k">return</span> <span class="n">qplane_tile_dict</span>
+        
+    <span class="k">return</span> <span class="n">qplane_tile_dict</span></div>
 
 <div class="viewcode-block" id="deltam_f"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.qtransform.deltam_f">[docs]</a><span class="k">def</span> <span class="nf">deltam_f</span><span class="p">(</span><span class="n">mismatch</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fractional mismatch between neighbouring tiles</span>
@@ -329,8 +329,8 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    :type: &#39;float&#39;</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mismatch</span> <span class="o">/</span> <span class="mf">3.</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mismatch</span> <span class="o">/</span> <span class="mf">3.</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_iter_qs</span><span class="p">(</span><span class="n">qrange</span><span class="p">,</span> <span class="n">deltam</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Iterate over the Q values</span>
@@ -435,8 +435,8 @@
         <span class="k">return</span> <span class="n">ctseries</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">energy</span> <span class="o">=</span> <span class="n">ctseries</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span>
-        <span class="n">medianenergy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">energy</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span></div>
-        <span class="k">return</span>  <span class="n">energy</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">medianenergy</span><span class="p">)</span>
+        <span class="n">medianenergy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">energy</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="k">return</span>  <span class="n">energy</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">medianenergy</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -452,7 +452,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -474,7 +474,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

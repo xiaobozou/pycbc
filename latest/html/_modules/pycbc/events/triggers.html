@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.triggers &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.triggers &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -254,8 +254,8 @@
     <span class="n">bins_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--bank-file&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF format template bank file.&quot;</span><span class="p">)</span>
     <span class="n">bins_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--f-lower&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff in Hz.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">bins_group</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff in Hz.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bins_group</span></div>
 
 <div class="viewcode-block" id="bank_bins_from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.bank_bins_from_cli">[docs]</a><span class="k">def</span> <span class="nf">bank_bins_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Parses the CLI options related to binning templates in the bank.</span>
@@ -281,8 +281,8 @@
         <span class="n">bins_idx</span> <span class="o">=</span> <span class="n">coinc</span><span class="o">.</span><span class="n">background_bin_from_string</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">bank_bins</span><span class="p">,</span> <span class="n">bank</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">bins_idx</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;all&quot;</span> <span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bank</span><span class="p">[</span><span class="n">fp</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]))}</span>
-    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">bins_idx</span><span class="p">,</span> <span class="n">bank</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">bins_idx</span><span class="p">,</span> <span class="n">bank</span></div>
 
 <div class="viewcode-block" id="insert_loudest_triggers_option_group"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.insert_loudest_triggers_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_loudest_triggers_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">coinc_options</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Add options to the optparser object for selecting templates in bins.</span>
@@ -314,8 +314,8 @@
     <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--search-n-loudest&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of triggers to search over.&quot;</span><span class="p">)</span>
     <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--n-loudest&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of triggers to return in results.&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">opt_group</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of triggers to return in results.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">opt_group</span></div>
 
 <div class="viewcode-block" id="loudest_triggers_from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.loudest_triggers_from_cli">[docs]</a><span class="k">def</span> <span class="nf">loudest_triggers_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">coinc_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                               <span class="n">sngl_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bank_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -439,8 +439,8 @@
     <span class="c1"># else did not supply enough command line options</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must have --bank-file and --sngl-trigger-files&quot;</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">bin_names</span><span class="p">,</span> <span class="n">bin_results</span>
+
+    <span class="k">return</span> <span class="n">bin_names</span><span class="p">,</span> <span class="n">bin_results</span></div>
 
 <div class="viewcode-block" id="get_found_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_found_param">[docs]</a><span class="k">def</span> <span class="nf">get_found_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">bankfile</span><span class="p">,</span> <span class="n">trigfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -489,8 +489,8 @@
                                                  <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
                                                  <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">]</span>
         <span class="p">}</span>
-</div>
-    <span class="k">return</span> <span class="n">found_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">found_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="get_inj_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_inj_param">[docs]</a><span class="k">def</span> <span class="nf">get_inj_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -532,8 +532,8 @@
             <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">time_delay</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">][:],</span>
                                             <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:],</span>
                                             <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]),</span>
-    <span class="p">}</span></div>
-    <span class="k">return</span> <span class="n">inj_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">inj_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
 </pre></div>
 
            </div>
@@ -549,7 +549,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -571,7 +571,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

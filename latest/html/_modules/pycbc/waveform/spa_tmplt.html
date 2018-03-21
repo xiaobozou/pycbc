@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.spa_tmplt &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.waveform.spa_tmplt &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -282,8 +282,8 @@
     <span class="c1"># correct, but the difference is negligble.   </span>
 
     <span class="c1"># This formula works for any PN order, because </span>
-    <span class="c1"># higher order coeffs will be set to zero.     </span></div>
-    <span class="k">return</span> <span class="n">c0T</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c2T</span> <span class="o">*</span> <span class="n">x2T</span> <span class="o">+</span> <span class="n">c3T</span> <span class="o">*</span> <span class="n">x3T</span> <span class="o">+</span> <span class="n">c4T</span> <span class="o">*</span> <span class="n">x4T</span> <span class="o">+</span> <span class="n">c5T</span> <span class="o">*</span> <span class="n">x5T</span> <span class="o">+</span> <span class="p">(</span><span class="n">c6T</span> <span class="o">+</span> <span class="n">c6LogT</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">xT</span><span class="p">))</span> <span class="o">*</span> <span class="n">x6T</span> <span class="o">+</span> <span class="n">c7T</span> <span class="o">*</span> <span class="n">x7T</span><span class="p">)</span> <span class="o">/</span> <span class="n">x8T</span>
+    <span class="c1"># higher order coeffs will be set to zero.     </span>
+    <span class="k">return</span> <span class="n">c0T</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c2T</span> <span class="o">*</span> <span class="n">x2T</span> <span class="o">+</span> <span class="n">c3T</span> <span class="o">*</span> <span class="n">x3T</span> <span class="o">+</span> <span class="n">c4T</span> <span class="o">*</span> <span class="n">x4T</span> <span class="o">+</span> <span class="n">c5T</span> <span class="o">*</span> <span class="n">x5T</span> <span class="o">+</span> <span class="p">(</span><span class="n">c6T</span> <span class="o">+</span> <span class="n">c6LogT</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">xT</span><span class="p">))</span> <span class="o">*</span> <span class="n">x6T</span> <span class="o">+</span> <span class="n">c7T</span> <span class="o">*</span> <span class="n">x7T</span><span class="p">)</span> <span class="o">/</span> <span class="n">x8T</span></div>
 
 <div class="viewcode-block" id="spa_length_in_time"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_length_in_time">[docs]</a><span class="k">def</span> <span class="nf">spa_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -298,8 +298,8 @@
 
     <span class="c1"># For now, we call the swig-wrapped function below in</span>
     <span class="c1"># lalinspiral.  Eventually would be nice to replace this</span>
-    <span class="c1"># with a function using PN coeffs from lalsimulation.</span></div>
-    <span class="k">return</span> <span class="n">findchirp_chirptime</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">porder</span><span class="p">)</span>
+    <span class="c1"># with a function using PN coeffs from lalsimulation.</span>
+    <span class="k">return</span> <span class="n">findchirp_chirptime</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">porder</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spa_amplitude_factor"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_amplitude_factor">[docs]</a><span class="k">def</span> <span class="nf">spa_amplitude_factor</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="n">m1</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">]</span>
@@ -317,8 +317,8 @@
 
     <span class="n">amp0</span> <span class="o">=</span> <span class="mf">4.</span> <span class="o">*</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">m2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1e6</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PC_SI</span> <span class="p">)</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MRSUN_SI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="o">/</span><span class="mf">12.0</span><span class="p">)</span>
 
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="o">-</span><span class="n">dETaN</span> <span class="o">/</span> <span class="n">FTaN</span><span class="p">)</span> <span class="o">*</span> <span class="n">amp0</span> <span class="o">*</span> <span class="p">(</span><span class="n">piM</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="o">-</span><span class="n">fac</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="o">-</span><span class="n">dETaN</span> <span class="o">/</span> <span class="n">FTaN</span><span class="p">)</span> <span class="o">*</span> <span class="n">amp0</span> <span class="o">*</span> <span class="p">(</span><span class="n">piM</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">fac</span></div>
 
 <span class="n">_prec</span> <span class="o">=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="spa_tmplt_precondition"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt_precondition">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_precondition</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">kmin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -329,19 +329,19 @@
     <span class="k">if</span> <span class="n">_prec</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">_prec</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">!=</span> <span class="n">delta_f</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">_prec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">kmin</span><span class="o">+</span><span class="n">length</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta_f</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)],</span> <span class="o">-</span><span class="mf">7.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">)</span>
-        <span class="n">_prec</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">_prec</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmin</span> <span class="o">+</span> <span class="n">length</span><span class="p">]</span>
+        <span class="n">_prec</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_prec</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmin</span> <span class="o">+</span> <span class="n">length</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="spa_tmplt_norm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt_norm">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_norm</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="n">amp</span> <span class="o">=</span> <span class="n">spa_tmplt_precondition</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">)</span>
     <span class="n">k_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_lower</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="n">amp</span><span class="p">[</span><span class="n">k_min</span><span class="p">:</span><span class="n">length</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">psd</span><span class="p">[</span><span class="n">k_min</span><span class="p">:</span><span class="n">length</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
     <span class="n">norm_vec</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
-    <span class="n">norm_vec</span><span class="p">[</span><span class="n">k_min</span><span class="p">:</span><span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">delta_f</span></div>
-    <span class="k">return</span> <span class="n">norm_vec</span>
+    <span class="n">norm_vec</span><span class="p">[</span><span class="n">k_min</span><span class="p">:</span><span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">delta_f</span>
+    <span class="k">return</span> <span class="n">norm_vec</span></div>
 
-<div class="viewcode-block" id="spa_tmplt_end"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt_end">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_end</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">pnutils</span><span class="o">.</span><span class="n">f_SchwarzISCO</span><span class="p">(</span><span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+<div class="viewcode-block" id="spa_tmplt_end"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt_end">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_end</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">pnutils</span><span class="o">.</span><span class="n">f_SchwarzISCO</span><span class="p">(</span><span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="spa_distance"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_distance">[docs]</a><span class="k">def</span> <span class="nf">spa_distance</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lower_frequency_cutoff</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the distance at a given snr (default=8) of the SPA TaylorF2</span>
@@ -352,15 +352,15 @@
     <span class="n">norm2</span> <span class="o">=</span> <span class="p">(</span><span class="n">spa_amplitude_factor</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="n">mass2</span><span class="p">))</span> <span class="o">**</span> <span class="mf">2.0</span>
 
     <span class="k">if</span> <span class="n">kend</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">psd</span><span class="p">):</span>
-        <span class="n">kend</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span></div>
-    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">norm1</span><span class="p">[</span><span class="n">kend</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm2</span><span class="p">)</span> <span class="o">/</span> <span class="n">snr</span>
+        <span class="n">kend</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">norm1</span><span class="p">[</span><span class="n">kend</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm2</span><span class="p">)</span> <span class="o">/</span> <span class="n">snr</span></div>
 
 <div class="viewcode-block" id="spa_tmplt_engine"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt_engine">[docs]</a><span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.waveform.spa_tmplt_&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">spa_tmplt_engine</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">phase_order</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">piM</span><span class="p">,</span> <span class="n">pfaN</span><span class="p">,</span>
                      <span class="n">pfa2</span><span class="p">,</span> <span class="n">pfa3</span><span class="p">,</span> <span class="n">pfa4</span><span class="p">,</span> <span class="n">pfa5</span><span class="p">,</span> <span class="n">pfl5</span><span class="p">,</span>
                      <span class="n">pfa6</span><span class="p">,</span> <span class="n">pfl6</span><span class="p">,</span> <span class="n">pfa7</span><span class="p">,</span> <span class="n">amp_factor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Calculate the spa tmplt phase</span></div>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Calculate the spa tmplt phase</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="spa_tmplt"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt.spa_tmplt">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt</span><span class="p">(</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Generate a minimal TaylorF2 approximant with optimations for the sin/cos</span>
@@ -433,8 +433,8 @@
 
     <span class="n">spa_tmplt_engine</span><span class="p">(</span><span class="n">htilde</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">],</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">phase_order</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">piM</span><span class="p">,</span> <span class="n">pfaN</span><span class="p">,</span>
                      <span class="n">pfa2</span><span class="p">,</span> <span class="n">pfa3</span><span class="p">,</span> <span class="n">pfa4</span><span class="p">,</span> <span class="n">pfa5</span><span class="p">,</span> <span class="n">pfl5</span><span class="p">,</span>
-                     <span class="n">pfa6</span><span class="p">,</span> <span class="n">pfl6</span><span class="p">,</span> <span class="n">pfa7</span><span class="p">,</span> <span class="n">amp_factor</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">htilde</span>
+                     <span class="n">pfa6</span><span class="p">,</span> <span class="n">pfl6</span><span class="p">,</span> <span class="n">pfa7</span><span class="p">,</span> <span class="n">amp_factor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">htilde</span></div>
 
 </pre></div>
 
@@ -451,7 +451,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -473,7 +473,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

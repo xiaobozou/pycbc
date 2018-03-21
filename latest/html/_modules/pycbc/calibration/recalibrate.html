@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.calibration.recalibrate &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.calibration.recalibrate &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.calibration" href="../calibration.html"/> 
 
   
@@ -312,8 +312,8 @@
 <span class="sd">            The new sensing function c(f,t).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">detuning_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">*</span><span class="n">fs</span> <span class="o">*</span> \
-                                        <span class="n">qinv</span> <span class="o">+</span> <span class="n">fs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_res</span> <span class="o">*</span> <span class="n">kappa_c</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">/</span><span class="n">fc</span><span class="p">)</span><span class="o">*</span><span class="n">detuning_term</span>
+                                        <span class="n">qinv</span> <span class="o">+</span> <span class="n">fs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_res</span> <span class="o">*</span> <span class="n">kappa_c</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">/</span><span class="n">fc</span><span class="p">)</span><span class="o">*</span><span class="n">detuning_term</span></div>
 
 <div class="viewcode-block" id="Recalibrate.update_g"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.update_g">[docs]</a>    <span class="k">def</span> <span class="nf">update_g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">kappa_tst_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa_pu_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
@@ -351,8 +351,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_c</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="n">qinv</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">fc</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="n">kappa_c</span><span class="p">)</span>
         <span class="n">a_tst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_tst0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa_tst_re</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">kappa_tst_im</span><span class="p">)</span>
-        <span class="n">a_pu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_pu0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa_pu_re</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">kappa_pu_im</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d0</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_tst</span> <span class="o">+</span> <span class="n">a_pu</span><span class="p">)</span>
+        <span class="n">a_pu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_pu0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa_pu_re</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">kappa_pu_im</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d0</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_tst</span> <span class="o">+</span> <span class="n">a_pu</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Recalibrate.update_r"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.update_r">[docs]</a>    <span class="k">def</span> <span class="nf">update_r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_tst_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa_pu_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -392,8 +392,8 @@
         <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_g</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="n">qinv</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">fc</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="n">kappa_c</span><span class="p">,</span>
                           <span class="n">kappa_tst_re</span><span class="o">=</span><span class="n">kappa_tst_re</span><span class="p">,</span>
                           <span class="n">kappa_tst_im</span><span class="o">=</span><span class="n">kappa_tst_im</span><span class="p">,</span>
-                          <span class="n">kappa_pu_re</span><span class="o">=</span><span class="n">kappa_pu_re</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="n">kappa_pu_im</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>
+                          <span class="n">kappa_pu_re</span><span class="o">=</span><span class="n">kappa_pu_re</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="n">kappa_pu_im</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span></div>
 
 <div class="viewcode-block" id="Recalibrate.adjust_strain"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.adjust_strain">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="n">delta_fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta_qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">delta_fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -459,8 +459,8 @@
         <span class="n">strain_adjusted</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">strain</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">*</span> \
                                           <span class="n">k_even_sample</span><span class="p">,</span>
                                           <span class="n">delta_f</span><span class="o">=</span><span class="n">strain</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
-</div>
-        <span class="k">return</span> <span class="n">strain_adjusted</span>
+
+        <span class="k">return</span> <span class="n">strain_adjusted</span></div>
 
 <div class="viewcode-block" id="Recalibrate.tf_from_file"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.tf_from_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">tf_from_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
@@ -479,8 +479,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
         <span class="n">freq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span></div>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">freq</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">freq</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Recalibrate.from_config"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
@@ -528,8 +528,8 @@
         <span class="n">fs0</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">ifo</span><span class="p">,</span> <span class="s2">&quot;fs0&quot;</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">qinv0</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">ifo</span><span class="p">,</span> <span class="s2">&quot;qinv0&quot;</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">fc0</span><span class="o">=</span><span class="n">fc0</span><span class="p">,</span> <span class="n">c0</span><span class="o">=</span><span class="n">c0</span><span class="p">,</span> <span class="n">d0</span><span class="o">=</span><span class="n">d0</span><span class="p">,</span> <span class="n">a_tst0</span><span class="o">=</span><span class="n">a_tst0</span><span class="p">,</span></div>
-                   <span class="n">a_pu0</span><span class="o">=</span><span class="n">a_pu0</span><span class="p">,</span> <span class="n">fs0</span><span class="o">=</span><span class="n">fs0</span><span class="p">,</span> <span class="n">qinv0</span><span class="o">=</span><span class="n">qinv0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">fc0</span><span class="o">=</span><span class="n">fc0</span><span class="p">,</span> <span class="n">c0</span><span class="o">=</span><span class="n">c0</span><span class="p">,</span> <span class="n">d0</span><span class="o">=</span><span class="n">d0</span><span class="p">,</span> <span class="n">a_tst0</span><span class="o">=</span><span class="n">a_tst0</span><span class="p">,</span>
+                   <span class="n">a_pu0</span><span class="o">=</span><span class="n">a_pu0</span><span class="p">,</span> <span class="n">fs0</span><span class="o">=</span><span class="n">fs0</span><span class="p">,</span> <span class="n">qinv0</span><span class="o">=</span><span class="n">qinv0</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Recalibrate.map_to_adjust"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.map_to_adjust">[docs]</a>    <span class="k">def</span> <span class="nf">map_to_adjust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Map an input dictionary of sampling parameters to the</span>
@@ -571,8 +571,8 @@
                               <span class="n">kappa_tst_re</span><span class="o">=</span><span class="n">calib_args</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
                               <span class="n">kappa_tst_im</span><span class="o">=</span><span class="n">calib_args</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
                               <span class="n">kappa_pu_re</span><span class="o">=</span><span class="n">calib_args</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
-                              <span class="n">kappa_pu_im</span><span class="o">=</span><span class="n">calib_args</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span></div></div>
-        <span class="k">return</span> <span class="n">strain_adjusted</span>
+                              <span class="n">kappa_pu_im</span><span class="o">=</span><span class="n">calib_args</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">strain_adjusted</span></div></div>
 </pre></div>
 
            </div>
@@ -588,7 +588,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -610,7 +610,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler_emcee &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.sampler_emcee &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -306,8 +306,8 @@
 <span class="sd">        EmceeEnsembleSampler</span>
 <span class="sd">            An emcee sampler initialized based on the given arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span></div>
-                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">lnpost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -329,8 +329,8 @@
         <span class="c1"># store the iteration that the clear is occuring on</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lastclear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
         <span class="c1"># now clear the chain</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">clear_blobs</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">clear_blobs</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="EmceeEnsembleSampler.set_p0"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.set_p0">[docs]</a>    <span class="k">def</span> <span class="nf">set_p0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets the initial position of the walkers.</span>
@@ -354,13 +354,13 @@
         <span class="c1"># are called</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">EmceeEnsembleSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">set_p0</span><span class="p">(</span><span class="n">samples_file</span><span class="o">=</span><span class="n">samples_file</span><span class="p">,</span>
             <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">)</span>
-        <span class="c1"># update the random state</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
+        <span class="c1"># update the random state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="EmceeEnsembleSampler.write_state"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.write_state">[docs]</a>    <span class="k">def</span> <span class="nf">write_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Saves the state of the sampler in a file.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="n">fp</span><span class="o">.</span><span class="n">write_random_state</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">write_random_state</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EmceeEnsembleSampler.set_state_from_file"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.set_state_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">set_state_from_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets the state of the sampler back to the instance saved in a file.</span>
@@ -368,8 +368,8 @@
         <span class="n">rstate</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_random_state</span><span class="p">()</span>
         <span class="c1"># set the numpy random state</span>
         <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">rstate</span><span class="p">)</span>
-        <span class="c1"># set emcee&#39;s generator to the same state</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">rstate</span>
+        <span class="c1"># set emcee&#39;s generator to the same state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">rstate</span></div>
 
 <div class="viewcode-block" id="EmceeEnsembleSampler.run"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Advance the ensemble for a number of samples.</span>
@@ -395,8 +395,8 @@
         <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="c1"># update the positions</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span></div>
-        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span></div>
 
 <div class="viewcode-block" id="EmceeEnsembleSampler.write_results"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.write_results">[docs]</a>    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">):</span>
@@ -425,8 +425,8 @@
                          <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_likelihood_stats</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
                                     <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div></div>
 
 <span class="c1"># This is needed for two reason</span>
 <span class="c1"># 1) pools freeze state when created and so classes *cannot be updated*</span>
@@ -513,8 +513,8 @@
 <span class="sd">        EmceePTSampler</span>
 <span class="sd">            An emcee sampler initialized based on the given arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span></div>
-                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ntemps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -533,8 +533,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># store the iteration that the clear is occuring on</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lastclear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
-        <span class="c1"># now clear the chain</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="c1"># now clear the chain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">likelihood_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -602,8 +602,8 @@
         <span class="c1"># convert to array</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_args</span><span class="p">):</span>
             <span class="n">p0</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_p0</span> <span class="o">=</span> <span class="n">p0</span></div>
-        <span class="k">return</span> <span class="n">p0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p0</span> <span class="o">=</span> <span class="n">p0</span>
+        <span class="k">return</span> <span class="n">p0</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.run"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Advance the ensemble for a number of samples.</span>
@@ -629,8 +629,8 @@
         <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="c1"># update the positions</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span></div>
-        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span></div>
 
     <span class="c1"># read/write functions</span>
 
@@ -650,8 +650,8 @@
 <span class="sd">            key is then stored as a separate attr with its corresponding value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">EmceePTSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;ntemps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ntemps</span></div>
-        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;betas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">betas</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;ntemps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ntemps</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;betas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">betas</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.write_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Write acceptance_fraction data to file. Results are written to</span>
@@ -669,8 +669,8 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][:]</span> <span class="o">=</span> <span class="n">acf</span><span class="p">[</span><span class="n">tk</span><span class="p">,</span> <span class="p">:]</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="c1"># dataset doesn&#39;t exist yet, create it</span></div>
-                <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)]</span> <span class="o">=</span> <span class="n">acf</span><span class="p">[</span><span class="n">tk</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="c1"># dataset doesn&#39;t exist yet, create it</span>
+                <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)]</span> <span class="o">=</span> <span class="n">acf</span><span class="p">[</span><span class="n">tk</span><span class="p">,</span> <span class="p">:]</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.read_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.read_acceptance_fraction">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -703,8 +703,8 @@
             <span class="n">wmask</span><span class="p">[</span><span class="n">walkers</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">arrays</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">temps</span><span class="p">:</span>
-            <span class="n">arrays</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][</span><span class="n">wmask</span><span class="p">])</span></div>
-        <span class="k">return</span> <span class="n">arrays</span>
+            <span class="n">arrays</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][</span><span class="n">wmask</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">arrays</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.write_samples_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_samples_group">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">write_samples_group</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
@@ -765,8 +765,8 @@
                 <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">niterations</span>
                 <span class="n">fp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">istop</span><span class="p">),</span>
                                   <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">max_iterations</span><span class="p">),</span>
-                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
-            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,:,</span><span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,:,</span><span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.write_results"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_results">[docs]</a>    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="o">**</span><span class="n">metadata</span><span class="p">):</span>
@@ -795,8 +795,8 @@
                          <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_likelihood_stats</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
                                     <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_state</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_read_oldstyle_fields</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fields_group</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">array_class</span><span class="p">,</span>
@@ -1120,8 +1120,8 @@
                 <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temps</span><span class="p">)):</span>
                     <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">][</span><span class="n">tk</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">subacfs</span><span class="p">[</span><span class="n">tk</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">subacfs</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acfs</span><span class="p">)</span>
+                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">subacfs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acfs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EmceePTSampler.compute_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.compute_acls">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">compute_acls</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1167,8 +1167,8 @@
                 <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">acl</span><span class="p">):</span>
                     <span class="n">acl</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">size</span>
                 <span class="n">these_acls</span><span class="p">[</span><span class="n">tk</span><span class="p">]</span> <span class="o">=</span> <span class="n">acl</span>
-            <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">these_acls</span></div>
-        <span class="k">return</span> <span class="n">acls</span>
+            <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">these_acls</span>
+        <span class="k">return</span> <span class="n">acls</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_oldstyle_read_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
@@ -1245,8 +1245,8 @@
         <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
         <span class="n">dummy_sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">PTSampler</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                                         <span class="kc">None</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="n">betas</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dummy_sampler</span><span class="o">.</span><span class="n">thermodynamic_integration_log_evidence</span><span class="p">(</span></div></div>
-            <span class="n">logls</span><span class="o">=</span><span class="n">logls</span><span class="p">,</span> <span class="n">fburnin</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dummy_sampler</span><span class="o">.</span><span class="n">thermodynamic_integration_log_evidence</span><span class="p">(</span>
+            <span class="n">logls</span><span class="o">=</span><span class="n">logls</span><span class="p">,</span> <span class="n">fburnin</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -1262,7 +1262,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1284,7 +1284,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

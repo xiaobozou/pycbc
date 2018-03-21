@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.generator &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.waveform.generator &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -314,15 +314,15 @@
 <span class="sd">        order as self&#39;s variable_args attribute.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;variable argument length mismatch&quot;</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;variable argument length mismatch&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)))</span></div>
 
 <div class="viewcode-block" id="BaseGenerator.generate"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.BaseGenerator.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates a waveform from the keyword args. The current params</span>
 <span class="sd">        are updated with the given kwargs, then the generator is called.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_from_current</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_from_current</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_add_pregenerate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Adds a function that will be called by the generator function</span>
@@ -351,8 +351,8 @@
     <span class="nd">@_gdecorator</span>
     <span class="k">def</span> <span class="nf">_generate_from_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates a waveform from the current parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BaseCBCGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.BaseCBCGenerator">[docs]</a><span class="k">class</span> <span class="nc">BaseCBCGenerator</span><span class="p">(</span><span class="n">BaseGenerator</span><span class="p">):</span>
@@ -389,8 +389,8 @@
                               <span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">possible_args</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unused_args</span><span class="p">):</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING: The following args are not being used &quot;</span>
-                            <span class="s2">&quot;for waveform generation: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span></div>
-                            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unused_args</span><span class="p">))</span>
+                            <span class="s2">&quot;for waveform generation: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unused_args</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="FDomainCBCGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainCBCGenerator">[docs]</a><span class="k">class</span> <span class="nc">FDomainCBCGenerator</span><span class="p">(</span><span class="n">BaseCBCGenerator</span><span class="p">):</span>
@@ -442,8 +442,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainCBCGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">get_fd_waveform</span><span class="p">,</span></div>
-            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainCBCGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">get_fd_waveform</span><span class="p">,</span>
+            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TDomainCBCGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.TDomainCBCGenerator">[docs]</a><span class="k">class</span> <span class="nc">TDomainCBCGenerator</span><span class="p">(</span><span class="n">BaseCBCGenerator</span><span class="p">):</span>
@@ -494,8 +494,8 @@
             <span class="n">hp</span> <span class="o">=</span> <span class="n">taper_timeseries</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">tapermethod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="p">[</span><span class="s1">&#39;taper&#39;</span><span class="p">])</span>
             <span class="n">hc</span> <span class="o">=</span> <span class="n">taper_timeseries</span><span class="p">(</span><span class="n">hc</span><span class="p">,</span> <span class="n">tapermethod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_params</span><span class="p">[</span><span class="s1">&#39;taper&#39;</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">pass</span></div>
-        <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span></div>
 
 
 <div class="viewcode-block" id="FDomainMassSpinRingdownGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainMassSpinRingdownGenerator">[docs]</a><span class="k">class</span> <span class="nc">FDomainMassSpinRingdownGenerator</span><span class="p">(</span><span class="n">BaseGenerator</span><span class="p">):</span>
@@ -522,8 +522,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainMassSpinRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_fd_from_final_mass_spin</span><span class="p">,</span></div>
-            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainMassSpinRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_fd_from_final_mass_spin</span><span class="p">,</span>
+            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FDomainFreqTauRingdownGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainFreqTauRingdownGenerator">[docs]</a><span class="k">class</span> <span class="nc">FDomainFreqTauRingdownGenerator</span><span class="p">(</span><span class="n">BaseGenerator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Uses ringdown.get_fd_from_freqtau as a generator function to </span>
@@ -549,8 +549,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainFreqTauRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_fd_from_freqtau</span><span class="p">,</span></div>
-            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FDomainFreqTauRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_fd_from_freqtau</span><span class="p">,</span>
+            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TDomainMassSpinRingdownGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.TDomainMassSpinRingdownGenerator">[docs]</a><span class="k">class</span> <span class="nc">TDomainMassSpinRingdownGenerator</span><span class="p">(</span><span class="n">BaseGenerator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Uses ringdown.get_td_from_final_mass_spin as a generator function to</span>
@@ -576,8 +576,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TDomainMassSpinRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_td_from_final_mass_spin</span><span class="p">,</span></div>
-            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TDomainMassSpinRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_td_from_final_mass_spin</span><span class="p">,</span>
+            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TDomainFreqTauRingdownGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.TDomainFreqTauRingdownGenerator">[docs]</a><span class="k">class</span> <span class="nc">TDomainFreqTauRingdownGenerator</span><span class="p">(</span><span class="n">BaseGenerator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Uses ringdown.get_td_from_freqtau as a generator function to</span>
@@ -603,8 +603,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TDomainFreqTauRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_td_from_freqtau</span><span class="p">,</span></div>
-            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TDomainFreqTauRingdownGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ringdown</span><span class="o">.</span><span class="n">get_td_from_freqtau</span><span class="p">,</span>
+            <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">frozen_params</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FDomainDetFrameGenerator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator">[docs]</a><span class="k">class</span> <span class="nc">FDomainDetFrameGenerator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generates frequency-domain waveform in a specific frame.</span>
@@ -730,8 +730,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">gates</span> <span class="o">=</span> <span class="n">gates</span>
 
 <div class="viewcode-block" id="FDomainDetFrameGenerator.set_epoch"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.set_epoch">[docs]</a>    <span class="k">def</span> <span class="nf">set_epoch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the epoch; epoch should be a float or a LIGOTimeGPS.&quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Sets the epoch; epoch should be a float or a LIGOTimeGPS.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">static_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -747,8 +747,8 @@
 <span class="sd">        function from the given args.</span>
 
 <span class="sd">        The args are assumed to be in the same order as the variable args.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">,</span> <span class="n">args</span><span class="p">)))</span></div>
 
 <div class="viewcode-block" id="FDomainDetFrameGenerator.generate"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.generate">[docs]</a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates a waveform, applies a time shift and the detector response</span>
@@ -798,8 +798,8 @@
             <span class="c1"># resize all to nearest power of 2</span>
             <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
                 <span class="n">d</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">ceilpow2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">h</span> <span class="o">=</span> <span class="n">gate</span><span class="o">.</span><span class="n">apply_gates_to_fd</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">h</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">gate</span><span class="o">.</span><span class="n">apply_gates_to_fd</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">h</span></div></div>
 
 
 <div class="viewcode-block" id="select_waveform_generator"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.generator.select_waveform_generator">[docs]</a><span class="k">def</span> <span class="nf">select_waveform_generator</span><span class="p">(</span><span class="n">approximant</span><span class="p">):</span>
@@ -852,8 +852,8 @@
             <span class="k">return</span> <span class="n">TDomainFreqTauRingdownGenerator</span>
 
     <span class="c1"># otherwise waveform approximant is not supported</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid approximant.&quot;</span> <span class="o">%</span> <span class="n">approximant</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid approximant.&quot;</span> <span class="o">%</span> <span class="n">approximant</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -869,7 +869,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -891,7 +891,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

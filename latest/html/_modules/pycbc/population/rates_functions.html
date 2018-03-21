@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.population.rates_functions &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.population.rates_functions &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -256,8 +256,8 @@
         <span class="n">dec_factors</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;background_exc/decimation_factor&#39;</span><span class="p">][:][</span><span class="n">idx_bkg</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;zerolagstat&#39;</span><span class="p">:</span> <span class="n">zerolagstat</span><span class="p">[</span><span class="n">zerolagstat</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">],</span>
-           <span class="s1">&#39;dec_factors&#39;</span><span class="p">:</span> <span class="n">dec_factors</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">],</span></div>
-           <span class="s1">&#39;cstat_back_exc&#39;</span><span class="p">:</span> <span class="n">cstat_back_exc</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">]}</span>
+           <span class="s1">&#39;dec_factors&#39;</span><span class="p">:</span> <span class="n">dec_factors</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">],</span>
+           <span class="s1">&#39;cstat_back_exc&#39;</span><span class="p">:</span> <span class="n">cstat_back_exc</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">]}</span></div>
 
 <div class="viewcode-block" id="save_bkg_falloff"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.save_bkg_falloff">[docs]</a><span class="k">def</span> <span class="nf">save_bkg_falloff</span><span class="p">(</span><span class="n">fname_statmap</span><span class="p">,</span> <span class="n">fname_bank</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">lo_tlt_mass</span><span class="p">,</span> <span class="n">hi_tlt_mass</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Read the STATMAP files to derive snr falloff for the background events.</span>
@@ -299,8 +299,8 @@
                <span class="n">bg_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">bg_counts</span><span class="p">]),</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.4e</span><span class="s1">&#39;</span><span class="p">,</span>
                <span class="n">header</span><span class="o">=</span><span class="s2">&quot;bin min, bin max, count&quot;</span><span class="p">)</span>
 
-    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/coincs.txt&quot;</span><span class="p">,</span> <span class="n">coincs</span><span class="p">,</span></div>
-               <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.4e</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;coincs above threshold </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rhomin</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/coincs.txt&quot;</span><span class="p">,</span> <span class="n">coincs</span><span class="p">,</span>
+               <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.4e</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;coincs above threshold </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rhomin</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="log_rho_bg"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.log_rho_bg">[docs]</a><span class="k">def</span> <span class="nf">log_rho_bg</span><span class="p">(</span><span class="n">trigs</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Calculate the log of background fall-off</span>
@@ -344,8 +344,8 @@
 
             <span class="k">if</span> <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">log_rhos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">N</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">log_rhos</span><span class="p">)</span>
+            <span class="n">log_rhos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">log_rhos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="log_rho_fg_mc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.log_rho_fg_mc">[docs]</a><span class="k">def</span> <span class="nf">log_rho_fg_mc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">injstats</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
     <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">injstats</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
@@ -357,8 +357,8 @@
     <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
     
     <span class="n">tinds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-    </div>
-    <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">dens</span><span class="p">[</span><span class="n">tinds</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">dens</span><span class="p">[</span><span class="n">tinds</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="fg_mc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.fg_mc">[docs]</a><span class="k">def</span> <span class="nf">fg_mc</span><span class="p">(</span><span class="n">log_fg_ratios</span><span class="p">,</span> <span class="n">mu_log_vt</span><span class="p">,</span> <span class="n">sigma_log_vt</span><span class="p">,</span> <span class="n">Rf</span><span class="p">,</span> <span class="n">maxfg</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -392,8 +392,8 @@
         <span class="n">pquit</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ks_2samp</span><span class="p">(</span><span class="n">Lb</span><span class="p">,</span> <span class="n">Lb</span><span class="p">[</span><span class="n">idx</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="n">Lb</span> <span class="o">=</span> <span class="n">Lb</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-</div>
-    <span class="k">return</span> <span class="n">Rf_sel</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">Lf</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">Lb</span>
+
+    <span class="k">return</span> <span class="n">Rf_sel</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">Lf</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">Lb</span></div>
 
 <span class="k">def</span> <span class="nf">_optm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Return probability density of skew-lognormal</span>
@@ -426,8 +426,8 @@
 
     <span class="c1"># Initial guess has been taken as the mean and std-dev of the data</span>
     <span class="c1"># And a guess assuming small skewness</span>
-    <span class="n">ff</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">_optm</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">pxs</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">mu_norm</span><span class="p">,</span> <span class="n">sigma_norm</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">ff</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ff</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">_optm</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">pxs</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">mu_norm</span><span class="p">,</span> <span class="n">sigma_norm</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ff</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ff</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="skew_lognormal_samples"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.skew_lognormal_samples">[docs]</a><span class="k">def</span> <span class="nf">skew_lognormal_samples</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">minrp</span><span class="p">,</span> <span class="n">maxrp</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Returns a large number of Skew lognormal samples</span>
@@ -457,8 +457,8 @@
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">plRu</span><span class="o">/</span><span class="n">maxp</span> <span class="o">&gt;</span> <span class="n">rndn</span><span class="p">)</span>
     <span class="n">log_Rf</span> <span class="o">=</span> <span class="n">lRu</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
     <span class="n">Rfs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_Rf</span><span class="p">)</span>
-    </div>
-    <span class="k">return</span> <span class="n">Rfs</span>
+    
+    <span class="k">return</span> <span class="n">Rfs</span></div>
 
 <span class="c1"># The flat in log and power-law mass distribution models  #</span>
 
@@ -500,8 +500,8 @@
     
     <span class="n">p_m1_m2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">C_lnm</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">m1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">m2</span><span class="p">)</span>
     <span class="n">p_m1_m2</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    </div>
-    <span class="k">return</span> <span class="n">p_m1_m2</span>
+    
+    <span class="k">return</span> <span class="n">p_m1_m2</span></div>
 
 <div class="viewcode-block" id="prob_imf"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.prob_imf">[docs]</a><span class="k">def</span> <span class="nf">prob_imf</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Return probability density for power-law</span>
@@ -547,8 +547,8 @@
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m1</span> <span class="o">&gt;</span> <span class="n">max_mtotal</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
     <span class="n">p_m1_m2</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">C_imf</span><span class="p">)</span> <span class="o">*</span> <span class="n">m1</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">**</span><span class="n">alpha</span> <span class="o">/</span><span class="p">(</span><span class="n">max_mass</span> <span class="o">-</span> <span class="n">m1</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
     <span class="n">p_m1_m2</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    </div>
-    <span class="k">return</span> <span class="n">p_m1_m2</span><span class="o">/</span><span class="mf">2.</span>
+    
+    <span class="k">return</span> <span class="n">p_m1_m2</span><span class="o">/</span><span class="mf">2.</span></div>
 
 <span class="c1"># Functions to generate samples for the two canonical models</span>
 <div class="viewcode-block" id="draw_imf_samples"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.draw_imf_samples">[docs]</a><span class="k">def</span> <span class="nf">draw_imf_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -582,8 +582,8 @@
     
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aa</span> <span class="o">+</span> <span class="n">bb</span> <span class="o">&lt;</span> <span class="n">max_mtotal</span><span class="p">)</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span> <span class="n">bb</span><span class="p">))[</span><span class="n">idx</span><span class="p">],</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span> <span class="n">bb</span><span class="p">))[</span><span class="n">idx</span><span class="p">]</span>
-    </div>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="draw_lnm_samples"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.draw_lnm_samples">[docs]</a><span class="k">def</span> <span class="nf">draw_lnm_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Draw samples for uniform-in-log model</span>
@@ -615,8 +615,8 @@
   
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aa</span> <span class="o">+</span> <span class="n">bb</span> <span class="o">&lt;</span> <span class="n">max_mtotal</span><span class="p">)</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span> <span class="n">bb</span><span class="p">))[</span><span class="n">idx</span><span class="p">],</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span> <span class="n">bb</span><span class="p">))[</span><span class="n">idx</span><span class="p">]</span>
-    </div>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span></div>
 
 <span class="c1"># Functions to generate chirp mass samples for the two canonical models</span>
 <div class="viewcode-block" id="mchirp_sampler_lnm"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.mchirp_sampler_lnm">[docs]</a><span class="k">def</span> <span class="nf">mchirp_sampler_lnm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -634,8 +634,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">draw_lnm_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">mchirp_astro</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
-    </div>
-    <span class="k">return</span> <span class="n">mchirp_astro</span>
+    
+    <span class="k">return</span> <span class="n">mchirp_astro</span></div>
 
 <div class="viewcode-block" id="mchirp_sampler_imf"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.mchirp_sampler_imf">[docs]</a><span class="k">def</span> <span class="nf">mchirp_sampler_imf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Draw chirp mass samples for power-law model</span>
@@ -652,8 +652,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">draw_imf_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">mchirp_astro</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
-    </div>
-    <span class="k">return</span> <span class="n">mchirp_astro</span>
+    
+    <span class="k">return</span> <span class="n">mchirp_astro</span></div>
 </pre></div>
 
            </div>
@@ -669,7 +669,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -691,7 +691,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

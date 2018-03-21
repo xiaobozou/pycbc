@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.array_cpu &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.types.array_cpu &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -241,20 +241,20 @@
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">WEAVE_FLAGS</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">real_same_precision_as</span>
 
-<div class="viewcode-block" id="zeros"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.zeros">[docs]</a><span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_np</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">_algn</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<div class="viewcode-block" id="zeros"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.zeros">[docs]</a><span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_np</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_algn</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="empty"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.empty">[docs]</a><span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_np</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">_algn</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<div class="viewcode-block" id="empty"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.empty">[docs]</a><span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_np</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_algn</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ptr"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.ptr">[docs]</a><span class="k">def</span> <span class="nf">ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span>
+<div class="viewcode-block" id="ptr"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.ptr">[docs]</a><span class="k">def</span> <span class="nf">ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span></div>
     
-<div class="viewcode-block" id="dot"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.dot">[docs]</a><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span><span class="n">other</span><span class="p">)</span>     
+<div class="viewcode-block" id="dot"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.dot">[docs]</a><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span><span class="n">other</span><span class="p">)</span>     </div>
 
-<div class="viewcode-block" id="min"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.min">[docs]</a><span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<div class="viewcode-block" id="min"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.min">[docs]</a><span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span></div>
 
 <span class="n">code_abs_arg_max</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">float val = 0;</span>
@@ -280,8 +280,8 @@
         <span class="n">loc</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
         <span class="n">inline</span><span class="p">(</span><span class="n">code_abs_arg_max</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;loc&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">,</span>
-               <span class="n">extra_compile_args</span><span class="o">=</span><span class="n">code_flags</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+               <span class="n">extra_compile_args</span><span class="o">=</span><span class="n">code_flags</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="abs_max_loc"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.abs_max_loc">[docs]</a><span class="k">def</span> <span class="nf">abs_max_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;real&#39;</span><span class="p">:</span>
@@ -291,21 +291,21 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">real</span> <span class="o">**</span> <span class="mf">2.0</span>
         <span class="n">tmp</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">imag</span> <span class="o">**</span> <span class="mf">2.0</span>
-        <span class="n">ind</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ind</span>
+        <span class="n">ind</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ind</span></div>
 
-<div class="viewcode-block" id="cumsum"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.cumsum">[docs]</a><span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<div class="viewcode-block" id="cumsum"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.cumsum">[docs]</a><span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="max"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.max">[docs]</a><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="viewcode-block" id="max"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.max">[docs]</a><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="max_loc"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.max_loc">[docs]</a><span class="k">def</span> <span class="nf">max_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">ind</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">ind</span></div>
     
-<div class="viewcode-block" id="take"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.take">[docs]</a><span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+<div class="viewcode-block" id="take"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.take">[docs]</a><span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="weighted_inner"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.weighted_inner">[docs]</a><span class="k">def</span> <span class="nf">weighted_inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
@@ -318,8 +318,8 @@
         <span class="n">acum_dtype</span> <span class="o">=</span> <span class="n">complex128</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">acum_dtype</span> <span class="o">=</span> <span class="n">float64</span>
-</div>
-    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">other</span> <span class="o">/</span> <span class="n">weight</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">acum_dtype</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">other</span> <span class="o">/</span> <span class="n">weight</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">acum_dtype</span><span class="p">)</span></div>
 
 
 <span class="n">inner_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -340,8 +340,8 @@
     <span class="n">total</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">inline</span><span class="p">(</span><span class="n">inner_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">,</span>
-           <span class="n">extra_compile_args</span><span class="o">=</span><span class="n">code_flags</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+           <span class="n">extra_compile_args</span><span class="o">=</span><span class="n">code_flags</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="inner"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.inner">[docs]</a><span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
@@ -349,17 +349,17 @@
     <span class="n">cdtype</span> <span class="o">=</span> <span class="n">common_kind</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">cdtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">*</span> <span class="n">other</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">inner_inline_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inner_inline_real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="vdot"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.vdot">[docs]</a><span class="k">def</span> <span class="nf">vdot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="squared_norm"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.squared_norm">[docs]</a><span class="k">def</span> <span class="nf">squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Return the elementwise squared norm of the array &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">imag</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Return the elementwise squared norm of the array &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">imag</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
 <span class="n">_blas_mandadd_funcs</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">_blas_mandadd_funcs</span><span class="p">[</span><span class="n">_np</span><span class="o">.</span><span class="n">float32</span><span class="p">]</span> <span class="o">=</span> <span class="n">blas</span><span class="o">.</span><span class="n">saxpy</span>
@@ -382,11 +382,11 @@
 
     <span class="k">assert</span><span class="p">(</span><span class="n">inpt</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
-    <span class="n">blas_fnc</span> <span class="o">=</span> <span class="n">_blas_mandadd_funcs</span><span class="p">[</span><span class="n">inpt</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">]</span></div>
-    <span class="k">return</span> <span class="n">blas_fnc</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">inpt</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">mult_fac</span><span class="p">)</span>
+    <span class="n">blas_fnc</span> <span class="o">=</span> <span class="n">_blas_mandadd_funcs</span><span class="p">[</span><span class="n">inpt</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">blas_fnc</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">inpt</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">mult_fac</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="numpy"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.numpy">[docs]</a><span class="k">def</span> <span class="nf">numpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+<div class="viewcode-block" id="numpy"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.numpy">[docs]</a><span class="k">def</span> <span class="nf">numpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span></div>
     
 <span class="k">def</span> <span class="nf">_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">self_ref</span><span class="p">,</span> <span class="n">other_ref</span><span class="p">):</span>
     <span class="n">self_ref</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">other_ref</span><span class="p">[:]</span>
@@ -397,11 +397,11 @@
 <div class="viewcode-block" id="sum"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.sum">[docs]</a><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;real&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">)</span>   
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">)</span>   </div>
         
-<div class="viewcode-block" id="clear"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.clear">[docs]</a><span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> </div>
-    <span class="bp">self</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span> 
+<div class="viewcode-block" id="clear"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array_cpu.clear">[docs]</a><span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="bp">self</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span> </div>
     
 <span class="k">def</span> <span class="nf">_scheme_matches_base_array</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="c1"># Since ArrayWithAligned is a subclass of ndarray,</span>
@@ -426,7 +426,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -448,7 +448,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

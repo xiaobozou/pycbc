@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.burn_in &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.inference.burn_in &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -283,8 +283,8 @@
         <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span>
+        <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
 
 <div class="viewcode-block" id="max_posterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.max_posterior">[docs]</a><span class="k">def</span> <span class="nf">max_posterior</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burn in based on samples being within dim/2 of maximum posterior.</span>
@@ -331,8 +331,8 @@
         <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">chain</span> <span class="o">&gt;=</span> <span class="n">criteria</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">burn_in_idx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">is_burned_in</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
-    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span>
+            <span class="n">is_burned_in</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
 
 
 <div class="viewcode-block" id="posterior_step"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.posterior_step">[docs]</a><span class="k">def</span> <span class="nf">posterior_step</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
@@ -373,8 +373,8 @@
         <span class="n">dp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">chain</span><span class="p">))</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dp</span> <span class="o">&gt;=</span> <span class="n">criteria</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">burn_in_idx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span></div>
-    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">burn_in_idx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="half_chain"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.half_chain">[docs]</a><span class="k">def</span> <span class="nf">half_chain</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
@@ -399,8 +399,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">nwalkers</span>
     <span class="n">niterations</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> \</div>
-           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> \
+           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="use_sampler"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.use_sampler">[docs]</a><span class="k">def</span> <span class="nf">use_sampler</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -425,8 +425,8 @@
 <span class="sd">        are burned, all values are set to True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">,</span> \</div>
-           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">,</span> \
+           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
 
 
 <span class="n">burn_in_functions</span> <span class="o">=</span> <span class="p">{</span>
@@ -523,8 +523,8 @@
             <span class="n">burnidx</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">newidx</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
         <span class="c1"># if any burn-in idx are less than the min iterations, set to the</span>
         <span class="c1"># min iterations</span>
-        <span class="n">burnidx</span><span class="p">[</span><span class="n">burnidx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span></div>
-        <span class="k">return</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span>
+        <span class="n">burnidx</span><span class="p">[</span><span class="n">burnidx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span>
+        <span class="k">return</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
 
 <div class="viewcode-block" id="BurnIn.update"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.BurnIn.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Evaluates burn in and saves the updated indices to the given file.</span>
@@ -547,8 +547,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
         <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span> <span class="o">=</span> <span class="n">burnidx</span>
-        <span class="n">sampler</span><span class="o">.</span><span class="n">write_burn_in_iterations</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">write_burn_in_iterations</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span></div></div>
 </pre></div>
 
            </div>
@@ -564,7 +564,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -586,7 +586,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

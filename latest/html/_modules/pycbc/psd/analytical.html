@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.psd.analytical &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.psd.analytical &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc.psd" href="../psd.html"/> 
 
   
@@ -260,13 +260,13 @@
 <span class="sd">    -------</span>
 <span class="sd">    list</span>
 <span class="sd">        Returns a list of names of reference PSD functions.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">get_lalsim_psd_list</span><span class="p">()</span> <span class="o">+</span> <span class="n">get_pycbc_psd_list</span><span class="p">()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">get_lalsim_psd_list</span><span class="p">()</span> <span class="o">+</span> <span class="n">get_pycbc_psd_list</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="get_lalsim_psd_list"><a class="viewcode-back" href="../../../pycbc.psd.html#pycbc.psd.analytical.get_lalsim_psd_list">[docs]</a><span class="k">def</span> <span class="nf">get_lalsim_psd_list</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Return a list of available reference PSD functions from LALSimulation.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="k">return</span> <span class="n">_psd_list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_psd_list</span></div>
 
 <div class="viewcode-block" id="get_pycbc_psd_list"><a class="viewcode-back" href="../../../pycbc.psd.html#pycbc.psd.analytical.get_pycbc_psd_list">[docs]</a><span class="k">def</span> <span class="nf">get_pycbc_psd_list</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; Return a list of available reference PSD functions coded in PyCBC.</span>
@@ -277,8 +277,8 @@
 <span class="sd">        Returns a list of names of all reference PSD functions coded in PyCBC.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pycbc_analytical_psd_list</span> <span class="o">=</span> <span class="n">pycbc_analytical_psds</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-    <span class="n">pycbc_analytical_psd_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">pycbc_analytical_psd_list</span>
+    <span class="n">pycbc_analytical_psd_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pycbc_analytical_psd_list</span></div>
 
 <div class="viewcode-block" id="from_string"><a class="viewcode-back" href="../../../pycbc.psd.html#pycbc.psd.analytical.from_string">[docs]</a><span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_freq_cutoff</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate a frequency series containing a LALSimulation PSD specified</span>
@@ -328,8 +328,8 @@
     <span class="c1"># zero-out content below low-frequency cutoff</span>
     <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">low_freq_cutoff</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span>
     <span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">kmin</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</div>
-    <span class="k">return</span> <span class="n">psd</span>
+
+    <span class="k">return</span> <span class="n">psd</span></div>
 
 <div class="viewcode-block" id="flat_unity"><a class="viewcode-back" href="../../../pycbc.psd.html#pycbc.psd.analytical.flat_unity">[docs]</a><span class="k">def</span> <span class="nf">flat_unity</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">low_freq_cutoff</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns a FrequencySeries of ones above the low_frequency_cutoff.</span>
@@ -350,8 +350,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fseries</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
     <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">low_freq_cutoff</span> <span class="o">/</span> <span class="n">fseries</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
-    <span class="n">fseries</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">kmin</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></div>
-    <span class="k">return</span> <span class="n">fseries</span>
+    <span class="n">fseries</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">kmin</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">fseries</span></div>
 
 <span class="c1"># dict of analytical PSDs coded in PyCBC</span>
 <span class="n">pycbc_analytical_psds</span> <span class="o">=</span> <span class="p">{</span>
@@ -372,7 +372,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -394,7 +394,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

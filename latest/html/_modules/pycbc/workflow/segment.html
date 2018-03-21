@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.segment &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.workflow.segment &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -294,8 +294,8 @@
                                           <span class="n">valid_segment</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span>
                                           <span class="n">seg_summ_dict</span><span class="o">=</span><span class="n">sci_seg_summ_dict</span><span class="p">,</span>
                                           <span class="n">directory</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating science segments&#39;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">sci_seg_file</span><span class="p">,</span> <span class="n">sci_segs</span><span class="p">,</span> <span class="n">sci_seg_name</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating science segments&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sci_seg_file</span><span class="p">,</span> <span class="n">sci_segs</span><span class="p">,</span> <span class="n">sci_seg_name</span></div>
 
 <div class="viewcode-block" id="get_files_for_vetoes"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_files_for_vetoes">[docs]</a><span class="k">def</span> <span class="nf">get_files_for_vetoes</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                          <span class="n">runtime_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_workflow_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -377,8 +377,8 @@
                                         <span class="n">veto_gen_job</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span>
                                         <span class="n">execute_now</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating veto segments&#39;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">cat_files</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating veto segments&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cat_files</span></div>
 
 <div class="viewcode-block" id="get_analyzable_segments"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_analyzable_segments">[docs]</a><span class="k">def</span> <span class="nf">get_analyzable_segments</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">sci_segs</span><span class="p">,</span> <span class="n">cat_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -486,8 +486,8 @@
         <span class="n">sci_ok_segs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> \
                       <span class="n">sci_ok_seg_file</span><span class="o">.</span><span class="n">segment_dict</span><span class="p">[</span><span class="n">ifo</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">sci_ok_seg_name</span><span class="p">]</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating analyzable science segments&#39;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">sci_ok_seg_file</span><span class="p">,</span> <span class="n">sci_ok_segs</span><span class="p">,</span> <span class="n">sci_ok_seg_name</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Done generating analyzable science segments&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sci_ok_seg_file</span><span class="p">,</span> <span class="n">sci_ok_segs</span><span class="p">,</span> <span class="n">sci_ok_seg_name</span></div>
 
 
 <div class="viewcode-block" id="get_cumulative_veto_group_files"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_cumulative_veto_group_files">[docs]</a><span class="k">def</span> <span class="nf">get_cumulative_veto_group_files</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">cat_files</span><span class="p">,</span>
@@ -543,8 +543,8 @@
         <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment_name</span><span class="p">)</span>
 
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Done generating vetoes for groups in </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">option</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">cum_seg_files</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">cat_files</span>
+
+    <span class="k">return</span> <span class="n">cum_seg_files</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">cat_files</span></div>
 
 <div class="viewcode-block" id="setup_segment_generation"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.setup_segment_generation">[docs]</a><span class="k">def</span> <span class="nf">setup_segment_generation</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -665,8 +665,8 @@
             <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;in </span><span class="si">%s</span><span class="s2">/*.sh&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span><span class="s1">&#39;logs&#39;</span><span class="p">))</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving segment generation module&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">segsToAnalyse</span><span class="p">,</span> <span class="n">segFilesList</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving segment generation module&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">segsToAnalyse</span><span class="p">,</span> <span class="n">segFilesList</span></div>
 
 <div class="viewcode-block" id="setup_segment_gen_mixed"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.setup_segment_gen_mixed">[docs]</a><span class="k">def</span> <span class="nf">setup_segment_gen_mixed</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">veto_categories</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> 
                             <span class="n">maxVetoAtRunTime</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -828,8 +828,8 @@
         <span class="n">add_cumulative_files</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">curr_file</span><span class="p">,</span> <span class="n">cum_cat_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                              <span class="n">execute_now</span><span class="o">=</span><span class="n">execute_status</span><span class="p">)</span>
         <span class="n">segFilesList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">segFilesList</span>
+
+    <span class="k">return</span> <span class="n">segFilesList</span></div>
 
 <div class="viewcode-block" id="get_sci_segs_for_ifo"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_sci_segs_for_ifo">[docs]</a><span class="k">def</span> <span class="nf">get_sci_segs_for_ifo</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -905,8 +905,8 @@
     <span class="n">sci_xml_file</span><span class="o">.</span><span class="n">seg_summ_dict</span><span class="p">[</span><span class="n">ifo</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">out_sci_seg_name</span><span class="p">]</span> <span class="o">=</span> \
              <span class="n">sci_xml_file</span><span class="o">.</span><span class="n">seg_summ_dict</span><span class="p">[</span><span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sci_seg_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])]</span>
 
-    <span class="n">sci_segs</span> <span class="o">=</span> <span class="n">sci_xml_file</span><span class="o">.</span><span class="n">return_union_seglist</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">sci_segs</span><span class="p">,</span> <span class="n">sci_xml_file</span><span class="p">,</span> <span class="n">out_sci_seg_name</span>
+    <span class="n">sci_segs</span> <span class="o">=</span> <span class="n">sci_xml_file</span><span class="o">.</span><span class="n">return_union_seglist</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sci_segs</span><span class="p">,</span> <span class="n">sci_xml_file</span><span class="p">,</span> <span class="n">out_sci_seg_name</span></div>
 
 <div class="viewcode-block" id="get_veto_segs"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_veto_segs">[docs]</a><span class="k">def</span> <span class="nf">get_veto_segs</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> 
                   <span class="n">veto_gen_job</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">execute_now</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -990,8 +990,8 @@
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">veto_xml_file</span> <span class="o">=</span> <span class="n">SegFile</span><span class="o">.</span><span class="n">from_segment_xml</span><span class="p">(</span><span class="n">veto_xml_file_path</span><span class="p">,</span>
                                                  <span class="n">tags</span><span class="o">=</span><span class="n">curr_tags</span><span class="p">,</span>
-                                                 <span class="n">valid_segment</span><span class="o">=</span><span class="n">seg_valid_seg</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">veto_xml_file</span>
+                                                 <span class="n">valid_segment</span><span class="o">=</span><span class="n">seg_valid_seg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">veto_xml_file</span></div>
 
 <div class="viewcode-block" id="create_segs_from_cats_job"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.create_segs_from_cats_job">[docs]</a><span class="k">def</span> <span class="nf">create_segs_from_cats_job</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">ifo_string</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1035,8 +1035,8 @@
     <span class="n">job</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--veto-file&#39;</span><span class="p">,</span> <span class="n">veto_def_file</span><span class="p">)</span>
     <span class="c1"># FIXME: Would like the proxy in the Workflow instance</span>
     <span class="c1"># FIXME: Explore using the x509 condor commands</span>
-    <span class="c1"># If the user has a proxy set in the environment, add it to the job</span></div>
-    <span class="k">return</span> <span class="n">job</span>
+    <span class="c1"># If the user has a proxy set in the environment, add it to the job</span>
+    <span class="k">return</span> <span class="n">job</span></div>
     
 <div class="viewcode-block" id="get_cumulative_segs"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_cumulative_segs">[docs]</a><span class="k">def</span> <span class="nf">get_cumulative_segs</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">categories</span><span class="p">,</span> <span class="n">seg_files_list</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                         <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">execute_now</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">segment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1111,8 +1111,8 @@
         <span class="n">add_node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">add_node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">outfile</span>
+            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outfile</span></div>
 
 <div class="viewcode-block" id="add_cumulative_files"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.add_cumulative_files">[docs]</a><span class="k">def</span> <span class="nf">add_cumulative_files</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">input_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                          <span class="n">execute_now</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1152,8 +1152,8 @@
         <span class="n">add_node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">add_node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">add_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">add_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="find_playground_segments"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.find_playground_segments">[docs]</a><span class="k">def</span> <span class="nf">find_playground_segments</span><span class="p">(</span><span class="n">segs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Finds playground time in a list of segments.</span>
@@ -1209,8 +1209,8 @@
 
             <span class="c1"># increment</span>
             <span class="n">playground_start</span> <span class="o">=</span> <span class="n">playground_start</span> <span class="o">+</span> <span class="n">playground_stride</span>
-</div>
-    <span class="k">return</span> <span class="n">outlist</span>
+
+    <span class="k">return</span> <span class="n">outlist</span></div>
 
 <div class="viewcode-block" id="get_triggered_coherent_segment"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.get_triggered_coherent_segment">[docs]</a><span class="k">def</span> <span class="nf">get_triggered_coherent_segment</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">sciencesegs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1349,8 +1349,8 @@
         <span class="n">ifos</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">iifo</span><span class="p">)</span>
         <span class="n">onsource</span><span class="p">[</span><span class="n">iifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">onsrc</span>
         <span class="n">offsource</span><span class="p">[</span><span class="n">iifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">offsrc</span>
-</div>
-    <span class="k">return</span> <span class="n">onsource</span><span class="p">,</span> <span class="n">offsource</span>
+
+    <span class="k">return</span> <span class="n">onsource</span><span class="p">,</span> <span class="n">offsource</span></div>
 
 <div class="viewcode-block" id="generate_triggered_segment"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.generate_triggered_segment">[docs]</a><span class="k">def</span> <span class="nf">generate_triggered_segment</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">sciencesegs</span><span class="p">):</span>
     <span class="n">cp</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span>
@@ -1450,8 +1450,8 @@
     <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No suitable science segments available.&quot;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">offsource</span><span class="p">[</span><span class="n">best_comb</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">UnboundLocalError</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_seg</span>
+    <span class="k">except</span> <span class="ne">UnboundLocalError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_seg</span></div>
 
 <div class="viewcode-block" id="save_veto_definer"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.save_veto_definer">[docs]</a><span class="k">def</span> <span class="nf">save_veto_definer</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Retrieve the veto definer file and save it locally</span>
@@ -1475,8 +1475,8 @@
     <span class="c1"># Don&#39;t need to do this if already done</span>
     <span class="n">resolve_url</span><span class="p">(</span><span class="n">veto_def_url</span><span class="p">,</span><span class="n">out_dir</span><span class="p">)</span>
 
-    <span class="c1"># and update location</span></div>
-    <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;workflow-segments&quot;</span><span class="p">,</span> <span class="s2">&quot;segments-veto-definer-file&quot;</span><span class="p">,</span> <span class="n">veto_def_new_path</span><span class="p">)</span>
+    <span class="c1"># and update location</span>
+    <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;workflow-segments&quot;</span><span class="p">,</span> <span class="s2">&quot;segments-veto-definer-file&quot;</span><span class="p">,</span> <span class="n">veto_def_new_path</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="parse_cat_ini_opt"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.parse_cat_ini_opt">[docs]</a><span class="k">def</span> <span class="nf">parse_cat_ini_opt</span><span class="p">(</span><span class="n">cat_str</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Parse a cat str from the ini file into a list of sets &quot;&quot;&quot;</span>
@@ -1487,8 +1487,8 @@
     <span class="n">cat_sets</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">cat_groups</span><span class="p">:</span>
         <span class="n">group</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">cat_sets</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">group</span><span class="p">)]</span></div>
-    <span class="k">return</span> <span class="n">cat_sets</span>  
+        <span class="n">cat_sets</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">group</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">cat_sets</span>  </div>
     
 <div class="viewcode-block" id="cat_to_veto_def_cat"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.cat_to_veto_def_cat">[docs]</a><span class="k">def</span> <span class="nf">cat_to_veto_def_cat</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Convert a category character to the corresponding value in the veto</span>
@@ -1513,8 +1513,8 @@
         <span class="k">return</span> <span class="mi">4</span>
     <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">3</span> 
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Category Choice&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid Category Choice&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="file_needs_generating"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.file_needs_generating">[docs]</a><span class="k">def</span> <span class="nf">file_needs_generating</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1583,8 +1583,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">err_msg</span> <span class="o">=</span> <span class="s1">&#39;Global variable generate_segment_files must be one of &#39;</span>
             <span class="n">err_msg</span> <span class="o">+=</span> <span class="s1">&#39;&quot;always&quot;, &quot;if_not_present&quot;, &quot;error_on_duplicate&quot;, &#39;</span>
-            <span class="n">err_msg</span> <span class="o">+=</span> <span class="s1">&#39;&quot;never&quot;. Got </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">generate_segment_files</span><span class="p">,)</span></div>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+            <span class="n">err_msg</span> <span class="o">+=</span> <span class="s1">&#39;&quot;never&quot;. Got </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">generate_segment_files</span><span class="p">,)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -1600,7 +1600,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1622,7 +1622,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

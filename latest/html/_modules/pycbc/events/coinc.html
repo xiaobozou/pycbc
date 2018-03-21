@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.coinc &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.coinc &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -297,8 +297,8 @@
         <span class="n">locs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">locs</span><span class="p">,</span> <span class="n">used</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">used</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">used</span><span class="p">,</span> <span class="n">locs</span><span class="p">])</span>
         <span class="n">bins</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">locs</span>
-</div>
-    <span class="k">return</span> <span class="n">bins</span>
+
+    <span class="k">return</span> <span class="n">bins</span></div>
 
 <div class="viewcode-block" id="calculate_n_louder"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.calculate_n_louder">[docs]</a><span class="k">def</span> <span class="nf">calculate_n_louder</span><span class="p">(</span><span class="n">bstat</span><span class="p">,</span> <span class="n">fstat</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">skip_background</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Calculate for each foreground event the number of background events</span>
@@ -353,8 +353,8 @@
         <span class="n">unsort</span> <span class="o">=</span> <span class="n">sort</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
         <span class="n">back_cum_num</span> <span class="o">=</span> <span class="n">n_louder</span><span class="p">[</span><span class="n">unsort</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">back_cum_num</span><span class="p">,</span> <span class="n">fore_n_louder</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">fore_n_louder</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fore_n_louder</span></div>
 
 <div class="viewcode-block" id="timeslide_durations"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.timeslide_durations">[docs]</a><span class="k">def</span> <span class="nf">timeslide_durations</span><span class="p">(</span><span class="n">start1</span><span class="p">,</span> <span class="n">start2</span><span class="p">,</span> <span class="n">end1</span><span class="p">,</span> <span class="n">end2</span><span class="p">,</span> <span class="n">timeslide_offsets</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Find the coincident time for each timeslide.</span>
@@ -385,8 +385,8 @@
     <span class="n">seg2</span> <span class="o">=</span> <span class="n">veto</span><span class="o">.</span><span class="n">start_end_to_segments</span><span class="p">(</span><span class="n">start2</span><span class="p">,</span> <span class="n">end2</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="n">timeslide_offsets</span><span class="p">:</span>
         <span class="n">seg1</span> <span class="o">=</span> <span class="n">veto</span><span class="o">.</span><span class="n">start_end_to_segments</span><span class="p">(</span><span class="n">start1</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">end1</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
-        <span class="n">durations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">((</span><span class="n">seg1</span> <span class="o">&amp;</span> <span class="n">seg2</span><span class="p">)</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()))</span></div>
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span>
+        <span class="n">durations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">((</span><span class="n">seg1</span> <span class="o">&amp;</span> <span class="n">seg2</span><span class="p">)</span><span class="o">.</span><span class="n">coalesce</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">durations</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="time_coincidence"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.time_coincidence">[docs]</a><span class="k">def</span> <span class="nf">time_coincidence</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">slide_step</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Find coincidences by time window</span>
@@ -444,8 +444,8 @@
         <span class="n">slide</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">slide</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">idx1</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">idx1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">idx2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">slide</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">idx1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">idx2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">slide</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="cluster_coincs"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.cluster_coincs">[docs]</a><span class="k">def</span> <span class="nf">cluster_coincs</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">timeslide_id</span><span class="p">,</span> <span class="n">slide</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">):</span>
@@ -532,8 +532,8 @@
 
     <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;done clustering coinc triggers: </span><span class="si">%s</span><span class="s1"> triggers remaining&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span></div>
-    <span class="k">return</span> <span class="n">time_sorting</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;done clustering coinc triggers: </span><span class="si">%s</span><span class="s1"> triggers remaining&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">time_sorting</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer">[docs]</a><span class="k">class</span> <span class="nc">MultiRingBuffer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Dynamic size n-dimensional ring buffer that can expire elements.&quot;&quot;&quot;</span>
@@ -577,8 +577,8 @@
         <span class="n">locs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">locs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">locs</span><span class="p">])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">locs</span><span class="p">])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.increase_buffer_size"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.increase_buffer_size">[docs]</a>    <span class="k">def</span> <span class="nf">increase_buffer_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Increase the internal buffer size up to &#39;size&#39;&quot;&quot;&quot;</span>
@@ -587,8 +587,8 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The new size must be larger than the old one&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">straighten</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">=</span> <span class="n">size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rings</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_expire</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rings</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rings</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buffer_expire</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rings</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -600,19 +600,19 @@
 
 <div class="viewcode-block" id="MultiRingBuffer.ring_sizes"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.ring_sizes">[docs]</a>    <span class="k">def</span> <span class="nf">ring_sizes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
-        <span class="n">count</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span></div>
-        <span class="k">return</span> <span class="n">count</span>
+        <span class="n">count</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span>
+        <span class="k">return</span> <span class="n">count</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.num_elements"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.num_elements">[docs]</a>    <span class="k">def</span> <span class="nf">num_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">total</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">total</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.discard_last"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.discard_last">[docs]</a>    <span class="k">def</span> <span class="nf">discard_last</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Discard the triggers added in the latest update&quot;&quot;&quot;</span>
         <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
         <span class="n">index</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="n">index</span><span class="p">[</span><span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">-</span> <span class="mi">1</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="n">index</span><span class="p">[</span><span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.advance_time"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.advance_time">[docs]</a>    <span class="k">def</span> <span class="nf">advance_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Advance the internal time inrement by 1, expiring any triggers that</span>
@@ -623,8 +623,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">expire</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_expire</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ladder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">expire</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.add"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add triggers in &#39;values&#39; to the buffers indicated by the indices</span>
@@ -639,8 +639,8 @@
 
         <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">index</span><span class="p">[</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">advance_time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">advance_time</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.expire_vector"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.expire_vector">[docs]</a>    <span class="k">def</span> <span class="nf">expire_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer_index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the expiration bector of a given ring buffer &quot;&quot;&quot;</span>
@@ -650,8 +650,8 @@
 
         <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:],</span> <span class="n">buffer_part</span><span class="p">[:</span><span class="n">end</span><span class="p">]])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:],</span> <span class="n">buffer_part</span><span class="p">[:</span><span class="n">end</span><span class="p">]])</span></div>
 
 <div class="viewcode-block" id="MultiRingBuffer.data"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.data">[docs]</a>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buffer_index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the data vector for a given ring buffer&quot;&quot;&quot;</span>
@@ -661,8 +661,8 @@
 
         <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:],</span> <span class="n">buffer_part</span><span class="p">[:</span><span class="n">end</span><span class="p">]])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">buffer_part</span><span class="p">[</span><span class="n">start</span><span class="p">:],</span> <span class="n">buffer_part</span><span class="p">[:</span><span class="n">end</span><span class="p">]])</span></div></div>
 
 <div class="viewcode-block" id="CoincExpireBuffer"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer">[docs]</a><span class="k">class</span> <span class="nc">CoincExpireBuffer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Unordered dynamic sized buffer that handles</span>
@@ -697,12 +697,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">initial_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CoincExpireBuffer.increment"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.increment">[docs]</a>    <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Increment without adding triggers&quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">ifos</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Increment without adding triggers&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">ifos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CoincExpireBuffer.remove"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove the the last &#39;num&#39; elements from the buffer&quot;&quot;&quot;</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">-=</span> <span class="n">num</span>
+        <span class="sd">&quot;&quot;&quot;Remove the the last &#39;num&#39; elements from the buffer&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">-=</span> <span class="n">num</span></div>
 
 <div class="viewcode-block" id="CoincExpireBuffer.add"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add values to the internal buffer</span>
@@ -742,17 +742,17 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="n">keep</span><span class="o">.</span><span class="n">sum</span><span class="p">()]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="n">keep</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">][:</span><span class="n">keep</span><span class="o">.</span><span class="n">sum</span><span class="p">()]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">][:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="n">keep</span><span class="p">]</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">keep</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">][:</span><span class="n">keep</span><span class="o">.</span><span class="n">sum</span><span class="p">()]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">][:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="n">keep</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">keep</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CoincExpireBuffer.num_greater"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.num_greater">[docs]</a>    <span class="k">def</span> <span class="nf">num_greater</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the number of elements larger than &#39;value&#39;&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="sd">&quot;&quot;&quot;Return the number of elements larger than &#39;value&#39;&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the array of elements&quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Return the array of elements&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator">[docs]</a><span class="k">class</span> <span class="nc">LiveCoincTimeslideBackgroundEstimator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Rolling buffer background estimation.&quot;&quot;&quot;</span>
@@ -834,8 +834,8 @@
                    <span class="n">return_background</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">store_background</span><span class="p">,</span>
                    <span class="n">ifar_limit</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">background_ifar_limit</span><span class="p">,</span>
                    <span class="n">timeslide_interval</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">timeslide_interval</span><span class="p">,</span>
-                   <span class="n">ifar_remove_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">ifar_remove_threshold</span><span class="p">,</span></div>
-                   <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>  
+                   <span class="n">ifar_remove_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">ifar_remove_threshold</span><span class="p">,</span>
+                   <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>  </div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.insert_args"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">insert_args</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -852,8 +852,8 @@
                  <span class="s2">&quot;background in years&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
         <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--timeslide-interval&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
             <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The interval between timeslides in seconds&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-        <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ifar-remove-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span></div>
-            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;NOT YET IMPLEMENTED&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--ifar-remove-threshold&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;NOT YET IMPLEMENTED&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">background_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -865,20 +865,20 @@
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.save_state"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.save_state">[docs]</a>    <span class="k">def</span> <span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Save the current state of the background buffers&quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">cPickle</span></div>
-        <span class="n">cPickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="kn">import</span> <span class="nn">cPickle</span>
+        <span class="n">cPickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.restore_state"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.restore_state">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">restore_state</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Restore state of the background buffers from a file&quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">cPickle</span></div>
-        <span class="k">return</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="kn">import</span> <span class="nn">cPickle</span>
+        <span class="k">return</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.ifar"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.ifar">[docs]</a>    <span class="k">def</span> <span class="nf">ifar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coinc_stat</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the far that would be associated with the coincident given.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">num_greater</span><span class="p">(</span><span class="n">coinc_stat</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">background_time</span> <span class="o">/</span> <span class="n">lal</span><span class="o">.</span><span class="n">YRJUL_SI</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">num_greater</span><span class="p">(</span><span class="n">coinc_stat</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">background_time</span> <span class="o">/</span> <span class="n">lal</span><span class="o">.</span><span class="n">YRJUL_SI</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.set_singles_buffer"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.set_singles_buffer">[docs]</a>    <span class="k">def</span> <span class="nf">set_singles_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the singles buffer</span>
@@ -909,8 +909,8 @@
         <span class="c1"># Create a ring buffer for each template ifo combination</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">MultiRingBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_templates</span><span class="p">,</span>
-                                            <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">,</span></div>
-                                            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="p">)</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">,</span>
+                                            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_add_singles_to_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add single detector triggers to the internal buffer</span>
@@ -1104,8 +1104,8 @@
 <span class="sd">            of coincident triggers</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">updated_singles</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">discard_last</span><span class="p">(</span><span class="n">updated_singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num_coincs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">discard_last</span><span class="p">(</span><span class="n">updated_singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">num_coincs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.add_singles"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.add_singles">[docs]</a>    <span class="k">def</span> <span class="nf">add_singles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">data_reader</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add singles to the bacckground estimate and find candidates</span>
@@ -1143,8 +1143,8 @@
             <span class="k">if</span> <span class="n">data_reader</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">near_hwinj</span><span class="p">():</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">backout_last</span><span class="p">(</span><span class="n">updated_indices</span><span class="p">,</span> <span class="n">num_background</span><span class="p">)</span>
                 <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;HWINJ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="k">break</span></div></div>
-        <span class="k">return</span> <span class="n">coinc_results</span>
+                <span class="k">break</span>
+        <span class="k">return</span> <span class="n">coinc_results</span></div></div>
 </pre></div>
 
            </div>
@@ -1160,7 +1160,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1182,7 +1182,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

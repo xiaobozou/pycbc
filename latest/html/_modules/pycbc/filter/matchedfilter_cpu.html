@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.matchedfilter_cpu &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.filter.matchedfilter_cpu &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -262,8 +262,8 @@
     <span class="n">z</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>        
     <span class="n">inline</span><span class="p">(</span><span class="n">batch_correlator_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;num_vectors&#39;</span><span class="p">],</span>
-                <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span></div>
-                <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">)</span>
+                <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
+                <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">)</span></div>
 
 <span class="n">support</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    #include &lt;stdio.h&gt;</span>
@@ -271,8 +271,8 @@
 <span class="s2">&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="correlate_numpy"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.matchedfilter_cpu.correlate_numpy">[docs]</a><span class="k">def</span> <span class="nf">correlate_numpy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-    <span class="n">z</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)[:]</span></div>
-    <span class="n">z</span> <span class="o">*=</span> <span class="n">y</span>
+    <span class="n">z</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)[:]</span>
+    <span class="n">z</span> <span class="o">*=</span> <span class="n">y</span></div>
 
 <span class="n">code_batch</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">#pragma omp parallel for</span>
@@ -305,8 +305,8 @@
     <span class="n">inline</span><span class="p">(</span><span class="n">the_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;xa&#39;</span><span class="p">,</span> <span class="s1">&#39;ya&#39;</span><span class="p">,</span> <span class="s1">&#39;za&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                     <span class="n">support_code</span> <span class="o">=</span> <span class="n">support</span><span class="p">,</span>
-                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span></div>
-          <span class="p">)</span>
+                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
+          <span class="p">)</span></div>
     
 <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">#pragma omp parallel for</span>
@@ -339,8 +339,8 @@
     <span class="n">inline</span><span class="p">(</span><span class="n">the_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;xa&#39;</span><span class="p">,</span> <span class="s1">&#39;ya&#39;</span><span class="p">,</span> <span class="s1">&#39;za&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                     <span class="n">support_code</span> <span class="o">=</span> <span class="n">support</span><span class="p">,</span>
-                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span></div>
-          <span class="p">)</span>
+                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
+          <span class="p">)</span></div>
     
 <span class="c1">#correlate = correlate_inline</span>
 <span class="n">correlate</span> <span class="o">=</span> <span class="n">correlate_inline</span>
@@ -364,8 +364,8 @@
         <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;htilde&#39;</span><span class="p">,</span> <span class="s1">&#39;stilde&#39;</span><span class="p">,</span> <span class="s1">&#39;qtilde&#39;</span><span class="p">,</span> <span class="s1">&#39;arrlen&#39;</span><span class="p">,</span> <span class="s1">&#39;segsize&#39;</span><span class="p">],</span>
                <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;] + omp_flags,</span>
-               <span class="c1">#extra_compile_args = [&#39;-msse3 -O3 -w&#39;] + omp_flags,</span></div></div>
-               <span class="n">libraries</span> <span class="o">=</span> <span class="n">omp_libs</span><span class="p">,</span> <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+               <span class="c1">#extra_compile_args = [&#39;-msse3 -O3 -w&#39;] + omp_flags,</span>
+               <span class="n">libraries</span> <span class="o">=</span> <span class="n">omp_libs</span><span class="p">,</span> <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></div></div>
  
         
 <span class="k">def</span> <span class="nf">_correlate_factory</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
@@ -385,7 +385,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -407,7 +407,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

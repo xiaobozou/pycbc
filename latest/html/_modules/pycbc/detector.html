@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.detector &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.detector &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -263,21 +263,21 @@
 <span class="sd">        -------</span>
 <span class="sd">        time: float</span>
 <span class="sd">            The light travel time in seconds</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
-        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">LightTravelTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="p">,</span> <span class="n">det</span><span class="o">.</span><span class="n">frDetector</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">LightTravelTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="p">,</span> <span class="n">det</span><span class="o">.</span><span class="n">frDetector</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span></div>
 
 <div class="viewcode-block" id="Detector.antenna_pattern"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.antenna_pattern">[docs]</a>    <span class="k">def</span> <span class="nf">antenna_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the detector response.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">gmst</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">GreenwichMeanSiderealTime</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">ComputeDetAMResponse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span></div>
-                     <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">gmst</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">ComputeDetAMResponse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span>
+                     <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">gmst</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Detector.time_delay_from_earth_center"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.time_delay_from_earth_center">[docs]</a>    <span class="k">def</span> <span class="nf">time_delay_from_earth_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the time delay from the earth center</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">TimeDelayFromEarthCenter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span></div>
-                      <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">TimeDelayFromEarthCenter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+                      <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Detector.time_delay_from_detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.time_delay_from_detector">[docs]</a>    <span class="k">def</span> <span class="nf">time_delay_from_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_detector</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span>
                                  <span class="n">declination</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
@@ -304,8 +304,8 @@
 <span class="sd">            The arrival time difference between the detectors.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">ArrivalTimeDiff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">other_detector</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
-                                   <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span></div>
-                                   <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span>
+                                   <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span>
+                                   <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Detector.project_wave"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.project_wave">[docs]</a>    <span class="k">def</span> <span class="nf">project_wave</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">polarization</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the strain of a wave with given amplitudes and angles as</span>
@@ -315,16 +315,16 @@
                 <span class="n">hp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">(),</span> <span class="n">hc</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">(),</span>
                 <span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span>
-                <span class="n">h_lal</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span></div>
-                <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">h_lal</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Detector.optimal_orientation"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.optimal_orientation">[docs]</a>    <span class="k">def</span> <span class="nf">optimal_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the optimal orientation in right ascension and declination</span>
 <span class="sd">           for a given GPS time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">+</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">GreenwichMeanSiderealTime</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
-        <span class="n">dec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span></div></div>
-        <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span>
+        <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span></div></div>
 
 <div class="viewcode-block" id="overhead_antenna_pattern"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.overhead_antenna_pattern">[docs]</a><span class="k">def</span> <span class="nf">overhead_antenna_pattern</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the detector response where (0, 0) indicates an overhead source. </span>
@@ -352,11 +352,11 @@
     <span class="n">f_cross</span> <span class="o">=</span>   <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">*</span> \
                 <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span> <span class="n">polarization</span><span class="p">)</span> <span class="o">-</span> \
                 <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">polarization</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span>
 
-<div class="viewcode-block" id="effective_distance"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.effective_distance">[docs]</a><span class="k">def</span> <span class="nf">effective_distance</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">inclination</span><span class="p">,</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">f_plus</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_cross</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span></div>
+
+<div class="viewcode-block" id="effective_distance"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.effective_distance">[docs]</a><span class="k">def</span> <span class="nf">effective_distance</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">inclination</span><span class="p">,</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">f_plus</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_cross</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span></div>
 
 </pre></div>
 
@@ -373,7 +373,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -395,7 +395,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

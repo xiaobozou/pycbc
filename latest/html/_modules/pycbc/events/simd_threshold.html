@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.simd_threshold &mdash; PyCBC c275fa documentation</title>
+  <title>pycbc.events.simd_threshold &mdash; PyCBC 61d9c3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC c275fa documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 61d9c3 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -926,8 +926,8 @@
         <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;inarr&#39;</span><span class="p">,</span> <span class="s1">&#39;mval&#39;</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="s1">&#39;mloc&#39;</span><span class="p">,</span> <span class="s1">&#39;nstart&#39;</span><span class="p">,</span> <span class="s1">&#39;howmany&#39;</span><span class="p">],</span>
                <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">],</span>
                <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
-               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span></div></div>
-               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span>
+               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div></div>
 
 <span class="n">windowed_max_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">windowed_max(inarr, (int64_t) arrlen[0], cvals, norms, (int64_t *) locs, (int64_t ) winsize[0],</span>
@@ -965,8 +965,8 @@
         <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;inarr&#39;</span><span class="p">,</span> <span class="s1">&#39;arrlen&#39;</span><span class="p">,</span> <span class="s1">&#39;cvals&#39;</span><span class="p">,</span> <span class="s1">&#39;norms&#39;</span><span class="p">,</span> <span class="s1">&#39;locs&#39;</span><span class="p">,</span> <span class="s1">&#39;winsize&#39;</span><span class="p">,</span> <span class="s1">&#39;startoffset&#39;</span><span class="p">],</span>
                <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">],</span>
                <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
-               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span></div></div>
-               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span>
+               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div></div>
 
 
 
@@ -1023,8 +1023,8 @@
                       <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nthr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nthr</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nthr</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span></div></div>
-            <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">),</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">),</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span></div></div>
 
 </pre></div>
 
@@ -1041,7 +1041,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 20, 2018.
+      Last updated on Mar 21, 2018.
 
     </p>
   </div>
@@ -1063,7 +1063,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'c275fa',
+            VERSION:'61d9c3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
