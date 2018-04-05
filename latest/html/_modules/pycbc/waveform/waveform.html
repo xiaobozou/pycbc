@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.waveform &mdash; PyCBC e054a9 documentation</title>
+  <title>pycbc.waveform.waveform &mdash; PyCBC 2537f8 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC e054a9 documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC 2537f8 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -711,6 +711,67 @@
     <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">fd_waveform_params</span><span class="o">.</span><span class="n">docstr</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">,</span>
            <span class="n">include_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
 
+<div class="viewcode-block" id="get_td_waveform_from_fd"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_td_waveform_from_fd">[docs]</a><span class="k">def</span> <span class="nf">get_td_waveform_from_fd</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return time domain version of fourier domain approximant.</span>
+
+<span class="sd">    This returns a time domain version of a fourier domain approximant, with</span>
+<span class="sd">    padding and tapering at the start of the waveform.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    params: dict</span>
+<span class="sd">        The parameters defining the waveform to generator.</span>
+<span class="sd">        See `get_fd_waveform`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hp: pycbc.types.TimeSeries</span>
+<span class="sd">        Plus polarization time series</span>
+<span class="sd">    hc: pycbc.types.TimeSeries</span>
+<span class="sd">        Cross polarization time series</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># determine the duration to use</span>
+    <span class="n">full_duration</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">nparams</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;_FD&#39;</span> <span class="ow">in</span> <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]:</span>
+        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="k">while</span> <span class="n">full_duration</span> <span class="o">&lt;</span> <span class="n">duration</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">:</span>
+        <span class="n">full_duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">nparams</span><span class="p">)</span>
+        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="s1">&#39;f_fref&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nparams</span><span class="p">:</span>
+        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_ref&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span>
+
+    <span class="c1"># factor to ensure the vectors are all large enough. We don&#39;t need to</span>
+    <span class="c1"># completely trust our duration estimator in this case, at a small</span>
+    <span class="c1"># increase in computational cost</span>
+    <span class="n">rwrap</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="n">fudge_duration</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">full_duration</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rwrap</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span>
+    <span class="n">fsamples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fudge_duration</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">])</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">nearest_larger_binary_number</span><span class="p">(</span><span class="n">fsamples</span><span class="p">)</span>
+    <span class="n">fudge_duration</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">]</span>
+
+    <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">fudge_duration</span>
+    <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="n">get_fd_waveform</span><span class="p">(</span><span class="o">**</span><span class="n">nparams</span><span class="p">)</span>
+
+    <span class="c1"># Resize to the right sample rate</span>
+    <span class="n">tsize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">]</span> <span class="o">/</span>  <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">])</span>
+    <span class="n">fsize</span> <span class="o">=</span> <span class="n">tsize</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">hp</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">fsize</span><span class="p">)</span>
+    <span class="n">hc</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">fsize</span><span class="p">)</span>
+
+    <span class="c1"># avoid wraparound</span>
+    <span class="n">hp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">cyclic_time_shift</span><span class="p">(</span><span class="o">-</span><span class="n">rwrap</span><span class="p">)</span>
+    <span class="n">hc</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">cyclic_time_shift</span><span class="p">(</span><span class="o">-</span><span class="n">rwrap</span><span class="p">)</span>
+
+    <span class="n">hp</span> <span class="o">=</span> <span class="n">wfutils</span><span class="o">.</span><span class="n">fd_to_td</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">left_window</span><span class="o">=</span><span class="p">(</span><span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">],</span>
+                                           <span class="n">params</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]))</span>
+    <span class="n">hc</span> <span class="o">=</span> <span class="n">wfutils</span><span class="o">.</span><span class="n">fd_to_td</span><span class="p">(</span><span class="n">hc</span><span class="p">,</span> <span class="n">left_window</span><span class="o">=</span><span class="p">(</span><span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">],</span>
+                                           <span class="n">params</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span></div>
+
 <span class="k">def</span> <span class="nf">get_interpolated_fd_waveform</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">,</span> <span class="n">return_hc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                  <span class="o">**</span><span class="n">params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return a fourier domain waveform approximant, using interpolation</span>
@@ -901,11 +962,16 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="n">nltides</span> <span class="kn">import</span> <span class="nn">nonlinear_tidal_spa</span>
 <span class="n">cpu_fd</span><span class="p">[</span><span class="s2">&quot;TaylorF2NL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nonlinear_tidal_spa</span>
 
-<span class="c1"># We can do interpolation for waveforms that have a time length</span>
 <span class="k">for</span> <span class="n">apx</span> <span class="ow">in</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_filter_time_lengths</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">apx</span> <span class="ow">in</span> <span class="n">cpu_fd</span><span class="p">:</span>
+        <span class="c1"># We can do interpolation for waveforms that have a time length</span>
         <span class="n">apx_int</span> <span class="o">=</span> <span class="n">apx</span> <span class="o">+</span> <span class="s1">&#39;_INTERP&#39;</span>
         <span class="n">cpu_fd</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_interpolated_fd_waveform</span>
+        <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span>
+
+        <span class="c1"># We can also make a td version of this</span>
+        <span class="n">apx_int</span> <span class="o">=</span> <span class="n">apx</span> <span class="o">+</span> <span class="s1">&#39;_FD&#39;</span>
+        <span class="n">cpu_td</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_td_waveform_from_fd</span>
         <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span>
 
 <span class="n">td_wav</span> <span class="o">=</span> <span class="n">_scheme</span><span class="o">.</span><span class="n">ChooseBySchemeDict</span><span class="p">()</span>
@@ -1136,7 +1202,7 @@
            <span class="s2">&quot;get_waveform_filter_length_in_time&quot;</span><span class="p">,</span> <span class="s2">&quot;get_sgburst_waveform&quot;</span><span class="p">,</span>
            <span class="s2">&quot;print_sgburst_approximants&quot;</span><span class="p">,</span> <span class="s2">&quot;sgburst_approximants&quot;</span><span class="p">,</span>
            <span class="s2">&quot;td_waveform_to_fd_waveform&quot;</span><span class="p">,</span> <span class="s2">&quot;get_two_pol_waveform_filter&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;NoWaveformError&quot;</span><span class="p">]</span>
+           <span class="s2">&quot;NoWaveformError&quot;</span><span class="p">,</span> <span class="s2">&quot;get_td_waveform_from_fd&quot;</span><span class="p">]</span>
 </pre></div>
 
            </div>
@@ -1174,7 +1240,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'e054a9',
+            VERSION:'2537f8',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
