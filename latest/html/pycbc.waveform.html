@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform package &mdash; PyCBC 008354 documentation</title>
+  <title>pycbc.waveform package &mdash; PyCBC 06e8a5 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC 008354 documentation" href="index.html"/>
+    <link rel="top" title="PyCBC 06e8a5 documentation" href="index.html"/>
         <link rel="up" title="pycbc package" href="pycbc.html"/>
         <link rel="prev" title="pycbc.vetoes package" href="pycbc.vetoes.html"/> 
 
@@ -2470,6 +2470,70 @@ they must be the same length and even in length</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.waveform.utils.fd_taper">
+<code class="descclassname">pycbc.waveform.utils.</code><code class="descname">fd_taper</code><span class="sig-paren">(</span><em>out</em>, <em>start</em>, <em>end</em>, <em>beta=8</em>, <em>side='left'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/utils.html#fd_taper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.utils.fd_taper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a taper to the given FrequencySeries.</p>
+<p>A half-kaiser window is used for the roll-off.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>out</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a><em>, </em><em>optional</em>) – The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code> to taper.</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) to start the taper window.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) to end the taper window.</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the Kaiser window. See
+<code class="docutils literal notranslate"><span class="pre">scipy.signal.kaiser</span></code> for details. Default is 8.</li>
+<li><strong>side</strong> (<em>{'left'</em><em>, </em><em>'right'}</em>) – The side to apply the taper to. If <code class="docutils literal notranslate"><span class="pre">'left'</span></code> (<code class="docutils literal notranslate"><span class="pre">'right'</span></code>), the taper
+will roll up (down) between <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>, with all values
+before <code class="docutils literal notranslate"><span class="pre">start</span></code> (after <code class="docutils literal notranslate"><span class="pre">end</span></code>) set to zero. Default is <code class="docutils literal notranslate"><span class="pre">'left'</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The tapered frequency series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.waveform.utils.fd_to_td">
+<code class="descclassname">pycbc.waveform.utils.</code><code class="descname">fd_to_td</code><span class="sig-paren">(</span><em>htilde</em>, <em>delta_t=None</em>, <em>left_window=None</em>, <em>right_window=None</em>, <em>left_beta=8</em>, <em>right_beta=8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/utils.html#fd_to_td"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.utils.fd_to_td" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a FD waveform to TD.</p>
+<p>A window can optionally be applied using <code class="docutils literal notranslate"><span class="pre">fd_taper</span></code> to the left or right
+side of the waveform before being converted to the time domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The waveform to convert.</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – Make the returned time series have the given <code class="docutils literal notranslate"><span class="pre">delta_t</span></code>.</li>
+<li><strong>left_window</strong> (<em>tuple of float</em><em>, </em><em>optional</em>) – A tuple giving the start and end frequency of the FD taper to apply
+on the left side. If None, no taper will be applied on the left.</li>
+<li><strong>right_window</strong> (<em>tuple of float</em><em>, </em><em>optional</em>) – A tuple giving the start and end frequency of the FD taper to apply
+on the right side. If None, no taper will be applied on the right.</li>
+<li><strong>left_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the left taper. See <code class="docutils literal notranslate"><span class="pre">fd_taper</span></code> for
+details. Default is 8.</li>
+<li><strong>right_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the right taper. Default is 8.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The time-series representation of <code class="docutils literal notranslate"><span class="pre">htilde</span></code>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries">TimeSeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.waveform.utils.frequency_from_polarizations">
 <code class="descclassname">pycbc.waveform.utils.</code><code class="descname">frequency_from_polarizations</code><span class="sig-paren">(</span><em>h_plus</em>, <em>h_cross</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/utils.html#frequency_from_polarizations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.utils.frequency_from_polarizations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return gravitational wave frequency</p>
@@ -3032,7 +3096,7 @@ zeros being returned, e.g., if a requested <cite>f_final</cite> is &lt;= <cite>f
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'008354',
+            VERSION:'06e8a5',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
