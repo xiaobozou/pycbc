@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.configuration &mdash; PyCBC 06e8a5 documentation</title>
+  <title>pycbc.workflow.configuration &mdash; PyCBC e054a9 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC 06e8a5 documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC e054a9 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -247,7 +247,7 @@
 <span class="kn">import</span> <span class="nn">distutils.spawn</span>
 <span class="kn">import</span> <span class="nn">ConfigParser</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">pycbc_glue.pipeline</span>
+<span class="kn">import</span> <span class="nn">glue.pipeline</span>
 
 <span class="kn">from</span> <span class="nn">cookielib</span> <span class="k">import</span> <span class="p">(</span><span class="n">_warn_unhandled_exception</span><span class="p">,</span> <span class="n">LoadError</span><span class="p">,</span> <span class="n">Cookie</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
@@ -504,7 +504,7 @@
                            <span class="s2">&quot;section.&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="WorkflowConfigParser"><a class="viewcode-back" href="../../../workflow/initialization.html#pycbc.workflow.configuration.WorkflowConfigParser">[docs]</a><span class="k">class</span> <span class="nc">WorkflowConfigParser</span><span class="p">(</span><span class="n">pycbc_glue</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">DeepCopyableConfigParser</span><span class="p">):</span>
+<div class="viewcode-block" id="WorkflowConfigParser"><a class="viewcode-back" href="../../../workflow/initialization.html#pycbc.workflow.configuration.WorkflowConfigParser">[docs]</a><span class="k">class</span> <span class="nc">WorkflowConfigParser</span><span class="p">(</span><span class="n">glue</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">DeepCopyableConfigParser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a sub-class of glue.pipeline.DeepCopyableConfigParser, which lets</span>
 <span class="sd">    us add a few additional helper features that are useful in workflows.</span>
@@ -541,7 +541,7 @@
             <span class="n">overrideTuples</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">deleteTuples</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">deleteTuples</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">pycbc_glue</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">DeepCopyableConfigParser</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">glue</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">DeepCopyableConfigParser</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         
         <span class="c1"># Enable case sensitive options</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">optionxform</span> <span class="o">=</span> <span class="nb">str</span>
@@ -1216,7 +1216,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'06e8a5',
+            VERSION:'e054a9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

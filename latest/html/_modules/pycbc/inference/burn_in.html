@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.burn_in &mdash; PyCBC 06e8a5 documentation</title>
+  <title>pycbc.inference.burn_in &mdash; PyCBC e054a9 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC 06e8a5 documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC e054a9 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -237,10 +237,10 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ks_2samp</span>
 
-<div class="viewcode-block" id="ks_test"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.ks_test">[docs]</a><span class="k">def</span> <span class="nf">ks_test</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+<div class="viewcode-block" id="ks_test"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.ks_test">[docs]</a><span class="k">def</span> <span class="nf">ks_test</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burn in based on whether the p-value of the KS test between the samples</span>
 <span class="sd">    at the last iteration and the samples midway along the chain for each</span>
-<span class="sd">    parameter is &gt; 0.1 and &lt; 0.9</span>
+<span class="sd">    parameter is &gt; ``threshold``.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -250,6 +250,8 @@
 <span class="sd">    fp : InferenceFile</span>
 <span class="sd">        Open inference hdf file containing the samples to load for determing</span>
 <span class="sd">        burn in.</span>
+<span class="sd">    threshold : float</span>
+<span class="sd">        The thershold to use for the p-value. Default is 0.9.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -273,8 +275,8 @@
         <span class="n">samples_chain_midpt</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
                                                   <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">samples_last_iter</span><span class="p">,</span> <span class="n">samples_chain_midpt</span><span class="p">)</span>
-        <span class="c1"># check if p_value is within the desired range</span>
-        <span class="n">is_burned_in_param</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">&lt;</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.9</span>
+        <span class="c1"># check if p_value is &gt; than the desired range</span>
+        <span class="n">is_burned_in_param</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="n">threshold</span>
     <span class="c1"># The chains are burned in if the p-value of the KS test lies in the range [0.1,0.9]</span>
     <span class="c1"># for all the parameters. If the KS test is passed, the chains have burned in at their</span>
     <span class="c1"># mid-way point. </span>
@@ -285,6 +287,47 @@
         <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
+
+
+<div class="viewcode-block" id="n_acl"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.n_acl">[docs]</a><span class="k">def</span> <span class="nf">n_acl</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">nacls</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Burn in based on ACL.</span>
+
+<span class="sd">    The sampler is considered burned in if the number of itertions is &gt;=</span>
+<span class="sd">    ``nacls`` times the maximum ACL over all parameters, as measured from the</span>
+<span class="sd">    first iteration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">    fp : InferenceFile</span>
+<span class="sd">        Open inference hdf file containing the samples to load for determing</span>
+<span class="sd">        burn in.</span>
+<span class="sd">    nacls : int</span>
+<span class="sd">        Number of ACLs to use for burn in. Default is 10.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain. By definition</span>
+<span class="sd">        of this function, all chains reach burn in at the same iteration. Thus</span>
+<span class="sd">        the returned array is the burn-in index repeated by the number of</span>
+<span class="sd">        chains.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in. Since</span>
+<span class="sd">        all chains obtain burn in at the same time, this is either an array</span>
+<span class="sd">        of all False or True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">acl</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">compute_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">burn_idx</span> <span class="o">=</span> <span class="n">nacls</span> <span class="o">*</span> <span class="n">acl</span>
+    <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">burn_idx</span> <span class="o">&lt;</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_burned_in</span><span class="p">:</span>
+        <span class="n">burn_idx</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">burn_idx</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> \
+           <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">is_burned_in</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="max_posterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.max_posterior">[docs]</a><span class="k">def</span> <span class="nf">max_posterior</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burn in based on samples being within dim/2 of maximum posterior.</span>
@@ -312,7 +355,7 @@
         <span class="n">samples_group</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">stats_group</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">chain_posteriors</span> <span class="o">=</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">]</span>
-    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">))</span>
     <span class="c1"># find the posterior to compare against</span>
     <span class="n">max_p</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">criteria</span> <span class="o">=</span> <span class="n">max_p</span> <span class="o">-</span> <span class="n">dim</span><span class="o">/</span><span class="mi">2</span>
@@ -363,7 +406,7 @@
         <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">chain_posteriors</span> <span class="o">=</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">]</span>
     <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">))</span>
     <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">criteria</span> <span class="o">=</span> <span class="n">dim</span><span class="o">/</span><span class="mf">2.</span>
     <span class="c1"># find the last iteration in each chain where the logplr has</span>
@@ -383,8 +426,8 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    sampler : pycbc.inference.sampler</span>
-<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
-<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">        This option is not used; it is just here give consistent API as the</span>
+<span class="sd">        other burn in functions.</span>
 <span class="sd">    fp : InferenceFile</span>
 <span class="sd">        Open inference hdf file containing the samples to load for determing</span>
 <span class="sd">        burn in.</span>
@@ -397,7 +440,7 @@
 <span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
 <span class="sd">        By definition of this function, all values are set to True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">nwalkers</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span>
     <span class="n">niterations</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> \
            <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
@@ -431,6 +474,7 @@
 
 <span class="n">burn_in_functions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;ks_test&#39;</span><span class="p">:</span> <span class="n">ks_test</span><span class="p">,</span>
+    <span class="s1">&#39;n_acl&#39;</span><span class="p">:</span> <span class="n">n_acl</span><span class="p">,</span>
     <span class="s1">&#39;max_posterior&#39;</span><span class="p">:</span> <span class="n">max_posterior</span><span class="p">,</span>
     <span class="s1">&#39;posterior_step&#39;</span><span class="p">:</span> <span class="n">posterior_step</span><span class="p">,</span>
     <span class="s1">&#39;half_chain&#39;</span><span class="p">:</span> <span class="n">half_chain</span><span class="p">,</span>
@@ -586,7 +630,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'06e8a5',
+            VERSION:'e054a9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

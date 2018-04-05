@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc_glue.ligolw.table &mdash; PyCBC 06e8a5 documentation</title>
+  <title>pycbc.ligolw.table &mdash; PyCBC e054a9 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC 06e8a5 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+    <link rel="top" title="PyCBC e054a9 documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -186,7 +186,9 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>pycbc_glue.ligolw.table</li>
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.ligolw.table</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -203,7 +205,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pycbc_glue.ligolw.table</h1><div class="highlight"><pre>
+  <h1>Source code for pycbc.ligolw.table</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (C) 2006--2015  Kipp Cannon</span>
 <span class="c1">#</span>
 <span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
@@ -259,15 +261,15 @@
 <span class="kn">from</span> <span class="nn">xml.sax.xmlreader</span> <span class="k">import</span> <span class="n">AttributesImpl</span>
 
 
-<span class="kn">from</span> <span class="nn">pycbc_glue</span> <span class="k">import</span> <span class="n">git_version</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">version</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">ligolw</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">tokenizer</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">types</span> <span class="k">as</span> <span class="n">ligolwtypes</span>
 
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Kipp Cannon &lt;kipp.cannon@ligo.org&gt;&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;git id </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">git_version</span><span class="o">.</span><span class="n">id</span>
-<span class="n">__date__</span> <span class="o">=</span> <span class="n">git_version</span><span class="o">.</span><span class="n">date</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;git id </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">version</span><span class="o">.</span><span class="n">version</span>
+<span class="n">__date__</span> <span class="o">=</span> <span class="n">version</span><span class="o">.</span><span class="n">date</span>
 
 
 <span class="c1">#</span>
@@ -434,7 +436,7 @@
 <span class="sd">	Deprecated legacy wrapper of .copy() method of Table instances.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="kn">import</span> <span class="nn">warnings</span>
-	<span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;pycbc_glue.ligolw.table.new_from_template() is deprecated.  Use .copy() method of Table instances instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+	<span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;pycbc.ligolw.table.new_from_template() is deprecated.  Use .copy() method of Table instances instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
 	<span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 
@@ -446,7 +448,7 @@
 
 <span class="sd">	NOTE:  if a Table sub-class has its .tableName attribute set, then</span>
 <span class="sd">	its .get_table() class method can be used instead.  This is true</span>
-<span class="sd">	for all Table classes in the pycbc_glue.ligolw.lsctables module, and it</span>
+<span class="sd">	for all Table classes in the pycbc.ligolw.lsctables module, and it</span>
 <span class="sd">	is recommended to always use the .get_table() class method of those</span>
 <span class="sd">	classes to retrieve those standard tables instead of calling this</span>
 <span class="sd">	function and passing the .tableName attribute.  The example below</span>
@@ -550,7 +552,7 @@
 <span class="sd">	&gt;&gt;&gt; tbl = Table(AttributesImpl({u&quot;Name&quot;: u&quot;test&quot;}))</span>
 <span class="sd">	&gt;&gt;&gt; col = tbl.appendChild(Column(AttributesImpl({u&quot;Name&quot;: u&quot;test:snr&quot;, u&quot;Type&quot;: u&quot;real_8&quot;})))</span>
 <span class="sd">	&gt;&gt;&gt; tbl.appendChild(TableStream(AttributesImpl({u&quot;Name&quot;: u&quot;test&quot;})))	# doctest: +ELLIPSIS</span>
-<span class="sd">	&lt;pycbc_glue.ligolw.table.TableStream object at ...&gt;</span>
+<span class="sd">	&lt;pycbc.ligolw.table.TableStream object at ...&gt;</span>
 <span class="sd">	&gt;&gt;&gt; tbl._update_column_info()</span>
 <span class="sd">	&gt;&gt;&gt; col.Name</span>
 <span class="sd">	u&#39;snr&#39;</span>
@@ -1282,18 +1284,18 @@
 <span class="k">def</span> <span class="nf">use_in</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Modify ContentHandler, a sub-class of</span>
-<span class="sd">	pycbc_glue.ligolw.LIGOLWContentHandler, to cause it to use the Table,</span>
+<span class="sd">	pycbc.ligolw.LIGOLWContentHandler, to cause it to use the Table,</span>
 <span class="sd">	Column, and Stream classes defined in this module when parsing XML</span>
 <span class="sd">	documents.</span>
 
 <span class="sd">	Example:</span>
 
-<span class="sd">	&gt;&gt;&gt; from pycbc_glue.ligolw import ligolw</span>
+<span class="sd">	&gt;&gt;&gt; from pycbc.ligolw import ligolw</span>
 <span class="sd">	&gt;&gt;&gt; class LIGOLWContentHandler(ligolw.LIGOLWContentHandler):</span>
 <span class="sd">	...	pass</span>
 <span class="sd">	...</span>
 <span class="sd">	&gt;&gt;&gt; use_in(LIGOLWContentHandler)</span>
-<span class="sd">	&lt;class &#39;pycbc_glue.ligolw.table.LIGOLWContentHandler&#39;&gt;</span>
+<span class="sd">	&lt;class &#39;pycbc.ligolw.table.LIGOLWContentHandler&#39;&gt;</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">startColumn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
 		<span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
@@ -1349,7 +1351,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'06e8a5',
+            VERSION:'e054a9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

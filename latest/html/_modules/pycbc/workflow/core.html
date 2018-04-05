@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC 06e8a5 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC e054a9 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyCBC 06e8a5 documentation" href="../../../index.html"/>
+    <link rel="top" title="PyCBC e054a9 documentation" href="../../../index.html"/>
         <link rel="up" title="pycbc" href="../../pycbc.html"/> 
 
   
@@ -239,13 +239,15 @@
 <span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">cPickle</span><span class="o">,</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">combinations</span><span class="p">,</span> <span class="n">groupby</span><span class="p">,</span> <span class="n">permutations</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">attrgetter</span>
-<span class="kn">import</span> <span class="nn">lal</span> <span class="k">as</span> <span class="nn">lalswig</span>
+<span class="kn">import</span> <span class="nn">lal</span>
+<span class="kn">import</span> <span class="nn">lal.utils</span>
 <span class="kn">import</span> <span class="nn">Pegasus.DAX3</span>
-<span class="kn">from</span> <span class="nn">pycbc_glue</span> <span class="k">import</span> <span class="n">lal</span><span class="p">,</span> <span class="n">segments</span>
-<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">ligolw</span>
-<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
-<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw.utils</span> <span class="k">import</span> <span class="n">segments</span> <span class="k">as</span> <span class="n">ligolw_segments</span>
-<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw.utils</span> <span class="k">import</span> <span class="n">process</span> <span class="k">as</span> <span class="n">ligolw_process</span>
+<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">lal</span> <span class="k">as</span> <span class="n">gluelal</span>
+<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span>
+<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">ligolw</span>
+<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
+<span class="kn">from</span> <span class="nn">pycbc.ligolw.utils</span> <span class="k">import</span> <span class="n">segments</span> <span class="k">as</span> <span class="n">ligolw_segments</span>
+<span class="kn">from</span> <span class="nn">pycbc.ligolw.utils</span> <span class="k">import</span> <span class="n">process</span> <span class="k">as</span> <span class="n">ligolw_process</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.configuration</span> <span class="k">import</span> <span class="n">WorkflowConfigParser</span><span class="p">,</span> <span class="n">resolve_url</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow</span> <span class="k">import</span> <span class="n">pegasus_workflow</span>
 
@@ -253,10 +255,6 @@
     <span class="k">pass</span></div>
 
 <span class="n">lsctables</span><span class="o">.</span><span class="n">use_in</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">)</span>
-
-<span class="c1"># workflow should never be using the glue LIGOTimeGPS class, override this with</span>
-<span class="c1"># the nice SWIG-wrapped class in lal</span>
-<span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span> <span class="o">=</span> <span class="n">lalswig</span><span class="o">.</span><span class="n">LIGOTimeGPS</span>
 
 <span class="c1">#REMOVE THESE FUNCTIONS  FOR PYTHON &gt;= 2.7 ####################################</span>
 <div class="viewcode-block" id="check_output_error_and_retcode"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.check_output_error_and_retcode">[docs]</a><span class="k">def</span> <span class="nf">check_output_error_and_retcode</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1258,7 +1256,7 @@
             
         <span class="n">file_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlunparse</span><span class="p">([</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                                             <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
-        <span class="n">cache_entry</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CacheEntry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span><span class="p">,</span>
+        <span class="n">cache_entry</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">CacheEntry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span><span class="p">,</span>
                    <span class="bp">self</span><span class="o">.</span><span class="n">tagged_description</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_list</span><span class="o">.</span><span class="n">extent</span><span class="p">(),</span> <span class="n">file_url</span><span class="p">)</span>
         <span class="n">cache_entry</span><span class="o">.</span><span class="n">workflow_file</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="n">cache_entry</span>
@@ -1552,9 +1550,9 @@
 
 <div class="viewcode-block" id="FileList.convert_to_lal_cache"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.FileList.convert_to_lal_cache">[docs]</a>    <span class="k">def</span> <span class="nf">convert_to_lal_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return all files in this object as a lal.Cache object</span>
+<span class="sd">        Return all files in this object as a glue.lal.Cache object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">lal_cache</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">Cache</span><span class="p">([])</span>
+        <span class="n">lal_cache</span> <span class="o">=</span> <span class="n">gluelal</span><span class="o">.</span><span class="n">Cache</span><span class="p">([])</span>
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">lal_cache</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">cache_entry</span><span class="p">)</span>
@@ -1931,14 +1929,16 @@
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">seglist</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">ifo</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_segdict_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
             <span class="c1"># Ensure we have LIGOTimeGPS</span>
-            <span class="n">fsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
-                     <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">seglist</span><span class="p">]</span>
+            <span class="n">fsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                      <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">seglist</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_summ_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">vsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
+                <span class="n">vsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                          <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
                          <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_segments</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">vsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
+                <span class="n">vsegs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                          <span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
                          <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_summ_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
 
             <span class="c1"># Add using glue library to set all segment tables</span>
@@ -2113,7 +2113,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'06e8a5',
+            VERSION:'e054a9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

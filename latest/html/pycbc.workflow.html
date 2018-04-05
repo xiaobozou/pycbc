@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 06e8a5 documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC e054a9 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC 06e8a5 documentation" href="index.html"/>
+    <link rel="top" title="PyCBC e054a9 documentation" href="index.html"/>
         <link rel="up" title="Workflow: the inspiral analysis workflow generator (pycbc.workflow)" href="workflow.html"/>
         <link rel="next" title="pycbc" href="modules.html"/>
         <link rel="prev" title="HDF5 Based Coincidence Code" href="workflow/hdf_coincidence.html"/> 
@@ -795,7 +795,7 @@ workflow construction. This module is described in the page here:
 <dl class="class">
 <dt id="pycbc.workflow.configuration.WorkflowConfigParser">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.configuration.</code><code class="descname">WorkflowConfigParser</code><span class="sig-paren">(</span><em>configFiles=None</em>, <em>overrideTuples=None</em>, <em>parsedFilePath=None</em>, <em>deleteTuples=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/configuration.html#WorkflowConfigParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.configuration.WorkflowConfigParser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc_glue.pipeline.DeepCopyableConfigParser</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">glue.pipeline.DeepCopyableConfigParser</span></code></p>
 <p>This is a sub-class of glue.pipeline.DeepCopyableConfigParser, which lets
 us add a few additional helper features that are useful in workflows.</p>
 <dl class="method">
@@ -1187,7 +1187,7 @@ it is used only within make_external_call.</p>
 <dl class="class">
 <dt id="pycbc.workflow.core.ContentHandler">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.core.</code><code class="descname">ContentHandler</code><span class="sig-paren">(</span><em>document</em>, <em>start_handlers={}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#ContentHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.ContentHandler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc_glue.ligolw.ligolw.LIGOLWContentHandler</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.ligolw.ligolw.LIGOLWContentHandler</span></code></p>
 <dl class="method">
 <dt id="pycbc.workflow.core.ContentHandler.startColumn">
 <code class="descname">startColumn</code><span class="sig-paren">(</span><em>parent</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.workflow.core.ContentHandler.startColumn" title="Permalink to this definition">¶</a></dt>
@@ -1474,7 +1474,7 @@ attribute (eg. ‘segment’, ‘ifo’, ‘description’).</p>
 <dl class="method">
 <dt id="pycbc.workflow.core.FileList.convert_to_lal_cache">
 <code class="descname">convert_to_lal_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#FileList.convert_to_lal_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.FileList.convert_to_lal_cache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return all files in this object as a lal.Cache object</p>
+<dd><p>Return all files in this object as a glue.lal.Cache object</p>
 </dd></dl>
 
 <dl class="method">
@@ -2050,7 +2050,7 @@ documentation for this function can be found here:
 <dl class="class">
 <dt id="pycbc.workflow.datafind.ContentHandler">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.datafind.</code><code class="descname">ContentHandler</code><span class="sig-paren">(</span><em>document</em>, <em>start_handlers={}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/datafind.html#ContentHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.datafind.ContentHandler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc_glue.ligolw.ligolw.LIGOLWContentHandler</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.ligolw.ligolw.LIGOLWContentHandler</span></code></p>
 <dl class="method">
 <dt id="pycbc.workflow.datafind.ContentHandler.startColumn">
 <code class="descname">startColumn</code><span class="sig-paren">(</span><em>parent</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.workflow.datafind.ContentHandler.startColumn" title="Permalink to this definition">¶</a></dt>
@@ -5726,7 +5726,7 @@ interferometer data</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'06e8a5',
+            VERSION:'e054a9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
