@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installing lalsuite for PyCBC &mdash; PyCBC 926286 documentation</title>
+  <title>Installing lalsuite for PyCBC &mdash; PyCBC 008354 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC 926286 documentation" href="index.html"/>
+    <link rel="top" title="PyCBC 008354 documentation" href="index.html"/>
         <link rel="up" title="Installing PyCBC" href="install.html"/>
         <link rel="next" title="Building Documentation for Git Hub Pages" href="build_gh_pages.html"/>
         <link rel="prev" title="Setting up virtualenv" href="install_virtualenv.html"/> 
@@ -106,7 +106,6 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing lalsuite for PyCBC</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#obtaining-the-source-code-and-checking-out-a-version">Obtaining the source code and checking out a version</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#building-and-installing-into-your-virtual-environment">Building and installing into your virtual environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#building-and-installing-lalapps-inspinj-and-lalapps-coh-ptf-inspiral-with-static-libraries">Building and installing lalapps_inspinj and lalapps_coh_PTF_inspiral with static libraries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-data-files-from-lalsuite-extra">Additional data files from lalsuite-extra</a></li>
 </ul>
 </li>
@@ -312,30 +311,6 @@ deactivate
 </div>
 <p>which should return the path to the installation under your virtual environment.</p>
 </div>
-<div class="section" id="building-and-installing-lalapps-inspinj-and-lalapps-coh-ptf-inspiral-with-static-libraries">
-<h2>Building and installing lalapps_inspinj and lalapps_coh_PTF_inspiral with static libraries<a class="headerlink" href="#building-and-installing-lalapps-inspinj-and-lalapps-coh-ptf-inspiral-with-static-libraries" title="Permalink to this headline">¶</a></h2>
-<p>In some cases you may want to build <em>only</em> these two programs as static binaries and install them.  To do this, run the commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$VIRTUAL_ENV</span>/src/lalsuite/lalapps
-<span class="nv">LIBS</span><span class="o">=</span><span class="s2">&quot;-lhdf5_hl -lhdf5 -lcrypto -lssl -ldl -lz -lstdc++&quot;</span> ./configure --prefix<span class="o">=</span><span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span>/opt/lalsuite --enable-static-binaries --disable-lalinference --disable-lalburst --disable-lalpulsar --disable-lalstochastic --disable-lalxml
-<span class="nb">cd</span> <span class="nv">$VIRTUAL_ENV</span>/src/lalsuite/lalapps/src/lalapps
-make
-<span class="nb">cd</span> <span class="nv">$VIRTUAL_ENV</span>/src/lalsuite/lalapps/src/inspiral
-make lalapps_inspinj
-cp lalapps_inspinj <span class="nv">$VIRTUAL_ENV</span>/bin
-<span class="nb">cd</span> <span class="nv">$VIRTUAL_ENV</span>/src/lalsuite/lalapps/src/ring
-make lalapps_coh_PTF_inspiral
-cp lalapps_coh_PTF_inspiral <span class="nv">$VIRTUAL_ENV</span>/bin
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The LALApps build above builds static binaries, so you will need static libraries for fftw, glibc, etc. installed on your system to do this. These libraries are present by default in a LIGO Data Grid environment.</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Installing LALApps binaries in <code class="docutils literal notranslate"><span class="pre">$VIRTUAL_ENV/bin</span></code> as above may clash with executables previously installed in <code class="docutils literal notranslate"><span class="pre">$VIRTUAL_ENV/opt/lalsuite/bin</span></code>, the destination used by the standard lalsuite build.  If in doubt, run <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">lalapps_inspinj`</span></code> to determine which executable is in your path.</p>
-</div>
-</div>
 <div class="section" id="additional-data-files-from-lalsuite-extra">
 <h2>Additional data files from lalsuite-extra<a class="headerlink" href="#additional-data-files-from-lalsuite-extra" title="Permalink to this headline">¶</a></h2>
 <p>In addition to lalsuite, the generation of certain template waveforms (e.g. the reduced order model implementations of SEOBNRv2 and SEOBNRv4) requires data files from the <a class="reference external" href="https://git.ligo.org/lscsoft/lalsuite-extra/">lalsuite-extra repository</a>. These data can either be obtained by downloading and installing lalsuite-extra into your virtual environment or using a copy of the data from the CERN virtual filesystem.</p>
@@ -383,7 +358,7 @@ Then deactivate and activate your virtual environment.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Mar 26, 2018.
+      Last updated on Apr 05, 2018.
 
     </p>
   </div>
@@ -405,7 +380,7 @@ Then deactivate and activate your virtual environment.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'926286',
+            VERSION:'008354',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
