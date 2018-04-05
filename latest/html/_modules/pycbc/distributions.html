@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions &mdash; PyCBC ec7e7b documentation</title>
+  <title>pycbc.distributions &mdash; PyCBC 18dac7 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyCBC ec7e7b documentation" href="../../index.html"/>
+    <link rel="top" title="PyCBC 18dac7 documentation" href="../../index.html"/>
         <link rel="up" title="pycbc" href="../pycbc.html"/> 
 
   
@@ -231,11 +231,13 @@
 <span class="kn">from</span> <span class="nn">pycbc.distributions.sky_location</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.uniform</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">uniform_log</span>
+<span class="kn">from</span> <span class="nn">pycbc.distributions.masses</span> <span class="k">import</span> <span class="n">UniformComponentMasses</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.spins</span> <span class="k">import</span> <span class="n">IndependentChiPChiEff</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.joint</span> <span class="k">import</span> <span class="n">JointDistribution</span>
 
 <span class="c1"># a dict of all available distributions</span>
 <span class="n">distribs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">UniformComponentMasses</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">UniformComponentMasses</span><span class="p">,</span>
     <span class="n">IndependentChiPChiEff</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">IndependentChiPChiEff</span><span class="p">,</span>
     <span class="n">Arbitrary</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">Arbitrary</span><span class="p">,</span>
     <span class="n">FromFile</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">FromFile</span><span class="p">,</span>
@@ -315,7 +317,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'ec7e7b',
+            VERSION:'18dac7',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

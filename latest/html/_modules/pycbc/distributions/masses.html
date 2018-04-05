@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.uniform_log &mdash; PyCBC 18dac7 documentation</title>
+  <title>pycbc.distributions.masses &mdash; PyCBC 18dac7 documentation</title>
   
 
   
@@ -190,7 +190,7 @@
         
           <li><a href="../distributions.html">pycbc.distributions</a> &raquo;</li>
         
-      <li>pycbc.distributions.uniform_log</li>
+      <li>pycbc.distributions.masses</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -207,8 +207,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pycbc.distributions.uniform_log</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2017  Christopher M. Biwer</span>
+  <h1>Source code for pycbc.distributions.masses</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2018 Collin Capano</span>
 <span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
 <span class="c1"># under the terms of the GNU General Public License as published by the</span>
 <span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
@@ -222,93 +222,95 @@
 <span class="c1"># You should have received a copy of the GNU General Public License along</span>
 <span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
 <span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
-<span class="sd">&quot;&quot;&quot; This modules provides classes for evaluating distributions whose logarithm</span>
-<span class="sd">are uniform.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides mass distributions of CBCs.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">uniform</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
+<span class="kn">from</span> <span class="nn">pycbc.distributions.uniform</span> <span class="k">import</span> <span class="n">Uniform</span>
 
-<div class="viewcode-block" id="UniformLog10"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.uniform_log.UniformLog10">[docs]</a><span class="k">class</span> <span class="nc">UniformLog10</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">Uniform</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; A uniform distribution on the log base 10 of the given parameters.</span>
-<span class="sd">    The parameters are independent of each other. Instances of this class can</span>
-<span class="sd">    be called like a function. By default, logpdf will be called.</span>
+
+<div class="viewcode-block" id="UniformComponentMasses"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.masses.UniformComponentMasses">[docs]</a><span class="k">class</span> <span class="nc">UniformComponentMasses</span><span class="p">(</span><span class="n">Uniform</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A distribution uniform in mass1 and mass2.</span>
+
+<span class="sd">    When initializing the distribution, the possible range in the component</span>
+<span class="sd">    masses must be specified. Random samples drawn from this distribution</span>
+<span class="sd">    always have ``mass1 &gt;= mass2``.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        The ranges of mass1 and mass2 may cover the same range; for instance,</span>
+<span class="sd">        in the examples below, both mass1 and mass2 have ranges ``[10, 80)``.</span>
+<span class="sd">        Likewise, the ``(log)pdf`` function does not require that ``mass1 &gt;=</span>
+<span class="sd">        mass2``. It is only in the ``rvs`` function that this convention is</span>
+<span class="sd">        enforced.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    \**params :</span>
-<span class="sd">        The keyword arguments should provide the names of parameters and their</span>
-<span class="sd">        corresponding bounds, as either tuples or a `boundaries.Bounds`</span>
-<span class="sd">        instance.</span>
+<span class="sd">    mass1 : tuple or ``boundaries.Bounds``</span>
+<span class="sd">        The range for mass1.</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    name : &quot;uniform_log10&quot;</span>
-<span class="sd">        The name of this distribution.</span>
+<span class="sd">    mass2 : tuple of ``boundaries.Bounds``</span>
+<span class="sd">        The range for mass2.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Initialize a distribution:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pycbc.distributions import UniformComponentMasses</span>
+<span class="sd">    &gt;&gt;&gt; d = UniformComponentMasses(mass1=(10., 80.), mass2=(10., 80.))</span>
+
+<span class="sd">    Draw random variates from the distribution and check that mass1 &gt;= mass2</span>
+<span class="sd">    for all values:</span>
+
+<span class="sd">    &gt;&gt;&gt; vals = d.rvs(size=1000)</span>
+<span class="sd">    &gt;&gt;&gt; (vals[&#39;mass1&#39;] &gt;= vals[&#39;mass2&#39;]).all()</span>
+<span class="sd">    True</span>
+
+<span class="sd">    Note that the pdf function does not require ``mass1 &gt;= mass2``:</span>
+
+<span class="sd">    &gt;&gt;&gt; d.pdf(mass1=60., mass2=20.)</span>
+<span class="sd">    0.00020408163265306107</span>
+<span class="sd">    &gt;&gt;&gt; d.pdf(mass1=20., mass2=60.)</span>
+<span class="sd">    0.00020408163265306107</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;uniform_log10&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;uniform_component_masses&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">UniformLog10</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_norm</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">bnd</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">bnd</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                                   <span class="k">for</span> <span class="n">bnd</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lognorm</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_norm</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># check that parameters for mass1 and mass2 are both provided</span>
+        <span class="k">if</span> <span class="n">mass1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must provide limits for mass1&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mass2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must provide limits for mass2&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UniformComponentMasses</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="n">mass2</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="n">mass2</span><span class="p">)</span>
 
-<div class="viewcode-block" id="UniformLog10.rvs"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.uniform_log.UniformLog10.rvs">[docs]</a>    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="UniformComponentMasses.rvs"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.masses.UniformComponentMasses.rvs">[docs]</a>    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Gives a set of random values drawn from this distribution.</span>
+
+<span class="sd">        In the returned set, mass2 &lt;= mass1.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        size : {1, int}</span>
+<span class="sd">        size : int</span>
 <span class="sd">            The number of values to generate; default is 1.</span>
-<span class="sd">        param : {None, string}</span>
+<span class="sd">        param : str, optional</span>
 <span class="sd">            If provided, will just return values for the given parameter.</span>
-<span class="sd">            Otherwise, returns random values for each parameter.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        structured array</span>
-<span class="sd">            The random values in a numpy structured array. If a param was</span>
-<span class="sd">            specified, the array will only have an element corresponding to the</span>
-<span class="sd">            given parameter. Otherwise, the array will have an element for each</span>
-<span class="sd">            parameter in self&#39;s params.</span>
+<span class="sd">            The random values in a numpy structured array.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
+        <span class="n">arr</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">UniformComponentMasses</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+        <span class="c1"># enforce m1 &gt; m2</span>
+        <span class="n">m1</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">primary_mass</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+        <span class="n">m2</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">secondary_mass</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
+        <span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">m1</span>
+        <span class="n">arr</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">m2</span>
         <span class="k">if</span> <span class="n">param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="n">param</span><span class="p">,</span> <span class="nb">float</span><span class="p">)]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">]</span>
-        <span class="n">arr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="n">dtype</span><span class="p">:</span>
-            <span class="n">log_high</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">log_low</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounds</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">arr</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">log_low</span><span class="p">,</span> <span class="n">log_high</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">arr</span></div>
-
-
-    <span class="k">def</span> <span class="nf">_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the pdf at the given values. The keyword arguments must</span>
-<span class="sd">        contain all of parameters in self&#39;s params. Unrecognized arguments are</span>
-<span class="sd">        ignored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_norm</span> <span class="o">*</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
-                                <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
-            <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mf">0.</span>
-
-    <span class="k">def</span> <span class="nf">_logpdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the log of the pdf at the given values. The keyword</span>
-<span class="sd">        arguments must contain all of parameters in self&#39;s params. Unrecognized</span>
-<span class="sd">        arguments are ignored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pdf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span></div>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;UniformLog10&quot;</span><span class="p">]</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">arr</span></div></div>
 </pre></div>
 
            </div>

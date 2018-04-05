@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions package &mdash; PyCBC ec7e7b documentation</title>
+  <title>pycbc.distributions package &mdash; PyCBC 18dac7 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC ec7e7b documentation" href="index.html"/>
+    <link rel="top" title="PyCBC 18dac7 documentation" href="index.html"/>
         <link rel="up" title="pycbc package" href="pycbc.html"/>
         <link rel="next" title="pycbc.events package" href="pycbc.events.html"/>
         <link rel="prev" title="pycbc.catalog package" href="pycbc.catalog.html"/> 
@@ -1839,6 +1839,90 @@ conditions to.</td>
 </dd></dl>
 
 </div>
+<div class="section" id="module-pycbc.distributions.masses">
+<span id="pycbc-distributions-masses-module"></span><h2>pycbc.distributions.masses module<a class="headerlink" href="#module-pycbc.distributions.masses" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides mass distributions of CBCs.</p>
+<dl class="class">
+<dt id="pycbc.distributions.masses.UniformComponentMasses">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.masses.</code><code class="descname">UniformComponentMasses</code><span class="sig-paren">(</span><em>mass1=None</em>, <em>mass2=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/masses.html#UniformComponentMasses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.masses.UniformComponentMasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.uniform.Uniform</span></code></a></p>
+<p>A distribution uniform in mass1 and mass2.</p>
+<p>When initializing the distribution, the possible range in the component
+masses must be specified. Random samples drawn from this distribution
+always have <code class="docutils literal notranslate"><span class="pre">mass1</span> <span class="pre">&gt;=</span> <span class="pre">mass2</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The ranges of mass1 and mass2 may cover the same range; for instance,
+in the examples below, both mass1 and mass2 have ranges <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">80)</span></code>.
+Likewise, the <code class="docutils literal notranslate"><span class="pre">(log)pdf</span></code> function does not require that <code class="docutils literal notranslate"><span class="pre">mass1</span> <span class="pre">&gt;=</span>
+<span class="pre">mass2</span></code>. It is only in the <code class="docutils literal notranslate"><span class="pre">rvs</span></code> function that this convention is
+enforced.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mass1</strong> (tuple or <code class="docutils literal notranslate"><span class="pre">boundaries.Bounds</span></code>) – The range for mass1.</li>
+<li><strong>mass2</strong> (tuple of <code class="docutils literal notranslate"><span class="pre">boundaries.Bounds</span></code>) – The range for mass2.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Initialize a distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">UniformComponentMasses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">UniformComponentMasses</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">80.</span><span class="p">),</span> <span class="n">mass2</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">80.</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Draw random variates from the distribution and check that mass1 &gt;= mass2
+for all values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vals</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Note that the pdf function does not require <code class="docutils literal notranslate"><span class="pre">mass1</span> <span class="pre">&gt;=</span> <span class="pre">mass2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="mf">60.</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mf">20.</span><span class="p">)</span>
+<span class="go">0.00020408163265306107</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mf">60.</span><span class="p">)</span>
+<span class="go">0.00020408163265306107</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="pycbc.distributions.masses.UniformComponentMasses.name">
+<code class="descname">name</code><em class="property"> = 'uniform_component_masses'</em><a class="headerlink" href="#pycbc.distributions.masses.UniformComponentMasses.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.masses.UniformComponentMasses.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/masses.html#UniformComponentMasses.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.masses.UniformComponentMasses.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<p>In the returned set, mass2 &lt;= mass1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – If provided, will just return values for the given parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-pycbc.distributions.power_law">
 <span id="pycbc-distributions-power-law-module"></span><h2>pycbc.distributions.power_law module<a class="headerlink" href="#module-pycbc.distributions.power_law" title="Permalink to this headline">¶</a></h2>
 <p>This modules provides classes for evaluating distributions where the
@@ -2465,7 +2549,7 @@ given configuration file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'ec7e7b',
+            VERSION:'18dac7',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

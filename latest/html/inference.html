@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC ec7e7b documentation</title>
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC 18dac7 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="PyCBC ec7e7b documentation" href="index.html"/>
+    <link rel="top" title="PyCBC 18dac7 documentation" href="index.html"/>
         <link rel="next" title="Plotting the posteriors (pycbc_inference_plot_posterior)" href="inference/viz.html"/>
         <link rel="prev" title="pycbc_make_offline_grb_workflow: A GRB triggered CBC analysis workflow generator" href="workflow/pygrb.html"/> 
 
@@ -280,7 +280,7 @@ A list of all distributions that can be used is found with</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python ../examples/distributions/list_distributions.py
 /home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
   from ._conv import register_converters as _register_converters
-[&#39;uniform_power_law&#39;, &#39;gaussian&#39;, &#39;uniform_log10&#39;, &#39;uniform_solidangle&#39;, &#39;uniform_sky&#39;, &#39;cos_angle&#39;, &#39;uniform_radius&#39;, &#39;independent_chip_chieff&#39;, &#39;sin_angle&#39;, &#39;uniform&#39;, &#39;uniform_angle&#39;, &#39;arbitrary&#39;, &#39;fromfile&#39;]
+[&#39;uniform_power_law&#39;, &#39;gaussian&#39;, &#39;uniform_log10&#39;, &#39;uniform_solidangle&#39;, &#39;uniform_sky&#39;, &#39;cos_angle&#39;, &#39;uniform_radius&#39;, &#39;independent_chip_chieff&#39;, &#39;sin_angle&#39;, &#39;uniform&#39;, &#39;uniform_angle&#39;, &#39;arbitrary&#39;, &#39;fromfile&#39;, &#39;uniform_component_masses&#39;]
 </pre></div>
 </div>
 <p>One or more of the <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> may be transformed to a different parameter space for purposes of sampling. This is done by specifying a <code class="docutils literal notranslate"><span class="pre">[sampling_parameters]</span></code> section. This section specifies which <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> to replace with which parameters for sampling. This must be followed by one or more <code class="docutils literal notranslate"><span class="pre">[sampling_transforms-{sampling_params}]</span></code> sections that provide the transform class to use. For example, the following would cause the sampler to sample in chirp mass (<code class="docutils literal notranslate"><span class="pre">mchirp</span></code>) and mass ratio (<code class="docutils literal notranslate"><span class="pre">q</span></code>) instead of <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>:</p>
@@ -834,7 +834,7 @@ You can supply <code class="docutils literal notranslate"><span class="pre">thin
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'ec7e7b',
+            VERSION:'18dac7',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

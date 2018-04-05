@@ -60,6 +60,14 @@ pycbc.distributions.joint module
     :undoc-members:
     :show-inheritance:
 
+pycbc.distributions.masses module
+---------------------------------
+
+.. automodule:: pycbc.distributions.masses
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pycbc.distributions.power\_law module
 -------------------------------------
 
