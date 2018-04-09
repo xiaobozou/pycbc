@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC 064451 documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC 8a61ce documentation</title>
   
 
   
@@ -1393,6 +1393,76 @@ Otherwise, just returns the log-posterior.</li>
 <dl class="attribute">
 <dt id="pycbc.inference.likelihood.GaussianLikelihood.required_kwargs">
 <code class="descname">required_kwargs</code><em class="property"> = ['waveform_generator', 'data', 'f_lower']</em><a class="headerlink" href="#pycbc.inference.likelihood.GaussianLikelihood.required_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood">
+<em class="property">class </em><code class="descclassname">pycbc.inference.likelihood.</code><code class="descname">MarginalizedPhaseGaussianLikelihood</code><span class="sig-paren">(</span><em>variable_args</em>, <em>waveform_generator=None</em>, <em>data=None</em>, <em>f_lower=None</em>, <em>psds=None</em>, <em>f_upper=None</em>, <em>norm=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#MarginalizedPhaseGaussianLikelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.GaussianLikelihood" title="pycbc.inference.likelihood.GaussianLikelihood"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.GaussianLikelihood</span></code></a></p>
+<p>The likelihood is analytically marginalized over phase.</p>
+<p>This class can be used with signal models that can be written as:</p>
+<div class="math notranslate">
+\[\tilde{h}(f; \Theta, \phi) = A(f; \Theta)e^{i\Psi(f; \Theta) + i \phi},\]</div>
+<p>where <span class="math notranslate">\(\phi\)</span> is an arbitrary phase constant. This phase constant
+can be analytically marginalized over with a uniform prior as follows:
+assuming the noise is stationary and Gaussian (see <cite>GaussianLikelihood</cite>
+for details), the posterior is:</p>
+<div class="math notranslate">
+\[\begin{split}p(\Theta,\phi|d) &amp;\propto p(\Theta)p(\phi)p(d|\Theta,\phi) \\
+                 &amp;\propto p(\Theta)\frac{1}{2\pi}\exp\left[-\frac{1}{2}\sum_{i}^{N_D} \left&lt;h_i(\Theta,\phi) - d_i, h_i(\Theta,\phi) - d_i\right&gt;\right].\end{split}\]</div>
+<p>Here, the sum is over the number of detectors <span class="math notranslate">\(N_D\)</span>, <span class="math notranslate">\(d_i\)</span>
+and <span class="math notranslate">\(h_i\)</span> are the data and signal in the <span class="math notranslate">\(i`th detector,
+respectively, and we have assumed a uniform prior on :math:`phi \in [0,
+2\pi)\)</span>. With the form of the signal model given above, the inner product
+in the exponent can be written as:</p>
+<div class="math notranslate">
+\[\]</div>
+<p>-frac{1}{2}left&lt;h_i - d_i, h_i- d_iright&gt; &amp;= left&lt;h_i, d_iright&gt; - frac{1}{2}left&lt;h_i, h_iright&gt; - frac{1}{2}left&lt;d_i, d_iright&gt; \
+&amp;= Releft{O(h^0_i, d_i)e^{-iphi}right} - frac{1}{2}left&lt;h^0_i, h^0_iright&gt; - frac{1}{2}left&lt;d_i, d_iright&gt;,</p>
+<p>where:</p>
+<div class="math notranslate">
+\[\begin{split}h_i^0 &amp;\equiv \tilde{h}_i(f; \Theta, \phi=0); \\
+O(h^0_i, d_i) &amp;\equiv 4 \int_0^\infty \frac{\tilde{h}_i^*(f; \Theta,0) \tilde{d}_i(f)}{S_n(f)}\mathrm{d}f.\end{split}\]</div>
+<p>Gathering all of the terms that are not dependent on <span class="math notranslate">\(\phi\)</span> together:</p>
+<div class="math notranslate">
+\[\alpha(\Theta, d) \equiv \exp\left[-\frac{1}{2}\sum_i \left&lt;h^0_i, h^0_i\right&gt; + &lt;d_i, d_i\right&gt;\right],\]</div>
+<p>we can marginalize the posterior over <span class="math notranslate">\(\phi\)</span>:</p>
+<div class="math notranslate">
+\[\begin{split}p(\Theta|d) &amp;\propto p(\Theta)\alpha(\Theta,d)\frac{1}{2\pi}\int_{0}^{2\pi}\exp\left[\Re \left\{ e^{-i\phi} \sum_i O(h^0_i, d_i)\right\}\right]\mathrm{d}\phi \\
+&amp;\propto p(\Theta)\alpha(\Theta, d)\frac{1}{2\pi} \int_{0}^{2\pi}\exp\left[x(\Theta,d)\cos(\phi) + y(\Theta, d)\sin(\phi)\right]\mathrm{d}\phi.\end{split}\]</div>
+<p>The integral in the last line is equal to <span class="math notranslate">\(2\pi I_0(\sqrt{x^2+y^2})\)</span>,
+where <span class="math notranslate">\(I_0\)</span> is the modified Bessel function of the first kind. Thus
+the marginalized log posterior is:</p>
+<div class="math notranslate">
+\[\log p(\Theta|d) \propto \log p(\Theta) + I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\sum_i\left[ \left&lt;h^0_i, h^0_i\right&gt; - \left&lt;d_i, d_i\right&gt; \right]\]</div>
+<p>This class computes the above expression for the log likelihood.</p>
+<dl class="method">
+<dt id="pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.loglr">
+<code class="descname">loglr</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#MarginalizedPhaseGaussianLikelihood.loglr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.loglr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the log likelihood ratio,</p>
+<div class="math notranslate">
+\[\log \mathcal{L}(\Theta) = I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\left&lt;h^0_i, h^0_i\right&gt;,\]</div>
+<p>at the given point in parameter space <span class="math notranslate">\(\Theta\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should give the values of each parameter to
+evaluate.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the log likelihood ratio evaluated at the given point.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.float64</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.name">
+<code class="descname">name</code><em class="property"> = 'marginalized_phase'</em><a class="headerlink" href="#pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3151,7 +3221,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 06, 2018.
+      Last updated on Apr 09, 2018.
 
     </p>
   </div>
@@ -3173,7 +3243,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'064451',
+            VERSION:'8a61ce',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
