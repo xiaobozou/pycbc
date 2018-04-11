@@ -37,6 +37,14 @@ pycbc.bin\_utils module
     :undoc-members:
     :show-inheritance:
 
+pycbc.boundaries module
+-----------------------
+
+.. automodule:: pycbc.boundaries
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pycbc.conversions module
 ------------------------
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.configuration &mdash; PyCBC f9bba7 documentation</title>
+  <title>pycbc.workflow.configuration &mdash; PyCBC e4ddbf documentation</title>
   
 
   
@@ -1168,7 +1168,34 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">except</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="WorkflowConfigParser.add_config_opts_to_parser"><a class="viewcode-back" href="../../../workflow/initialization.html#pycbc.workflow.configuration.WorkflowConfigParser.add_config_opts_to_parser">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">add_config_opts_to_parser</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds options for configuration files to the given parser.&quot;&quot;&quot;</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--config-files&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
+                            <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A file parsable by &quot;</span>
+                                 <span class="s2">&quot;pycbc.workflow.WorkflowConfigParser.&quot;</span><span class="p">)</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--config-overrides&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
+                            <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECTION:OPTION:VALUE&quot;</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List of section:option:value combinations &quot;</span>
+                                 <span class="s2">&quot;to add into the configuration file.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WorkflowConfigParser.from_cli"><a class="viewcode-back" href="../../../workflow/initialization.html#pycbc.workflow.configuration.WorkflowConfigParser.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads a config file from the given options, with overrides applied.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># read configuration file</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Reading configuration file&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">overrides</span> <span class="o">=</span> <span class="p">[</span><span class="n">override</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">override</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">overrides</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">config_files</span><span class="p">,</span> <span class="n">overrides</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -1204,7 +1231,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'f9bba7',
+            VERSION:'e4ddbf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

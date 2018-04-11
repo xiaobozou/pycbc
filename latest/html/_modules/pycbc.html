@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc &mdash; PyCBC f9bba7 documentation</title>
+  <title>pycbc &mdash; PyCBC e4ddbf documentation</title>
   
 
   
@@ -302,6 +302,10 @@
 
 <span class="n">DYN_RANGE_FAC</span> <span class="o">=</span>  <span class="mf">5.9029581035870565e+20</span>
 
+<span class="c1"># String used to separate parameters in configuration file section headers.</span>
+<span class="c1"># This is used by the distributions and transforms modules</span>
+<span class="n">VARARGS_DELIM</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;INITIAL_LOG_LEVEL&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">level</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;INITIAL_LOG_LEVEL&quot;</span><span class="p">]))</span>
@@ -387,7 +391,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'f9bba7',
+            VERSION:'e4ddbf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

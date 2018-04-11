@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Pycbc’s workflow module configuration file(s) and command line interface &mdash; PyCBC f9bba7 documentation</title>
+  <title>Pycbc’s workflow module configuration file(s) and command line interface &mdash; PyCBC e4ddbf documentation</title>
   
 
   
@@ -469,6 +469,12 @@ workflow construction. This module is described in the page here:
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">glue.pipeline.DeepCopyableConfigParser</span></code></p>
 <p>This is a sub-class of glue.pipeline.DeepCopyableConfigParser, which lets
 us add a few additional helper features that are useful in workflows.</p>
+<dl class="staticmethod">
+<dt>
+<em class="property">static </em><code class="descname">add_config_opts_to_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycbc/workflow/configuration.html#WorkflowConfigParser.add_config_opts_to_parser"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Adds options for configuration files to the given parser.</p>
+</dd></dl>
+
 <dl class="method">
 <dt>
 <code class="descname">add_options_to_section</code><span class="sig-paren">(</span><em>section</em>, <em>items</em>, <em>overwrite_options=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycbc/workflow/configuration.html#WorkflowConfigParser.add_options_to_section"><span class="viewcode-link">[source]</span></a></dt>
@@ -538,6 +544,12 @@ using __init__()</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycbc/workflow/configuration.html#WorkflowConfigParser.from_cli"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Loads a config file from the given options, with overrides applied.</p>
 </dd></dl>
 
 <dl class="method">
@@ -887,7 +899,7 @@ that file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'f9bba7',
+            VERSION:'e4ddbf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

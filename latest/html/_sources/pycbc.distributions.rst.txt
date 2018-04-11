@@ -20,14 +20,6 @@ pycbc.distributions.arbitrary module
     :undoc-members:
     :show-inheritance:
 
-pycbc.distributions.boundaries module
--------------------------------------
-
-.. automodule:: pycbc.distributions.boundaries
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.distributions.bounded module
 ----------------------------------
 

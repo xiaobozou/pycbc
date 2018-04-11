@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.angular &mdash; PyCBC f9bba7 documentation</title>
+  <title>pycbc.distributions.angular &mdash; PyCBC e4ddbf documentation</title>
   
 
   
@@ -221,7 +221,8 @@
     <span class="kn">from</span> <span class="nn">ConfigParser</span> <span class="k">import</span> <span class="n">Error</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">configparser</span> <span class="k">import</span> <span class="n">Error</span>
-<span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">boundaries</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">VARARGS_DELIM</span> 
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">boundaries</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">bounded</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">uniform</span>
 
@@ -361,7 +362,7 @@
 <span class="sd">            Name of the section in the configuration file.</span>
 <span class="sd">        variable_args : str</span>
 <span class="sd">            The names of the parameters for this distribution, separated by</span>
-<span class="sd">            `prior.VARARGS_DELIM`. These must appear in the &quot;tag&quot; part</span>
+<span class="sd">            ``VARARGS_DELIM``. These must appear in the &quot;tag&quot; part</span>
 <span class="sd">            of the section header.</span>
 
 <span class="sd">        Returns</span>
@@ -744,7 +745,7 @@
 <span class="sd">            The name of the section.</span>
 <span class="sd">        variable_args : str</span>
 <span class="sd">            The names of the parameters for this distribution, separated by</span>
-<span class="sd">            `prior.VARARGS_DELIM`. These must appear in the &quot;tag&quot; part</span>
+<span class="sd">            ``VARARGS_DELIM``. These must appear in the &quot;tag&quot; part</span>
 <span class="sd">            of the section header.</span>
 
 <span class="sd">        Returns</span>
@@ -753,7 +754,7 @@
 <span class="sd">            A distribution instance from the pycbc.inference.prior module.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tag</span> <span class="o">=</span> <span class="n">variable_args</span>
-        <span class="n">variable_args</span> <span class="o">=</span> <span class="n">variable_args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">bounded</span><span class="o">.</span><span class="n">VARARGS_DELIM</span><span class="p">)</span>
+        <span class="n">variable_args</span> <span class="o">=</span> <span class="n">variable_args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">VARARGS_DELIM</span><span class="p">)</span>
 
         <span class="c1"># get the variables that correspond to the polar/azimuthal angles</span>
         <span class="k">try</span><span class="p">:</span>
@@ -826,7 +827,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'f9bba7',
+            VERSION:'e4ddbf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

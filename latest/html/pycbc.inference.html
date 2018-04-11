@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC f9bba7 documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC e4ddbf documentation</title>
   
 
   
@@ -158,6 +158,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pycbc.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.bin_utils">pycbc.bin_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.boundaries">pycbc.boundaries module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.conversions">pycbc.conversions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.coordinates">pycbc.coordinates module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.cosmology">pycbc.cosmology module</a></li>
@@ -1472,12 +1473,6 @@ evaluate.</td>
 <span id="pycbc-inference-option-utils-module"></span><h2>pycbc.inference.option_utils module<a class="headerlink" href="#module-pycbc.inference.option_utils" title="Permalink to this headline">¶</a></h2>
 <p>This module contains standard options used for inference-related programs.</p>
 <dl class="function">
-<dt id="pycbc.inference.option_utils.add_config_opts_to_parser">
-<code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">add_config_opts_to_parser</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#add_config_opts_to_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.add_config_opts_to_parser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds options for the configuration files to the given parser.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="pycbc.inference.option_utils.add_density_option_group">
 <code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">add_density_option_group</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#add_density_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.add_density_option_group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the options needed to configure contours and density colour map.</p>
@@ -1558,26 +1553,6 @@ tables.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.inference.option_utils.config_parser_from_cli">
-<code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">config_parser_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#config_parser_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.config_parser_from_cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads a config file from the given options, applying any overrides
-specified. Specifically, config files are loaded from the <cite>–config-files</cite>
-options while overrides are loaded from <cite>–config-overrides</cite>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.inference.option_utils.convert_liststring_to_list">
-<code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">convert_liststring_to_list</code><span class="sig-paren">(</span><em>lstring</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#convert_liststring_to_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.convert_liststring_to_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if an argument of the configuration file is a string of a list
-and returns the corresponding list (of strings).</p>
-<p>The argument is considered to be a list if it starts with ‘[‘ and ends
-with ‘]’. List elements should be comma separated. For example, passing
-<cite>‘[foo bar, cat]’</cite> will result in <cite>[‘foo bar’, ‘cat’]</cite> being returned. If
-the argument does not start and end with ‘[‘ and ‘]’, the argument will
-just be returned as is.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1747,37 +1722,6 @@ were provided, will return an empty dictionary.</li>
 were specified in the –mins option will be included; if no parameters
 were provided, will return an empty dictionary.</li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.inference.option_utils.read_args_from_config">
-<code class="descclassname">pycbc.inference.option_utils.</code><code class="descname">read_args_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section_group=None</em>, <em>prior_section='prior'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/option_utils.html#read_args_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.option_utils.read_args_from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given an open config file, loads the static and variable arguments to
-use in the parameter estmation run.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config parser to read from.</li>
-<li><strong>section_group</strong> (<em>{None</em><em>, </em><em>str}</em>) – When reading the config file, only read from sections that begin with
-<cite>{section_group}_</cite>. For example, if <cite>section_group=’foo’</cite>, the
-variable arguments will be retrieved from section
-<cite>[foo_variable_args]</cite>. If None, no prefix will be appended to section
-names.</li>
-<li><strong>prior_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Check that priors exist in the given section. Default is ‘prior.’</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>variable_args</strong> (<em>list</em>) – The names of the parameters to vary in the PE run.</li>
-<li><strong>static_args</strong> (<em>dict</em>) – Dictionary of names -&gt; values giving the parameters to keep fixed.</li>
-</ul>
-</p>
 </td>
 </tr>
 </tbody>
@@ -3243,7 +3187,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'f9bba7',
+            VERSION:'e4ddbf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
