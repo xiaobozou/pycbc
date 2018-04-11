@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler_emcee &mdash; PyCBC e4ddbf documentation</title>
+  <title>pycbc.inference.sampler_emcee &mdash; PyCBC f31028 documentation</title>
   
 
   
@@ -223,6 +223,8 @@
 <span class="sd">This modules provides classes and functions for using the emcee sampler</span>
 <span class="sd">packages for parameter estimation.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">string_types</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">pycbc.inference.sampler_base</span> <span class="k">import</span> <span class="n">BaseMCMCSampler</span><span class="p">,</span> <span class="n">_check_fileformat</span>
@@ -1063,7 +1065,7 @@
         <span class="n">acfs</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">temps</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="n">temps</span><span class="p">]</span>
@@ -1272,7 +1274,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'e4ddbf',
+            VERSION:'f31028',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
