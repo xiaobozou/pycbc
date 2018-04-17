@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.pnutils &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.pnutils &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -267,9 +267,9 @@
 <span class="sd">    Basically it can be shown that:</span>
 
 <span class="sd">    m2^3 - a(m2 + m1) = 0</span>
-<span class="sd"> </span>
+
 <span class="sd">    where</span>
-<span class="sd">  </span>
+
 <span class="sd">    a = Mc^5 / m1^3</span>
 
 <span class="sd">    this has 3 solutions but only one will be real.</span>
@@ -316,7 +316,7 @@
 <div class="viewcode-block" id="A3"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.A3">[docs]</a><span class="k">def</span> <span class="nf">A3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;another parameter used for chirp times&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">_a3</span><span class="p">(</span><span class="n">f_lower</span><span class="p">)</span></div>
-  
+
 <div class="viewcode-block" id="mass1_mass2_to_tau0_tau3"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.mass1_mass2_to_tau0_tau3">[docs]</a><span class="k">def</span> <span class="nf">mass1_mass2_to_tau0_tau3</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">):</span>
     <span class="n">tau0</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">tau0_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
     <span class="n">tau3</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">tau3_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
@@ -388,7 +388,7 @@
     <span class="k">return</span> <span class="n">distance</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PC_SI</span></div>
 
 <div class="viewcode-block" id="megaparsecs_to_meters"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.megaparsecs_to_meters">[docs]</a><span class="k">def</span> <span class="nf">megaparsecs_to_meters</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">parsecs_to_meters</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span>   </div>
+    <span class="k">return</span> <span class="n">parsecs_to_meters</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span></div>
 
 <div class="viewcode-block" id="velocity_to_frequency"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.velocity_to_frequency">[docs]</a><span class="k">def</span> <span class="nf">velocity_to_frequency</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="p">)</span></div>
@@ -398,7 +398,7 @@
 
 <div class="viewcode-block" id="f_SchwarzISCO"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_SchwarzISCO">[docs]</a><span class="k">def</span> <span class="nf">f_SchwarzISCO</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Innermost stable circular orbit (ISCO) for a test particle </span>
+<span class="sd">    Innermost stable circular orbit (ISCO) for a test particle</span>
 <span class="sd">    orbiting a Schwarzschild black hole</span>
 
 <span class="sd">    Parameters</span>
@@ -415,8 +415,8 @@
 
 <div class="viewcode-block" id="f_BKLISCO"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_BKLISCO">[docs]</a><span class="k">def</span> <span class="nf">f_BKLISCO</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Mass ratio dependent ISCO derived from estimates of the final spin </span>
-<span class="sd">    of a merged black hole in a paper by Buonanno, Kidder, Lehner </span>
+<span class="sd">    Mass ratio dependent ISCO derived from estimates of the final spin</span>
+<span class="sd">    of a merged black hole in a paper by Buonanno, Kidder, Lehner</span>
 <span class="sd">    (arXiv:0709.3839).  See also arxiv:0801.4297v2 eq.(5)</span>
 
 <span class="sd">    Parameters</span>
@@ -454,8 +454,8 @@
 
 <div class="viewcode-block" id="f_ERD"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_ERD">[docs]</a><span class="k">def</span> <span class="nf">f_ERD</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Effective RingDown frequency studied in Pan et al. (arXiv:0704.1964) </span>
-<span class="sd">    found to give good fit between stationary-phase templates and </span>
+<span class="sd">    Effective RingDown frequency studied in Pan et al. (arXiv:0704.1964)</span>
+<span class="sd">    found to give good fit between stationary-phase templates and</span>
 <span class="sd">    numerical relativity waveforms [NB equal-mass &amp; nonspinning!]</span>
 <span class="sd">    Equal to 1.07*omega_220/2*pi</span>
 
@@ -473,9 +473,9 @@
 
 <div class="viewcode-block" id="f_FRD"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_FRD">[docs]</a><span class="k">def</span> <span class="nf">f_FRD</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fundamental RingDown frequency calculated from the Berti, Cardoso and </span>
-<span class="sd">    Will (gr-qc/0512160) value for the omega_220 QNM frequency using </span>
-<span class="sd">    mass-ratio dependent fits to the final BH mass and spin from Buonanno </span>
+<span class="sd">    Fundamental RingDown frequency calculated from the Berti, Cardoso and</span>
+<span class="sd">    Will (gr-qc/0512160) value for the omega_220 QNM frequency using</span>
+<span class="sd">    mass-ratio dependent fits to the final BH mass and spin from Buonanno</span>
 <span class="sd">    et al. (arXiv:0706.3732) : see also InspiralBankGeneration.c</span>
 
 <span class="sd">    Parameters</span>
@@ -497,7 +497,7 @@
 
 <div class="viewcode-block" id="f_LRD"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_LRD">[docs]</a><span class="k">def</span> <span class="nf">f_LRD</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Lorentzian RingDown frequency = 1.2*FRD which captures part of </span>
+<span class="sd">    Lorentzian RingDown frequency = 1.2*FRD which captures part of</span>
 <span class="sd">    the Lorentzian tail from the decay of the QNMs</span>
 
 <span class="sd">    Parameters</span>
@@ -521,7 +521,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    freqfunc : lalsimulation FrequencyFunction wrapped object e.g. </span>
+<span class="sd">    freqfunc : lalsimulation FrequencyFunction wrapped object e.g.</span>
 <span class="sd">        lalsimulation.fEOBNRv2RD</span>
 <span class="sd">    m1 : float-ish, i.e. castable to float</span>
 <span class="sd">        First component mass in solar masses</span>
@@ -579,7 +579,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    approx : lalsimulation approximant wrapped object e.g. </span>
+<span class="sd">    approx : lalsimulation approximant wrapped object e.g.</span>
 <span class="sd">        lalsimulation.EOBNRv2</span>
 <span class="sd">    m1 : float-ish, i.e. castable to float</span>
 <span class="sd">        First component mass in solar masses</span>
@@ -607,8 +607,8 @@
 <div class="viewcode-block" id="get_final_freq"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.get_final_freq">[docs]</a><span class="k">def</span> <span class="nf">get_final_freq</span><span class="p">(</span><span class="n">approx</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the LALSimulation function which evaluates the final</span>
-<span class="sd">    (highest) frequency for a given approximant using given template </span>
-<span class="sd">    parameters. </span>
+<span class="sd">    (highest) frequency for a given approximant using given template</span>
+<span class="sd">    parameters.</span>
 <span class="sd">    NOTE: TaylorTx and TaylorFx are currently all given an ISCO cutoff !!</span>
 
 <span class="sd">    Parameters</span>
@@ -632,7 +632,7 @@
     <span class="n">lalsim_approx</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">GetApproximantFromString</span><span class="p">(</span><span class="n">approx</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_vec_get_final_freq</span><span class="p">(</span><span class="n">lalsim_approx</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span></div>
 
-<span class="c1"># Dictionary of functions with uniform API taking a </span>
+<span class="c1"># Dictionary of functions with uniform API taking a</span>
 <span class="c1"># parameter dict indexed on mass1, mass2, spin1z, spin2z</span>
 <span class="n">named_frequency_cutoffs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1"># functions depending on the total mass alone</span>
@@ -752,7 +752,7 @@
         <span class="n">f_high</span> <span class="o">=</span> <span class="n">f_SchwarzISCO</span><span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span>
         <span class="n">track_f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">f_low</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">f_high</span><span class="p">),</span>
                                  <span class="n">n_points</span><span class="p">)</span>
-        <span class="n">track_t</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">findchirp_chirptime</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">mass1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass2</span><span class="p">),</span> 
+        <span class="n">track_t</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">findchirp_chirptime</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">mass1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass2</span><span class="p">),</span>
                                         <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="n">pn_2order</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">track_f</span><span class="p">])</span>
     <span class="k">elif</span> <span class="n">approximant</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SEOBNRv2&#39;</span><span class="p">,</span> <span class="s1">&#39;SEOBNRv2_ROM_DoubleSpin&#39;</span><span class="p">,</span>
                          <span class="s1">&#39;SEOBNRv2_ROM_DoubleSpin_HI&#39;</span><span class="p">]:</span>
@@ -783,7 +783,7 @@
 
 <span class="k">def</span> <span class="nf">_energy_coeffs</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the center-of-mass energy coefficients up to 3.0pN (2.5pN spin)</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mtot</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="n">m1</span><span class="o">*</span><span class="n">m2</span> <span class="o">/</span> <span class="p">(</span><span class="n">mtot</span><span class="o">*</span><span class="n">mtot</span><span class="p">)</span>
     <span class="n">chi</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span><span class="o">*</span><span class="n">chi1</span> <span class="o">+</span> <span class="n">m2</span><span class="o">*</span><span class="n">chi2</span><span class="p">)</span> <span class="o">/</span> <span class="n">mtot</span>
@@ -802,7 +802,7 @@
                 <span class="o">+</span> <span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="mf">59.80034722222222</span> <span class="o">-</span> <span class="p">(</span><span class="mi">205</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mf">96.</span><span class="p">)</span>
 
     <span class="n">energy3</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="mf">113.</span> <span class="o">+</span> <span class="p">(</span><span class="mi">52</span><span class="o">*</span><span class="n">chisym</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">/</span><span class="mf">113.</span>
-    
+
     <span class="n">energy4</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="o">*</span><span class="n">sigma12</span><span class="p">)</span><span class="o">/</span><span class="mf">79.</span> <span class="o">-</span> <span class="p">(</span><span class="mi">16</span><span class="o">*</span><span class="n">sigmaqm</span><span class="p">)</span><span class="o">/</span><span class="mf">81.</span>
     <span class="n">energy5</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">96</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="mf">113.</span> <span class="o">+</span> <span class="p">((</span><span class="o">-</span><span class="mi">124</span><span class="o">*</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="mf">339.</span> <span class="o">-</span> <span class="p">(</span><span class="mi">522</span><span class="o">*</span><span class="n">chisym</span><span class="p">)</span><span class="o">/</span><span class="mf">113.</span><span class="p">)</span><span class="o">*</span><span class="n">eta</span> \
                 <span class="o">-</span> <span class="p">(</span><span class="mi">710</span><span class="o">*</span><span class="n">chisym</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mf">339.</span>
@@ -810,7 +810,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">energy0</span><span class="p">,</span> <span class="n">energy2</span><span class="p">,</span> <span class="n">energy3</span><span class="p">,</span> <span class="n">energy4</span><span class="p">,</span> <span class="n">energy5</span><span class="p">,</span> <span class="n">energy6</span><span class="p">)</span>
 
 <div class="viewcode-block" id="meco_velocity"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.meco_velocity">[docs]</a><span class="k">def</span> <span class="nf">meco_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; </span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the velocity of the minimum energy cutoff for 3.5pN (2.5pN spin)</span>
 
 <span class="sd">    Parameters</span>
@@ -859,13 +859,13 @@
     <span class="n">dtdv0</span> <span class="o">=</span> <span class="mf">1.</span> <span class="c1"># FIXME: Wrong but doesn&#39;t matter for now.</span>
     <span class="n">dtdv2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">336.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">743.</span> <span class="o">+</span> <span class="mf">924.</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span>
     <span class="n">dtdv3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">+</span> <span class="n">beta</span>
-    <span class="n">dtdv4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3058673.</span> <span class="o">+</span> <span class="mf">5472432.</span><span class="o">*</span><span class="n">eta</span> <span class="o">+</span> <span class="mf">4353552.</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">/</span><span class="mf">1016064.</span> <span class="o">-</span> <span class="n">sigma12</span> <span class="o">-</span> <span class="n">sigmaqm</span> 
+    <span class="n">dtdv4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3058673.</span> <span class="o">+</span> <span class="mf">5472432.</span><span class="o">*</span><span class="n">eta</span> <span class="o">+</span> <span class="mf">4353552.</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">/</span><span class="mf">1016064.</span> <span class="o">-</span> <span class="n">sigma12</span> <span class="o">-</span> <span class="n">sigmaqm</span>
     <span class="n">dtdv5</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">672.</span><span class="p">)</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">7729.</span> <span class="o">+</span> <span class="mf">1092.</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">146597.</span><span class="o">*</span><span class="n">beta</span><span class="o">/</span><span class="mf">18984.</span> <span class="o">+</span> <span class="mf">42.</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">113.</span> <span class="o">-</span> <span class="mf">417307.</span><span class="o">*</span><span class="n">chisym</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">18984.</span> <span class="o">-</span> <span class="mf">1389.</span><span class="o">*</span><span class="n">chisym</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">226.</span><span class="p">)</span>
     <span class="n">dtdv6</span> <span class="o">=</span> <span class="mf">22.065</span> <span class="o">+</span> <span class="mf">165.416</span><span class="o">*</span><span class="n">eta</span> <span class="o">-</span> <span class="mf">2.20067</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span> <span class="o">+</span> <span class="mf">4.93152</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span>
     <span class="n">dtdv6log</span> <span class="o">=</span> <span class="mf">1712.</span><span class="o">/</span><span class="mf">315.</span>
     <span class="n">dtdv7</span> <span class="o">=</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="o">/</span><span class="mf">1016064.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">15419335.</span> <span class="o">-</span> <span class="mf">12718104.</span><span class="o">*</span><span class="n">eta</span> <span class="o">+</span> <span class="mf">4975824.</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="n">dtdv0</span><span class="p">,</span> <span class="n">dtdv2</span><span class="p">,</span> <span class="n">dtdv3</span><span class="p">,</span> <span class="n">dtdv4</span><span class="p">,</span> <span class="n">dtdv5</span><span class="p">,</span> <span class="n">dtdv6</span><span class="p">,</span> <span class="n">dtdv6log</span><span class="p">,</span> <span class="n">dtdv7</span><span class="p">)</span>    
+    <span class="k">return</span> <span class="p">(</span><span class="n">dtdv0</span><span class="p">,</span> <span class="n">dtdv2</span><span class="p">,</span> <span class="n">dtdv3</span><span class="p">,</span> <span class="n">dtdv4</span><span class="p">,</span> <span class="n">dtdv5</span><span class="p">,</span> <span class="n">dtdv6</span><span class="p">,</span> <span class="n">dtdv6log</span><span class="p">,</span> <span class="n">dtdv7</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">_dtdv_cutoff_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">):</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">dtdv2</span><span class="p">,</span> <span class="n">dtdv3</span><span class="p">,</span> <span class="n">dtdv4</span><span class="p">,</span> <span class="n">dtdv5</span><span class="p">,</span> <span class="n">dtdv6</span><span class="p">,</span> <span class="n">dtdv6log</span><span class="p">,</span> <span class="n">dtdv7</span> <span class="o">=</span> <span class="n">_dtdv_coeffs</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">)</span>
@@ -883,9 +883,9 @@
         <span class="k">return</span> <span class="n">bisect</span><span class="p">(</span><span class="n">dtdv_func</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">1.0</span>
-        
+
 <div class="viewcode-block" id="energy_coefficients"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.energy_coefficients">[docs]</a><span class="k">def</span> <span class="nf">energy_coefficients</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">s2z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">spin_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Return the energy coefficients. This assumes that the system has aligned spins only. </span>
+    <span class="sd">&quot;&quot;&quot; Return the energy coefficients. This assumes that the system has aligned spins only.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">implemented_phase_order</span> <span class="o">=</span> <span class="mi">7</span>
     <span class="n">implemented_spin_order</span> <span class="o">=</span> <span class="mi">7</span>
@@ -893,23 +893,23 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;pN coeffiecients of that order have not been implemented&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">phase_order</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">phase_order</span> <span class="o">=</span> <span class="n">implemented_phase_order</span>
-        
+
     <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;</span> <span class="n">implemented_spin_order</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;pN coeffiecients of that order have not been implemented&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">spin_order</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">spin_order</span> <span class="o">=</span> <span class="n">implemented_spin_order</span>
 
     <span class="n">qmdef1</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="n">qmdef2</span> <span class="o">=</span> <span class="mf">1.0</span>  
-    
+    <span class="n">qmdef2</span> <span class="o">=</span> <span class="mf">1.0</span>
+
     <span class="n">M</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span>
     <span class="n">dm</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span><span class="o">-</span><span class="n">m2</span><span class="p">)</span><span class="o">/</span><span class="n">M</span>
     <span class="n">m1M</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">/</span> <span class="n">M</span>
     <span class="n">m2M</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">/</span> <span class="n">M</span>
-    
+
     <span class="n">s1z</span> <span class="o">=</span> <span class="n">s1z</span> <span class="o">*</span> <span class="n">m1M</span> <span class="o">*</span> <span class="n">m1M</span>
     <span class="n">s2z</span> <span class="o">=</span> <span class="n">s2z</span> <span class="o">*</span> <span class="n">m2M</span> <span class="o">*</span> <span class="n">m2M</span>
-      
+
     <span class="n">_</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
     <span class="n">ecof</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">phase_order</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -931,60 +931,60 @@
               <span class="o">-</span> <span class="mf">205.0</span><span class="o">/</span><span class="mf">96.0</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="p">)</span> <span class="o">*</span> <span class="n">eta</span>  \
               <span class="o">-</span> <span class="p">(</span><span class="mf">155.0</span><span class="o">/</span><span class="mf">96.0</span><span class="p">)</span> <span class="o">*</span><span class="n">eta</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">-</span> <span class="mf">35.0</span><span class="o">/</span><span class="mf">5184.0</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">eta</span>
     <span class="c1"># Spin terms</span>
- 
+
     <span class="n">ESO15s1</span> <span class="o">=</span> <span class="mf">8.0</span><span class="o">/</span><span class="mf">3.0</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">m2</span><span class="o">/</span><span class="n">m1</span>
     <span class="n">ESO15s2</span> <span class="o">=</span> <span class="mf">8.0</span><span class="o">/</span><span class="mf">3.0</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">m1</span><span class="o">/</span><span class="n">m2</span>
-    
+
     <span class="n">ESS2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">eta</span>
     <span class="n">EQM2s1</span> <span class="o">=</span> <span class="n">qmdef1</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">m1M</span><span class="o">/</span><span class="n">m1M</span>
     <span class="n">EQM2s1L</span> <span class="o">=</span> <span class="o">-</span><span class="n">qmdef1</span><span class="o">*</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">m1M</span><span class="o">/</span><span class="n">m1M</span>
     <span class="c1">#EQM2s2 = qmdef2/2.0/m2M/m2M</span>
     <span class="n">EQM2s2L</span> <span class="o">=</span> <span class="o">-</span><span class="n">qmdef2</span><span class="o">*</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">m2M</span><span class="o">/</span><span class="n">m2M</span>
-    
+
     <span class="n">ESO25s1</span> <span class="o">=</span> <span class="mf">11.0</span> <span class="o">-</span> <span class="mf">61.0</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">9.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">dm</span><span class="o">/</span><span class="n">m1M</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.0</span> <span class="o">+</span> <span class="mf">10.</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
     <span class="n">ESO25s2</span> <span class="o">=</span> <span class="mf">11.0</span> <span class="o">-</span> <span class="mf">61.0</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">9.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">dm</span><span class="o">/</span><span class="n">m2M</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">-</span> <span class="mf">10.</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
-    
+
     <span class="n">ESO35s1</span> <span class="o">=</span> <span class="mf">135.0</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">-</span> <span class="mf">367.0</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">29.0</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">12.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">dm</span><span class="o">/</span><span class="n">m1M</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">39.0</span><span class="o">*</span><span class="n">eta</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">4.0</span><span class="p">)</span>
     <span class="n">ESO35s2</span> <span class="o">=</span> <span class="mf">135.0</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">-</span> <span class="mf">367.0</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">29.0</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">12.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">dm</span><span class="o">/</span><span class="n">m2M</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">4.0</span> <span class="o">+</span> <span class="mf">39.0</span><span class="o">*</span><span class="n">eta</span> <span class="o">-</span> <span class="mf">5.0</span><span class="o">*</span><span class="n">eta</span><span class="o">*</span><span class="n">eta</span><span class="o">/</span><span class="mf">4.0</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;=</span><span class="mi">3</span><span class="p">:</span>
-        <span class="n">ecof</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ESO15s1</span> <span class="o">*</span> <span class="n">s1z</span> <span class="o">+</span> <span class="n">ESO15s2</span> <span class="o">*</span> <span class="n">s2z</span> 
-    <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;=</span><span class="mi">4</span><span class="p">:</span>   
+        <span class="n">ecof</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ESO15s1</span> <span class="o">*</span> <span class="n">s1z</span> <span class="o">+</span> <span class="n">ESO15s2</span> <span class="o">*</span> <span class="n">s2z</span>
+    <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;=</span><span class="mi">4</span><span class="p">:</span>
         <span class="n">ecof</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ESS2</span> <span class="o">*</span> <span class="p">(</span><span class="n">s1z</span><span class="o">*</span><span class="n">s2z</span> <span class="o">-</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">s1z</span><span class="o">*</span><span class="n">s2z</span><span class="p">)</span>
         <span class="n">ecof</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="n">EQM2s1</span><span class="o">*</span><span class="n">s1z</span><span class="o">*</span><span class="n">s1z</span> <span class="o">+</span> <span class="n">EQM2s1</span><span class="o">*</span><span class="n">s2z</span><span class="o">*</span><span class="n">s2z</span> <span class="o">+</span> <span class="n">EQM2s1L</span><span class="o">*</span><span class="n">s1z</span><span class="o">*</span><span class="n">s1z</span> <span class="o">+</span> <span class="n">EQM2s2L</span><span class="o">*</span><span class="n">s2z</span><span class="o">*</span><span class="n">s2z</span>
     <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>
         <span class="n">ecof</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">ESO25s1</span><span class="o">*</span><span class="n">s1z</span> <span class="o">+</span> <span class="n">ESO25s2</span><span class="o">*</span><span class="n">s2z</span>
     <span class="k">if</span> <span class="n">spin_order</span> <span class="o">&gt;=</span><span class="mi">7</span><span class="p">:</span>
-        <span class="n">ecof</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ESO35s1</span><span class="o">*</span><span class="n">s1z</span> <span class="o">+</span> <span class="n">ESO35s2</span><span class="o">*</span><span class="n">s2z</span> 
-        
+        <span class="n">ecof</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ESO35s1</span><span class="o">*</span><span class="n">s1z</span> <span class="o">+</span> <span class="n">ESO35s2</span><span class="o">*</span><span class="n">s2z</span>
+
     <span class="k">return</span> <span class="n">ecof</span></div>
-    
+
 <div class="viewcode-block" id="energy"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.energy">[docs]</a><span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">s1z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">s2z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">spin_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">ecof</span> <span class="o">=</span> <span class="n">energy_coefficients</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="n">phase_order</span><span class="p">,</span> <span class="n">spin_order</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="n">amp</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span>
     <span class="n">e</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ecof</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">e</span> <span class="o">+=</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">ecof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  
-            
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">ecof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
     <span class="k">return</span> <span class="n">e</span> <span class="o">*</span> <span class="n">amp</span></div>
-    
+
 <div class="viewcode-block" id="meco2"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.meco2">[docs]</a><span class="k">def</span> <span class="nf">meco2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">s2z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">spin_order</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">ecof</span> <span class="o">=</span> <span class="n">energy_coefficients</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="n">phase_order</span><span class="p">,</span> <span class="n">spin_order</span><span class="p">)</span>
-    
+
     <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
         <span class="n">de</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ecof</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">de</span> <span class="o">+=</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">*</span> <span class="n">ecof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>  
- 
+            <span class="n">de</span> <span class="o">+=</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">1.0</span><span class="p">)</span><span class="o">*</span> <span class="n">ecof</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">de</span>
 
     <span class="k">return</span> <span class="n">bisect</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span></div>
-    
+
 
 <div class="viewcode-block" id="t2_cutoff_velocity"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.t2_cutoff_velocity">[docs]</a><span class="k">def</span> <span class="nf">t2_cutoff_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">meco_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="n">m2</span><span class="p">,</span><span class="n">chi1</span><span class="p">,</span><span class="n">chi2</span><span class="p">),</span> <span class="n">_dtdv_cutoff_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="n">m2</span><span class="p">,</span><span class="n">chi1</span><span class="p">,</span><span class="n">chi2</span><span class="p">))</span></div>
-    
+
 <div class="viewcode-block" id="t2_cutoff_frequency"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.t2_cutoff_frequency">[docs]</a><span class="k">def</span> <span class="nf">t2_cutoff_frequency</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">velocity_to_frequency</span><span class="p">(</span><span class="n">t2_cutoff_velocity</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">),</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span></div>
 
@@ -1011,7 +1011,7 @@
 
 <div class="viewcode-block" id="hybridEnergy"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.hybridEnergy">[docs]</a><span class="k">def</span> <span class="nf">hybridEnergy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">chi1</span><span class="p">,</span> <span class="n">chi2</span><span class="p">,</span> <span class="n">qm1</span><span class="p">,</span> <span class="n">qm2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return hybrid MECO energy.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Return the hybrid energy [eq. (6)] whose minimum defines the hybrid MECO</span>
 <span class="sd">    up to 3.5PN (including the 3PN spin-spin)</span>
 
@@ -1160,7 +1160,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -1182,7 +1182,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.record &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.io.record &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -251,7 +251,7 @@
 <span class="c1"># the equivalent of None. This can be problematic for fields that store ids:</span>
 <span class="c1"># if an array has an id field with value 0, it isn&#39;t clear if this is because</span>
 <span class="c1"># the id is the first element, or if no id was set. To clear up the ambiguity,</span>
-<span class="c1"># we define here an integer to indicate &#39;id not set&#39;. </span>
+<span class="c1"># we define here an integer to indicate &#39;id not set&#39;.</span>
 <span class="n">ID_NOT_SET</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">EMPTY_OBJECT</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">VIRTUALFIELD_DTYPE</span> <span class="o">=</span> <span class="s1">&#39;VIRTUAL&#39;</span>
@@ -307,13 +307,13 @@
 <span class="sd">        True</span>
 <span class="sd">    &gt;&gt;&gt; FieldArrays.FieldArray.from_arrays([numpy.zeros(10)], dtype=[(&#39;foo&#39;, &#39;lstring&#39;)])</span>
 <span class="sd">    FieldArray([(0.0,), (0.0,), (0.0,), (0.0,), (0.0,), (0.0,), (0.0,), (0.0,),</span>
-<span class="sd">           (0.0,), (0.0,)], </span>
+<span class="sd">           (0.0,), (0.0,)],</span>
 <span class="sd">          dtype=[(&#39;foo&#39;, &#39;O&#39;)])</span>
 <span class="sd">    &gt;&gt;&gt; FieldArrays.lstring_as_obj(False)</span>
 <span class="sd">        False</span>
 <span class="sd">    &gt;&gt;&gt; FieldArrays.FieldArray.from_arrays([numpy.zeros(10)], dtype=[(&#39;foo&#39;, &#39;lstring&#39;)])</span>
 <span class="sd">    FieldArray([(&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,),</span>
-<span class="sd">           (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,)], </span>
+<span class="sd">           (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,), (&#39;0.0&#39;,)],</span>
 <span class="sd">          dtype=[(&#39;foo&#39;, &#39;S50&#39;)])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">true_or_false</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -354,7 +354,7 @@
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
-<span class="c1">#                           Helper functions </span>
+<span class="c1">#                           Helper functions</span>
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
@@ -419,7 +419,7 @@
 <span class="sd">        The set of the fields needed to evaluate the names.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fieldnames</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
-    <span class="c1"># we&#39;ll need the class that the array is an instance of to evaluate some </span>
+    <span class="c1"># we&#39;ll need the class that the array is an instance of to evaluate some</span>
     <span class="c1"># things</span>
     <span class="bp">cls</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="vm">__class__</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
@@ -637,7 +637,7 @@
                 <span class="n">names</span><span class="o">=</span><span class="n">group_name</span><span class="p">,</span> <span class="n">assubarray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="c1"># set the subarray names</span>
             <span class="n">input_array</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">thisdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-        <span class="c1"># remove the subarray names from names </span>
+        <span class="c1"># remove the subarray names from names</span>
         <span class="n">keep_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> \
             <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subarray_names</span><span class="p">]</span>
         <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">keep_idx</span><span class="p">]</span>
@@ -645,7 +645,7 @@
         <span class="k">if</span> <span class="n">names</span> <span class="o">==</span> <span class="p">[]:</span>
             <span class="k">return</span> <span class="n">input_array</span>
         <span class="c1"># also remove the subarray arrays</span>
-        <span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrays</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">keep_idx</span><span class="p">]</span> 
+        <span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrays</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">keep_idx</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">assubarray</span><span class="p">:</span>
         <span class="c1"># merge all of the arrays into a single array</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -689,7 +689,7 @@
 <span class="sd">    array, whereas here the default is to zero all of the elements (see</span>
 <span class="sd">    ``default_zero`` for definition of zero for different data types). If you</span>
 <span class="sd">    prefer an empty array, set ``zero=False`` when initializing.</span>
-<span class="sd">    </span>
+
 <span class="sd">    You cannot pass an array or sequence as input as you do with numpy.array.</span>
 <span class="sd">    To initialize an FieldArray from an already existing arrays, use the</span>
 <span class="sd">    ``FieldArray.from_arrays`` class method. To initialize from a list of</span>
@@ -778,7 +778,7 @@
 <span class="sd">    The fields property returns the names of both fields and virtual fields.</span>
 
 <span class="sd">    .. note::</span>
-<span class="sd">    </span>
+
 <span class="sd">        It can happen that a field, virtual field, or function in the</span>
 <span class="sd">        functionlib have that same name. In that case, precedence is: field,</span>
 <span class="sd">        virtual field, function. For example, if a function called &#39;foo&#39; is in</span>
@@ -806,7 +806,7 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    .. note:: For some predefined arrays with default fields, see the other</span>
-<span class="sd">        array classes defined below. </span>
+<span class="sd">        array classes defined below.</span>
 
 <span class="sd">    Create an empty array with four rows and two fields called `foo` and</span>
 <span class="sd">    `bar`, both of which are floats:</span>
@@ -818,13 +818,13 @@
 <span class="sd">    &gt;&gt;&gt; x[&#39;foo&#39;] = [1.,2.,3.,4.]</span>
 <span class="sd">    &gt;&gt;&gt; x[&#39;bar&#39;] = [5.,6.,7.,8.]</span>
 <span class="sd">    &gt;&gt;&gt; x</span>
-<span class="sd">    FieldArray([(1.0, 5.0), (2.0, 6.0), (3.0, 7.0), (4.0, 8.0)], </span>
+<span class="sd">    FieldArray([(1.0, 5.0), (2.0, 6.0), (3.0, 7.0), (4.0, 8.0)],</span>
 <span class="sd">          dtype=[(&#39;foo&#39;, &#39;&lt;f8&#39;), (&#39;bar&#39;, &#39;&lt;f8&#39;)])</span>
 <span class="sd">    &gt;&gt;&gt; x.foo</span>
 <span class="sd">        array([ 1.,  2.,  3.,  4.])</span>
 <span class="sd">    &gt;&gt;&gt; x[&#39;bar&#39;]</span>
 <span class="sd">        array([ 5.,  6.,  7.,  8.])</span>
-<span class="sd">    </span>
+
 <span class="sd">    Get the names of the fields:</span>
 
 <span class="sd">    &gt;&gt;&gt; x.fieldnames</span>
@@ -879,7 +879,7 @@
 <span class="sd">           (2.9999985694885254, 1.0578444004058838), ...,</span>
 <span class="sd">           (1.6748870611190796, 1.1758257150650024),</span>
 <span class="sd">           (1.0053188800811768, 1.0020891427993774),</span>
-<span class="sd">           (2.111064910888672, 1.0143394470214844)], </span>
+<span class="sd">           (2.111064910888672, 1.0143394470214844)],</span>
 <span class="sd">          dtype=[(&#39;mass1&#39;, &#39;&lt;f4&#39;), (&#39;mass2&#39;, &#39;&lt;f4&#39;)])</span>
 <span class="sd">    &gt;&gt;&gt; templates.sort(order=&#39;mass1&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; templates[[&#39;mass1&#39;, &#39;mass2&#39;]]</span>
@@ -887,7 +887,7 @@
 <span class="sd">           (1.0002814531326294, 1.0002814531326294),</span>
 <span class="sd">           (1.0005437135696411, 1.0005437135696411), ...,</span>
 <span class="sd">           (2.999999523162842, 1.371169090270996),</span>
-<span class="sd">           (2.999999523162842, 1.4072519540786743), (3.0, 1.4617927074432373)], </span>
+<span class="sd">           (2.999999523162842, 1.4072519540786743), (3.0, 1.4617927074432373)],</span>
 <span class="sd">          dtype=[(&#39;mass1&#39;, &#39;&lt;f4&#39;), (&#39;mass2&#39;, &#39;&lt;f4&#39;)])</span>
 
 <span class="sd">    Convert a LIGOLW xml table:</span>
@@ -901,7 +901,7 @@
 <span class="sd">    &gt;&gt;&gt; sim_array.waveform</span>
 <span class="sd">    array([u&#39;SpinTaylorT2&#39;, u&#39;SpinTaylorT2&#39;, u&#39;SpinTaylorT2&#39;, ...,</span>
 <span class="sd">           u&#39;SpinTaylorT2&#39;, u&#39;SpinTaylorT2&#39;, u&#39;SpinTaylorT2&#39;], dtype=object)</span>
-<span class="sd">    </span>
+
 <span class="sd">    &gt;&gt;&gt; sim_array = FieldArray.from_ligolw_table(sim_table, columns=[&#39;simulation_id&#39;, &#39;mass1&#39;, &#39;mass2&#39;])</span>
 <span class="sd">    &gt;&gt;&gt; sim_array</span>
 <span class="sd">    FieldArray([(0, 2.274406909942627, 2.6340370178222656),</span>
@@ -909,7 +909,7 @@
 <span class="sd">           (2, 1.6150710582733154, 2.2336490154266357), ...,</span>
 <span class="sd">           (11607, 2.0504961013793945, 2.6019821166992188),</span>
 <span class="sd">           (11608, 2.3355419635772705, 1.2164380550384521),</span>
-<span class="sd">           (11609, 2.0273220539093018, 2.2453839778900146)], </span>
+<span class="sd">           (11609, 2.0273220539093018, 2.2453839778900146)],</span>
 <span class="sd">          dtype=[(&#39;simulation_id&#39;, &#39;&lt;i8&#39;), (&#39;mass1&#39;, &#39;&lt;f4&#39;), (&#39;mass2&#39;, &#39;&lt;f4&#39;)])</span>
 
 <span class="sd">    Add a field to the array:</span>
@@ -927,7 +927,7 @@
 <span class="sd">    variable-length strings, there are two options: 1. set the data type to</span>
 <span class="sd">    object, or 2. set the data type to a string with a fixed length larger</span>
 <span class="sd">    than the longest string in the input array.</span>
-<span class="sd">    </span>
+
 <span class="sd">    The first option, using objects, essentially causes the array to store a</span>
 <span class="sd">    pointer to the string.  This is the most flexible option, as it allows</span>
 <span class="sd">    strings in the array to be updated to any length. However, operations on</span>
@@ -935,7 +935,7 @@
 <span class="sd">    memory striding abilities (see `this question/answer on stackoverflow</span>
 <span class="sd">    &lt;http://stackoverflow.com/a/14639568/1366472&gt;`_ for details). Also,</span>
 <span class="sd">    numpy&#39;s support of object arrays is more limited.  In particular, prior</span>
-<span class="sd">    to version 1.9.2, you cannot create a view of an array that changes the </span>
+<span class="sd">    to version 1.9.2, you cannot create a view of an array that changes the</span>
 <span class="sd">    dtype if the array has any fields that are objects, even if the view does</span>
 <span class="sd">    not affect the object fields. (This has since been relaxed.)</span>
 
@@ -1092,7 +1092,7 @@
         <span class="k">return</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span>
 
 <div class="viewcode-block" id="FieldArray.sort"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.sort">[docs]</a>    <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;quicksort&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sort an array, in-place. </span>
+        <span class="sd">&quot;&quot;&quot;Sort an array, in-place.</span>
 
 <span class="sd">        This function extends the standard numpy record array in-place sort</span>
 <span class="sd">        to allow the basic use of Field array virtual fields. Only a single</span>
@@ -1137,7 +1137,7 @@
             <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">methods</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span></div>
-        
+
 <div class="viewcode-block" id="FieldArray.add_properties"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.add_properties">[docs]</a>    <span class="k">def</span> <span class="nf">add_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">methods</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a view of self with the given methods added as properties.</span>
 
@@ -1342,7 +1342,7 @@
         <span class="k">if</span> <span class="n">_default_types_status</span><span class="p">[</span><span class="s1">&#39;ilwd_as_int&#39;</span><span class="p">]:</span>
             <span class="n">input_array</span> <span class="o">=</span> \
                 <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="k">if</span> <span class="n">dt</span> <span class="o">!=</span> <span class="s1">&#39;ilwd:char&#39;</span>
-                       <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">))</span> 
+                       <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">))</span>
                        <span class="k">for</span> <span class="n">col</span><span class="p">,</span><span class="n">dt</span> <span class="ow">in</span> <span class="n">columns</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
                  <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1367,7 +1367,7 @@
 <span class="sd">            returned array will have shape `(k,l,m,n)` if `axis=0`, `(l,k,m,n)`</span>
 <span class="sd">            if `axis=1`, etc. Setting `axis=-1` will put the fields in the</span>
 <span class="sd">            last dimension. Default is 0.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        numpy.ndarray</span>
@@ -1427,7 +1427,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds the given arrays as new fields to self.  Returns a new instance</span>
 <span class="sd">        with the new fields added. Note: this array does not change; the</span>
-<span class="sd">        returned array is a new copy. </span>
+<span class="sd">        returned array is a new copy.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1459,7 +1459,7 @@
 <div class="viewcode-block" id="FieldArray.parse_boolargs"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.record.FieldArray.parse_boolargs">[docs]</a>    <span class="k">def</span> <span class="nf">parse_boolargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns an array populated by given values, with the indices of</span>
 <span class="sd">        those values dependent on given boolen tests on self.</span>
-<span class="sd">        </span>
+
 <span class="sd">        The given `args` should be a list of tuples, with the first element the</span>
 <span class="sd">        return value and the second argument a string that evaluates to either</span>
 <span class="sd">        True or False for each element in self.</span>
@@ -1470,11 +1470,11 @@
 <span class="sd">        then the returned array will have `1`s at the indices for</span>
 <span class="sd">        which `foo.bar &lt; 10`, `2`s where `foo.bar &lt; 20 and not foo.bar &lt; 10`,</span>
 <span class="sd">        and `3`s where `foo.bar &lt; 30 and not (foo.bar &lt; 10 or foo.bar &lt; 20)`.</span>
-<span class="sd">        </span>
+
 <span class="sd">        The last argument in the list may have &quot;else&quot;, an empty string, None,</span>
 <span class="sd">        or simply list a return value. In any of these cases, any element not</span>
 <span class="sd">        yet populated will be assigned the last return value.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        args : {(list of) tuples, value}</span>
@@ -1504,7 +1504,7 @@
 <span class="sd">        elements 1 and 4 are leftover):</span>
 
 <span class="sd">        &gt;&gt;&gt; arr.parse_boolargs((&#39;TaylorF2&#39;, &#39;mtotal&lt;4&#39;))</span>
-<span class="sd">            (array([&#39;TaylorF2&#39;, &#39;&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;&#39;], </span>
+<span class="sd">            (array([&#39;TaylorF2&#39;, &#39;&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;&#39;],</span>
 <span class="sd">            dtype=&#39;|S8&#39;),</span>
 <span class="sd">            array([1, 4]))</span>
 
@@ -1513,10 +1513,10 @@
 
 <span class="sd">        &gt;&gt;&gt; arr.parse_boolargs([(&#39;TaylorF2&#39;, &#39;mtotal&lt;4&#39;), (&#39;SEOBNRv2_ROM_DoubleSpin&#39;, &#39;else&#39;)])</span>
 <span class="sd">            (array([&#39;TaylorF2&#39;, &#39;SEOBNRv2_ROM_DoubleSpin&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;,</span>
-<span class="sd">            &#39;SEOBNRv2_ROM_DoubleSpin&#39;], </span>
+<span class="sd">            &#39;SEOBNRv2_ROM_DoubleSpin&#39;],</span>
 <span class="sd">            dtype=&#39;|S23&#39;),</span>
 <span class="sd">            array([], dtype=int64))</span>
-<span class="sd">        </span>
+
 <span class="sd">        The following will also return the same:</span>
 
 <span class="sd">        &gt;&gt;&gt; arr.parse_boolargs([(&#39;TaylorF2&#39;, &#39;mtotal&lt;4&#39;), (&#39;SEOBNRv2_ROM_DoubleSpin&#39;,)])</span>
@@ -1529,14 +1529,14 @@
 
 <span class="sd">        &gt;&gt;&gt; arr.parse_boolargs([(&#39;TaylorF2&#39;, &#39;mtotal&lt;3&#39;), (&#39;IMRPhenomD&#39;, &#39;mtotal&lt;4&#39;), &#39;SEOBNRv2_ROM_DoubleSpin&#39;])</span>
 <span class="sd">            (array([&#39;IMRPhenomD&#39;, &#39;SEOBNRv2_ROM_DoubleSpin&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;,</span>
-<span class="sd">            &#39;SEOBNRv2_ROM_DoubleSpin&#39;], </span>
+<span class="sd">            &#39;SEOBNRv2_ROM_DoubleSpin&#39;],</span>
 <span class="sd">            dtype=&#39;|S23&#39;),</span>
 <span class="sd">            array([], dtype=int64))</span>
 
 <span class="sd">        Just return `&quot;TaylorF2&quot;` for all elements:</span>
 
 <span class="sd">        &gt;&gt;&gt; arr.parse_boolargs(&#39;TaylorF2&#39;)</span>
-<span class="sd">            (array([&#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;], </span>
+<span class="sd">            (array([&#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;, &#39;TaylorF2&#39;],</span>
 <span class="sd">            dtype=&#39;|S8&#39;),</span>
 <span class="sd">            array([], dtype=int64))</span>
 
@@ -1565,13 +1565,13 @@
         <span class="n">mask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="n">leftovers</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">ii</span><span class="p">,(</span><span class="n">boolarg</span><span class="p">,</span><span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">bool_args</span><span class="p">,</span> <span class="n">return_vals</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">boolarg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">boolarg</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">boolarg</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;else&#39;</span><span class="p">:</span> 
+            <span class="k">if</span> <span class="n">boolarg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">boolarg</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="n">boolarg</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;else&#39;</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">ii</span><span class="o">+</span><span class="mi">1</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bool_args</span><span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;only the last item may not provide &quot;</span>
                         <span class="s2">&quot;any boolean arguments&quot;</span><span class="p">)</span>
                 <span class="n">mask</span> <span class="o">=</span> <span class="n">leftovers</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">mask</span> <span class="o">=</span> <span class="n">leftovers</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="p">[</span><span class="n">boolarg</span><span class="p">]</span> 
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">leftovers</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="p">[</span><span class="n">boolarg</span><span class="p">]</span>
             <span class="n">out</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
             <span class="n">leftovers</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">mask</span>
         <span class="k">return</span> <span class="n">out</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">leftovers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
@@ -1763,7 +1763,7 @@
             <span class="n">add_fields</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">([[</span><span class="n">name</span><span class="p">,</span> <span class="n">VIRTUALFIELD_DTYPE</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_virtualfields</span><span class="p">]))</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_staticfields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">+</span> <span class="n">add_fields</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        
+
 
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">additional_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">field_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1791,7 +1791,7 @@
             <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_needed_fieldnames</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
             <span class="n">names</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">sortdict</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sortdict</span>
                 <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
-            <span class="c1"># add the fields as the dtype argument for initializing </span>
+            <span class="c1"># add the fields as the dtype argument for initializing</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dtype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">fld</span><span class="p">,</span> <span class="n">default_fields</span><span class="p">[</span><span class="n">fld</span><span class="p">])</span> <span class="k">for</span> <span class="n">fld</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
         <span class="k">if</span> <span class="s1">&#39;dtype&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dtype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -1814,7 +1814,7 @@
 <span class="sd">        names : (list of) string(s)</span>
 <span class="sd">            The names of the fields to add. Must be a field in self&#39;s default</span>
 <span class="sd">            fields.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Other keyword args are any arguments passed to self&#39;s default fields.</span>
 
 <span class="sd">        Returns</span>
@@ -1836,7 +1836,7 @@
         <span class="n">arrays</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">dt</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-            <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="n">name</span><span class="p">,</span> <span class="n">dt</span><span class="p">)]))</span> 
+            <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="n">name</span><span class="p">,</span> <span class="n">dt</span><span class="p">)]))</span>
             <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_fields</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 
@@ -1882,7 +1882,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A FieldArray with some default fields and properties commonly used</span>
 <span class="sd">    by CBC waveforms. This may be initialized in one of 3 ways:</span>
-<span class="sd">    </span>
+
 <span class="sd">    1. With just the size of the array. In this case, the returned array will</span>
 <span class="sd">    have all of the default field names. Example:</span>
 
@@ -1926,7 +1926,7 @@
 
 <span class="sd">    &gt;&gt;&gt; warr = WaveformArray(10, dtype=[(&#39;foo&#39;, float)])</span>
 <span class="sd">    &gt;&gt;&gt; warr.fieldnames</span>
-<span class="sd">        (&#39;foo&#39;,)    </span>
+<span class="sd">        (&#39;foo&#39;,)</span>
 
 <span class="sd">    Additional fields can also be specified using the additional_fields</span>
 <span class="sd">    keyword argument. Example:</span>
@@ -2086,7 +2086,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -2108,7 +2108,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

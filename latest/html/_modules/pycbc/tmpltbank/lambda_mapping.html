@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.lambda_mapping &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.tmpltbank.lambda_mapping &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -295,7 +295,7 @@
 <span class="sd">    generate_mapping gives dict[key] = item this will give</span>
 <span class="sd">    dict[item] = key. Valid PN orders are:</span>
 <span class="sd">    {}</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    order : string</span>
@@ -319,7 +319,7 @@
 
 <div class="viewcode-block" id="get_ethinca_orders"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.lambda_mapping.get_ethinca_orders">[docs]</a><span class="k">def</span> <span class="nf">get_ethinca_orders</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the dictionary mapping TaylorF2 PN order names to twice-PN </span>
+<span class="sd">    Returns the dictionary mapping TaylorF2 PN order names to twice-PN</span>
 <span class="sd">    orders (powers of v/c)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ethinca_orders</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;zeroPN&quot;</span>           <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -334,13 +334,13 @@
 
 <div class="viewcode-block" id="ethinca_order_from_string"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.lambda_mapping.ethinca_order_from_string">[docs]</a><span class="k">def</span> <span class="nf">ethinca_order_from_string</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the integer giving twice the post-Newtonian order </span>
+<span class="sd">    Returns the integer giving twice the post-Newtonian order</span>
 <span class="sd">    used by the ethinca calculation. Currently valid only for TaylorF2 metric</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    order : string</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    int</span>
@@ -358,7 +358,7 @@
 <span class="sd">    Take a set of masses and spins and convert to the various lambda</span>
 <span class="sd">    coordinates that describe the orbital phase. Accepted PN orders are:</span>
 <span class="sd">    {}</span>
-<span class="sd"> </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    mass1 : float or array</span>
@@ -437,7 +437,7 @@
     <span class="n">phasing_arr</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimInspiralTaylorF2AlignedPhasingArray</span>\
         <span class="p">(</span><span class="n">mass1_v</span><span class="p">,</span> <span class="n">mass2_v</span><span class="p">,</span> <span class="n">spin1z_v</span><span class="p">,</span> <span class="n">spin2z_v</span><span class="p">,</span> <span class="n">lambda1_v</span><span class="p">,</span> <span class="n">lambda2_v</span><span class="p">,</span>
          <span class="n">dquadparam1_v</span><span class="p">,</span> <span class="n">dquadparam2_v</span><span class="p">)</span>
- 
+
     <span class="n">vec_len</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">PN_PHASING_SERIES_MAX_ORDER</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
     <span class="n">phasing_vs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_points</span><span class="p">,</span> <span class="n">vec_len</span><span class="p">])</span>
     <span class="n">phasing_vlogvs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_points</span><span class="p">,</span> <span class="n">vec_len</span><span class="p">])</span>
@@ -505,7 +505,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -527,7 +527,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

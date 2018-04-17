@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.ringdown &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.waveform.ringdown &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -263,12 +263,12 @@
     <span class="k">return</span> <span class="n">input_params</span></div>
 
 <div class="viewcode-block" id="lm_amps_phases"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_amps_phases">[docs]</a><span class="k">def</span> <span class="nf">lm_amps_phases</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Take input_params and return dictionaries with amplitudes and phases </span>
+    <span class="sd">&quot;&quot;&quot; Take input_params and return dictionaries with amplitudes and phases</span>
 <span class="sd">    of each overtone of a specific lm mode, checking that all of them are given.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
     <span class="n">amps</span><span class="p">,</span> <span class="n">phis</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
-    <span class="c1"># amp220 is always required, because the amplitudes of subdominant modes </span>
+    <span class="c1"># amp220 is always required, because the amplitudes of subdominant modes</span>
     <span class="c1"># are given as fractions of amp220.</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">amps</span><span class="p">[</span><span class="s1">&#39;220&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;amp220&#39;</span><span class="p">]</span>
@@ -315,7 +315,7 @@
 <span class="c1"># Functions to obtain f_0 and tau from mass and spin #########################</span>
 
 <div class="viewcode-block" id="get_lm_f0tau"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_lm_f0tau">[docs]</a><span class="k">def</span> <span class="nf">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode </span>
+    <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
     <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span><span class="n">qnmfreq</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
@@ -343,7 +343,7 @@
 <span class="c1"># Functions to obtain t_final and f_final #####################################</span>
 
 <div class="viewcode-block" id="qnm_time_decay"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.qnm_time_decay">[docs]</a><span class="k">def</span> <span class="nf">qnm_time_decay</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">decay</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the time at which the amplitude of the </span>
+    <span class="sd">&quot;&quot;&quot;Return the time at which the amplitude of the</span>
 <span class="sd">    ringdown falls to decay of the peak amplitude.</span>
 
 <span class="sd">    Parameters</span>
@@ -363,7 +363,7 @@
     <span class="k">return</span> <span class="o">-</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">decay</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="qnm_freq_decay"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.qnm_freq_decay">[docs]</a><span class="k">def</span> <span class="nf">qnm_freq_decay</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">decay</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the frequency at which the amplitude of the </span>
+    <span class="sd">&quot;&quot;&quot;Return the frequency at which the amplitude of the</span>
 <span class="sd">    ringdown falls to decay of the peak amplitude.</span>
 
 <span class="sd">    Parameters</span>
@@ -439,7 +439,7 @@
     <span class="n">f_final</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_max</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">if</span> <span class="n">f_final</span> <span class="o">&gt;</span> <span class="n">max_freq</span><span class="p">:</span>
         <span class="n">f_final</span> <span class="o">=</span> <span class="n">max_freq</span>
-    
+
     <span class="k">return</span> <span class="n">f_final</span></div>
 
 <div class="viewcode-block" id="lm_deltaf"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_deltaf">[docs]</a><span class="k">def</span> <span class="nf">lm_deltaf</span><span class="p">(</span><span class="n">damping_times</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
@@ -542,7 +542,7 @@
 <span class="sd">        amplitude is 1/1000 of the peak amplitude.</span>
 <span class="sd">    t_final : {None, float}, optional</span>
 <span class="sd">        The ending time of the output time series.</span>
-<span class="sd">        If None, it will be set to the time at which the amplitude is </span>
+<span class="sd">        If None, it will be set to the time at which the amplitude is</span>
 <span class="sd">        1/1000 of the peak amplitude.</span>
 
 <span class="sd">    Returns</span>
@@ -554,7 +554,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">qnm_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    
+
     <span class="n">f_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_0&#39;</span><span class="p">)</span>
     <span class="n">tau</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">)</span>
     <span class="n">amp</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;amp&#39;</span><span class="p">)</span>
@@ -642,7 +642,7 @@
 <span class="sd">        If None, it will be set to delta_f.</span>
 <span class="sd">    f_final : {None, float}, optional</span>
 <span class="sd">        The ending frequency of the output frequency series.</span>
-<span class="sd">        If None, it will be set to the frequency at which the amplitude is </span>
+<span class="sd">        If None, it will be set to the frequency at which the amplitude is</span>
 <span class="sd">        1/1000 of the peak amplitude.</span>
 
 <span class="sd">    Returns</span>
@@ -688,7 +688,7 @@
     <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">pi_sq</span> <span class="o">*</span> <span class="p">(</span> <span class="n">freqs</span><span class="o">*</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">f_0</span><span class="o">*</span><span class="n">f_0</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span><span class="o">*</span><span class="n">tau</span><span class="p">)</span>
     <span class="n">norm</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">denominator</span>
     <span class="k">if</span> <span class="n">t_0</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">time_shift</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">two_pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">t_0</span><span class="p">)</span> 
+        <span class="n">time_shift</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">two_pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">t_0</span><span class="p">)</span>
         <span class="n">norm</span> <span class="o">*=</span> <span class="n">time_shift</span>
 
     <span class="c1"># Analytical expression for the Fourier transform of the ringdown (damped sinusoid)</span>
@@ -727,7 +727,7 @@
 <span class="sd">        final taper being the superposition of all the tapers.</span>
 <span class="sd">    freqs : dict</span>
 <span class="sd">        {lmn:f_lmn} Dictionary of the central frequencies for each overtone,</span>
-<span class="sd">        as many as number of modes. </span>
+<span class="sd">        as many as number of modes.</span>
 <span class="sd">    taus : dict</span>
 <span class="sd">        {lmn:tau_lmn} Dictionary of the damping times for each overtone,</span>
 <span class="sd">        as many as number of modes.</span>
@@ -740,7 +740,7 @@
 <span class="sd">    amp220 : float</span>
 <span class="sd">        Amplitude of the fundamental 220 mode, needed for any lm.</span>
 <span class="sd">    amplmn : float</span>
-<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the</span>
 <span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
 <span class="sd">    philmn : float</span>
 <span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
@@ -753,7 +753,7 @@
 <span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
 <span class="sd">    t_final : {None, float}, optional</span>
 <span class="sd">        The ending time of the output time series.</span>
-<span class="sd">        If None, it will be set to the time at which the amplitude is </span>
+<span class="sd">        If None, it will be set to the time at which the amplitude is</span>
 <span class="sd">        1/1000 of the peak amplitude (the maximum of all modes).</span>
 
 <span class="sd">    Returns</span>
@@ -781,7 +781,7 @@
     <span class="n">t_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">delta_t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">lm_deltat</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">nmodes</span><span class="p">)])</span> 
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">lm_deltat</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">nmodes</span><span class="p">)])</span>
     <span class="k">if</span> <span class="n">t_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">t_final</span> <span class="o">=</span> <span class="n">lm_tfinal</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)])</span>
 
@@ -890,7 +890,7 @@
 
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
         <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span> <span class="o">=</span> <span class="n">get_fd_qnm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f_0</span><span class="o">=</span><span class="n">f_0</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
-                            <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> 
+                            <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
                             <span class="n">amp</span><span class="o">=</span><span class="n">amps</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
                             <span class="n">phi</span><span class="o">=</span><span class="n">phis</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
                             <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span>
@@ -933,7 +933,7 @@
 <span class="sd">    amp220 : float</span>
 <span class="sd">        Amplitude of the fundamental 220 mode.</span>
 <span class="sd">    amplmn : float</span>
-<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the</span>
 <span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
 <span class="sd">    philmn : float</span>
 <span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
@@ -1029,7 +1029,7 @@
 <span class="sd">    amp220 : float</span>
 <span class="sd">        Amplitude of the fundamental 220 mode.</span>
 <span class="sd">    amplmn : float</span>
-<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the</span>
 <span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
 <span class="sd">    philmn : float</span>
 <span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
@@ -1126,7 +1126,7 @@
 <span class="sd">    amp220 : float</span>
 <span class="sd">        Amplitude of the fundamental 220 mode.</span>
 <span class="sd">    amplmn : float</span>
-<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the</span>
 <span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
 <span class="sd">    philmn : float</span>
 <span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
@@ -1218,7 +1218,7 @@
 <span class="sd">    amp220 : float</span>
 <span class="sd">        Amplitude of the fundamental 220 mode.</span>
 <span class="sd">    amplmn : float</span>
-<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the</span>
 <span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
 <span class="sd">    philmn : float</span>
 <span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
@@ -1302,7 +1302,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -1324,7 +1324,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes.chisq_cpu &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.vetoes.chisq_cpu &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -234,9 +234,9 @@
 
 <div class="viewcode-block" id="chisq_accum_bin_numpy"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_numpy">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_numpy</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="n">chisq</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span></div>
-    
+
 <div class="viewcode-block" id="chisq_accum_bin_inline"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_inline">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_inline</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
-    
+
     <span class="n">chisq</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">chisq</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chisq</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
@@ -246,33 +246,33 @@
 <span class="s2">            chisq[i] += q[i].real()*q[i].real()+q[i].imag()*q[i].imag();</span>
 <span class="s2">        }</span>
 <span class="s2">    &quot;&quot;&quot;</span>
-    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
+    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span>
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                     <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
           <span class="p">)</span></div>
-          
+
 <span class="n">chisq_accum_bin</span> <span class="o">=</span> <span class="n">chisq_accum_bin_inline</span>
 
 <span class="n">point_chisq_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    int num_parallel_regions = 16;</span>
-<span class="s2">    </span>
-<span class="s2">    for (unsigned int r=0; r&lt;blen; r++){     </span>
+
+<span class="s2">    for (unsigned int r=0; r&lt;blen; r++){</span>
 <span class="s2">        int bstart = bins[r];</span>
 <span class="s2">        int bend = bins[r+1];</span>
 <span class="s2">        int blen = bend - bstart;</span>
-<span class="s2">        </span>
+
 <span class="s2">        TYPE* outr = (TYPE*) malloc(sizeof(TYPE)*n);</span>
 <span class="s2">        TYPE* outi = (TYPE*) malloc(sizeof(TYPE)*n);</span>
 <span class="s2">        for (int i=0; i&lt;n; i++){</span>
 <span class="s2">            outr[i] = 0;</span>
 <span class="s2">            outi[i] = 0;</span>
 <span class="s2">        }</span>
-<span class="s2">    </span>
+
 <span class="s2">        #pragma omp parallel for</span>
 <span class="s2">        for (unsigned int k=0; k&lt;num_parallel_regions; k++){</span>
 <span class="s2">            unsigned int start = blen * k / num_parallel_regions + bstart;</span>
 <span class="s2">            unsigned int end = blen * (k + 1) / num_parallel_regions + bstart;</span>
-<span class="s2">        </span>
+
 <span class="s2">            //start the cumulative rotations at the offset point</span>
 <span class="s2">            TYPE* pr = (TYPE*) malloc(sizeof(TYPE)*n);</span>
 <span class="s2">            TYPE* pi = (TYPE*) malloc(sizeof(TYPE)*n);</span>
@@ -281,7 +281,7 @@
 <span class="s2">            TYPE* outr_tmp = (TYPE*) malloc(sizeof(TYPE)*n);</span>
 <span class="s2">            TYPE* outi_tmp = (TYPE*) malloc(sizeof(TYPE)*n);</span>
 
-<span class="s2">            </span>
+
 <span class="s2">            for (int i=0; i&lt;n; i++){</span>
 <span class="s2">                pr[i] = cos(2 * 3.141592653 * shifts[i] * (start) / slen);</span>
 <span class="s2">                pi[i] = sin(2 * 3.141592653 * shifts[i] * (start) / slen);</span>
@@ -290,34 +290,34 @@
 <span class="s2">                outr_tmp[i] = 0;</span>
 <span class="s2">                outi_tmp[i] = 0;</span>
 <span class="s2">            }</span>
-<span class="s2">            </span>
+
 <span class="s2">            TYPE t1, t2, k1, k2, k3, vs, va;</span>
-<span class="s2">            </span>
+
 <span class="s2">            for (unsigned int j=start; j&lt;end; j++){</span>
 <span class="s2">                std::complex&lt;TYPE&gt; v = v1[j];</span>
 <span class="s2">                TYPE vr = v.real();</span>
-<span class="s2">                TYPE vi = v.imag();  </span>
+<span class="s2">                TYPE vi = v.imag();</span>
 <span class="s2">                vs = vr + vi;</span>
 <span class="s2">                va = vi - vr;</span>
-<span class="s2">                </span>
+
 <span class="s2">                for (int i=0; i&lt;n; i++){</span>
 <span class="s2">                    t1 = pr[i];</span>
 <span class="s2">                    t2 = pi[i];</span>
-<span class="s2">                    </span>
+
 <span class="s2">                    // Complex multiply pr[i] * v</span>
 <span class="s2">                    k1 = vr * (t1 + t2);</span>
 <span class="s2">                    k2 = t1 * va;</span>
 <span class="s2">                    k3 = t2 * vs;</span>
-<span class="s2">                                </span>
+
 <span class="s2">                    outr_tmp[i] += k1 - k3;</span>
 <span class="s2">                    outi_tmp[i] += k1 + k2;</span>
-<span class="s2">                    </span>
+
 <span class="s2">                    // phase shift for the next time point</span>
 <span class="s2">                    pr[i] = t1 * vsr[i] - t2 * vsi[i];</span>
-<span class="s2">                    pi[i] = t1 * vsi[i] + t2 * vsr[i]; </span>
-<span class="s2">                }                                              </span>
-<span class="s2">            } </span>
-<span class="s2">            </span>
+<span class="s2">                    pi[i] = t1 * vsi[i] + t2 * vsr[i];</span>
+<span class="s2">                }</span>
+<span class="s2">            }</span>
+
 <span class="s2">            #pragma omp critical</span>
 <span class="s2">            {</span>
 <span class="s2">                for (unsigned int i=0; i&lt;n; i++){</span>
@@ -325,22 +325,22 @@
 <span class="s2">                    outi[i] += outi_tmp[i];</span>
 <span class="s2">                }</span>
 <span class="s2">            }</span>
-<span class="s2">            </span>
+
 <span class="s2">            free(pr);</span>
-<span class="s2">            free(pi);  </span>
+<span class="s2">            free(pi);</span>
 <span class="s2">            free(outr_tmp);</span>
-<span class="s2">            free(outi_tmp); </span>
+<span class="s2">            free(outi_tmp);</span>
 <span class="s2">            free(vsr);</span>
 <span class="s2">            free(vsi);</span>
-<span class="s2">            </span>
-<span class="s2">        }    </span>
-<span class="s2">        </span>
+
+<span class="s2">        }</span>
+
 <span class="s2">        for (unsigned int i=0; i&lt;n; i++){</span>
 <span class="s2">            chisq[i] += outr[i]*outr[i] + outi[i]*outi[i];</span>
 <span class="s2">        }</span>
 <span class="s2">        free(outr);</span>
 <span class="s2">        free(outi);</span>
-<span class="s2">    }    </span>
+<span class="s2">    }</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">point_chisq_code_single</span> <span class="o">=</span> <span class="n">point_chisq_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -349,7 +349,7 @@
 <div class="viewcode-block" id="shift_sum"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.shift_sum">[docs]</a><span class="k">def</span> <span class="nf">shift_sum</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">shifts</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
     <span class="n">real_type</span> <span class="o">=</span> <span class="n">real_same_precision_as</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
     <span class="n">shifts</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shifts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">real_type</span><span class="p">)</span>
-    
+
     <span class="n">bins</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
     <span class="n">blen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">v1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -359,17 +359,17 @@
         <span class="n">code</span> <span class="o">=</span> <span class="n">point_chisq_code_single</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">code</span> <span class="o">=</span> <span class="n">point_chisq_code_double</span>
-    
+
     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shifts</span><span class="p">))</span>
-    
+
     <span class="c1"># Create some output memory</span>
     <span class="n">chisq</span> <span class="o">=</span>  <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">real_type</span><span class="p">)</span>
-    
+
     <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;slen&#39;</span><span class="p">,</span> <span class="s1">&#39;shifts&#39;</span><span class="p">,</span> <span class="s1">&#39;bins&#39;</span><span class="p">,</span> <span class="s1">&#39;blen&#39;</span><span class="p">],</span>
                     <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
                     <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
           <span class="p">)</span>
-          
+
     <span class="k">return</span>  <span class="n">chisq</span></div>
 </pre></div>
 
@@ -384,7 +384,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -406,7 +406,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

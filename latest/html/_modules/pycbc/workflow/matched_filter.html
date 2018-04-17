@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.matched_filter &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.matched_filter &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -251,7 +251,7 @@
 <span class="sd">    Workflow : pycbc.workflow.core.Workflow</span>
 <span class="sd">        The workflow instance that the coincidence jobs will be added to.</span>
 <span class="sd">    science_segs : ifo-keyed dictionary of glue.segments.segmentlist instances</span>
-<span class="sd">        The list of times that are being analysed in this workflow. </span>
+<span class="sd">        The list of times that are being analysed in this workflow.</span>
 <span class="sd">    datafind_outs : pycbc.workflow.core.FileList</span>
 <span class="sd">        An FileList of the datafind files that are needed to obtain the</span>
 <span class="sd">        data used in the analysis.</span>
@@ -267,7 +267,7 @@
 <span class="sd">        A list of the tagging strings that will be used for all jobs created</span>
 <span class="sd">        by this call to the workflow. An example might be [&#39;BNSINJECTIONS&#39;] or</span>
 <span class="sd">        [&#39;NOINJECTIONANALYSIS&#39;]. This will be used in output names.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    inspiral_outs : pycbc.workflow.core.FileList</span>
@@ -313,10 +313,10 @@
             <span class="n">compatibility_mode</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">compatibility_mode</span> <span class="o">=</span> <span class="kc">False</span>
-    
-        <span class="n">inspiral_outs</span> <span class="o">=</span> <span class="n">setup_matchedfltr_dax_generated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> 
+
+        <span class="n">inspiral_outs</span> <span class="o">=</span> <span class="n">setup_matchedfltr_dax_generated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span>
                                       <span class="n">datafind_outs</span><span class="p">,</span> <span class="n">tmplt_banks</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
-                                      <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span> 
+                                      <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span>
                                       <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span>
                                       <span class="n">link_to_tmpltbank</span><span class="o">=</span><span class="n">linkToTmpltbank</span><span class="p">,</span>
                                       <span class="n">compatibility_mode</span><span class="o">=</span><span class="n">compatibility_mode</span><span class="p">)</span>
@@ -331,7 +331,7 @@
         <span class="n">errMsg</span> <span class="o">+=</span> <span class="s2">&quot;WORKFLOW_INDEPENDENT_IFOS (currently only one option).&quot;</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">errMsg</span><span class="p">)</span>
 
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving matched-filtering setup module.&quot;</span><span class="p">)</span>    
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving matched-filtering setup module.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">inspiral_outs</span></div>
 
 <div class="viewcode-block" id="setup_matchedfltr_dax_generated"><a class="viewcode-back" href="../../../workflow/matched_filter.html#pycbc.workflow.matched_filter.setup_matchedfltr_dax_generated">[docs]</a><span class="k">def</span> <span class="nf">setup_matchedfltr_dax_generated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span>
@@ -351,7 +351,7 @@
 <span class="sd">    workflow : pycbc.workflow.core.Workflow</span>
 <span class="sd">        The Workflow instance that the coincidence jobs will be added to.</span>
 <span class="sd">    science_segs : ifo-keyed dictionary of glue.segments.segmentlist instances</span>
-<span class="sd">        The list of times that are being analysed in this workflow. </span>
+<span class="sd">        The list of times that are being analysed in this workflow.</span>
 <span class="sd">    datafind_outs : pycbc.workflow.core.FileList</span>
 <span class="sd">        An FileList of the datafind files that are needed to obtain the</span>
 <span class="sd">        data used in the analysis.</span>
@@ -372,7 +372,7 @@
 <span class="sd">        will be one inspiral file for every template bank and they will cover the</span>
 <span class="sd">        same time span. Note that this option must also be given during template</span>
 <span class="sd">        bank generation to be meaningful.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    inspiral_outs : pycbc.workflow.core.FileList</span>
@@ -385,7 +385,7 @@
         <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># Need to get the exe to figure out what sections are analysed, what is</span>
     <span class="c1"># discarded etc. This should *not* be hardcoded, so using a new executable</span>
-    <span class="c1"># will require a bit of effort here .... </span>
+    <span class="c1"># will require a bit of effort here ....</span>
 
     <span class="n">cp</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span>
     <span class="n">ifos</span> <span class="o">=</span> <span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -415,9 +415,9 @@
     <span class="c1"># it would probably require a new module</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setting up matched-filtering for </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">ifo</span><span class="p">))</span>
-        <span class="n">job_instance</span> <span class="o">=</span> <span class="n">exe_class</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">,</span> 
-                                               <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> 
-                                               <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span> 
+        <span class="n">job_instance</span> <span class="o">=</span> <span class="n">exe_class</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">,</span>
+                                               <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+                                               <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span>
                                                <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">link_exe_instance</span><span class="p">:</span>
             <span class="n">link_job_instance</span> <span class="o">=</span> <span class="n">link_exe_instance</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;tmpltbank&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">,</span>
@@ -425,7 +425,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">link_job_instance</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">sngl_ifo_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span> 
+        <span class="n">sngl_ifo_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span>
                            <span class="n">science_segs</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">datafind_outs</span><span class="p">,</span>
                            <span class="n">parents</span><span class="o">=</span><span class="n">tmplt_banks</span><span class="p">,</span> <span class="n">allow_overlap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                            <span class="n">link_job_instance</span><span class="o">=</span><span class="n">link_job_instance</span><span class="p">,</span>
@@ -504,7 +504,7 @@
 
         <span class="n">job_instance</span> <span class="o">=</span> <span class="n">exe_class</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
                                  <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
-                                 <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span> 
+                                 <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span>
                                  <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="n">multi_ifo_coherent_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span>
                                      <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
@@ -526,7 +526,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -548,7 +548,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

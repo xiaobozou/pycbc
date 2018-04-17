@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.bank_output_utils &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.tmpltbank.bank_output_utils &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -299,13 +299,13 @@
 
 <div class="viewcode-block" id="convert_to_sngl_inspiral_table"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.convert_to_sngl_inspiral_table">[docs]</a><span class="k">def</span> <span class="nf">convert_to_sngl_inspiral_table</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">proc_id</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Convert a list of m1,m2,spin1z,spin2z values into a basic sngl_inspiral </span>
+<span class="sd">    Convert a list of m1,m2,spin1z,spin2z values into a basic sngl_inspiral</span>
 <span class="sd">    table with mass and spin parameters populated and event IDs assigned</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    params : iterable</span>
-<span class="sd">        Each entry in the params iterable should be a sequence of </span>
+<span class="sd">        Each entry in the params iterable should be a sequence of</span>
 <span class="sd">        [mass1, mass2, spin1z, spin2z] in that order</span>
 <span class="sd">    proc_id : ilwd char</span>
 <span class="sd">        Process ID to add to each row of the sngl_inspiral table</span>
@@ -334,15 +334,15 @@
 
     <span class="k">return</span> <span class="n">sngl_inspiral_table</span></div>
 
-<div class="viewcode-block" id="calculate_ethinca_metric_comps"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.calculate_ethinca_metric_comps">[docs]</a><span class="k">def</span> <span class="nf">calculate_ethinca_metric_comps</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">ethincaParams</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> 
+<div class="viewcode-block" id="calculate_ethinca_metric_comps"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.bank_output_utils.calculate_ethinca_metric_comps">[docs]</a><span class="k">def</span> <span class="nf">calculate_ethinca_metric_comps</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">ethincaParams</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span>
                                    <span class="n">spin1z</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">spin2z</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">full_ethinca</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the Gamma components needed to use the ethinca metric.</span>
-<span class="sd">    At present this outputs the standard TaylorF2 metric over the end time </span>
+<span class="sd">    At present this outputs the standard TaylorF2 metric over the end time</span>
 <span class="sd">    and chirp times \tau_0 and \tau_3.</span>
-<span class="sd">    A desirable upgrade might be to use the \chi coordinates [defined WHERE?] </span>
+<span class="sd">    A desirable upgrade might be to use the \chi coordinates [defined WHERE?]</span>
 <span class="sd">    for metric distance instead of \tau_0 and \tau_3.</span>
-<span class="sd">    The lower frequency cutoff is currently hard-coded to be the same as the </span>
+<span class="sd">    The lower frequency cutoff is currently hard-coded to be the same as the</span>
 <span class="sd">    bank layout options fLow and f0 (which must be the same as each other).</span>
 
 <span class="sd">    Parameters</span>
@@ -372,15 +372,15 @@
 <span class="sd">        and the cutoff formula requested.</span>
 
 <span class="sd">    gammaVals : numpy_array</span>
-<span class="sd">        Array holding 6 independent metric components in </span>
-<span class="sd">        (end_time, tau_0, tau_3) coordinates to be stored in the Gamma0-5 </span>
+<span class="sd">        Array holding 6 independent metric components in</span>
+<span class="sd">        (end_time, tau_0, tau_3) coordinates to be stored in the Gamma0-5</span>
 <span class="sd">        slots of a SnglInspiral object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">spin1z</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">0.</span> <span class="ow">or</span> <span class="nb">float</span><span class="p">(</span><span class="n">spin2z</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">)</span> <span class="ow">and</span> <span class="n">full_ethinca</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Ethinca cannot at present be calculated &quot;</span>
                                   <span class="s2">&quot;for nonzero component spins!&quot;</span><span class="p">)</span>
     <span class="n">f0</span> <span class="o">=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">f0</span>
-    <span class="k">if</span> <span class="n">f0</span> <span class="o">!=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">fLow</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">f0</span> <span class="o">!=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">fLow</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;If calculating ethinca the bank f0 value must be &quot;</span>
                          <span class="s2">&quot;equal to f-low!&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ethincaParams</span><span class="o">.</span><span class="n">fLow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
@@ -396,7 +396,7 @@
     <span class="n">v0cube</span> <span class="o">=</span> <span class="n">totalMass</span><span class="o">*</span><span class="n">piFl</span>
     <span class="n">v0</span> <span class="o">=</span> <span class="n">v0cube</span><span class="o">**</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span>
 
-    <span class="c1"># Get theoretical cutoff frequency and work out the closest </span>
+    <span class="c1"># Get theoretical cutoff frequency and work out the closest</span>
     <span class="c1"># frequency for which moments were calculated</span>
     <span class="n">fMax_theor</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">frequency_cutoff_from_name</span><span class="p">(</span>
         <span class="n">ethincaParams</span><span class="o">.</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">)</span>
@@ -416,7 +416,7 @@
     <span class="n">gammaVals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">6</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">gammaVals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">two_pi_flower_sq</span> <span class="o">*</span> \
                     <span class="p">(</span> <span class="n">Js</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span> <span class="o">-</span> <span class="p">(</span><span class="n">Js</span><span class="p">[(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span><span class="o">*</span><span class="n">Js</span><span class="p">[(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">)])</span> <span class="p">)</span>
-   
+
     <span class="c1"># If mass terms not required stop here</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">full_ethinca</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">fMax_theor</span><span class="p">,</span> <span class="n">gammaVals</span>
@@ -494,7 +494,7 @@
 <span class="sd">    Function that converts the information produced by the various pyCBC bank</span>
 <span class="sd">    generation codes into a valid LIGOLW xml file containing a sngl_inspiral</span>
 <span class="sd">    table and outputs to file.</span>
-<span class="sd"> </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    outputFile : string</span>
@@ -519,7 +519,7 @@
 <span class="sd">        If given add template bank to this representation of a xml document and</span>
 <span class="sd">        write to disk. If not given create a new document.</span>
 <span class="sd">    kwargs : key-word arguments</span>
-<span class="sd">        All other key word arguments will be passed directly to </span>
+<span class="sd">        All other key word arguments will be passed directly to</span>
 <span class="sd">        ligolw_process.register_to_xmldoc</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">optDict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -577,7 +577,7 @@
         <span class="n">end_time</span> <span class="o">=</span> <span class="n">optDict</span><span class="p">[</span><span class="s1">&#39;gps_end_time&#39;</span><span class="p">]</span>
 
     <span class="c1"># make search summary table</span>
-    <span class="n">search_summary_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">SearchSummaryTable</span><span class="p">)</span> 
+    <span class="n">search_summary_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">SearchSummaryTable</span><span class="p">)</span>
     <span class="n">search_summary</span> <span class="o">=</span> <span class="n">return_search_summary</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
                                <span class="nb">len</span><span class="p">(</span><span class="n">sngl_inspiral_table</span><span class="p">),</span> <span class="n">ifos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">search_summary_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">search_summary</span><span class="p">)</span>
@@ -599,7 +599,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -621,7 +621,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

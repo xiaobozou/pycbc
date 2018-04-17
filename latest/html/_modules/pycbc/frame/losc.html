@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.frame.losc &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.frame.losc &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -226,11 +226,11 @@
         <span class="k">return</span> <span class="s1">&#39;S6&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Time </span><span class="si">%s</span><span class="s1"> not available in a public dataset&#39;</span> <span class="o">%</span> <span class="n">time</span><span class="p">)</span>
-    
+
 
 <div class="viewcode-block" id="losc_frame_json"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.losc_frame_json">[docs]</a><span class="k">def</span> <span class="nf">losc_frame_json</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get the information about the public data files in a duration of time</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    ifo: str</span>
@@ -239,7 +239,7 @@
 <span class="sd">        The gps time in GPS seconds</span>
 <span class="sd">    end_time: int</span>
 <span class="sd">        The end time in GPS seconds</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    info: dict</span>
@@ -253,18 +253,18 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Spanning multiple runs is not currently supported.&#39;</span>
                          <span class="s1">&#39;You have requested data that uses &#39;</span>
                          <span class="s1">&#39;both </span><span class="si">%s</span><span class="s1"> and </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">run2</span><span class="p">))</span>
-    
+
     <span class="n">url</span> <span class="o">=</span> <span class="n">_losc_url</span> <span class="o">%</span> <span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">start_time</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span><span class="p">))</span>
-    
+
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Failed to find gwf files for &#39;</span>
             <span class="s1">&#39;ifo=</span><span class="si">%s</span><span class="s1">, run=</span><span class="si">%s</span><span class="s1">, between </span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">))</span></div>
-           
+
 <div class="viewcode-block" id="losc_frame_urls"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.losc_frame_urls">[docs]</a><span class="k">def</span> <span class="nf">losc_frame_urls</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get a list of urls to losc frame files</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    ifo: str</span>
@@ -273,7 +273,7 @@
 <span class="sd">        The gps time in GPS seconds</span>
 <span class="sd">    end_time: int</span>
 <span class="sd">        The end time in GPS seconds</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    frame_files: list</span>
@@ -282,7 +282,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">losc_frame_json</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)[</span><span class="s1">&#39;strain&#39;</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gwf&#39;</span><span class="p">]</span></div>
-    
+
 <div class="viewcode-block" id="read_frame_losc"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.read_frame_losc">[docs]</a><span class="k">def</span> <span class="nf">read_frame_losc</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Read channels from losc data</span>
 
@@ -294,12 +294,12 @@
 <span class="sd">        The gps time in GPS seconds</span>
 <span class="sd">    end_time: int</span>
 <span class="sd">        The end time in GPS seconds</span>
-<span class="sd">      </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ts: TimeSeries</span>
 <span class="sd">        Returns a timeseries or list of timeseries with the requested data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>    
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">urllib</span>
     <span class="kn">from</span> <span class="nn">pycbc.frame</span> <span class="k">import</span> <span class="n">read_frame</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -311,20 +311,20 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No data found for </span><span class="si">%s</span><span class="s2"> so we &quot;</span>
                              <span class="s2">&quot;can&#39;t produce a time series&quot;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
-                             
+
     <span class="n">fnames</span> <span class="o">=</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">[</span><span class="n">ifo</span><span class="p">]:</span>
             <span class="n">fname</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
             <span class="n">fnames</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
-    
+
     <span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="n">read_frame</span><span class="p">(</span><span class="n">fnames</span><span class="p">[</span><span class="n">channel</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]],</span> <span class="n">channel</span><span class="p">,</span>
            <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">end_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ts</span></div>
-           
+
 <div class="viewcode-block" id="read_strain_losc"><a class="viewcode-back" href="../../../pycbc.frame.html#pycbc.frame.losc.read_strain_losc">[docs]</a><span class="k">def</span> <span class="nf">read_strain_losc</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Get the strain data from the LOSC data</span>
 
@@ -336,14 +336,14 @@
 <span class="sd">        The gps time in GPS seconds</span>
 <span class="sd">    end_time: int</span>
 <span class="sd">        The end time in GPS seconds</span>
-<span class="sd">      </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ts: TimeSeries</span>
 <span class="sd">        Returns a timeseries with the strain data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>   
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">read_frame_losc</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:LOSC-STRAIN&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">)</span></div>
-    
+
 </pre></div>
 
            </div>
@@ -357,7 +357,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -379,7 +379,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

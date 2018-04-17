@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.zpk &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.filter.zpk &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -231,7 +231,7 @@
 <span class="sd">    The transfer function in the s-domain looks like:</span>
 <span class="sd">    .. math::</span>
 <span class="sd">    \\frac{H(s) = (s - s_1) * (s - s_3) * ... * (s - s_n)}{(s - s_2) * (s - s_4) * ... * (s - s_m)}, m &gt;= n</span>
-<span class="sd">          </span>
+
 <span class="sd">    The zeroes, and poles entered in Hz are converted to angular frequency,</span>
 <span class="sd">    along the imaginary axis in the s-domain s=i*omega.  Then the zeroes, and</span>
 <span class="sd">    poles are bilinearly transformed via:</span>
@@ -241,7 +241,7 @@
 <span class="sd">    Where z is the z-domain value, s is the s-domain value, and T is the</span>
 <span class="sd">    sampling period.  After the poles and zeroes have been bilinearly</span>
 <span class="sd">    transformed, then the second-order sections are found and filter the data</span>
-<span class="sd">    using scipy. </span>
+<span class="sd">    using scipy.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -260,7 +260,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    Time Series: TimeSeries</span>
-<span class="sd">        A  new TimeSeries that has been filtered. </span>
+<span class="sd">        A  new TimeSeries that has been filtered.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -327,7 +327,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -349,7 +349,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

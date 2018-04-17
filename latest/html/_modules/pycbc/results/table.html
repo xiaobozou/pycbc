@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.table &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.results.table &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -234,7 +234,7 @@
 <span class="s2">            data.addColumn(&#39;${str(type)}&#39;, &#39;${str(name)}&#39;);</span>
 <span class="s2">        </span><span class="si">% e</span><span class="s2">ndfor</span>
 <span class="s2">        data.addRows($</span><span class="si">{data}</span><span class="s2">);</span>
-<span class="s2">        </span>
+
 <span class="s2">        </span><span class="si">% i</span><span class="s2">f format_strings is not None:</span>
 <span class="s2">            </span><span class="si">% f</span><span class="s2">or i, format_string in enumerate(format_strings):</span>
 <span class="s2">                </span><span class="si">% i</span><span class="s2">f format_string is not None:</span>
@@ -244,8 +244,8 @@
 <span class="s2">            </span><span class="si">% e</span><span class="s2">ndfor</span>
 <span class="s2">        </span><span class="si">% e</span><span class="s2">ndif</span>
 <span class="s2">        var table = new google.visualization.Table(document.getElementById(&#39;$</span><span class="si">{div_id}</span><span class="s2">&#39;));</span>
-<span class="s2">        table.draw(data, {showRowNumber: &#39;true&#39;, </span>
-<span class="s2">                          page: &#39;$</span><span class="si">{page_enable}</span><span class="s2">&#39;, </span>
+<span class="s2">        table.draw(data, {showRowNumber: &#39;true&#39;,</span>
+<span class="s2">                          page: &#39;$</span><span class="si">{page_enable}</span><span class="s2">&#39;,</span>
 <span class="s2">                          allowHtml: &#39;true&#39;,</span>
 <span class="s2">                          pageSize: $</span><span class="si">{page_size}</span><span class="s2">});</span>
 <span class="s2">      }</span>
@@ -255,30 +255,30 @@
 
 <div class="viewcode-block" id="table"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.table.table">[docs]</a><span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">format_strings</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return an html table of this data</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    columns : list of numpy arrays </span>
-<span class="sd">    names : list of strings </span>
-<span class="sd">        The list of columns names  </span>
+<span class="sd">    columns : list of numpy arrays</span>
+<span class="sd">    names : list of strings</span>
+<span class="sd">        The list of columns names</span>
 <span class="sd">    page_size : {int, None}, optional</span>
 <span class="sd">        The number of items to show on each page of the table</span>
 <span class="sd">    format_strings : {lists of strings, None}, optional</span>
 <span class="sd">        The ICU format string for this column, None for no formatting. All</span>
 <span class="sd">    columns must have a format string if provided.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    html_table : str </span>
+<span class="sd">    html_table : str</span>
 <span class="sd">        A str containing the html code to display a table of this data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">page_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">page</span> <span class="o">=</span> <span class="s1">&#39;disable&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">page</span> <span class="o">=</span> <span class="s1">&#39;enable&#39;</span>
-        
+
     <span class="n">div_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
-    
+
     <span class="n">column_descriptions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span>
@@ -286,11 +286,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ctype</span> <span class="o">=</span> <span class="s1">&#39;number&#39;</span>
         <span class="n">column_descriptions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ctype</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
-    
+
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">columns</span><span class="p">):</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
-        
+
     <span class="k">return</span> <span class="n">google_table_template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">div_id</span><span class="o">=</span><span class="n">div_id</span><span class="p">,</span>
                                 <span class="n">page_enable</span><span class="o">=</span><span class="n">page</span><span class="p">,</span>
                                 <span class="n">column_descriptions</span> <span class="o">=</span> <span class="n">column_descriptions</span><span class="p">,</span>
@@ -310,7 +310,7 @@
 <span class="s2">            </span><span class="si">% e</span><span class="s2">ndfor</span>
 <span class="s2">            &lt;/tr&gt;</span>
 <span class="s2">        </span><span class="si">% e</span><span class="s2">ndif</span>
-<span class="s2">    </span>
+
 <span class="s2">        </span><span class="si">% f</span><span class="s2">or i in range(len(data)):</span>
 <span class="s2">            &lt;tr&gt;</span>
 <span class="s2">            </span><span class="si">% f</span><span class="s2">or j in range(len(data[i])):</span>
@@ -322,17 +322,17 @@
 <span class="s2">        </span><span class="si">% e</span><span class="s2">ndfor</span>
 <span class="s2">    &lt;/table&gt;</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
-                               
+
 <div class="viewcode-block" id="static_table"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.table.static_table">[docs]</a><span class="k">def</span> <span class="nf">static_table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return an html tableo of this data</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    data : two-dimensional numpy string array</span>
 <span class="sd">        Array containing the cell values</span>
-<span class="sd">    titles : numpy array </span>
+<span class="sd">    titles : numpy array</span>
 <span class="sd">        Vector str of titles</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    html_table : str</span>
@@ -370,7 +370,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -392,7 +392,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

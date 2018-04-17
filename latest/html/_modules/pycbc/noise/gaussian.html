@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.noise.gaussian &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.noise.gaussian &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -221,8 +221,8 @@
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
-<span class="sd">&quot;&quot;&quot;This module contains functions to generate gaussian noise colored with a </span>
-<span class="sd">noise spectrum. </span>
+<span class="sd">&quot;&quot;&quot;This module contains functions to generate gaussian noise colored with a</span>
+<span class="sd">noise spectrum.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span><span class="p">,</span> <span class="n">zeros</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">complex_same_precision_as</span><span class="p">,</span> <span class="n">FrequencySeries</span>
@@ -232,9 +232,9 @@
 
 <div class="viewcode-block" id="frequency_noise_from_psd"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.gaussian.frequency_noise_from_psd">[docs]</a><span class="k">def</span> <span class="nf">frequency_noise_from_psd</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise with a given psd.</span>
-<span class="sd">    </span>
-<span class="sd">    Return noise coloured with the given psd. The returned noise </span>
-<span class="sd">    FrequencySeries has the same length and frequency step as the given psd. </span>
+
+<span class="sd">    Return noise coloured with the given psd. The returned noise</span>
+<span class="sd">    FrequencySeries has the same length and frequency step as the given psd.</span>
 <span class="sd">    Note that if unique noise is desired a unique seed should be provided.</span>
 
 <span class="sd">    Parameters</span>
@@ -244,36 +244,36 @@
 <span class="sd">    seed : {0, int} or None</span>
 <span class="sd">        The seed to generate the noise. If None specified,</span>
 <span class="sd">        the seed will not be reset.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
 <span class="sd">    noise : FrequencySeriesSeries</span>
-<span class="sd">        A FrequencySeries containing gaussian noise colored by the given psd. </span>
+<span class="sd">        A FrequencySeries containing gaussian noise colored by the given psd.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">psd</span> <span class="o">/</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> 
+    <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">psd</span> <span class="o">/</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex_same_precision_as</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span>
-    
+
     <span class="n">not_zero</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
-    
+
     <span class="n">sigma_red</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">not_zero</span><span class="p">]</span>
     <span class="n">noise_re</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_red</span><span class="p">)</span>
     <span class="n">noise_co</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_red</span><span class="p">)</span>
     <span class="n">noise_red</span> <span class="o">=</span> <span class="n">noise_re</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">noise_co</span>
-    
+
     <span class="n">noise</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sigma</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">noise</span><span class="p">[</span><span class="n">not_zero</span><span class="p">]</span> <span class="o">=</span> <span class="n">noise_red</span>
-    
+
     <span class="k">return</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span>
                            <span class="n">delta_f</span><span class="o">=</span><span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
-                           <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span> </div>
+                           <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="noise_from_psd"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.gaussian.noise_from_psd">[docs]</a><span class="k">def</span> <span class="nf">noise_from_psd</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise with a given psd.</span>
-<span class="sd">    </span>
-<span class="sd">    Return noise with a given psd. Note that if unique noise is desired </span>
+
+<span class="sd">    Return noise with a given psd. Note that if unique noise is desired</span>
 <span class="sd">    a unique seed should be provided.</span>
 
 <span class="sd">    Parameters</span>
@@ -281,53 +281,53 @@
 <span class="sd">    length : int</span>
 <span class="sd">        The length of noise to generate in samples.</span>
 <span class="sd">    delta_t : float</span>
-<span class="sd">        The time step of the noise. </span>
+<span class="sd">        The time step of the noise.</span>
 <span class="sd">    psd : FrequencySeries</span>
 <span class="sd">        The noise weighting to color the noise.</span>
 <span class="sd">    seed : {0, int}</span>
-<span class="sd">        The seed to generate the noise. </span>
-<span class="sd">        </span>
+<span class="sd">        The seed to generate the noise.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
 <span class="sd">    noise : TimeSeries</span>
-<span class="sd">        A TimeSeries containing gaussian noise colored by the given psd. </span>
+<span class="sd">        A TimeSeries containing gaussian noise colored by the given psd.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">noise_ts</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">seed</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">)</span>
-    
+
     <span class="n">randomness</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">gsl_rng</span><span class="p">(</span><span class="s2">&quot;ranlux&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-    
+
     <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
     <span class="n">stride</span> <span class="o">=</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span>
-    
+
     <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">psd</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;PSD not compatible with requested delta_t&quot;</span><span class="p">)</span>
-        
+
     <span class="n">psd</span> <span class="o">=</span> <span class="p">(</span><span class="n">psd</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="p">])</span><span class="o">.</span><span class="n">lal</span><span class="p">()</span>
-    <span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> 
-    
+    <span class="n">psd</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
     <span class="n">segment</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">()</span>
-    <span class="n">length_generated</span> <span class="o">=</span> <span class="mi">0</span> 
-  
-    <span class="n">SimNoise</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">randomness</span><span class="p">)</span> 
+    <span class="n">length_generated</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">SimNoise</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">randomness</span><span class="p">)</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">length_generated</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">):</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">length_generated</span> <span class="o">+</span> <span class="n">stride</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">:</span>
             <span class="n">noise_ts</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">length_generated</span><span class="p">:</span><span class="n">length_generated</span><span class="o">+</span><span class="n">stride</span><span class="p">]</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">stride</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span> 
+        <span class="k">else</span><span class="p">:</span>
             <span class="n">noise_ts</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">length_generated</span><span class="p">:</span><span class="n">length</span><span class="p">]</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="o">-</span><span class="n">length_generated</span><span class="p">]</span>
-    
+
         <span class="n">length_generated</span> <span class="o">+=</span> <span class="n">stride</span>
         <span class="n">SimNoise</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">psd</span><span class="p">,</span> <span class="n">randomness</span><span class="p">)</span>
-        
+
     <span class="k">return</span> <span class="n">noise_ts</span></div>
-  
+
 <div class="viewcode-block" id="noise_from_string"><a class="viewcode-back" href="../../../pycbc.noise.html#pycbc.noise.gaussian.noise_from_string">[docs]</a><span class="k">def</span> <span class="nf">noise_from_string</span><span class="p">(</span><span class="n">psd_name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create noise from an analytic PSD</span>
-<span class="sd">    </span>
-<span class="sd">    Return noise from the chosen PSD. Note that if unique noise is desired </span>
+
+<span class="sd">    Return noise from the chosen PSD. Note that if unique noise is desired</span>
 <span class="sd">    a unique seed should be provided.</span>
 
 <span class="sd">    Parameters</span>
@@ -338,19 +338,19 @@
 <span class="sd">    length : int</span>
 <span class="sd">        The length of noise to generate in samples.</span>
 <span class="sd">    delta_t : float</span>
-<span class="sd">        The time step of the noise. </span>
+<span class="sd">        The time step of the noise.</span>
 <span class="sd">    seed : {None, int}</span>
-<span class="sd">        The seed to generate the noise. </span>
+<span class="sd">        The seed to generate the noise.</span>
 <span class="sd">    low_frequency_cutof : {10.0, float}</span>
 <span class="sd">        The low frequency cutoff to pass to the PSD generation.</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
 <span class="sd">    noise : TimeSeries</span>
-<span class="sd">        A TimeSeries containing gaussian noise colored by the given psd. </span>
+<span class="sd">        A TimeSeries containing gaussian noise colored by the given psd.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pycbc.psd</span>
-    
+
     <span class="c1"># We just need enough resolution to resolve lines</span>
     <span class="n">delta_f</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">8</span>
     <span class="n">flen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span> <span class="o">/</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
@@ -369,7 +369,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -391,7 +391,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

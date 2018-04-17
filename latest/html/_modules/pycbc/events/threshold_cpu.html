@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.threshold_cpu &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.events.threshold_cpu &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -245,20 +245,20 @@
         <span class="n">outl</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
         <span class="n">outv</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
-        
+
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">threshold</span> <span class="o">=</span> <span class="n">value</span><span class="o">**</span><span class="mf">2.0</span> <span class="c1"># pylint:disable=unused-variable</span>
-    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;  </span>
+    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        float v = threshold;</span>
 <span class="s2">        unsigned int num_parallel_regions = 16;</span>
 <span class="s2">        unsigned int t=0;</span>
-<span class="s2">     </span>
+
 <span class="s2">        #pragma omp parallel for ordered shared(t)</span>
 <span class="s2">        for (unsigned int p=0; p&lt;num_parallel_regions; p++){</span>
 <span class="s2">            unsigned int start  = (N * p) / num_parallel_regions;</span>
 <span class="s2">            unsigned int end    = (N * (p+1)) / num_parallel_regions;</span>
 <span class="s2">            unsigned int c = 0;</span>
-<span class="s2">            </span>
+
 <span class="s2">            for (unsigned int i=start; i&lt;end; i++){</span>
 <span class="s2">                float r = arr[i*2];</span>
 <span class="s2">                float im = arr[i*2+1];</span>
@@ -267,8 +267,8 @@
 <span class="s2">                    outv[c+start] = std::complex&lt;float&gt;(r, im);</span>
 <span class="s2">                    c++;</span>
 <span class="s2">                }</span>
-<span class="s2">            } </span>
-<span class="s2">            </span>
+<span class="s2">            }</span>
+
 <span class="s2">            #pragma omp ordered</span>
 <span class="s2">            {</span>
 <span class="s2">                t+=c;</span>
@@ -276,8 +276,8 @@
 <span class="s2">            memmove(outl+t-c, outl+start, sizeof(unsigned int)*c);</span>
 <span class="s2">            memmove(outv+t-c, outv+start, sizeof(std::complex&lt;float&gt;)*c);</span>
 
-<span class="s2">        }       </span>
-<span class="s2">        </span>
+<span class="s2">        }</span>
+
 <span class="s2">        count[0] = t;</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;arr&#39;</span><span class="p">,</span> <span class="s1">&#39;outv&#39;</span><span class="p">,</span> <span class="s1">&#39;outl&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;threshold&#39;</span><span class="p">],</span>
@@ -338,7 +338,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -360,7 +360,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

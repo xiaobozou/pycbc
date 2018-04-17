@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Waveforms &mdash; PyCBC 165719 documentation</title>
+  <title>Waveforms &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -324,12 +324,12 @@
                          <span class="n">mass2</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                          <span class="n">f_lower</span><span class="o">=</span><span class="n">f_low</span><span class="p">,</span>
                          <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">sample_rate</span><span class="p">)</span>
-                         
+
 <span class="n">sp</span><span class="p">,</span> <span class="n">sc</span> <span class="o">=</span> <span class="n">get_td_waveform</span><span class="p">(</span><span class="n">approximant</span><span class="o">=</span><span class="s2">&quot;TaylorT4&quot;</span><span class="p">,</span>
                          <span class="n">mass1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                          <span class="n">mass2</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                         <span class="n">f_lower</span><span class="o">=</span><span class="n">f_low</span><span class="p">,</span> 
-                         <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">sample_rate</span><span class="p">)</span>                       
+                         <span class="n">f_lower</span><span class="o">=</span><span class="n">f_low</span><span class="p">,</span>
+                         <span class="n">delta_t</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">sample_rate</span><span class="p">)</span>
 
 <span class="c1"># Resize the waveforms to the same length</span>
 <span class="n">tlen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sp</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">hp</span><span class="p">))</span>
@@ -339,7 +339,7 @@
 <span class="c1"># Generate the aLIGO ZDHP PSD</span>
 <span class="n">delta_f</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">duration</span>
 <span class="n">flen</span> <span class="o">=</span> <span class="n">tlen</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">psd</span> <span class="o">=</span> <span class="n">aLIGOZeroDetHighPower</span><span class="p">(</span><span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">f_low</span><span class="p">)</span> 
+<span class="n">psd</span> <span class="o">=</span> <span class="n">aLIGOZeroDetHighPower</span><span class="p">(</span><span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">f_low</span><span class="p">)</span>
 
 <span class="c1"># Note: This takes a while the first time as an FFT plan is generated</span>
 <span class="c1"># subsequent calls are much faster.</span>
@@ -472,7 +472,7 @@ The match is: 0.953
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -494,7 +494,7 @@ The match is: 0.953
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

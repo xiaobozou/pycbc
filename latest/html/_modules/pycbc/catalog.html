@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.catalog &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.catalog &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -237,7 +237,7 @@
 <span class="sd">            The name (GW prefixed date) of the merger event.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-        
+
         <span class="c1"># Set some basic params from the dataset</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;median1d&#39;</span><span class="p">]:</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;median1d&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
@@ -254,7 +254,7 @@
 <span class="sd">        return_errors: Optional, {bool, False}</span>
 <span class="sd">            If true, return a second and third parameter that represents the</span>
 <span class="sd">            lower and upper 90% error on the parameter.</span>
-<span class="sd">            </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        param: float or tuple</span>
@@ -264,7 +264,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;median1d&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;median1d&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
-            
+
 <div class="viewcode-block" id="Merger.strain"><a class="viewcode-back" href="../../pycbc.catalog.html#pycbc.catalog.Merger.strain">[docs]</a>    <span class="k">def</span> <span class="nf">strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return strain around the event</span>
 
@@ -283,7 +283,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">shutil</span>
         <span class="kn">from</span> <span class="nn">pycbc.frame</span> <span class="k">import</span> <span class="n">read_frame</span>
-        
+
         <span class="n">channel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">:LOSC-STRAIN&#39;</span> <span class="o">%</span> <span class="n">ifo</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;frames&#39;</span><span class="p">][</span><span class="n">ifo</span><span class="p">]</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.gwf&#39;</span><span class="p">)</span>
@@ -357,7 +357,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -379,7 +379,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

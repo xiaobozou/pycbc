@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.grb_utils &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.grb_utils &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -251,7 +251,7 @@
 
 <span class="sd">    end : int</span>
 <span class="sd">    The end of the workflow analysis time.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
 <span class="sd">    cp : pycbc.workflow.configuration.WorkflowConfigParser object</span>
@@ -347,7 +347,7 @@
 
 <span class="sd">    sci_seg : glue.segments.segment</span>
 <span class="sd">    The science segment for the analysis run.</span>
-<span class="sd">    </span>
+
 <span class="sd">    out_dir : str</span>
 <span class="sd">    The output directory, destination for xml file.</span>
 
@@ -362,9 +362,9 @@
     <span class="n">xmldoc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">())</span>
     <span class="n">tbl</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">ExtTriggersTable</span><span class="p">)</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="n">tbl</span><span class="o">.</span><span class="n">validcolumns</span>
-    <span class="n">xmldoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">tbl</span><span class="p">)</span>    
+    <span class="n">xmldoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">tbl</span><span class="p">)</span>
     <span class="n">row</span> <span class="o">=</span> <span class="n">tbl</span><span class="o">.</span><span class="n">appendRow</span><span class="p">()</span>
-    
+
     <span class="c1"># Add known attributes for this GRB</span>
     <span class="nb">setattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s2">&quot;event_ra&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;ra&quot;</span><span class="p">)))</span>
     <span class="nb">setattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s2">&quot;event_dec&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;dec&quot;</span><span class="p">)))</span>
@@ -396,7 +396,7 @@
     <span class="n">xml_file_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s2">&quot;file:&quot;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">xml_file_path</span><span class="p">))</span>
     <span class="n">xml_file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">ifos</span><span class="p">,</span> <span class="n">xml_file_name</span><span class="p">,</span> <span class="n">sci_seg</span><span class="p">,</span> <span class="n">file_url</span><span class="o">=</span><span class="n">xml_file_url</span><span class="p">)</span>
     <span class="n">xml_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">xml_file_url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">xml_file</span></div>
 
 
@@ -459,7 +459,7 @@
     <span class="n">cp</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span>
     <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="n">condition_strain_class</span> <span class="o">=</span> <span class="n">select_generic_executable</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span>
                                                        <span class="s2">&quot;condition_strain&quot;</span><span class="p">)</span>
     <span class="n">condition_strain_nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -488,7 +488,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -510,7 +510,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

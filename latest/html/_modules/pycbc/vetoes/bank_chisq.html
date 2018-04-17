@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes.bank_chisq &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.vetoes.bank_chisq &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -414,7 +414,7 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        bank_chisq_from_filters: TimeSeries of bank veto values - if indices</span>
-<span class="sd">        is None then evaluated at all time samples, if not then only at </span>
+<span class="sd">        is None then evaluated at all time samples, if not then only at</span>
 <span class="sd">        requested sample indices</span>
 
 <span class="sd">        bank_chisq_dof: int, approx number of statistical degrees of freedom</span>
@@ -424,11 +424,11 @@
             <span class="n">overlaps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_overlaps</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">)</span>
             <span class="n">bank_veto_snrs</span><span class="p">,</span> <span class="n">bank_veto_norms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_segment_snrs</span><span class="p">(</span><span class="n">stilde</span><span class="p">,</span> <span class="n">psd</span><span class="p">)</span>
             <span class="n">chisq</span> <span class="o">=</span> <span class="n">bank_chisq_from_filters</span><span class="p">(</span><span class="n">snrv</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">bank_veto_snrs</span><span class="p">,</span>
-                                            <span class="n">bank_veto_norms</span><span class="p">,</span> <span class="n">overlaps</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> 
+                                            <span class="n">bank_veto_norms</span><span class="p">,</span> <span class="n">overlaps</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
             <span class="n">dof</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dof</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">chisq</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">chisq</span><span class="p">,</span> <span class="n">dof</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>      </div></div>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div></div>
 
 <div class="viewcode-block" id="SingleDetSkyMaxBankVeto"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.bank_chisq.SingleDetSkyMaxBankVeto">[docs]</a><span class="k">class</span> <span class="nc">SingleDetSkyMaxBankVeto</span><span class="p">(</span><span class="n">SingleDetBankVeto</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Stub for precessing bank veto if anyone ever wants to code it up.</span>
@@ -457,7 +457,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -479,7 +479,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

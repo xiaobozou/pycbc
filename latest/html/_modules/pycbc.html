@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -278,12 +278,12 @@
     <span class="c1"># Check that pycuda is installed and can talk to the driver</span>
     <span class="kn">import</span> <span class="nn">pycuda.driver</span> <span class="k">as</span> <span class="nn">_pycudadrv</span>
 
-    <span class="n">HAVE_CUDA</span><span class="o">=</span><span class="kc">True</span> 
+    <span class="n">HAVE_CUDA</span><span class="o">=</span><span class="kc">True</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">HAVE_CUDA</span><span class="o">=</span><span class="kc">False</span>
-    
-<span class="c1"># Check for openmp suppport, currently we pressume it exists, unless on </span>
-<span class="c1"># platforms (mac) that are silly and don&#39;t use the standard gcc. </span>
+
+<span class="c1"># Check for openmp suppport, currently we pressume it exists, unless on</span>
+<span class="c1"># platforms (mac) that are silly and don&#39;t use the standard gcc.</span>
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;darwin&#39;</span><span class="p">:</span>
     <span class="n">HAVE_OMP</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">else</span><span class="p">:</span>
@@ -315,7 +315,7 @@
 <span class="n">_tmp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>
 <span class="n">_cache_dir_name</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getuid</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">_python_name</span>
 <span class="n">_cache_dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_tmp_dir</span><span class="p">,</span> <span class="n">_cache_dir_name</span><span class="p">)</span>
-<span class="c1"># Append the git hash to the cache path.  This will ensure that cached </span>
+<span class="c1"># Append the git hash to the cache path.  This will ensure that cached</span>
 <span class="c1"># files are correct even in cases where weave currently doesn&#39;t realize</span>
 <span class="c1"># that a recompile is needed.</span>
 <span class="c1"># FIXME: It would be better to find a way to trigger a recompile off</span>
@@ -369,7 +369,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -391,7 +391,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

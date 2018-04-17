@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.coincidence &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.coincidence &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -318,7 +318,7 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--coinc-files&#39;</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
-        
+
 <div class="viewcode-block" id="PyCBCStatMapInjExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCStatMapInjExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCStatMapInjExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate FAP, IFAR, etc&quot;&quot;&quot;</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span>
@@ -336,20 +336,20 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--mixed-coincs-full-inj&#39;</span><span class="p">,</span> <span class="n">fullinj</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
-        
+
 <div class="viewcode-block" id="PyCBCHDFInjFindExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCHDFInjFindExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCHDFInjFindExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Find injections in the hdf files output&quot;&quot;&quot;</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span>
 <div class="viewcode-block" id="PyCBCHDFInjFindExecutable.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCHDFInjFindExecutable.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inj_coinc_file</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>        
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--trigger-file&#39;</span><span class="p">,</span> <span class="n">inj_coinc_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--injection-file&#39;</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">veto_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--veto-file&#39;</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--segment-name&#39;</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">)</span>
-        <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_xml_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> 
+        <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">inj_xml_file</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span>
                                  <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
 
@@ -363,19 +363,19 @@
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--coinc-files&#39;</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--bank-file&#39;</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--background-bins&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">background_bins</span><span class="p">))</span>
-        
+
         <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">background_bins</span><span class="p">]</span>
-        
-        <span class="n">output_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">File</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ifo_list</span><span class="p">,</span> 
-                             <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> 
-                             <span class="n">coinc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> 
+
+        <span class="n">output_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">File</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ifo_list</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                             <span class="n">coinc_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span>
                              <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span>
                              <span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;mbin-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">],</span>
                              <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.hdf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">background_bins</span><span class="p">))]</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_output_list_opt</span><span class="p">(</span><span class="s1">&#39;--output-files&#39;</span><span class="p">,</span> <span class="n">output_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">names</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
-        
+
 <div class="viewcode-block" id="PyCBCCombineStatmap"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCCombineStatmap">[docs]</a><span class="k">class</span> <span class="nc">PyCBCCombineStatmap</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span>
 <div class="viewcode-block" id="PyCBCCombineStatmap.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCCombineStatmap.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">statmap_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -386,14 +386,14 @@
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">statmap_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">segment</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span>
                                  <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
- 
+
 <div class="viewcode-block" id="MergeExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.MergeExecutable">[docs]</a><span class="k">class</span> <span class="nc">MergeExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span></div>
 
 <div class="viewcode-block" id="CensorForeground"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.CensorForeground">[docs]</a><span class="k">class</span> <span class="nc">CensorForeground</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span></div>
 
-<div class="viewcode-block" id="make_foreground_censored_veto"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.make_foreground_censored_veto">[docs]</a><span class="k">def</span> <span class="nf">make_foreground_censored_veto</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> 
+<div class="viewcode-block" id="make_foreground_censored_veto"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.make_foreground_censored_veto">[docs]</a><span class="k">def</span> <span class="nf">make_foreground_censored_veto</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
                                   <span class="n">censored_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
     <span class="n">node</span> <span class="o">=</span> <span class="n">CensorForeground</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;foreground_censor&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
@@ -412,7 +412,7 @@
     <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">MergeExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;hdf_trigger_merge&#39;</span><span class="p">,</span> 
+        <span class="n">node</span> <span class="o">=</span> <span class="n">MergeExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;hdf_trigger_merge&#39;</span><span class="p">,</span>
                         <span class="n">ifos</span><span class="o">=</span><span class="n">ifo</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--bank-file&#39;</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--trigger-files&#39;</span><span class="p">,</span> <span class="n">trigger_files</span><span class="o">.</span><span class="n">find_output_with_ifo</span><span class="p">(</span><span class="n">ifo</span><span class="p">))</span>
@@ -443,17 +443,17 @@
             <span class="n">smoothed_fit_files</span> <span class="o">+=</span> <span class="n">smooth_node</span><span class="o">.</span><span class="n">output_files</span>
         <span class="k">return</span> <span class="n">smoothed_fit_files</span></div>
 
-<div class="viewcode-block" id="find_injections_in_hdf_coinc"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.find_injections_in_hdf_coinc">[docs]</a><span class="k">def</span> <span class="nf">find_injections_in_hdf_coinc</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_coinc_file</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">,</span> 
+<div class="viewcode-block" id="find_injections_in_hdf_coinc"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.find_injections_in_hdf_coinc">[docs]</a><span class="k">def</span> <span class="nf">find_injections_in_hdf_coinc</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_coinc_file</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">,</span>
                                  <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-    <span class="n">exe</span> <span class="o">=</span> <span class="n">PyCBCHDFInjFindExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;hdfinjfind&#39;</span><span class="p">,</span> 
-                                    <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> 
+    <span class="n">exe</span> <span class="o">=</span> <span class="n">PyCBCHDFInjFindExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;hdfinjfind&#39;</span><span class="p">,</span>
+                                    <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                                     <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">node</span> <span class="o">=</span> <span class="n">exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">inj_coinc_file</span><span class="p">,</span> <span class="n">inj_xml_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     </div>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="convert_bank_to_hdf"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.convert_bank_to_hdf">[docs]</a><span class="k">def</span> <span class="nf">convert_bank_to_hdf</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">xmlbank</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the template bank in hdf format&quot;&quot;&quot;</span>
@@ -498,13 +498,13 @@
         <span class="k">return</span> <span class="n">setup_background_bins</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">setup_simple_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span></div>
-        
+
 <div class="viewcode-block" id="setup_simple_statmap"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_simple_statmap">[docs]</a><span class="k">def</span> <span class="nf">setup_simple_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
 
     <span class="n">statmap_exe</span> <span class="o">=</span> <span class="n">PyCBCStatMapExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;statmap&#39;</span><span class="p">,</span>
                                               <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span> 
+                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
 
     <span class="n">stat_node</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">stat_node</span><span class="p">)</span>
@@ -512,18 +512,18 @@
 
 <div class="viewcode-block" id="setup_background_bins"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_background_bins">[docs]</a><span class="k">def</span> <span class="nf">setup_background_bins</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
-    
-    <span class="n">bins_exe</span> <span class="o">=</span> <span class="n">PyCBCDistributeBackgroundBins</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;distribute_background_bins&#39;</span><span class="p">,</span> 
+
+    <span class="n">bins_exe</span> <span class="o">=</span> <span class="n">PyCBCDistributeBackgroundBins</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;distribute_background_bins&#39;</span><span class="p">,</span>
                                        <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
-                                       
+
     <span class="n">statmap_exe</span> <span class="o">=</span> <span class="n">PyCBCStatMapExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;statmap&#39;</span><span class="p">,</span>
                                               <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>       
+                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
 
     <span class="n">cstat_exe</span> <span class="o">=</span> <span class="n">PyCBCCombineStatmap</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;combine_statmap&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>                       
-           
-    <span class="n">background_bins</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;background-bins&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>             
+                                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+    <span class="n">background_bins</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;background-bins&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
     <span class="n">background_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">background_bins</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
     <span class="n">bins_node</span> <span class="o">=</span> <span class="n">bins_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">background_bins</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">bins_node</span>
@@ -534,69 +534,69 @@
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">statnode</span>
         <span class="n">statmap_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">statnode</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">statmap_files</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">bin_name</span> <span class="o">=</span> <span class="n">bins_node</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    
+
     <span class="n">cstat_node</span> <span class="o">=</span> <span class="n">cstat_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">statmap_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">cstat_node</span>
-    
+
     <span class="k">return</span> <span class="n">cstat_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">statmap_files</span></div>
-    
+
 <div class="viewcode-block" id="setup_statmap_inj"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_statmap_inj">[docs]</a><span class="k">def</span> <span class="nf">setup_statmap_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
     <span class="k">if</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">has_option_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;background-bins&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">setup_background_bins_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">setup_simple_statmap_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span></div>
-        
+
 <div class="viewcode-block" id="setup_simple_statmap_inj"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_simple_statmap_inj">[docs]</a><span class="k">def</span> <span class="nf">setup_simple_statmap_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
 
     <span class="n">statmap_exe</span> <span class="o">=</span> <span class="n">PyCBCStatMapInjExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;statmap_inj&#39;</span><span class="p">,</span>
                                               <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span> 
+                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
 
-    <span class="n">stat_node</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">FileList</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">]),</span> <span class="n">background_file</span><span class="p">,</span> 
+    <span class="n">stat_node</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">FileList</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">]),</span> <span class="n">background_file</span><span class="p">,</span>
                                      <span class="n">FileList</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injfull&#39;</span><span class="p">]),</span> <span class="n">FileList</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;fullinj&#39;</span><span class="p">]))</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">stat_node</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">stat_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="setup_background_bins_inj"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_background_bins_inj">[docs]</a><span class="k">def</span> <span class="nf">setup_background_bins_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
-    
-    <span class="n">bins_exe</span> <span class="o">=</span> <span class="n">PyCBCDistributeBackgroundBins</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;distribute_background_bins&#39;</span><span class="p">,</span> 
+
+    <span class="n">bins_exe</span> <span class="o">=</span> <span class="n">PyCBCDistributeBackgroundBins</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;distribute_background_bins&#39;</span><span class="p">,</span>
                                        <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
-                                       
+
     <span class="n">statmap_exe</span> <span class="o">=</span> <span class="n">PyCBCStatMapInjExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;statmap_inj&#39;</span><span class="p">,</span>
                                               <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>   
-    
+                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
     <span class="n">cstat_exe</span> <span class="o">=</span> <span class="n">PyCBCCombineStatmap</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;combine_statmap&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>                       
-           
-    <span class="n">background_bins</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;background-bins&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>   
+                                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+    <span class="n">background_bins</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;background-bins&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
     <span class="n">background_bins</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">background_bins</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
-    
-    <span class="k">for</span> <span class="n">inj_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">,</span> <span class="s1">&#39;injfull&#39;</span><span class="p">,</span> <span class="s1">&#39;fullinj&#39;</span><span class="p">]:</span>          
+
+    <span class="k">for</span> <span class="n">inj_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">,</span> <span class="s1">&#39;injfull&#39;</span><span class="p">,</span> <span class="s1">&#39;fullinj&#39;</span><span class="p">]:</span>
         <span class="n">bins_node</span> <span class="o">=</span> <span class="n">bins_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">FileList</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">[</span><span class="n">inj_type</span><span class="p">]),</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">background_bins</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">inj_type</span><span class="p">])</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">bins_node</span>
         <span class="n">coinc_files</span><span class="p">[</span><span class="n">inj_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins_node</span><span class="o">.</span><span class="n">output_files</span>
-    
+
     <span class="n">statmap_files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">background_bins</span><span class="p">)):</span>
-        <span class="n">statnode</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span> <span class="n">FileList</span><span class="p">([</span><span class="n">background_file</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span> 
-                                     <span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injfull&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span> <span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;fullinj&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span> 
+        <span class="n">statnode</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injinj&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span> <span class="n">FileList</span><span class="p">([</span><span class="n">background_file</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span>
+                                     <span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;injfull&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span> <span class="n">FileList</span><span class="p">([</span><span class="n">coinc_files</span><span class="p">[</span><span class="s1">&#39;fullinj&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span>
                                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;BIN_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">])</span>
         <span class="n">workflow</span> <span class="o">+=</span> <span class="n">statnode</span>
         <span class="n">statmap_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">statnode</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        
+
     <span class="n">cstat_node</span> <span class="o">=</span> <span class="n">cstat_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">statmap_files</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">cstat_node</span>
-    
+
     <span class="k">return</span> <span class="n">cstat_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="setup_interval_coinc_inj"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_interval_coinc_inj">[docs]</a><span class="k">def</span> <span class="nf">setup_interval_coinc_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span> <span class="n">full_data_trig_files</span><span class="p">,</span> <span class="n">inj_trig_files</span><span class="p">,</span>
               <span class="n">stat_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This function sets up exact match coincidence and background estimation </span>
+<span class="sd">    This function sets up exact match coincidence and background estimation</span>
 
 <span class="sd">    using a folded interval technique.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -615,7 +615,7 @@
 
     <span class="c1"># Wall time knob and memory knob</span>
     <span class="n">factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;parallelization-factor&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">))</span>
-    
+
     <span class="n">ffiles</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">ifiles</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">ifos</span><span class="p">,</span> <span class="n">files</span> <span class="o">=</span> <span class="n">full_data_trig_files</span><span class="o">.</span><span class="n">categorize_by_attr</span><span class="p">(</span><span class="s1">&#39;ifo&#39;</span><span class="p">)</span>
@@ -646,7 +646,7 @@
             <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">coinc_node</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">setup_statmap_inj</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_files</span><span class="p">,</span> <span class="n">background_file</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="setup_interval_coinc"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_interval_coinc">[docs]</a><span class="k">def</span> <span class="nf">setup_interval_coinc</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">,</span> <span class="n">stat_files</span><span class="p">,</span>
                          <span class="n">veto_files</span><span class="p">,</span> <span class="n">veto_names</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -670,7 +670,7 @@
     <span class="n">findcoinc_exe</span> <span class="o">=</span> <span class="n">PyCBCFindCoincExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;coinc&#39;</span><span class="p">,</span>
                                              <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
-                                         
+
     <span class="c1"># Wall time knob and memory knob</span>
     <span class="n">factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;parallelization-factor&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">))</span>
 
@@ -686,7 +686,7 @@
                                                    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">veto_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
             <span class="n">bg_files</span> <span class="o">+=</span> <span class="n">coinc_node</span><span class="o">.</span><span class="n">output_files</span>
             <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">coinc_node</span><span class="p">)</span>
-             
+
         <span class="n">statmap_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">setup_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">bg_files</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">veto_name</span><span class="p">])]</span>
 
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;...leaving coincidence &#39;</span><span class="p">)</span>
@@ -704,7 +704,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -726,7 +726,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

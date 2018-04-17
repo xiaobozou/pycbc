@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fftw &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.fft.fftw &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -439,7 +439,7 @@
         <span class="n">_fftw_plan_with_nthreads</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
     <span class="c1"># Convert a measure-level to flags</span>
     <span class="n">flags</span> <span class="o">=</span> <span class="n">get_flag</span><span class="p">(</span><span class="n">mlvl</span><span class="p">,</span><span class="n">aligned</span><span class="p">)</span>
-    
+
     <span class="c1"># We make our arrays of the necessary type and size.  Things can be</span>
     <span class="c1"># tricky, especially for in-place transforms with one of input or</span>
     <span class="c1"># output real.</span>
@@ -582,7 +582,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">_fftw_threaded_set</span><span class="p">:</span>
         <span class="n">set_threads_backend</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">nthreads</span> <span class="o">!=</span> <span class="n">_fftw_current_nthreads</span><span class="p">:</span>
-        <span class="n">_fftw_plan_with_nthreads</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>  
+        <span class="n">_fftw_plan_with_nthreads</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
     <span class="n">mlvl</span> <span class="o">=</span> <span class="n">get_measure_level</span><span class="p">()</span>
     <span class="n">aligned</span> <span class="o">=</span> <span class="n">fftobj</span><span class="o">.</span><span class="n">invec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">isaligned</span> <span class="ow">and</span> <span class="n">fftobj</span><span class="o">.</span><span class="n">outvec</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">isaligned</span>
     <span class="n">flags</span> <span class="o">=</span> <span class="n">get_flag</span><span class="p">(</span><span class="n">mlvl</span><span class="p">,</span> <span class="n">aligned</span><span class="p">)</span>
@@ -682,7 +682,7 @@
     <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">fftw_measure_level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> is not a valid FFTW measure level.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">fftw_measure_level</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">fftw_import_system_wisdom</span> <span class="ow">and</span> <span class="p">((</span><span class="n">opt</span><span class="o">.</span><span class="n">fftw_input_float_wisdom_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">fftw_import_system_wisdom</span> <span class="ow">and</span> <span class="p">((</span><span class="n">opt</span><span class="o">.</span><span class="n">fftw_input_float_wisdom_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
                                           <span class="ow">or</span> <span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">fftw_input_double_wisdom_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)):</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;If --fftw-import-system-wisdom is given, then you cannot give&quot;</span>
                      <span class="s2">&quot; either of --fftw-input-float-wisdom-file or --fftw-input-double-wisdom-file&quot;</span><span class="p">)</span>
@@ -711,7 +711,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -733,7 +733,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.ligolw.lsctables &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.ligolw.lsctables &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -1038,7 +1038,7 @@
 
 	<span class="k">def</span> <span class="nf">write_new_expr_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_group</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> <span class="n">lars_id</span><span class="p">,</span> <span class="n">instruments</span><span class="p">,</span> <span class="n">gps_start_time</span><span class="p">,</span> <span class="n">gps_end_time</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Creates a new def_id for the given arguments and returns it. </span>
+<span class="sd">		Creates a new def_id for the given arguments and returns it.</span>
 <span class="sd">		If an entry already exists with these, will just return that id.</span>
 
 <span class="sd">		@search_group: string representing the search group (e.g., cbc)</span>
@@ -1048,7 +1048,7 @@
 <span class="sd">		@gps_start_time: string or int representing the gps_start_time of the experiment</span>
 <span class="sd">		@gps_end_time: string or int representing the gps_end_time of the experiment</span>
 <span class="sd">		&quot;&quot;&quot;</span>
-		
+
 		<span class="c1"># check if id already exists</span>
 		<span class="n">check_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_expr_id</span><span class="p">(</span> <span class="n">search_group</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> <span class="n">lars_id</span><span class="p">,</span> <span class="n">instruments</span><span class="p">,</span> <span class="n">gps_start_time</span><span class="p">,</span> <span class="n">gps_end_time</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span> <span class="p">)</span>
 		<span class="k">if</span> <span class="n">check_id</span><span class="p">:</span>
@@ -1135,7 +1135,7 @@
 	<span class="n">next_id</span> <span class="o">=</span> <span class="n">ExpSummID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 	<span class="n">datatypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;slide&#39;</span><span class="p">,</span> <span class="s1">&#39;all_data&#39;</span><span class="p">,</span> <span class="s1">&#39;playground&#39;</span><span class="p">,</span> <span class="s1">&#39;exclude_play&#39;</span><span class="p">,</span> <span class="s1">&#39;simulation&#39;</span><span class="p">]</span>
-		
+
 
 	<span class="k">def</span> <span class="nf">as_id_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
@@ -1155,7 +1155,7 @@
 
 	<span class="k">def</span> <span class="nf">get_expr_summ_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiment_id</span><span class="p">,</span> <span class="n">time_slide_id</span><span class="p">,</span> <span class="n">veto_def_name</span><span class="p">,</span> <span class="n">datatype</span><span class="p">,</span> <span class="n">sim_proc_id</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		Return the expr_summ_id for the row in the table whose experiment_id, </span>
+<span class="sd">		Return the expr_summ_id for the row in the table whose experiment_id,</span>
 <span class="sd">		time_slide_id, veto_def_name, and datatype match the given. If sim_proc_id,</span>
 <span class="sd">		will retrieve the injection run matching that sim_proc_id.</span>
 <span class="sd">		If a matching row is not found, returns None.</span>
@@ -1193,19 +1193,19 @@
 		<span class="n">row</span><span class="o">.</span><span class="n">nevents</span> <span class="o">=</span> <span class="kc">None</span>
 		<span class="n">row</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="kc">None</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-		
+
 		<span class="k">return</span> <span class="n">row</span><span class="o">.</span><span class="n">experiment_summ_id</span>
 
 	<span class="k">def</span> <span class="nf">write_non_injection_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiment_id</span><span class="p">,</span> <span class="n">time_slide_dict</span><span class="p">,</span> <span class="n">veto_def_name</span><span class="p">,</span> <span class="n">write_all_data</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">write_playground</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">write_exclude_play</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">return_dict</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">		Method for writing a new set of non-injection experiments to the experiment</span>
-<span class="sd">		summary table. This ensures that for every entry in the </span>
+<span class="sd">		summary table. This ensures that for every entry in the</span>
 <span class="sd">		experiment table, an entry for every slide is added to</span>
 <span class="sd">		the experiment_summ table, rather than just an entry for slides that</span>
 <span class="sd">		have events in them. Default is to write a 3 rows for zero-lag: one for</span>
 <span class="sd">		all_data, playground, and exclude_play. (If all of these are set to false,</span>
 <span class="sd">		will only slide rows.)</span>
-<span class="sd">		</span>
+
 <span class="sd">		Note: sim_proc_id is hard-coded to None because time-slides</span>
 <span class="sd">		are not performed with injections.</span>
 
@@ -1255,7 +1255,7 @@
 			<span class="k">else</span><span class="p">:</span>
 				<span class="n">row</span><span class="o">.</span><span class="n">nevents</span> <span class="o">=</span> <span class="n">num_events</span>
 				<span class="k">return</span> <span class="n">row</span><span class="o">.</span><span class="n">nevents</span>
-				
+
 		<span class="c1"># if get to here, couldn&#39;t find experiment_summ_id in the table</span>
 		<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39; could not be found in the table&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">experiment_summ_id</span><span class="p">)))</span>
 
@@ -2130,8 +2130,8 @@
 
 	<span class="k">def</span> <span class="nf">get_new_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mf">6.0</span><span class="p">):</span>
 		<span class="c1"># kwarg &#39;index&#39; is assigned to the parameter chisq_index</span>
-		<span class="c1"># nhigh gives the asymptotic large  rho behaviour of d (ln chisq) / d (ln rho) </span>
-		<span class="c1"># for fixed new_snr eg nhigh = 2 -&gt; chisq ~ rho^2 at large rho </span>
+		<span class="c1"># nhigh gives the asymptotic large  rho behaviour of d (ln chisq) / d (ln rho)</span>
+		<span class="c1"># for fixed new_snr eg nhigh = 2 -&gt; chisq ~ rho^2 at large rho</span>
 		<span class="n">snr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
 		<span class="n">rchisq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;reduced_chisq&#39;</span><span class="p">)</span>
 		<span class="n">nhigh</span> <span class="o">=</span> <span class="mf">2.</span>
@@ -2190,7 +2190,7 @@
 			<span class="k">else</span><span class="p">:</span>
 				<span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 		<span class="k">return</span> <span class="n">keep</span>
-	
+
 	<span class="k">def</span> <span class="nf">vetoed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seglist</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">		Return the inverse of what veto returns, i.e., return the triggers</span>
@@ -2205,7 +2205,7 @@
 			<span class="k">else</span><span class="p">:</span>
 				<span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 		<span class="k">return</span> <span class="n">vetoed</span>
-	
+
 	<span class="k">def</span> <span class="nf">veto_seglistdict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seglistdict</span><span class="p">):</span>
 		<span class="n">vetoed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 		<span class="n">keep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -2216,7 +2216,7 @@
 			<span class="k">else</span><span class="p">:</span>
 				<span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 		<span class="k">return</span> <span class="n">keep</span>
-	
+
 	<span class="k">def</span> <span class="nf">vetoed_seglistdict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seglistdict</span><span class="p">):</span>
 		<span class="n">vetoed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 		<span class="n">keep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -2227,7 +2227,7 @@
 			<span class="k">else</span><span class="p">:</span>
 				<span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 		<span class="k">return</span> <span class="n">vetoed</span>
-	
+
 	<span class="k">def</span> <span class="nf">getslide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">slide_num</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">		Return the triggers with a specific slide number.</span>
@@ -2263,7 +2263,7 @@
 
 	<span class="k">def</span> <span class="nf">get_effective_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fac</span><span class="o">=</span><span class="mf">250.0</span><span class="p">):</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fac</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span><span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_reduced_chisq</span><span class="p">()</span><span class="o">**</span><span class="mf">0.25</span>
-	
+
 	<span class="k">def</span> <span class="nf">get_bank_effective_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fac</span><span class="o">=</span><span class="mf">250.0</span><span class="p">):</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fac</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span><span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_reduced_bank_chisq</span><span class="p">()</span><span class="o">**</span><span class="mf">0.25</span>
 
@@ -2750,8 +2750,8 @@
 	<span class="k">def</span> <span class="nf">get_new_snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span><span class="n">nhigh</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;chisq&#39;</span><span class="p">):</span>
 		<span class="c1"># kwarg &#39;index&#39; is assigned to the parameter chisq_index</span>
 		<span class="c1"># nhigh gives the asymptotic large rho behaviour of</span>
-		<span class="c1"># d (ln chisq) / d (ln rho) </span>
-		<span class="c1"># for fixed new_snr eg nhigh = 2 -&gt; chisq ~ rho^2 at large rho </span>
+		<span class="c1"># d (ln chisq) / d (ln rho)</span>
+		<span class="c1"># for fixed new_snr eg nhigh = 2 -&gt; chisq ~ rho^2 at large rho</span>
 		<span class="n">snr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;snr&#39;</span><span class="p">)</span>
 		<span class="n">rchisq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="s1">&#39;reduced_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">column</span><span class="p">)</span>
 		<span class="n">newsnr</span> <span class="o">=</span> <span class="n">snr</span><span class="o">/</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">rchisq</span><span class="o">**</span><span class="p">(</span><span class="n">index</span><span class="o">/</span><span class="n">nhigh</span><span class="p">)))</span><span class="o">**</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">index</span><span class="p">)</span>
@@ -4744,7 +4744,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -4766,7 +4766,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

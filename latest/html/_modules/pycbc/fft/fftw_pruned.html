@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fftw_pruned &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.fft.fftw_pruned &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -248,18 +248,18 @@
     <span class="n">rows</span> <span class="o">=</span> <span class="n">N1</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="n">N2</span>
 
-    <span class="n">iodim</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> 
+    <span class="n">iodim</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">rows</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cols</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">cols</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">rows</span>
     <span class="n">iodim</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    
+
     <span class="n">N</span> <span class="o">=</span> <span class="n">N1</span><span class="o">*</span><span class="n">N2</span>
     <span class="n">vin</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
     <span class="n">vout</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
-    
+
     <span class="n">f</span> <span class="o">=</span> <span class="n">float_lib</span><span class="o">.</span><span class="n">fftwf_plan_guru_dft</span>
     <span class="n">f</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">,</span>
                   <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
@@ -321,7 +321,7 @@
     <span class="k">if</span> <span class="n">_theplan</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">_theplan</span> <span class="o">=</span> <span class="n">plan_first_phase</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">)</span>
     <span class="n">fexecute</span><span class="p">(</span><span class="n">_theplan</span><span class="p">,</span> <span class="n">invec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="second_phase"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw_pruned.second_phase">[docs]</a><span class="k">def</span> <span class="nf">second_phase</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is the second phase of the FFT decomposition that actually performs</span>
@@ -397,21 +397,21 @@
     <span class="n">N1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">N1</span><span class="p">)</span>
     <span class="n">N2</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">N2</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
-    
+
     <span class="c1"># Note, the next step if this needs to be faster is to invert the loops</span>
     <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        float pi = 3.14159265359;</span>
 <span class="s2">        for(int i=0; i&lt;NI; i++){</span>
 <span class="s2">            float sp, cp;</span>
 <span class="s2">            std::complex&lt;double&gt; val= (0, 0);</span>
-<span class="s2">            </span>
+
 <span class="s2">            unsigned int k = indices[i];</span>
 <span class="s2">            int N = N1*N2;</span>
 <span class="s2">            float k2 = k % N2;</span>
-<span class="s2">            </span>
+
 <span class="s2">            float phase_inc = 2 * pi * float(k) / float(N);</span>
 <span class="s2">            sincosf(phase_inc, &amp;sp, &amp;cp);</span>
-<span class="s2">            std::complex&lt;float&gt; twiddle_inc = std::complex&lt;float&gt;(cp, sp);             </span>
+<span class="s2">            std::complex&lt;float&gt; twiddle_inc = std::complex&lt;float&gt;(cp, sp);</span>
 <span class="s2">            std::complex&lt;float&gt; twiddle = std::complex&lt;float&gt;(1, 0);</span>
 
 <span class="s2">            for (float n1=0; n1&lt;N1; n1+=1){</span>
@@ -430,7 +430,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform an FFT transpose from vec into outvec.</span>
 <span class="sd">    (Alex to provide more details in a write-up.)</span>
-<span class="sd">   </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    vec : array</span>
@@ -453,7 +453,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform a numpy transpose from vec into outvec.</span>
 <span class="sd">    (Alex to provide more details in a write-up.)</span>
-<span class="sd">   </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    vec : array</span>
@@ -482,7 +482,7 @@
 <span class="sd">    decomposition is easier to choose. This is not a strict requirement of the</span>
 <span class="sd">    functions, but it is unlikely to the optimal to use anything but power</span>
 <span class="sd">    of 2. (Alex to provide more details in write up.</span>
-<span class="sd"> </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    invec : array</span>
@@ -521,7 +521,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -543,7 +543,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

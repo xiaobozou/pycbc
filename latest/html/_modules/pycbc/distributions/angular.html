@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.angular &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.distributions.angular &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -221,7 +221,7 @@
     <span class="kn">from</span> <span class="nn">ConfigParser</span> <span class="k">import</span> <span class="n">Error</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">configparser</span> <span class="k">import</span> <span class="n">Error</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">VARARGS_DELIM</span> 
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">VARARGS_DELIM</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">boundaries</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">bounded</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">uniform</span>
@@ -230,7 +230,7 @@
 <div class="viewcode-block" id="UniformAngle"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.angular.UniformAngle">[docs]</a><span class="k">class</span> <span class="nc">UniformAngle</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">Uniform</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A uniform distribution in which the dependent variable is between</span>
 <span class="sd">    `[0,2pi)`.</span>
-<span class="sd">    </span>
+
 <span class="sd">    The domain of the distribution may optionally be made cyclic using the</span>
 <span class="sd">    `cyclic_domain` parameter.</span>
 
@@ -571,7 +571,7 @@
         <span class="k">if</span> <span class="n">azimuthal_angle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">azimuthal_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_azimuthal_angle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_polardist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_polardistcls</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
-            <span class="n">polar_angle</span><span class="p">:</span> <span class="n">polar_bounds</span><span class="p">})</span> 
+            <span class="n">polar_angle</span><span class="p">:</span> <span class="n">polar_bounds</span><span class="p">})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_azimuthaldist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_azimuthaldistcls</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
             <span class="n">azimuthal_angle</span><span class="p">:</span> <span class="n">azimuthal_bounds</span><span class="p">,</span>
             <span class="s1">&#39;cyclic_domain&#39;</span><span class="p">:</span> <span class="n">azimuthal_cyclic_domain</span><span class="p">})</span>
@@ -595,7 +595,7 @@
 <div class="viewcode-block" id="UniformSolidAngle.apply_boundary_conditions"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.angular.UniformSolidAngle.apply_boundary_conditions">[docs]</a>    <span class="k">def</span> <span class="nf">apply_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Maps the given values to be within the domain of the azimuthal and</span>
 <span class="sd">        polar angles, before applying any other boundary conditions.</span>
-<span class="sd">        </span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        \**kwargs :</span>
@@ -638,7 +638,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_polardist</span><span class="o">.</span><span class="n">_pdf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">*</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">_azimuthaldist</span><span class="o">.</span><span class="n">_pdf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        
+
 
     <span class="k">def</span> <span class="nf">_logpdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -708,7 +708,7 @@
 <span class="sd">        If nothing else is provided, the default names and bounds of the polar</span>
 <span class="sd">        and azimuthal angles will be used. To specify a different name for</span>
 <span class="sd">        each angle, set the `polar-angle` and `azimuthal-angle` attributes. For</span>
-<span class="sd">        example: </span>
+<span class="sd">        example:</span>
 
 <span class="sd">        .. code-block:: ini</span>
 
@@ -716,7 +716,7 @@
 <span class="sd">            name = uniform_solidangle</span>
 <span class="sd">            polar-angle = foo</span>
 <span class="sd">            azimuthal-angle = bar</span>
-<span class="sd">        </span>
+
 <span class="sd">        Note that the names of the variable args in the tag part of the section</span>
 <span class="sd">        name must match the names of the polar and azimuthal angles.</span>
 
@@ -805,7 +805,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -827,7 +827,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

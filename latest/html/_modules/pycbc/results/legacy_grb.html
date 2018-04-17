@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.legacy_grb &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.results.legacy_grb &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -438,7 +438,7 @@
                                                <span class="n">dectKeys</span><span class="p">[</span><span class="n">detectors</span><span class="p">]][</span><span class="n">elements</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">newDict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="n">th</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-            <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newDict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>        
+            <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newDict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">th</span><span class="p">)),</span> <span class="n">td</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">f_q</span> <span class="o">=</span> <span class="n">antenna</span><span class="o">.</span><span class="n">response</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">dec</span><span class="p">,</span>
@@ -588,7 +588,7 @@
             <span class="n">plot</span><span class="o">.</span><span class="n">img</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
             <span class="n">plot</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plot</span><span class="p">())</span>
-  
+
         <span class="n">td</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
     <span class="n">page</span> <span class="o">=</span> <span class="n">write_table</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">td</span><span class="p">)</span>
@@ -791,7 +791,7 @@
     <span class="n">page</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">reduced</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">injList</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">page</span>  
+        <span class="k">return</span> <span class="n">page</span>
 
     <span class="n">page</span><span class="o">.</span><span class="n">h3</span><span class="p">()</span>
     <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Detection efficiency plots - injections louder than loudest &#39;</span>
@@ -855,7 +855,7 @@
 
 <div class="viewcode-block" id="make_grb_segments_plot"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.make_grb_segments_plot">[docs]</a><span class="k">def</span> <span class="nf">make_grb_segments_plot</span><span class="p">(</span><span class="n">wkflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> <span class="n">trigger_time</span><span class="p">,</span> <span class="n">trigger_name</span><span class="p">,</span>
                            <span class="n">out_dir</span><span class="p">,</span> <span class="n">coherent_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fail_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    
+
     <span class="n">ifos</span> <span class="o">=</span> <span class="n">wkflow</span><span class="o">.</span><span class="n">ifos</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">wkflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;start-time&quot;</span><span class="p">)),</span>
@@ -930,7 +930,7 @@
     <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Science Segments for GRB</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">trigger_name</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    
+
     <span class="n">plot_name</span> <span class="o">=</span> <span class="s1">&#39;GRB</span><span class="si">%s</span><span class="s1">_segments.png&#39;</span> <span class="o">%</span> <span class="n">trigger_name</span>
     <span class="n">plot_url</span> <span class="o">=</span> <span class="s1">&#39;file://localhost</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">plot_name</span><span class="p">))</span>
@@ -949,7 +949,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -971,7 +971,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

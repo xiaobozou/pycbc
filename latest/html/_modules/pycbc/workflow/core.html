@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -305,7 +305,7 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <span class="n">file_input_from_config_dict</span> <span class="o">=</span> <span class="p">{}</span>
-        
+
 <div class="viewcode-block" id="Executable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Executable">[docs]</a><span class="k">class</span> <span class="nc">Executable</span><span class="p">(</span><span class="n">pegasus_workflow</span><span class="o">.</span><span class="n">Executable</span><span class="p">):</span>
     <span class="c1"># These are the file retention levels</span>
     <span class="n">INTERMEDIATE_PRODUCT</span> <span class="o">=</span> <span class="mi">1</span>
@@ -321,7 +321,7 @@
     <span class="c1"># case.</span>
     <span class="c1"># file_input_options = [&#39;--psd-file, &#39;--bank-file&#39;] (as an example)</span>
     <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="c1"># This is the default value. It will give a warning if a class is</span>
     <span class="c1"># used where the retention level is not set. The file will still be stored</span>
     <span class="n">KEEP_BUT_RAISE_WARNING</span> <span class="o">=</span> <span class="mi">5</span>
@@ -330,7 +330,7 @@
     <span class="c1"># Sub classes, or instances, should override this. If not overriden the</span>
     <span class="c1"># file will be retained, but a warning given</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">KEEP_BUT_RAISE_WARNING</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
                  <span class="n">universe</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Executable class.</span>
@@ -350,7 +350,7 @@
 <span class="sd">            of ifos (for e.g. ligolw_thinca) then this can be supplied</span>
 <span class="sd">            as, for e.g. &quot;H1L1V1&quot;.</span>
 <span class="sd">        out_dir: path, optional</span>
-<span class="sd">            The folder to store output files of this job. </span>
+<span class="sd">            The folder to store output files of this job.</span>
 <span class="sd">        tags : list of strings</span>
 <span class="sd">            A list of strings that is used to identify this job.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -364,7 +364,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">cp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">universe</span><span class="o">=</span><span class="n">universe</span>
-        
+
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">installed</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;pycbc|installed&#39;</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
@@ -384,7 +384,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_pegasus_profile_options</span><span class="p">()</span>
 
-        <span class="c1"># Check that the executable actually exists locally or </span>
+        <span class="c1"># Check that the executable actually exists locally or</span>
         <span class="c1"># looks like a URL, in which case trust Pegasus to be</span>
         <span class="c1"># able to fetch it.</span>
         <span class="n">exe_path</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;executables&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
@@ -406,7 +406,7 @@
                     <span class="c1"># Check that executables at file urls</span>
                     <span class="c1">#  on the local site exist</span>
                     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">exe_url</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Failed to find </span><span class="si">%s</span><span class="s2"> executable &quot;</span> 
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Failed to find </span><span class="si">%s</span><span class="s2"> executable &quot;</span>
                                         <span class="s2">&quot;at </span><span class="si">%s</span><span class="s2"> on site </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exe_path</span><span class="p">,</span>
                                         <span class="n">exe_site</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
@@ -417,20 +417,20 @@
             <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">%s</span><span class="s2"> executable &quot;</span>
                           <span class="s2">&quot;at </span><span class="si">%s</span><span class="s2"> on site </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">exe_url</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">exe_site</span><span class="p">))</span>
 
-        <span class="c1"># Determine the condor universe if we aren&#39;t given one </span>
+        <span class="c1"># Determine the condor universe if we aren&#39;t given one</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">universe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">is_condor_exec</span><span class="p">(</span><span class="n">exe_path</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">universe</span> <span class="o">=</span> <span class="s1">&#39;standard&#39;</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">universe</span> <span class="o">=</span> <span class="s1">&#39;vanilla&#39;</span>
-                
+
         <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> executable will run as </span><span class="si">%s</span><span class="s2"> universe&quot;</span>
-                     <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">universe</span><span class="p">))</span>  
-    
+                     <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">universe</span><span class="p">))</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">set_universe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">universe</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;group_jobs&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="s1">&#39;pegasus&#39;</span><span class="p">,</span> <span class="s1">&#39;clusters.size&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_jobs</span><span class="p">)</span>        
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="s1">&#39;pegasus&#39;</span><span class="p">,</span> <span class="s1">&#39;clusters.size&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_jobs</span><span class="p">)</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ifo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the ifo.</span>
@@ -486,7 +486,7 @@
                 <span class="c1"># Get LFN and PFN</span>
                 <span class="n">curr_lfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-                <span class="c1"># If the file exists make sure to use. </span>
+                <span class="c1"># If the file exists make sure to use.</span>
                 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
                     <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -503,7 +503,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">common_input_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="p">)</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">curr_file</span><span class="o">.</span><span class="n">dax_repr</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span></div>
-            
+
 <div class="viewcode-block" id="Executable.add_opt"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Executable.add_opt">[docs]</a>    <span class="k">def</span> <span class="nf">add_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add option to job.</span>
 
@@ -518,7 +518,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span></div>
-            
+
 <div class="viewcode-block" id="Executable.get_opt"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Executable.get_opt">[docs]</a>    <span class="k">def</span> <span class="nf">get_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get value of option from configuration file</span>
 
@@ -724,24 +724,24 @@
 
 <div class="viewcode-block" id="Workflow"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow">[docs]</a><span class="k">class</span> <span class="nc">Workflow</span><span class="p">(</span><span class="n">pegasus_workflow</span><span class="o">.</span><span class="n">Workflow</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This class manages a pycbc workflow. It provides convenience </span>
+<span class="sd">    This class manages a pycbc workflow. It provides convenience</span>
 <span class="sd">    functions for finding input files using time and keywords. It can also</span>
 <span class="sd">    generate cache files from the inputs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a pycbc workflow</span>
-<span class="sd">        </span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        args : argparse.ArgumentParser</span>
 <span class="sd">            The command line options to initialize a CBC workflow.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Workflow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-        
+
         <span class="c1"># Parse ini file</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">WorkflowConfigParser</span><span class="o">.</span><span class="n">from_args</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-        
+
         <span class="c1"># Set global values</span>
         <span class="n">start_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;start-time&quot;</span><span class="p">))</span>
         <span class="n">end_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;end-time&quot;</span><span class="p">))</span>
@@ -754,24 +754,24 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="o">=</span> <span class="n">ifos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">)</span>
-        
+
         <span class="c1"># Set up input and output file lists for workflow</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
- 
+
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">output_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
+    <span class="k">def</span> <span class="nf">output_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.map&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;output.map&#39;</span>
         <span class="n">path</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">path</span>
-        
+
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">staging_site</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
+    <span class="k">def</span> <span class="nf">staging_site</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">workflow_section</span> <span class="o">=</span> <span class="s1">&#39;workflow-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> 
+            <span class="n">workflow_section</span> <span class="o">=</span> <span class="s1">&#39;workflow-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">workflow_section</span> <span class="o">=</span> <span class="s1">&#39;workflow&#39;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -784,7 +784,7 @@
         <span class="sd">&quot;&quot;&quot; Execute this node immediately on the local machine</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
-        
+
         <span class="c1"># Check that the PFN is for a file or path</span>
         <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">needs_fetching</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -801,30 +801,30 @@
             <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">add_pfn</span><span class="p">(</span><span class="n">resolved</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
 
         <span class="n">cmd_list</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_command_line</span><span class="p">()</span>
-        
+
         <span class="c1"># Must execute in output directory.</span>
         <span class="n">curr_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
         <span class="n">out_dir</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">out_dir</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-        
+
         <span class="c1"># Make call</span>
         <span class="n">make_external_call</span><span class="p">(</span><span class="n">cmd_list</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span> <span class="s1">&#39;logs&#39;</span><span class="p">),</span>
-                                     <span class="n">out_basename</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> 
+                                     <span class="n">out_basename</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="c1"># Change back</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">curr_dir</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="Workflow.set_job_properties"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.set_job_properties">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica.file=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> 
+        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica.file=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
                          <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">output_map_file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="n">job</span><span class="o">.</span><span class="n">uses</span><span class="p">(</span><span class="n">output_map_file</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">Link</span><span class="o">.</span><span class="n">INPUT</span><span class="p">)</span>
-        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica=File&#39;</span><span class="p">)</span> 
+        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica=File&#39;</span><span class="p">)</span>
 
-        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--output-site local&#39;</span><span class="p">)</span>     
+        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--output-site local&#39;</span><span class="p">)</span>
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--cleanup inplace&#39;</span><span class="p">)</span>
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--cluster label,horizontal&#39;</span><span class="p">)</span>
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-vvv&#39;</span><span class="p">)</span>
@@ -836,7 +836,7 @@
 
         <span class="k">if</span> <span class="n">staging_site</span><span class="p">:</span>
             <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--staging-site </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">staging_site</span><span class="p">)</span></div>
-            
+
 <div class="viewcode-block" id="Workflow.save"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">output_map_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">output_map_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">output_map_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_map</span>
@@ -846,13 +846,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="n">output_map_file</span><span class="p">)</span>
 
         <span class="n">staging_site</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">staging_site</span>
-            
+
         <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="p">)</span>
 
         <span class="c1"># add executable pfns for local site to dax</span>
         <span class="k">for</span> <span class="n">exe</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executables</span><span class="p">:</span>
             <span class="n">exe</span><span class="o">.</span><span class="n">insert_into_dax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_adag</span><span class="p">)</span>
-            
+
         <span class="c1"># add workflow input files pfns for local site to dax</span>
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">insert_into_dax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_adag</span><span class="p">)</span>
@@ -870,10 +870,10 @@
         <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ini_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
         <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            
+
         <span class="c1"># save the dax file</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Workflow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-        
+
         <span class="c1"># add workflow storage locations to the output mapper</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_map_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">out</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
@@ -915,21 +915,21 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">executable</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_category</span><span class="p">(</span><span class="n">executable</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="n">executable</span><span class="o">.</span><span class="n">universe</span> <span class="o">==</span> <span class="s1">&#39;vanilla&#39;</span> <span class="ow">and</span> <span class="n">executable</span><span class="o">.</span><span class="n">installed</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="s1">&#39;condor&#39;</span><span class="p">,</span> <span class="s1">&#39;getenv&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">executable</span><span class="p">,</span> <span class="s1">&#39;execution_site&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="s1">&#39;hints&#39;</span><span class="p">,</span> <span class="s1">&#39;execution.site&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">.</span><span class="n">execution_site</span><span class="p">)</span>
-            
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">common_options</span>
         <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">common_input_files</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_input</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
-    
+
 <div class="viewcode-block" id="Node.get_command_line"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Node.get_command_line">[docs]</a>    <span class="k">def</span> <span class="nf">get_command_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_finalize</span><span class="p">()</span>
         <span class="n">arglist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dax_node</span><span class="o">.</span><span class="n">arguments</span>
-        
+
         <span class="n">tmpargs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arglist</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">File</span><span class="p">):</span>
@@ -937,17 +937,17 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tmpargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="n">arglist</span> <span class="o">=</span> <span class="n">tmpargs</span>
-        
+
         <span class="n">arglist</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arglist</span> <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
-        
+
         <span class="n">arglist</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">storage_path</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">File</span><span class="p">)</span> <span class="k">else</span> <span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arglist</span><span class="p">]</span>
-       
+
         <span class="c1"># This allows the pfn to be an http(s) URL, which will be</span>
         <span class="c1"># downloaded by resolve_url</span>
         <span class="n">exe_path</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlsplit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">get_pfn</span><span class="p">())</span><span class="o">.</span><span class="n">path</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">exe_path</span><span class="p">]</span> <span class="o">+</span> <span class="n">arglist</span></div>
-        
+
 <div class="viewcode-block" id="Node.new_output_file_opt"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Node.new_output_file_opt">[docs]</a>    <span class="k">def</span> <span class="nf">new_output_file_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_seg</span><span class="p">,</span> <span class="n">extension</span><span class="p">,</span> <span class="n">option_name</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">store_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_tmp_subdirs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -959,7 +959,7 @@
 <span class="sd">        valid_seg : glue.segments.segment</span>
 <span class="sd">            The time span over which the job is valid for.</span>
 <span class="sd">        extension : string</span>
-<span class="sd">            The extension to be used at the end of the filename. </span>
+<span class="sd">            The extension to be used at the end of the filename.</span>
 <span class="sd">            E.g. &#39;.xml&#39; or &#39;.sqlite&#39;.</span>
 <span class="sd">        option_name : string</span>
 <span class="sd">            The option that is used when setting this job as output. For e.g.</span>
@@ -975,7 +975,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
-        
+
         <span class="c1"># Changing this from set(tags) to enforce order. It might make sense</span>
         <span class="c1"># for all jobs to have file names with tags in the same order.</span>
         <span class="n">all_tags</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
@@ -986,7 +986,7 @@
         <span class="n">store_file</span> <span class="o">=</span> <span class="n">store_file</span> <span class="k">if</span> <span class="n">store_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">retain_files</span>
 
         <span class="n">fil</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">ifo_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                   <span class="n">valid_seg</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="n">store_file</span><span class="p">,</span> 
+                   <span class="n">valid_seg</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">,</span> <span class="n">store_file</span><span class="o">=</span><span class="n">store_file</span><span class="p">,</span>
                    <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">all_tags</span><span class="p">,</span>
                    <span class="n">use_tmp_subdirs</span><span class="o">=</span><span class="n">use_tmp_subdirs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_output_opt</span><span class="p">(</span><span class="n">option_name</span><span class="p">,</span> <span class="n">fil</span><span class="p">)</span>
@@ -1053,7 +1053,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_multiifo_output_list_opt</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">output_files</span><span class="p">)</span></div>
 
 
-    <span class="nd">@property</span>    
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">output_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">FileList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">)</span>
 
@@ -1069,10 +1069,10 @@
             <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> output files.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out_files</span><span class="p">))</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">out_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-    
+
 <div class="viewcode-block" id="File"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.File">[docs]</a><span class="k">class</span> <span class="nc">File</span><span class="p">(</span><span class="n">pegasus_workflow</span><span class="o">.</span><span class="n">File</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    This class holds the details of an individual output file </span>
+<span class="sd">    This class holds the details of an individual output file</span>
 <span class="sd">    This file(s) may be pre-supplied, generated from within the workflow</span>
 <span class="sd">    command line script, or generated within the workflow. The important stuff</span>
 <span class="sd">    is:</span>
@@ -1084,7 +1084,7 @@
 <span class="sd">    * The url where the file should be located</span>
 
 <span class="sd">    An example of initiating this class:</span>
-<span class="sd">    </span>
+
 <span class="sd">    &gt;&gt; c = File(&quot;H1&quot;, &quot;INSPIRAL_S6LOWMASS&quot;, segments.segment(815901601, 815902001), file_url=&quot;file://localhost/home/spxiwh/H1-INSPIRAL_S6LOWMASS-815901601-400.xml.gz&quot; )</span>
 
 <span class="sd">    another where the file url is generated from the inputs:</span>
@@ -1092,12 +1092,12 @@
 <span class="sd">    &gt;&gt; c = File(&quot;H1&quot;, &quot;INSPIRAL_S6LOWMASS&quot;, segments.segment(815901601, 815902001), directory=&quot;/home/spxiwh&quot;, extension=&quot;xml.gz&quot; )</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">exe_name</span><span class="p">,</span> <span class="n">segs</span><span class="p">,</span> <span class="n">file_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                 <span class="n">extension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">exe_name</span><span class="p">,</span> <span class="n">segs</span><span class="p">,</span> <span class="n">file_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">extension</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">store_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_tmp_subdirs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a File instance</span>
-<span class="sd">        </span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        ifos : string or list</span>
@@ -1135,7 +1135,7 @@
 <span class="sd">            These are used in file naming.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
-        
+
         <span class="c1"># Set the science metadata on the file</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ifos</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ifo_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">ifos</span><span class="p">]</span>
@@ -1143,7 +1143,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ifo_list</span> <span class="o">=</span> <span class="n">ifos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo_list</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">exe_name</span>
-        
+
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segs</span><span class="p">,</span> <span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">segment_list</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segmentlist</span><span class="p">([</span><span class="n">segs</span><span class="p">])</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segs</span><span class="p">,</span> <span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">segmentlist</span><span class="p">)):</span>
@@ -1161,11 +1161,11 @@
             <span class="n">tagged_description</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">]</span> <span class="o">+</span> <span class="n">tags</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">tagged_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
-            
+
         <span class="c1"># Follow the capitals-for-naming convention</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tagged_description</span> <span class="o">=</span> <span class="n">tagged_description</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-      
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">file_url</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">extension</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;a file extension required if a file_url &quot;</span>
@@ -1173,12 +1173,12 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">directory</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;a directory is required if a file_url is &quot;</span>
                                 <span class="s2">&quot;not provided&quot;</span><span class="p">)</span>
-            
+
             <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tagged_description</span><span class="p">,</span>
                                       <span class="n">extension</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">segment_list</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">path</span><span class="p">)</span> 
+                <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">path</span><span class="p">)</span>
             <span class="n">file_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlunparse</span><span class="p">([</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                                             <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
 
@@ -1189,7 +1189,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pegasus_lfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">File</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pegasus_lfn</span><span class="p">)</span>
-        
+
         <span class="k">if</span> <span class="n">store_file</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlsplit</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span><span class="o">.</span><span class="n">path</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1204,7 +1204,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cache_entry</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">safe_dict</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
         <span class="n">safe_dict</span><span class="p">[</span><span class="s1">&#39;cache_entry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="n">safe_dict</span>   
+        <span class="k">return</span> <span class="n">safe_dict</span>
 
 <div class="viewcode-block" id="File.add_metadata"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.File.add_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">add_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Add arbitrary metadata to this file &quot;&quot;&quot;</span>
@@ -1244,7 +1244,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;This file is temporary and so a lal &#39;</span>
                              <span class="s1">&#39;cache entry cannot be made&#39;</span><span class="p">)</span>
-            
+
         <span class="n">file_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlunparse</span><span class="p">([</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
                                             <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
         <span class="n">cache_entry</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">CacheEntry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span><span class="p">,</span>
@@ -1256,20 +1256,20 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct the standard output filename. Should only be used internally</span>
 <span class="sd">        of the File class.</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">extension</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
             <span class="n">extension</span> <span class="o">=</span> <span class="n">extension</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-            
+
         <span class="c1"># Follow the frame convention of using integer filenames,</span>
         <span class="c1"># but stretching to cover partially covered seconds.</span>
         <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
         <span class="n">start</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-        
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">description</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">start</span><span class="p">,</span> 
-                                   <span class="n">duration</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span>  </div>
-    
+
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">-</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">description</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">start</span><span class="p">,</span>
+                                   <span class="n">duration</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="FileList"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.FileList">[docs]</a><span class="k">class</span> <span class="nc">FileList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class holds a list of File objects. It inherits from the</span>
@@ -1339,7 +1339,7 @@
             <span class="n">lenTime</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="c1"># This is if I have a single time</span>
-            <span class="n">outFile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_output_at_time</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>                
+            <span class="n">outFile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_output_at_time</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span><span class="n">time</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># This is if I have a range of times</span>
             <span class="k">if</span> <span class="n">lenTime</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -1367,7 +1367,7 @@
 <span class="sd">           The Files that corresponds to the time.</span>
 <span class="sd">         &#39;&#39;&#39;</span>
         <span class="c1"># Get list of Files that overlap time, for given ifo</span>
-        <span class="n">outFiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ifo_list</span> <span class="ow">and</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">segment_list</span><span class="p">]</span> 
+        <span class="n">outFiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span> <span class="k">if</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">ifo_list</span> <span class="ow">and</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">segment_list</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outFiles</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># No OutFile at this time</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -1415,7 +1415,7 @@
         <span class="c1"># to define the valid segment</span>
         <span class="n">overlap_windows</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">overlap_windows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
         <span class="n">segmentLst</span> <span class="o">=</span> <span class="n">overlap_files</span><span class="p">[</span><span class="n">overlap_windows</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span><span class="o">.</span><span class="n">segment_list</span>
-        
+
         <span class="c1"># Get all output files with the exact same segment definition</span>
         <span class="n">output_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">overlap_files</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">segment_list</span><span class="o">==</span><span class="n">segmentLst</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">output_files</span></div>
@@ -1425,13 +1425,13 @@
 <span class="sd">        Return the File that is most appropriate for the supplied</span>
 <span class="sd">        time range. That is, the File whose coverage time has the</span>
 <span class="sd">        largest overlap with the supplied time range. If no Files</span>
-<span class="sd">        overlap the supplied time window, will return None. </span>
+<span class="sd">        overlap the supplied time window, will return None.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
 <span class="sd">        ifo : string</span>
 <span class="sd">           Name of the ifo (or ifos) that the File should correspond to</span>
-<span class="sd">        start : int/float/LIGOGPStime </span>
+<span class="sd">        start : int/float/LIGOGPStime</span>
 <span class="sd">           The start of the time range of interest.</span>
 <span class="sd">        end : int/float/LIGOGPStime</span>
 <span class="sd">           The end of the time range of interest</span>
@@ -1558,12 +1558,12 @@
 <span class="sd">        specific time. Normally such operations are done on *all* entries with</span>
 <span class="sd">        *every* call. However, if we predetermine which files are at which</span>
 <span class="sd">        times, we can avoid testing *every* file every time.</span>
-<span class="sd">  </span>
+
 <span class="sd">        We therefore create numSubLists distinct and equal length time windows</span>
 <span class="sd">        equally spaced from the first time entry in the list until the last.</span>
 <span class="sd">        A list is made for each window and files are added to lists which they</span>
 <span class="sd">        overlap.</span>
-<span class="sd"> </span>
+
 <span class="sd">        If the list changes it should be captured and these split lists become</span>
 <span class="sd">        invalid. Currently the testing for this is pretty basic</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1576,7 +1576,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_splitLists</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numSubLists</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_splitLists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FileList</span><span class="p">([]))</span>
-        
+
         <span class="c1"># Sort the files</span>
 
         <span class="k">for</span> <span class="n">currFile</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
@@ -1584,7 +1584,7 @@
             <span class="n">startIdx</span> <span class="o">=</span> <span class="p">(</span><span class="n">segExtent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span>
             <span class="n">endIdx</span> <span class="o">=</span> <span class="p">(</span><span class="n">segExtent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span>
             <span class="c1"># Add some small rounding here</span>
-            <span class="n">startIdx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">startIdx</span> <span class="o">-</span> <span class="mf">0.001</span><span class="p">)</span> 
+            <span class="n">startIdx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">startIdx</span> <span class="o">-</span> <span class="mf">0.001</span><span class="p">)</span>
             <span class="n">endIdx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">endIdx</span> <span class="o">+</span> <span class="mf">0.001</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">startIdx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -1623,30 +1623,30 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
-    
+
 <div class="viewcode-block" id="FileList.dump"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.FileList.dump">[docs]</a>    <span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Output this AhopeFileList to a pickle file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
         <span class="n">cPickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span></div>
-        
+
 <div class="viewcode-block" id="FileList.to_file_object"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.FileList.to_file_object">[docs]</a>    <span class="k">def</span> <span class="nf">to_file_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Dump to a pickle file and return an File object reference of this list</span>
-<span class="sd">        </span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str</span>
 <span class="sd">            An identifier of this file. Needs to be unique.</span>
-<span class="sd">        out_dir : path </span>
+<span class="sd">        out_dir : path</span>
 <span class="sd">            path to place this file</span>
-<span class="sd">            </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        file : AhopeFile</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-        
+
         <span class="n">file_ref</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_times_covered_by_files</span><span class="p">(),</span>
                              <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.pkl&#39;</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">file_ref</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)</span>
@@ -1694,7 +1694,7 @@
 <div class="viewcode-block" id="SegFile.from_segment_list"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.SegFile.from_segment_list">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_segment_list</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">segmentlist</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
                           <span class="n">seg_summ_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a segmentlist. </span>
+        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a segmentlist.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ------------</span>
@@ -1718,13 +1718,13 @@
             <span class="n">seg_summ_dict</span><span class="p">[</span><span class="n">ifo</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">seg_summ_list</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">seg_summ_dict</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_segment_list_dict</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">seglistdict</span><span class="p">,</span> 
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_segment_list_dict</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">seglistdict</span><span class="p">,</span>
                                           <span class="n">seg_summ_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SegFile.from_multi_segment_list"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.SegFile.from_multi_segment_list">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_multi_segment_list</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">segmentlists</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span>
                                 <span class="n">seg_summ_lists</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a list of segmentlists. </span>
+        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a list of segmentlists.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ------------</span>
@@ -1757,9 +1757,9 @@
 <div class="viewcode-block" id="SegFile.from_segment_list_dict"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.SegFile.from_segment_list_dict">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_segment_list_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">segmentlistdict</span><span class="p">,</span>
                                <span class="n">ifo_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">valid_segment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                               <span class="n">file_exists</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seg_summ_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                               <span class="n">file_exists</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seg_summ_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a segmentlistdict. </span>
+        <span class="sd">&quot;&quot;&quot; Initialize a SegFile object from a segmentlistdict.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ------------</span>
@@ -1980,7 +1980,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    exitCode : int</span>
 <span class="sd">        The code returned by the process.</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">out_dir</span><span class="p">:</span>
         <span class="n">outBase</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_dir</span><span class="p">,</span><span class="n">out_basename</span><span class="p">)</span>
         <span class="n">errFile</span> <span class="o">=</span> <span class="n">outBase</span> <span class="o">+</span> <span class="s1">&#39;.err&#39;</span>
@@ -2008,7 +2008,7 @@
         <span class="n">outFP</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">errCode</span> <span class="ow">and</span> <span class="n">fail_on_error</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">CalledProcessErrorMod</span><span class="p">(</span><span class="n">errCode</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmdList</span><span class="p">),</span> 
+        <span class="k">raise</span> <span class="n">CalledProcessErrorMod</span><span class="p">(</span><span class="n">errCode</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmdList</span><span class="p">),</span>
                 <span class="n">errFile</span><span class="o">=</span><span class="n">errFile</span><span class="p">,</span> <span class="n">outFile</span><span class="o">=</span><span class="n">outFile</span><span class="p">,</span> <span class="n">cmdFile</span><span class="o">=</span><span class="n">cmdFile</span><span class="p">)</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Call successful, or error checking disabled.&quot;</span><span class="p">)</span></div>
 
@@ -2018,7 +2018,7 @@
 <span class="sd">    and checking has been requested. This should not be accessed by the user</span>
 <span class="sd">    it is used only within make_external_call.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">returncode</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">errFile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outFile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">returncode</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">errFile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outFile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">cmdFile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">returncode</span> <span class="o">=</span> <span class="n">returncode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span>
@@ -2035,7 +2035,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmdFile</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;The failed command has been printed in </span><span class="si">%s</span><span class="s2"> .&quot;</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmdFile</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">msg</span></div>
-              
+
 <div class="viewcode-block" id="get_full_analysis_chunk"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.get_full_analysis_chunk">[docs]</a><span class="k">def</span> <span class="nf">get_full_analysis_chunk</span><span class="p">(</span><span class="n">science_segs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to find the first and last time point contained in the science segments</span>
@@ -2060,7 +2060,7 @@
             <span class="nb">max</span> <span class="o">=</span> <span class="n">hi</span>
     <span class="n">fullSegment</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fullSegment</span></div>
-        
+
 <div class="viewcode-block" id="get_random_label"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.get_random_label">[docs]</a><span class="k">def</span> <span class="nf">get_random_label</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get a random label string to use when clustering jobs.</span>
@@ -2080,7 +2080,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -2102,7 +2102,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

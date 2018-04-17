@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.psdfiles &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.psdfiles &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -222,7 +222,7 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This module is responsible for setting up the psd files used by CBC</span>
-<span class="sd">workflows. </span>
+<span class="sd">workflows.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
@@ -245,11 +245,11 @@
 <span class="sd">        An instanced class that manages the constructed workflow.</span>
 <span class="sd">    science_segs : Keyed dictionary of glue.segmentlist objects</span>
 <span class="sd">        scienceSegs[ifo] holds the science segments to be analysed for each</span>
-<span class="sd">        ifo. </span>
+<span class="sd">        ifo.</span>
 <span class="sd">    datafind_outs : pycbc.workflow.core.FileList</span>
 <span class="sd">        The file list containing the datafind files.</span>
 <span class="sd">    output_dir : path string</span>
-<span class="sd">        The directory where data products will be placed. </span>
+<span class="sd">        The directory where data products will be placed.</span>
 <span class="sd">    tags : list of strings</span>
 <span class="sd">        If given these tags are used to uniquely name and identify output files</span>
 <span class="sd">        that would be produced in multiple calls to this function.</span>
@@ -264,8 +264,8 @@
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Entering static psd module.&quot;</span><span class="p">)</span>
     <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
     <span class="n">cp</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span>
-    
-    <span class="c1"># Parse for options in ini file.  </span>
+
+    <span class="c1"># Parse for options in ini file.</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">psdMethod</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s2">&quot;workflow-psd&quot;</span><span class="p">,</span> <span class="s2">&quot;psd-method&quot;</span><span class="p">,</span>
                                      <span class="n">tags</span><span class="p">)</span>
@@ -281,7 +281,7 @@
         <span class="n">errMsg</span> <span class="o">=</span> <span class="s2">&quot;PSD method not recognized. Only &quot;</span>
         <span class="n">errMsg</span> <span class="o">+=</span> <span class="s2">&quot;PREGENERATED_FILE is currently supported.&quot;</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">errMsg</span><span class="p">)</span>
-    
+
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving psd module.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">psd_files</span></div>
 
@@ -289,7 +289,7 @@
 <div class="viewcode-block" id="setup_psd_pregenerated"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.psdfiles.setup_psd_pregenerated">[docs]</a><span class="k">def</span> <span class="nf">setup_psd_pregenerated</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Setup CBC workflow to use pregenerated psd files.</span>
-<span class="sd">    The file given in cp.get(&#39;workflow&#39;,&#39;pregenerated-psd-file-(ifo)&#39;) will </span>
+<span class="sd">    The file given in cp.get(&#39;workflow&#39;,&#39;pregenerated-psd-file-(ifo)&#39;) will</span>
 <span class="sd">    be used as the --psd-file argument to geom_nonspinbank, geom_aligned_bank</span>
 <span class="sd">    and pycbc_plot_psd_file.</span>
 
@@ -345,7 +345,7 @@
                 <span class="c1"># will have pregenerated PSDs</span>
                 <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;No psd file specified for IFO </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,))</span>
                 <span class="k">pass</span>
-            
+
     <span class="k">return</span> <span class="n">psd_files</span></div>
 
 </pre></div>
@@ -361,7 +361,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -383,7 +383,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

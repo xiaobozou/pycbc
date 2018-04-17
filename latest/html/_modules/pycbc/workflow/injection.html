@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.injection &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.workflow.injection &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -236,7 +236,7 @@
 <div class="viewcode-block" id="veto_injections"><a class="viewcode-back" href="../../../workflow/injections.html#pycbc.workflow.injection.veto_injections">[docs]</a><span class="k">def</span> <span class="nf">veto_injections</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
     <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
-    
+
     <span class="n">node</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;strip_injections&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
                           <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--segment-name&#39;</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">)</span>
@@ -245,7 +245,7 @@
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--ifos&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">))</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s1">&#39;.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">)</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
-    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  </div>
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="compute_inj_optimal_snr"><a class="viewcode-back" href="../../../workflow/injections.html#pycbc.workflow.injection.compute_inj_optimal_snr">[docs]</a><span class="k">def</span> <span class="nf">compute_inj_optimal_snr</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inj_file</span><span class="p">,</span> <span class="n">precalc_psd_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
                             <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -281,7 +281,7 @@
 <span class="sd">    workflow. It should be possible for this function to support a number</span>
 <span class="sd">    of different ways/codes that could be used for doing this, however as this</span>
 <span class="sd">    will presumably stay as a single call to a single code (which need not be</span>
-<span class="sd">    inspinj) there are currently no subfunctions in this moudle. </span>
+<span class="sd">    inspinj) there are currently no subfunctions in this moudle.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
@@ -311,7 +311,7 @@
         <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Entering injection module.&quot;</span><span class="p">)</span>
     <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
-    
+
     <span class="c1"># Get full analysis segment for output file naming</span>
     <span class="n">full_segment</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span>
     <span class="n">ifos</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span>
@@ -319,7 +319,7 @@
     <span class="c1"># Identify which injections to do by presence of sub-sections in</span>
     <span class="c1"># the configuration file</span>
     <span class="n">inj_tags</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">inj_files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>  
+    <span class="n">inj_files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
 
     <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span>  <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="n">inj_section_name</span><span class="p">):</span>
         <span class="n">inj_tag</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -334,7 +334,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
         <span class="c1"># Parse for options in ini file</span>
-        <span class="n">injection_method</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s2">&quot;workflow-injections&quot;</span><span class="p">,</span> 
+        <span class="n">injection_method</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s2">&quot;workflow-injections&quot;</span><span class="p">,</span>
                                                     <span class="s2">&quot;injections-method&quot;</span><span class="p">,</span>
                                                     <span class="n">curr_tags</span><span class="p">)</span>
 
@@ -385,11 +385,11 @@
                     <span class="n">workflow</span><span class="o">.</span><span class="n">execute_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-                <span class="n">inj_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+                <span class="n">inj_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;workflow-injections&quot;</span><span class="p">,</span>
                                       <span class="s2">&quot;do-jitter-skyloc&quot;</span><span class="p">):</span>
-                <span class="n">jitter_job</span> <span class="o">=</span> <span class="n">LigolwCBCJitterSkylocExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> 
+                <span class="n">jitter_job</span> <span class="o">=</span> <span class="n">LigolwCBCJitterSkylocExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
                                                              <span class="s1">&#39;jitter_skyloc&#39;</span><span class="p">,</span>
                                                              <span class="n">tags</span><span class="o">=</span><span class="n">curr_tags</span><span class="p">,</span>
                                                              <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
@@ -400,20 +400,20 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                 <span class="n">inj_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            
+
             <span class="k">if</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;workflow-injections&quot;</span><span class="p">,</span>
                                       <span class="s2">&quot;do-align-total-spin&quot;</span><span class="p">):</span>
                 <span class="n">align_job</span> <span class="o">=</span> <span class="n">LigolwCBCAlignTotalSpinExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
                         <span class="s1">&#39;align_total_spin&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">curr_tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
                         <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span>
                 <span class="n">node</span> <span class="o">=</span> <span class="n">align_job</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">inj_file</span><span class="p">,</span> <span class="n">full_segment</span><span class="p">,</span> <span class="n">curr_tags</span><span class="p">)</span>
-                
+
                 <span class="k">if</span> <span class="n">injection_method</span> <span class="o">==</span> <span class="s2">&quot;AT_COH_PTF_RUNTIME&quot;</span><span class="p">:</span>
                     <span class="n">workflow</span><span class="o">.</span><span class="n">execute_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                 <span class="n">inj_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            
+
             <span class="n">inj_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inj_file</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;Injection method must be one of IN_WORKFLOW, &quot;</span>
@@ -421,7 +421,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
         <span class="n">inj_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inj_tag</span><span class="p">)</span>
-        
+
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving injection module.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">inj_files</span><span class="p">,</span> <span class="n">inj_tags</span></div>
 
@@ -438,7 +438,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -460,7 +460,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

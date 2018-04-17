@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.population.scale_injections &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.population.scale_injections &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -346,7 +346,7 @@
 
         <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;z_range&#39;</span> <span class="ow">or</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;inj_astro_vol&#39;</span><span class="p">:</span>
             <span class="k">continue</span>
-    
+
         <span class="n">data</span> <span class="o">=</span> <span class="n">injections</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span>
         <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">]</span>
@@ -394,11 +394,11 @@
                 <span class="n">h_dist</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dist_j</span> <span class="o">/</span> <span class="p">(</span><span class="n">mch_j</span><span class="o">/</span><span class="n">_mch_BNS</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mf">6.</span><span class="p">))</span>
             <span class="k">elif</span> <span class="n">dt_j</span><span class="p">[</span><span class="s1">&#39;d_dist&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
                 <span class="n">l_dist</span><span class="p">,</span> <span class="n">h_dist</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dist_j</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dist_j</span><span class="p">)</span>
-    
+
             <span class="n">mdist</span> <span class="o">=</span> <span class="n">dt_j</span><span class="p">[</span><span class="s1">&#39;m_dist&#39;</span><span class="p">]</span>
             <span class="n">prob_mass</span> <span class="o">=</span> <span class="n">inj_mass_pdf</span><span class="p">(</span><span class="n">mdist</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span>
                                           <span class="n">lomass</span><span class="p">,</span> <span class="n">himass</span><span class="p">,</span> <span class="n">lomass_2</span><span class="p">,</span> <span class="n">himass_2</span><span class="p">)</span>
-              
+
             <span class="n">ddist</span> <span class="o">=</span> <span class="n">dt_j</span><span class="p">[</span><span class="s1">&#39;d_dist&#39;</span><span class="p">]</span>
             <span class="n">prob_dist</span> <span class="o">=</span> <span class="n">inj_distance_pdf</span><span class="p">(</span><span class="n">ddist</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">l_dist</span><span class="p">,</span>
                                                               <span class="n">h_dist</span><span class="p">,</span> <span class="n">mchirp</span><span class="p">)</span>
@@ -411,7 +411,7 @@
 
         <span class="n">p_in</span><span class="p">[</span><span class="n">p_in</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e12</span>
         <span class="n">p_out_in</span> <span class="o">=</span> <span class="n">p_out</span><span class="o">/</span><span class="n">p_in</span>
-      
+
         <span class="n">i_inj</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p_out_in</span><span class="p">)</span>
         <span class="n">i_det</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">p_out_in</span><span class="p">)[</span><span class="n">data</span><span class="p">[</span><span class="n">thr_var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thr_val</span><span class="p">])</span>
         <span class="n">i_det_sq</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">p_out_in</span><span class="p">)[</span><span class="n">data</span><span class="p">[</span><span class="n">thr_var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thr_val</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -501,7 +501,7 @@
 <span class="sd">       z_astro: array</span>
 <span class="sd">            nsamples of redshift, between min_z, max_z, by standard cosmology</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    
+
     <span class="n">dz</span><span class="p">,</span> <span class="n">fac</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">3.0</span>
     <span class="c1"># use interpolation instead of directly estimating all the pdfz for rndz</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">contracted_dVdc</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">max_z</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -560,7 +560,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mass1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;totalMass&#39;</span><span class="p">:</span>
         <span class="c1"># Returns the PDF of mass when total mass is uniformly distributed.</span>
         <span class="c1"># Both the component masses have the same distribution for this case.</span>
@@ -569,7 +569,7 @@
         <span class="c1"># ----------</span>
         <span class="c1"># lomass: lower component mass</span>
         <span class="c1"># himass: higher component mass</span>
-        
+
         <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">lomass</span> <span class="o">+</span> <span class="n">himass</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">))</span>
         <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass</span> <span class="o">-</span> <span class="n">mass1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass1</span> <span class="o">-</span> <span class="n">lomass</span><span class="p">))</span>
         <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass</span> <span class="o">-</span> <span class="n">mass2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass2</span> <span class="o">-</span> <span class="n">lomass</span><span class="p">))</span>
@@ -587,7 +587,7 @@
         <span class="c1"># ----------</span>
         <span class="c1"># lomass: lower component mass</span>
         <span class="c1"># himass: higher component mass</span>
-        
+
         <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass</span> <span class="o">-</span> <span class="n">mass1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass1</span> <span class="o">-</span> <span class="n">lomass</span><span class="p">))</span>
         <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass_2</span> <span class="o">-</span> <span class="n">mass2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass2</span> <span class="o">-</span> <span class="n">lomass_2</span><span class="p">))</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
@@ -604,7 +604,7 @@
         <span class="c1"># ----------</span>
         <span class="c1"># lomass: lower component mass</span>
         <span class="c1"># himass: higher component mass</span>
-        
+
         <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass</span> <span class="o">-</span> <span class="n">mass1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass1</span> <span class="o">-</span> <span class="n">lomass</span><span class="p">))</span>
         <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">himass_2</span> <span class="o">-</span> <span class="n">mass2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mass2</span> <span class="o">-</span> <span class="n">lomass_2</span><span class="p">))</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
@@ -716,7 +716,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -738,7 +738,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

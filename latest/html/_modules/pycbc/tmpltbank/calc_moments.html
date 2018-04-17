@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.calc_moments &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.tmpltbank.calc_moments &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -215,7 +215,7 @@
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank.lambda_mapping</span> <span class="k">import</span> <span class="n">generate_mapping</span>
-        
+
 
 <div class="viewcode-block" id="determine_eigen_directions"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.calc_moments.determine_eigen_directions">[docs]</a><span class="k">def</span> <span class="nf">determine_eigen_directions</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">preserveMoments</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                <span class="n">vary_fmax</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vary_density</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -237,9 +237,9 @@
 <span class="sd">        If set to False the metric and rotations are calculated once, for the</span>
 <span class="sd">        full range of frequency [f_low,f_upper).</span>
 <span class="sd">        If set to True the metric and rotations are calculated multiple times,</span>
-<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at </span>
-<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper. </span>
-<span class="sd">        Thus values greater than f_upper are *not* computed. </span>
+<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at</span>
+<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.</span>
+<span class="sd">        Thus values greater than f_upper are *not* computed.</span>
 <span class="sd">        The calculation for the full range [f_low,f_upper) is also done.</span>
 <span class="sd">    vary_density : float, optional</span>
 <span class="sd">        If vary_fmax is True, this will be used in computing the frequency</span>
@@ -260,7 +260,7 @@
 <span class="sd">        varying.</span>
 <span class="sd">        Each numpy.array contains the eigenvalues which, with the eigenvectors</span>
 <span class="sd">        in evecs, are needed to rotate the</span>
-<span class="sd">        coordinate system to one in which the metric is the identity matrix. </span>
+<span class="sd">        coordinate system to one in which the metric is the identity matrix.</span>
 <span class="sd">    metricParams.evecs : Dictionary of numpy.matrix</span>
 <span class="sd">        Each entry in the dictionary is as described under evals.</span>
 <span class="sd">        Each numpy.matrix contains the eigenvectors which, with the eigenvalues</span>
@@ -276,12 +276,12 @@
 <span class="sd">        above. It can be used for the ethinca components calculation, or other</span>
 <span class="sd">        similar calculations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-   
+
     <span class="n">evals</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">evecs</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">metric</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">unmax_metric</span> <span class="o">=</span> <span class="p">{}</span>
-  
+
     <span class="c1"># First step is to get the moments needed to calculate the metric</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">metricParams</span><span class="o">.</span><span class="n">moments</span> <span class="ow">and</span> <span class="n">preserveMoments</span><span class="p">):</span>
         <span class="n">get_moments</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">vary_fmax</span><span class="o">=</span><span class="n">vary_fmax</span><span class="p">,</span>
@@ -315,7 +315,7 @@
             <span class="n">loglogloglogJs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">moments</span><span class="p">[</span><span class="s1">&#39;loglogloglog</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">)][</span><span class="n">item</span><span class="p">]</span>
 
         <span class="n">mapping</span> <span class="o">=</span> <span class="n">generate_mapping</span><span class="p">(</span><span class="n">metricParams</span><span class="o">.</span><span class="n">pnOrder</span><span class="p">)</span>
- 
+
         <span class="c1"># Calculate the metric</span>
         <span class="n">gs</span><span class="p">,</span> <span class="n">unmax_metric_curr</span> <span class="o">=</span> <span class="n">calculate_metric</span><span class="p">(</span><span class="n">Js</span><span class="p">,</span> <span class="n">logJs</span><span class="p">,</span> <span class="n">loglogJs</span><span class="p">,</span>
                                           <span class="n">logloglogJs</span><span class="p">,</span> <span class="n">loglogloglogJs</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
@@ -342,14 +342,14 @@
     <span class="n">metricParams</span><span class="o">.</span><span class="n">evecs</span> <span class="o">=</span> <span class="n">evecs</span>
     <span class="n">metricParams</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span>
     <span class="n">metricParams</span><span class="o">.</span><span class="n">time_unprojected_metric</span> <span class="o">=</span> <span class="n">unmax_metric</span>
-    
+
     <span class="k">return</span> <span class="n">metricParams</span></div>
 
 <div class="viewcode-block" id="get_moments"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.calc_moments.get_moments">[docs]</a><span class="k">def</span> <span class="nf">get_moments</span><span class="p">(</span><span class="n">metricParams</span><span class="p">,</span> <span class="n">vary_fmax</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vary_density</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This function will calculate the various integrals (moments) that are</span>
 <span class="sd">    needed to compute the metric used in template bank placement and</span>
-<span class="sd">    coincidence.   </span>
+<span class="sd">    coincidence.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
@@ -359,9 +359,9 @@
 <span class="sd">        If set to False the metric and rotations are calculated once, for the</span>
 <span class="sd">        full range of frequency [f_low,f_upper).</span>
 <span class="sd">        If set to True the metric and rotations are calculated multiple times,</span>
-<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at </span>
-<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper. </span>
-<span class="sd">        Thus values greater than f_upper are *not* computed. </span>
+<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at</span>
+<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.</span>
+<span class="sd">        Thus values greater than f_upper are *not* computed.</span>
 <span class="sd">        The calculation for the full range [f_low,f_upper) is also done.</span>
 <span class="sd">    vary_density : float, optional</span>
 <span class="sd">        If vary_fmax is True, this will be used in computing the frequency</span>
@@ -383,34 +383,34 @@
 <span class="sd">        In all cases x = f/f0.</span>
 
 <span class="sd">        For the first entries the options are:</span>
-<span class="sd">        </span>
+
 <span class="sd">        moments[&#39;J%d&#39; %(i)][f_cutoff]</span>
-<span class="sd">        This stores the integral of </span>
+<span class="sd">        This stores the integral of</span>
 <span class="sd">        x**((-i)/3.) * delta X / PSD(x)</span>
-<span class="sd">        </span>
+
 <span class="sd">        moments[&#39;log%d&#39; %(i)][f_cutoff]</span>
-<span class="sd">        This stores the integral of </span>
+<span class="sd">        This stores the integral of</span>
 <span class="sd">        (numpy.log(x**(1./3.))) x**((-i)/3.) * delta X / PSD(x)</span>
 
 <span class="sd">        moments[&#39;loglog%d&#39; %(i)][f_cutoff]</span>
-<span class="sd">        This stores the integral of </span>
+<span class="sd">        This stores the integral of</span>
 <span class="sd">        (numpy.log(x**(1./3.)))**2 x**((-i)/3.) * delta X / PSD(x)</span>
 
 <span class="sd">        moments[&#39;loglog%d&#39; %(i)][f_cutoff]</span>
-<span class="sd">        This stores the integral of </span>
+<span class="sd">        This stores the integral of</span>
 <span class="sd">        (numpy.log(x**(1./3.)))**3 x**((-i)/3.) * delta X / PSD(x)</span>
 
 <span class="sd">        moments[&#39;loglog%d&#39; %(i)][f_cutoff]</span>
-<span class="sd">        This stores the integral of </span>
+<span class="sd">        This stores the integral of</span>
 <span class="sd">        (numpy.log(x**(1./3.)))**4 x**((-i)/3.) * delta X / PSD(x)</span>
 
-<span class="sd">        The second entry stores the frequency cutoff used when computing </span>
+<span class="sd">        The second entry stores the frequency cutoff used when computing</span>
 <span class="sd">        the integral. See description of the vary_fmax option above.</span>
 
 <span class="sd">        All of these values are nomralized by a factor of</span>
-<span class="sd">    </span>
+
 <span class="sd">        x**((-7)/3.) * delta X / PSD(x)</span>
-<span class="sd"> </span>
+
 <span class="sd">        The normalization factor can be obtained in</span>
 
 <span class="sd">        moments[&#39;I7&#39;][f_cutoff]</span>
@@ -420,7 +420,7 @@
     <span class="c1"># placement we just do this anyway.</span>
 
     <span class="n">psd_amp</span> <span class="o">=</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">data</span>
-    <span class="n">psd_f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">psd_amp</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">deltaF</span> 
+    <span class="n">psd_f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">psd_amp</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">deltaF</span>
     <span class="n">new_f</span><span class="p">,</span> <span class="n">new_amp</span> <span class="o">=</span> <span class="n">interpolate_psd</span><span class="p">(</span><span class="n">psd_f</span><span class="p">,</span> <span class="n">psd_amp</span><span class="p">,</span> <span class="n">metricParams</span><span class="o">.</span><span class="n">deltaF</span><span class="p">)</span>
 
     <span class="c1"># Need I7 first as this is the normalization factor</span>
@@ -476,7 +476,7 @@
 <div class="viewcode-block" id="interpolate_psd"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.calc_moments.interpolate_psd">[docs]</a><span class="k">def</span> <span class="nf">interpolate_psd</span><span class="p">(</span><span class="n">psd_f</span><span class="p">,</span> <span class="n">psd_amp</span><span class="p">,</span> <span class="n">deltaF</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function to interpolate a PSD to a different value of deltaF. Uses linear</span>
-<span class="sd">    interpolation. </span>
+<span class="sd">    interpolation.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -485,7 +485,7 @@
 <span class="sd">    psd_amp : numpy.array or list or similar</span>
 <span class="sd">        List of the PSD values at the frequencies in psd_f.</span>
 <span class="sd">    deltaF : float</span>
-<span class="sd">        Value of deltaF to interpolate the PSD to. </span>
+<span class="sd">        Value of deltaF to interpolate the PSD to.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
@@ -526,7 +526,7 @@
 <span class="sd">    bank placement metric. The integral calculated will be</span>
 
 <span class="sd">    \int funct(x) * (psd_x)**(-7./3.) * delta_x / PSD(x)</span>
-<span class="sd"> </span>
+
 <span class="sd">    where x = f / f0. The lower frequency cutoff is given by fmin, see</span>
 <span class="sd">    the parameters below for details on how the upper frequency cutoff is</span>
 <span class="sd">    chosen</span>
@@ -558,9 +558,9 @@
 <span class="sd">        If set to False the metric and rotations are calculated once, for the</span>
 <span class="sd">        full range of frequency [f_low,f_upper).</span>
 <span class="sd">        If set to True the metric and rotations are calculated multiple times,</span>
-<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at </span>
-<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper. </span>
-<span class="sd">        Thus values greater than f_upper are *not* computed. </span>
+<span class="sd">        for frequency ranges [f_low,f_low + i*vary_density), where i starts at</span>
+<span class="sd">        1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.</span>
+<span class="sd">        Thus values greater than f_upper are *not* computed.</span>
 <span class="sd">        The calculation for the full range [f_low,f_upper) is also done.</span>
 <span class="sd">    vary_density : float, optional</span>
 <span class="sd">        If vary_fmax is True, this will be used in computing the frequency</span>
@@ -745,7 +745,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -767,7 +767,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

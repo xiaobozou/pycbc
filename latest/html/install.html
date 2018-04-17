@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installing PyCBC &mdash; PyCBC 165719 documentation</title>
+  <title>Installing PyCBC &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -359,14 +359,6 @@ pip install --upgrade setuptools
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;numpy&gt;=1.6.4&quot;</span> unittest2 python-cjson Cython decorator
 </pre></div>
 </div>
-<p>To authenticate with LIGO Data Grid services, you need M2Crypto which you should install with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">SWIG_FEATURES</span><span class="o">=</span><span class="s2">&quot;-cpperraswarn -includeall -I/usr/include/openssl&quot;</span> pip install M2Crypto
-</pre></div>
-</div>
-<p>On MacOS using homebrew to install openssl you may need to set the following extra environment variables to install M2Crypto:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib&quot;</span> <span class="nv">SWIG_FEATURES</span><span class="o">=</span><span class="s2">&quot;-cpperraswarn -includeall -I/usr/local/opt/openssl/include/&quot;</span> pip install M2Crypto
-</pre></div>
-</div>
 <p>Once you have these packages installed, you can now install lalsuite following the instructions at:</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -455,7 +447,7 @@ need to manually install it with <code class="docutils literal notranslate"><spa
 <p>To build the documentation from your virtual environment, first make sure that you have <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> and the required helper tools installed with</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;Sphinx&gt;=1.5.0&quot;</span>
 pip install sphinx-rtd-theme
-pip install git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git#egg<span class="o">=</span>sphinxcontrib-programoutput
+pip install git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git
 </pre></div>
 </div>
 <p>To generate the documentation and push it to your personal GitHub pages, first create a branch names <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>, if you do not already have one. Follow the <a class="reference external" href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/">GitHub branch</a> instructions to do this.</p>
@@ -529,7 +521,7 @@ this by accident, you can use <code class="docutils literal notranslate"><span c
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -551,7 +543,7 @@ this by accident, you can use <code class="docutils literal notranslate"><span c
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

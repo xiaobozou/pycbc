@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.simd_threshold &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.events.simd_threshold &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -749,11 +749,11 @@
 <span class="s2">  // Signed versions of all our array length inputs, so loop</span>
 <span class="s2">  // logic and calls to other functions are safe.</span>
 
-<span class="s2">  s_segsize = (int64_t) segsize; </span>
+<span class="s2">  s_segsize = (int64_t) segsize;</span>
 <span class="s2">  s_arrlen = (int64_t) arrlen;</span>
 <span class="s2">  s_winsize = (int64_t) winsize;</span>
 
-<span class="s2">  // If the length of a window is less than the length of a segment, then the </span>
+<span class="s2">  // If the length of a window is less than the length of a segment, then the</span>
 <span class="s2">  // number of windows per segment is segsize/winsize (which rounds *down* if</span>
 <span class="s2">  // it does not divide evenly). If not, then the number of windows per segment</span>
 <span class="s2">  // is one, since we will then always give a window-sized chunks to each core,</span>
@@ -856,7 +856,7 @@
 <span class="s2">      cnt++;</span>
 <span class="s2">      values[cnt-1] = cvals[i];</span>
 <span class="s2">      locs[cnt-1] = (uint32_t) mlocs[i];</span>
-<span class="s2">    }    </span>
+<span class="s2">    }</span>
 <span class="s2">  }</span>
 
 <span class="s2">  // Finally, handle the last element. We test for whether</span>
@@ -1029,7 +1029,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -1051,7 +1051,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

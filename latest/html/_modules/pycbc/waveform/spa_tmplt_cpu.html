@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.spa_tmplt_cpu &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.waveform.spa_tmplt_cpu &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -237,29 +237,29 @@
 <div class="viewcode-block" id="cbrt_lookup"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.cbrt_lookup">[docs]</a><span class="k">def</span> <span class="nf">cbrt_lookup</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">vec</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">float32</span><span class="p">)</span></div>
-    
+
 <span class="n">_cbrt_vec</span> <span class="o">=</span> <span class="kc">None</span>
-    
+
 <div class="viewcode-block" id="get_cbrt"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.get_cbrt">[docs]</a><span class="k">def</span> <span class="nf">get_cbrt</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">_cbrt_vec</span>
     <span class="k">if</span> <span class="n">_cbrt_vec</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_cbrt_vec</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">!=</span> <span class="n">delta</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_cbrt_vec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="o">/</span><span class="n">delta</span><span class="p">)):</span>
         <span class="n">_cbrt_vec</span> <span class="o">=</span> <span class="n">cbrt_lookup</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_cbrt_vec</span>   </div>
-    
+    <span class="k">return</span> <span class="n">_cbrt_vec</span></div>
+
 <span class="c1"># Precompute log(v) ############################################################</span>
-    
+
 <div class="viewcode-block" id="logv_lookup"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.logv_lookup">[docs]</a><span class="k">def</span> <span class="nf">logv_lookup</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
     <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">float32</span><span class="p">)</span></div>
-    
+
 <span class="n">_logv_vec</span> <span class="o">=</span> <span class="kc">None</span>
-    
+
 <div class="viewcode-block" id="get_log"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.get_log">[docs]</a><span class="k">def</span> <span class="nf">get_log</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">_logv_vec</span>
     <span class="k">if</span> <span class="n">_logv_vec</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">_logv_vec</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">!=</span> <span class="n">delta</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_logv_vec</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">vmax</span><span class="o">/</span><span class="n">delta</span><span class="p">)):</span>
         <span class="n">_logv_vec</span> <span class="o">=</span> <span class="n">logv_lookup</span><span class="p">(</span><span class="n">vmax</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_logv_vec</span>   </div>
+    <span class="k">return</span> <span class="n">_logv_vec</span></div>
 
 <span class="c1"># Precompute the sine function #################################################</span>
 <div class="viewcode-block" id="sin_cos_lookup"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.sin_cos_lookup">[docs]</a><span class="k">def</span> <span class="nf">sin_cos_lookup</span><span class="p">():</span>
@@ -267,18 +267,18 @@
     <span class="k">return</span> <span class="n">Array</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">float32</span><span class="p">)</span></div>
 <span class="n">sin_cos</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
 
-<div class="viewcode-block" id="spa_tmplt_engine"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.spa_tmplt_engine">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_engine</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span>  <span class="n">kmin</span><span class="p">,</span>  <span class="n">phase_order</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">piM</span><span class="p">,</span>  <span class="n">pfaN</span><span class="p">,</span> 
+<div class="viewcode-block" id="spa_tmplt_engine"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.spa_tmplt_cpu.spa_tmplt_engine">[docs]</a><span class="k">def</span> <span class="nf">spa_tmplt_engine</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span>  <span class="n">kmin</span><span class="p">,</span>  <span class="n">phase_order</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">piM</span><span class="p">,</span>  <span class="n">pfaN</span><span class="p">,</span>
                     <span class="n">pfa2</span><span class="p">,</span>  <span class="n">pfa3</span><span class="p">,</span>  <span class="n">pfa4</span><span class="p">,</span>  <span class="n">pfa5</span><span class="p">,</span>  <span class="n">pfl5</span><span class="p">,</span>
                     <span class="n">pfa6</span><span class="p">,</span>  <span class="n">pfl6</span><span class="p">,</span>  <span class="n">pfa7</span><span class="p">,</span> <span class="n">amp_factor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Calculate the spa tmplt phase </span>
+    <span class="sd">&quot;&quot;&quot; Calculate the spa tmplt phase</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">kfac</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">spa_tmplt_precondition</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">),</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">kmin</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">htilde</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">cbrt_vec</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">get_cbrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span><span class="o">*</span><span class="n">delta_f</span> <span class="o">+</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">logv_vec</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">get_log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span><span class="o">*</span><span class="n">delta_f</span> <span class="o">+</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
-    
-    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot; </span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    float piM13 = cbrtf(piM);</span>
 <span class="s2">    float logpiM13 = log(piM13);</span>
 <span class="s2">    float log4 = log(4.);</span>
@@ -294,7 +294,7 @@
 <span class="s2">    const float ampc = amp_factor;</span>
 <span class="s2">    const float two_pi = 2 * M_PI;</span>
 <span class="s2">    const float inv_two_pi = 1 / (2 * M_PI);</span>
-<span class="s2">    </span>
+
 <span class="s2">    #pragma omp parallel for schedule(dynamic, 1024)</span>
 <span class="s2">    for (unsigned int i=0; i&lt;length; i++){</span>
 <span class="s2">        int index = i + kmin;</span>
@@ -305,7 +305,7 @@
 <span class="s2">        float sinp, cosp;</span>
 
 <span class="s2">        switch (phase_order)</span>
-<span class="s2">        {   </span>
+<span class="s2">        {</span>
 <span class="s2">            case -1:</span>
 <span class="s2">            case 7:</span>
 <span class="s2">                phasing = _pfa7 * v;</span>
@@ -328,21 +328,21 @@
 <span class="s2">        float amp = ampc * kfac[i];</span>
 <span class="s2">        phasing *= _pfaN / v5;</span>
 <span class="s2">        phasing -= M_PI_4;</span>
-<span class="s2">        </span>
+
 <span class="s2">        phasing -= int(phasing / two_pi) * two_pi;</span>
-<span class="s2">         </span>
+
 <span class="s2">        while (phasing &lt; -M_PI){</span>
 <span class="s2">            phasing += two_pi;</span>
 <span class="s2">        }</span>
 <span class="s2">        while (phasing &gt; M_PI){</span>
 <span class="s2">            phasing -= two_pi;</span>
 <span class="s2">        }</span>
-<span class="s2">        </span>
+
 <span class="s2">        // compute sine</span>
 <span class="s2">        if (phasing &lt; 0)</span>
 <span class="s2">        {</span>
 <span class="s2">            sinp = 1.27323954 * phasing + .405284735 * phasing * phasing;</span>
-<span class="s2">            </span>
+
 <span class="s2">            if (sinp &lt; 0)</span>
 <span class="s2">                sinp = .225 * (sinp *-sinp - sinp) + sinp;</span>
 <span class="s2">            else</span>
@@ -350,23 +350,23 @@
 <span class="s2">        }</span>
 <span class="s2">        else</span>
 <span class="s2">        {</span>
-<span class="s2">            sinp = 1.27323954 * phasing - 0.405284735 * phasing * phasing;          </span>
+<span class="s2">            sinp = 1.27323954 * phasing - 0.405284735 * phasing * phasing;</span>
 <span class="s2">            if (sinp &lt; 0)</span>
 <span class="s2">                sinp = .225 * (sinp *-sinp - sinp) + sinp;</span>
 <span class="s2">            else</span>
 <span class="s2">                sinp = .225 * (sinp * sinp - sinp) + sinp;</span>
 <span class="s2">        }</span>
-<span class="s2">        </span>
-<span class="s2">        </span>
+
+
 <span class="s2">        //compute cosine</span>
-<span class="s2">        </span>
+
 <span class="s2">        phasing += M_PI_2;</span>
 <span class="s2">        if (phasing &gt;  M_PI)</span>
 <span class="s2">            phasing -= two_pi;</span>
 <span class="s2">        if (phasing &lt; 0)</span>
 <span class="s2">        {</span>
 <span class="s2">            cosp = 1.27323954 * phasing + .405284735 * phasing * phasing;</span>
-<span class="s2">                     </span>
+
 <span class="s2">            if (cosp &lt; 0)</span>
 <span class="s2">                cosp = .225 * (cosp *-cosp - cosp) + cosp;</span>
 <span class="s2">            else</span>
@@ -374,21 +374,21 @@
 <span class="s2">        }</span>
 <span class="s2">        else</span>
 <span class="s2">        {</span>
-<span class="s2">            cosp = 1.27323954 * phasing - 0.405284735 * phasing * phasing;          </span>
+<span class="s2">            cosp = 1.27323954 * phasing - 0.405284735 * phasing * phasing;</span>
 <span class="s2">            if (cosp &lt; 0)</span>
 <span class="s2">                cosp = .225 * (cosp *-cosp - cosp) + cosp;</span>
 <span class="s2">            else</span>
 <span class="s2">                cosp = .225 * (cosp * cosp - cosp) + cosp;</span>
 <span class="s2">        }</span>
-<span class="s2">           </span>
-<span class="s2">            </span>
-<span class="s2">        </span>
+
+
+
 <span class="s2">        //printf(&quot;</span><span class="si">%f</span><span class="s2"> </span><span class="si">%f</span><span class="s2"> </span><span class="si">%f</span><span class="s2"> </span><span class="se">\\</span><span class="s2">n&quot;, sinp, sin(phasing), phasing);</span>
-<span class="s2">        </span>
+
 <span class="s2">        htilde[i] = std::complex&lt;float&gt;(cosp, - sinp) * amp;</span>
 <span class="s2">    }</span>
 <span class="s2">    &quot;&quot;&quot;</span>
-    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;htilde&#39;</span><span class="p">,</span> <span class="s1">&#39;cbrt_vec&#39;</span><span class="p">,</span> <span class="s1">&#39;logv_vec&#39;</span><span class="p">,</span> <span class="s1">&#39;kmin&#39;</span><span class="p">,</span> <span class="s1">&#39;phase_order&#39;</span><span class="p">,</span> 
+    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;htilde&#39;</span><span class="p">,</span> <span class="s1">&#39;cbrt_vec&#39;</span><span class="p">,</span> <span class="s1">&#39;logv_vec&#39;</span><span class="p">,</span> <span class="s1">&#39;kmin&#39;</span><span class="p">,</span> <span class="s1">&#39;phase_order&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;piM&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfaN&#39;</span><span class="p">,</span> <span class="s1">&#39;amp_factor&#39;</span><span class="p">,</span> <span class="s1">&#39;kfac&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;pfa2&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfa3&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfa4&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfa5&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfl5&#39;</span><span class="p">,</span>
                    <span class="s1">&#39;pfa6&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfl6&#39;</span><span class="p">,</span>  <span class="s1">&#39;pfa7&#39;</span><span class="p">,</span> <span class="s1">&#39;length&#39;</span><span class="p">],</span>
@@ -409,7 +409,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -431,7 +431,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

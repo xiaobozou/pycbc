@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.single &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.events.single &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -202,7 +202,7 @@
 <span class="kn">from</span> <span class="nn">pycbc.io.live</span> <span class="k">import</span> <span class="n">SingleForGraceDB</span>
 
 <div class="viewcode-block" id="LiveSingleFarThreshold"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.single.LiveSingleFarThreshold">[docs]</a><span class="k">class</span> <span class="nc">LiveSingleFarThreshold</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> 
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
                  <span class="n">newsnr_threshold</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
                  <span class="n">reduced_chisq_threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                  <span class="n">duration_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -229,15 +229,15 @@
                    <span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveSingleFarThreshold.check"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.single.LiveSingleFarThreshold.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">triggers</span><span class="p">,</span> <span class="n">data_reader</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Look for a single detector trigger that passes the thresholds in </span>
+        <span class="sd">&quot;&quot;&quot; Look for a single detector trigger that passes the thresholds in</span>
 <span class="sd">        the current data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">triggers</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span> 
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">i</span> <span class="o">=</span> <span class="n">triggers</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
-        <span class="c1"># This uses the pycbc live convention of chisq always meaning the </span>
-        <span class="c1"># reduced chisq. </span>
+        <span class="c1"># This uses the pycbc live convention of chisq always meaning the</span>
+        <span class="c1"># reduced chisq.</span>
         <span class="n">rchisq</span> <span class="o">=</span> <span class="n">triggers</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
         <span class="n">nsnr</span> <span class="o">=</span> <span class="n">newsnr</span><span class="p">(</span><span class="n">triggers</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">rchisq</span><span class="p">)</span>
         <span class="n">dur</span> <span class="o">=</span> <span class="n">triggers</span><span class="p">[</span><span class="s1">&#39;template_duration&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
@@ -248,11 +248,11 @@
             <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">triggers</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">triggers</span><span class="p">}</span>
             <span class="n">d</span><span class="p">[</span><span class="s1">&#39;stat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nsnr</span>
             <span class="n">d</span><span class="p">[</span><span class="s1">&#39;ifar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixed_ifar</span>
-            <span class="k">return</span> <span class="n">SingleForGraceDB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> 
-                                    <span class="n">hardware_injection</span><span class="o">=</span><span class="n">data_reader</span><span class="o">.</span><span class="n">near_hwinj</span><span class="p">(),</span> 
+            <span class="k">return</span> <span class="n">SingleForGraceDB</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifo</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span>
+                                    <span class="n">hardware_injection</span><span class="o">=</span><span class="n">data_reader</span><span class="o">.</span><span class="n">near_hwinj</span><span class="p">(),</span>
                                     <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span>        </div></div>
+            <span class="k">return</span> <span class="kc">None</span></div></div>
 </pre></div>
 
            </div>
@@ -266,7 +266,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -288,7 +288,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

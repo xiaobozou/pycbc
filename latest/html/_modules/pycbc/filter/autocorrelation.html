@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.autocorrelation &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.filter.autocorrelation &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -238,7 +238,7 @@
 
 <span class="sd">    .. math::</span>
 
-<span class="sd">        \hat{R}(k) = \frac{1}{n \sigma^{2}} \sum_{t=1}^{n-k} \left( X_{t} - \mu \right) \left( X_{t+k} - \mu \right) </span>
+<span class="sd">        \hat{R}(k) = \frac{1}{n \sigma^{2}} \sum_{t=1}^{n-k} \left( X_{t} - \mu \right) \left( X_{t+k} - \mu \right)</span>
 
 <span class="sd">    Where :math:`\hat{R}(k)` is the ACF, :math:`X_{t}` is the data series at</span>
 <span class="sd">    time t, :math:`\mu` is the mean of :math:`X_{t}`, and :math:`\sigma^{2}` is</span>
@@ -277,8 +277,8 @@
     <span class="k">while</span> <span class="n">npad</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">ny_orig</span><span class="p">:</span>
         <span class="n">npad</span> <span class="o">=</span> <span class="n">npad</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
     <span class="n">ypad</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npad</span><span class="p">)</span>
-    <span class="n">ypad</span><span class="p">[:</span><span class="n">ny_orig</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>    
-        
+    <span class="n">ypad</span><span class="p">[:</span><span class="n">ny_orig</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+
     <span class="c1"># FFT data minus the mean</span>
     <span class="n">fdata</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">ypad</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span>
 
@@ -385,7 +385,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -407,7 +407,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

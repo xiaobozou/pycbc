@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.partitioned_bank &mdash; PyCBC 165719 documentation</title>
+  <title>pycbc.tmpltbank.partitioned_bank &mdash; PyCBC ad7f02 documentation</title>
   
 
   
@@ -258,7 +258,7 @@
 <span class="sd">            matches correspond to the square of parameter space distance.</span>
 <span class="sd">        bin_range_check : int</span>
 <span class="sd">            When computing matches consider points in the corresponding bin and</span>
-<span class="sd">            all bins +/- this value in both chi_1 and chi_2 directions. </span>
+<span class="sd">            all bins +/- this value in both chi_1 and chi_2 directions.</span>
 <span class="sd">            DEFAULT = 1.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Flags to be used in other methods of this class. Initialized here for</span>
@@ -391,7 +391,7 @@
 <span class="sd">            Index of the chi_2 bin.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Identify bin</span>
-        <span class="n">chi1_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">chi_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">chi1_min</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_spacing</span><span class="p">)</span> 
+        <span class="n">chi1_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">chi_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">chi1_min</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_spacing</span><span class="p">)</span>
         <span class="n">chi2_bin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">chi_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">chi2_min</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_spacing</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">check_bin_existence</span><span class="p">(</span><span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span></div>
@@ -421,7 +421,7 @@
                 <span class="k">if</span> <span class="n">temp_chi1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-                <span class="k">for</span> <span class="n">temp_chi2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">chi2_bin</span><span class="o">-</span><span class="n">bin_range_check</span><span class="p">,</span> 
+                <span class="k">for</span> <span class="n">temp_chi2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">chi2_bin</span><span class="o">-</span><span class="n">bin_range_check</span><span class="p">,</span>
                                                    <span class="n">chi2_bin</span><span class="o">+</span><span class="n">bin_range_check</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">temp_chi2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">]:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">temp_chi1</span><span class="p">][</span><span class="n">temp_chi2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -459,7 +459,7 @@
                 <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
                     <span class="n">min_dist</span> <span class="o">=</span> <span class="n">dist</span>
                     <span class="n">indexes</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_chi1_bin</span><span class="p">,</span> <span class="n">curr_chi2_bin</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span>            </div>
+        <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span></div>
 
 <div class="viewcode-block" id="PartitionedTmpltbank.test_point_distance"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.test_point_distance">[docs]</a>    <span class="k">def</span> <span class="nf">test_point_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -475,7 +475,7 @@
 <span class="sd">            E.g. if you want to test to a minimal match of 0.97 you would</span>
 <span class="sd">            use 1 - 0.97 = 0.03 for this value.</span>
 
-<span class="sd">        Returns </span>
+<span class="sd">        Returns</span>
 <span class="sd">        --------</span>
 <span class="sd">        Boolean</span>
 <span class="sd">            True if point is within the distance threshold. False if not.</span>
@@ -540,7 +540,7 @@
             <span class="c1"># vecs2 gives a 2x2 vector: idx0 = stored index, idx1 = mu index</span>
             <span class="n">range_idxes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">freq_idxes</span><span class="p">))</span>
             <span class="n">vecs2</span> <span class="o">=</span> <span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mus&#39;</span><span class="p">][</span><span class="n">range_idxes</span><span class="p">,</span> <span class="n">freq_idxes</span><span class="p">,</span> <span class="p">:]</span>
-            
+
             <span class="c1"># Now do the sums</span>
             <span class="n">dists</span> <span class="o">=</span> <span class="p">(</span><span class="n">vecs1</span> <span class="o">-</span> <span class="n">vecs2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">vecs1</span> <span class="o">-</span> <span class="n">vecs2</span><span class="p">)</span>
             <span class="c1"># This reduces to 1D: idx = stored index</span>
@@ -558,7 +558,7 @@
 
         <span class="k">return</span> <span class="n">min_dist</span><span class="p">,</span> <span class="n">indexes</span></div>
 
-<div class="viewcode-block" id="PartitionedTmpltbank.test_point_distance_vary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.test_point_distance_vary">[docs]</a>    <span class="k">def</span> <span class="nf">test_point_distance_vary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">point_fupper</span><span class="p">,</span> <span class="n">mus</span><span class="p">,</span> 
+<div class="viewcode-block" id="PartitionedTmpltbank.test_point_distance_vary"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.test_point_distance_vary">[docs]</a>    <span class="k">def</span> <span class="nf">test_point_distance_vary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi_coords</span><span class="p">,</span> <span class="n">point_fupper</span><span class="p">,</span> <span class="n">mus</span><span class="p">,</span>
                                  <span class="n">distance_threshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Test if distance between point and the bank is greater than distance</span>
@@ -583,7 +583,7 @@
 <span class="sd">            E.g. if you want to test to a minimal match of 0.97 you would</span>
 <span class="sd">            use 1 - 0.97 = 0.03 for this value.</span>
 
-<span class="sd">        Returns </span>
+<span class="sd">        Returns</span>
 <span class="sd">        --------</span>
 <span class="sd">        Boolean</span>
 <span class="sd">            True if point is within the distance threshold. False if not.</span>
@@ -633,7 +633,7 @@
 <span class="sd">        Add a point to the partitioned template bank. The point_fupper and mus</span>
 <span class="sd">        kwargs must be provided for all templates if the vary fupper capability</span>
 <span class="sd">        is desired. This requires that the chi_coords, as well as mus and</span>
-<span class="sd">        point_fupper if needed, to be precalculated. If you just have the </span>
+<span class="sd">        point_fupper if needed, to be precalculated. If you just have the</span>
 <span class="sd">        masses and don&#39;t want to worry about translations see</span>
 <span class="sd">        add_point_by_masses, which will do translations and then call this.</span>
 
@@ -654,12 +654,12 @@
 <span class="sd">        mus : numpy.array</span>
 <span class="sd">            A 2D array where idx 0 holds the upper frequency cutoff and idx 1</span>
 <span class="sd">            holds the coordinates in the [not covaried] mu parameter space for</span>
-<span class="sd">            each value of the upper frequency cutoff.            </span>
+<span class="sd">            each value of the upper frequency cutoff.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">chi1_bin</span><span class="p">,</span> <span class="n">chi2_bin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_point_bin</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">))</span>
         <span class="n">curr_bank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">massbank</span><span class="p">[</span><span class="n">chi1_bin</span><span class="p">][</span><span class="n">chi2_bin</span><span class="p">]</span>
-        
+
         <span class="k">if</span> <span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mass1s&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
             <span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mass1s&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_bank</span><span class="p">[</span><span class="s1">&#39;mass1s&#39;</span><span class="p">],</span>
                                                <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mass1</span><span class="p">]))</span>
@@ -765,7 +765,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">add_point_by_chi_coords</span><span class="p">(</span><span class="n">chi_coords</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">,</span>
                                <span class="n">point_fupper</span><span class="o">=</span><span class="n">freq_cutoff</span><span class="p">,</span> <span class="n">mus</span><span class="o">=</span><span class="n">mus</span><span class="p">)</span></div>
-   
+
 
 <div class="viewcode-block" id="PartitionedTmpltbank.add_tmpltbank_from_xml_table"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank.add_tmpltbank_from_xml_table">[docs]</a>    <span class="k">def</span> <span class="nf">add_tmpltbank_from_xml_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sngl_table</span><span class="p">,</span> <span class="n">vary_fupper</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -849,7 +849,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 12, 2018.
+      Last updated on Apr 17, 2018.
 
     </p>
   </div>
@@ -871,7 +871,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'165719',
+            VERSION:'ad7f02',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
