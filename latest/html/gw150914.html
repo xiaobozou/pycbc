@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Signal Processing with GW150914 &mdash; PyCBC 9ebff7 documentation</title>
+  <title>Signal Processing with GW150914 &mdash; PyCBC a93f89 documentation</title>
   
 
   
@@ -224,7 +224,7 @@ as an example.</p>
     <span class="n">h1</span> <span class="o">=</span> <span class="n">highpass_fir</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 
     <span class="c1"># Calculate the noise spectrum</span>
-    <span class="n">psd</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">welch</span><span class="p">(</span><span class="n">h1</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">psd</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">welch</span><span class="p">(</span><span class="n">h1</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">h1</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
 
     <span class="c1"># whiten</span>
     <span class="n">white_strain</span> <span class="o">=</span> <span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span> <span class="o">/</span> <span class="n">psd</span> <span class="o">**</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
@@ -270,11 +270,11 @@ as an example.</p>
 <span class="n">h1</span> <span class="o">=</span> <span class="n">highpass_fir</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 
 <span class="c1"># Calculate the noise spectrum</span>
-<span class="n">psd</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">welch</span><span class="p">(</span><span class="n">h1</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">psd</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">welch</span><span class="p">(</span><span class="n">h1</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">h1</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
 
 <span class="c1"># Generate a template to filter with</span>
 <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="n">get_fd_waveform</span><span class="p">(</span><span class="n">approximant</span><span class="o">=</span><span class="s2">&quot;IMRPhenomD&quot;</span><span class="p">,</span> <span class="n">mass1</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
-                         <span class="n">f_lower</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">32</span><span class="p">)</span>
+                         <span class="n">f_lower</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">h1</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
 <span class="n">hp</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Calculate the complex (two-phase SNR)</span>
@@ -356,7 +356,7 @@ it can be heard in the Hanford data.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 19, 2018.
+      Last updated on Apr 21, 2018.
 
     </p>
   </div>
@@ -378,7 +378,7 @@ it can be heard in the Hanford data.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'9ebff7',
+            VERSION:'a93f89',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
