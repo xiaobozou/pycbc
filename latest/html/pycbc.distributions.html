@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions package &mdash; PyCBC a93f89 documentation</title>
+  <title>pycbc.distributions package &mdash; PyCBC 13d273 documentation</title>
   
 
   
@@ -402,7 +402,7 @@ of the section header.</li>
 <dt>..math::</dt>
 <dd>p(theta) = frac{sin theta}{costheta_0 - costheta_1}, theta_0 leq theta &lt; theta_1,</dd>
 </dl>
-<p>and 0 otherwise. Here, <span class="math notranslate">\(\theta_0, \theta_1\)</span> are the bounds of the
+<p>and 0 otherwise. Here, <span class="math notranslate nohighlight">\(\theta_0, \theta_1\)</span> are the bounds of the
 parameter.</p>
 <p>The domain of this distribution is <cite>[0, pi]</cite>. This is accomplished by
 putting hard boundaries at <cite>[0, pi]</cite>. Bounds may be provided to further
@@ -744,7 +744,7 @@ parameters.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays">
-<em class="property">static </em><code class="descname">get_kde_from_arrays</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.get_kde_from_arrays"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_kde_from_arrays</code><span class="sig-paren">(</span><em>*arrays</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.get_kde_from_arrays"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a KDE from the given arrays.</p>
 <dl class="docutils">
 <dt>*arrays :</dt>
@@ -910,7 +910,7 @@ of the section header.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.distributions.arbitrary.FromFile.get_arrays_from_file">
-<em class="property">static </em><code class="descname">get_arrays_from_file</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#FromFile.get_arrays_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.get_arrays_from_file" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_arrays_from_file</code><span class="sig-paren">(</span><em>params_file</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#FromFile.get_arrays_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.get_arrays_from_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the values of one or more parameters from an hdf file and
 returns as a dictionary.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1245,14 +1245,14 @@ independent of each other.</p>
 <p>Bounds can be provided on each parameter, in which case the distribution
 will be a truncated Gaussian distribution.  The PDF of a truncated
 Gaussian distribution is given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[p(x|a, b, \mu,\sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}}\frac{e^{- \frac{\left( x - \mu \right)^2}{2 \sigma^2}}}{\Phi(b|\mu, \sigma) - \Phi(a|\mu, \sigma)},\]</div>
-<p>where <span class="math notranslate">\(\mu\)</span> is the mean, <span class="math notranslate">\(\sigma^2\)</span> is the variance,
-<span class="math notranslate">\(a,b\)</span> are the bounds, and <span class="math notranslate">\(\Phi\)</span> is the cumulative distribution
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean, <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance,
+<span class="math notranslate nohighlight">\(a,b\)</span> are the bounds, and <span class="math notranslate nohighlight">\(\Phi\)</span> is the cumulative distribution
 of an unbounded normal distribution, given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\Phi(x|\mu, \sigma) = \frac{1}{2}\left[1 + \mathrm{erf}\left(\frac{x-\mu}{\sigma \sqrt{2}}\right)\right].\]</div>
-<p>Note that if <span class="math notranslate">\([a,b) = [-\infty, \infty)\)</span>, this reduces to a standard
+<p>Note that if <span class="math notranslate nohighlight">\([a,b) = [-\infty, \infty)\)</span>, this reduces to a standard
 Gaussian distribution.</p>
 <p>Instances of this class can be called like a function. By default, logpdf
 will be called, but this can be changed by setting the class’s __call__
@@ -1267,7 +1267,7 @@ method to its pdf method.</p>
 parameter can be provided by additional keyword arguments that have
 <cite>_mean</cite> and <cite>_var</cite> adding to the parameter name. For example,
 <cite>foo=(-2,10), foo_mean=3, foo_var=2</cite> would create a truncated Gaussian
-with mean 3 and variance 2, bounded between <span class="math notranslate">\([-2, 10)\)</span>. If no
+with mean 3 and variance 2, bounded between <span class="math notranslate nohighlight">\([-2, 10)\)</span>. If no
 mean or variance is provided, the distribution will have 0 mean and
 unit variance. If None is provided for the bounds, the distribution
 will be a normal, unbounded Gaussian (equivalent to setting the bounds
@@ -1284,7 +1284,7 @@ to <cite>[-inf, inf)</cite>).</td>
 <p class="rubric">Examples</p>
 <p>Create an unbounded Gaussian distribution with zero mean and unit variance:
 &gt;&gt;&gt; dist = distributions.Gaussian(mass1=None)</p>
-<p>Create a bounded Gaussian distribution on <span class="math notranslate">\([1,10)\)</span> with a mean of 3
+<p>Create a bounded Gaussian distribution on <span class="math notranslate nohighlight">\([1,10)\)</span> with a mean of 3
 and a variance of 2:
 &gt;&gt;&gt; dist = distributions.Gaussian(mass1=(1,10), mass1_mean=3, mass1_var=2)</p>
 <p>Create a bounded Gaussian distribution with the same parameters, but with
@@ -1576,43 +1576,43 @@ independent of each other. Instances of this class can be called like
 a function. By default, logpdf will be called, but this can be changed
 by setting the class’s __call__ method to its pdf method.</p>
 <p>The cumulative distribution function (CDF) will be the ratio of volumes:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F(r) = \frac{V(r)}{V(R)}\]</div>
-<p>Where <span class="math notranslate">\(R\)</span> is the radius of the sphere. So we can write our
+<p>Where <span class="math notranslate nohighlight">\(R\)</span> is the radius of the sphere. So we can write our
 probability density function (PDF) as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[f(r) = c r^n\]</div>
-<p>For generality we use <span class="math notranslate">\(n\)</span> for the dimension of the volume element,
-eg. <span class="math notranslate">\(n=2\)</span> for a 3-dimensional sphere. And use
-<span class="math notranslate">\(c\)</span> as a general constant.</p>
+<p>For generality we use <span class="math notranslate nohighlight">\(n\)</span> for the dimension of the volume element,
+eg. <span class="math notranslate nohighlight">\(n=2\)</span> for a 3-dimensional sphere. And use
+<span class="math notranslate nohighlight">\(c\)</span> as a general constant.</p>
 <p>So now we calculate the CDF in general for this type of PDF:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F(r) = \int f(r) dr = \int c r^n dr = \frac{1}{n + 1} c r^{n + 1} + k\]</div>
-<p>Now with the definition of the CDF at radius <span class="math notranslate">\(r_{l}\)</span> is equal to 0
-and at radius <span class="math notranslate">\(r_{h}\)</span> is equal to 1 we find that the constant from
+<p>Now with the definition of the CDF at radius <span class="math notranslate nohighlight">\(r_{l}\)</span> is equal to 0
+and at radius <span class="math notranslate nohighlight">\(r_{h}\)</span> is equal to 1 we find that the constant from
 integration from this system of equations:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[1 = \frac{1}{n + 1} c ((r_{h})^{n + 1} - (r_{l})^{n + 1}) + k\]</div>
-<p>Can see that <span class="math notranslate">\(c = (n + 1) / ((r_{h})^{n + 1} - (r_{l})^{n + 1}))\)</span>.
-And <span class="math notranslate">\(k\)</span> is:</p>
-<div class="math notranslate">
+<p>Can see that <span class="math notranslate nohighlight">\(c = (n + 1) / ((r_{h})^{n + 1} - (r_{l})^{n + 1}))\)</span>.
+And <span class="math notranslate nohighlight">\(k\)</span> is:</p>
+<div class="math notranslate nohighlight">
 \[k = - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
-<p>Can see that <span class="math notranslate">\(c= \frac{n + 1}{R^{n + 1}}\)</span>. So can see that the CDF is:</p>
-<div class="math notranslate">
+<p>Can see that <span class="math notranslate nohighlight">\(c= \frac{n + 1}{R^{n + 1}}\)</span>. So can see that the CDF is:</p>
+<div class="math notranslate nohighlight">
 \[F(r) = \frac{1}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} r^{n + 1} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
 <p>And the PDF is the derivative of the CDF:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[f(r) = \frac{(n + 1)}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} (r)^n\]</div>
 <p>Now we use the probabilty integral transform method to get sampling on
 uniform numbers from a continuous random variable. To do this we find
 the inverse of the CDF evaluated for uniform numbers:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[F(r) = u = \frac{1}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} r^{n + 1} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
-<p>And find <span class="math notranslate">\(F^{-1}(u)\)</span> gives:</p>
-<div class="math notranslate">
+<p>And find <span class="math notranslate nohighlight">\(F^{-1}(u)\)</span> gives:</p>
+<div class="math notranslate nohighlight">
 \[u = \frac{1}{n + 1} \frac{(r_{h})^{n + 1} - (r_{l})^{n + 1}} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
-<p>And solving for <span class="math notranslate">\(r\)</span> gives:</p>
-<div class="math notranslate">
+<p>And solving for <span class="math notranslate nohighlight">\(r\)</span> gives:</p>
+<div class="math notranslate nohighlight">
 \[r = ( ((r_{h})^{n + 1} - (r_{l})^{n + 1}) u + (r_{l})^{n + 1})^{\frac{1}{n + 1}}\]</div>
 <p>Therefore the radius can be sampled by taking the n-th root of uniform
 numbers and multiplying by the radius offset by the lower bound radius.</p>
@@ -1632,7 +1632,7 @@ instance.</dd>
 <dt id="pycbc.distributions.power_law.UniformPowerLaw.dim">
 <code class="descname">dim</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.dim" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>int</em> – The dimension of volume space. In the notation above <cite>dim</cite>
-is <span class="math notranslate">\(n+1\)</span>. For a 3-dimensional sphere this is 3.</p>
+is <span class="math notranslate nohighlight">\(n+1\)</span>. For a 3-dimensional sphere this is 3.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1777,8 +1777,8 @@ ascension) for the azimuthal angle, instead of “theta” and “phi”.</p>
 <dt id="pycbc.distributions.spins.IndependentChiPChiEff">
 <em class="property">class </em><code class="descclassname">pycbc.distributions.spins.</code><code class="descname">IndependentChiPChiEff</code><span class="sig-paren">(</span><em>mass1=None</em>, <em>mass2=None</em>, <em>chi_eff=None</em>, <em>chi_a=None</em>, <em>xi_bounds=None</em>, <em>nsamples=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/spins.html#IndependentChiPChiEff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.arbitrary.Arbitrary" title="pycbc.distributions.arbitrary.Arbitrary"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.arbitrary.Arbitrary</span></code></a></p>
-<p>A distribution such that <span class="math notranslate">\(\chi_{\mathrm{eff}}\)</span> and
-<span class="math notranslate">\(\chi_p\)</span> are uniform and independent of each other.</p>
+<p>A distribution such that <span class="math notranslate nohighlight">\(\chi_{\mathrm{eff}}\)</span> and
+<span class="math notranslate nohighlight">\(\chi_p\)</span> are uniform and independent of each other.</p>
 <p>To ensure constraints are applied correctly, this distribution produces all
 three components of both spins as well as the component masses.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1793,14 +1793,14 @@ values to use for mass1. If the latter, a Uniform distribution will
 be used.</li>
 <li><strong>mass2</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a>) – The distribution or bounds to use for mass2. Syntax is the same as
 mass1.</li>
-<li><strong>chi_eff</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate">\(chi_eff\)</span>. Syntax is the
+<li><strong>chi_eff</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate nohighlight">\(chi_eff\)</span>. Syntax is the
 same as mass1, except that None may also be passed. In that case,
 <cite>(-1, 1)</cite> will be used for the bounds. Default is None.</li>
-<li><strong>chi_a</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate">\(chi_a\)</span>. Syntax is the
+<li><strong>chi_a</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate nohighlight">\(chi_a\)</span>. Syntax is the
 same as mass1, except that None may also be passed. In that case,
 <cite>(-1, 1)</cite> will be used for the bounds. Default is None.</li>
-<li><strong>xi_bounds</strong> (<a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em>, </em><em>optional</em>) – The bounds to use for <span class="math notranslate">\(\xi_1\)</span> and <span class="math notranslate">\(\xi_2\)</span>. Must be
-<span class="math notranslate">\(\in (0, 1)\)</span>. If None (the default), will be <cite>(0, 1)</cite>.</li>
+<li><strong>xi_bounds</strong> (<a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em>, </em><em>optional</em>) – The bounds to use for <span class="math notranslate nohighlight">\(\xi_1\)</span> and <span class="math notranslate nohighlight">\(\xi_2\)</span>. Must be
+<span class="math notranslate nohighlight">\(\in (0, 1)\)</span>. If None (the default), will be <cite>(0, 1)</cite>.</li>
 <li><strong>nsamples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The number of samples to use for the internal kde. The larger the
 number of samples, the more accurate the pdf will be, but the longer
 it will take to evaluate. Default is 10000.</li>
@@ -2195,7 +2195,7 @@ given configuration file.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 21, 2018.
+      Last updated on Apr 23, 2018.
 
     </p>
   </div>
@@ -2217,7 +2217,7 @@ given configuration file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'a93f89',
+            VERSION:'13d273',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

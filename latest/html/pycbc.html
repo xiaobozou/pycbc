@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC a93f89 documentation</title>
+  <title>pycbc package &mdash; PyCBC 13d273 documentation</title>
   
 
   
@@ -1365,9 +1365,9 @@ one parameter given a set of inputs.</p>
 <dd><p>Return the quadrupole moment of a neutron star given its lambda</p>
 <p>We use the relations defined here. <a class="reference external" href="https://arxiv.org/pdf/1302.4499.pdf">https://arxiv.org/pdf/1302.4499.pdf</a>.
 Note that the convention we use is that:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\mathrm{dquadmon} = \bar{Q} - 1.\]</div>
-<p>Where <span class="math notranslate">\(\bar{Q}\)</span> (dimensionless) is the reduced quadrupole moment.</p>
+<p>Where <span class="math notranslate nohighlight">\(\bar{Q}\)</span> (dimensionless) is the reduced quadrupole moment.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1489,7 +1489,7 @@ ratio.</p>
 <code class="descclassname">pycbc.conversions.</code><code class="descname">eta_from_q</code><span class="sig-paren">(</span><em>q</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#eta_from_q"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.eta_from_q" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the symmetric mass ratio from the given mass ratio.</p>
 <p>This is given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\eta = \frac{q}{(1+q)^2}.\]</div>
 <p>Note that the mass ratio may be either &lt; 1 or &gt; 1.</p>
 </dd></dl>
@@ -1509,51 +1509,51 @@ ratio.</p>
 <dl class="function">
 <dt id="pycbc.conversions.tau0_from_mtotal_eta">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">tau0_from_mtotal_eta</code><span class="sig-paren">(</span><em>mtotal</em>, <em>eta</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau0_from_mtotal_eta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau0_from_mtotal_eta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <span class="math notranslate">\(\tau_0\)</span> from the total mass, symmetric mass ratio, and
+<dd><p>Returns <span class="math notranslate nohighlight">\(\tau_0\)</span> from the total mass, symmetric mass ratio, and
 the given frequency.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.tau3_from_mtotal_eta">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">tau3_from_mtotal_eta</code><span class="sig-paren">(</span><em>mtotal</em>, <em>eta</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau3_from_mtotal_eta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau3_from_mtotal_eta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <span class="math notranslate">\(\tau_0\)</span> from the total mass, symmetric mass ratio, and
+<dd><p>Returns <span class="math notranslate nohighlight">\(\tau_0\)</span> from the total mass, symmetric mass ratio, and
 the given frequency.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.tau0_from_mass1_mass2">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">tau0_from_mass1_mass2</code><span class="sig-paren">(</span><em>mass1</em>, <em>mass2</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau0_from_mass1_mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau0_from_mass1_mass2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <span class="math notranslate">\(\tau_0\)</span> from the component masses and given frequency.</p>
+<dd><p>Returns <span class="math notranslate nohighlight">\(\tau_0\)</span> from the component masses and given frequency.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.tau3_from_mass1_mass2">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">tau3_from_mass1_mass2</code><span class="sig-paren">(</span><em>mass1</em>, <em>mass2</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau3_from_mass1_mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau3_from_mass1_mass2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <span class="math notranslate">\(\tau_3\)</span> from the component masses and given frequency.</p>
+<dd><p>Returns <span class="math notranslate nohighlight">\(\tau_3\)</span> from the component masses and given frequency.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.mtotal_from_tau0_tau3">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">mtotal_from_tau0_tau3</code><span class="sig-paren">(</span><em>tau0</em>, <em>tau3</em>, <em>f_lower</em>, <em>in_seconds=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#mtotal_from_tau0_tau3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.mtotal_from_tau0_tau3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns total mass from <span class="math notranslate">\(\tau_0, \tau_3\)</span>.</p>
+<dd><p>Returns total mass from <span class="math notranslate nohighlight">\(\tau_0, \tau_3\)</span>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.eta_from_tau0_tau3">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">eta_from_tau0_tau3</code><span class="sig-paren">(</span><em>tau0</em>, <em>tau3</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#eta_from_tau0_tau3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.eta_from_tau0_tau3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns symmetric mass ratio from <span class="math notranslate">\(\tau_0, \tau_3\)</span>.</p>
+<dd><p>Returns symmetric mass ratio from <span class="math notranslate nohighlight">\(\tau_0, \tau_3\)</span>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.mass1_from_tau0_tau3">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">mass1_from_tau0_tau3</code><span class="sig-paren">(</span><em>tau0</em>, <em>tau3</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#mass1_from_tau0_tau3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.mass1_from_tau0_tau3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the primary mass from the given <span class="math notranslate">\(\tau_0, \tau_3\)</span>.</p>
+<dd><p>Returns the primary mass from the given <span class="math notranslate nohighlight">\(\tau_0, \tau_3\)</span>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.mass2_from_tau0_tau3">
 <code class="descclassname">pycbc.conversions.</code><code class="descname">mass2_from_tau0_tau3</code><span class="sig-paren">(</span><em>tau0</em>, <em>tau3</em>, <em>f_lower</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#mass2_from_tau0_tau3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.mass2_from_tau0_tau3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the secondary mass from the given <span class="math notranslate">\(\tau_0, \tau_3\)</span>.</p>
+<dd><p>Returns the secondary mass from the given <span class="math notranslate nohighlight">\(\tau_0, \tau_3\)</span>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -3900,7 +3900,7 @@ of transformed values.</td>
 <p>A base class for transforming between two sets of parameters.</p>
 <dl class="staticmethod">
 <dt id="pycbc.transforms.BaseTransform.format_output">
-<em class="property">static </em><code class="descname">format_output</code><span class="sig-paren">(</span><em>new_maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#BaseTransform.format_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.BaseTransform.format_output" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">format_output</code><span class="sig-paren">(</span><em>old_maps</em>, <em>new_maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#BaseTransform.format_output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.BaseTransform.format_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function takes the returned dict from <cite>transform</cite> and converts
 it to the same datatype as the input.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -4667,7 +4667,7 @@ of transformed values.</td>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.Logit" title="pycbc.transforms.Logit"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.Logit</span></code></a></p>
 <p>Applies a logistic transform from an <cite>input</cite> parameter to an <cite>output</cite>
 parameter. This is the inverse of the logit transform.</p>
-<p>Typically, the output of the logistic function has range <span class="math notranslate">\(\in [0,1)\)</span>.
+<p>Typically, the output of the logistic function has range <span class="math notranslate nohighlight">\(\in [0,1)\)</span>.
 However, the <cite>codomain</cite> argument can be used to expand this to any
 finite real interval.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -4741,11 +4741,11 @@ will be used instead of being read from the file.</li>
 <dl class="method">
 <dt id="pycbc.transforms.Logistic.inverse_jacobian">
 <code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Logistic.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the Jacobian of <span class="math notranslate">\(y = \mathrm{logit}(x; a,b)\)</span>.</p>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \mathrm{logit}(x; a,b)\)</span>.</p>
 <p>This is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{b -a}{(x-a)(b-x)},\]</div>
-<p>where <span class="math notranslate">\(x \in (a, b)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(x \in (a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4764,8 +4764,8 @@ parameter name of the variable to transform and its value(s).</td>
 <dl class="method">
 <dt id="pycbc.transforms.Logistic.inverse_transform">
 <code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Logistic.inverse_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes <span class="math notranslate">\(\mathrm{logit}(x; a, b)\)</span>.</p>
-<p>The domain <span class="math notranslate">\(a, b\)</span> of <span class="math notranslate">\(x\)</span> are given by the class’s bounds.</p>
+<dd><p>Computes <span class="math notranslate nohighlight">\(\mathrm{logit}(x; a, b)\)</span>.</p>
+<p>The domain <span class="math notranslate nohighlight">\(a, b\)</span> of <span class="math notranslate nohighlight">\(x\)</span> are given by the class’s bounds.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4785,11 +4785,11 @@ with the original variable name and value(s).</td>
 <dl class="method">
 <dt id="pycbc.transforms.Logistic.jacobian">
 <code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Logistic.jacobian" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the Jacobian of <span class="math notranslate">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
 <p>This is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{e^x (b-a)}{(1+e^y)^2},\]</div>
-<p>where <span class="math notranslate">\(y \in (a, b)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(y \in (a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4813,8 +4813,8 @@ parameter name of the variable to transform and its value(s).</td>
 <dl class="method">
 <dt id="pycbc.transforms.Logistic.transform">
 <code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Logistic.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes <span class="math notranslate">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
-<p>The codomain <span class="math notranslate">\(a, b\)</span> of <span class="math notranslate">\(y\)</span> are given by the class’s bounds.</p>
+<dd><p>Computes <span class="math notranslate nohighlight">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
+<p>The codomain <span class="math notranslate nohighlight">\(a, b\)</span> of <span class="math notranslate nohighlight">\(y\)</span> are given by the class’s bounds.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4840,7 +4840,7 @@ with the original variable name and value(s).</td>
 <p>Applies a logit transform from an <cite>inputvar</cite> parameter to an <cite>outputvar</cite>
 parameter. This is the inverse of the logistic transform.</p>
 <p>Typically, the input of the logit function is assumed to have domain
-<span class="math notranslate">\(\in (0, 1)\)</span>. However, the <cite>domain</cite> argument can be used to expand
+<span class="math notranslate nohighlight">\(\in (0, 1)\)</span>. However, the <cite>domain</cite> argument can be used to expand
 this to any finite real interval.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4919,11 +4919,11 @@ will be used instead of being read from the file.</li>
 <dl class="method">
 <dt id="pycbc.transforms.Logit.inverse_jacobian">
 <code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.inverse_jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the Jacobian of <span class="math notranslate">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
 <p>This is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{e^x (b-a)}{(1+e^y)^2},\]</div>
-<p>where <span class="math notranslate">\(y \in (a, b)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(y \in (a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4942,8 +4942,8 @@ parameter name of the variable to transform and its value(s).</td>
 <dl class="method">
 <dt id="pycbc.transforms.Logit.inverse_transform">
 <code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.inverse_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.inverse_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes <span class="math notranslate">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
-<p>The codomain <span class="math notranslate">\(a, b\)</span> of <span class="math notranslate">\(y\)</span> are given by the class’s bounds.</p>
+<dd><p>Computes <span class="math notranslate nohighlight">\(y = \mathrm{logistic}(x; a,b)\)</span>.</p>
+<p>The codomain <span class="math notranslate nohighlight">\(a, b\)</span> of <span class="math notranslate nohighlight">\(y\)</span> are given by the class’s bounds.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4963,11 +4963,11 @@ with the original variable name and value(s).</td>
 <dl class="method">
 <dt id="pycbc.transforms.Logit.jacobian">
 <code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.jacobian" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the Jacobian of <span class="math notranslate">\(y = \mathrm{logit}(x; a,b)\)</span>.</p>
+<dd><p>Computes the Jacobian of <span class="math notranslate nohighlight">\(y = \mathrm{logit}(x; a,b)\)</span>.</p>
 <p>This is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{b -a}{(x-a)(b-x)},\]</div>
-<p>where <span class="math notranslate">\(x \in (a, b)\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(x \in (a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4985,13 +4985,13 @@ parameter name of the variable to transform and its value(s).</td>
 
 <dl class="staticmethod">
 <dt id="pycbc.transforms.Logit.logistic">
-<em class="property">static </em><code class="descname">logistic</code><span class="sig-paren">(</span><em>a=0.0</em>, <em>b=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.logistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.logistic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the logistic function with range <span class="math notranslate">\(\in (a, b)\)</span>.</p>
+<em class="property">static </em><code class="descname">logistic</code><span class="sig-paren">(</span><em>x</em>, <em>a=0.0</em>, <em>b=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.logistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.logistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the logistic function with range <span class="math notranslate nohighlight">\(\in (a, b)\)</span>.</p>
 <p>This is given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\mathrm{logistic}(x; a, b) = \frac{a + b e^x}{1 + e^x}.\]</div>
 <p>Note that this is also the inverse of the logit function with domain
-<span class="math notranslate">\((a, b)\)</span>.</p>
+<span class="math notranslate nohighlight">\((a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -5017,13 +5017,13 @@ is 1.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.transforms.Logit.logit">
-<em class="property">static </em><code class="descname">logit</code><span class="sig-paren">(</span><em>a=0.0</em>, <em>b=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.logit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.logit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the logit function with domain <span class="math notranslate">\(x \in (a, b)\)</span>.</p>
+<em class="property">static </em><code class="descname">logit</code><span class="sig-paren">(</span><em>x</em>, <em>a=0.0</em>, <em>b=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.logit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.logit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the logit function with domain <span class="math notranslate nohighlight">\(x \in (a, b)\)</span>.</p>
 <p>This is given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\mathrm{logit}(x; a, b) = \log\left(\frac{x-a}{b-x}\right).\]</div>
 <p>Note that this is also the inverse of the logistic function with range
-<span class="math notranslate">\((a, b)\)</span>.</p>
+<span class="math notranslate nohighlight">\((a, b)\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -5059,8 +5059,8 @@ is 1.</li>
 <dl class="method">
 <dt id="pycbc.transforms.Logit.transform">
 <code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#Logit.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Logit.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes <span class="math notranslate">\(\mathrm{logit}(x; a, b)\)</span>.</p>
-<p>The domain <span class="math notranslate">\(a, b\)</span> of <span class="math notranslate">\(x\)</span> are given by the class’s bounds.</p>
+<dd><p>Computes <span class="math notranslate nohighlight">\(\mathrm{logit}(x; a, b)\)</span>.</p>
+<p>The domain <span class="math notranslate nohighlight">\(a, b\)</span> of <span class="math notranslate nohighlight">\(x\)</span> are given by the class’s bounds.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -5662,7 +5662,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 21, 2018.
+      Last updated on Apr 23, 2018.
 
     </p>
   </div>
@@ -5684,7 +5684,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'a93f89',
+            VERSION:'13d273',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

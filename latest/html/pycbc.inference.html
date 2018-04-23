@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC a93f89 documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC 13d273 documentation</title>
   
 
   
@@ -685,17 +685,17 @@ for parameter estimation.</p>
 <p>Base container class for generating waveforms, storing the data, and
 computing posteriors.</p>
 <p>The nomenclature used by this class and those that inherit from it is as
-follows: Given some model parameters <span class="math notranslate">\(\Theta\)</span> and some data
-<span class="math notranslate">\(d\)</span> with noise model <span class="math notranslate">\(n\)</span>, we define:</p>
+follows: Given some model parameters <span class="math notranslate nohighlight">\(\Theta\)</span> and some data
+<span class="math notranslate nohighlight">\(d\)</span> with noise model <span class="math notranslate nohighlight">\(n\)</span>, we define:</p>
 <blockquote>
 <div><ul class="simple">
-<li>the <strong>likelihood function</strong>: <span class="math notranslate">\(p(d|\Theta)\)</span></li>
-<li>the <strong>noise likelihood</strong>: <span class="math notranslate">\(p(d|n)\)</span></li>
-<li>the <strong>likelihood ratio</strong>: <span class="math notranslate">\(\mathcal{L}(\Theta) = \frac{p(d|\Theta)}{p(d|n)}\)</span></li>
-<li>the <strong>prior</strong>: <span class="math notranslate">\(p(\Theta)\)</span></li>
-<li>the <strong>posterior</strong>: <span class="math notranslate">\(p(\Theta|d) \propto p(d|\Theta)p(\Theta)\)</span></li>
-<li>the <strong>prior-weighted likelihood ratio</strong>: <span class="math notranslate">\(\hat{\mathcal{L}}(\Theta) = \frac{p(d|\Theta)p(\Theta)}{p(d|n)}\)</span></li>
-<li>the <strong>SNR</strong>: <span class="math notranslate">\(\rho(\Theta) = \sqrt{2\log\mathcal{L}(\Theta)}\)</span>; for
+<li>the <strong>likelihood function</strong>: <span class="math notranslate nohighlight">\(p(d|\Theta)\)</span></li>
+<li>the <strong>noise likelihood</strong>: <span class="math notranslate nohighlight">\(p(d|n)\)</span></li>
+<li>the <strong>likelihood ratio</strong>: <span class="math notranslate nohighlight">\(\mathcal{L}(\Theta) = \frac{p(d|\Theta)}{p(d|n)}\)</span></li>
+<li>the <strong>prior</strong>: <span class="math notranslate nohighlight">\(p(\Theta)\)</span></li>
+<li>the <strong>posterior</strong>: <span class="math notranslate nohighlight">\(p(\Theta|d) \propto p(d|\Theta)p(\Theta)\)</span></li>
+<li>the <strong>prior-weighted likelihood ratio</strong>: <span class="math notranslate nohighlight">\(\hat{\mathcal{L}}(\Theta) = \frac{p(d|\Theta)p(\Theta)}{p(d|n)}\)</span></li>
+<li>the <strong>SNR</strong>: <span class="math notranslate nohighlight">\(\rho(\Theta) = \sqrt{2\log\mathcal{L}(\Theta)}\)</span>; for
 two detectors, this is approximately the same quantity as the coincident
 SNR used in the CBC search.</li>
 </ul>
@@ -703,20 +703,20 @@ SNR used in the CBC search.</li>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Although the posterior probability is only proportional to
-<span class="math notranslate">\(p(d|\Theta)p(\Theta)\)</span>, here we refer to this quantity as the
+<span class="math notranslate nohighlight">\(p(d|\Theta)p(\Theta)\)</span>, here we refer to this quantity as the
 posterior. Also note that for a given noise model, the prior-weighted
 likelihood ratio is proportional to the posterior, and so the two can
 usually be swapped for each other.</p>
 </div>
 <p>When performing parameter estimation we work with the log of these values
 since we are mostly concerned with their values around the maxima. If
-we have multiple detectors, each with data <span class="math notranslate">\(d_i\)</span>, then these values
+we have multiple detectors, each with data <span class="math notranslate nohighlight">\(d_i\)</span>, then these values
 simply sum over the detectors. For example, the log likelihood ratio is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \mathcal{L}(\Theta) = \sum_i \left[\log p(\Theta|d_i) - \log p(n|d_i)\right]\]</div>
 <p>This class provides boiler-plate methods and attributes for evaluating the
 log likelihood ratio, log prior, and log likelihood. This class
-makes no assumption about the detectors’ noise model <span class="math notranslate">\(n\)</span>. As such,
+makes no assumption about the detectors’ noise model <span class="math notranslate nohighlight">\(n\)</span>. As such,
 the methods for computing these values raise <code class="docutils literal notranslate"><span class="pre">NotImplementedErrors</span></code>. These
 functions need to be monkey patched, or other classes that inherit from
 this class need to define their own functions.</p>
@@ -897,18 +897,18 @@ and the meta data.</p>
 <dd><p>Returns the log of the jacobian needed to transform pdfs in the
 <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> parameter space to the <code class="docutils literal notranslate"><span class="pre">sampling_args</span></code> parameter
 space.</p>
-<p>Let <span class="math notranslate">\(\mathbf{x}\)</span> be the set of variable parameters,
-<span class="math notranslate">\(\mathbf{y} = f(\mathbf{x})\)</span> the set of sampling parameters, and
-<span class="math notranslate">\(p_x(\mathbf{x})\)</span> a probability density function defined over
-<span class="math notranslate">\(\mathbf{x}\)</span>. The corresponding pdf in <span class="math notranslate">\(\mathbf{y}\)</span> is then:</p>
-<div class="math notranslate">
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> be the set of variable parameters,
+<span class="math notranslate nohighlight">\(\mathbf{y} = f(\mathbf{x})\)</span> the set of sampling parameters, and
+<span class="math notranslate nohighlight">\(p_x(\mathbf{x})\)</span> a probability density function defined over
+<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. The corresponding pdf in <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is then:</p>
+<div class="math notranslate nohighlight">
 \[p_y(\mathbf{y}) = p_x(\mathbf{x})\left|\mathrm{det}\,\mathbf{J}_{ij}\right|,\]</div>
-<p>where <span class="math notranslate">\(\mathbf{J}_{ij}\)</span> is the Jacobian of the inverse transform
-<span class="math notranslate">\(\mathbf{x} = g(\mathbf{y})\)</span>. This has elements:</p>
-<div class="math notranslate">
+<p>where <span class="math notranslate nohighlight">\(\mathbf{J}_{ij}\)</span> is the Jacobian of the inverse transform
+<span class="math notranslate nohighlight">\(\mathbf{x} = g(\mathbf{y})\)</span>. This has elements:</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{J}_{ij} = \frac{\partial g_i}{\partial{y_j}}\]</div>
 <p>This function returns
-<span class="math notranslate">\(\log \left|\mathrm{det}\,\mathbf{J}_{ij}\right|\)</span>.</p>
+<span class="math notranslate nohighlight">\(\log \left|\mathrm{det}\,\mathbf{J}_{ij}\right|\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1098,7 +1098,7 @@ unit variance for all parameters, with cross-terms set to 0.</li>
 <em class="property">class </em><code class="descclassname">pycbc.inference.likelihood.</code><code class="descname">TestEggbox</code><span class="sig-paren">(</span><em>variable_args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#TestEggbox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.TestEggbox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator" title="pycbc.inference.likelihood.BaseLikelihoodEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.BaseLikelihoodEvaluator</span></code></a></p>
 <p>The test distribution is an ‘eggbox’ function:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \mathcal{L}(\Theta) = \left[2+\prod_{i=1}^{n}\cos\left(\frac{\theta_{i}}{2}\right)\right]^{5}\]</div>
 <p>The number of dimensions is set by the number of <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> that are
 passed.</p>
@@ -1132,7 +1132,7 @@ passed.</p>
 <em class="property">class </em><code class="descclassname">pycbc.inference.likelihood.</code><code class="descname">TestVolcano</code><span class="sig-paren">(</span><em>variable_args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#TestVolcano"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.TestVolcano" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator" title="pycbc.inference.likelihood.BaseLikelihoodEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.BaseLikelihoodEvaluator</span></code></a></p>
 <p>The test distribution is a two-dimensional ‘volcano’ function:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\Theta = \sqrt{\theta_{1}^{2} + \theta_{2}^{2}}
 \log \mathcal{L}(\Theta) = 25(e^{\frac{-\Theta}{35}} + \frac{1}{2\sqrt{2\pi}} e^{-\frac{(\Theta-5)^{2}}{8}})\]</div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1165,7 +1165,7 @@ passed.</p>
 <em class="property">class </em><code class="descclassname">pycbc.inference.likelihood.</code><code class="descname">TestRosenbrock</code><span class="sig-paren">(</span><em>variable_args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#TestRosenbrock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.TestRosenbrock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator" title="pycbc.inference.likelihood.BaseLikelihoodEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.BaseLikelihoodEvaluator</span></code></a></p>
 <p>The test distribution is the Rosenbrock function:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \mathcal{L}(\Theta) = -\sum_{i=1}^{n-1}[(1-\theta_{i})^{2}+100(\theta_{i+1} - \theta_{i}^{2})^{2}]\]</div>
 <p>The number of dimensions is set by the number of <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> that are
 passed.</p>
@@ -1200,20 +1200,20 @@ passed.</p>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator" title="pycbc.inference.likelihood.BaseLikelihoodEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.BaseLikelihoodEvaluator</span></code></a></p>
 <p>Computes log likelihoods assuming the detectors’ noise is Gaussian.</p>
 <p>With Gaussian noise the log likelihood functions for signal
-<span class="math notranslate">\(\log p(d|\Theta)\)</span> and for noise <span class="math notranslate">\(\log p(d|n)\)</span> are given by:</p>
-<div class="math notranslate">
+<span class="math notranslate nohighlight">\(\log p(d|\Theta)\)</span> and for noise <span class="math notranslate nohighlight">\(\log p(d|n)\)</span> are given by:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\log p(d|\Theta) &amp;= -\frac{1}{2} \sum_i \left&lt;h_i(\Theta) - d_i | h_i(\Theta) - d_i\right&gt; \\
 \log p(d|n) &amp;= -\frac{1}{2} \sum_i \left&lt;d_i | d_i\right&gt;\end{split}\]</div>
-<p>where the sum is over the number of detectors, <span class="math notranslate">\(d_i\)</span> is the data in
-each detector, and <span class="math notranslate">\(h_i(\Theta)\)</span> is the model signal in each
+<p>where the sum is over the number of detectors, <span class="math notranslate nohighlight">\(d_i\)</span> is the data in
+each detector, and <span class="math notranslate nohighlight">\(h_i(\Theta)\)</span> is the model signal in each
 detector. The inner product is given by:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\left&lt;a | b\right&gt; = 4\Re \int_{0}^{\infty} \frac{\tilde{a}(f) \tilde{b}(f)}{S_n(f)} \mathrm{d}f,\]</div>
-<p>where <span class="math notranslate">\(S_n(f)\)</span> is the PSD in the given detector.</p>
+<p>where <span class="math notranslate nohighlight">\(S_n(f)\)</span> is the PSD in the given detector.</p>
 <p>Note that the log prior-weighted likelihood ratio has one less term
-than the log posterior, since the <span class="math notranslate">\(\left&lt;d_i|d_i\right&gt;\)</span> term cancels
+than the log posterior, since the <span class="math notranslate nohighlight">\(\left&lt;d_i|d_i\right&gt;\)</span> term cancels
 in the likelihood ratio:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \hat{\mathcal{L}} = \log p(\Theta) + \sum_i \left[ \left&lt;h_i(\Theta)|d_i\right&gt; - \frac{1}{2} \left&lt;h_i(\Theta)|h_i(\Theta)\right&gt; \right]\]</div>
 <p>For this reason, by default this class returns <code class="docutils literal notranslate"><span class="pre">logplr</span></code> when called as a
 function instead of <code class="docutils literal notranslate"><span class="pre">logposterior</span></code>. This can be changed via the
@@ -1221,7 +1221,7 @@ function instead of <code class="docutils literal notranslate"><span class="pre"
 <p>Upon initialization, the data is whitened using the given PSDs. If no PSDs
 are given the data and waveforms returned by the waveform generator are
 assumed to be whitened. The likelihood function of the noise,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[p(d|n) = \frac{1}{2} \sum_i \left&lt;d_i|d_i\right&gt;,\]</div>
 <p>is computed on initialization and stored as the <cite>lognl</cite> attribute.</p>
 <p>By default, the data is assumed to be equally sampled in frequency, but
@@ -1323,7 +1323,7 @@ to calling <code class="docutils literal notranslate"><span class="pre">logplr</
 <dt id="pycbc.inference.likelihood.GaussianLikelihood.loglikelihood">
 <code class="descname">loglikelihood</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#GaussianLikelihood.loglikelihood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.GaussianLikelihood.loglikelihood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the log likelihood of the paramaters,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[p(d|\Theta) = -\frac{1}{2}\sum_i \left&lt;h_i(\Theta) - d_i | h_i(\Theta) - d_i\right&gt;\]</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1344,9 +1344,9 @@ evaluate.</td>
 <dt id="pycbc.inference.likelihood.GaussianLikelihood.loglr">
 <code class="descname">loglr</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#GaussianLikelihood.loglr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.GaussianLikelihood.loglr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the log likelihood ratio,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \mathcal{L}(\Theta) = \sum_i \left&lt;h_i(\Theta)|d_i\right&gt; - \frac{1}{2}\left&lt;h_i(\Theta)|h_i(\Theta)\right&gt;,\]</div>
-<p>at the given point in parameter space <span class="math notranslate">\(\Theta\)</span>.</p>
+<p>at the given point in parameter space <span class="math notranslate nohighlight">\(\Theta\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1404,48 +1404,48 @@ Otherwise, just returns the log-posterior.</li>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.likelihood.GaussianLikelihood" title="pycbc.inference.likelihood.GaussianLikelihood"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.likelihood.GaussianLikelihood</span></code></a></p>
 <p>The likelihood is analytically marginalized over phase.</p>
 <p>This class can be used with signal models that can be written as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\tilde{h}(f; \Theta, \phi) = A(f; \Theta)e^{i\Psi(f; \Theta) + i \phi},\]</div>
-<p>where <span class="math notranslate">\(\phi\)</span> is an arbitrary phase constant. This phase constant
+<p>where <span class="math notranslate nohighlight">\(\phi\)</span> is an arbitrary phase constant. This phase constant
 can be analytically marginalized over with a uniform prior as follows:
 assuming the noise is stationary and Gaussian (see <cite>GaussianLikelihood</cite>
 for details), the posterior is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}p(\Theta,\phi|d) &amp;\propto p(\Theta)p(\phi)p(d|\Theta,\phi) \\
                  &amp;\propto p(\Theta)\frac{1}{2\pi}\exp\left[-\frac{1}{2}\sum_{i}^{N_D} \left&lt;h_i(\Theta,\phi) - d_i, h_i(\Theta,\phi) - d_i\right&gt;\right].\end{split}\]</div>
-<p>Here, the sum is over the number of detectors <span class="math notranslate">\(N_D\)</span>, <span class="math notranslate">\(d_i\)</span>
-and <span class="math notranslate">\(h_i\)</span> are the data and signal in the <span class="math notranslate">\(i`th detector,
+<p>Here, the sum is over the number of detectors <span class="math notranslate nohighlight">\(N_D\)</span>, <span class="math notranslate nohighlight">\(d_i\)</span>
+and <span class="math notranslate nohighlight">\(h_i\)</span> are the data and signal in the <span class="math notranslate nohighlight">\(i`th detector,
 respectively, and we have assumed a uniform prior on :math:`phi \in [0,
 2\pi)\)</span>. With the form of the signal model given above, the inner product
 in the exponent can be written as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\]</div>
 <p>-frac{1}{2}left&lt;h_i - d_i, h_i- d_iright&gt; &amp;= left&lt;h_i, d_iright&gt; - frac{1}{2}left&lt;h_i, h_iright&gt; - frac{1}{2}left&lt;d_i, d_iright&gt; \
 &amp;= Releft{O(h^0_i, d_i)e^{-iphi}right} - frac{1}{2}left&lt;h^0_i, h^0_iright&gt; - frac{1}{2}left&lt;d_i, d_iright&gt;,</p>
 <p>where:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}h_i^0 &amp;\equiv \tilde{h}_i(f; \Theta, \phi=0); \\
 O(h^0_i, d_i) &amp;\equiv 4 \int_0^\infty \frac{\tilde{h}_i^*(f; \Theta,0) \tilde{d}_i(f)}{S_n(f)}\mathrm{d}f.\end{split}\]</div>
-<p>Gathering all of the terms that are not dependent on <span class="math notranslate">\(\phi\)</span> together:</p>
-<div class="math notranslate">
+<p>Gathering all of the terms that are not dependent on <span class="math notranslate nohighlight">\(\phi\)</span> together:</p>
+<div class="math notranslate nohighlight">
 \[\alpha(\Theta, d) \equiv \exp\left[-\frac{1}{2}\sum_i \left&lt;h^0_i, h^0_i\right&gt; + &lt;d_i, d_i\right&gt;\right],\]</div>
-<p>we can marginalize the posterior over <span class="math notranslate">\(\phi\)</span>:</p>
-<div class="math notranslate">
+<p>we can marginalize the posterior over <span class="math notranslate nohighlight">\(\phi\)</span>:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}p(\Theta|d) &amp;\propto p(\Theta)\alpha(\Theta,d)\frac{1}{2\pi}\int_{0}^{2\pi}\exp\left[\Re \left\{ e^{-i\phi} \sum_i O(h^0_i, d_i)\right\}\right]\mathrm{d}\phi \\
 &amp;\propto p(\Theta)\alpha(\Theta, d)\frac{1}{2\pi} \int_{0}^{2\pi}\exp\left[x(\Theta,d)\cos(\phi) + y(\Theta, d)\sin(\phi)\right]\mathrm{d}\phi.\end{split}\]</div>
-<p>The integral in the last line is equal to <span class="math notranslate">\(2\pi I_0(\sqrt{x^2+y^2})\)</span>,
-where <span class="math notranslate">\(I_0\)</span> is the modified Bessel function of the first kind. Thus
+<p>The integral in the last line is equal to <span class="math notranslate nohighlight">\(2\pi I_0(\sqrt{x^2+y^2})\)</span>,
+where <span class="math notranslate nohighlight">\(I_0\)</span> is the modified Bessel function of the first kind. Thus
 the marginalized log posterior is:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log p(\Theta|d) \propto \log p(\Theta) + I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\sum_i\left[ \left&lt;h^0_i, h^0_i\right&gt; - \left&lt;d_i, d_i\right&gt; \right]\]</div>
 <p>This class computes the above expression for the log likelihood.</p>
 <dl class="method">
 <dt id="pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.loglr">
 <code class="descname">loglr</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#MarginalizedPhaseGaussianLikelihood.loglr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.loglr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the log likelihood ratio,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\log \mathcal{L}(\Theta) = I_0\left(\left|\sum_i O(h^0_i, d_i)\right|\right) - \frac{1}{2}\left&lt;h^0_i, h^0_i\right&gt;,\]</div>
-<p>at the given point in parameter space <span class="math notranslate">\(\Theta\)</span>.</p>
+<p>at the given point in parameter space <span class="math notranslate nohighlight">\(\Theta\)</span>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2047,7 +2047,7 @@ burn-in. If the sampler hasn’t burned in yet, then 0 is returned.</p>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.read_acceptance_fraction">
-<em class="property">static </em><code class="descname">read_acceptance_fraction</code><span class="sig-paren">(</span><em>walkers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.read_acceptance_fraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.read_acceptance_fraction" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">read_acceptance_fraction</code><span class="sig-paren">(</span><em>fp</em>, <em>walkers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.read_acceptance_fraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.read_acceptance_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the acceptance fraction from the given file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2072,7 +2072,7 @@ samples from all walkers will be obtained.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.read_acls">
-<em class="property">static </em><code class="descname">read_acls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.read_acls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.read_acls" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">read_acls</code><span class="sig-paren">(</span><em>fp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.read_acls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.read_acls" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
@@ -2138,7 +2138,7 @@ starting positions.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.write_acls">
-<em class="property">static </em><code class="descname">write_acls</code><span class="sig-paren">(</span><em>acls</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.write_acls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.write_acls" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">write_acls</code><span class="sig-paren">(</span><em>fp</em>, <em>acls</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.write_acls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.write_acls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the given autocorrelation lengths to the given file.</p>
 <p>The ACL of each parameter is saved to <code class="docutils literal notranslate"><span class="pre">fp['acls/{param}']</span></code>.
 The maximum over all the parameters is saved to the file’s ‘acl’
@@ -2280,7 +2280,7 @@ allowed by h5py.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.write_samples_group">
-<em class="property">static </em><code class="descname">write_samples_group</code><span class="sig-paren">(</span><em>samples_group</em>, <em>parameters</em>, <em>samples</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.write_samples_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.write_samples_group" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">write_samples_group</code><span class="sig-paren">(</span><em>fp</em>, <em>samples_group</em>, <em>parameters</em>, <em>samples</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_base.html#BaseMCMCSampler.write_samples_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.write_samples_group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes samples to the given file.</p>
 <p>Results are written to:</p>
 <blockquote>
@@ -2676,7 +2676,7 @@ ntemps x nwalkers x niterations array.</p>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_emcee.EmceePTSampler.read_acceptance_fraction">
-<em class="property">static </em><code class="descname">read_acceptance_fraction</code><span class="sig-paren">(</span><em>temps=None</em>, <em>walkers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_emcee.html#EmceePTSampler.read_acceptance_fraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_emcee.EmceePTSampler.read_acceptance_fraction" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">read_acceptance_fraction</code><span class="sig-paren">(</span><em>fp</em>, <em>temps=None</em>, <em>walkers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_emcee.html#EmceePTSampler.read_acceptance_fraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_emcee.EmceePTSampler.read_acceptance_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads the acceptance fraction from the given file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2822,7 +2822,7 @@ h5py.</li>
 
 <dl class="staticmethod">
 <dt id="pycbc.inference.sampler_emcee.EmceePTSampler.write_samples_group">
-<em class="property">static </em><code class="descname">write_samples_group</code><span class="sig-paren">(</span><em>samples_group</em>, <em>parameters</em>, <em>samples</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_emcee.html#EmceePTSampler.write_samples_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_emcee.EmceePTSampler.write_samples_group" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">write_samples_group</code><span class="sig-paren">(</span><em>fp</em>, <em>samples_group</em>, <em>parameters</em>, <em>samples</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler_emcee.html#EmceePTSampler.write_samples_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler_emcee.EmceePTSampler.write_samples_group" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes samples to the given file.</p>
 <p>Results are written to:</p>
 <blockquote>
@@ -3165,7 +3165,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 21, 2018.
+      Last updated on Apr 23, 2018.
 
     </p>
   </div>
@@ -3187,7 +3187,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'a93f89',
+            VERSION:'13d273',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

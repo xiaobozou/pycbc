@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.compress &mdash; PyCBC a93f89 documentation</title>
+  <title>pycbc.waveform.compress &mdash; PyCBC 13d273 documentation</title>
   
 
   
@@ -508,41 +508,42 @@
 <span class="s2">    // This code expects to be passed:</span>
 <span class="s2">    // h: array of complex doubles</span>
 <span class="s2">    //      the output array to write the results to.</span>
-<span class="s2">    // delta_f: double</span>
-<span class="s2">    //      the df of the output array</span>
 <span class="s2">    // hlen: int</span>
 <span class="s2">    //      the length of h</span>
-<span class="s2">    // start_index: int</span>
+<span class="s2">    // delta_f: double</span>
+<span class="s2">    //      the df of the output array</span>
+<span class="s2">    // kmin: int</span>
 <span class="s2">    //      the index to start the waveform in the output</span>
-<span class="s2">    //      frequency series; i.e., floor(f_lower*df)</span>
+<span class="s2">    //      frequency series; i.e., ceil(f_lower/df)</span>
+<span class="s2">    // imin: int</span>
+<span class="s2">    //      the index to start at in the compressed series</span>
 <span class="s2">    // sample_frequencies: array of real doubles</span>
 <span class="s2">    //      the frequencies at which the compressed waveform is sampled</span>
+<span class="s2">    // sflen: int</span>
+<span class="s2">    //      the length of the sample frequencies</span>
 <span class="s2">    // amp: array of real doubles</span>
 <span class="s2">    //      the amplitude of the waveform at the sample frequencies</span>
 <span class="s2">    // phase: array of real doubles</span>
 <span class="s2">    //      the phase of the waveform at the sample frequencies</span>
-<span class="s2">    // sflen: int</span>
-<span class="s2">    //      the length of the sample frequencies</span>
-<span class="s2">    // imin: int</span>
-<span class="s2">    //      the index to start at in the compressed series</span>
 
-<span class="s2">    // We will cast the output to a double array for faster processing.</span>
-<span class="s2">    // This takes advantage of the fact that complex arrays store</span>
-<span class="s2">    // their real and imaginary values next to each other in memory.</span>
+<span class="s2">    //</span>
+<span class="s2">    // Variable definitions</span>
+<span class="s2">    //</span>
+<span class="s2">    int kmax; // the maximum index we will go to in the output</span>
+<span class="s2">    int ii; // index in the sample frequencies</span>
 
-<span class="s2">    double* outptr = (double*) h;</span>
-
-<span class="s2">    // for keeping track of where in the output frequencies we are</span>
-<span class="s2">    int findex, next_sfindex, kmax;</span>
+<span class="s2">    // we will re-compute cos/sin of the phase at the following intervals:</span>
+<span class="s2">    int update_interval = 128;</span>
+<span class="s2">    // for keeping track of how many steps between updates:</span>
+<span class="s2">    int update_counter;</span>
 
 <span class="s2">    // variables for computing the interpolation</span>
+<span class="s2">    double f;</span>
 <span class="s2">    double df = (double) delta_f;</span>
 <span class="s2">    double inv_df = 1./df;</span>
-<span class="s2">    double f, inv_sdf;</span>
+<span class="s2">    double inv_sdf;</span>
 <span class="s2">    double sf, this_amp, this_phi;</span>
-<span class="s2">    double next_sf = sample_frequencies[imin];</span>
-<span class="s2">    double next_amp = amp[imin];</span>
-<span class="s2">    double next_phi = phase[imin];</span>
+<span class="s2">    double next_sf, next_amp, next_phi;</span>
 <span class="s2">    double m_amp, b_amp;</span>
 <span class="s2">    double m_phi, b_phi;</span>
 <span class="s2">    double interp_amp, interp_phi;</span>
@@ -552,40 +553,61 @@
 <span class="s2">    double g_re, g_im, incrg_re, incrg_im;</span>
 <span class="s2">    double dphi_re, dphi_im;</span>
 
-<span class="s2">    // we will re-compute cos/sin of the phase at the following intervals:</span>
-<span class="s2">    int update_interval = 128;</span>
+<span class="s2">    // We will cast the output to a double array for faster processing.</span>
+<span class="s2">    // This takes advantage of the fact that complex arrays store</span>
+<span class="s2">    // their real and imaginary values next to each other in memory.</span>
+<span class="s2">    double* outptr = (double*) h;</span>
+
+<span class="s2">    // figure out the maximum frequency we will interpolate to: this is</span>
+<span class="s2">    // the minimum of the output and the sample frequencies</span>
+
+<span class="s2">    if (sample_frequencies[sflen-1] &lt; hlen * df){</span>
+<span class="s2">        kmax = (int) floor(sample_frequencies[sflen-1] * inv_df);</span>
+<span class="s2">    }</span>
+<span class="s2">    else {</span>
+<span class="s2">        kmax = hlen-1;</span>
+<span class="s2">    }</span>
 
 <span class="s2">    // zero out the beginning</span>
-<span class="s2">    memset(outptr, 0, sizeof(*outptr)*2*start_index);</span>
+<span class="s2">    memset(outptr, 0, sizeof(*outptr)*2*kmin);</span>
 
 <span class="s2">    // move to the start position</span>
-<span class="s2">    outptr += 2*start_index;</span>
-<span class="s2">    findex = start_index;</span>
+<span class="s2">    outptr += 2*kmin;</span>
 
-<span class="s2">    // cycle over the compressed samples</span>
-<span class="s2">    for (int ii=imin; ii&lt;(sflen-1); ii++){</span>
-<span class="s2">        // update the linear interpolations</span>
-<span class="s2">        sf = next_sf;</span>
-<span class="s2">        next_sf = (double) sample_frequencies[ii+1];</span>
-<span class="s2">        next_sfindex = (int) ceil(next_sf * inv_df);</span>
-<span class="s2">        if (next_sfindex &gt; hlen)</span>
-<span class="s2">            next_sfindex = hlen;</span>
-<span class="s2">        inv_sdf = 1./(next_sf - sf);</span>
-<span class="s2">        this_amp = next_amp;</span>
-<span class="s2">        next_amp = (double) amp[ii+1];</span>
-<span class="s2">        this_phi = next_phi;</span>
-<span class="s2">        next_phi = (double) phase[ii+1];</span>
-<span class="s2">        m_amp = (next_amp - this_amp)*inv_sdf;</span>
-<span class="s2">        b_amp = this_amp - m_amp*sf;</span>
-<span class="s2">        m_phi = (next_phi - this_phi)*inv_sdf;</span>
-<span class="s2">        b_phi = this_phi - m_phi*sf;</span>
+<span class="s2">    // set initial variables</span>
+<span class="s2">    ii = imin;</span>
+<span class="s2">    next_sf = sample_frequencies[imin];</span>
+<span class="s2">    next_amp = amp[imin];</span>
+<span class="s2">    next_phi = phase[imin];</span>
+<span class="s2">    update_counter = update_interval;</span>
 
-<span class="s2">        // cycle over the interpolated points between this and the next</span>
-<span class="s2">        // compressed sample</span>
-<span class="s2">        while (findex &lt; next_sfindex){</span>
-<span class="s2">            // for the first step, compute the value of h from the interpolated</span>
-<span class="s2">            // amplitude and phase</span>
-<span class="s2">            f = findex*df;</span>
+<span class="s2">    // cycle over the index values in the output array, populating it</span>
+<span class="s2">    // accordingly</span>
+<span class="s2">    for (int kk=kmin; kk&lt;=kmax; kk++){</span>
+<span class="s2">        f = kk * df;</span>
+
+<span class="s2">        // if we&#39;ve gone past the next frequency in the compressed waveforms,</span>
+<span class="s2">        // update the interpolation variables</span>
+<span class="s2">        if (f &gt;= next_sf) {</span>
+<span class="s2">            sf = next_sf;</span>
+<span class="s2">            this_amp = next_amp;</span>
+<span class="s2">            this_phi = next_phi;</span>
+<span class="s2">            ii += 1;</span>
+<span class="s2">            next_sf = (double) sample_frequencies[ii];</span>
+<span class="s2">            inv_sdf = 1./(next_sf - sf);</span>
+<span class="s2">            next_amp = (double) amp[ii];</span>
+<span class="s2">            next_phi = (double) phase[ii];</span>
+<span class="s2">            m_amp = (next_amp - this_amp)*inv_sdf;</span>
+<span class="s2">            b_amp = this_amp - m_amp*sf;</span>
+<span class="s2">            m_phi = (next_phi - this_phi)*inv_sdf;</span>
+<span class="s2">            b_phi = this_phi - m_phi*sf;</span>
+<span class="s2">            // force the update</span>
+<span class="s2">            update_counter = update_interval;</span>
+<span class="s2">        }</span>
+
+<span class="s2">        // calculate the output</span>
+<span class="s2">        if (update_counter == update_interval){</span>
+<span class="s2">            // compute h from the interpolated amplitude and phase</span>
 <span class="s2">            interp_amp = m_amp * f + b_amp;</span>
 <span class="s2">            interp_phi = m_phi * f + b_phi;</span>
 <span class="s2">            dphi_re = cos(m_phi * df);</span>
@@ -594,42 +616,30 @@
 <span class="s2">            h_im = interp_amp * sin(interp_phi);</span>
 <span class="s2">            g_re = m_amp * df * cos(interp_phi);</span>
 <span class="s2">            g_im = m_amp * df * sin(interp_phi);</span>
-
-<span class="s2">            // save and update counters</span>
-<span class="s2">            *outptr = h_re;</span>
-<span class="s2">            *(outptr+1) = h_im;</span>
-<span class="s2">            outptr += 2;</span>
-<span class="s2">            findex++;</span>
-
-<span class="s2">            // for the next update_interval steps, compute h by incrementing</span>
-<span class="s2">            // the last h</span>
-<span class="s2">            kmax = findex + update_interval;</span>
-<span class="s2">            if (kmax &gt; next_sfindex)</span>
-<span class="s2">                kmax = next_sfindex;</span>
-<span class="s2">            while (findex &lt; kmax){</span>
-<span class="s2">                incrh_re = h_re * dphi_re - h_im * dphi_im;</span>
-<span class="s2">                incrh_im = h_re * dphi_im + h_im * dphi_re;</span>
-<span class="s2">                incrg_re = g_re * dphi_re - g_im * dphi_im;</span>
-<span class="s2">                incrg_im = g_re * dphi_im + g_im * dphi_re;</span>
-<span class="s2">                h_re = incrh_re + incrg_re;</span>
-<span class="s2">                h_im = incrh_im + incrg_im;</span>
-<span class="s2">                g_re = incrg_re;</span>
-<span class="s2">                g_im = incrg_im;</span>
-
-<span class="s2">                // save and update counters</span>
-<span class="s2">                *outptr = h_re;</span>
-<span class="s2">                *(outptr+1) = h_im;</span>
-<span class="s2">                outptr += 2;</span>
-<span class="s2">                findex++;</span>
-<span class="s2">            }</span>
+<span class="s2">            // reset the update counter</span>
+<span class="s2">            update_counter = 0;</span>
 <span class="s2">        }</span>
-<span class="s2">        if (next_sfindex == hlen){</span>
-<span class="s2">            break;</span>
+<span class="s2">        else {</span>
+<span class="s2">            // compute h by incrementing the last h</span>
+<span class="s2">            incrh_re = h_re * dphi_re - h_im * dphi_im;</span>
+<span class="s2">            incrh_im = h_re * dphi_im + h_im * dphi_re;</span>
+<span class="s2">            incrg_re = g_re * dphi_re - g_im * dphi_im;</span>
+<span class="s2">            incrg_im = g_re * dphi_im + g_im * dphi_re;</span>
+<span class="s2">            h_re = incrh_re + incrg_re;</span>
+<span class="s2">            h_im = incrh_im + incrg_im;</span>
+<span class="s2">            g_re = incrg_re;</span>
+<span class="s2">            g_im = incrg_im;</span>
+<span class="s2">            update_counter += 1;</span>
 <span class="s2">        }</span>
+
+<span class="s2">        // save and update output pointer</span>
+<span class="s2">        *outptr = h_re;</span>
+<span class="s2">        *(outptr+1) = h_im;</span>
+<span class="s2">        outptr += 2;</span>
 <span class="s2">    }</span>
 
 <span class="s2">    // zero out the rest of the array</span>
-<span class="s2">    memset(outptr, 0, sizeof(*outptr)*2*(hlen-findex));</span>
+<span class="s2">    memset(outptr, 0, sizeof(*outptr)*2*(hlen-kmax));</span>
 <span class="s2">&quot;&quot;&quot;</span>
 <span class="c1"># for single precision</span>
 <span class="n">_linear_decompress_code32</span> <span class="o">=</span> <span class="n">_linear_decompress_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -677,9 +687,9 @@
 <span class="sd">        frequencies less than this will be 0 in the decompressed waveform.</span>
 <span class="sd">    interpolation : {&#39;inline_linear&#39;, str}</span>
 <span class="sd">        The interpolation to use for the amplitude and phase. Default is</span>
-<span class="sd">        &#39;inline_linear&#39;. If &#39;inline_linear&#39; a custom interpolater is used. Otherwise,</span>
-<span class="sd">        ``scipy.interpolate.interp1d`` is used; for other options, see</span>
-<span class="sd">        possible values for that function&#39;s ``kind`` argument.</span>
+<span class="sd">        &#39;inline_linear&#39;. If &#39;inline_linear&#39; a custom interpolater is used.</span>
+<span class="sd">        Otherwise, ``scipy.interpolate.interp1d`` is used; for other options,</span>
+<span class="sd">        see possible values for that function&#39;s ``kind`` argument.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -716,9 +726,12 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">f_lower</span> <span class="o">&gt;=</span> <span class="n">sample_frequencies</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f_lower is &gt; than the maximum sample frequency&quot;</span><span class="p">)</span>
-        <span class="n">imin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">sample_frequencies</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">))</span> <span class="c1"># pylint:disable=unused-variable</span>
-    <span class="n">start_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">f_lower</span><span class="o">/</span><span class="n">df</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">start_index</span> <span class="o">&gt;=</span> <span class="n">hlen</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f_lower</span> <span class="o">&lt;</span> <span class="n">sample_frequencies</span><span class="o">.</span><span class="n">min</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f_lower is &lt; than the minimum sample frequency&quot;</span><span class="p">)</span>
+        <span class="n">imin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">sample_frequencies</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">,</span>
+            <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">f_lower</span><span class="o">/</span><span class="n">df</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">kmin</span> <span class="o">&gt;=</span> <span class="n">hlen</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;requested f_lower &gt;= largest frequency in out&#39;</span><span class="p">)</span>
     <span class="c1"># interpolate the amplitude and the phase</span>
     <span class="k">if</span> <span class="n">interpolation</span> <span class="o">==</span> <span class="s2">&quot;inline_linear&quot;</span><span class="p">:</span>
@@ -730,8 +743,8 @@
         <span class="n">sflen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_frequencies</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
         <span class="n">h</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
         <span class="n">delta_f</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
-        <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;hlen&#39;</span><span class="p">,</span> <span class="s1">&#39;sflen&#39;</span><span class="p">,</span> <span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_frequencies&#39;</span><span class="p">,</span>
-                      <span class="s1">&#39;amp&#39;</span><span class="p">,</span> <span class="s1">&#39;phase&#39;</span><span class="p">,</span> <span class="s1">&#39;start_index&#39;</span><span class="p">,</span> <span class="s1">&#39;imin&#39;</span><span class="p">],</span>
+        <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;hlen&#39;</span><span class="p">,</span> <span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_frequencies&#39;</span><span class="p">,</span> <span class="s1">&#39;sflen&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;amp&#39;</span><span class="p">,</span> <span class="s1">&#39;phase&#39;</span><span class="p">,</span> <span class="s1">&#39;kmin&#39;</span><span class="p">,</span> <span class="s1">&#39;imin&#39;</span><span class="p">],</span>
                <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span>\
                                   <span class="n">omp_flags</span><span class="p">,</span>
                <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">)</span>
@@ -1040,7 +1053,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 21, 2018.
+      Last updated on Apr 23, 2018.
 
     </p>
   </div>
@@ -1062,7 +1075,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'a93f89',
+            VERSION:'13d273',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
