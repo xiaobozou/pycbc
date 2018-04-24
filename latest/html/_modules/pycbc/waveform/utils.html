@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.utils &mdash; PyCBC 3405a2 documentation</title>
+  <title>pycbc.waveform.utils &mdash; PyCBC 7d9772 documentation</title>
   
 
   
@@ -655,6 +655,50 @@
         <span class="n">htilde</span> <span class="o">*=</span> <span class="n">shift</span>
     <span class="k">return</span> <span class="n">htilde</span></div>
 
+<div class="viewcode-block" id="td_taper"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.td_taper">[docs]</a><span class="k">def</span> <span class="nf">td_taper</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Applies a taper to the given TimeSeries.</span>
+
+<span class="sd">    A half-kaiser window is used for the roll-off.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    out : TimeSeries</span>
+<span class="sd">        The ``TimeSeries`` to taper.</span>
+<span class="sd">    start : float</span>
+<span class="sd">        The time (in s) to start the taper window.</span>
+
+<span class="sd">    end : float</span>
+<span class="sd">        The time (in s) to end the taper window.</span>
+<span class="sd">    beta : int, optional</span>
+<span class="sd">        The beta parameter to use for the Kaiser window. See</span>
+<span class="sd">        ``scipy.signal.kaiser`` for details. Default is 8.</span>
+<span class="sd">    side : {&#39;left&#39;, &#39;right&#39;}</span>
+<span class="sd">        The side to apply the taper to. If ``&#39;left&#39;`` (``&#39;right&#39;``), the taper</span>
+<span class="sd">        will roll up (down) between ``start`` and ``end``, with all values</span>
+<span class="sd">        before ``start`` (after ``end``) set to zero. Default is ``&#39;left&#39;``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TimeSeries</span>
+<span class="sd">        The tapered time series.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">winlen</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">get_window</span><span class="p">((</span><span class="s1">&#39;kaiser&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="p">),</span> <span class="n">winlen</span><span class="p">))</span>
+    <span class="n">xmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">start</span> <span class="o">-</span> <span class="n">out</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">winlen</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[:</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">xmin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:</span><span class="n">xmin</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;right&#39;</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">xmax</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">xmax</span><span class="p">:]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unrecognized side argument </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">side</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 <div class="viewcode-block" id="fd_taper"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.fd_taper">[docs]</a><span class="k">def</span> <span class="nf">fd_taper</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Applies a taper to the given FrequencySeries.</span>
@@ -663,7 +707,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    out : FrequencySeries, optional</span>
+<span class="sd">    out : FrequencySeries</span>
 <span class="sd">        The ``FrequencySeries`` to taper.</span>
 <span class="sd">    start : float</span>
 <span class="sd">        The frequency (in Hz) to start the taper window.</span>
@@ -771,7 +815,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3405a2',
+            VERSION:'7d9772',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.waveform &mdash; PyCBC 3405a2 documentation</title>
+  <title>pycbc.waveform.waveform &mdash; PyCBC 7d9772 documentation</title>
   
 
   
@@ -701,6 +701,72 @@
     <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">fd_waveform_params</span><span class="o">.</span><span class="n">docstr</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">,</span>
            <span class="n">include_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
 
+<div class="viewcode-block" id="get_fd_waveform_from_td"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_fd_waveform_from_td">[docs]</a><span class="k">def</span> <span class="nf">get_fd_waveform_from_td</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return time domain version of fourier domain approximant.</span>
+
+<span class="sd">    This returns a frequency domain version of a fourier domain approximant,</span>
+<span class="sd">    with padding and tapering at the start of the waveform.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    params: dict</span>
+<span class="sd">        The parameters defining the waveform to generator.</span>
+<span class="sd">        See `get_td_waveform`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hp: pycbc.types.FrequencySeries</span>
+<span class="sd">        Plus polarization time series</span>
+<span class="sd">    hc: pycbc.types.FrequencySeries</span>
+<span class="sd">        Cross polarization time series</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># determine the duration to use</span>
+    <span class="n">full_duration</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">nparams</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="n">full_duration</span> <span class="o">&lt;</span> <span class="n">duration</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">:</span>
+        <span class="n">full_duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">nparams</span><span class="p">)</span>
+        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="s1">&#39;f_fref&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nparams</span><span class="p">:</span>
+        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;f_ref&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span>
+
+    <span class="c1"># We&#39;ll try to do the right thing and figure out what the frequency</span>
+    <span class="c1"># end is. Otherwise, we&#39;ll just assume 2048 Hz.</span>
+    <span class="c1"># (consider removing as we hopefully have better estimates for more</span>
+    <span class="c1"># approximants</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f_end</span> <span class="o">=</span> <span class="n">get_waveform_end_frequency</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">nearest_larger_binary_number</span><span class="p">(</span><span class="n">f_end</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">2048</span>
+
+    <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta_t</span>
+    <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="n">get_td_waveform</span><span class="p">(</span><span class="o">**</span><span class="n">nparams</span><span class="p">)</span>
+
+    <span class="c1"># Resize to the right duration</span>
+    <span class="n">tsamples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tsamples</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The frequency spacing (df = </span><span class="si">{}</span><span class="s2">) is too low to &quot;</span>
+                         <span class="s2">&quot;generate the </span><span class="si">{}</span><span class="s2"> approximant from the time &quot;</span>
+                         <span class="s2">&quot;domain&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]))</span>
+
+    <span class="n">hp</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">tsamples</span><span class="p">)</span>
+    <span class="n">hc</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">tsamples</span><span class="p">)</span>
+
+    <span class="c1"># apply the tapering, we will use a safety factor here to allow for</span>
+    <span class="c1"># somewhat innacurate duration difference estimation.</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="p">(</span><span class="n">full_duration</span> <span class="o">-</span> <span class="n">duration</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span>
+    <span class="n">hp</span> <span class="o">=</span> <span class="n">wfutils</span><span class="o">.</span><span class="n">td_taper</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">window</span><span class="p">)</span>
+    <span class="n">hc</span> <span class="o">=</span> <span class="n">wfutils</span><span class="o">.</span><span class="n">td_taper</span><span class="p">(</span><span class="n">hc</span><span class="p">,</span> <span class="n">hc</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">hc</span><span class="o">.</span><span class="n">start_time</span> <span class="o">+</span> <span class="n">window</span><span class="p">)</span>
+
+    <span class="c1"># avoid wraparound</span>
+    <span class="n">hp</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span><span class="o">.</span><span class="n">cyclic_time_shift</span><span class="p">(</span><span class="n">hp</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+    <span class="n">hc</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span><span class="o">.</span><span class="n">cyclic_time_shift</span><span class="p">(</span><span class="n">hc</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span></div>
+
 <div class="viewcode-block" id="get_td_waveform_from_fd"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_td_waveform_from_fd">[docs]</a><span class="k">def</span> <span class="nf">get_td_waveform_from_fd</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return time domain version of fourier domain approximant.</span>
 
@@ -724,8 +790,6 @@
     <span class="c1"># determine the duration to use</span>
     <span class="n">full_duration</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="n">nparams</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="k">if</span> <span class="s1">&#39;_FD&#39;</span> <span class="ow">in</span> <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]:</span>
-        <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nparams</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
 
     <span class="k">while</span> <span class="n">full_duration</span> <span class="o">&lt;</span> <span class="n">duration</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">:</span>
         <span class="n">full_duration</span> <span class="o">=</span> <span class="n">get_waveform_filter_length_in_time</span><span class="p">(</span><span class="o">**</span><span class="n">nparams</span><span class="p">)</span>
@@ -938,6 +1002,7 @@
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;EOBNRv2HM_ROM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seobnrv2_length_in_time</span>
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;SEOBNRv2_ROM_DoubleSpin_HI&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seobnrv2_length_in_time</span>
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;SEOBNRv4_ROM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seobnrv4_length_in_time</span>
+<span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;SEOBNRv4&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seobnrv4_length_in_time</span>
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;IMRPhenomC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imrphenomd_length_in_time</span>
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;IMRPhenomD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imrphenomd_length_in_time</span>
 <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="s2">&quot;IMRPhenomPv2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imrphenomd_length_in_time</span>
@@ -953,16 +1018,24 @@
 <span class="n">cpu_fd</span><span class="p">[</span><span class="s2">&quot;TaylorF2NL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nonlinear_tidal_spa</span>
 
 <span class="k">for</span> <span class="n">apx</span> <span class="ow">in</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_filter_time_lengths</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">apx</span> <span class="ow">in</span> <span class="n">cpu_fd</span><span class="p">:</span>
+    <span class="n">fd_apx</span> <span class="o">=</span> <span class="n">cpu_fd</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">td_apx</span> <span class="o">=</span> <span class="n">cpu_td</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">apx</span> <span class="ow">in</span> <span class="n">td_apx</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">apx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fd_apx</span><span class="p">):</span>
+        <span class="c1"># We can make a fd version of td approximants</span>
+        <span class="n">cpu_fd</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_fd_waveform_from_td</span>
+
+    <span class="k">if</span> <span class="n">apx</span> <span class="ow">in</span> <span class="n">fd_apx</span><span class="p">:</span>
         <span class="c1"># We can do interpolation for waveforms that have a time length</span>
         <span class="n">apx_int</span> <span class="o">=</span> <span class="n">apx</span> <span class="o">+</span> <span class="s1">&#39;_INTERP&#39;</span>
         <span class="n">cpu_fd</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_interpolated_fd_waveform</span>
         <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span>
 
         <span class="c1"># We can also make a td version of this</span>
-        <span class="n">apx_int</span> <span class="o">=</span> <span class="n">apx</span> <span class="o">+</span> <span class="s1">&#39;_FD&#39;</span>
-        <span class="n">cpu_td</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_td_waveform_from_fd</span>
-        <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx_int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_filter_time_lengths</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span>
+        <span class="c1"># This will override any existing approximants with the same name</span>
+        <span class="c1"># (ex. IMRPhenomXX)</span>
+        <span class="n">cpu_td</span><span class="p">[</span><span class="n">apx</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_td_waveform_from_fd</span>
+
 
 <span class="n">td_wav</span> <span class="o">=</span> <span class="n">_scheme</span><span class="o">.</span><span class="n">ChooseBySchemeDict</span><span class="p">()</span>
 <span class="n">fd_wav</span> <span class="o">=</span> <span class="n">_scheme</span><span class="o">.</span><span class="n">ChooseBySchemeDict</span><span class="p">()</span>
@@ -1184,6 +1257,7 @@
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_td_waveform&quot;</span><span class="p">,</span> <span class="s2">&quot;get_fd_waveform&quot;</span><span class="p">,</span> <span class="s2">&quot;get_fd_waveform_sequence&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;get_fd_waveform_from_td&quot;</span><span class="p">,</span>
            <span class="s2">&quot;print_td_approximants&quot;</span><span class="p">,</span> <span class="s2">&quot;print_fd_approximants&quot;</span><span class="p">,</span>
            <span class="s2">&quot;td_approximants&quot;</span><span class="p">,</span> <span class="s2">&quot;fd_approximants&quot;</span><span class="p">,</span>
            <span class="s2">&quot;get_waveform_filter&quot;</span><span class="p">,</span> <span class="s2">&quot;filter_approximants&quot;</span><span class="p">,</span>
@@ -1228,7 +1302,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3405a2',
+            VERSION:'7d9772',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
