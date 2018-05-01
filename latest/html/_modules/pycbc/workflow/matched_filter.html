@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.matched_filter &mdash; PyCBC 1e7b3b documentation</title>
+  <title>pycbc.workflow.matched_filter &mdash; PyCBC fbb93c documentation</title>
   
 
   
@@ -483,7 +483,7 @@
     <span class="c1"># will require a bit of effort here ....</span>
 
     <span class="n">cp</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span>
-    <span class="n">ifos</span> <span class="o">=</span> <span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">ifos</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">match_fltr_exe</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;executables&#39;</span><span class="p">,</span><span class="s1">&#39;inspiral&#39;</span><span class="p">))</span>
 
     <span class="c1"># List for holding the output</span>
@@ -493,10 +493,19 @@
 
     <span class="k">if</span> <span class="n">match_fltr_exe</span> <span class="o">==</span> <span class="s1">&#39;lalapps_coh_PTF_inspiral&#39;</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">pylal.legacy_ihope</span> <span class="k">import</span> <span class="n">select_legacy_matchedfilter_class</span>
+        <span class="kn">from</span> <span class="nn">pycbc.workflow.grb_utils</span> <span class="k">import</span> <span class="n">get_sky_grid_scale</span>
         <span class="n">exe_class</span> <span class="o">=</span> <span class="n">select_legacy_matchedfilter_class</span><span class="p">(</span><span class="n">match_fltr_exe</span><span class="p">)</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;right-ascension&#39;</span><span class="p">,</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="s1">&#39;ra&#39;</span><span class="p">))</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;declination&#39;</span><span class="p">,</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="s1">&#39;dec&#39;</span><span class="p">))</span>
-        <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;sky-error&#39;</span><span class="p">,</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="s1">&#39;sky-error&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;jitter_skyloc&quot;</span><span class="p">,</span> <span class="s2">&quot;apply-fermi-error&quot;</span><span class="p">):</span>
+            <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;sky-error&#39;</span><span class="p">,</span>
+                   <span class="nb">str</span><span class="p">(</span><span class="n">get_sky_grid_scale</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span>
+                                                       <span class="s1">&#39;sky-error&#39;</span><span class="p">)))))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;sky-error&#39;</span><span class="p">,</span>
+                   <span class="nb">str</span><span class="p">(</span><span class="n">get_sky_grid_scale</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span>
+                                                       <span class="s1">&#39;sky-error&#39;</span><span class="p">)),</span>
+                                          <span class="n">sigma_sys</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)))</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;trigger-time&#39;</span><span class="p">,</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow&#39;</span><span class="p">,</span> <span class="s1">&#39;trigger-time&#39;</span><span class="p">))</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;inspiral&#39;</span><span class="p">,</span> <span class="s1">&#39;block-duration&#39;</span><span class="p">,</span>
                <span class="nb">str</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">science_segs</span><span class="p">[</span><span class="n">ifos</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> \
@@ -506,9 +515,21 @@
                                  <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
                                  <span class="n">injection_file</span><span class="o">=</span><span class="n">injection_file</span><span class="p">,</span>
                                  <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
-        <span class="n">multi_ifo_coherent_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span>
-                                     <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
-                                     <span class="n">parents</span><span class="o">=</span><span class="n">tmplt_banks</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;do-long-slides&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;slide&quot;</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">slide_num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;slide&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setting up matched-filtering for slide </span><span class="si">{}</span><span class="s2">&quot;</span>
+                         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slide_num</span><span class="p">))</span>
+            <span class="n">slide_shift</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;inspiral&quot;</span><span class="p">,</span> <span class="s2">&quot;segment-duration&quot;</span><span class="p">))</span>
+            <span class="n">time_slide_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="p">(</span><span class="n">slide_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ix</span> <span class="o">*</span> <span class="n">slide_shift</span>
+                               <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ifos</span><span class="p">)}</span>
+            <span class="n">multi_ifo_coherent_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span>
+                                         <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span>
+                                         <span class="n">output_dir</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">tmplt_banks</span><span class="p">,</span>
+                                         <span class="n">slide_dict</span><span class="o">=</span><span class="n">time_slide_dict</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">multi_ifo_coherent_job_setup</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inspiral_outs</span><span class="p">,</span> <span class="n">job_instance</span><span class="p">,</span>
+                                         <span class="n">science_segs</span><span class="p">,</span> <span class="n">datafind_outs</span><span class="p">,</span>
+                                         <span class="n">output_dir</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="n">tmplt_banks</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Select the appropriate class</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not currently supported.&quot;</span><span class="p">)</span>
@@ -526,7 +547,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 25, 2018.
+      Last updated on May 01, 2018.
 
     </p>
   </div>
@@ -548,7 +569,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1e7b3b',
+            VERSION:'fbb93c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.segment &mdash; PyCBC 1e7b3b documentation</title>
+  <title>pycbc.workflow.segment &mdash; PyCBC fbb93c documentation</title>
   
 
   
@@ -1237,6 +1237,9 @@
                                           <span class="s1">&#39;on-after&#39;</span><span class="p">)))</span>
     <span class="n">padding</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-exttrig_segments&#39;</span><span class="p">,</span>
                                           <span class="s1">&#39;pad-data&#39;</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;workflow-condition_strain&quot;</span><span class="p">,</span> <span class="s2">&quot;do-gating&quot;</span><span class="p">):</span>
+        <span class="n">padding</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;condition_strain&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;pad-data&quot;</span><span class="p">)))</span>
     <span class="n">quanta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-exttrig_segments&#39;</span><span class="p">,</span>
                                          <span class="s1">&#39;quanta&#39;</span><span class="p">)))</span>
 
@@ -1363,6 +1366,9 @@
                                           <span class="s1">&#39;on-after&#39;</span><span class="p">)))</span>
     <span class="n">padding</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-exttrig_segments&#39;</span><span class="p">,</span>
                                           <span class="s1">&#39;pad-data&#39;</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s2">&quot;workflow-condition_strain&quot;</span><span class="p">,</span> <span class="s2">&quot;do-gating&quot;</span><span class="p">):</span>
+        <span class="n">padding</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;condition_strain&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;pad-data&quot;</span><span class="p">)))</span>
 
     <span class="c1"># How many IFOs meet minimum data requirements?</span>
     <span class="n">min_seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">triggertime</span> <span class="o">-</span> <span class="n">onbefore</span> <span class="o">-</span> <span class="n">minbefore</span> <span class="o">-</span> <span class="n">padding</span><span class="p">,</span>
@@ -1588,7 +1594,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 25, 2018.
+      Last updated on May 01, 2018.
 
     </p>
   </div>
@@ -1610,7 +1616,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1e7b3b',
+            VERSION:'fbb93c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

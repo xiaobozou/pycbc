@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 1e7b3b documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC fbb93c documentation</title>
   
 
   
@@ -2655,6 +2655,13 @@ that would be produced in multiple calls to this function.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.workflow.grb_utils.get_sky_grid_scale">
+<code class="descclassname">pycbc.workflow.grb_utils.</code><code class="descname">get_sky_grid_scale</code><span class="sig-paren">(</span><em>sky_error</em>, <em>sigma_sys=6.8359</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/grb_utils.html#get_sky_grid_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.grb_utils.get_sky_grid_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate suitable 3-sigma radius of the search patch, incorporating Fermi
+GBM systematic if necessary.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.workflow.grb_utils.make_exttrig_file">
 <code class="descclassname">pycbc.workflow.grb_utils.</code><code class="descname">make_exttrig_file</code><span class="sig-paren">(</span><em>cp</em>, <em>ifos</em>, <em>sci_seg</em>, <em>out_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/grb_utils.html#make_exttrig_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.grb_utils.make_exttrig_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make an ExtTrig xml file containing information on the external trigger</p>
@@ -3819,7 +3826,7 @@ given, raises a ValueError.</p>
 
 <dl class="function">
 <dt id="pycbc.workflow.jobsetup.multi_ifo_coherent_job_setup">
-<code class="descclassname">pycbc.workflow.jobsetup.</code><code class="descname">multi_ifo_coherent_job_setup</code><span class="sig-paren">(</span><em>workflow</em>, <em>out_files</em>, <em>curr_exe_job</em>, <em>science_segs</em>, <em>datafind_outs</em>, <em>output_dir</em>, <em>parents=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/jobsetup.html#multi_ifo_coherent_job_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.jobsetup.multi_ifo_coherent_job_setup" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.workflow.jobsetup.</code><code class="descname">multi_ifo_coherent_job_setup</code><span class="sig-paren">(</span><em>workflow</em>, <em>out_files</em>, <em>curr_exe_job</em>, <em>science_segs</em>, <em>datafind_outs</em>, <em>output_dir</em>, <em>parents=None</em>, <em>slide_dict=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/jobsetup.html#multi_ifo_coherent_job_setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.jobsetup.multi_ifo_coherent_job_setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method for setting up coherent inspiral jobs.</p>
 </dd></dl>
 
@@ -5707,7 +5714,7 @@ interferometer data</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Apr 25, 2018.
+      Last updated on May 01, 2018.
 
     </p>
   </div>
@@ -5729,7 +5736,7 @@ interferometer data</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'1e7b3b',
+            VERSION:'fbb93c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
