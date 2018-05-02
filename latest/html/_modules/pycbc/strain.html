@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain &mdash; PyCBC 1b40c7 documentation</title>
+  <title>pycbc.strain &mdash; PyCBC 120dbe documentation</title>
   
 
   
@@ -543,6 +543,9 @@
 
     <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">fake_strain</span> <span class="ow">or</span> <span class="n">opt</span><span class="o">.</span><span class="n">fake_strain_from_file</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Fake Strain&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">opt</span><span class="o">.</span><span class="n">low_frequency_cutoff</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide low frequency cutoff to &#39;</span>
+                              <span class="s1">&#39;generate a fake strain&#39;</span><span class="p">)</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">gps_end_time</span> <span class="o">-</span> <span class="n">opt</span><span class="o">.</span><span class="n">gps_start_time</span>
         <span class="n">tlen</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">*</span> <span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span>
         <span class="n">pdf</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mi">128</span>
@@ -565,10 +568,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Making colored noise&quot;</span><span class="p">)</span>
             <span class="kn">from</span> <span class="nn">pycbc.noise.reproduceable</span> <span class="k">import</span> <span class="n">colored_noise</span>
+            <span class="n">lowfreq</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">low_frequency_cutoff</span> <span class="o">/</span> <span class="mf">2.</span>
             <span class="n">strain</span> <span class="o">=</span> <span class="n">colored_noise</span><span class="p">(</span><span class="n">strain_psd</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">gps_start_time</span><span class="p">,</span>
                                           <span class="n">opt</span><span class="o">.</span><span class="n">gps_end_time</span><span class="p">,</span>
                                           <span class="n">seed</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">fake_strain_seed</span><span class="p">,</span>
-                                          <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">strain_high_pass</span><span class="p">)</span>
+                                          <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">lowfreq</span><span class="p">)</span>
             <span class="n">strain</span> <span class="o">=</span> <span class="n">resample_to_delta_t</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
 
 
@@ -1828,7 +1832,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1b40c7',
+            VERSION:'120dbe',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
