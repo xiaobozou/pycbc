@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.legacy_grb &mdash; PyCBC 7cfaef documentation</title>
+  <title>pycbc.results.legacy_grb &mdash; PyCBC 1b40c7 documentation</title>
   
 
   
@@ -223,21 +223,7 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">argparse</span> <span class="k">import</span> <span class="n">ArgumentParser</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="c1"># Only if a backend is not already set ... This should really *not* be done</span>
-<span class="c1"># here, but in the executables you should set matplotlib.use()</span>
-<span class="c1"># This matches the check that matplotlib does internally, but this *may* be</span>
-<span class="c1"># version dependenant. If this is a problem then remove this and control from</span>
-<span class="c1"># the executables directly.</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">if</span> <span class="s1">&#39;matplotlib.backends&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;agg&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">markup</span><span class="p">,</span> <span class="n">segments</span>
-<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Rectangle</span>
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="k">import</span> <span class="n">Line2D</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">ScalarFormatter</span>
-<span class="kn">from</span> <span class="nn">pycbc.results.color</span> <span class="k">import</span> <span class="n">ifo_color</span>
 
 <div class="viewcode-block" id="initialize_page"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.initialize_page">[docs]</a><span class="k">def</span> <span class="nf">initialize_page</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">script</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -862,6 +848,11 @@
 <div class="viewcode-block" id="make_grb_segments_plot"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.legacy_grb.make_grb_segments_plot">[docs]</a><span class="k">def</span> <span class="nf">make_grb_segments_plot</span><span class="p">(</span><span class="n">wkflow</span><span class="p">,</span> <span class="n">science_segs</span><span class="p">,</span> <span class="n">trigger_time</span><span class="p">,</span> <span class="n">trigger_name</span><span class="p">,</span>
                            <span class="n">out_dir</span><span class="p">,</span> <span class="n">coherent_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fail_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Rectangle</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="k">import</span> <span class="n">Line2D</span>
+    <span class="kn">from</span> <span class="nn">pycbc.results.color</span> <span class="k">import</span> <span class="n">ifo_color</span>
+
     <span class="n">ifos</span> <span class="o">=</span> <span class="n">wkflow</span><span class="o">.</span><span class="n">ifos</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">wkflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;start-time&quot;</span><span class="p">)),</span>
@@ -957,7 +948,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 01, 2018.
+      Last updated on May 02, 2018.
 
     </p>
   </div>
@@ -979,7 +970,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'7cfaef',
+            VERSION:'1b40c7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
