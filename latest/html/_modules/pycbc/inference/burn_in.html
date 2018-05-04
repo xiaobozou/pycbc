@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.burn_in &mdash; PyCBC 4736f8 documentation</title>
+  <title>pycbc.inference.burn_in &mdash; PyCBC 5224b5 documentation</title>
   
 
   
@@ -368,6 +368,15 @@
     <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
 
 
+<div class="viewcode-block" id="acl_or_max_posterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.acl_or_max_posterior">[docs]</a><span class="k">def</span> <span class="nf">acl_or_max_posterior</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Burn in that uses the minimum of `n_acl` and `max_posteior`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">acl_bidx</span><span class="p">,</span> <span class="n">acl_ibi</span> <span class="o">=</span> <span class="n">n_acl</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+    <span class="n">maxp_bidx</span><span class="p">,</span> <span class="n">maxp_ibi</span> <span class="o">=</span> <span class="n">max_posterior</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+    <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">acl_bidx</span><span class="p">,</span> <span class="n">maxp_bidx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">acl_ibi</span> <span class="o">|</span> <span class="n">maxp_ibi</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
+
 <div class="viewcode-block" id="posterior_step"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.posterior_step">[docs]</a><span class="k">def</span> <span class="nf">posterior_step</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Burn in based on the last time a chain made a jump &gt; dim/2.</span>
 
@@ -466,6 +475,7 @@
     <span class="s1">&#39;ks_test&#39;</span><span class="p">:</span> <span class="n">ks_test</span><span class="p">,</span>
     <span class="s1">&#39;n_acl&#39;</span><span class="p">:</span> <span class="n">n_acl</span><span class="p">,</span>
     <span class="s1">&#39;max_posterior&#39;</span><span class="p">:</span> <span class="n">max_posterior</span><span class="p">,</span>
+    <span class="s1">&#39;acl_or_max_posterior&#39;</span><span class="p">:</span> <span class="n">acl_or_max_posterior</span><span class="p">,</span>
     <span class="s1">&#39;posterior_step&#39;</span><span class="p">:</span> <span class="n">posterior_step</span><span class="p">,</span>
     <span class="s1">&#39;half_chain&#39;</span><span class="p">:</span> <span class="n">half_chain</span><span class="p">,</span>
     <span class="s1">&#39;use_sampler&#39;</span><span class="p">:</span> <span class="n">use_sampler</span><span class="p">,</span>
@@ -596,7 +606,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 03, 2018.
+      Last updated on May 04, 2018.
 
     </p>
   </div>
@@ -618,7 +628,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'4736f8',
+            VERSION:'5224b5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
