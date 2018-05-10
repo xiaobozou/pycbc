@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.timeseries &mdash; PyCBC d3d0c9 documentation</title>
+  <title>pycbc.types.timeseries &mdash; PyCBC 607108 documentation</title>
   
 
   
@@ -648,7 +648,8 @@
                            <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TimeSeries.whiten"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.timeseries.TimeSeries.whiten">[docs]</a>    <span class="k">def</span> <span class="nf">whiten</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment_duration</span><span class="p">,</span> <span class="n">max_filter_duration</span><span class="p">,</span> <span class="n">trunc_method</span><span class="o">=</span><span class="s1">&#39;hann&#39;</span><span class="p">,</span>
-                     <span class="n">remove_corrupted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+                     <span class="n">remove_corrupted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">return_psd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return a whitened time series</span>
 
 <span class="sd">        Parameters</span>
@@ -668,6 +669,9 @@
 <span class="sd">            Low frequency cutoff to pass to the inverse spectrum truncation.</span>
 <span class="sd">            This should be matched to a known low frequency cutoff of the</span>
 <span class="sd">            data if there is one.</span>
+<span class="sd">        return_psd : {False, Boolean}</span>
+<span class="sd">            Return the estimated and conditioned PSD that was used to whiten</span>
+<span class="sd">            the data.</span>
 <span class="sd">        kwds : keywords</span>
 <span class="sd">            Additional keyword arguments are passed on to the `pycbc.psd.welch` method.</span>
 <span class="sd">            </span>
@@ -689,10 +693,13 @@
                    <span class="n">trunc_method</span><span class="o">=</span><span class="n">trunc_method</span><span class="p">)</span>
 
         <span class="c1"># Whiten the data by the asd</span>
-        <span class="n">white</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span> <span class="o">/</span> <span class="n">psd</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
+        <span class="n">white</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span> <span class="o">/</span> <span class="n">psd</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">remove_corrupted</span><span class="p">:</span>
             <span class="n">white</span> <span class="o">=</span> <span class="n">white</span><span class="p">[</span><span class="n">max_filter_len</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-</span><span class="n">max_filter_len</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">return_psd</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">white</span><span class="p">,</span> <span class="n">psd</span>
 
         <span class="k">return</span> <span class="n">white</span></div>
 
@@ -1133,7 +1140,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'d3d0c9',
+            VERSION:'607108',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

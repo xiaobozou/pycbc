@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types package &mdash; PyCBC d3d0c9 documentation</title>
+  <title>pycbc.types package &mdash; PyCBC 607108 documentation</title>
   
 
   
@@ -1890,7 +1890,7 @@ in GPS seconds.</p>
 
 <dl class="method">
 <dt id="pycbc.types.timeseries.TimeSeries.whiten">
-<code class="descname">whiten</code><span class="sig-paren">(</span><em>segment_duration</em>, <em>max_filter_duration</em>, <em>trunc_method='hann'</em>, <em>remove_corrupted=True</em>, <em>low_frequency_cutoff=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/types/timeseries.html#TimeSeries.whiten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.types.timeseries.TimeSeries.whiten" title="Permalink to this definition">¶</a></dt>
+<code class="descname">whiten</code><span class="sig-paren">(</span><em>segment_duration</em>, <em>max_filter_duration</em>, <em>trunc_method='hann'</em>, <em>remove_corrupted=True</em>, <em>low_frequency_cutoff=None</em>, <em>return_psd=False</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/types/timeseries.html#TimeSeries.whiten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.types.timeseries.TimeSeries.whiten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a whitened time series</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1907,6 +1907,8 @@ are not excised and the full time series is returned.</li>
 <li><strong>low_frequency_cutoff</strong> (<em>{None</em><em>, </em><em>float}</em>) – Low frequency cutoff to pass to the inverse spectrum truncation.
 This should be matched to a known low frequency cutoff of the
 data if there is one.</li>
+<li><strong>return_psd</strong> (<em>{False</em><em>, </em><em>Boolean}</em>) – Return the estimated and conditioned PSD that was used to whiten
+the data.</li>
 <li><strong>kwds</strong> (<em>keywords</em>) – Additional keyword arguments are passed on to the <cite>pycbc.psd.welch</cite> method.</li>
 </ul>
 </td>
@@ -1995,7 +1997,7 @@ this as the key value.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'d3d0c9',
+            VERSION:'607108',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
