@@ -77,14 +77,6 @@ pycbc.detector module
     :undoc-members:
     :show-inheritance:
 
-pycbc.future module
--------------------
-
-.. automodule:: pycbc.future
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.gate module
 -----------------
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 36d0ac documentation</title>
+  <title>pycbc package &mdash; PyCBC d3d0c9 documentation</title>
   
 
   
@@ -163,7 +163,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.coordinates">pycbc.coordinates module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.cosmology">pycbc.cosmology module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.detector">pycbc.detector module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pycbc.future">pycbc.future module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.gate">pycbc.gate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.libutils">pycbc.libutils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.opt">pycbc.opt module</a></li>
@@ -2031,199 +2030,6 @@ be on the north pole.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pycbc.future">
-<span id="pycbc-future-module"></span><h2>pycbc.future module<a class="headerlink" href="#module-pycbc.future" title="Permalink to this headline">¶</a></h2>
-<p>This file contains backported functionality from future versions of libraries.
-Mostly done with monkey-patching.</p>
-<dl class="exception">
-<dt id="pycbc.future.HTMLParseError">
-<em class="property">exception </em><code class="descclassname">pycbc.future.</code><code class="descname">HTMLParseError</code><span class="sig-paren">(</span><em>msg</em>, <em>position=(None</em>, <em>None)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParseError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParseError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.Exception</span></code></p>
-<p>Exception raised for all parse errors.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="pycbc.future.HTMLParser">
-<em class="property">class </em><code class="descclassname">pycbc.future.</code><code class="descname">HTMLParser</code><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">markupbase.ParserBase</span></code></p>
-<p>Find tags and other markup and call handler functions.</p>
-<dl class="docutils">
-<dt>Usage:</dt>
-<dd>p = HTMLParser()
-p.feed(data)
-…
-p.close()</dd>
-</dl>
-<p>Start tags are handled by calling self.handle_starttag() or
-self.handle_startendtag(); end tags by self.handle_endtag().  The
-data between tags is passed from the parser to the derived class
-by calling self.handle_data() with the data as argument (the data
-may be split up in arbitrary chunks).  Entity references are
-passed by calling self.handle_entityref() with the entity
-reference as the argument.  Numeric character references are
-passed to self.handle_charref() with the string containing the
-reference as the argument.</p>
-<dl class="attribute">
-<dt id="pycbc.future.HTMLParser.CDATA_CONTENT_ELEMENTS">
-<code class="descname">CDATA_CONTENT_ELEMENTS</code><em class="property"> = ('script', 'style')</em><a class="headerlink" href="#pycbc.future.HTMLParser.CDATA_CONTENT_ELEMENTS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.check_for_whole_start_tag">
-<code class="descname">check_for_whole_start_tag</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.check_for_whole_start_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.check_for_whole_start_tag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.clear_cdata_mode">
-<code class="descname">clear_cdata_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.clear_cdata_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.clear_cdata_mode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.close" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handle any buffered data.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycbc.future.HTMLParser.entitydefs">
-<code class="descname">entitydefs</code><em class="property"> = None</em><a class="headerlink" href="#pycbc.future.HTMLParser.entitydefs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.error">
-<code class="descname">error</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.error" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.feed">
-<code class="descname">feed</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.feed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Feed data to the parser.</p>
-<p>Call this as often as you want, with as little or as much text
-as you want (may include ‘n’).</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.get_starttag_text">
-<code class="descname">get_starttag_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.get_starttag_text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.get_starttag_text" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return full source of start tag: ‘&lt;…&gt;’.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.goahead">
-<code class="descname">goahead</code><span class="sig-paren">(</span><em>end</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.goahead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.goahead" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_charref">
-<code class="descname">handle_charref</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_charref"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_charref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_comment">
-<code class="descname">handle_comment</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_comment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_comment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_data">
-<code class="descname">handle_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_decl">
-<code class="descname">handle_decl</code><span class="sig-paren">(</span><em>decl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_decl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_decl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_endtag">
-<code class="descname">handle_endtag</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_endtag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_endtag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_entityref">
-<code class="descname">handle_entityref</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_entityref"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_entityref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_pi">
-<code class="descname">handle_pi</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_pi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_pi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_startendtag">
-<code class="descname">handle_startendtag</code><span class="sig-paren">(</span><em>tag</em>, <em>attrs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_startendtag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_startendtag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.handle_starttag">
-<code class="descname">handle_starttag</code><span class="sig-paren">(</span><em>tag</em>, <em>attrs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.handle_starttag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.handle_starttag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.parse_bogus_comment">
-<code class="descname">parse_bogus_comment</code><span class="sig-paren">(</span><em>i</em>, <em>report=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.parse_bogus_comment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.parse_bogus_comment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.parse_endtag">
-<code class="descname">parse_endtag</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.parse_endtag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.parse_endtag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.parse_html_declaration">
-<code class="descname">parse_html_declaration</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.parse_html_declaration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.parse_html_declaration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.parse_pi">
-<code class="descname">parse_pi</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.parse_pi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.parse_pi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.parse_starttag">
-<code class="descname">parse_starttag</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.parse_starttag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.parse_starttag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset this instance.  Loses all unprocessed data.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.set_cdata_mode">
-<code class="descname">set_cdata_mode</code><span class="sig-paren">(</span><em>elem</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.set_cdata_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.set_cdata_mode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.unescape">
-<code class="descname">unescape</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.unescape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.unescape" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycbc.future.HTMLParser.unknown_decl">
-<code class="descname">unknown_decl</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#HTMLParser.unknown_decl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.HTMLParser.unknown_decl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.future.block_diag">
-<code class="descclassname">pycbc.future.</code><code class="descname">block_diag</code><span class="sig-paren">(</span><em>*arrs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#block_diag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.block_diag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="pycbc.future.sosfilt">
-<code class="descclassname">pycbc.future.</code><code class="descname">sosfilt</code><span class="sig-paren">(</span><em>sos</em>, <em>x</em>, <em>axis=-1</em>, <em>zi=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#sosfilt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.sosfilt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stolen from scipy, please kill me and upgrade scipy…</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.future.zpk2sos">
-<code class="descclassname">pycbc.future.</code><code class="descname">zpk2sos</code><span class="sig-paren">(</span><em>z</em>, <em>p</em>, <em>k</em>, <em>pairing='nearest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/future.html#zpk2sos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.future.zpk2sos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stolen from scipy, please kill me and upgrade scipy…</p>
 </dd></dl>
 
 </div>
@@ -5684,7 +5490,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'36d0ac',
+            VERSION:'d3d0c9',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

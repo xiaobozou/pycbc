@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.zpk &mdash; PyCBC 36d0ac documentation</title>
+  <title>pycbc.filter.zpk &mdash; PyCBC d3d0c9 documentation</title>
   
 
   
@@ -222,8 +222,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">future</span>
-
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="k">import</span> <span class="n">zpk2sos</span><span class="p">,</span> <span class="n">sosfilt</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 
 <div class="viewcode-block" id="filter_zpk"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.zpk.filter_zpk">[docs]</a><span class="k">def</span> <span class="nf">filter_zpk</span><span class="p">(</span><span class="n">timeseries</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
@@ -306,10 +305,10 @@
     <span class="n">k_zd</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">fs</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">fs</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
 
     <span class="c1"># get second-order sections</span>
-    <span class="n">sos</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">zpk2sos</span><span class="p">(</span><span class="n">z_zd</span><span class="p">,</span> <span class="n">p_zd</span><span class="p">,</span> <span class="n">k_zd</span><span class="p">)</span>
+    <span class="n">sos</span> <span class="o">=</span> <span class="n">zpk2sos</span><span class="p">(</span><span class="n">z_zd</span><span class="p">,</span> <span class="n">p_zd</span><span class="p">,</span> <span class="n">k_zd</span><span class="p">)</span>
 
     <span class="c1"># filter</span>
-    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">sosfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">sosfilt</span><span class="p">(</span><span class="n">sos</span><span class="p">,</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 
     <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">,</span> <span class="n">delta_t</span> <span class="o">=</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">delta_t</span><span class="p">,</span>
                       <span class="n">dtype</span><span class="o">=</span><span class="n">timeseries</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
@@ -349,7 +348,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'36d0ac',
+            VERSION:'d3d0c9',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
