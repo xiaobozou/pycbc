@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter package &mdash; PyCBC 28ed89 documentation</title>
+  <title>pycbc.filter package &mdash; PyCBC 777897 documentation</title>
   
 
   
@@ -295,33 +295,41 @@ one-sided ACF. Else acf is a numpy.array.</p>
 
 <dl class="function">
 <dt id="pycbc.filter.autocorrelation.calculate_acl">
-<code class="descclassname">pycbc.filter.autocorrelation.</code><code class="descname">calculate_acl</code><span class="sig-paren">(</span><em>data</em>, <em>m=5</em>, <em>k=2</em>, <em>dtype=&lt;type 'int'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/autocorrelation.html#calculate_acl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.autocorrelation.calculate_acl" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.filter.autocorrelation.</code><code class="descname">calculate_acl</code><span class="sig-paren">(</span><em>data</em>, <em>m=5</em>, <em>dtype=&lt;type 'int'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/autocorrelation.html#calculate_acl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.autocorrelation.calculate_acl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the autocorrelation length (ACL).</p>
-<p>ACL is estimated using</p>
-<blockquote>
-<div>r = 1 + 2 sum_{i=1}^{m*s} hat{R}(i) &lt; s</div></blockquote>
-<p>Where r is the ACL and hat{R}(i) is the ACF that has been normalized so
-that hat{R}(0) is 1.0. And s is equal to i/m.</p>
-<p>The parameter k sets the maximum samples to use in calculation of ACL. The
-maximum number of samples will be the length of the ACL divided by k.</p>
-<p>The parameter m controls the length of the window that is summed to
-compute the ACL.</p>
+<p>Given a normalized autocorrelation function <span class="math notranslate nohighlight">\(\rho[i]\)</span> (by normalized,
+we mean that <span class="math notranslate nohighlight">\(\rho[0] = 1\)</span>), the ACL <span class="math notranslate nohighlight">\(\tau\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\tau = 1 + 2 \sum_{i=1}^{K} \rho[i].\]</div>
+<p>The number of samples used <span class="math notranslate nohighlight">\(K\)</span> is found by using the first point
+such that:</p>
+<div class="math notranslate nohighlight">
+\[m \tau[K] \leq K,\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is a tuneable parameter (default = 5). If no such point
+exists, then the given data set it too short to estimate the ACL; in this
+case <code class="docutils literal notranslate"><span class="pre">inf</span></code> is returned.</p>
+<p>This algorithm for computing the ACL is taken from:</p>
+<ol class="upperalpha simple" start="14">
+<li>Madras and A.D. Sokal, J. Stat. Phys. 50, 109 (1988).</li>
+</ol>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> (<em>{TimeSeries</em><em>, </em><em>numpy.array}</em>) – A TimeSeries or numpy.array of data.</li>
-<li><strong>dtype</strong> (<em>{int</em><em>, </em><em>float}</em>) – The datatype of the output. If the dtype was set to int, then the
+<li><strong>data</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a><em> or </em><em>array</em>) – A TimeSeries of data.</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of autocorrelation lengths to use for determining the window
+size <span class="math notranslate nohighlight">\(K\)</span> (see above).</li>
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The datatype of the output. If the dtype was set to int, then the
 ceiling is returned.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>acl</strong> – The length s which is longer than the ACL. If ACL can not be estimated
-then returns numpy.inf.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>acl</strong> – The autocorrelation length. If the ACL cannot be estimated, returns
+<code class="docutils literal notranslate"><span class="pre">numpy.inf</span></code>.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">{int, float}</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1435,7 +1443,7 @@ to a TimeSeries instance, do:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 15, 2018.
+      Last updated on May 17, 2018.
 
     </p>
   </div>
@@ -1457,7 +1465,7 @@ to a TimeSeries instance, do:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'28ed89',
+            VERSION:'777897',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
