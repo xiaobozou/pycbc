@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC 777897 documentation</title>
+  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC 36afd2 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.9.4
+                None
               </div>
             
           
@@ -1152,10 +1152,22 @@ path to point to the release that you want to use):</p>
 <p>If you are running your own build of <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code>, you will need to give
 a path to a gsiftp URL and tell Pegasus that the executable is not installed
 on the OSG with the two <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> options:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;executables:inspiral:gsiftp://server.hostname/path/to/pycbc_inspiral&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;executables:inspiral:gsiftp://server.hostname/path/to/pycbc_inspiral&quot;</span>
+<span class="s2">&quot;pegasus_profile-inspiral:pycbc|installed:False&quot;</span>
 </pre></div>
 </div>
 <p>Make sure this executable is build following the instructions on the page <a class="reference internal" href="../building_bundled_executables.html#building-bundled-executables"><span class="std std-ref">Building Bundled Executables</span></a>.</p>
+<p>Some of the files generated during the workflow will need to be served via gridftp from the LDG
+head node from which you submit, however the gravitational wave frame data files are too large for this.
+They are available from CVMFS and other fall-back locations, however you will need to
+ensure that your datafind server returns these locations (it may not do so on an LDG head node,
+for example, if you use the default datafind server). If you have LIGO.org credentials, you should
+execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">LIGO_DATAFIND_SERVER</span><span class="o">=</span><span class="s2">&quot;datafind.ligo.org&quot;</span>
+</pre></div>
+</div>
+<p>before you run <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code>. Otherwise, contact your local system administrator for
+a valid datafind server that points to publicly available frame files.</p>
 <p>Add the following to the list of <code class="docutils literal notranslate"><span class="pre">--config-overrides</span></code> when running <code class="docutils literal notranslate"><span class="pre">pycbc_make_coinc_search_workflow</span></code> to tell Pegasus to run the inspiral code on the OSG:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pegasus_profile-inspiral:pycbc|site:osg&quot;</span>
 <span class="s2">&quot;pegasus_profile-inspiral:hints|execution.site:osg&quot;</span>
@@ -1188,14 +1200,50 @@ follwing lines to your <code class="docutils literal notranslate"><span class="p
 </div>
 <div class="section" id="running-the-workflow">
 <h3>Running the workflow<a class="headerlink" href="#running-the-workflow" title="Permalink to this headline">¶</a></h3>
-<p>Add the following arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<p>Add the following additional arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--no-create-proxy \
 --execution-sites osg \
 --append-pegasus-property &#39;pegasus.transfer.bypass.input.staging=true&#39; \
 --remote-staging-server `hostname -f` \
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> will give the correct value if there is a gsiftp server running on the submit machine.  If not, change this as needed. The remote-staging-site is the intermediary computer than can pass files between the submitting computer and the computers doing the work.  <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> returns the full name of the computer. The full name of the computer that <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> has to be one that is accessible to both the submit machine and the workers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> will give the correct value if there is a gsiftp server running on the submit machine.  If not, change this as needed. The remote-staging-site is the intermediary computer than can pass files between the submitting computer and the computers doing the work.  <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> returns the full name of the computer. The full name of the computer that <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> has to be one that is accessible to both the submit machine and the workers. The <code class="docutils literal notranslate"><span class="pre">--no-create-proxy</span></code> may be omitted if you have LIGO.org credentials and will be
+retrieving data from authenticated locations in CVMFS.</p>
+<p>The set of arguments above will allow <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to run on any OSG machine to which you have access, as well as
+the local compute cluster. If you do not want your jobs to run on the local cluster, but only on shared resources, then add
+the argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
+</pre></div>
+</div>
+<p>to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>. If, in addition, you would like to run on an XSEDE resource on which you have an allocation, then
+add the argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
+</pre></div>
+</div>
+<p>where you replace the desired site (in this example the Comet cluster) with wherever you have an allocation. If you want to
+run <strong>only</strong> on that XSEDE cluster, then also add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_SITES:&quot;Comet&quot;&#39;</span> \
+</pre></div>
+</div>
+<p>Summarizing, the following option will submit jobs to the local cluster, the Open Science Grid, and
+the specified XSEDE cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
+</pre></div>
+</div>
+<p>To submit to the XSEDE cluster and the OSG, but not the local cluster, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
+</pre></div>
+</div>
+<p>and to submit only to the specified XSEDE cluster, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_XSEDE_Sites:&quot;Comet&quot;&#39;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|Requirements:IS_GLIDEIN=?=True&#39;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:condor|+DESIRED_SITES:&quot;Comet&quot;&#39;</span> \
+</pre></div>
+</div>
+<p>Of course, you must still give all of the other arguments necessary to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>; both those other
+arguments needed to run on the Open Science Grid and specified in this section, and other standard arguments,
+such as specifying an LDG accounting group, if you will be running from an LDG cluster.</p>
 <p>Shared file system can not be used with OSG, so make sure that the <code class="docutils literal notranslate"><span class="pre">--enable-shared-filesystem</span></code> argument is not added to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>.</p>
 </div>
 </div>
@@ -1222,7 +1270,7 @@ follwing lines to your <code class="docutils literal notranslate"><span class="p
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 17, 2018.
+      Last updated on May 19, 2018.
 
     </p>
   </div>
@@ -1244,7 +1292,7 @@ follwing lines to your <code class="docutils literal notranslate"><span class="p
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'777897',
+            VERSION:'36afd2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
