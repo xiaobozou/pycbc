@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain &mdash; PyCBC 36afd2 documentation</title>
+  <title>pycbc.strain &mdash; PyCBC 88483a documentation</title>
   
 
   
@@ -545,7 +545,7 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating Fake Strain&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">opt</span><span class="o">.</span><span class="n">low_frequency_cutoff</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide low frequency cutoff to &#39;</span>
-                              <span class="s1">&#39;generate a fake strain&#39;</span><span class="p">)</span>
+                             <span class="s1">&#39;generate a fake strain&#39;</span><span class="p">)</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">gps_end_time</span> <span class="o">-</span> <span class="n">opt</span><span class="o">.</span><span class="n">gps_start_time</span>
         <span class="n">tlen</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">*</span> <span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span>
         <span class="n">pdf</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mi">128</span>
@@ -575,6 +575,11 @@
                                           <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">lowfreq</span><span class="p">)</span>
             <span class="n">strain</span> <span class="o">=</span> <span class="n">resample_to_delta_t</span><span class="p">(</span><span class="n">strain</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">injection_file</span> <span class="ow">or</span> <span class="n">opt</span><span class="o">.</span><span class="n">sgburst_injection_file</span> \
+                <span class="ow">or</span> <span class="n">opt</span><span class="o">.</span><span class="n">ringdown_injection_file</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">opt</span><span class="o">.</span><span class="n">channel_name</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide channel names with the format &#39;</span>
+                             <span class="s1">&#39;ifo:channel (e.g. H1:CALIB-STRAIN) to inject &#39;</span>
+                             <span class="s1">&#39;simulated signals into fake strain&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">injection_file</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying injections&quot;</span><span class="p">)</span>
@@ -1810,7 +1815,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 19, 2018.
+      Last updated on May 22, 2018.
 
     </p>
   </div>
@@ -1832,7 +1837,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'36afd2',
+            VERSION:'88483a',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
