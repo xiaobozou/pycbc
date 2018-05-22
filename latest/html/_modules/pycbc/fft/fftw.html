@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fftw &mdash; PyCBC 88483a documentation</title>
+  <title>pycbc.fft.fftw &mdash; PyCBC 5c80c8 documentation</title>
   
 
   
@@ -491,8 +491,16 @@
     <span class="c1"># We don&#39;t need ip or op anymore</span>
     <span class="k">del</span> <span class="n">ip</span><span class="p">,</span> <span class="n">op</span>
 
-    <span class="c1"># And done...</span>
-    <span class="k">return</span> <span class="n">theplan</span></div>
+    <span class="c1"># Make the destructors</span>
+    <span class="k">if</span> <span class="n">idtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]:</span>
+        <span class="n">destroy</span> <span class="o">=</span> <span class="n">float_lib</span><span class="o">.</span><span class="n">fftwf_destroy_plan</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">destroy</span> <span class="o">=</span> <span class="n">double_lib</span><span class="o">.</span><span class="n">fftw_destroy_plan</span> 
+
+    <span class="n">destroy</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">]</span>
+
+
+    <span class="k">return</span> <span class="n">theplan</span><span class="p">,</span> <span class="n">destroy</span></div>
 
 
 <span class="c1"># Note that we don&#39;t need to check whether we&#39;ve set the threading backend</span>
@@ -504,16 +512,18 @@
     <span class="n">f</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">invec</span><span class="o">.</span><span class="n">ptr</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="fft"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw.fft">[docs]</a><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">itype</span><span class="p">,</span> <span class="n">otype</span><span class="p">):</span>
-    <span class="n">theplan</span> <span class="o">=</span> <span class="n">plan</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">invec</span><span class="p">),</span> <span class="n">invec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">FFTW_FORWARD</span><span class="p">,</span>
+    <span class="n">theplan</span><span class="p">,</span> <span class="n">destroy</span> <span class="o">=</span> <span class="n">plan</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">invec</span><span class="p">),</span> <span class="n">invec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">FFTW_FORWARD</span><span class="p">,</span>
                    <span class="n">get_measure_level</span><span class="p">(),(</span><span class="n">invec</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">isaligned</span> <span class="ow">and</span> <span class="n">outvec</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">isaligned</span><span class="p">),</span>
                    <span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">num_threads</span><span class="p">,</span> <span class="p">(</span><span class="n">invec</span><span class="o">.</span><span class="n">ptr</span> <span class="o">==</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">))</span>
-    <span class="n">execute</span><span class="p">(</span><span class="n">theplan</span><span class="p">,</span> <span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">)</span></div>
+    <span class="n">execute</span><span class="p">(</span><span class="n">theplan</span><span class="p">,</span> <span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">)</span>
+    <span class="n">destroy</span><span class="p">(</span><span class="n">theplan</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ifft"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw.ifft">[docs]</a><span class="k">def</span> <span class="nf">ifft</span><span class="p">(</span><span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">itype</span><span class="p">,</span> <span class="n">otype</span><span class="p">):</span>
-    <span class="n">theplan</span> <span class="o">=</span> <span class="n">plan</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outvec</span><span class="p">),</span> <span class="n">invec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">FFTW_BACKWARD</span><span class="p">,</span>
+    <span class="n">theplan</span><span class="p">,</span> <span class="n">destroy</span> <span class="o">=</span> <span class="n">plan</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outvec</span><span class="p">),</span> <span class="n">invec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">outvec</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">FFTW_BACKWARD</span><span class="p">,</span>
                    <span class="n">get_measure_level</span><span class="p">(),(</span><span class="n">invec</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">isaligned</span> <span class="ow">and</span> <span class="n">outvec</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">isaligned</span><span class="p">),</span>
                    <span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">num_threads</span><span class="p">,</span> <span class="p">(</span><span class="n">invec</span><span class="o">.</span><span class="n">ptr</span> <span class="o">==</span> <span class="n">outvec</span><span class="o">.</span><span class="n">ptr</span><span class="p">))</span>
-    <span class="n">execute</span><span class="p">(</span><span class="n">theplan</span><span class="p">,</span> <span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">)</span></div>
+    <span class="n">execute</span><span class="p">(</span><span class="n">theplan</span><span class="p">,</span> <span class="n">invec</span><span class="p">,</span> <span class="n">outvec</span><span class="p">)</span>
+    <span class="n">destroy</span><span class="p">(</span><span class="n">theplan</span><span class="p">)</span></div>
 
 <span class="c1"># Class based API</span>
 
@@ -733,7 +743,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'88483a',
+            VERSION:'5c80c8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
