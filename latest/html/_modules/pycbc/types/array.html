@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.array &mdash; PyCBC 5c80c8 documentation</title>
+  <title>pycbc.types.array &mdash; PyCBC 149bed documentation</title>
   
 
   
@@ -277,7 +277,7 @@
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span> <span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; does not support real types&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="force_precision_to_match"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.force_precision_to_match">[docs]</a><span class="k">def</span> <span class="nf">force_precision_to_match</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">_numpy</span><span class="o">.</span><span class="n">iscomplex</span><span class="p">(</span><span class="n">scalar</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">_numpy</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">scalar</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">precision</span> <span class="ow">is</span> <span class="s1">&#39;single&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">(</span><span class="n">scalar</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1220,7 +1220,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 22, 2018.
+      Last updated on May 24, 2018.
 
     </p>
   </div>
@@ -1242,7 +1242,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'5c80c8',
+            VERSION:'149bed',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
