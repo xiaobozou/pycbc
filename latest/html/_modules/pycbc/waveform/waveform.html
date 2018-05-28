@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.waveform &mdash; PyCBC 51ca94 documentation</title>
+  <title>pycbc.waveform.waveform &mdash; PyCBC 123f73 documentation</title>
   
 
   
@@ -351,8 +351,8 @@
             <span class="k">raise</span>
         <span class="c1"># For some cases failure modes can occur. Here we add waveform-specific</span>
         <span class="c1"># instructions to try to work with waveforms that are known to fail.</span>
-        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;SEOBNRv3&#39;</span><span class="p">:</span>
-            <span class="c1"># In this case we&#39;ll try doubling the sample time and trying again</span>
+        <span class="k">if</span> <span class="s1">&#39;SEOBNRv3&#39;</span> <span class="ow">in</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]:</span>
+            <span class="c1"># Try doubling the sample time and redoing.</span>
             <span class="c1"># Don&#39;t want to get stuck in a loop though!</span>
             <span class="k">if</span> <span class="s1">&#39;delta_t_orig&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
                 <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta_t_orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">]</span>
@@ -1280,7 +1280,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on May 25, 2018.
+      Last updated on May 28, 2018.
 
     </p>
   </div>
@@ -1302,7 +1302,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'51ca94',
+            VERSION:'123f73',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
