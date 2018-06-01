@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.detector &mdash; PyCBC eb9c1e documentation</title>
+  <title>pycbc.detector &mdash; PyCBC f9ff70 documentation</title>
   
 
   
@@ -230,6 +230,25 @@
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 
 
+<div class="viewcode-block" id="get_available_detectors"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.get_available_detectors">[docs]</a><span class="k">def</span> <span class="nf">get_available_detectors</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return list of detectors known in the currently sourced lalsuite.</span>
+
+<span class="sd">    This function will query lalsuite about which detectors are known to</span>
+<span class="sd">    lalsuite. Detectors are identified by a two character string e.g. &#39;K1&#39;,</span>
+<span class="sd">    but also by a longer, and clearer name, e.g. KAGRA. This function returns</span>
+<span class="sd">    both. As LAL doesn&#39;t really expose this functionality we have to make some</span>
+<span class="sd">    assumptions about how this information is stored in LAL. Therefore while</span>
+<span class="sd">    we hope this function will work correctly, it&#39;s possible it will need</span>
+<span class="sd">    updating in the future. Better if lal would expose this information</span>
+<span class="sd">    properly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ld</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="vm">__dict__</span>
+    <span class="n">known_lal_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ld</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;DETECTOR_PREFIX&quot;</span> <span class="ow">in</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">known_prefixes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ld</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">known_lal_names</span><span class="p">]</span>
+    <span class="n">known_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">ld</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;PREFIX&#39;</span><span class="p">,</span> <span class="s1">&#39;NAME&#39;</span><span class="p">)]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">known_lal_names</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">known_prefixes</span><span class="p">,</span> <span class="n">known_names</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector">[docs]</a><span class="k">class</span> <span class="nc">Detector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A gravitaional wave detector</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -383,7 +402,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'eb9c1e',
+            VERSION:'f9ff70',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

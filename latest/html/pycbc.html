@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC eb9c1e documentation</title>
+  <title>pycbc package &mdash; PyCBC f9ff70 documentation</title>
   
 
   
@@ -2003,6 +2003,20 @@ other detector. Note that this would return the same value as
 <dt id="pycbc.detector.effective_distance">
 <code class="descclassname">pycbc.detector.</code><code class="descname">effective_distance</code><span class="sig-paren">(</span><em>distance</em>, <em>inclination</em>, <em>f_plus</em>, <em>f_cross</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#effective_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.effective_distance" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.detector.get_available_detectors">
+<code class="descclassname">pycbc.detector.</code><code class="descname">get_available_detectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#get_available_detectors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.get_available_detectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of detectors known in the currently sourced lalsuite.</p>
+<p>This function will query lalsuite about which detectors are known to
+lalsuite. Detectors are identified by a two character string e.g. ‘K1’,
+but also by a longer, and clearer name, e.g. KAGRA. This function returns
+both. As LAL doesn’t really expose this functionality we have to make some
+assumptions about how this information is stored in LAL. Therefore while
+we hope this function will work correctly, it’s possible it will need
+updating in the future. Better if lal would expose this information
+properly.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.detector.overhead_antenna_pattern">
@@ -5490,7 +5504,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'eb9c1e',
+            VERSION:'f9ff70',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
