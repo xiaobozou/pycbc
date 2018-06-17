@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC e12946 documentation</title>
+  <title>pycbc package &mdash; PyCBC 829a57 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pycbc.calibration package" href="pycbc.calibration.html" />
+    <link rel="next" title="pycbc.catalog package" href="pycbc.catalog.html" />
     <link rel="prev" title="pycbc" href="modules.html" /> 
 
   
@@ -134,7 +134,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycbc</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pycbc package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pycbc.calibration.html">pycbc.calibration package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.catalog.html">pycbc.catalog package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.distributions.html">pycbc.distributions package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.events.html">pycbc.events package</a></li>
@@ -148,6 +147,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pycbc.population.html">pycbc.population package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.psd.html">pycbc.psd package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.results.html">pycbc.results package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.strain.html">pycbc.strain package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.tmpltbank.html">pycbc.tmpltbank package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.types.html">pycbc.types package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pycbc.vetoes.html">pycbc.vetoes package</a></li>
@@ -162,7 +162,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.coordinates">pycbc.coordinates module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.cosmology">pycbc.cosmology module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.detector">pycbc.detector module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pycbc.gate">pycbc.gate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.libutils">pycbc.libutils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.opt">pycbc.opt module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.pnutils">pycbc.pnutils module</a></li>
@@ -170,7 +169,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.rate">pycbc.rate module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.scheme">pycbc.scheme module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.sensitivity">pycbc.sensitivity module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-pycbc.strain">pycbc.strain module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.transforms">pycbc.transforms module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.version">pycbc.version module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-pycbc.weave">pycbc.weave module</a></li>
@@ -251,12 +249,6 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pycbc.calibration.html">pycbc.calibration package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pycbc.calibration.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycbc.calibration.html#module-pycbc.calibration.recalibrate">pycbc.calibration.recalibrate module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pycbc.calibration.html#module-pycbc.calibration">Module contents</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="pycbc.catalog.html">pycbc.catalog package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.catalog.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.catalog.html#module-pycbc.catalog.catalog">pycbc.catalog.catalog module</a></li>
@@ -403,6 +395,14 @@
 <li class="toctree-l2"><a class="reference internal" href="pycbc.results.html#module-pycbc.results.table">pycbc.results.table module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.results.html#module-pycbc.results.versioning">pycbc.results.versioning module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.results.html#module-pycbc.results">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pycbc.strain.html">pycbc.strain package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.strain.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.strain.html#module-pycbc.strain.gate">pycbc.strain.gate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.strain.html#module-pycbc.strain.recalibrate">pycbc.strain.recalibrate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.strain.html#module-pycbc.strain.strain">pycbc.strain.strain module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.strain.html#module-pycbc.strain">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pycbc.tmpltbank.html">pycbc.tmpltbank package</a><ul>
@@ -2046,94 +2046,6 @@ be on the north pole.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-pycbc.gate">
-<span id="pycbc-gate-module"></span><h2>pycbc.gate module<a class="headerlink" href="#module-pycbc.gate" title="Permalink to this headline">¶</a></h2>
-<p>Functions for applying gates to data.</p>
-<dl class="function">
-<dt id="pycbc.gate.add_gate_option_group">
-<code class="descclassname">pycbc.gate.</code><code class="descname">add_gate_option_group</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/gate.html#add_gate_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.gate.add_gate_option_group" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the options needed to apply gates to data.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.gate.apply_gates_to_fd">
-<code class="descclassname">pycbc.gate.</code><code class="descname">apply_gates_to_fd</code><span class="sig-paren">(</span><em>stilde_dict</em>, <em>gates</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/gate.html#apply_gates_to_fd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.gate.apply_gates_to_fd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the given dictionary of gates to the given dictionary of
-strain in the frequency domain.</p>
-<p>Gates are applied by IFFT-ing the strain data to the time domain, applying
-the gate, then FFT-ing back to the frequency domain.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>stilde_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary of frequency-domain strain, keyed by the ifos.</li>
-<li><strong>gates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary of gates. Keys should be the ifo to apply the data to,
-values are a tuple giving the central time of the gate, the half
-duration, and the taper duration.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary of frequency-domain strain with the gates applied.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.gate.apply_gates_to_td">
-<code class="descclassname">pycbc.gate.</code><code class="descname">apply_gates_to_td</code><span class="sig-paren">(</span><em>strain_dict</em>, <em>gates</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/gate.html#apply_gates_to_td"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.gate.apply_gates_to_td" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the given dictionary of gates to the given dictionary of
-strain.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>strain_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary of time-domain strain, keyed by the ifos.</li>
-<li><strong>gates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary of gates. Keys should be the ifo to apply the data to,
-values are a tuple giving the central time of the gate, the half
-duration, and the taper duration.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary of time-domain strain with the gates applied.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.gate.gates_from_cli">
-<code class="descclassname">pycbc.gate.</code><code class="descname">gates_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/gate.html#gates_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.gate.gates_from_cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the –gate option into something understandable by
-<cite>strain.gate_data</cite>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.gate.psd_gates_from_cli">
-<code class="descclassname">pycbc.gate.</code><code class="descname">psd_gates_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/gate.html#psd_gates_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.gate.psd_gates_from_cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the –psd-gate option into something understandable by
-<cite>strain.gate_data</cite>.</p>
-</dd></dl>
-
-</div>
 <div class="section" id="module-pycbc.libutils">
 <span id="pycbc-libutils-module"></span><h2>pycbc.libutils module<a class="headerlink" href="#module-pycbc.libutils" title="Permalink to this headline">¶</a></h2>
 <p>This module provides a simple interface for loading a shared library via ctypes,
@@ -3260,390 +3172,6 @@ the maximum actually injected value will be used</li>
 <li><strong>elow</strong> (<em>float</em>)</li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pycbc.strain">
-<span id="pycbc-strain-module"></span><h2>pycbc.strain module<a class="headerlink" href="#module-pycbc.strain" title="Permalink to this headline">¶</a></h2>
-<p>This modules contains functions reading, generating, and segmenting strain data</p>
-<dl class="class">
-<dt id="pycbc.strain.StrainBuffer">
-<em class="property">class </em><code class="descclassname">pycbc.strain.</code><code class="descname">StrainBuffer</code><span class="sig-paren">(</span><em>frame_src</em>, <em>channel_name</em>, <em>start_time</em>, <em>max_buffer=512</em>, <em>sample_rate=4096</em>, <em>low_frequency_cutoff=20</em>, <em>highpass_frequency=15.0</em>, <em>highpass_reduction=200.0</em>, <em>highpass_bandwidth=5.0</em>, <em>psd_samples=30</em>, <em>psd_segment_length=4</em>, <em>psd_inverse_length=3.5</em>, <em>trim_padding=0.25</em>, <em>autogating_threshold=100</em>, <em>autogating_cluster=0.25</em>, <em>autogating_window=0.5</em>, <em>autogating_pad=0.25</em>, <em>state_channel=None</em>, <em>data_quality_channel=None</em>, <em>dyn_range_fac=5.902958103587057e+20</em>, <em>psd_abort_difference=None</em>, <em>psd_recalculate_difference=None</em>, <em>force_update_cache=True</em>, <em>increment_update_cache=None</em>, <em>analyze_flags=None</em>, <em>data_quality_flags=None</em>, <em>dq_padding=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.frame.frame.DataBuffer</span></code></p>
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.add_hard_count">
-<code class="descname">add_hard_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.add_hard_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.add_hard_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reset the countdown timer, so that we don’t analyze data long enough
-to generate a new PSD.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.advance">
-<code class="descname">advance</code><span class="sig-paren">(</span><em>blocksize</em>, <em>timeout=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.advance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.advance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advanced buffer blocksize seconds.</p>
-<p>Add blocksize seconds more to the buffer, push blocksize seconds
-from the beginning.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blocksize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of seconds to attempt to read from the channel</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>status</strong> – Returns True if this block is analyzable.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">boolean</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycbc.strain.StrainBuffer.end_time">
-<code class="descname">end_time</code><a class="headerlink" href="#pycbc.strain.StrainBuffer.end_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the end time of the current valid segment of data</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.invalidate_psd">
-<code class="descname">invalidate_psd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.invalidate_psd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.invalidate_psd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make the current PSD invalid. A new one will be generated when
-it is next required</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.near_hwinj">
-<code class="descname">near_hwinj</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.near_hwinj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.near_hwinj" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that the current set of triggers could be influenced by
-a hardware injection.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data_reader</strong> (<em>dict of StrainBuffers</em>) – A dict of StrainBuffer instances, indexed by ifos.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.null_advance_strain">
-<code class="descname">null_advance_strain</code><span class="sig-paren">(</span><em>blocksize</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.null_advance_strain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.null_advance_strain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Advance and insert zeros</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blocksize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of seconds to attempt to read from the channel</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.overwhitened_data">
-<code class="descname">overwhitened_data</code><span class="sig-paren">(</span><em>delta_f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.overwhitened_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.overwhitened_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return overwhitened data</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The sample step to generate overwhitened frequency domain data for</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>htilde</strong> – Overwhited strain data</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycbc.strain.StrainBuffer.recalculate_psd">
-<code class="descname">recalculate_psd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainBuffer.recalculate_psd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainBuffer.recalculate_psd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Recalculate the psd</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycbc.strain.StrainBuffer.start_time">
-<code class="descname">start_time</code><a class="headerlink" href="#pycbc.strain.StrainBuffer.start_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the start time of the current valid segment of data</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="pycbc.strain.StrainSegments">
-<em class="property">class </em><code class="descclassname">pycbc.strain.</code><code class="descname">StrainSegments</code><span class="sig-paren">(</span><em>strain</em>, <em>segment_length=None</em>, <em>segment_start_pad=0</em>, <em>segment_end_pad=0</em>, <em>trigger_start=None</em>, <em>trigger_end=None</em>, <em>filter_inj_only=False</em>, <em>injection_window=None</em>, <em>allow_zero_padding=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class for managing manipulation of strain data for the purpose of
-matched filtering. This includes methods for segmenting and
-conditioning.</p>
-<dl class="method">
-<dt id="pycbc.strain.StrainSegments.fourier_segments">
-<code class="descname">fourier_segments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.fourier_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.fourier_segments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of the FFT’d segments.
-Return the list of FrequencySeries. Additional properties are
-added that describe the strain segment. The property ‘analyze’
-is a slice corresponding to the portion of the time domain equivelant
-of the segment to analyze for triggers. The value ‘cumulative_index’
-indexes from the beginning of the original strain series.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.from_cli">
-<em class="property">classmethod </em><code class="descname">from_cli</code><span class="sig-paren">(</span><em>opt</em>, <em>strain</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.from_cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the segmentation of the strain data for analysis from
-the command line options.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.from_cli_multi_ifos">
-<em class="property">classmethod </em><code class="descname">from_cli_multi_ifos</code><span class="sig-paren">(</span><em>opt</em>, <em>strain_dict</em>, <em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.from_cli_multi_ifos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.from_cli_multi_ifos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the segmentation of the strain data for analysis from
-the command line options.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.from_cli_single_ifo">
-<em class="property">classmethod </em><code class="descname">from_cli_single_ifo</code><span class="sig-paren">(</span><em>opt</em>, <em>strain</em>, <em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.from_cli_single_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.from_cli_single_ifo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the segmentation of the strain data for analysis from
-the command line options.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.insert_segment_option_group">
-<em class="property">classmethod </em><code class="descname">insert_segment_option_group</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.insert_segment_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.insert_segment_option_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.insert_segment_option_group_multi_ifo">
-<em class="property">classmethod </em><code class="descname">insert_segment_option_group_multi_ifo</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.insert_segment_option_group_multi_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.insert_segment_option_group_multi_ifo" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycbc.strain.StrainSegments.required_opts_list">
-<code class="descname">required_opts_list</code><em class="property"> = ['--segment-length', '--segment-start-pad', '--segment-end-pad']</em><a class="headerlink" href="#pycbc.strain.StrainSegments.required_opts_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.verify_segment_options">
-<em class="property">classmethod </em><code class="descname">verify_segment_options</code><span class="sig-paren">(</span><em>opt</em>, <em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.verify_segment_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.verify_segment_options" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.strain.StrainSegments.verify_segment_options_multi_ifo">
-<em class="property">classmethod </em><code class="descname">verify_segment_options_multi_ifo</code><span class="sig-paren">(</span><em>opt</em>, <em>parser</em>, <em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#StrainSegments.verify_segment_options_multi_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.StrainSegments.verify_segment_options_multi_ifo" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.detect_loud_glitches">
-<code class="descclassname">pycbc.strain.</code><code class="descname">detect_loud_glitches</code><span class="sig-paren">(</span><em>strain</em>, <em>psd_duration=4.0</em>, <em>psd_stride=2.0</em>, <em>psd_avg_method='median'</em>, <em>low_freq_cutoff=30.0</em>, <em>threshold=50.0</em>, <em>cluster_window=5.0</em>, <em>corrupt_time=4.0</em>, <em>high_freq_cutoff=None</em>, <em>output_intermediates=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#detect_loud_glitches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.detect_loud_glitches" title="Permalink to this definition">¶</a></dt>
-<dd><p>Automatic identification of loud transients for gating purposes.</p>
-<p>This function first estimates the PSD of the input time series using the
-FindChirp Welch method. Then it whitens the time series using that
-estimate. Finally, it computes the magnitude of the whitened series,
-thresholds it and applies the FindChirp clustering over time to the
-surviving samples.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – Input strain time series to detect glitches over.</li>
-<li><strong>psd_duration</strong> (<em>{float</em><em>, </em><em>4}</em>) – Duration of the segments for PSD estimation in seconds.</li>
-<li><strong>psd_stride</strong> (<em>{float</em><em>, </em><em>2}</em>) – Separation between PSD estimation segments in seconds.</li>
-<li><strong>psd_avg_method</strong> (<em>{string</em><em>, </em><em>'median'}</em>) – Method for averaging PSD estimation segments.</li>
-<li><strong>low_freq_cutoff</strong> (<em>{float</em><em>, </em><em>30}</em>) – Minimum frequency to include in the whitened strain.</li>
-<li><strong>threshold</strong> (<em>{float</em><em>, </em><em>50}</em>) – Minimum magnitude of whitened strain for considering a transient to
-be present.</li>
-<li><strong>cluster_window</strong> (<em>{float</em><em>, </em><em>5}</em>) – Length of time window to cluster surviving samples over, in seconds.</li>
-<li><strong>corrupt_time</strong> (<em>{float</em><em>, </em><em>4}</em>) – Amount of time to be discarded at the beginning and end of the input
-time series.</li>
-<li><strong>high_frequency_cutoff</strong> (<em>{float</em><em>, </em><em>None}</em>) – Maximum frequency to include in the whitened strain. If given, the
-input series is downsampled accordingly. If omitted, the Nyquist
-frequency is used.</li>
-<li><strong>output_intermediates</strong> (<em>{bool</em><em>, </em><em>False}</em>) – Save intermediate time series for debugging.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.from_cli">
-<code class="descclassname">pycbc.strain.</code><code class="descname">from_cli</code><span class="sig-paren">(</span><em>opt</em>, <em>dyn_range_fac=1</em>, <em>precision='single'</em>, <em>inj_filter_rejector=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.from_cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the CLI options related to strain data reading and conditioning.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
-required attributes  (gps-start-time, gps-end-time, strain-high-pass,
-pad-data, sample-rate, (frame-cache or frame-files), channel-name,
-fake-strain, fake-strain-seed, fake-strain-from-file, gating_file).</li>
-<li><strong>dyn_range_fac</strong> (<em>{float</em><em>, </em><em>1}</em><em>, </em><em>optional</em>) – A large constant to reduce the dynamic range of the strain.</li>
-<li><strong>precision</strong> (<em>string</em>) – Precision of the returned strain (‘single’ or ‘double’).</li>
-<li><strong>inj_filter_rejector</strong> (<em>InjFilterRejector instance; optional</em><em>, </em><em>default=None</em>) – If given send the InjFilterRejector instance to the inject module so
-that it can store a reduced representation of injections if
-necessary.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>strain</strong> – The time series containing the conditioned strain data.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries">TimeSeries</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.from_cli_multi_ifos">
-<code class="descclassname">pycbc.strain.</code><code class="descname">from_cli_multi_ifos</code><span class="sig-paren">(</span><em>opt</em>, <em>ifos</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#from_cli_multi_ifos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.from_cli_multi_ifos" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the PSD for all ifos when using the multi-detector CLI</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.from_cli_single_ifo">
-<code class="descclassname">pycbc.strain.</code><code class="descname">from_cli_single_ifo</code><span class="sig-paren">(</span><em>opt</em>, <em>ifo</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#from_cli_single_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.from_cli_single_ifo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the strain for a single ifo when using the multi-detector CLI</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.gate_data">
-<code class="descclassname">pycbc.strain.</code><code class="descname">gate_data</code><span class="sig-paren">(</span><em>data</em>, <em>gate_params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#gate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.gate_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply a set of gating windows to a time series.</p>
-<p>Each gating window is
-defined by a central time, a given duration (centered on the given
-time) to zero out, and a given duration of smooth tapering on each side of
-the window. The window function used for tapering is a Tukey window.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – The time series to be gated.</li>
-<li><strong>gate_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of parameters for the gating windows. Each element should be a
-list or tuple with 3 elements: the central time of the gating window,
-the half-duration of the portion to zero out, and the duration of the
-Tukey tapering on each side. All times in seconds. The total duration
-of the data affected by one gating window is thus twice the second
-parameter plus twice the third parameter.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> – The gated time series.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries">TimeSeries</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.insert_strain_option_group">
-<code class="descclassname">pycbc.strain.</code><code class="descname">insert_strain_option_group</code><span class="sig-paren">(</span><em>parser</em>, <em>gps_times=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#insert_strain_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.insert_strain_option_group" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add strain-related options to the optparser object.</p>
-<p>Adds the options used to call the pycbc.strain.from_cli function to an
-optparser as an OptionGroup. This should be used if you
-want to use these options in your code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.insert_strain_option_group_multi_ifo">
-<code class="descclassname">pycbc.strain.</code><code class="descname">insert_strain_option_group_multi_ifo</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#insert_strain_option_group_multi_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.insert_strain_option_group_multi_ifo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the options used to call the pycbc.strain.from_cli function to an
-optparser as an OptionGroup. This should be used if you
-want to use these options in your code.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.next_power_of_2">
-<code class="descclassname">pycbc.strain.</code><code class="descname">next_power_of_2</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#next_power_of_2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.next_power_of_2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the smallest integer power of 2 larger than the argument.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – A positive integer.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>m</strong> – Smallest integer power of 2 larger than n.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.verify_strain_options">
-<code class="descclassname">pycbc.strain.</code><code class="descname">verify_strain_options</code><span class="sig-paren">(</span><em>opts</em>, <em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#verify_strain_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.verify_strain_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sanity check provided strain arguments.</p>
-<p>Parses the strain data CLI options and verifies that they are consistent
-and reasonable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
-required attributes (gps-start-time, gps-end-time, strain-high-pass,
-pad-data, sample-rate, frame-cache, channel-name, fake-strain,
-fake-strain-seed).</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.strain.verify_strain_options_multi_ifo">
-<code class="descclassname">pycbc.strain.</code><code class="descname">verify_strain_options_multi_ifo</code><span class="sig-paren">(</span><em>opts</em>, <em>parser</em>, <em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain.html#verify_strain_options_multi_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.verify_strain_options_multi_ifo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sanity check provided strain arguments.</p>
-<p>Parses the strain data CLI options and verifies that they are consistent
-and reasonable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
-required attributes (gps-start-time, gps-end-time, strain-high-pass,
-pad-data, sample-rate, frame-cache, channel-name, fake-strain,
-fake-strain-seed).</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
-<li><strong>ifos</strong> (<em>list of strings</em>) – List of ifos for which to verify options for</li>
-</ul>
 </td>
 </tr>
 </tbody>
@@ -5468,7 +4996,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pycbc.calibration.html" class="btn btn-neutral float-right" title="pycbc.calibration package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pycbc.catalog.html" class="btn btn-neutral float-right" title="pycbc.catalog package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="modules.html" class="btn btn-neutral" title="pycbc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -5481,7 +5009,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 13, 2018.
+      Last updated on Jun 17, 2018.
 
     </p>
   </div>
@@ -5503,7 +5031,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'e12946',
+            VERSION:'829a57',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

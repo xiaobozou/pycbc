@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.calibration.recalibrate &mdash; PyCBC e12946 documentation</title>
+  <title>pycbc.strain.recalibrate &mdash; PyCBC 829a57 documentation</title>
   
 
   
@@ -179,9 +179,9 @@
         
           <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
         
-          <li><a href="../calibration.html">pycbc.calibration</a> &raquo;</li>
+          <li><a href="../strain.html">pycbc.strain</a> &raquo;</li>
         
-      <li>pycbc.calibration.recalibrate</li>
+      <li>pycbc.strain.recalibrate</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for pycbc.calibration.recalibrate</h1><div class="highlight"><pre>
+  <h1>Source code for pycbc.strain.recalibrate</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Classes and functions for adjusting strain data.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Copyright (C) 2015 Ben Lackey, Christopher M. Biwer, Daniel Finstad</span>
@@ -219,7 +219,7 @@
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">UnivariateSpline</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">FrequencySeries</span>
 
-<div class="viewcode-block" id="Recalibrate"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate">[docs]</a><span class="k">class</span> <span class="nc">Recalibrate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Recalibrate"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate">[docs]</a><span class="k">class</span> <span class="nc">Recalibrate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Class for adjusting time-varying calibration parameters of given</span>
 <span class="sd">    strain data.</span>
 
@@ -280,7 +280,7 @@
         <span class="c1"># residual of c0 after factoring out the coupled cavity pole fc0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">c_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">c0</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc0</span><span class="p">)</span><span class="o">/</span><span class="n">init_detuning</span>
 
-<div class="viewcode-block" id="Recalibrate.update_c"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.update_c">[docs]</a>    <span class="k">def</span> <span class="nf">update_c</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<div class="viewcode-block" id="Recalibrate.update_c"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_c">[docs]</a>    <span class="k">def</span> <span class="nf">update_c</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Calculate the sensing function c(f,t) given the new parameters</span>
 <span class="sd">        kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</span>
 
@@ -304,7 +304,7 @@
                                         <span class="n">qinv</span> <span class="o">+</span> <span class="n">fs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_res</span> <span class="o">*</span> <span class="n">kappa_c</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="o">/</span><span class="n">fc</span><span class="p">)</span><span class="o">*</span><span class="n">detuning_term</span></div>
 
-<div class="viewcode-block" id="Recalibrate.update_g"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.update_g">[docs]</a>    <span class="k">def</span> <span class="nf">update_g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="Recalibrate.update_g"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_g">[docs]</a>    <span class="k">def</span> <span class="nf">update_g</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">kappa_tst_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa_pu_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Calculate the open loop gain g(f,t) given the new parameters</span>
@@ -343,7 +343,7 @@
         <span class="n">a_pu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_pu0</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa_pu_re</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">kappa_pu_im</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d0</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_tst</span> <span class="o">+</span> <span class="n">a_pu</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Recalibrate.update_r"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.update_r">[docs]</a>    <span class="k">def</span> <span class="nf">update_r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="Recalibrate.update_r"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_r">[docs]</a>    <span class="k">def</span> <span class="nf">update_r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_tst_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa_pu_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">kappa_pu_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Calculate the response function R(f,t) given the new parameters</span>
@@ -384,7 +384,7 @@
                           <span class="n">kappa_pu_re</span><span class="o">=</span><span class="n">kappa_pu_re</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="n">kappa_pu_im</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span></div>
 
-<div class="viewcode-block" id="Recalibrate.adjust_strain"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.adjust_strain">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="n">delta_fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta_qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Recalibrate.adjust_strain"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.adjust_strain">[docs]</a>    <span class="k">def</span> <span class="nf">adjust_strain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="n">delta_fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta_qinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">delta_fc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kappa_c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_tst_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                       <span class="n">kappa_tst_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa_pu_re</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">kappa_pu_im</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Adjust the FrequencySeries strain by changing the time-dependent</span>
@@ -451,7 +451,7 @@
 
         <span class="k">return</span> <span class="n">strain_adjusted</span></div>
 
-<div class="viewcode-block" id="Recalibrate.tf_from_file"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.tf_from_file">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Recalibrate.tf_from_file"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.tf_from_file">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">tf_from_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert the contents of a file with the columns</span>
 <span class="sd">        [freq, real(h), imag(h)] to a numpy.array with columns</span>
@@ -471,7 +471,7 @@
         <span class="n">h</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">freq</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Recalibrate.from_config"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.from_config">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="Recalibrate.from_config"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Read a config file to get calibration options and transfer</span>
 <span class="sd">        functions which will be used to intialize the model.</span>
@@ -520,7 +520,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">fc0</span><span class="o">=</span><span class="n">fc0</span><span class="p">,</span> <span class="n">c0</span><span class="o">=</span><span class="n">c0</span><span class="p">,</span> <span class="n">d0</span><span class="o">=</span><span class="n">d0</span><span class="p">,</span> <span class="n">a_tst0</span><span class="o">=</span><span class="n">a_tst0</span><span class="p">,</span>
                    <span class="n">a_pu0</span><span class="o">=</span><span class="n">a_pu0</span><span class="p">,</span> <span class="n">fs0</span><span class="o">=</span><span class="n">fs0</span><span class="p">,</span> <span class="n">qinv0</span><span class="o">=</span><span class="n">qinv0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Recalibrate.map_to_adjust"><a class="viewcode-back" href="../../../pycbc.calibration.html#pycbc.calibration.recalibrate.Recalibrate.map_to_adjust">[docs]</a>    <span class="k">def</span> <span class="nf">map_to_adjust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="Recalibrate.map_to_adjust"><a class="viewcode-back" href="../../../pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.map_to_adjust">[docs]</a>    <span class="k">def</span> <span class="nf">map_to_adjust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Map an input dictionary of sampling parameters to the</span>
 <span class="sd">        adjust_strain function by filtering the dictionary for the</span>
 <span class="sd">        calibration parameters, then calling adjust_strain.</span>
@@ -575,7 +575,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 13, 2018.
+      Last updated on Jun 17, 2018.
 
     </p>
   </div>
@@ -597,7 +597,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'e12946',
+            VERSION:'829a57',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

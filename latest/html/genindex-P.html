@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC e12946 documentation</title>
+  <title>Index &mdash; PyCBC 829a57 documentation</title>
   
 
   
@@ -392,7 +392,7 @@
 </li>
       <li><a href="pycbc.types.html#pycbc.types.timeseries.TimeSeries.psd">psd() (pycbc.types.timeseries.TimeSeries method)</a>
 </li>
-      <li><a href="pycbc.html#pycbc.gate.psd_gates_from_cli">psd_gates_from_cli() (in module pycbc.gate)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.gate.psd_gates_from_cli">psd_gates_from_cli() (in module pycbc.strain.gate)</a>
 </li>
       <li><a href="pycbc.types.html#pycbc.types.array.Array.ptr">ptr (pycbc.types.array.Array attribute)</a>
 </li>
@@ -403,10 +403,6 @@
       <li><a href="pycbc.html#module-pycbc.bin_utils">pycbc.bin_utils (module)</a>
 </li>
       <li><a href="pycbc.html#module-pycbc.boundaries">pycbc.boundaries (module)</a>
-</li>
-      <li><a href="pycbc.calibration.html#module-pycbc.calibration">pycbc.calibration (module)</a>
-</li>
-      <li><a href="pycbc.calibration.html#module-pycbc.calibration.recalibrate">pycbc.calibration.recalibrate (module)</a>
 </li>
       <li><a href="pycbc.catalog.html#module-pycbc.catalog">pycbc.catalog (module)</a>
 </li>
@@ -512,14 +508,12 @@
 </li>
       <li><a href="pycbc.frame.html#module-pycbc.frame">pycbc.frame (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.frame.html#module-pycbc.frame.frame">pycbc.frame.frame (module)</a>
 </li>
       <li><a href="pycbc.frame.html#module-pycbc.frame.losc">pycbc.frame.losc (module)</a>
 </li>
-      <li><a href="pycbc.html#module-pycbc.gate">pycbc.gate (module)</a>
-</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.inference.html#module-pycbc.inference">pycbc.inference (module)</a>
 </li>
       <li><a href="pycbc.inference.html#module-pycbc.inference.burn_in">pycbc.inference.burn_in (module)</a>
@@ -626,7 +620,13 @@
 </li>
       <li><a href="pycbc.html#module-pycbc.sensitivity">pycbc.sensitivity (module)</a>
 </li>
-      <li><a href="pycbc.html#module-pycbc.strain">pycbc.strain (module)</a>
+      <li><a href="pycbc.strain.html#module-pycbc.strain">pycbc.strain (module)</a>
+</li>
+      <li><a href="pycbc.strain.html#module-pycbc.strain.gate">pycbc.strain.gate (module)</a>
+</li>
+      <li><a href="pycbc.strain.html#module-pycbc.strain.recalibrate">pycbc.strain.recalibrate (module)</a>
+</li>
+      <li><a href="pycbc.strain.html#module-pycbc.strain.strain">pycbc.strain.strain (module)</a>
 </li>
       <li><a href="pycbc.tmpltbank.html#module-pycbc.tmpltbank">pycbc.tmpltbank (module)</a>
 </li>
@@ -813,7 +813,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 13, 2018.
+      Last updated on Jun 17, 2018.
 
     </p>
   </div>
@@ -835,7 +835,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'e12946',
+            VERSION:'829a57',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

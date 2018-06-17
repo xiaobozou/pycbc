@@ -6,7 +6,6 @@ Subpackages
 
 .. toctree::
 
-    pycbc.calibration
     pycbc.catalog
     pycbc.distributions
     pycbc.events
@@ -20,6 +19,7 @@ Subpackages
     pycbc.population
     pycbc.psd
     pycbc.results
+    pycbc.strain
     pycbc.tmpltbank
     pycbc.types
     pycbc.vetoes
@@ -77,14 +77,6 @@ pycbc.detector module
     :undoc-members:
     :show-inheritance:
 
-pycbc.gate module
------------------
-
-.. automodule:: pycbc.gate
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.libutils module
 ---------------------
 
@@ -137,14 +129,6 @@ pycbc.sensitivity module
 ------------------------
 
 .. automodule:: pycbc.sensitivity
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.strain module
--------------------
-
-.. automodule:: pycbc.strain
     :members:
     :undoc-members:
     :show-inheritance:

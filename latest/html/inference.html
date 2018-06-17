@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC e12946 documentation</title>
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC 829a57 documentation</title>
   
 
   
@@ -318,7 +318,7 @@ A list of all distributions that can be used is found with</p>
 </div>
 <p>Some common transforms are pre-defined in the code. These are: the mass parameters <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code> can be substituted with <code class="docutils literal notranslate"><span class="pre">mchirp</span></code> and <code class="docutils literal notranslate"><span class="pre">eta</span></code> or <code class="docutils literal notranslate"><span class="pre">mchirp</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code>.
 The component spin parameters <code class="docutils literal notranslate"><span class="pre">spin1x</span></code>, <code class="docutils literal notranslate"><span class="pre">spin1y</span></code>, and <code class="docutils literal notranslate"><span class="pre">spin1z</span></code> can be substituted for polar coordinates <code class="docutils literal notranslate"><span class="pre">spin1_a</span></code>, <code class="docutils literal notranslate"><span class="pre">spin1_azimuthal</span></code>, and <code class="docutils literal notranslate"><span class="pre">spin1_polar</span></code> (ditto for <code class="docutils literal notranslate"><span class="pre">spin2</span></code>).</p>
-<p>If any calibration parameters are used (prefix <code class="docutils literal notranslate"><span class="pre">calib_</span></code>), a <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must be included. This section must have a <code class="docutils literal notranslate"><span class="pre">name</span></code> option that identifies what calibration model to use. The models are described in <a class="reference internal" href="pycbc.calibration.html#module-pycbc.calibration" title="pycbc.calibration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.calibration</span></code></a>. The <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must also include reference values <code class="docutils literal notranslate"><span class="pre">fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">fs0</span></code>, and <code class="docutils literal notranslate"><span class="pre">qinv0</span></code>, as well as paths to ASCII transfer function files for the test mass actuation, penultimate mass actuation, sensing function, and digital filter for each IFO being used in the analysis. E.g. for an analysis using H1 only, the required options would be <code class="docutils literal notranslate"><span class="pre">h1-fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-fs0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-qinv0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-tst</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-pu</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-c</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-d</span></code>.</p>
+<p>If any calibration parameters are used (prefix <code class="docutils literal notranslate"><span class="pre">calib_</span></code>), a <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must be included. This section must have a <code class="docutils literal notranslate"><span class="pre">name</span></code> option that identifies what calibration model to use. The models are described in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.calibration</span></code>. The <code class="docutils literal notranslate"><span class="pre">[calibration]</span></code> section must also include reference values <code class="docutils literal notranslate"><span class="pre">fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">fs0</span></code>, and <code class="docutils literal notranslate"><span class="pre">qinv0</span></code>, as well as paths to ASCII transfer function files for the test mass actuation, penultimate mass actuation, sensing function, and digital filter for each IFO being used in the analysis. E.g. for an analysis using H1 only, the required options would be <code class="docutils literal notranslate"><span class="pre">h1-fc0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-fs0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-qinv0</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-tst</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-pu</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-c</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-d</span></code>.</p>
 <p>Simple examples are given in the subsections below.</p>
 </div>
 <div class="section" id="running-on-an-analytic-distribution">
@@ -798,7 +798,7 @@ You can supply <code class="docutils literal notranslate"><span class="pre">thin
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 13, 2018.
+      Last updated on Jun 17, 2018.
 
     </p>
   </div>
@@ -820,7 +820,7 @@ You can supply <code class="docutils literal notranslate"><span class="pre">thin
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'e12946',
+            VERSION:'829a57',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
