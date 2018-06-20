@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io package &mdash; PyCBC 8149a5 documentation</title>
+  <title>pycbc.io package &mdash; PyCBC 7bb8a1 documentation</title>
   
 
   
@@ -1338,7 +1338,7 @@ from posterior-only TXT files.</p>
 
 <dl class="method">
 <dt id="pycbc.io.live.SingleCoincForGraceDB.upload">
-<code class="descname">upload</code><span class="sig-paren">(</span><em>fname</em>, <em>psds</em>, <em>low_frequency_cutoff</em>, <em>testing=True</em>, <em>extra_strings=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/live.html#SingleCoincForGraceDB.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.live.SingleCoincForGraceDB.upload" title="Permalink to this definition">¶</a></dt>
+<code class="descname">upload</code><span class="sig-paren">(</span><em>fname</em>, <em>gracedb_server=None</em>, <em>testing=True</em>, <em>extra_strings=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/live.html#SingleCoincForGraceDB.upload"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.live.SingleCoincForGraceDB.upload" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upload this trigger to gracedb</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1346,11 +1346,10 @@ from posterior-only TXT files.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name to give the xml file associated with this trigger</li>
-<li><strong>pds</strong> (<em>dict of pybc.types.FrequencySeries</em>) – A ifo keyed dictionary of psds to be uploaded in association</li>
-<li><strong>this trigger.</strong> (<em>with</em>) – </li>
-<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The low frequency cutoff of the psds.</li>
-<li><strong>testing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Switch to determine if the upload should be sent to gracedb as a</li>
-<li><strong>trigger</strong><strong> (</strong><strong>True</strong><strong>) or </strong><strong>a production trigger</strong><strong> (</strong><strong>False</strong><strong>)</strong> (<em>test</em>) – </li>
+<li><strong>gracedb_server</strong> (<em>string</em><em>, </em><em>optional</em>) – URL to the GraceDB web API service for uploading the event.
+If omitted, the default will be used.</li>
+<li><strong>testing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Switch to determine if the upload should be sent to gracedb as a
+test trigger (True) or a production trigger (False).</li>
 </ul>
 </td>
 </tr>
@@ -1360,17 +1359,12 @@ from posterior-only TXT files.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pycbc.io.live.SingleForGraceDB">
-<em class="property">class </em><code class="descclassname">pycbc.io.live.</code><code class="descname">SingleForGraceDB</code><span class="sig-paren">(</span><em>ifo</em>, <em>sngls_dict</em>, <em>hardware_injection=False</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/live.html#SingleForGraceDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.live.SingleForGraceDB" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#pycbc.io.live.SingleCoincForGraceDB" title="pycbc.io.live.SingleCoincForGraceDB"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.io.live.SingleCoincForGraceDB</span></code></a></p>
-<p>Create xml files and submit them to gracedb from PyCBC Live</p>
-</dd></dl>
-
 <dl class="function">
 <dt id="pycbc.io.live.make_psd_xmldoc">
-<code class="descclassname">pycbc.io.live.</code><code class="descname">make_psd_xmldoc</code><span class="sig-paren">(</span><em>psddict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/live.html#make_psd_xmldoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.live.make_psd_xmldoc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">pycbc.io.live.</code><code class="descname">make_psd_xmldoc</code><span class="sig-paren">(</span><em>psddict</em>, <em>xmldoc=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/live.html#make_psd_xmldoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.live.make_psd_xmldoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a set of PSDs to a LIGOLW XML document. If the document is not
+given, a new one is created first.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.io.live.snr_series_to_xml">
@@ -2360,7 +2354,7 @@ example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'8149a5',
+            VERSION:'7bb8a1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
