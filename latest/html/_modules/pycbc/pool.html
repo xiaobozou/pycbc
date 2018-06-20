@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.pool &mdash; PyCBC 288e6e documentation</title>
+  <title>pycbc.pool &mdash; PyCBC 2390e1 documentation</title>
   
 
   
@@ -205,6 +205,17 @@
 <span class="kn">import</span> <span class="nn">signal</span>
 <span class="kn">import</span> <span class="nn">atexit</span>
 
+<div class="viewcode-block" id="is_main_process"><a class="viewcode-back" href="../../pycbc.html#pycbc.pool.is_main_process">[docs]</a><span class="k">def</span> <span class="nf">is_main_process</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Check if this is the main control process and may handle one time tasks</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">mpi4py</span> <span class="k">import</span> <span class="n">MPI</span>
+        <span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
 <span class="c1"># Allow the pool to be interrupted, need to disable the children processes</span>
 <span class="c1"># from intercepting the keyboard interrupt</span>
 <span class="k">def</span> <span class="nf">_noint</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -344,7 +355,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'288e6e',
+            VERSION:'2390e1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
