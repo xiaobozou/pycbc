@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.waveform package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -318,11 +318,11 @@ read in from the bank.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Value of the template hash</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Value of the template hash</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>index</strong> – The ordered index that this template has in the template bank.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -336,7 +336,7 @@ read in from the bank.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Proposed size of waveform in seconds</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Proposed size of waveform in seconds</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><strong>size</strong> (<em>int</em>) – The rounded size to use for the waveform buffer in seconds. This</li>
@@ -354,7 +354,7 @@ read in from the bank.</p>
 <dl class="class">
 <dt id="pycbc.waveform.bank.TemplateBank">
 <em class="property">class </em><code class="descclassname">pycbc.waveform.bank.</code><code class="descname">TemplateBank</code><span class="sig-paren">(</span><em>filename</em>, <em>approximant=None</em>, <em>parameters=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/bank.html#TemplateBank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to provide some basic helper functions and information
 about elements of a template bank.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -497,7 +497,7 @@ function for more details.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the file to write to. Must end in ‘.hdf’.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the file to write to. Must end in ‘.hdf’.</li>
 <li><strong>start_index</strong> (<em>If a specific slice of the template bank is to be</em>) – written to the hdf file, this would specify the index of the
 first template in the slice</li>
 <li><strong>stop_index</strong> (<em>If a specific slice of the template bank is to be</em>) – written to the hdf file, this would specify the index of the
@@ -564,7 +564,7 @@ conditional argument, which is the same as specifying ‘:else’.</td>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>boolargs</strong> – A list of tuples giving the approximant and where to apply them. This
 can be passed directly to <cite>FieldArray.parse_boolargs</cite>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></td>
 </tr>
 </tbody>
 </table>
@@ -587,7 +587,7 @@ array, figures out what approximant to use for each template in the array.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>approximant_arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The approximant argument to parse. Should be the thing returned by
+<li><strong>approximant_arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The approximant argument to parse. Should be the thing returned by
 ArgumentParser when parsing the argument added by add_approximant_arg.</li>
 <li><strong>warray</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The array to parse. Must be an instance of a FieldArray, or a class
 that inherits from FieldArray.</li>
@@ -619,7 +619,7 @@ domain waveforms.</p>
 <dl class="class">
 <dt id="pycbc.waveform.compress.CompressedWaveform">
 <em class="property">class </em><code class="descclassname">pycbc.waveform.compress.</code><code class="descname">CompressedWaveform</code><span class="sig-paren">(</span><em>sample_points</em>, <em>amplitude</em>, <em>phase</em>, <em>interpolation=None</em>, <em>tolerance=None</em>, <em>mismatch=None</em>, <em>precision='double'</em>, <em>load_to_memory=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/compress.html#CompressedWaveform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class that stores information about a compressed waveform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -766,7 +766,7 @@ where <cite>param</cite> is the <cite>sample_points</cite>, <cite>amplitude</cit
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fp</strong> (<em>h5py.File</em>) – An open hdf file to write the compressed waveform to.</li>
-<li><strong>template_hash</strong> (<em>{hash</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>str}</em>) – The id of the waveform.</li>
+<li><strong>template_hash</strong> (<em>{hash</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>str}</em>) – The id of the waveform.</li>
 <li><strong>root</strong> (<em>{None</em><em>, </em><em>str}</em>) – Retrieve the <cite>compressed_waveforms</cite> group from the given string.
 If <cite>None</cite>, <cite>compressed_waveforms</cite> will be assumed to be in the
 top level.</li>
@@ -842,7 +842,7 @@ to the group’s attributes.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<em>h5py.File</em>) – An open hdf file to write the compressed waveform to.</li>
-<li><strong>template_hash</strong> (<em>{hash</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>str}</em>) – A hash, int, or string to map the template to the waveform.</li>
+<li><strong>template_hash</strong> (<em>{hash</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>str}</em>) – A hash, int, or string to map the template to the waveform.</li>
 <li><strong>root</strong> (<em>{None</em><em>, </em><em>str}</em>) – Put the <cite>compressed_waveforms</cite> group in the given directory in the
 hdf file. If <cite>None</cite>, <cite>compressed_waveforms</cite> will be the root
 directory.</li>
@@ -886,11 +886,11 @@ desired tolerance, but typically by only a factor of a few worse.</p>
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The waveform to compress.</li>
 <li><strong>sample_points</strong> (<em>array</em>) – The frequencies at which to store the amplitude and phase. More points
 may be added to this, depending on the desired tolerance.</li>
-<li><strong>tolerance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The maximum mismatch to allow between a decompressed waveform and
+<li><strong>tolerance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The maximum mismatch to allow between a decompressed waveform and
 <cite>htilde</cite>.</li>
-<li><strong>interpolation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The interpolation to use for decompressing the waveform when computing
+<li><strong>interpolation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The interpolation to use for decompressing the waveform when computing
 overlaps.</li>
-<li><strong>precision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The precision being used to generate and store the compressed waveform
+<li><strong>precision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The precision being used to generate and store the compressed waveform
 points.</li>
 <li><strong>decomp_scratch</strong> (<em>{None</em><em>, </em><em>FrequencySeries}</em>) – Optionally provide scratch space for decompressing the waveform. The
 provided frequency series must have the same <cite>delta_f</cite> and length
@@ -959,11 +959,11 @@ chirp mass. This is based on the estimate in rough_time_estimate.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – mass of first component object in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – mass of second component object in solar masses</li>
-<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The starting frequency of the compressed waveform.</li>
-<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The ending frequency of the compressed waveform.</li>
-<li><strong>min_seglen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The inverse of this gives the maximum frequency step that is used.</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – mass of first component object in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – mass of second component object in solar masses</li>
+<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency of the compressed waveform.</li>
+<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The ending frequency of the compressed waveform.</li>
+<li><strong>min_seglen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The inverse of this gives the maximum frequency step that is used.</li>
 <li><strong>df_multiple</strong> (<em>{None</em><em>, </em><em>float}</em>) – Make the compressed sampling frequencies a multiple of the given value.
 If None provided, the returned sample points can have any floating
 point value.</li>
@@ -993,9 +993,9 @@ terms and includes a fudge factor for possible ringdown, etc.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – mass of first component object in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – mass of second component object in solar masses</li>
-<li><strong>flow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – starting frequency of the waveform</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – mass of first component object in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – mass of second component object in solar masses</li>
+<li><strong>flow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – starting frequency of the waveform</li>
 <li><strong>fudge_length</strong> (<em>optional</em><em>, </em><em>{1.1</em><em>, </em><em>float}</em>) – Factor to multiply length estimate by to ensure it is a convservative
 value</li>
 <li><strong>fudge_min</strong> (<em>optional</em><em>, </em><em>{0.2</em><em>, </em><em>float}</em>) – Minimum signal duration that can be returned. This should be long
@@ -1006,7 +1006,7 @@ enough to encompass the ringdown and errors in the precise end time.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>time</strong> – Time from flow untill the end of the waveform</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1025,9 +1025,9 @@ stationary phase approximation.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The waveform to compress.</li>
-<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The starting frequency of the compressed waveform.</li>
-<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The ending frequency of the compressed waveform.</li>
-<li><strong>min_seglen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The inverse of this gives the maximum frequency step that is used.</li>
+<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency of the compressed waveform.</li>
+<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The ending frequency of the compressed waveform.</li>
+<li><strong>min_seglen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The inverse of this gives the maximum frequency step that is used.</li>
 <li><strong>sample_frequencies</strong> (<em>{None</em><em>, </em><em>array}</em>) – The frequencies that the waveform is evaluated at. If None, will
 retrieve the frequencies from the waveform’s sample_frequencies
 attribute.</li>
@@ -1078,7 +1078,7 @@ or <cite>frozen_params</cite>.</p>
 <dl class="class">
 <dt id="pycbc.waveform.generator.BaseGenerator">
 <em class="property">class </em><code class="descclassname">pycbc.waveform.generator.</code><code class="descname">BaseGenerator</code><span class="sig-paren">(</span><em>generator</em>, <em>variable_args=()</em>, <em>**frozen_params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/generator.html#BaseGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.generator.BaseGenerator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A wrapper class to call a waveform generator with a set of frozen
 parameters and a set of variable parameters. The frozen parameters and
 values, along with a list of variable parameter names, are set at
@@ -1210,7 +1210,7 @@ with the mass1 and mass2 they were converted to:</p>
 <dl class="class">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator">
 <em class="property">class </em><code class="descclassname">pycbc.waveform.generator.</code><code class="descname">FDomainDetFrameGenerator</code><span class="sig-paren">(</span><em>rFrameGeneratorClass</em>, <em>epoch</em>, <em>detectors=None</em>, <em>variable_args=()</em>, <em>recalib=None</em>, <em>gates=None</em>, <em>**frozen_params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/generator.html#FDomainDetFrameGenerator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Generates frequency-domain waveform in a specific frame.</p>
 <p>Generates a waveform using the given radiation frame generator class,
 and applies the detector response function and appropriate time offset.</p>
@@ -1229,7 +1229,7 @@ None, the generate function will just return the plus polarization
 returned by the rFrameGeneratorClass shifted by any desired time shift.</li>
 <li><strong>epoch</strong> (<em>{float</em><em>, </em><em>lal.LIGOTimeGPS</em>) – The epoch start time to set the waveform to. A time shift = tc - epoch is
 applied to waveforms before returning.</li>
-<li><strong>variable_args</strong> (<em>{</em><em>(</em><em>)</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>tuple}</em>) – A list or tuple of strings giving the names and order of parameters
+<li><strong>variable_args</strong> (<em>{</em><em>(</em><em>)</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>tuple}</em>) – A list or tuple of strings giving the names and order of parameters
 that will be passed to the generate function.</li>
 <li><strong>**frozen_params</strong> – Keyword arguments setting the parameters that will not be changed from
 call-to-call of the generate function.</li>
@@ -1503,7 +1503,7 @@ For more details, see BaseGenerator.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>approximant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of waveform approximant. Valid names can be found using
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>approximant</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of waveform approximant. Valid names can be found using
 <code class="docutils literal notranslate"><span class="pre">pycbc.waveform</span></code> methods.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>generator</strong> – A waveform generator object.</td>
@@ -1540,11 +1540,11 @@ tides in Essick, et al. <a class="reference external" href="https://arxiv.org/pd
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>f</strong> (<em>numpy.ndarray</em>) – Array of frequency values to calculate the fourier phase difference.</li>
-<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Frequency that NL effects switch on</li>
-<li><strong>A</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of effect</li>
-<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Growth dependence of effect</li>
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of component 1</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of component 2</li>
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency that NL effects switch on</li>
+<li><strong>A</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of effect</li>
+<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Growth dependence of effect</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of component 1</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of component 2</li>
 </ul>
 </td>
 </tr>
@@ -1564,7 +1564,7 @@ tides in Essick, et al. <a class="reference external" href="https://arxiv.org/pd
 <dl class="class">
 <dt id="pycbc.waveform.parameters.Parameter">
 <em class="property">class </em><code class="descclassname">pycbc.waveform.parameters.</code><code class="descname">Parameter</code><a class="reference internal" href="_modules/pycbc/waveform/parameters.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.parameters.Parameter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
 <p>A class that stores information about a parameter. This is done by
 sub-classing string, adding additional attributes.</p>
 <dl class="method">
@@ -1690,18 +1690,18 @@ defaults.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
-<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the final black hole.</li>
-<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of the final black hole.</li>
-<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
+<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the final black hole.</li>
+<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of the final black hole.</li>
+<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
 The n specifies the number of overtones desired for the corresponding
 lm pair (maximum n=8).
 Example: lmns = [‘223’,‘331’] are the modes 220, 221, 222, and 330</li>
-<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
+<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
 fundamental mode, as many as the number of subdominant modes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_f</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The frequency step used to generate the ringdown.
@@ -1737,18 +1737,18 @@ n overtones in frequency domain.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
-<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
+<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
 The n specifies the number of overtones desired for the corresponding
 lm pair (maximum n=8).
 Example: lmns = [‘223’,‘331’] are the modes 220, 221, 222, and 330</li>
-<li><strong>f_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Central frequency of the lmn overtone, as many as number of modes.</li>
-<li><strong>tau_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Damping time of the lmn overtone, as many as number of modes.</li>
-<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
+<li><strong>f_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Central frequency of the lmn overtone, as many as number of modes.</li>
+<li><strong>tau_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Damping time of the lmn overtone, as many as number of modes.</li>
+<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
 fundamental mode, as many as the number of subdominant modes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_f</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The frequency step used to generate the ringdown.
@@ -1784,17 +1784,17 @@ n overtones in frequency domain.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
-<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – {lmn:f_lmn} Dictionary of the central frequencies for each overtone,
+<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – {lmn:f_lmn} Dictionary of the central frequencies for each overtone,
 as many as number of modes.</li>
-<li><strong>taus</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – {lmn:tau_lmn} Dictionary of the damping times for each overtone,
+<li><strong>taus</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – {lmn:tau_lmn} Dictionary of the damping times for each overtone,
 as many as number of modes.</li>
-<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – l mode (lm modes available: 22, 21, 33, 44, 55).</li>
-<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – m mode (lm modes available: 22, 21, 33, 44, 55).</li>
-<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of overtones desired (maximum n=8)</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the lmn overtone, as many as the number of nmodes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – l mode (lm modes available: 22, 21, 33, 44, 55).</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – m mode (lm modes available: 22, 21, 33, 44, 55).</li>
+<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of overtones desired (maximum n=8)</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the lmn overtone, as many as the number of nmodes.</li>
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_f</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The frequency step used to generate the ringdown.
@@ -1828,12 +1828,12 @@ is 1/1000 of the peak amplitude (the maximum of all modes).</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
-<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The ringdown-frequency.</li>
-<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The damping time of the sinusoid.</li>
-<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The amplitude of the ringdown (constant for now).</li>
-<li><strong>phi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The initial phase of the ringdown. Should also include the information
+<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The ringdown-frequency.</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The damping time of the sinusoid.</li>
+<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The amplitude of the ringdown (constant for now).</li>
+<li><strong>phi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The initial phase of the ringdown. Should also include the information
 from the azimuthal angle (phi_0 + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>l</strong> (<em>{2</em><em>, </em><em>int}</em><em>, </em><em>optional</em>) – l mode for the spherical harmonics. Default is l=2.</li>
@@ -1883,7 +1883,7 @@ in the list lmns (list of strings)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>taper</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Tapering at the beginning of the waveform with duration taper * tau.
 This option is recommended with timescales taper=1./2 or 1. for
@@ -1893,16 +1893,16 @@ when doing the fourier transform to the frequency domain. Setting
 taper will add a rapid ringup with timescale tau/10.
 Each mode and overtone will have a different taper depending on its tau,
 the final taper being the superposition of all the tapers.</li>
-<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the final black hole.</li>
-<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of the final black hole.</li>
-<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
+<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the final black hole.</li>
+<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of the final black hole.</li>
+<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
 The n specifies the number of overtones desired for the corresponding
 lm pair (maximum n=8).
 Example: lmns = [‘223’,‘331’] are the modes 220, 221, 222, and 330</li>
-<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
+<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
 fundamental mode, as many as the number of subdominant modes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_t</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The time step used to generate the ringdown.
@@ -1936,7 +1936,7 @@ n overtones in frequency domain.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>taper</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Tapering at the beginning of the waveform with duration taper * tau.
 This option is recommended with timescales taper=1./2 or 1. for
@@ -1946,16 +1946,16 @@ when doing the fourier transform to the frequency domain. Setting
 taper will add a rapid ringup with timescale tau/10.
 Each mode and overtone will have a different taper depending on its tau,
 the final taper being the superposition of all the tapers.</li>
-<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
+<li><strong>lmns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).
 The n specifies the number of overtones desired for the corresponding
 lm pair (maximum n=8).
 Example: lmns = [‘223’,‘331’] are the modes 220, 221, 222, and 330</li>
-<li><strong>f_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Central frequency of the lmn overtone, as many as number of modes.</li>
-<li><strong>tau_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Damping time of the lmn overtone, as many as number of modes.</li>
-<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
+<li><strong>f_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Central frequency of the lmn overtone, as many as number of modes.</li>
+<li><strong>tau_lmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Damping time of the lmn overtone, as many as number of modes.</li>
+<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the fundamental 220 mode.</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
 fundamental mode, as many as the number of subdominant modes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_t</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The time step used to generate the ringdown.
@@ -1989,7 +1989,7 @@ n overtones in frequency domain.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>taper</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Tapering at the beginning of the waveform with duration taper * tau.
 This option is recommended with timescales taper=1./2 or 1. for
@@ -1999,17 +1999,17 @@ when doing the fourier transform to the frequency domain. Setting
 taper will add a rapid ringup with timescale tau/10.
 Each overtone will have a different taper depending on its tau, the
 final taper being the superposition of all the tapers.</li>
-<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – {lmn:f_lmn} Dictionary of the central frequencies for each overtone,
+<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – {lmn:f_lmn} Dictionary of the central frequencies for each overtone,
 as many as number of modes.</li>
-<li><strong>taus</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – {lmn:tau_lmn} Dictionary of the damping times for each overtone,
+<li><strong>taus</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – {lmn:tau_lmn} Dictionary of the damping times for each overtone,
 as many as number of modes.</li>
-<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – l mode (lm modes available: 22, 21, 33, 44, 55).</li>
-<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – m mode (lm modes available: 22, 21, 33, 44, 55).</li>
-<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of overtones desired (maximum n=8)</li>
-<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the fundamental 220 mode, needed for any lm.</li>
-<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – l mode (lm modes available: 22, 21, 33, 44, 55).</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – m mode (lm modes available: 22, 21, 33, 44, 55).</li>
+<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of overtones desired (maximum n=8)</li>
+<li><strong>amp220</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the fundamental 220 mode, needed for any lm.</li>
+<li><strong>amplmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fraction of the amplitude of the lmn overtone relative to the
 fundamental mode, as many as the number of subdominant modes.</li>
-<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
+<li><strong>philmn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Phase of the lmn overtone, as many as the number of modes. Should also
 include the information from the azimuthal angle (phi + m*Phi).</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>delta_t</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The time step used to generate the ringdown.
@@ -2041,7 +2041,7 @@ If None, it will be set to the time at which the amplitude is
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>taper</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Tapering at the beginning of the waveform with duration taper * tau.
 This option is recommended with timescales taper=1./2 or 1. for
@@ -2049,10 +2049,10 @@ time-domain ringdown-only injections.
 The abrupt turn on of the ringdown can cause issues on the waveform
 when doing the fourier transform to the frequency domain. Setting
 taper will add a rapid ringup with timescale tau/10.</li>
-<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The ringdown-frequency.</li>
-<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The damping time of the sinusoid.</li>
-<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The amplitude of the ringdown (constant for now).</li>
-<li><strong>phi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The initial phase of the ringdown. Should also include the information
+<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The ringdown-frequency.</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The damping time of the sinusoid.</li>
+<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The amplitude of the ringdown (constant for now).</li>
+<li><strong>phi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The initial phase of the ringdown. Should also include the information
 from the azimuthal angle (phi_0 + m*Phi)</li>
 <li><strong>inclination</strong> (<em>{0.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Inclination of the system in radians. Default is 0 (face on).</li>
 <li><strong>l</strong> (<em>{2</em><em>, </em><em>int}</em><em>, </em><em>optional</em>) – l mode for the spherical harmonics. Default is l=2.</li>
@@ -2139,9 +2139,9 @@ ringdown falls to decay of the peak amplitude.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The ringdown-frequency, which gives the peak amplitude.</li>
-<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The damping time of the sinusoid.</li>
-<li><strong>decay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The fraction of the peak amplitude.</li>
+<li><strong>f_0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The ringdown-frequency, which gives the peak amplitude.</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The damping time of the sinusoid.</li>
+<li><strong>decay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of the peak amplitude.</li>
 </ul>
 </td>
 </tr>
@@ -2149,7 +2149,7 @@ ringdown falls to decay of the peak amplitude.</p>
 ringdown falls to decay of the peak amplitude.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2166,8 +2166,8 @@ ringdown falls to decay of the peak amplitude.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The damping time of the sinusoid.</li>
-<li><strong>decay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The fraction of the peak amplitude.</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The damping time of the sinusoid.</li>
+<li><strong>decay</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fraction of the peak amplitude.</li>
 </ul>
 </td>
 </tr>
@@ -2175,7 +2175,7 @@ ringdown falls to decay of the peak amplitude.</p>
 ringdown falls to decay of the peak amplitude.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2208,13 +2208,13 @@ multi-mode ringdowns)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Amplitude of the sine-Gaussian</li>
-<li><strong>quality</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The quality factor</li>
-<li><strong>central_frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The central frequency of the sine-Gaussian</li>
-<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The minimum frequency to generate the sine-Gaussian. This determines
+<li><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of the sine-Gaussian</li>
+<li><strong>quality</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The quality factor</li>
+<li><strong>central_frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The central frequency of the sine-Gaussian</li>
+<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The minimum frequency to generate the sine-Gaussian. This determines
 the length of the output vector.</li>
-<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The maximum frequency to generate the sine-Gaussian</li>
-<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The size of the frequency step</li>
+<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The maximum frequency to generate the sine-Gaussian</li>
+<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The size of the frequency step</li>
 </ul>
 </td>
 </tr>
@@ -2390,7 +2390,7 @@ shiftime - htilde.epoch.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The waveform frequency series.</li>
-<li><strong>shifttime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time to shift the frequency series to.</li>
+<li><strong>shifttime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time to shift the frequency series to.</li>
 <li><strong>kmin</strong> (<em>{0</em><em>, </em><em>int}</em>) – The starting index of htilde to apply the time shift. Default is 0.</li>
 <li><strong>fseries</strong> (<em>{None</em><em>, </em><em>numpy array}</em>) – The frequencies of each element in htilde. This is only needed if htilde is not
 sampled at equal frequency steps.</li>
@@ -2469,9 +2469,9 @@ they must be the same length and even in length</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>out</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The <code class="docutils literal notranslate"><span class="pre">FrequencySeries</span></code> to taper.</li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) to start the taper window.</li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) to end the taper window.</li>
-<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the Kaiser window. See
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency (in Hz) to start the taper window.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency (in Hz) to end the taper window.</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the Kaiser window. See
 <code class="docutils literal notranslate"><span class="pre">scipy.signal.kaiser</span></code> for details. Default is 8.</li>
 <li><strong>side</strong> (<em>{'left'</em><em>, </em><em>'right'}</em>) – The side to apply the taper to. If <code class="docutils literal notranslate"><span class="pre">'left'</span></code> (<code class="docutils literal notranslate"><span class="pre">'right'</span></code>), the taper
 will roll up (down) between <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>, with all values
@@ -2501,14 +2501,14 @@ side of the waveform before being converted to the time domain.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The waveform to convert.</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – Make the returned time series have the given <code class="docutils literal notranslate"><span class="pre">delta_t</span></code>.</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Make the returned time series have the given <code class="docutils literal notranslate"><span class="pre">delta_t</span></code>.</li>
 <li><strong>left_window</strong> (<em>tuple of float</em><em>, </em><em>optional</em>) – A tuple giving the start and end frequency of the FD taper to apply
 on the left side. If None, no taper will be applied on the left.</li>
 <li><strong>right_window</strong> (<em>tuple of float</em><em>, </em><em>optional</em>) – A tuple giving the start and end frequency of the FD taper to apply
 on the right side. If None, no taper will be applied on the right.</li>
-<li><strong>left_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the left taper. See <code class="docutils literal notranslate"><span class="pre">fd_taper</span></code> for
+<li><strong>left_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the left taper. See <code class="docutils literal notranslate"><span class="pre">fd_taper</span></code> for
 details. Default is 8.</li>
-<li><strong>right_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the right taper. Default is 8.</li>
+<li><strong>right_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the right taper. Default is 8.</li>
 </ul>
 </td>
 </tr>
@@ -2654,9 +2654,9 @@ PyCBC time series.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>out</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – The <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> to taper.</li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time (in s) to start the taper window.</li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time (in s) to end the taper window.</li>
-<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the Kaiser window. See
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time (in s) to start the taper window.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time (in s) to end the taper window.</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The beta parameter to use for the Kaiser window. See
 <code class="docutils literal notranslate"><span class="pre">scipy.signal.kaiser</span></code> for details. Default is 8.</li>
 <li><strong>side</strong> (<em>{'left'</em><em>, </em><em>'right'}</em>) – The side to apply the taper to. If <code class="docutils literal notranslate"><span class="pre">'left'</span></code> (<code class="docutils literal notranslate"><span class="pre">'right'</span></code>), the taper
 will roll up (down) between <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code>, with all values
@@ -2731,7 +2731,7 @@ waveforms.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to subsitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to subsitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>mass1</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the first component object in the binary (in solar masses).</li>
 <li><strong>mass2</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the second component object in the binary (in solar masses).</li>
@@ -2798,7 +2798,7 @@ for keyword arguments. A common example would be a row in an xml table.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>mass1</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the first component object in the binary (in solar masses).</li>
 <li><strong>mass2</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the second component object in the binary (in solar masses).</li>
@@ -2863,7 +2863,7 @@ points.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to substitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>mass1</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the first component object in the binary (in solar masses).</li>
 <li><strong>mass2</strong> (<em>{None</em><em>, </em><em>float}</em>) – The mass of the second component object in the binary (in solar masses).</li>
@@ -2927,7 +2927,7 @@ with padding and tapering at the start of the waveform.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – The parameters defining the waveform to generator.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The parameters defining the waveform to generator.
 See <cite>get_td_waveform</cite>.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
@@ -3018,15 +3018,15 @@ sine-Gaussian burst waveform.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – An object that has attached properties. This can be used to subsitute
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – An object that has attached properties. This can be used to subsitute
 for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>approximant</strong> (<em>string</em>) – A string that indicates the chosen approximant. See <cite>td_approximants</cite>
 for available options.</li>
-<li><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The quality factor of a sine-Gaussian burst</li>
-<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The centre-frequency of a sine-Gaussian burst</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time step used to generate the waveform</li>
-<li><strong>hrss</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The strain rss</li>
-<li><strong>amplitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The strain amplitude</li>
+<li><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The quality factor of a sine-Gaussian burst</li>
+<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The centre-frequency of a sine-Gaussian burst</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time step used to generate the waveform</li>
+<li><strong>hrss</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The strain rss</li>
+<li><strong>amplitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The strain amplitude</li>
 </ul>
 </td>
 </tr>
@@ -3100,7 +3100,7 @@ padding and tapering at the start of the waveform.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – The parameters defining the waveform to generator.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The parameters defining the waveform to generator.
 See <cite>get_fd_waveform</cite>.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
@@ -3138,7 +3138,7 @@ See <cite>get_fd_waveform</cite>.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -3160,7 +3160,7 @@ See <cite>get_fd_waveform</cite>.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

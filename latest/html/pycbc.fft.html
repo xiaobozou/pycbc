@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.fft package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -308,7 +308,7 @@ implementations within PyCBC.</p>
 <dl class="class">
 <dt id="pycbc.fft.class_api.FFT">
 <em class="property">class </em><code class="descclassname">pycbc.fft.class_api.</code><code class="descname">FFT</code><a class="reference internal" href="_modules/pycbc/fft/class_api.html#FFT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.fft.class_api.FFT" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Create a forward FFT  engine</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -317,10 +317,10 @@ implementations within PyCBC.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>invec</strong> (<em>complex64</em><em> or </em><em>float32</em>) – Input pycbc.types.Array (or subclass); its FFT will be computed</li>
 <li><strong>outvec</strong> (<em>complex64</em>) – Output pycbc.types.Array (or subclass); it will hold the FFT of invec</li>
-<li><strong>nbatch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default 1</em><em>)</em>) – When not one, specifies that invec and outvec should each be interpreted
+<li><strong>nbatch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default 1</em><em>)</em>) – When not one, specifies that invec and outvec should each be interpreted
 as nbatch distinct vectors. The total length of invec and outvec should
 then be that appropriate to a single vector, multiplied by nbatch</li>
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default None</em><em>)</em>) – When nbatch is not 1, this parameter gives the logical size of each
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default None</em><em>)</em>) – When nbatch is not 1, this parameter gives the logical size of each
 transform.  If nbatch is 1 (the default) this can be None, and the
 logical size is the length of invec.</li>
 <li><strong>addresses in memory of both vectors should be divisible by</strong> (<em>The</em>) – </li>
@@ -335,7 +335,7 @@ logical size is the length of invec.</li>
 <dl class="class">
 <dt id="pycbc.fft.class_api.IFFT">
 <em class="property">class </em><code class="descclassname">pycbc.fft.class_api.</code><code class="descname">IFFT</code><a class="reference internal" href="_modules/pycbc/fft/class_api.html#IFFT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.fft.class_api.IFFT" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Create a reverse FFT  engine</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -344,10 +344,10 @@ logical size is the length of invec.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>invec</strong> (<em>complex64</em>) – Input pycbc.types.Array (or subclass); its IFFT will be computed</li>
 <li><strong>outvec</strong> (<em>complex64</em><em> or </em><em>float32</em>) – Output pycbc.types.Array (or subclass); it will hold the IFFT of invec</li>
-<li><strong>nbatch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default 1</em><em>)</em>) – When not one, specifies that invec and outvec should each be interpreted
+<li><strong>nbatch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default 1</em><em>)</em>) – When not one, specifies that invec and outvec should each be interpreted
 as nbatch distinct vectors. The total length of invec and outvec should
 then be that appropriate to a single vector, multiplied by nbatch</li>
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default None</em><em>)</em>) – When nbatch is not 1, this parameter gives the logical size of each
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default None</em><em>)</em>) – When nbatch is not 1, this parameter gives the logical size of each
 transform.  If nbatch is 1 (the default) this can be None, and the
 logical size is the length of outvec.</li>
 <li><strong>addresses in memory of both vectors should be divisible by</strong> (<em>The</em>) – </li>
@@ -577,9 +577,9 @@ to 3 (most effort and time).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
 required attributes.</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -612,8 +612,8 @@ of N1 and N2.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>invec</strong> – The result of the first phase FFT</li>
 <li><strong>indices</strong> (<em>array of ints</em>) – The index locations to calculate the FFT</li>
-<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of the second phase “FFT”</li>
-<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of the first phase FFT</li>
+<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the second phase “FFT”</li>
+<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the first phase FFT</li>
 </ul>
 </td>
 </tr>
@@ -696,8 +696,8 @@ the standard FFT many plans.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>invec</strong> (<em>array</em>) – The input array.</li>
 <li><strong>outvec</strong> (<em>array</em>) – The output array.</li>
-<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of rows.</li>
-<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of columns.</li>
+<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of rows.</li>
+<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of columns.</li>
 </ul>
 </td>
 </tr>
@@ -715,8 +715,8 @@ the standard FFT many plans.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of rows.</li>
-<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of columns.</li>
+<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of rows.</li>
+<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of columns.</li>
 </ul>
 </td>
 </tr>
@@ -740,8 +740,8 @@ the standard FFT many plans.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of rows.</li>
-<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of columns.</li>
+<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of rows.</li>
+<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of columns.</li>
 </ul>
 </td>
 </tr>
@@ -800,8 +800,8 @@ of N1 and N2.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>invec</strong> – The result of the first phase FFT</li>
 <li><strong>indices</strong> (<em>array of ints</em>) – The index locations to calculate the FFT</li>
-<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of the second phase “FFT”</li>
-<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of the first phase FFT</li>
+<li><strong>N1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the second phase “FFT”</li>
+<li><strong>N2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of the first phase FFT</li>
 </ul>
 </td>
 </tr>
@@ -967,7 +967,7 @@ this function would need to be called again.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with
 the required attributes.</li>
 <li><strong>Returns</strong> – </li>
 </ul>
@@ -990,7 +990,7 @@ These submodule functions should take the fft_group object as argument.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance</td>
 </tr>
 </tbody>
 </table>
@@ -1008,9 +1008,9 @@ These submodule functions should take the fft_group object as argument.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
 required attributes.</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -1045,7 +1045,7 @@ required attributes.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -1067,7 +1067,7 @@ required attributes.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -492,7 +492,7 @@
 <dl class="class">
 <dt id="pycbc.bin_utils.BinnedArray">
 <em class="property">class </em><code class="descclassname">pycbc.bin_utils.</code><code class="descname">BinnedArray</code><span class="sig-paren">(</span><em>bins</em>, <em>array=None</em>, <em>dtype='double'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/bin_utils.html#BinnedArray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.bin_utils.BinnedArray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A convenience wrapper, using the NDBins class to provide access to
 the elements of an array object.  Technical reasons preclude
 providing a subclass of the array object, so the array data is made
@@ -579,7 +579,7 @@ evaluated without error.</p>
 <dl class="class">
 <dt id="pycbc.bin_utils.BinnedRatios">
 <em class="property">class </em><code class="descclassname">pycbc.bin_utils.</code><code class="descname">BinnedRatios</code><span class="sig-paren">(</span><em>bins</em>, <em>dtype='double'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/bin_utils.html#BinnedRatios"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.bin_utils.BinnedRatios" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Like BinnedArray, but provides a numerator array and a denominator
 array.  The incnumerator() method increments a bin in the numerator
 by the given weight, and the incdenominator() method increments a
@@ -641,7 +641,7 @@ have had no weight added to them.</p>
 <dl class="class">
 <dt id="pycbc.bin_utils.Bins">
 <em class="property">class </em><code class="descclassname">pycbc.bin_utils.</code><code class="descname">Bins</code><span class="sig-paren">(</span><em>minv</em>, <em>maxv</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/bin_utils.html#Bins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.bin_utils.Bins" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Parent class for 1-dimensional binnings.</p>
 <p>Not intended to be used directly, but to be subclassed for use in real
 bins classes.</p>
@@ -944,7 +944,7 @@ boundaries of the bins.</p>
 <dl class="class">
 <dt id="pycbc.bin_utils.NDBins">
 <em class="property">class </em><code class="descclassname">pycbc.bin_utils.</code><code class="descname">NDBins</code><a class="reference internal" href="_modules/pycbc/bin_utils.html#NDBins"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.bin_utils.NDBins" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
 <p>Multi-dimensional co-ordinate binning.  An instance of this object
 is used to convert a tuple of co-ordinates into a tuple of bin
 indices.  This can be used to allow the contents of an array object
@@ -1007,7 +1007,7 @@ cyclic boundaries or reflected boundaries.</p>
 <dl class="class">
 <dt id="pycbc.boundaries.Bounds">
 <em class="property">class </em><code class="descclassname">pycbc.boundaries.</code><code class="descname">Bounds</code><span class="sig-paren">(</span><em>min_bound=-inf</em>, <em>max_bound=inf</em>, <em>btype_min='closed'</em>, <em>btype_max='open'</em>, <em>cyclic=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/boundaries.html#Bounds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.boundaries.Bounds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Creates and stores bounds using the given values.</p>
 <p>The type of boundaries used can be set using the <cite>btype_(min|max)</cite>
 parameters. These arguments set what kind of boundary is used at the
@@ -1169,11 +1169,11 @@ value is just returned as-is.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to apply the conditions to.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to apply the conditions to.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value after the conditions are applied; see above for details.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -1189,12 +1189,12 @@ are reflected, than this will always return True.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to test.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to test.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the value is within the bounds after the boundary
 conditions are applied.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
 </tr>
 </tbody>
 </table>
@@ -1308,7 +1308,7 @@ and maximum bounds.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to apply the cyclic conditions to.</li>
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to apply the cyclic conditions to.</li>
 <li><strong>bounds</strong> (<em>Bounds instance</em>) – Boundaries to use for applying cyclic conditions.</li>
 </ul>
 </td>
@@ -1316,7 +1316,7 @@ and maximum bounds.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The value after the cyclic bounds are applied.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1334,7 +1334,7 @@ boundaries. This is done iteratively, reflecting left off of the
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to apply the reflected boundaries to.</li>
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to apply the reflected boundaries to.</li>
 <li><strong>bounds</strong> (<em>Bounds instance</em>) – Boundaries to reflect between. Both <cite>bounds.min</cite> and <cite>bounds.max</cite> must
 be instances of <cite>ReflectedBound</cite>, otherwise an AttributeError is
 raised.</li>
@@ -1344,7 +1344,7 @@ raised.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The value after being reflected between the two bounds.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1714,11 +1714,11 @@ defined as <cite>sqrt(2*loglr)</cite>.If the log likelihood ratio is &lt; 0, ret
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loglr</strong> (<em>array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The log likelihood ratio(s) to evaluate.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loglr</strong> (<em>array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The log likelihood ratio(s) to evaluate.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The SNRs computed from the log likelihood ratios.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -1888,7 +1888,7 @@ redshift.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>distance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The luminosity distance, in Mpc.</li>
+<li><strong>distance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The luminosity distance, in Mpc.</li>
 <li><strong>h</strong> (<em>{None</em><em>, </em><em>float}</em>) – The normalized Hubble constant to use. If None, will default to
 standard cosmology.</li>
 <li><strong>om</strong> (<em>{None</em><em>, </em><em>float}</em>) – The matter energy density. If None, will default to standard cosmology.</li>
@@ -1906,7 +1906,7 @@ default to standard cosmology.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The redshift corresponding to the given distance.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1920,7 +1920,7 @@ default to standard cosmology.</li>
 <dl class="class">
 <dt id="pycbc.detector.Detector">
 <em class="property">class </em><code class="descclassname">pycbc.detector.</code><code class="descname">Detector</code><span class="sig-paren">(</span><em>detector_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A gravitaional wave detector</p>
 <dl class="method">
 <dt id="pycbc.detector.Detector.antenna_pattern">
@@ -1940,7 +1940,7 @@ default to standard cosmology.</li>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>time</strong> – The light travel time in seconds</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -1974,16 +1974,16 @@ other detector. Note that this would return the same value as
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>other_detector</strong> (<a class="reference internal" href="#pycbc.detector.Detector" title="pycbc.detector.Detector"><em>detector.Detector</em></a>) – A detector instance.</li>
-<li><strong>right_ascension</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The right ascension (in rad) of the signal.</li>
-<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The declination (in rad) of the signal.</li>
-<li><strong>t_gps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The GPS time (in s) of the signal.</li>
+<li><strong>right_ascension</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The right ascension (in rad) of the signal.</li>
+<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The declination (in rad) of the signal.</li>
+<li><strong>t_gps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The GPS time (in s) of the signal.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The arrival time difference between the detectors.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2028,9 +2028,9 @@ be on the north pole.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>right_ascention</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
-<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
-<li><strong>polarization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
+<li><strong>right_ascention</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>polarization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 </ul>
 </td>
 </tr>
@@ -2083,7 +2083,7 @@ and header directories</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pkg_libries</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of packages as strings</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pkg_libries</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of packages as strings</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">libraries(list), library_dirs(list), include_dirs(list)</td>
 </tr>
@@ -2129,7 +2129,7 @@ other modules and packages may use.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance</td>
 </tr>
 </tbody>
 </table>
@@ -2145,9 +2145,9 @@ reasonable, and acts on them if they are</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
 required attributes</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -2213,15 +2213,15 @@ of a merged black hole in a paper by Buonanno, Kidder, Lehner
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2239,11 +2239,11 @@ Equal to 1.07*omega_220/2*pi</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>f</strong> – Frequency in Hz</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</td>
 </tr>
 </tbody>
 </table>
@@ -2261,15 +2261,15 @@ et al. (arXiv:0706.3732) : see also InspiralBankGeneration.c</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2286,15 +2286,15 @@ the Lorentzian tail from the decay of the QNMs</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar mass units</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar mass units</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2310,11 +2310,11 @@ equal to 1/(3**(3/2) pi M) : see InspiralBankGeneration.c</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>f</strong> – Frequency in Hz</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</td>
 </tr>
 </tbody>
 </table>
@@ -2329,11 +2329,11 @@ orbiting a Schwarzschild black hole</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>M</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Total mass in solar mass units</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>f</strong> – Frequency in Hz</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</td>
 </tr>
 </tbody>
 </table>
@@ -2350,17 +2350,17 @@ specified by ‘name’ on a template with given parameters.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>name</strong> (<em>string</em>) – Name of the cutoff function</li>
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
-<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
-<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
+<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
+<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2382,9 +2382,9 @@ See &lt;<a class="reference external" href="http://arxiv.org/pdf/0810.5336v3.pdf
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Symmetric mass ratio of the input system(s)</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Spin(s) parallel to the orbit of the heaviest body(ies)</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Spin(s) parallel to the orbit of the smallest body(ies)</li>
+<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Symmetric mass ratio of the input system(s)</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Spin(s) parallel to the orbit of the heaviest body(ies)</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Spin(s) parallel to the orbit of the smallest body(ies)</li>
 </ul>
 </td>
 </tr>
@@ -2414,17 +2414,17 @@ NOTE: TaylorTx and TaylorFx are currently all given an ISCO cutoff !!</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>approx</strong> (<em>string</em>) – Name of the approximant e.g. ‘EOBNRv2’</li>
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
-<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
-<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
+<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
+<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2442,17 +2442,17 @@ for the given frequency function and template parameters.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>freqfunc</strong> (<em>string</em>) – Name of the frequency function to use, e.g., ‘fEOBNRv2RD’</li>
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
-<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
-<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component mass in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component mass in solar masses</li>
+<li><strong>s1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
+<li><strong>s2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – Frequency in Hz</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -2478,19 +2478,19 @@ up to 3.5PN (including the 3PN spin-spin)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
-<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
-<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
-<li><strong>qm1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Quadrupole-monopole term of the primary object (1 for black holes).</li>
-<li><strong>qm2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Quadrupole-monopole term of the secondary object (1 for black holes).</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
+<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
+<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
+<li><strong>qm1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Quadrupole-monopole term of the primary object (1 for black holes).</li>
+<li><strong>qm2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Quadrupole-monopole term of the secondary object (1 for black holes).</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>h_E</strong> – The hybrid energy as a function of v</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2506,10 +2506,10 @@ up to 3.5PN (including the 3PN spin-spin)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
-<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
-<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
+<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
+<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
 <li><strong>qm1</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Quadrupole-monopole term of the primary object (1 for black holes).
 If None, will be set to qm1 = 1.</li>
 <li><strong>qm2</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Quadrupole-monopole term of the secondary object (1 for black holes).
@@ -2520,7 +2520,7 @@ If None, will be set to qm2 = 1.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – The frequency (in Hz) of the hybrid MECO</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2536,10 +2536,10 @@ If None, will be set to qm2 = 1.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
-<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
-<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the primary object in solar masses.</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the secondary object in solar masses.</li>
+<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the primary object.</li>
+<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Dimensionless spin of the secondary object.</li>
 <li><strong>qm1</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Quadrupole-monopole term of the primary object (1 for black holes).
 If None, will be set to qm1 = 1.</li>
 <li><strong>qm2</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Quadrupole-monopole term of the secondary object (1 for black holes).
@@ -2550,7 +2550,7 @@ If None, will be set to qm2 = 1.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> – The velocity (dimensionless) of the hybrid MECO</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2632,17 +2632,17 @@ mass1/mass2 and returns the two component masses.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – First component mass in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Second component mass in solar masses</li>
-<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
-<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – First component mass in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Second component mass in solar masses</li>
+<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
+<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> – Velocity (dimensionless)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2694,17 +2694,17 @@ mass1/mass2 and returns the two component masses.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – First component mass in solar masses</li>
-<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Second component mass in solar masses</li>
-<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
-<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – First component mass in solar masses</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Second component mass in solar masses</li>
+<li><strong>chi1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – First component dimensionless spin S_1/m_1^2 projected onto L</li>
+<li><strong>chi2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Second component dimensionless spin S_2/m_2^2 projected onto L</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> – Velocity (dimensionless)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -2733,7 +2733,7 @@ mass1/mass2 and returns the two component masses.</p>
 <dl class="class">
 <dt id="pycbc.pool.BroadcastPool">
 <em class="property">class </em><code class="descclassname">pycbc.pool.</code><code class="descname">BroadcastPool</code><span class="sig-paren">(</span><em>processes=None</em>, <em>initializer=None</em>, <em>initargs=()</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/pool.html#BroadcastPool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.pool.BroadcastPool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">multiprocessing.pool.Pool</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">multiprocessing.pool.Pool</span></code></a></p>
 <p>Multiprocessing pool with a broadcast method</p>
 <dl class="method">
 <dt id="pycbc.pool.BroadcastPool.broadcast">
@@ -2745,7 +2745,7 @@ mass1/mass2 and returns the two component masses.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fcn</strong> (<em>funtion</em>) – Function to call.</li>
-<li><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a>) – The arguments for Pool.map</li>
+<li><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – The arguments for Pool.map</li>
 </ul>
 </td>
 </tr>
@@ -2764,7 +2764,7 @@ mass1/mass2 and returns the two component masses.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>func</strong> (<em>function</em>) – Function to call</li>
 <li><strong>items</strong> (<em>list of tuples</em>) – Arguments to pass</li>
-<li><strong>chunksize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>Optional</em>) – Number of calls for each process to handle at once</li>
+<li><strong>chunksize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>Optional</em>) – Number of calls for each process to handle at once</li>
 </ul>
 </td>
 </tr>
@@ -2777,7 +2777,7 @@ mass1/mass2 and returns the two component masses.</p>
 <dl class="class">
 <dt id="pycbc.pool.SinglePool">
 <em class="property">class </em><code class="descclassname">pycbc.pool.</code><code class="descname">SinglePool</code><a class="reference internal" href="_modules/pycbc/pool.html#SinglePool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.pool.SinglePool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.pool.SinglePool.broadcast">
 <code class="descname">broadcast</code><span class="sig-paren">(</span><em>fcn</em>, <em>args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/pool.html#SinglePool.broadcast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.pool.SinglePool.broadcast" title="Permalink to this definition">¶</a></dt>
@@ -2929,7 +2929,7 @@ objects.</p>
 <dl class="class">
 <dt id="pycbc.scheme.ChooseBySchemeDict">
 <em class="property">class </em><code class="descclassname">pycbc.scheme.</code><code class="descname">ChooseBySchemeDict</code><a class="reference internal" href="_modules/pycbc/scheme.html#ChooseBySchemeDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.scheme.ChooseBySchemeDict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <p>This class represents a dictionary whose purpose is to chose objects
 based on their processing scheme. The keys are intended to be processing
 schemes.</p>
@@ -2956,7 +2956,7 @@ schemes.</p>
 <dl class="class">
 <dt id="pycbc.scheme.Scheme">
 <em class="property">class </em><code class="descclassname">pycbc.scheme.</code><code class="descname">Scheme</code><a class="reference internal" href="_modules/pycbc/scheme.html#Scheme"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.scheme.Scheme" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Context that sets PyCBC objects to use CPU processing.</p>
 </dd></dl>
 
@@ -2983,7 +2983,7 @@ schemes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with
 the required attributes.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>ctx</strong> – Returns the requested processing scheme.</td>
@@ -3003,7 +3003,7 @@ if your program supports the ability to select the processing scheme.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance</td>
 </tr>
 </tbody>
 </table>
@@ -3031,9 +3031,9 @@ if your program supports the ability to select the processing scheme.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
 required attributes.</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -3114,10 +3114,10 @@ distance, may be ‘distance’, ‘chirp_distance’.</li>
 ‘volume’ (uniform in D***3)</li>
 <li><strong>limits_param</strong> (<em>string</em>) – Parameter Dlim specifying limits inside which injections were made
 may be ‘distance’, ‘chirp distance’</li>
-<li><strong>min_param</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – minimum value of Dlim at which injections were made; only used for
+<li><strong>min_param</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – minimum value of Dlim at which injections were made; only used for
 log distribution, then if None the minimum actually injected value
 will be used</li>
-<li><strong>max_param</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – maximum value of Dlim out to which injections were made; if None
+<li><strong>max_param</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – maximum value of Dlim out to which injections were made; if None
 the maximum actually injected value will be used</li>
 </ul>
 </td>
@@ -3167,8 +3167,8 @@ the maximum actually injected value will be used</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>vol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
-<li><strong>vol_err</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
+<li><strong>vol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>vol_err</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 </ul>
 </td>
 </tr>
@@ -3213,7 +3213,7 @@ to mass-weighted spin parameters aligned with the angular momentum.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3238,7 +3238,7 @@ cartesian spins aligned along the z-axis.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3249,7 +3249,7 @@ of transformed values.</td>
 <dl class="class">
 <dt id="pycbc.transforms.BaseTransform">
 <em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">BaseTransform</code><a class="reference internal" href="_modules/pycbc/transforms.html#BaseTransform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.BaseTransform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A base class for transforming between two sets of parameters.</p>
 <dl class="staticmethod">
 <dt id="pycbc.transforms.BaseTransform.format_output">
@@ -3262,7 +3262,7 @@ it to the same datatype as the input.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>old_maps</strong> (<em>{FieldArray</em><em>, </em><em>dict}</em>) – The mapping object to add new maps to.</li>
-<li><strong>new_maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dict with key as parameter name and value is numpy.array.</li>
+<li><strong>new_maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dict with key as parameter name and value is numpy.array.</li>
 </ul>
 </td>
 </tr>
@@ -3286,12 +3286,12 @@ it to the same datatype as the input.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the transform options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
 separated by <cite>VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
-<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
-<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
+<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
+<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
 provided that also exists in the config file, the value provided
 will be used instead of being read from the file.</li>
 </ul>
@@ -3374,7 +3374,7 @@ outputs to inputs.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3404,7 +3404,7 @@ of transformed values.</td>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3461,7 +3461,7 @@ cartesian spins aligned along the z-axis.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3492,7 +3492,7 @@ to mass-weighted spin parameters aligned with the angular momentum.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3532,7 +3532,7 @@ to chi_p.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3571,7 +3571,7 @@ in the x-y plane.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3602,7 +3602,7 @@ mass-weighted spin parameters perpendicular with the angular momentum.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3649,7 +3649,7 @@ to chi_p.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3722,7 +3722,7 @@ given the chirp mass.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3769,7 +3769,7 @@ given the chirp mass.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3787,11 +3787,11 @@ of transformed values.</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>input_args</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the input parameters.</li>
-<li><strong>output_args</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the output parameters.</li>
-<li><strong>transform_functions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary mapping input args to a string giving a function call;
+<li><strong>input_args</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the input parameters.</li>
+<li><strong>output_args</strong> (<em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the output parameters.</li>
+<li><strong>transform_functions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Dictionary mapping input args to a string giving a function call;
 e.g., <code class="docutils literal notranslate"><span class="pre">{'q':</span> <span class="pre">'q_from_mass1_mass2(mass1,</span> <span class="pre">mass2)'}</span></code>.</li>
-<li><strong>jacobian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – String giving a jacobian function. The function must be in terms of
+<li><strong>jacobian</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – String giving a jacobian function. The function must be in terms of
 the input arguments.</li>
 </ul>
 </td>
@@ -3847,13 +3847,13 @@ the input arguments.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A map object containing the transformed variables, along with the
 original variables. The type of the output will be the same as the
 input.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -3908,7 +3908,7 @@ given the chirp mass.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -3955,7 +3955,7 @@ given the chirp mass.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4006,7 +4006,7 @@ of transformed values.</td>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4028,9 +4028,9 @@ finite real interval.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the parameter to transform.</li>
-<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the transformed parameter.</li>
-<li><strong>frange</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> or </em><em>distributions.bounds.Bounds</em><em>, </em><em>optional</em>) – The range of the output parameter. Can be any finite
+<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the parameter to transform.</li>
+<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the transformed parameter.</li>
+<li><strong>frange</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><em>distributions.bounds.Bounds</em><em>, </em><em>optional</em>) – The range of the output parameter. Can be any finite
 interval. Default is (0., 1.).</li>
 </ul>
 </td>
@@ -4064,12 +4064,12 @@ codomain of the output may be specified using <cite>min-{output}</cite>,
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the transform options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
 separated by <cite>VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
-<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
-<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
+<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
+<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
 provided that also exists in the config file, the value provided
 will be used instead of being read from the file.</li>
 </ul>
@@ -4103,12 +4103,12 @@ will be used instead of being read from the file.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -4123,13 +4123,13 @@ parameter name of the variable to transform and its value(s).</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
 with the original variable name and value(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -4147,12 +4147,12 @@ with the original variable name and value(s).</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -4172,13 +4172,13 @@ parameter name of the variable to transform and its value(s).</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
 with the original variable name and value(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -4200,9 +4200,9 @@ this to any finite real interval.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the parameter to transform.</li>
-<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the transformed parameter.</li>
-<li><strong>domain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> or </em><em>distributions.bounds.Bounds</em><em>, </em><em>optional</em>) – The domain of the input parameter. Can be any finite
+<li><strong>inputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the parameter to transform.</li>
+<li><strong>outputvar</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the transformed parameter.</li>
+<li><strong>domain</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><em>distributions.bounds.Bounds</em><em>, </em><em>optional</em>) – The domain of the input parameter. Can be any finite
 interval. Default is (0., 1.).</li>
 </ul>
 </td>
@@ -4236,12 +4236,12 @@ Example:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the transform options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters that are output by this transformation,
 separated by <cite>VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
-<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
-<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
+<li><strong>skip_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Do not read options in the given list.</li>
+<li><strong>additional_opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – Any additional arguments to pass to the class. If an option is
 provided that also exists in the config file, the value provided
 will be used instead of being read from the file.</li>
 </ul>
@@ -4281,12 +4281,12 @@ will be used instead of being read from the file.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -4301,13 +4301,13 @@ parameter name of the variable to transform and its value(s).</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
 with the original variable name and value(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -4325,12 +4325,12 @@ with the original variable name and value(s).</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian at the given point(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -4350,10 +4350,10 @@ parameter name of the variable to transform and its value(s).</td>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to evaluate.</li>
-<li><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – The minimum bound of the range of the logistic function. Default
+<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to evaluate.</li>
+<li><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The minimum bound of the range of the logistic function. Default
 is 0.</li>
-<li><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – The maximum bound of the range of the logistic function. Default
+<li><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The maximum bound of the range of the logistic function. Default
 is 1.</li>
 </ul>
 </td>
@@ -4361,7 +4361,7 @@ is 1.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The logistic of x.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -4382,16 +4382,16 @@ is 1.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to evaluate.</li>
-<li><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – The minimum bound of the domain of x. Default is 0.</li>
-<li><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – The maximum bound of the domain of x. Default is 1.</li>
+<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to evaluate.</li>
+<li><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The minimum bound of the domain of x. Default is 0.</li>
+<li><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The maximum bound of the domain of x. Default is 1.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The logit of x.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -4418,13 +4418,13 @@ is 1.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A dictionary or FieldArray which provides a map between the
 parameter name of the variable to transform and its value(s).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A map between the transformed variable name and value(s), along
 with the original variable name and value(s).</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -4480,7 +4480,7 @@ masses.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4528,7 +4528,7 @@ mass ratio.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4584,7 +4584,7 @@ mass ratio.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4632,7 +4632,7 @@ masses.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4665,7 +4665,7 @@ mass-weighted spin parameters perpendicular with the angular momentum.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4690,7 +4690,7 @@ in the x-y plane.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4724,7 +4724,7 @@ component mass.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4764,7 +4764,7 @@ of transformed values.</td>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
 of transformed values.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -4802,9 +4802,9 @@ component mass.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>samples</strong> (<em>{FieldArray</em><em>, </em><em>dict}</em>) – Mapping object to apply transforms to.</li>
-<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of BaseTransform instances to apply. Nested transforms are assumed
+<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of BaseTransform instances to apply. Nested transforms are assumed
 to be in order for forward transforms.</li>
-<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – Apply inverse transforms. In this case transforms will be applied in
+<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Apply inverse transforms. In this case transforms will be applied in
 the opposite order. Default is False.</li>
 </ul>
 </td>
@@ -4830,16 +4830,16 @@ points.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>samples</strong> (<em>{FieldArray</em><em>, </em><em>dict}</em>) – Mapping object specifying points at which to compute jacobians.</li>
-<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of BaseTransform instances to apply. Nested transforms are assumed
+<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of BaseTransform instances to apply. Nested transforms are assumed
 to be in order for forward transforms.</li>
-<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – Compute inverse jacobians. Default is False.</li>
+<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Compute inverse jacobians. Default is False.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The product of the jacobians of all fo the transforms.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -4859,9 +4859,9 @@ required to calculate the base parameters needed.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>requested_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of parameters that user wants.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of parameters that InferenceFile has.</li>
-<li><strong>valid_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of parameters that can be accepted.</li>
+<li><strong>requested_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of parameters that user wants.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of parameters that InferenceFile has.</li>
+<li><strong>valid_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of parameters that can be accepted.</li>
 </ul>
 </td>
 </tr>
@@ -4887,7 +4887,7 @@ by <cite>B</cite>, the transforms will be re-rorderd to <cite>[A, B, C]</cite>.<
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of transform instances to order.</li>
+<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of transform instances to order.</li>
 <li><strong>Outputs</strong> – </li>
 <li><strong>-------</strong> – </li>
 <li><strong>list</strong> – List of transformed ordered such that forward transforms can be carried
@@ -4920,7 +4920,7 @@ nests.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of the parsed transforms.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -4942,7 +4942,7 @@ nests.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance</td>
 </tr>
 </tbody>
 </table>
@@ -4964,9 +4964,9 @@ reasonable, and acts on them if they are</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
+<li><strong>opt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser, or any object with the
 required attributes</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -5015,7 +5015,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -5037,7 +5037,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

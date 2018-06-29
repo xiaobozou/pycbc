@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inject package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.inject package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -256,7 +256,7 @@
 <dl class="class">
 <dt id="pycbc.inject.inject.InjectionSet">
 <em class="property">class </em><code class="descclassname">pycbc.inject.inject.</code><code class="descname">InjectionSet</code><span class="sig-paren">(</span><em>sim_file</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inject/inject.html#InjectionSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inject.inject.InjectionSet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Manages sets of injections and injects them into time series.</p>
 <p>Injections are read from either LIGOLW XML files or HDF files.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -304,7 +304,7 @@ function when generating injections.</li>
 <dl class="class">
 <dt id="pycbc.inject.inject.RingdownInjectionSet">
 <em class="property">class </em><code class="descclassname">pycbc.inject.inject.</code><code class="descname">RingdownInjectionSet</code><span class="sig-paren">(</span><em>hdf_file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inject/inject.html#RingdownInjectionSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inject.inject.RingdownInjectionSet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Manages a ringdown injection: reads injection from hdf file
 and injects it into time series.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -340,7 +340,7 @@ and injects it into time series.</p>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – For invalid types of <cite>strain</cite>.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – For invalid types of <cite>strain</cite>.</p>
 </td>
 </tr>
 </tbody>
@@ -358,7 +358,7 @@ an hdf file.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>inj</strong> (<em>injection object</em>) – The injection object to turn into a strain h(t).</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Sample rate to make injection at.</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Sample rate to make injection at.</li>
 <li><strong>detector_name</strong> (<em>string</em>) – Name of the detector used for projecting injections.</li>
 </ul>
 </td>
@@ -366,7 +366,7 @@ an hdf file.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>signal</strong> – h(t) corresponding to the injection.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -378,7 +378,7 @@ an hdf file.</p>
 <dl class="class">
 <dt id="pycbc.inject.inject.SGBurstInjectionSet">
 <em class="property">class </em><code class="descclassname">pycbc.inject.inject.</code><code class="descname">SGBurstInjectionSet</code><span class="sig-paren">(</span><em>sim_file</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inject/inject.html#SGBurstInjectionSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inject.inject.SGBurstInjectionSet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Manages sets of sine-Gaussian burst injections: reads injections
 from LIGOLW XML files and injects them into time series.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -424,7 +424,7 @@ no scaling.</li>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – For invalid types of <cite>strain</cite>.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> – For invalid types of <cite>strain</cite>.</p>
 </td>
 </tr>
 </tbody>
@@ -456,7 +456,7 @@ testing the “similarity” of templates and injections.</p>
 <dl class="class">
 <dt id="pycbc.inject.injfilterrejector.InjFilterRejector">
 <em class="property">class </em><code class="descclassname">pycbc.inject.injfilterrejector.</code><code class="descname">InjFilterRejector</code><span class="sig-paren">(</span><em>injection_file</em>, <em>chirp_time_window</em>, <em>match_threshold</em>, <em>f_lower</em>, <em>coarsematch_deltaf=1.0</em>, <em>coarsematch_fmax=256</em>, <em>seg_buffer=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inject/injfilterrejector.html#InjFilterRejector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inject.injfilterrejector.InjFilterRejector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class for holding parameters for using injection/template pre-filtering.</p>
 <p>This class is responsible for identifying where a matched-filter operation
 between templates and data is unncessary because the injections contained
@@ -538,7 +538,7 @@ templates.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -560,7 +560,7 @@ templates.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

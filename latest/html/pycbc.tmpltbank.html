@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.tmpltbank package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -269,10 +269,10 @@ bank layout options fLow and f0 (which must be the same as each other).</p>
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
 <li><strong>ethincaParams</strong> (<em>ethincaParameters instance</em>) – Structure holding options relevant to the ethinca metric computation.</li>
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the heavier body in the considered template.</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the lighter body in the considered template.</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Spin of the heavier body in the considered template.</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Spin of the lighter body in the considered template.</li>
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the heavier body in the considered template.</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the lighter body in the considered template.</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Spin of the heavier body in the considered template.</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> (</em><em>optional</em><em>, </em><em>default=0</em><em>)</em>) – Spin of the lighter body in the considered template.</li>
 <li><strong>full_ethinca</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=True</em><em>)</em>) – If True calculate the ethinca components in all 3 directions (mass1,
 mass2 and time). If False calculate only the time component (which is
 stored in Gamma0).</li>
@@ -366,7 +366,7 @@ applications these should be set to their correct values.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nones</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>False</em><em>)</em>) – If True, just set all columns to None.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nones</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>False</em><em>)</em>) – If True, just set all columns to None.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The “empty” SnglInspiral object.</td>
 </tr>
@@ -413,20 +413,20 @@ iteratively throwing points at the space to find extrema.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>array</em>) – Position in the xi space at which to assess the depth. This can be only
+<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>array</em>) – Position in the xi space at which to assess the depth. This can be only
 a subset of the higher dimensions than that being sampled.</li>
-<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
+<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
 mapped to xi coordinates in bestXis that is close to the xis point.
 This is aimed to give the code a starting point.</li>
-<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
-<li><strong>direction_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The dimension that you want to assess the depth of (0 = 1, 1 = 2 …)</li>
-<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – When considering points to assess the depth with, only consider points
+<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
+<li><strong>direction_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The dimension that you want to assess the depth of (0 = 1, 1 = 2 …)</li>
+<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – When considering points to assess the depth with, only consider points
 with a mismatch that is smaller than this with xis.</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
 coordinates. This lets us know how to rotate potential physical points
 into the correct xi_i space. This must be a key in metricParams.evals,
 metricParams.evecs and metricParams.evecsCV
@@ -434,9 +434,9 @@ metricParams.evecs and metricParams.evecsCV
 the given value of fUpper)</li>
 <li><strong>find_minimum</strong> (<em>boolean</em><em>, </em><em>optional</em><em> (</em><em>default = False</em><em>)</em>) – If True, find the minimum value of the xi direction. If False find the
 maximum value.</li>
-<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default = 0.8</em><em>)</em>) – The value of the scale factor that is used when calling
+<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default = 0.8</em><em>)</em>) – The value of the scale factor that is used when calling
 pycbc.tmpltbank.get_mass_distribution.</li>
-<li><strong>numIterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 3000</em><em>)</em>) – The number of times to make calls to get_mass_distribution when
+<li><strong>numIterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 3000</em><em>)</em>) – The number of times to make calls to get_mass_distribution when
 assessing the maximum/minimum of this parameter space. Making this
 smaller makes the code faster, but at the cost of accuracy.</li>
 </ul>
@@ -446,7 +446,7 @@ smaller makes the code faster, but at the cost of accuracy.</li>
 parameter space.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -463,28 +463,28 @@ in the mass space and map these to the xi space.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains [ChirpMass, eta, spin1z, spin2z]. Points will be placed around
+<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains [ChirpMass, eta, spin1z, spin2z]. Points will be placed around
 tjos</li>
-<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – This parameter describes the radius away from bestMasses that points
+<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – This parameter describes the radius away from bestMasses that points
 will be placed in.</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
 coordinates. This lets us know how to rotate potential physical points
 into the correct xi_i space. This must be a key in metricParams.evals,
 metricParams.evecs and metricParams.evecsCV
 (ie. we must know how to do the transformation for
 the given value of fUpper)</li>
-<li><strong>numJumpPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 100</em><em>)</em>) – The number of points that will be generated every iteration</li>
-<li><strong>chirpMassJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.0001</em><em>)</em>) – The jump points will be chosen with fractional variation in chirpMass
+<li><strong>numJumpPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 100</em><em>)</em>) – The number of points that will be generated every iteration</li>
+<li><strong>chirpMassJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.0001</em><em>)</em>) – The jump points will be chosen with fractional variation in chirpMass
 up to this multiplied by scaleFactor.</li>
-<li><strong>etaJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with fractional variation in eta
+<li><strong>etaJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with fractional variation in eta
 up to this multiplied by scaleFactor.</li>
-<li><strong>spin1zJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with absolute variation in spin1z up to
+<li><strong>spin1zJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with absolute variation in spin1z up to
 this multiplied by scaleFactor.</li>
-<li><strong>spin2zJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with absolute variation in spin2z up to
+<li><strong>spin2zJumpFac</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default=0.01</em><em>)</em>) – The jump points will be chosen with absolute variation in spin2z up to
 this multiplied by scaleFactor.</li>
 </ul>
 </td>
@@ -517,27 +517,27 @@ and spins).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>array</em>) – Desired position of the point in the xi space. If only N values are
+<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>array</em>) – Desired position of the point in the xi space. If only N values are
 provided and the xi space’s dimension is larger then it is assumed that
 <em>any</em> value in the remaining xi coordinates is acceptable.</li>
-<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
+<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
 mapped to xi coordinates in bestXis that is close to the desired point.
 This is aimed to give the code a starting point.</li>
-<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
-<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Desired maximum mismatch between xis and the obtained point. If a point
+<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
+<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Desired maximum mismatch between xis and the obtained point. If a point
 is found with mismatch &lt; req_match immediately stop and return that
 point. A point with this mismatch will not always be found.</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
 coordinates. This lets us know how to rotate potential physical points
 into the correct xi_i space. This must be a key in metricParams.evals,
 metricParams.evecs and metricParams.evecsCV
 (ie. we must know how to do the transformation for
 the given value of fUpper)</li>
-<li><strong>giveUpThresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 5000</em><em>)</em>) – The program will try this many iterations. If no close matching point
+<li><strong>giveUpThresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 5000</em><em>)</em>) – The program will try this many iterations. If no close matching point
 has been found after this it will give up.</li>
 </ul>
 </td>
@@ -569,28 +569,28 @@ iteratively throwing points at the space to find maxima and minima.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>array</em>) – Position in the xi space at which to assess the depth. This can be only
+<li><strong>xis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>array</em>) – Position in the xi space at which to assess the depth. This can be only
 a subset of the higher dimensions than that being sampled.</li>
-<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
+<li><strong>bestMasses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains [totalMass, eta, spin1z, spin2z]. Is a physical position
 mapped to xi coordinates in bestXis that is close to the xis point.
 This is aimed to give the code a starting point.</li>
-<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
-<li><strong>direction_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The dimension that you want to assess the depth of (0 = 1, 1 = 2 …)</li>
-<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – When considering points to assess the depth with, only consider points
+<li><strong>bestXis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Contains the position of bestMasses in the xi coordinate system.</li>
+<li><strong>direction_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The dimension that you want to assess the depth of (0 = 1, 1 = 2 …)</li>
+<li><strong>req_match</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – When considering points to assess the depth with, only consider points
 with a mismatch that is smaller than this with xis.</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper that was used when obtaining the xi_i
 coordinates. This lets us know how to rotate potential physical points
 into the correct xi_i space. This must be a key in metricParams.evals,
 metricParams.evecs and metricParams.evecsCV
 (ie. we must know how to do the transformation for
 the given value of fUpper)</li>
-<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default = 0.8</em><em>)</em>) – The value of the scale factor that is used when calling
+<li><strong>scaleFactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em><em> (</em><em>default = 0.8</em><em>)</em>) – The value of the scale factor that is used when calling
 pycbc.tmpltbank.get_mass_distribution.</li>
-<li><strong>numIterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 3000</em><em>)</em>) – The number of times to make calls to get_mass_distribution when
+<li><strong>numIterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em><em> (</em><em>default = 3000</em><em>)</em>) – The number of times to make calls to get_mass_distribution when
 assessing the maximum/minimum of this parameter space. Making this
 smaller makes the code faster, but at the cost of accuracy.</li>
 </ul>
@@ -677,12 +677,12 @@ chosen</p>
 <li><strong>psd_f</strong> (<em>numpy.array</em>) – numpy array holding the set of evenly spaced frequencies used in the PSD</li>
 <li><strong>psd_amp</strong> (<em>numpy.array</em>) – numpy array holding the PSD values corresponding to the psd_f
 frequencies</li>
-<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The lower frequency cutoff used in the calculation of the integrals
+<li><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The lower frequency cutoff used in the calculation of the integrals
 used to obtain the metric.</li>
-<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency cutoff used in the calculation of the integrals
+<li><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency cutoff used in the calculation of the integrals
 used to obtain the metric. This can be varied (see the vary_fmax
 option below).</li>
-<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – This is an arbitrary scaling factor introduced to avoid the potential
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – This is an arbitrary scaling factor introduced to avoid the potential
 for numerical overflow when calculating this. Generally the default
 value (70) is safe here. <strong>IMPORTANT, if you want to calculate the
 ethinca metric components later this MUST be set equal to f_low.</strong></li>
@@ -695,7 +695,7 @@ for frequency ranges [f_low,f_low + i*vary_density), where i starts at
 1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.
 Thus values greater than f_upper are <em>not</em> computed.
 The calculation for the full range [f_low,f_upper) is also done.</li>
-<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
+<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
 ranges as described for vary_fmax.</li>
 </ul>
 </td>
@@ -734,7 +734,7 @@ for frequency ranges [f_low,f_low + i*vary_density), where i starts at
 1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.
 Thus values greater than f_upper are <em>not</em> computed.
 The calculation for the full range [f_low,f_upper) is also done.</li>
-<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
+<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
 ranges as described for vary_fmax.</li>
 </ul>
 </td>
@@ -790,7 +790,7 @@ for frequency ranges [f_low,f_low + i*vary_density), where i starts at
 1 and runs up until f_low + (i+1)*vary_density &gt; f_upper.
 Thus values greater than f_upper are <em>not</em> computed.
 The calculation for the full range [f_low,f_upper) is also done.</li>
-<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
+<li><strong>vary_density</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – If vary_fmax is True, this will be used in computing the frequency
 ranges as described for vary_fmax.</li>
 </ul>
 </td>
@@ -847,9 +847,9 @@ interpolation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>psd_f</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>similar</em>) – List of the frequencies contained within the PSD.</li>
-<li><strong>psd_amp</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>similar</em>) – List of the PSD values at the frequencies in psd_f.</li>
-<li><strong>deltaF</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Value of deltaF to interpolate the PSD to.</li>
+<li><strong>psd_f</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>similar</em>) – List of the frequencies contained within the PSD.</li>
+<li><strong>psd_amp</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>similar</em>) – List of the PSD values at the frequencies in psd_f.</li>
+<li><strong>deltaF</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Value of deltaF to interpolate the PSD to.</li>
 </ul>
 </td>
 </tr>
@@ -876,16 +876,16 @@ interpolation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>vsA</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>numpy.array</em><em> or </em><em>similar</em>) – An array of point 1’s position in the chi_i coordinate system</li>
-<li><strong>entryA</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>numpy.array</em><em> or </em><em>similar</em>) – An array of point 2’s position in the chi_i coordinate system</li>
-<li><strong>MMdistA</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The minimal mismatch allowed between the points</li>
+<li><strong>vsA</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>numpy.array</em><em> or </em><em>similar</em>) – An array of point 1’s position in the chi_i coordinate system</li>
+<li><strong>entryA</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>numpy.array</em><em> or </em><em>similar</em>) – An array of point 2’s position in the chi_i coordinate system</li>
+<li><strong>MMdistA</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The minimal mismatch allowed between the points</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>val</strong> – The metric distance between the two points.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -906,12 +906,12 @@ have a mismatch &lt; MMdistA for <em>both</em> upper frequency cutoffs.</p>
 coordinate system. The i element corresponds to varying values of the
 upper frequency cutoff. fMap is used to map between i and actual
 frequencies</li>
-<li><strong>fUpper1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency cutoff of point 1.</li>
+<li><strong>fUpper1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency cutoff of point 1.</li>
 <li><strong>mus2</strong> (<em>List of numpy arrays</em>) – mus2[i] will give the array of point 2’s position in the chi_j
 coordinate system. The i element corresponds to varying values of the
 upper frequency cutoff. fMap is used to map between i and actual
 frequencies</li>
-<li><strong>fUpper2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency cutoff of point 2.</li>
+<li><strong>fUpper2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency cutoff of point 2.</li>
 <li><strong>fMap</strong> (<em>dictionary</em>) – fMap[fUpper] will give the index needed to get the chi_j coordinates
 in the two sets of mus</li>
 <li><strong>norm_map</strong> (<em>dictionary</em>) – norm_map[fUpper] will give the relative frequency domain template
@@ -942,12 +942,12 @@ into the xi_i coordinate system for the given upper frequency cutoff.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of systems to simulate</li>
+<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of systems to simulate</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
 lambda coordinates. This must be a key in metricParams.evals and
 metricParams.evecs (ie. we must know how to do the transformation for
 the given value of fUpper). It also must be a key in
@@ -979,7 +979,7 @@ the list of frequencies calculated in the metric.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>input_freqs</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency(ies) that you want to find the closest value in
+<li><strong>input_freqs</strong> (<em>numpy.array</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency(ies) that you want to find the closest value in
 metric_freqs</li>
 <li><strong>metric_freqs</strong> (<em>numpy.array</em>) – The list of frequencies calculated by the metric</li>
 </ul>
@@ -989,7 +989,7 @@ metric_freqs</li>
 computed</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1012,14 +1012,14 @@ parameter space. Mu = Cartesian metric, but not principal components.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of heavier body.</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of lighter body.</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of body 1.</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of body 2.</li>
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of heavier body.</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of lighter body.</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of body 1.</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of body 2.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
 lambda coordinates. This must be a key in metricParams.evals and
 metricParams.evecs (ie. we must know how to do the transformation for
 the given value of fUpper)</li>
@@ -1046,14 +1046,14 @@ parameter space. Xi = Cartesian metric and rotated to principal components.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of heavier body.</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of lighter body.</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of body 1.</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of body 2.</li>
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of heavier body.</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of lighter body.</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of body 1.</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of body 2.</li>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
 lambda coordinates. This must be a key in metricParams.evals,
 metricParams.evecs and metricParams.evecsCV
 (ie. we must know how to do the transformation for
@@ -1111,7 +1111,7 @@ coordinate system. Mu = Cartesian metric, but not principal components.</p>
 <li><strong>metricParams</strong> (<em>metricParameters instance</em>) – Structure holding all the options for construction of the metric
 and the eigenvalues, eigenvectors and covariance matrix
 needed to manipulate the space.</li>
-<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
+<li><strong>fUpper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value of fUpper to use when getting the mu coordinates from the
 lambda coordinates. This must be a key in metricParams.evals and
 metricParams.evecs (ie. we must know how to do the transformation for
 the given value of fUpper)</li>
@@ -1186,7 +1186,7 @@ future point).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of systems to simulate</li>
+<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of systems to simulate</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 </ul>
 </td>
@@ -1215,7 +1215,7 @@ for ease of use later (though these may be removed at some future point).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of systems to simulate</li>
+<li><strong>numPoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of systems to simulate</li>
 <li><strong>massRangeParams</strong> (<em>massRangeParameters instance</em>) – Instance holding all the details of mass ranges and spin ranges.</li>
 </ul>
 </td>
@@ -1286,8 +1286,8 @@ directions.</p>
 <li><strong>evecs</strong> (<em>numpy.matrix</em>) – Matrix of the eigenvectors of the metric in lambda_i coordinates. Used
 to rotate to a Cartesian coordinate system.</li>
 <li><strong>old_vector</strong> (<em>list of floats</em><em> or </em><em>numpy.arrays</em>) – The position of the system(s) in the original coordinates</li>
-<li><strong>rescale_factor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Scaling factor to apply to resulting position(s)</li>
-<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The index of the final coordinate system that is being computed. Ie.
+<li><strong>rescale_factor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Scaling factor to apply to resulting position(s)</li>
+<li><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index of the final coordinate system that is being computed. Ie.
 if we are going from mu_i -&gt; xi_j, this will give j.</li>
 </ul>
 </td>
@@ -1295,7 +1295,7 @@ if we are going from mu_i -&gt; xi_j, this will give j.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>positions</strong> – Position of the point(s) in the resulting coordinate.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or numpy.array</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -1315,7 +1315,7 @@ and False if it is not.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>point_1_chis</strong> (<em>numpy.array</em>) – An array of point 1’s position in the chi_i coordinate system</li>
 <li><strong>point_2_chis</strong> (<em>numpy.array</em>) – An array of point 2’s position in the chi_i coordinate system</li>
-<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The distance threshold to use.</li>
+<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The distance threshold to use.</li>
 </ul>
 </td>
 </tr>
@@ -1337,15 +1337,15 @@ roots.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1366,15 +1366,15 @@ this function.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">-((r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2))</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1393,15 +1393,15 @@ between 6 and 1+sqrt[3]+sqrt[3+2sqrt[3]].</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">r**3*(r**2*(r-6)+chi**2*(3*r+4))+chi**4*(3*r*(r-2)+chi**2)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1421,9 +1421,9 @@ and the polar ISSO radius.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>ci</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – cosine of the inclination angle between the BH spin
+<li><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the radial coordinate in BH mass units</li>
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>ci</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – cosine of the inclination angle between the BH spin
 and the orbital angular momentum</li>
 </ul>
 </td>
@@ -1435,7 +1435,7 @@ Y=chi**4*(chi**4+r**2*(7*r*(3*r-4)+36))+6*r*(r-2)*(chi**6+2*r**3*(chi**2*(3*r+2)
 Z=ISCO_eq(r,chi)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1454,8 +1454,8 @@ This function finds the appropriat root of PG_ISSO_eq.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
 angular momentum in radians</li>
 </ul>
 </td>
@@ -1463,7 +1463,7 @@ angular momentum in radians</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>solution</strong> – the radius of the orbit in BH mass units</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1484,8 +1484,8 @@ with the correct sign.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
 angular momentum in radians</li>
 </ul>
 </td>
@@ -1493,7 +1493,7 @@ angular momentum in radians</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>chi_eff</strong> – the effective dimensionless spin parameter solution</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1515,13 +1515,13 @@ mass exceeds the maximum NS mass allowed by the EOS.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mNS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the NS mass</li>
-<li><strong>sBH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – BH dimensionless spin parameter for the BH spin
+<li><strong>mNS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the NS mass</li>
+<li><strong>sBH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – BH dimensionless spin parameter for the BH spin
 component along the orbital angular momentum</li>
 <li><strong>eos_name</strong> (<em>string</em>) – NS equation of state label (‘2H’ is the only supported
 choice at the moment)</li>
-<li><strong>eta_default</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the value to be returned if the input NS mass is too high</li>
-<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
+<li><strong>eta_default</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the value to be returned if the input NS mass is too high</li>
+<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
 predicted by the model (in solar masses)</li>
 </ul>
 </td>
@@ -1530,7 +1530,7 @@ predicted by the model (in solar masses)</li>
 disk mass exceeds the threshold</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1554,22 +1554,22 @@ constraint_em_bright.npz and constraint_em_bright.npz.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mNS_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – lower boundary of the grid in the NS mass direction</li>
-<li><strong>mNS_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – upper boundary of the grid in the NS mass direction</li>
-<li><strong>delta_mNS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – grid spacing in the NS mass direction</li>
-<li><strong>sBH_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – lower boundary of the grid in the direction of the
+<li><strong>mNS_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – lower boundary of the grid in the NS mass direction</li>
+<li><strong>mNS_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – upper boundary of the grid in the NS mass direction</li>
+<li><strong>delta_mNS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – grid spacing in the NS mass direction</li>
+<li><strong>sBH_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – lower boundary of the grid in the direction of the
 BH dimensionless spin component along the orbital
 angular momentum</li>
-<li><strong>sBH_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – upper boundary of the grid in the direction of the
+<li><strong>sBH_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – upper boundary of the grid in the direction of the
 BH dimensionless spin component along the orbital
 angular momentum</li>
-<li><strong>delta_sBH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – grid spacing in the direction of the BH dimensionless
+<li><strong>delta_sBH</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – grid spacing in the direction of the BH dimensionless
 spin component along the orbital angular momentum</li>
 <li><strong>eos_name</strong> (<em>string</em>) – NS equation of state label (‘2H’ is the only supported
 choice at the moment)</li>
-<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
+<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
 predicted by the model (in solar masses)</li>
-<li><strong>eta_default</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the value to be returned for points in the grids in which
+<li><strong>eta_default</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the value to be returned for points in the grids in which
 the NS mass is too high</li>
 </ul>
 </td>
@@ -1663,7 +1663,7 @@ mass and an NS equilibrium sequence.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
+<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
 <li><strong>ns_sequence</strong> (<em>3D-array</em>) – <dl class="docutils">
 <dt>contains the sequence data in the form NS gravitational</dt>
 <dd>mass (in solar masses), NS baryonic mass (in solar
@@ -1676,7 +1676,7 @@ masses), NS compactness (dimensionless)</dd>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The NS baryonic mass (in solar massesr**3*(r**2*(r-6)+chi**2*(3*r+4))+chi**4*(3*r*(r-2)+chi**2))</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1693,7 +1693,7 @@ gravitational mass and an NS equilibrium sequence.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
+<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
 <li><strong>ns_sequence</strong> (<em>3D-array</em>) – <dl class="docutils">
 <dt>contains the sequence data in the form NS gravitational</dt>
 <dd>mass (in solar masses), NS baryonic mass (in solar
@@ -1706,7 +1706,7 @@ masses), NS compactness (dimensionless)</dd>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The NS compactness (dimensionless)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1729,16 +1729,16 @@ the two possible solutions is returned.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
+<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
 angular momentum in radians</li>
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>chi_eff</strong> – the (greater) effective dimensionless spin parameter solution</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1756,18 +1756,18 @@ results discussed in Foucart PRD 86, 124007 (2012).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the symmetric mass ratio of the binary</li>
-<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
+<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the symmetric mass ratio of the binary</li>
+<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
 <li><strong>ns_sequence</strong> (<em>3D-array</em>) – <dl class="docutils">
 <dt>contains the sequence data in the form NS gravitational</dt>
 <dd>mass (in solar masses), NS baryonic mass (in solar
 masses), NS compactness (dimensionless)</dd>
 </dl>
 </li>
-<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
+<li><strong>chi</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>incl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the inclination angle between the BH spin and the orbital
 angular momentum in radians</li>
-<li><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – an amount to be subtracted to the remnant mass predicted
+<li><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an amount to be subtracted to the remnant mass predicted
 by the model (in solar masses)</li>
 </ul>
 </td>
@@ -1775,7 +1775,7 @@ by the model (in solar masses)</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>remnant_mass</strong> – The remnant mass in solar masses</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1799,9 +1799,9 @@ in applying the model of Foucart PRD 86, 124007 (2012).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the symmetric mass ratio of the binary</li>
-<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
-<li><strong>bh_spin_z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter for the spin projection
+<li><strong>eta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the symmetric mass ratio of the binary</li>
+<li><strong>ns_g_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – NS gravitational mass (in solar masses)</li>
+<li><strong>bh_spin_z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter for the spin projection
 along the orbital angular momentum</li>
 <li><strong>ns_sequence</strong> (<em>3D-array</em>) – <dl class="docutils">
 <dt>contains the sequence data in the form NS gravitational</dt>
@@ -1809,7 +1809,7 @@ along the orbital angular momentum</li>
 masses), NS compactness (dimensionless)</dd>
 </dl>
 </li>
-<li><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
+<li><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – an amount to be subtracted to the remnant mass upper limit
 predicted by the model (in solar masses)</li>
 </ul>
 </td>
@@ -1817,7 +1817,7 @@ predicted by the model (in solar masses)</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>remnant_mass_upper_limit</strong> – The remnant mass upper limit in solar masses</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1835,10 +1835,10 @@ NS-BH binary [(7) in Foucart PRD 86, 124007 (2012)]</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – orbital separation in units of the NS radius</li>
-<li><strong>kappa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH mass divided by the NS radius</li>
-<li><strong>chi_eff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
-<li><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – the binary mass ratio (BH mass / NS mass)</li>
+<li><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – orbital separation in units of the NS radius</li>
+<li><strong>kappa</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH mass divided by the NS radius</li>
+<li><strong>chi_eff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the BH dimensionless spin parameter</li>
+<li><strong>q</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – the binary mass ratio (BH mass / NS mass)</li>
 </ul>
 </td>
 </tr>
@@ -1846,7 +1846,7 @@ NS-BH binary [(7) in Foucart PRD 86, 124007 (2012)]</p>
 -3*q*(x**2-2*kappa*x+(chi_eff*kappa)**2)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -1869,7 +1869,7 @@ used by the ethinca calculation. Currently valid only for TaylorF2 metric</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -1963,11 +1963,11 @@ coordinates that describe the orbital phase. Accepted PN orders are:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array</em>) – Mass1 of input(s).</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array</em>) – Mass2 of input(s).</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array</em>) – Parallel spin component(s) of body 1.</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array</em>) – Parallel spin component(s) of body 2.</li>
-<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – This is an arbitrary scaling factor introduced to avoid the potential
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Mass1 of input(s).</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Mass2 of input(s).</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Parallel spin component(s) of body 1.</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Parallel spin component(s) of body 2.</li>
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – This is an arbitrary scaling factor introduced to avoid the potential
 for numerical overflow when calculating this. Generally the default
 value (70) is safe here. <strong>IMPORTANT, if you want to calculate the
 ethinca metric components later this MUST be set equal to f_low.</strong>
@@ -2008,13 +2008,13 @@ of points using the An^* lattice.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>maxv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Largest value in the 1st dimension to cover</li>
-<li><strong>minv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Smallest value in the 1st dimension to cover</li>
-<li><strong>maxv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Largest value in the 2nd dimension to cover</li>
-<li><strong>minv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Smallest value in the 2nd dimension to cover</li>
-<li><strong>maxv3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Largest value in the 3rd dimension to cover</li>
-<li><strong>minv3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Smallest value in the 3rd dimension to cover</li>
-<li><strong>mindist</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Maximum allowed mismatch between a point in the parameter space and the
+<li><strong>maxv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Largest value in the 1st dimension to cover</li>
+<li><strong>minv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Smallest value in the 1st dimension to cover</li>
+<li><strong>maxv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Largest value in the 2nd dimension to cover</li>
+<li><strong>minv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Smallest value in the 2nd dimension to cover</li>
+<li><strong>maxv3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Largest value in the 3rd dimension to cover</li>
+<li><strong>minv3</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Smallest value in the 3rd dimension to cover</li>
+<li><strong>mindist</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum allowed mismatch between a point in the parameter space and the
 generated bank of points.</li>
 </ul>
 </td>
@@ -2041,11 +2041,11 @@ lattice.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>maxv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Largest value in the 1st dimension to cover</li>
-<li><strong>minv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Smallest value in the 1st dimension to cover</li>
-<li><strong>maxv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Largest value in the 2nd dimension to cover</li>
-<li><strong>minv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Smallest value in the 2nd dimension to cover</li>
-<li><strong>mindist</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Maximum allowed mismatch between a point in the parameter space and the
+<li><strong>maxv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Largest value in the 1st dimension to cover</li>
+<li><strong>minv1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Smallest value in the 1st dimension to cover</li>
+<li><strong>maxv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Largest value in the 2nd dimension to cover</li>
+<li><strong>minv2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Smallest value in the 2nd dimension to cover</li>
+<li><strong>mindist</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum allowed mismatch between a point in the parameter space and the
 generated bank of points.</li>
 </ul>
 </td>
@@ -2067,7 +2067,7 @@ generated bank of points.</li>
 <dl class="class">
 <dt id="pycbc.tmpltbank.option_utils.IndentedHelpFormatterWithNL">
 <em class="property">class </em><code class="descclassname">pycbc.tmpltbank.option_utils.</code><code class="descname">IndentedHelpFormatterWithNL</code><span class="sig-paren">(</span><em>prog</em>, <em>indent_increment=2</em>, <em>max_help_position=24</em>, <em>width=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/tmpltbank/option_utils.html#IndentedHelpFormatterWithNL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.tmpltbank.option_utils.IndentedHelpFormatterWithNL" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentDefaultsHelpFormatter" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentDefaultsHelpFormatter</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentDefaultsHelpFormatter" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentDefaultsHelpFormatter</span></code></a></p>
 <p>This class taken from
 <a class="reference external" href="https://groups.google.com/forum/#!topic/comp.lang.python/bfbmtUGhW8I">https://groups.google.com/forum/#!topic/comp.lang.python/bfbmtUGhW8I</a>
 and is used to format the argparse help messages to deal with line breaking
@@ -2110,7 +2110,7 @@ previously set.</p>
 <dl class="class">
 <dt id="pycbc.tmpltbank.option_utils.ethincaParameters">
 <em class="property">class </em><code class="descclassname">pycbc.tmpltbank.option_utils.</code><code class="descname">ethincaParameters</code><span class="sig-paren">(</span><em>pnOrder</em>, <em>cutoff</em>, <em>freqStep</em>, <em>fLow=None</em>, <em>full_ethinca=False</em>, <em>time_ethinca=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/tmpltbank/option_utils.html#ethincaParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.tmpltbank.option_utils.ethincaParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class holds all of the options that are parsed in the function
 insert_ethinca_metric_options
 and all products produced using these options. It can also be initialized
@@ -2151,7 +2151,7 @@ ArgumentParser instance.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -2168,7 +2168,7 @@ want to use these options in your code.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</li>
 <li><strong>nonSpin</strong> (<em>boolean</em><em>, </em><em>optional</em><em> (</em><em>default=False</em><em>)</em>) – If this is provided the spin-related options will not be added.</li>
 </ul>
 </td>
@@ -2188,7 +2188,7 @@ options in your code.</p>
 <dl class="class">
 <dt id="pycbc.tmpltbank.option_utils.massRangeParameters">
 <em class="property">class </em><code class="descclassname">pycbc.tmpltbank.option_utils.</code><code class="descname">massRangeParameters</code><span class="sig-paren">(</span><em>minMass1</em>, <em>maxMass1</em>, <em>minMass2</em>, <em>maxMass2</em>, <em>maxNSSpinMag=0</em>, <em>maxBHSpinMag=0</em>, <em>maxTotMass=None</em>, <em>minTotMass=None</em>, <em>maxEta=None</em>, <em>minEta=0</em>, <em>max_chirp_mass=None</em>, <em>min_chirp_mass=None</em>, <em>ns_bh_boundary_mass=None</em>, <em>nsbhFlag=False</em>, <em>remnant_mass_threshold=None</em>, <em>ns_eos=None</em>, <em>use_eos_max_ns_mass=False</em>, <em>delta_bh_spin=None</em>, <em>delta_ns_mass=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/tmpltbank/option_utils.html#massRangeParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.tmpltbank.option_utils.massRangeParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class holds all of the options that are parsed in the function
 insert_mass_range_option_group
 and all products produced using these options. It can also be initialized
@@ -2237,7 +2237,7 @@ range of parameters allowed by the massParams object.</p>
 <dl class="class">
 <dt id="pycbc.tmpltbank.option_utils.metricParameters">
 <em class="property">class </em><code class="descclassname">pycbc.tmpltbank.option_utils.</code><code class="descname">metricParameters</code><span class="sig-paren">(</span><em>pnOrder</em>, <em>fLow</em>, <em>fUpper</em>, <em>deltaF</em>, <em>f0=70</em>, <em>write_metric=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/tmpltbank/option_utils.html#metricParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.tmpltbank.option_utils.metricParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class holds all of the options that are parsed in the function
 insert_metric_calculation_options
 and all products produced using these options. It can also be initialized
@@ -2364,7 +2364,7 @@ calculation.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<em>argparse.Values instance</em>) – Result of parsing the input options with OptionParser</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – The OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -2383,7 +2383,7 @@ correct.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<em>argparse.Values instance</em>) – Result of parsing the input options with OptionParser</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – The OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The OptionParser instance.</li>
 <li><strong>nonSpin</strong> (<em>boolean</em><em>, </em><em>optional</em><em> (</em><em>default=False</em><em>)</em>) – If this is provided the spin-related options will not be checked.</li>
 </ul>
 </td>
@@ -2403,7 +2403,7 @@ correct.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>opts</strong> (<em>argparse.Values instance</em>) – Result of parsing the input options with OptionParser</li>
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – The OptionParser instance.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – The OptionParser instance.</li>
 </ul>
 </td>
 </tr>
@@ -2417,7 +2417,7 @@ correct.</p>
 <dl class="class">
 <dt id="pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank">
 <em class="property">class </em><code class="descclassname">pycbc.tmpltbank.partitioned_bank.</code><code class="descname">PartitionedTmpltbank</code><span class="sig-paren">(</span><em>mass_range_params</em>, <em>metric_params</em>, <em>ref_freq</em>, <em>bin_spacing</em>, <em>bin_range_check=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/tmpltbank/partitioned_bank.html#PartitionedTmpltbank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.tmpltbank.partitioned_bank.PartitionedTmpltbank" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class is used to hold a template bank partitioned into numerous bins
 based on position in the Cartesian parameter space where the axes are the
 principal components. It can also be used to hold intermediary
@@ -2437,10 +2437,10 @@ add_point_by_masses, which will do translations and then call this.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>chi_coords</strong> (<em>numpy.array</em>) – The position of the point in the chi coordinates.</li>
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The heavier mass of the point to add.</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The lighter mass of the point to add.</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The [aligned] spin on the heavier body.</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The [aligned] spin on the lighter body.
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The heavier mass of the point to add.</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The lighter mass of the point to add.</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The [aligned] spin on the heavier body.</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The [aligned] spin on the lighter body.
 The upper frequency cutoff to use for this point. This value must
 be one of the ones already calculated in the metric.</li>
 <li><strong>mus</strong> (<em>numpy.array</em>) – A 2D array where idx 0 holds the upper frequency cutoff and idx 1
@@ -2469,10 +2469,10 @@ not do for speed concerns.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the heavier body</li>
-<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Mass of the lighter body</li>
-<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of the heavier body</li>
-<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Spin of the lighter body</li>
+<li><strong>mass1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the heavier body</li>
+<li><strong>mass2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of the lighter body</li>
+<li><strong>spin1z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of the heavier body</li>
+<li><strong>spin2z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Spin of the lighter body</li>
 </ul>
 </td>
 </tr>
@@ -2556,7 +2556,7 @@ change a lot.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chi_coords</strong> (<em>numpy.array</em>) – The position of the point in the chi coordinates.</li>
-<li><strong>point_fupper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency cutoff to use for this point. This value must
+<li><strong>point_fupper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency cutoff to use for this point. This value must
 be one of the ones already calculated in the metric.</li>
 <li><strong>mus</strong> (<em>numpy.array</em>) – A 2D array where idx 0 holds the upper frequency cutoff and idx 1
 holds the coordinates in the [not covaried] mu parameter space for
@@ -2587,8 +2587,8 @@ all bins within +/- self.bin_range_check and add if not present.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>chi1_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The index of the chi1_bin to check</li>
-<li><strong>chi2_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The index of the chi2_bin to check</li>
+<li><strong>chi1_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index of the chi1_bin to check</li>
+<li><strong>chi2_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index of the chi2_bin to check</li>
 </ul>
 </td>
 </tr>
@@ -2651,9 +2651,9 @@ of the point at that index. Will fail if no point exists there.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>chi1_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The bin number for chi1.</li>
-<li><strong>chi2_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The bin number for chi2.</li>
-<li><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The index within the chi1, chi2 bin.</li>
+<li><strong>chi1_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The bin number for chi1.</li>
+<li><strong>chi2_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The bin number for chi2.</li>
+<li><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index within the chi1, chi2 bin.</li>
 </ul>
 </td>
 </tr>
@@ -2702,7 +2702,7 @@ than the supplied distance theshold.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chi_coords</strong> (<em>numpy.array</em>) – The position of the point in the chi coordinates.</li>
-<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The <strong>SQUARE ROOT</strong> of the metric distance to test as threshold.
+<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The <strong>SQUARE ROOT</strong> of the metric distance to test as threshold.
 E.g. if you want to test to a minimal match of 0.97 you would
 use 1 - 0.97 = 0.03 for this value.</li>
 </ul>
@@ -2732,12 +2732,12 @@ change a lot.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chi_coords</strong> (<em>numpy.array</em>) – The position of the point in the chi coordinates.</li>
-<li><strong>point_fupper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency cutoff to use for this point. This value must
+<li><strong>point_fupper</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency cutoff to use for this point. This value must
 be one of the ones already calculated in the metric.</li>
 <li><strong>mus</strong> (<em>numpy.array</em>) – A 2D array where idx 0 holds the upper frequency cutoff and idx 1
 holds the coordinates in the [not covaried] mu parameter space for
 each value of the upper frequency cutoff.</li>
-<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The <strong>SQUARE ROOT</strong> of the metric distance to test as threshold.
+<li><strong>distance_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The <strong>SQUARE ROOT</strong> of the metric distance to test as threshold.
 E.g. if you want to test to a minimal match of 0.97 you would
 use 1 - 0.97 = 0.03 for this value.</li>
 </ul>
@@ -2782,7 +2782,7 @@ use 1 - 0.97 = 0.03 for this value.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -2804,7 +2804,7 @@ use 1 - 0.97 = 0.03 for this value.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

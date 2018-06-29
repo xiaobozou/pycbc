@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -257,17 +257,17 @@ have burned in.</p>
 <dl class="class">
 <dt id="pycbc.inference.burn_in.BurnIn">
 <em class="property">class </em><code class="descclassname">pycbc.inference.burn_in.</code><code class="descname">BurnIn</code><span class="sig-paren">(</span><em>function_names</em>, <em>min_iterations=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/burn_in.html#BurnIn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.burn_in.BurnIn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to estimate the number of burn in iterations.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>function_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – List of name of burn in functions to use. All names in the provided
+<li><strong>function_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of name of burn in functions to use. All names in the provided
 list muset be in the <cite>burn_in_functions</cite> dict. If none provided, will
 use no burn-in functions.</li>
-<li><strong>min_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Minimum number of burn in iterations to use. The burn in iterations
+<li><strong>min_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Minimum number of burn in iterations to use. The burn in iterations
 returned by evaluate will be the maximum of this value
 and the values returned by the burn in functions provided in
 <cite>function_names</cite>. Default is 0.</li>
@@ -396,7 +396,7 @@ parameter is &gt; <code class="docutils literal notranslate"><span class="pre">t
 <cite>inference.sampler</cite>, or the class itself.</li>
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – Open inference hdf file containing the samples to load for determing
 burn in.</li>
-<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thershold to use for the p-value. Default is 0.9.</li>
+<li><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The thershold to use for the p-value. Default is 0.9.</li>
 </ul>
 </td>
 </tr>
@@ -454,7 +454,7 @@ first iteration.</p>
 <cite>inference.sampler</cite>, or the class itself.</li>
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – Open inference hdf file containing the samples to load for determing
 burn in.</li>
-<li><strong>nacls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of ACLs to use for burn in. Default is 10.</li>
+<li><strong>nacls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of ACLs to use for burn in. Default is 10.</li>
 </ul>
 </td>
 </tr>
@@ -548,9 +548,9 @@ from two distributions.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>samples1</strong> (<em>numpy.array</em>) – Samples or probability density function (must also set <cite>pdf1=True</cite>).</li>
 <li><strong>samples2</strong> (<em>numpy.array</em>) – Samples or probability density function (must also set <cite>pdf2=True</cite>).</li>
-<li><strong>pdf1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Set to <cite>True</cite> if <cite>samples1</cite> is a probability density funtion already.</li>
-<li><strong>pdf2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Set to <cite>True</cite> if <cite>samples2</cite> is a probability density funtion already.</li>
-<li><strong>bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of bins to use when calculating probability density function
+<li><strong>pdf1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Set to <cite>True</cite> if <cite>samples1</cite> is a probability density funtion already.</li>
+<li><strong>pdf2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Set to <cite>True</cite> if <cite>samples2</cite> is a probability density funtion already.</li>
+<li><strong>bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of bins to use when calculating probability density function
 from a set of samples of the distribution.</li>
 <li><strong>hist_min</strong> (<em>numpy.float64</em>) – Minimum of the distributions’ values to use.</li>
 <li><strong>hist_max</strong> (<em>numpy.float64</em>) – Maximum of the distributions’ values to use.</li>
@@ -589,7 +589,7 @@ should go to 1.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chains</strong> (<em>iterable</em>) – An iterable of numpy.array instances that contain the samples
 for each chain. Each chain has shape (nparameters, niterations).</li>
-<li><strong>auto_burn_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If True, then only use later half of samples provided.</li>
+<li><strong>auto_burn_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, then only use later half of samples provided.</li>
 </ul>
 </td>
 </tr>
@@ -617,9 +617,9 @@ statistic for each step.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chains</strong> (<em>iterable</em>) – An iterable of numpy.array instances that contain the samples
 for each chain. Each chain has shape (nparameters, niterations).</li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Start index of blocks to calculate all statistics.</li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Last index of blocks to calculate statistics.</li>
-<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Step size to take for next block.</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Start index of blocks to calculate all statistics.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Last index of blocks to calculate statistics.</li>
+<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Step size to take for next block.</li>
 </ul>
 </td>
 </tr>
@@ -652,13 +652,13 @@ statistic for each step.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>x</strong> (<em>numpy.array</em>) – A one-dimensional array of data.</li>
-<li><strong>seg_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of samples to use for each Geweke calculation.</li>
-<li><strong>seg_stride</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of samples to advance before next Geweke calculation.</li>
-<li><strong>end_idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of last start.</li>
-<li><strong>ref_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of beginning of end reference segment.</li>
-<li><strong>ref_end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of end of end reference segment. Default is None which
+<li><strong>seg_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of samples to use for each Geweke calculation.</li>
+<li><strong>seg_stride</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of samples to advance before next Geweke calculation.</li>
+<li><strong>end_idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of last start.</li>
+<li><strong>ref_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of beginning of end reference segment.</li>
+<li><strong>ref_end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of end of end reference segment. Default is None which
 will go to the end of the data array.</li>
-<li><strong>seg_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – What index to start computing the statistic. Default is 0 which
+<li><strong>seg_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – What index to start computing the statistic. Default is 0 which
 will go to the beginning of the data array.</li>
 </ul>
 </td>
@@ -683,7 +683,7 @@ for parameter estimation.</p>
 <dl class="class">
 <dt id="pycbc.inference.likelihood.BaseLikelihoodEvaluator">
 <em class="property">class </em><code class="descclassname">pycbc.inference.likelihood.</code><code class="descname">BaseLikelihoodEvaluator</code><span class="sig-paren">(</span><em>variable_args</em>, <em>waveform_generator=None</em>, <em>data=None</em>, <em>prior=None</em>, <em>sampling_parameters=None</em>, <em>replace_parameters=None</em>, <em>sampling_transforms=None</em>, <em>waveform_transforms=None</em>, <em>return_meta=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/likelihood.html#BaseLikelihoodEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base container class for generating waveforms, storing the data, and
 computing posteriors.</p>
 <p>The nomenclature used by this class and those that inherit from it is as
@@ -732,18 +732,18 @@ with the <code class="docutils literal notranslate"><span class="pre">set_callfu
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>variable_args</strong> (<em>(</em><em>tuple of</em><em>) </em><em>string</em><em>(</em><em>s</em><em>)</em>) – A tuple of parameter names that will be varied.</li>
 <li><strong>waveform_generator</strong> (<em>generator class</em><em>, </em><em>optional</em>) – A generator class that creates waveforms.</li>
-<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – A dictionary of data, in which the keys are the detector names and the
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – A dictionary of data, in which the keys are the detector names and the
 values are the data.</li>
 <li><strong>prior</strong> (<em>callable</em><em>, </em><em>optional</em>) – A callable class or function that computes the log of the prior. If
 None provided, will use <code class="docutils literal notranslate"><span class="pre">_noprior</span></code>, which returns 0 for all parameter
 values.</li>
-<li><strong>sampling_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – Replace one or more of the variable args with the given parameters
+<li><strong>sampling_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Replace one or more of the variable args with the given parameters
 for sampling.</li>
-<li><strong>replace_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – The variable args to replace with sampling parameters. Must be the
+<li><strong>replace_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – The variable args to replace with sampling parameters. Must be the
 same length as <code class="docutils literal notranslate"><span class="pre">sampling_parameters</span></code>.</li>
-<li><strong>sampling_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go between the variable args and the
+<li><strong>sampling_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go between the variable args and the
 sampling parameters. Required if <code class="docutils literal notranslate"><span class="pre">sampling_parameters</span></code> is not None.</li>
-<li><strong>waveform_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go from the variable args to parameters
+<li><strong>waveform_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go from the variable args to parameters
 understood by the waveform generator.</li>
 </ul>
 </td>
@@ -843,8 +843,8 @@ call function is set to.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to apply the transforms to.</li>
-<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to apply the inverse transforms (i.e., go from the sampling
+<li><strong>samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em> or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to apply the transforms to.</li>
+<li><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to apply the inverse transforms (i.e., go from the sampling
 args to the variable args). Default is False.</li>
 </ul>
 </td>
@@ -852,7 +852,7 @@ args to the variable args). Default is False.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The transformed samples, along with the original samples.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a> or <a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray">FieldArray</a></p>
 </td>
 </tr>
 </tbody>
@@ -874,9 +874,9 @@ args to the variable args). Default is False.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of values. These are assumed to be in the same order as
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of values. These are assumed to be in the same order as
 variable args.</li>
-<li><strong>callfunc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the function to call. If None, will use
+<li><strong>callfunc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the function to call. If None, will use
 <code class="docutils literal notranslate"><span class="pre">self._callfunc</span></code>. Default is None.</li>
 </ul>
 </td>
@@ -886,7 +886,7 @@ variable args.</li>
 and the meta data.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></p>
 </td>
 </tr>
 </tbody>
@@ -920,7 +920,7 @@ args and all of the sampling args.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the jacobian.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -984,7 +984,7 @@ being returned.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Number of random values to return for each parameter. Default is 1.</li>
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Number of random values to return for each parameter. Default is 1.</li>
 <li><strong>prior</strong> (<a class="reference internal" href="pycbc.distributions.html#pycbc.distributions.joint.JointDistribution" title="pycbc.distributions.joint.JointDistribution"><em>JointDistribution</em></a><em>, </em><em>optional</em>) – Use the given prior to draw values rather than the saved prior.</li>
 </ul>
 </td>
@@ -1024,7 +1024,7 @@ being returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>funcname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the function to use; must be the name of an instance
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>funcname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the function to use; must be the name of an instance
 method.</td>
 </tr>
 </tbody>
@@ -1242,11 +1242,11 @@ function which takes parameter values as keyword arguments, a
 detectors attribute which is a dictionary of detectors keyed by their
 names, and an epoch which specifies the start time of the generated
 waveform.</li>
-<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dictionary of data, in which the keys are the detector names and the
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of data, in which the keys are the detector names and the
 values are the data (assumed to be unwhitened). The list of keys must
 match the waveform generator’s detectors keys, and the epoch of every
 data set must be the same as the waveform generator’s epoch.</li>
-<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The starting frequency to use for computing inner products.</li>
+<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency to use for computing inner products.</li>
 <li><strong>psds</strong> (<em>{None</em><em>, </em><em>dict}</em>) – A dictionary of FrequencySeries keyed by the detector names. The
 dictionary must have a psd for each detector specified in the data
 dictionary. If provided, the inner products in each detector will be
@@ -1254,7 +1254,7 @@ weighted by 1/psd of that detector.</li>
 <li><strong>f_upper</strong> (<em>{None</em><em>, </em><em>float}</em>) – The ending frequency to use for computing inner products. If not
 provided, the minimum of the largest frequency stored in the data
 and a given waveform will be used.</li>
-<li><strong>norm</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array}</em>) – An extra normalization weight to apply to the inner products. Can be
+<li><strong>norm</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array}</em>) – An extra normalization weight to apply to the inner products. Can be
 either a float or an array. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">4*data.values()[0].delta_f</span></code>
 will be used.</li>
 <li><strong>**kwargs</strong> – All other keyword arguments are passed to <code class="docutils literal notranslate"><span class="pre">BaseLikelihoodEvaluator</span></code>.</li>
@@ -1336,7 +1336,7 @@ evaluate.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the log likelihood evaluated at the given point.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
 </tr>
 </tbody>
 </table>
@@ -1482,7 +1482,7 @@ evaluate.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1500,8 +1500,8 @@ tables.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</li>
-<li><strong>include_parameters_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If true then include <cite>–parameters-group</cite> option.</li>
+<li><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser instance.</li>
+<li><strong>include_parameters_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If true then include <cite>–parameters-group</cite> option.</li>
 </ul>
 </td>
 </tr>
@@ -1523,7 +1523,7 @@ tables.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1537,7 +1537,7 @@ tables.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1551,7 +1551,7 @@ tables.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1595,7 +1595,7 @@ option group.</p>
 were specified in the –expected-parameters option will be included; if
 no parameters were provided, will return an empty dictionary.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1609,7 +1609,7 @@ no parameters were provided, will return an empty dictionary.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of file.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>file_type</strong> – The type of inference file object to use.</td>
 </tr>
@@ -1630,7 +1630,7 @@ no parameters were provided, will return an empty dictionary.</td>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – An open inference file; needed to get the value of the log noise
 likelihood.</li>
-<li><strong>arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The argument to plot; must be one of <cite>loglr</cite>, <cite>snr</cite>, <cite>logplr</cite>,
+<li><strong>arg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The argument to plot; must be one of <cite>loglr</cite>, <cite>snr</cite>, <cite>logplr</cite>,
 <cite>logposterior</cite>, or <cite>prior</cite>. If not one of these, a ValueError is
 raised.</li>
 <li><strong>likelihood_stats</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The likelihood stats; the sort of thing returned by
@@ -1678,7 +1678,7 @@ by <code class="docutils literal notranslate"><span class="pre">opts.input_file<
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary of instruments -&gt; low frequency cutoff.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1692,7 +1692,7 @@ by <code class="docutils literal notranslate"><span class="pre">opts.input_file<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameters</strong> (<em>list of str</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – The parameters to parse.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parameters</strong> (<em>list of str</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – The parameters to parse.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><strong>parameters</strong> (<em>list of str</em>) – The parameters.</li>
@@ -1756,8 +1756,8 @@ details.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config parser to read from.</li>
-<li><strong>section_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Append <cite>{section_group}_</cite> to the section name. Default is None.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the section. Default is ‘sampling_parameters’.</li>
+<li><strong>section_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Append <cite>{section_group}_</cite> to the section name. Default is None.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the section. Default is ‘sampling_parameters’.</li>
 </ul>
 </td>
 </tr>
@@ -1817,7 +1817,7 @@ If more than one input file, then it returns a list.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – ArgumentParser options.</li>
+<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – ArgumentParser options.</li>
 <li><strong>likelihood_evaluator</strong> (<em>LikelihoodEvaluator</em>) – The likelihood evaluator to use with the sampler.</li>
 </ul>
 </td>
@@ -1865,7 +1865,7 @@ backup files are either both valid or both invalid.</p>
 samples.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
 </td>
 </tr>
 </tbody>
@@ -1944,10 +1944,10 @@ the number of burn-in iterations in the file; otherwise, will start
 at the first sample.</li>
 <li><strong>end_index</strong> (<em>{None</em><em>, </em><em>int}</em>) – The end index to compute the acl to. If None, will go to the end
 of the current iteration.</li>
-<li><strong>per_walker</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Return the ACF for each walker separately. Default is False.</li>
-<li><strong>walkers</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>array</em>) – Calculate the ACF using only the given walkers. If None (the
+<li><strong>per_walker</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Return the ACF for each walker separately. Default is False.</li>
+<li><strong>walkers</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em>) – Calculate the ACF using only the given walkers. If None (the
 default) all walkers will be used.</li>
-<li><strong>parameters</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>array</em>) – Calculate the ACF for only the given parameters. If None (the
+<li><strong>parameters</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> or </em><em>array</em>) – Calculate the ACF for only the given parameters. If None (the
 default) will calculate the ACF for all of the variable args.</li>
 </ul>
 </td>
@@ -1989,7 +1989,7 @@ of the current iteration.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary giving the ACL for each parameter.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -2020,7 +2020,7 @@ burn-in. If the sampler hasn’t burned in yet, then 0 is returned.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The number of independent samples.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></td>
 </tr>
 </tbody>
 </table>
@@ -2151,7 +2151,7 @@ attribute.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – An open file handler to write the samples to.</li>
-<li><strong>acls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dictionary of ACLs keyed by the parameter.</li>
+<li><strong>acls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of ACLs keyed by the parameter.</li>
 </ul>
 </td>
 </tr>
@@ -2181,14 +2181,14 @@ multitempered, <cite>{k}</cite> is the temperature.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
-<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of samples group to write.</li>
+<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of samples group to write.</li>
 </ul>
 </td>
 </tr>
@@ -2213,10 +2213,10 @@ multitempered, <cite>{k}</cite> is the temperature.  If nothing is returned by
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
@@ -2265,10 +2265,10 @@ of the chains. See the various write function for details.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the acceptance fraction has not previously been
 written to the file. The default (None) is to use the maximum size
 allowed by h5py.</li>
@@ -2295,14 +2295,14 @@ written as an <code class="docutils literal notranslate"><span class="pre">nwalk
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of samples group to write.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The parameters to write to the file.</li>
+<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of samples group to write.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The parameters to write to the file.</li>
 <li><strong>samples</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to write. Should be a FieldArray with fields containing
 the samples to write and shape nwalkers x niterations.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
@@ -2333,7 +2333,7 @@ package’s EnsembleSampler.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>likelihood_evaluator</strong> (<em>likelihood class</em>) – An instance of the likelihood class from the
 pycbc.inference.likelihood module.</li>
-<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
+<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
 <li><strong>pool</strong> (<em>function with map</em><em>, </em><em>Optional</em>) – A provider of a map function that allows a function call to be run
 over multiple sets of arguments and possibly maps them to
 cores/nodes/etc.</li>
@@ -2399,7 +2399,7 @@ nwalkers x niterations array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of samples to get from sampler.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of samples to get from sampler.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><strong>p</strong> (<em>numpy.array</em>) – An array of current walker positions with shape (nwalkers, ndim).</li>
@@ -2457,10 +2457,10 @@ details.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
@@ -2493,8 +2493,8 @@ the emcee package’s PTSampler.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>likelihood_evaluator</strong> (<em>likelihood class</em>) – An instance of the likelihood class from the
 pycbc.inference.likelihood module.</li>
-<li><strong>ntemps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of temeratures to use in the sampler.</li>
-<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
+<li><strong>ntemps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of temeratures to use in the sampler.</li>
+<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
 <li><strong>pool</strong> (<em>function with map</em><em>, </em><em>Optional</em>) – A provider of a map function that allows a function call to be run
 over multiple sets of arguments and possibly maps them to
 cores/nodes/etc.</li>
@@ -2514,13 +2514,13 @@ thermodynamic integration.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – An open file handler to read the stats from.</li>
-<li><strong>thin_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of the sample to begin returning stats. Default is to read
+<li><strong>thin_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of the sample to begin returning stats. Default is to read
 stats after burn in. To start from the beginning set thin_start
 to 0.</li>
-<li><strong>thin_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Interval to accept every i-th sample. Default is to use the
+<li><strong>thin_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Interval to accept every i-th sample. Default is to use the
 <cite>fp.acl</cite>. If <cite>fp.acl</cite> is not set, then use all stats
 (set thin_interval to 1).</li>
-<li><strong>thin_end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index of the last sample to read. If not given then
+<li><strong>thin_end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index of the last sample to read. If not given then
 <cite>fp.niterations</cite> is used.</li>
 </ul>
 </td>
@@ -2569,12 +2569,12 @@ the number of burn-in iterations in the file; otherwise, will start
 at the first sample.</li>
 <li><strong>end_index</strong> (<em>{None</em><em>, </em><em>int}</em>) – The end index to compute the acl to. If None, will go to the end
 of the current iteration.</li>
-<li><strong>per_walker</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Return the ACF for each walker separately. Default is False.</li>
-<li><strong>walkers</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>array</em>) – Calculate the ACF using only the given walkers. If None (the
+<li><strong>per_walker</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Return the ACF for each walker separately. Default is False.</li>
+<li><strong>walkers</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em>) – Calculate the ACF using only the given walkers. If None (the
 default) all walkers will be used.</li>
-<li><strong>parameters</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>array</em>) – Calculate the ACF for only the given parameters. If None (the
+<li><strong>parameters</strong> (<em>optional</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> or </em><em>array</em>) – Calculate the ACF for only the given parameters. If None (the
 default) will calculate the ACF for all of the variable args.</li>
-<li><strong>temps</strong> (<em>optional</em><em>, </em><em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>'all'</em>) – The temperature index (or list of indices) to retrieve. If None
+<li><strong>temps</strong> (<em>optional</em><em>, </em><em>(</em><em>list of</em><em>) </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>'all'</em>) – The temperature index (or list of indices) to retrieve. If None
 (the default), the ACF will only be computed for the coldest (= 0)
 temperature chain. To compute an ACF for all temperates pass ‘all’,
 or a list of all of the temperatures.</li>
@@ -2620,7 +2620,7 @@ of the current iteration.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary of ntemps-long arrays of the ACLs of each parameter.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -2717,7 +2717,7 @@ requested walkers).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of samples to get from sampler.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of samples to get from sampler.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><strong>p</strong> (<em>numpy.array</em>) – An array of current walker positions with shape (nwalkers, ndim).</li>
@@ -2807,10 +2807,10 @@ details.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
@@ -2837,14 +2837,14 @@ written as an <code class="docutils literal notranslate"><span class="pre">ntemp
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – A file handler to an open inference file.</li>
-<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of samples group to write.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The parameters to write to the file.</li>
+<li><strong>samples_group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of samples group to write.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The parameters to write to the file.</li>
 <li><strong>samples</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to write. Should be a FieldArray with fields containing
 the samples to write and shape nwalkers x niterations.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
+<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
 iteration. Default is to append after the last iteration in the
 file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
 to. Only applies if the samples have not previously been written
 to file. The default (None) is to use the maximum size allowed by
 h5py.</li>
@@ -2875,8 +2875,8 @@ package.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>likelihood_evaluator</strong> (<em>likelihood class</em>) – An instance of the likelihood class from the
 pycbc.inference.likelihood module.</li>
-<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
-<li><strong>transd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If True, the sampler will operate across parameter spaces using a
+<li><strong>nwalkers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of walkers to use in sampler.</li>
+<li><strong>transd</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, the sampler will operate across parameter spaces using a
 kombine.clustered_kde.TransdimensionalKDE proposal distribution. In
 this mode a masked array with samples in each of the possible sets of
 dimensions must be given for the initial ensemble distribution.</li>
@@ -2977,7 +2977,7 @@ nwalkers x niterations array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of samples to get from sampler.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>niterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of samples to get from sampler.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
 <li><strong>p</strong> (<em>numpy.array</em>) – An array of current walker positions with shape (nwalkers, ndim).</li>
@@ -3167,7 +3167,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -3189,7 +3189,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

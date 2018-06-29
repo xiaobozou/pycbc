@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.filter package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -272,8 +272,8 @@ the variance of <span class="math notranslate nohighlight">\(X_{t}\)</span>.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a><em> or </em><em>numpy.array</em>) – A TimeSeries or numpy.array of data.</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time step of the data series if it is not a TimeSeries instance.</li>
-<li><strong>unbiased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If True the normalization of the autocovariance function is n-k
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time step of the data series if it is not a TimeSeries instance.</li>
+<li><strong>unbiased</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True the normalization of the autocovariance function is n-k
 instead of n. This is called the unbiased estimation of the
 autocovariance. Note that this does not mean the ACF is unbiased.</li>
 </ul>
@@ -315,9 +315,9 @@ case <code class="docutils literal notranslate"><span class="pre">inf</span></co
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>data</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a><em> or </em><em>array</em>) – A TimeSeries of data.</li>
-<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of autocorrelation lengths to use for determining the window
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of autocorrelation lengths to use for determining the window
 size <span class="math notranslate nohighlight">\(K\)</span> (see above).</li>
-<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The datatype of the output. If the dtype was set to int, then the
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The datatype of the output. If the dtype was set to int, then the
 ceiling is returned.</li>
 </ul>
 </td>
@@ -326,7 +326,7 @@ ceiling is returned.</li>
 <code class="docutils literal notranslate"><span class="pre">numpy.inf</span></code>.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a> or <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -427,7 +427,7 @@ and is then used to normalize matched-filters with the data.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>sigmasq</strong></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -453,7 +453,7 @@ and is then used to normalize matched-filters with the data.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>sigmasq</strong></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -470,10 +470,10 @@ calculation.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>flow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) of the lower index.</li>
-<li><strong>fhigh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency (in Hz) of the upper index.</li>
-<li><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency step (in Hz) of the frequency series.</li>
-<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of points in the <strong>time</strong> series. Can be odd
+<li><strong>flow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency (in Hz) of the lower index.</li>
+<li><strong>fhigh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency (in Hz) of the upper index.</li>
+<li><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency step (in Hz) of the frequency series.</li>
+<li><strong>N</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of points in the <strong>time</strong> series. Can be odd
 or even.</li>
 </ul>
 </td>
@@ -561,7 +561,7 @@ frequency series.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>overlap</strong></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -589,7 +589,7 @@ frequency series.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>overlap</strong></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)">complex</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)">complex</a></p>
 </td>
 </tr>
 </tbody>
@@ -643,7 +643,7 @@ caller. No zero’ing is done internally.</li>
 <dl class="class">
 <dt id="pycbc.filter.matchedfilter.MatchedFilterControl">
 <em class="property">class </em><code class="descclassname">pycbc.filter.matchedfilter.</code><code class="descname">MatchedFilterControl</code><span class="sig-paren">(</span><em>low_frequency_cutoff</em>, <em>high_frequency_cutoff</em>, <em>snr_threshold</em>, <em>tlen</em>, <em>delta_f</em>, <em>dtype</em>, <em>segment_list</em>, <em>template_output</em>, <em>use_cluster</em>, <em>downsample_factor=1</em>, <em>upsample_threshold=1</em>, <em>upsample_method='pruned_fft'</em>, <em>gpu_callback_method='none'</em>, <em>cluster_function='symmetric'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter.html#MatchedFilterControl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter.MatchedFilterControl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.filter.matchedfilter.MatchedFilterControl.full_matched_filter_and_cluster_fc">
 <code class="descname">full_matched_filter_and_cluster_fc</code><span class="sig-paren">(</span><em>segnum</em>, <em>template_norm</em>, <em>window</em>, <em>epoch=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter.html#MatchedFilterControl.full_matched_filter_and_cluster_fc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter.MatchedFilterControl.full_matched_filter_and_cluster_fc" title="Permalink to this definition">¶</a></dt>
@@ -657,10 +657,10 @@ lists for these for points that are not above the threshold.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
+<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
 against which to filter.</li>
-<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The htilde, template normalization factor.</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
+<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The htilde, template normalization factor.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
 </ul>
 </td>
 </tr>
@@ -691,10 +691,10 @@ lists for these for points that are not above the threshold.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
+<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
 against which to filter.</li>
-<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The htilde, template normalization factor.</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
+<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The htilde, template normalization factor.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
 </ul>
 </td>
 </tr>
@@ -725,10 +725,10 @@ lists for these for points that are not above the threshold.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
+<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction
 against which to filter.</li>
-<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The htilde, template normalization factor.</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples.
+<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The htilde, template normalization factor.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples.
 This is IGNORED by this function, and provided only for API compatibility.</li>
 </ul>
 </td>
@@ -760,9 +760,9 @@ lists for these for points that are not above the threshold.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction</li>
-<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The htilde, template normalization factor.</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
+<li><strong>segnum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Index into the list of segments at MatchedFilterControl construction</li>
+<li><strong>template_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The htilde, template normalization factor.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Size of the window over which to cluster triggers, in samples</li>
 </ul>
 </td>
 </tr>
@@ -785,7 +785,7 @@ lists for these for points that are not above the threshold.</p>
 <dl class="class">
 <dt id="pycbc.filter.matchedfilter.LiveBatchMatchedFilter">
 <em class="property">class </em><code class="descclassname">pycbc.filter.matchedfilter.</code><code class="descname">LiveBatchMatchedFilter</code><span class="sig-paren">(</span><em>templates</em>, <em>snr_threshold</em>, <em>chisq_bins</em>, <em>maxelements=134217728</em>, <em>snr_abort_threshold=None</em>, <em>newsnr_threshold=None</em>, <em>max_triggers_in_batch=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter.html#LiveBatchMatchedFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter.LiveBatchMatchedFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Calculate SNR and signal consistency tests in a batched progression</p>
 <dl class="method">
 <dt id="pycbc.filter.matchedfilter.LiveBatchMatchedFilter.combine_results">
@@ -816,7 +816,7 @@ lists for these for points that are not above the threshold.</p>
 <dl class="class">
 <dt id="pycbc.filter.matchedfilter.MatchedFilterSkyMaxControl">
 <em class="property">class </em><code class="descclassname">pycbc.filter.matchedfilter.</code><code class="descname">MatchedFilterSkyMaxControl</code><span class="sig-paren">(</span><em>low_frequency_cutoff</em>, <em>high_frequency_cutoff</em>, <em>snr_threshold</em>, <em>tlen</em>, <em>delta_f</em>, <em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter.html#MatchedFilterSkyMaxControl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter.MatchedFilterSkyMaxControl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.filter.matchedfilter.MatchedFilterSkyMaxControl.full_matched_filter_and_cluster">
 <code class="descname">full_matched_filter_and_cluster</code><span class="sig-paren">(</span><em>hplus</em>, <em>hcross</em>, <em>hplus_norm</em>, <em>hcross_norm</em>, <em>psd</em>, <em>stilde</em>, <em>window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter.html#MatchedFilterSkyMaxControl.full_matched_filter_and_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter.MatchedFilterSkyMaxControl.full_matched_filter_and_cluster" title="Permalink to this definition">¶</a></dt>
@@ -829,7 +829,7 @@ lists for these for points that are not above the threshold.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>h_quantities</strong> (<em>Various</em>) – FILL ME IN</li>
 <li><strong>stilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain data to be filtered.</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The size of the cluster window in samples.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The size of the cluster window in samples.</li>
 </ul>
 </td>
 </tr>
@@ -874,16 +874,16 @@ It is recommended to normalize this before sending through this
 function</li>
 <li><strong>hcross</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – This is the IFFTed complex SNR time series of (hx, data). If not
 normalized, supply the normalization factor so this can be done!</li>
-<li><strong>hphccorr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The real component of the overlap between the two polarizations
+<li><strong>hphccorr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The real component of the overlap between the two polarizations
 Re[(h+, hx)]. Note that the imaginary component does not enter the
 detection statistic. This must be normalized and is sign-sensitive.</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Used for optimization. If we do not care about the value of SNR
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Used for optimization. If we do not care about the value of SNR
 values below thresh we can calculate a quick statistic that will
 always overestimate SNR and then only calculate the proper, more
 expensive, statistic at points where the quick SNR is above thresh.</li>
-<li><strong>hpsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor (h+, h+). Default = None (=1, already
+<li><strong>hpsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor (h+, h+). Default = None (=1, already
 normalized)</li>
-<li><strong>hcsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor (hx, hx). Default = None (=1, already
+<li><strong>hcsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor (hx, hx). Default = None (=1, already
 normalized)</li>
 <li><strong>out</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, use this array to store the output.</li>
 </ul>
@@ -914,16 +914,16 @@ It is recommended to normalize this before sending through this
 function</li>
 <li><strong>hcross</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – This is the IFFTed complex SNR time series of (hx, data). If not
 normalized, supply the normalization factor so this can be done!</li>
-<li><strong>hphccorr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The real component of the overlap between the two polarizations
+<li><strong>hphccorr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The real component of the overlap between the two polarizations
 Re[(h+, hx)]. Note that the imaginary component does not enter the
 detection statistic. This must be normalized and is sign-sensitive.</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Used for optimization. If we do not care about the value of SNR
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Used for optimization. If we do not care about the value of SNR
 values below thresh we can calculate a quick statistic that will
 always overestimate SNR and then only calculate the proper, more
 expensive, statistic at points where the quick SNR is above thresh.</li>
-<li><strong>hpsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor (h+, h+). Default = None (=1, already
+<li><strong>hpsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor (h+, h+). Default = None (=1, already
 normalized)</li>
-<li><strong>hcsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor (hx, hx). Default = None (=1, already
+<li><strong>hcsigmasq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor (hx, hx). Default = None (=1, already
 normalized)</li>
 <li><strong>out</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, use this array to store the output.</li>
 </ul>
@@ -957,7 +957,7 @@ affect a small fraction of the triggers and probably in a negligible way.</p>
 <li><strong>data_reader</strong> (<a class="reference internal" href="pycbc.strain.html#pycbc.strain.strain.StrainBuffer" title="pycbc.strain.strain.StrainBuffer"><em>StrainBuffer</em></a>) – The StrainBuffer object to read strain data from.</li>
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The frequency series containing the template waveform.</li>
 <li><strong>trig_time</strong> (<em>{float</em><em>, </em><em>lal.LIGOTimeGPS}</em>) – The trigger time.</li>
-<li><strong>duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>optional</em><em>)</em>) – Duration of the computed SNR series in seconds. If omitted, it defaults
+<li><strong>duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> (</em><em>optional</em><em>)</em>) – Duration of the computed SNR series in seconds. If omitted, it defaults
 to twice the Earth light travel time plus 10 ms of timing uncertainty.</li>
 <li><strong>check_state</strong> (<em>boolean</em>) – If True, and the detector was offline or flagged for bad data quality
 at any point during the inspiral, then return (None, None) instead.</li>
@@ -1171,7 +1171,7 @@ methods.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>time_series</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – The time series to be resampled</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The desired time step</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The desired time step</li>
 </ul>
 </td>
 </tr>
@@ -1206,7 +1206,7 @@ methods.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>Series</strong> (<em>Time</em>) – The time series to be high-passed.</li>
-<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency below which is suppressed.</li>
+<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency below which is suppressed.</li>
 <li><strong>filter_order</strong> (<em>{8</em><em>, </em><em>int}</em><em>, </em><em>optional</em>) – The order of the filter to use when high-passing the time series.</li>
 <li><strong>attenuation</strong> (<em>{0.1</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The attenuation of the filter.</li>
 </ul>
@@ -1240,7 +1240,7 @@ desired delta_f.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>series</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – Frequency series to be interpolated.</li>
-<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The desired delta_f of the output</li>
+<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The desired delta_f of the output</li>
 <li><strong>zeros_offset</strong> (<em>optional</em><em>, </em><em>{0</em><em>, </em><em>int}</em>) – Number of sample to delay the start of the zero padding</li>
 <li><strong>side</strong> (<em>optional</em><em>, </em><em>{'right'</em><em>, </em><em>str}</em>) – The side of the vector to zero pad</li>
 </ul>
@@ -1267,9 +1267,9 @@ the ideal response passed through a kaiser window (beta = 5.0)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>Series</strong> (<em>Time</em>) – The time series to be high-passed.</li>
-<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency below which is suppressed.</li>
-<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of corrupted samples on each side of the time series</li>
-<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
+<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency below which is suppressed.</li>
+<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of corrupted samples on each side of the time series</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
 </ul>
 </td>
 </tr>
@@ -1288,9 +1288,9 @@ the ideal response passed through a kaiser window (beta = 5.0)</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>Series</strong> (<em>Time</em>) – The time series to be low-passed.</li>
-<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The frequency below which is suppressed.</li>
-<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of corrupted samples on each side of the time series</li>
-<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
+<li><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency below which is suppressed.</li>
+<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of corrupted samples on each side of the time series</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
 </ul>
 </td>
 </tr>
@@ -1315,11 +1315,11 @@ order should be at least fs/df.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>Series</strong> (<em>Time</em>) – The time series to be notched.</li>
-<li><strong>f1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The start of the frequency suppression.</li>
-<li><strong>f2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The end of the frequency suppression.</li>
-<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of corrupted samples on each side of the time series
+<li><strong>f1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The start of the frequency suppression.</li>
+<li><strong>f2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The end of the frequency suppression.</li>
+<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of corrupted samples on each side of the time series
 (Extent of the filter on either side of zero)</li>
-<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Beta parameter of the kaiser window that sets the side lobe attenuation.</li>
 </ul>
 </td>
 </tr>
@@ -1394,7 +1394,7 @@ using scipy.</p>
 In units of Hz.</li>
 <li><strong>p</strong> (<em>array</em>) – Array of poles to include in zero-pole-gain filter design.
 In units of Hz.</li>
-<li><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Gain to include in zero-pole-gain filter design. This gain is a
+<li><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Gain to include in zero-pole-gain filter design. This gain is a
 constant multiplied to the transfer function.</li>
 </ul>
 </td>
@@ -1440,7 +1440,7 @@ to a TimeSeries instance, do:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -1462,7 +1462,7 @@ to a TimeSeries instance, do:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

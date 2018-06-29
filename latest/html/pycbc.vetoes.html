@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.vetoes package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.vetoes package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -255,7 +255,7 @@
 <dl class="class">
 <dt id="pycbc.vetoes.autochisq.SingleDetAutoChisq">
 <em class="property">class </em><code class="descclassname">pycbc.vetoes.autochisq.</code><code class="descname">SingleDetAutoChisq</code><span class="sig-paren">(</span><em>stride</em>, <em>num_points</em>, <em>onesided=None</em>, <em>twophase=False</em>, <em>reverse_template=False</em>, <em>take_maximum_value=False</em>, <em>maximal_value_dof=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/vetoes/autochisq.html#SingleDetAutoChisq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.vetoes.autochisq.SingleDetAutoChisq" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class that handles precomputation and memory management for efficiently
 running the auto chisq in a single detector inspiral analysis.</p>
 <dl class="method">
@@ -267,16 +267,16 @@ running the auto chisq in a single detector inspiral analysis.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)"><em>complex</em></a><em>]</em>) – SNR time series of the template for which auto-chisq is being
+<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><em>complex</em></a><em>]</em>) – SNR time series of the template for which auto-chisq is being
 computed. Provided unnormalized.</li>
-<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – List of points at which to calculate auto-chisq</li>
+<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – List of points at which to calculate auto-chisq</li>
 <li><strong>template</strong> (<em>Pycbc template object</em>) – The template for which we are calculating auto-chisq</li>
 <li><strong>psd</strong> (<em>Pycbc psd object</em>) – The PSD of the data being analysed</li>
-<li><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor to apply to sn</li>
+<li><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor to apply to sn</li>
 <li><strong>stilde</strong> (<em>Pycbc data object</em><em>, </em><em>needed if using reverse-template</em>) – The data being analysed. Only needed if using reverse-template,
 otherwise ignored</li>
-<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The lower frequency to consider in matched-filters</li>
-<li><strong>high_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency to consider in matched-filters</li>
+<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The lower frequency to consider in matched-filters</li>
+<li><strong>high_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency to consider in matched-filters</li>
 </ul>
 </td>
 </tr>
@@ -300,16 +300,16 @@ otherwise ignored</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)"><em>complex</em></a><em>]</em>) – SNR time series of the template for which auto-chisq is being
+<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><em>complex</em></a><em>]</em>) – SNR time series of the template for which auto-chisq is being
 computed. Provided unnormalized.</li>
-<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – List of points at which to calculate auto-chisq</li>
+<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – List of points at which to calculate auto-chisq</li>
 <li><strong>template</strong> (<em>Pycbc template object</em>) – The template for which we are calculating auto-chisq</li>
 <li><strong>psd</strong> (<em>Pycbc psd object</em>) – The PSD of the data being analysed</li>
-<li><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor to apply to sn</li>
+<li><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor to apply to sn</li>
 <li><strong>stilde</strong> (<em>Pycbc data object</em><em>, </em><em>needed if using reverse-template</em>) – The data being analysed. Only needed if using reverse-template,
 otherwise ignored</li>
-<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The lower frequency to consider in matched-filters</li>
-<li><strong>high_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The upper frequency to consider in matched-filters</li>
+<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The lower frequency to consider in matched-filters</li>
+<li><strong>high_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The upper frequency to consider in matched-filters</li>
 </ul>
 </td>
 </tr>
@@ -329,18 +329,18 @@ and compares with autocorrelation of the template: C(t) = IFFT(A*A/S(f))</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)"><em>complex</em></a><em>]</em>) – normalized (!) array of complex snr for the template that produced the
+<li><strong>sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><em>complex</em></a><em>]</em>) – normalized (!) array of complex snr for the template that produced the
 trigger(s) being tested</li>
-<li><strong>corr_sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)"><em>complex</em></a><em>]</em>) – normalized (!) array of complex snr for the template that you want to
+<li><strong>corr_sn</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><em>complex</em></a><em>]</em>) – normalized (!) array of complex snr for the template that you want to
 produce a correlation chisq test for. In the [common] case that sn and
 corr_sn are the same, you are computing auto-correlation chisq.</li>
-<li><strong>hautocorr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.6)"><em>complex</em></a><em>]</em>) – time domain autocorrelation for the template</li>
-<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – compute correlation chisquare at the points specified in this array,</li>
-<li><strong>num_points</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional; default=None</em><em>]</em>) – Number of points used for autochisq on each side, if None all points
+<li><strong>hautocorr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.7)"><em>complex</em></a><em>]</em>) – time domain autocorrelation for the template</li>
+<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>]</em>) – compute correlation chisquare at the points specified in this array,</li>
+<li><strong>num_points</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional; default=None</em><em>]</em>) – Number of points used for autochisq on each side, if None all points
 are used.</li>
-<li><strong>stride</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional; default = 1</em><em>]</em>) – stride for points selection for autochisq
+<li><strong>stride</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional; default = 1</em><em>]</em>) – stride for points selection for autochisq
 total length &lt;= 2*num_points*stride</li>
-<li><strong>oneside</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional; default=None</em><em>]</em>) – whether to use one or two sided autochisquare. If None (or not
+<li><strong>oneside</strong> (<em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional; default=None</em><em>]</em>) – whether to use one or two sided autochisquare. If None (or not
 provided) twosided chi-squared will be used. If given, options are
 ‘left’ or ‘right’, to do one-sided chi-squared on the left or right.</li>
 <li><strong>twophase</strong> (<em>Boolean</em><em>, </em><em>optional; default=True</em>) – If True calculate the auto-chisq using both phases of the filter.
@@ -354,7 +354,7 @@ If False, return the sum of auto-chisq at all points tested.</li>
 of time defined by indices</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a>]</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a>]</p>
 </td>
 </tr>
 </tbody>
@@ -367,7 +367,7 @@ of time defined by indices</p>
 <dl class="class">
 <dt id="pycbc.vetoes.bank_chisq.SingleDetBankVeto">
 <em class="property">class </em><code class="descclassname">pycbc.vetoes.bank_chisq.</code><code class="descname">SingleDetBankVeto</code><span class="sig-paren">(</span><em>bank_file</em>, <em>flen</em>, <em>delta_f</em>, <em>f_low</em>, <em>cdtype</em>, <em>approximant=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/vetoes/bank_chisq.html#SingleDetBankVeto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.vetoes.bank_chisq.SingleDetBankVeto" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class reads in a template bank file for a bank veto, handles the
 memory management of its filters internally, and calculates the bank
 veto TimeSeries.</p>
@@ -440,7 +440,7 @@ bank veto calculated over a segment.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>tmplt_snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – The SNR time series from filtering the segment against the current
 search template</li>
-<li><strong>tmplt_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor for the search template</li>
+<li><strong>tmplt_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor for the search template</li>
 <li><strong>bank_snrs</strong> (<em>list of TimeSeries</em>) – The precomputed list of SNR time series between each of the bank veto
 templates and the segment</li>
 <li><strong>bank_norms</strong> (<em>list of floats</em>) – The normalization factors for the list of bank veto templates
@@ -475,7 +475,7 @@ the segment</p>
 <li><strong>filters</strong> (<em>list of FrequencySeries</em>) – The list of bank veto templates filters.</li>
 <li><strong>stilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The current segment of data.</li>
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – </li>
-<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
+<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 </ul>
 </td>
 </tr>
@@ -503,7 +503,7 @@ bank veto templates.</p>
 <li><strong>bank_filters</strong> (<em>List of FrequencySeries</em>) – </li>
 <li><strong>template</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – </li>
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – </li>
-<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – </li>
+<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 </ul>
 </td>
 </tr>
@@ -523,7 +523,7 @@ bank veto templates.</p>
 <dl class="class">
 <dt id="pycbc.vetoes.chisq.SingleDetPowerChisq">
 <em class="property">class </em><code class="descclassname">pycbc.vetoes.chisq.</code><code class="descname">SingleDetPowerChisq</code><span class="sig-paren">(</span><em>num_bins=0</em>, <em>snr_threshold=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/vetoes/chisq.html#SingleDetPowerChisq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.vetoes.chisq.SingleDetPowerChisq" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class that handles precomputation and memory management for efficiently
 running the power chisq in a single detector inspiral analysis.</p>
 <dl class="method">
@@ -610,7 +610,7 @@ only the selected points are returned.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>corr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The product of the template and data in the frequency domain.</li>
 <li><strong>snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The unnormalized snr</li>
-<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The snr normalization factor  — EXPLAINME</li>
+<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The snr normalization factor  — EXPLAINME</li>
 <li><strong>bins</strong> (<em>List of integers</em>) – The edges of the equal power bins</li>
 <li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The indices where we will calculate the chisq. These must be relative
 to the given <cite>snr</cite> series.</li>
@@ -640,7 +640,7 @@ to the given <cite>snr</cite> series.</li>
 <li><strong>data</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a><em> or </em><a class="reference internal" href="pycbc.types.html#pycbc.types.timeseries.TimeSeries" title="pycbc.types.timeseries.TimeSeries"><em>TimeSeries</em></a>) – A time or frequency series that contains the data to filter. The length
 must be commensurate with the template.
 (EXPLAINME - does this mean ‘the same as’ or something else?)</li>
-<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of bins in the chisq. Note that the dof goes as 2*num_bins-2.</li>
+<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of bins in the chisq. Note that the dof goes as 2*num_bins-2.</li>
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The psd of the data.</li>
 <li><strong>low_frequency_cutoff</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The low frequency cutoff for the filter</li>
 <li><strong>high_frequency_cutoff</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The high frequency cutoff for the filter</li>
@@ -671,7 +671,7 @@ and summing each bin. No FFT is involved.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>corr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The product of the template and data in the frequency domain.</li>
 <li><strong>snr</strong> (<em>numpy.ndarray</em>) – The unnormalized array of snr values at only the selected points in <cite>indices</cite>.</li>
-<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization of the snr (EXPLAINME : refer to Findchirp paper?)</li>
+<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization of the snr (EXPLAINME : refer to Findchirp paper?)</li>
 <li><strong>bins</strong> (<em>List of integers</em>) – The edges of the equal power bins</li>
 <li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The indices where we will calculate the chisq. These must be relative
 to the given <cite>corr</cite> series.</li>
@@ -698,7 +698,7 @@ to the given <cite>corr</cite> series.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>htilde</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – A frequency series containing the template waveform</li>
-<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of chisq bins to calculate.</li>
+<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of chisq bins to calculate.</li>
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – A frequency series containing the psd. Its length must be commensurate
 with the template waveform.</li>
 <li><strong>low_frequency_cutoff</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – The low frequency cutoff to apply</li>
@@ -727,9 +727,9 @@ with the template waveform.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>sigmasq_series</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – A frequency series containing the cumulative power of a filter template
 preweighted by a psd.</li>
-<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of chisq bins to calculate.</li>
-<li><strong>kmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – DOCUMENTME</li>
-<li><strong>kmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – DOCUMENTME</li>
+<li><strong>num_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of chisq bins to calculate.</li>
+<li><strong>kmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – DOCUMENTME</li>
+<li><strong>kmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – DOCUMENTME</li>
 </ul>
 </td>
 </tr>
@@ -841,7 +841,7 @@ running the sine-Gaussian chisq</p>
 <li><strong>template</strong> (<em>pycbc.types.Frequencyseries</em>) – The waveform template being analyzed</li>
 <li><strong>psd</strong> (<em>pycbc.types.Frequencyseries</em>) – The power spectral density of the data</li>
 <li><strong>snrv</strong> (<em>numpy.ndarray</em>) – The peak unnormalized complex SNR values</li>
-<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The normalization factor for the snr</li>
+<li><strong>snr_norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The normalization factor for the snr</li>
 <li><strong>bchisq</strong> (<em>numpy.ndarray</em>) – The Bruce Allen power chisq values for these triggers</li>
 <li><strong>bchisq_dof</strong> (<em>numpy.ndarray</em>) – The degrees of freedom of the Bruce chisq</li>
 <li><strong>indics</strong> (<em>numpy.ndarray</em>) – The indices of the snr peaks.</li>
@@ -887,7 +887,7 @@ running the sine-Gaussian chisq</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -909,7 +909,7 @@ running the sine-Gaussian chisq</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.noise package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.noise package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -265,7 +265,7 @@ Note that if unique noise is desired a unique seed should be provided.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The noise weighting to color the noise.</li>
-<li><strong>seed</strong> (<em>{0</em><em>, </em><em>int}</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – The seed to generate the noise. If None specified,
+<li><strong>seed</strong> (<em>{0</em><em>, </em><em>int}</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – The seed to generate the noise. If None specified,
 the seed will not be reset.</li>
 </ul>
 </td>
@@ -291,8 +291,8 @@ a unique seed should be provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of noise to generate in samples.</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time step of the noise.</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of noise to generate in samples.</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time step of the noise.</li>
 <li><strong>psd</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The noise weighting to color the noise.</li>
 <li><strong>seed</strong> (<em>{0</em><em>, </em><em>int}</em>) – The seed to generate the noise.</li>
 </ul>
@@ -319,10 +319,10 @@ a unique seed should be provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>psd_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the analytic PSD to use.</li>
+<li><strong>psd_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the analytic PSD to use.</li>
 <li><strong>low_fr</strong> – </li>
-<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The length of noise to generate in samples.</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The time step of the noise.</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The length of noise to generate in samples.</li>
+<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time step of the noise.</li>
 <li><strong>seed</strong> (<em>{None</em><em>, </em><em>int}</em>) – The seed to generate the noise.</li>
 <li><strong>low_frequency_cutof</strong> (<em>{10.0</em><em>, </em><em>float}</em>) – The low frequency cutoff to pass to the PSD generation.</li>
 </ul>
@@ -371,8 +371,8 @@ a unique seed should be provided.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>psd</strong> (<em>pycbc.types.FrequencySeries</em>) – PSD to color the noise</li>
-<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
-<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
+<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
+<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
 <li><strong>seed</strong> (<em>{None</em><em>, </em><em>int}</em>) – The seed to generate the noise.</li>
 <li><strong>low_frequency_cutof</strong> (<em>{1.0</em><em>, </em><em>float}</em>) – The low frequency cutoff to pass to the PSD generation.</li>
 </ul>
@@ -399,9 +399,9 @@ a unique seed should be provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>psd_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the analytic PSD to use.</li>
-<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
-<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
+<li><strong>psd_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the analytic PSD to use.</li>
+<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
+<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
 <li><strong>seed</strong> (<em>{None</em><em>, </em><em>int}</em>) – The seed to generate the noise.</li>
 <li><strong>low_frequency_cutof</strong> (<em>{10.0</em><em>, </em><em>float}</em>) – The low frequency cutoff to pass to the PSD generation.</li>
 </ul>
@@ -426,8 +426,8 @@ a unique seed should be provided.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
-<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
+<li><strong>start_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Start time in GPS seconds to generate noise</li>
+<li><strong>end_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – End time in GPS seconds to generate nosie</li>
 <li><strong>seed</strong> (<em>{None</em><em>, </em><em>int}</em>) – The seed to generate the noise.</li>
 </ul>
 </td>
@@ -469,7 +469,7 @@ a unique seed should be provided.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -491,7 +491,7 @@ a unique seed should be provided.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

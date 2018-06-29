@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.distributions package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -323,7 +323,7 @@ all of the parameters in self.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -365,8 +365,8 @@ uniform distribution on <cite>[0, 2pi)</cite> without cyclic boundaries:</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <code class="docutils literal notranslate"><span class="pre">VARARGS_DELIM</span></code>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -595,7 +595,7 @@ the keyword args must be <cite>theta={val1}, phi={val2}</cite>.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -647,8 +647,8 @@ this domain cyclic, add <cite>azimuthal_cyclic_domain =</cite>.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>ConfigParser instance</em>) – The config file.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the section.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the section.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <code class="docutils literal notranslate"><span class="pre">VARARGS_DELIM</span></code>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -807,7 +807,7 @@ from it.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The path to an hdf file containing the values of the parameters that
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to an hdf file containing the values of the parameters that
 want to be used to construct the distribution. Each parameter should
 be a separate dataset in the hdf file, and all datasets should have
 the same size. For example, to give a prior for mass1 and mass2 from
@@ -887,8 +887,8 @@ described in <cite>get_param_bounds_from_config</cite>.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -914,7 +914,7 @@ returns as a dictionary.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>params_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The hdf file that contains the values of the parameters.</li>
+<li><strong>params_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The hdf file that contains the values of the parameters.</li>
 <li><strong>params</strong> (<em>{None</em><em>, </em><em>list}</em>) – If provided, will just retrieve the given parameter names.</li>
 </ul>
 </td>
@@ -922,7 +922,7 @@ returns as a dictionary.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary of the parameters mapping <cite>param_name -&gt; array</cite>.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -943,7 +943,7 @@ returns as a dictionary.</p>
 <dl class="class">
 <dt id="pycbc.distributions.bounded.BoundedDist">
 <em class="property">class </em><code class="descclassname">pycbc.distributions.bounded.</code><code class="descname">BoundedDist</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A generic class for storing common properties of distributions in which
 each parameter has a minimum and maximum value.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -987,7 +987,7 @@ ignored.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1011,8 +1011,8 @@ for the distribution are retrieved from the section titled
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 <li><strong>bounds_required</strong> (<em>{False</em><em>, </em><em>bool}</em>) – If True, raise a ValueError if a min and max are not provided for
@@ -1072,8 +1072,8 @@ parameters for the distribution are retrieved from the section titled
 <li><strong>cls</strong> (<em>pycbc.prior class</em>) – The class to initialize with.</li>
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 <li><strong>bounds_required</strong> (<em>{False</em><em>, </em><em>bool}</em>) – If True, raise a ValueError if a min and max are not provided for
@@ -1135,10 +1135,10 @@ provided, else a Value or Type Error will be raised.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>ConfigParser instance</em>) – The config file.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the section.</li>
-<li><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Any tag in the section name. The full section name searched for in
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the section.</li>
+<li><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Any tag in the section name. The full section name searched for in
 the config file is <cite>{section}(-{tag})</cite>.</li>
-<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the parameter to retrieve bounds for.</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the parameter to retrieve bounds for.</li>
 </ul>
 </td>
 </tr>
@@ -1178,7 +1178,7 @@ are within acceptable values.</p>
 <dl class="class">
 <dt id="pycbc.distributions.constraints.Constraint">
 <em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">Constraint</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#Constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.Constraint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Creates a constraint that evaluates to True if parameters obey
 the constraint and False if they do not.</p>
 <dl class="attribute">
@@ -1313,8 +1313,8 @@ called <cite>phi</cite> with mean 3.14 and variance 0.5 that is cyclic:</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -1382,7 +1382,7 @@ parameter in self’s params.</p>
 <dl class="class">
 <dt id="pycbc.distributions.joint.JointDistribution">
 <em class="property">class </em><code class="descclassname">pycbc.distributions.joint.</code><code class="descname">JointDistribution</code><span class="sig-paren">(</span><em>variable_args</em>, <em>*distributions</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/joint.html#JointDistribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.joint.JointDistribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Callable class that calculates the joint distribution built from a set of
 distributions.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1390,7 +1390,7 @@ distributions.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of strings that contain the names of the variable parameters and
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of strings that contain the names of the variable parameters and
 the order they are expected when the class is called.</li>
 <li><strong>*distributions</strong> – The rest of the arguments must be instances of distributions describing
 the individual distributions on the variable parameters.
@@ -1455,7 +1455,7 @@ conditions to.</td>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameters after each distribution’s
 <cite>apply_boundary_conditions</cite> function has been applied.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1541,8 +1541,8 @@ for all values:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of values to generate; default is 1.</li>
-<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – If provided, will just return values for the given parameter.</li>
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – If provided, will just return values for the given parameter.</li>
 </ul>
 </td>
 </tr>
@@ -1668,8 +1668,8 @@ for the distribution are retrieved from the section titled
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -1782,12 +1782,12 @@ three components of both spins as well as the component masses.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>mass1</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a>) – The distribution or bounds to use for mass1. Must be either a
+<li><strong>mass1</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – The distribution or bounds to use for mass1. Must be either a
 BoundedDist giving the distribution on mass1, or bounds (as
 either a Bounds instance or a tuple) giving the minimum and maximum
 values to use for mass1. If the latter, a Uniform distribution will
 be used.</li>
-<li><strong>mass2</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a>) – The distribution or bounds to use for mass2. Syntax is the same as
+<li><strong>mass2</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a>) – The distribution or bounds to use for mass2. Syntax is the same as
 mass1.</li>
 <li><strong>chi_eff</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate nohighlight">\(chi_eff\)</span>. Syntax is the
 same as mass1, except that None may also be passed. In that case,
@@ -1795,12 +1795,12 @@ same as mass1, except that None may also be passed. In that case,
 <li><strong>chi_a</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math notranslate nohighlight">\(chi_a\)</span>. Syntax is the
 same as mass1, except that None may also be passed. In that case,
 <cite>(-1, 1)</cite> will be used for the bounds. Default is None.</li>
-<li><strong>xi_bounds</strong> (<a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em>, </em><em>optional</em>) – The bounds to use for <span class="math notranslate nohighlight">\(\xi_1\)</span> and <span class="math notranslate nohighlight">\(\xi_2\)</span>. Must be
+<li><strong>xi_bounds</strong> (<a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>Bounds</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em>, </em><em>optional</em>) – The bounds to use for <span class="math notranslate nohighlight">\(\xi_1\)</span> and <span class="math notranslate nohighlight">\(\xi_2\)</span>. Must be
 <span class="math notranslate nohighlight">\(\in (0, 1)\)</span>. If None (the default), will be <cite>(0, 1)</cite>.</li>
-<li><strong>nsamples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – The number of samples to use for the internal kde. The larger the
+<li><strong>nsamples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The number of samples to use for the internal kde. The larger the
 number of samples, the more accurate the pdf will be, but the longer
 it will take to evaluate. Default is 10000.</li>
-<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Seed value to use for the number generator for the kde. The current
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Seed value to use for the number generator for the kde. The current
 random state of numpy will be saved prior to setting the seed. After
 the samples are generated, the state will be set back to what it was.
 If None provided, will use 0.</li>
@@ -1828,7 +1828,7 @@ ignored.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1847,8 +1847,8 @@ for the distribution are retrieved from the section titled
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -1982,8 +1982,8 @@ for the distribution are retrieved from the section titled
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
 options.</li>
-<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the section in the configuration file.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
 <code class="docutils literal notranslate"><span class="pre">VARARGS_DELIM</span></code>. These must appear in the “tag” part
 of the section header.</li>
 </ul>
@@ -2127,7 +2127,7 @@ probability density function of distributions.</p>
 variable arguments will be retrieved from section
 <cite>[foo_variable_args]</cite>. If None, no prefix will be appended to section
 names.</li>
-<li><strong>prior_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Check that priors exist in the given section. Default is ‘prior.’</li>
+<li><strong>prior_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Check that priors exist in the given section. Default is ‘prior.’</li>
 </ul>
 </td>
 </tr>
@@ -2160,7 +2160,7 @@ given configuration file.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of the parsed distributions.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -2191,7 +2191,7 @@ given configuration file.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -2213,7 +2213,7 @@ given configuration file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.events package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -257,7 +257,7 @@ coincident triggers.</p>
 <dl class="class">
 <dt id="pycbc.events.coinc.CoincExpireBuffer">
 <em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">CoincExpireBuffer</code><span class="sig-paren">(</span><em>expiration</em>, <em>ifos</em>, <em>initial_size=1048576</em>, <em>dtype=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Unordered dynamic sized buffer that handles
 multiple expiration vectors.</p>
 <dl class="method">
@@ -308,7 +308,7 @@ multiple expiration vectors.</p>
 <dl class="class">
 <dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator">
 <em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">LiveCoincTimeslideBackgroundEstimator</code><span class="sig-paren">(</span><em>num_templates</em>, <em>analysis_block</em>, <em>background_statistic</em>, <em>stat_files</em>, <em>ifos</em>, <em>ifar_limit=100</em>, <em>timeslide_interval=0.035</em>, <em>ifar_remove_threshold=100</em>, <em>coinc_threshold=0.002</em>, <em>return_background=False</em>, <em>save_background_on_interrupt=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Rolling buffer background estimation.</p>
 <dl class="method">
 <dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.add_singles">
@@ -353,7 +353,7 @@ LiveBatchMatchedFilter class.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>updated_singles</strong> (<em>dict of numpy.ndarrays</em>) – Array of indices that have been just updated in the internal
 buffers of single detector triggers.</li>
-<li><strong>num_coincs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of coincs that were just added to the internal buffer
+<li><strong>num_coincs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The number of coincs that were just added to the internal buffer
 of coincident triggers</li>
 </ul>
 </td>
@@ -411,7 +411,7 @@ by a representative sample of the single triggers in the results.</p>
 <dl class="class">
 <dt id="pycbc.events.coinc.MultiRingBuffer">
 <em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">MultiRingBuffer</code><span class="sig-paren">(</span><em>num_rings</em>, <em>max_length</em>, <em>dtype=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Dynamic size n-dimensional ring buffer that can expire elements.</p>
 <dl class="method">
 <dt id="pycbc.events.coinc.MultiRingBuffer.add">
@@ -498,7 +498,7 @@ the parameters of the template bank to bin up.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bins</strong> – Dictionary of location indices indexed by a bin name</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -548,8 +548,8 @@ templates, based on the ranking statistic</p>
 <li><strong>time1</strong> (<em>numpy.ndarray</em>) – first time vector</li>
 <li><strong>time2</strong> (<em>numpy.ndarray</em>) – second time vector</li>
 <li><strong>timeslide_id</strong> (<em>numpy.ndarray</em>) – vector that determines the timeslide offset</li>
-<li><strong>slide</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – length of the timeslides offset interval</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – length to cluster over</li>
+<li><strong>slide</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – length of the timeslides offset interval</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – length to cluster over</li>
 </ul>
 </td>
 </tr>
@@ -574,7 +574,7 @@ templates, based on the ranking statistic</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>t1</strong> (<em>numpy.ndarray</em>) – Array of trigger times from the first detector</li>
 <li><strong>t2</strong> (<em>numpy.ndarray</em>) – Array of trigger times from the second detector</li>
-<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The coincidence window in seconds</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The coincidence window in seconds</li>
 <li><strong>slide_step</strong> (<em>optional</em><em>, </em><em>{None</em><em>, </em><em>float}</em>) – If calculating background coincidences, the interval between background
 slides in seconds.</li>
 </ul>
@@ -665,7 +665,7 @@ the FindChirp clustering algorithm</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of indices of the SNR values</li>
 <li><strong>snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of SNR value</li>
-<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The size of the window in integer samples. Must be positive.</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The size of the window in integer samples. Must be positive.</li>
 </ul>
 </td>
 </tr>
@@ -696,7 +696,7 @@ the FindChirp clustering algorithm</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of indices of the SNR values</li>
 <li><strong>snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of SNR value</li>
-<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The size of the window in integer samples.</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The size of the window in integer samples.</li>
 </ul>
 </td>
 </tr>
@@ -714,7 +714,7 @@ the FindChirp clustering algorithm</p>
 <dl class="class">
 <dt id="pycbc.events.events.ThresholdCluster">
 <em class="property">class </em><code class="descclassname">pycbc.events.events.</code><code class="descname">ThresholdCluster</code><a class="reference internal" href="_modules/pycbc/events/events.html#ThresholdCluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.ThresholdCluster" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Create a threshold and cluster engine</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -742,7 +742,7 @@ larger (in absolute value) than value</p>
 <dl class="class">
 <dt id="pycbc.events.events.EventManager">
 <em class="property">class </em><code class="descclassname">pycbc.events.events.</code><code class="descname">EventManager</code><span class="sig-paren">(</span><em>opt</em>, <em>column</em>, <em>column_types</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.events.events.EventManager.add_template_events">
 <code class="descname">add_template_events</code><span class="sig-paren">(</span><em>columns</em>, <em>vectors</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.add_template_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.add_template_events" title="Permalink to this definition">¶</a></dt>
@@ -868,7 +868,7 @@ opt structure the process_params table will not be correct.</p>
 <dl class="class">
 <dt id="pycbc.events.simd_threshold.MaxOnlyObject">
 <em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">MaxOnlyObject</code><span class="sig-paren">(</span><em>inarray</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#MaxOnlyObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.MaxOnlyObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.events.simd_threshold.MaxOnlyObject.execute">
 <code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#MaxOnlyObject.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.MaxOnlyObject.execute" title="Permalink to this definition">¶</a></dt>
@@ -879,7 +879,7 @@ opt structure the process_params table will not be correct.</p>
 <dl class="class">
 <dt id="pycbc.events.simd_threshold.ThreshClusterObject">
 <em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">ThreshClusterObject</code><span class="sig-paren">(</span><em>series</em>, <em>window</em>, <em>segsize=32768</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#ThreshClusterObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.ThreshClusterObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class takes a complex SNR time series, a real threshold value, and a window size
 (expressed as a number of complex sample points), and optionally a segment size and
 verbosity indicator (for debugging weave).</p>
@@ -898,7 +898,7 @@ repeatedly.</p>
 <dl class="class">
 <dt id="pycbc.events.simd_threshold.WindowedMaxObject">
 <em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">WindowedMaxObject</code><span class="sig-paren">(</span><em>inarray</em>, <em>winsize</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#WindowedMaxObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.WindowedMaxObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.events.simd_threshold.WindowedMaxObject.execute">
 <code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#WindowedMaxObject.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.WindowedMaxObject.execute" title="Permalink to this definition">¶</a></dt>
@@ -913,7 +913,7 @@ repeatedly.</p>
 <dl class="class">
 <dt id="pycbc.events.single.LiveSingleFarThreshold">
 <em class="property">class </em><code class="descclassname">pycbc.events.single.</code><code class="descname">LiveSingleFarThreshold</code><span class="sig-paren">(</span><em>ifo</em>, <em>newsnr_threshold=10.0</em>, <em>reduced_chisq_threshold=5</em>, <em>duration_threshold=0</em>, <em>fixed_ifar=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.events.single.LiveSingleFarThreshold.check">
 <code class="descname">check</code><span class="sig-paren">(</span><em>triggers</em>, <em>data_reader</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold.check" title="Permalink to this definition">¶</a></dt>
@@ -1225,7 +1225,7 @@ and adding the sine-Gaussian veto to the single detector ranking</p>
 <li><strong>s1</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the second detector.</li>
 <li><strong>slide</strong> (<em>numpy.ndarray</em>) – Array of ints. These represent the multiple of the timeslide</li>
 <li><strong>to bring a pair of single detector triggers into coincidence.</strong> (<em>interval</em>) – </li>
-<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The timeslide interval in seconds.</li>
+<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeslide interval in seconds.</li>
 </ul>
 </td>
 </tr>
@@ -1286,7 +1286,7 @@ amplitude ratios between triggers in different ifos.</p>
 <li><strong>s1</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the second detector.</li>
 <li><strong>slide</strong> (<em>numpy.ndarray</em>) – Array of ints. These represent the multiple of the timeslide</li>
 <li><strong>to bring a pair of single detector triggers into coincidence.</strong> (<em>interval</em>) – </li>
-<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The timeslide interval in seconds.</li>
+<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeslide interval in seconds.</li>
 </ul>
 </td>
 </tr>
@@ -1336,7 +1336,7 @@ amplitude ratios between triggers in different ifos.</p>
 <dl class="class">
 <dt id="pycbc.events.stat.Stat">
 <em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">Stat</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#Stat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.Stat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class which should be extended to provide a coincident statistic</p>
 </dd></dl>
 
@@ -1402,7 +1402,7 @@ amplitude ratios between triggers in different ifos.</p>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">class</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> – If the string is not recognized as corresponding to a Stat subclass</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> – If the string is not recognized as corresponding to a Stat subclass</td>
 </tr>
 </tbody>
 </table>
@@ -1503,8 +1503,8 @@ probable under the hypothesis of a perfect fit</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>distr</strong> (<em>{'exponential'</em><em>, </em><em>'rayleigh'</em><em>, </em><em>'power'}</em>) – Name of distribution</li>
 <li><strong>vals</strong> (<em>sequence of floats</em>) – Values to compare to fit</li>
-<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Fitted distribution parameter</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Fitted distribution parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
 </ul>
 </td>
 </tr>
@@ -1530,8 +1530,8 @@ probable under the hypothesis of a perfect fit</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>xvals</strong> (<em>sequence of floats</em>) – Values where the function is to be evaluated</li>
-<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The fitted parameter</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold value applied to fitted values</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fitted parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold value applied to fitted values</li>
 </ul>
 </td>
 </tr>
@@ -1562,7 +1562,7 @@ If no threshold is specified the minimum sample value will be used.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>distr</strong> (<em>{'exponential'</em><em>, </em><em>'rayleigh'</em><em>, </em><em>'power'}</em>) – Name of distribution</li>
 <li><strong>vals</strong> (<em>sequence of floats</em>) – Values to fit</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
 </ul>
 </td>
 </tr>
@@ -1588,8 +1588,8 @@ If no threshold is specified the minimum sample value will be used.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>xvals</strong> (<em>sequence of floats</em>) – Values where the function is to be evaluated</li>
-<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The fitted parameter</li>
-<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Threshold value applied to fitted values</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The fitted parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold value applied to fitted values</li>
 </ul>
 </td>
 </tr>
@@ -1638,14 +1638,14 @@ If no threshold is specified the minimum sample value will be used.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>par</strong> (<em>string</em>) – Name of parameter to calculate</li>
 <li><strong>args</strong> (<em>Namespace object returned from ArgumentParser instance</em>) – Calling code command line options, used for f_lower value</li>
-<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array of floats</em>) – First binary component mass (etc.)</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array of floats</em>) – First binary component mass (etc.)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>parvals</strong> – Calculated parameter values</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a> or array of floats</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or array of floats</p>
 </td>
 </tr>
 </tbody>
@@ -1669,10 +1669,10 @@ when dividing the range between minpar and maxpar equally into bins.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>par</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Parameter value being binned</li>
-<li><strong>minpar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Minimum parameter value</li>
-<li><strong>maxpar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Maximum parameter value</li>
-<li><strong>nbins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of bins to use</li>
+<li><strong>par</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Parameter value being binned</li>
+<li><strong>minpar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum parameter value</li>
+<li><strong>maxpar</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum parameter value</li>
+<li><strong>nbins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of bins to use</li>
 <li><strong>log</strong> (<em>boolean</em>) – If True, use log spaced bins</li>
 </ul>
 </td>
@@ -1680,7 +1680,7 @@ when dividing the range between minpar and maxpar equally into bins.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binind</strong> – Bin index</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
 </td>
 </tr>
 </tbody>
@@ -1701,11 +1701,11 @@ from the command line.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
+<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
 <li><strong>Results</strong> – </li>
 <li><strong>-------</strong> – </li>
-<li><strong>bins_idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dict with bin names as key and an array of their indices as value.</li>
-<li><strong>bank</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dict of the datasets from the bank file.</li>
+<li><strong>bins_idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dict with bin names as key and an array of their indices as value.</li>
+<li><strong>bank</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dict of the datasets from the bank file.</li>
 </ul>
 </td>
 </tr>
@@ -1724,10 +1724,10 @@ them from an hdf found injection file</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>injfile</strong> (<em>hdf5 File object</em>) – Injection file of format known to ANitz (DOCUMENTME)</li>
-<li><strong>bankfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – Template bank file</li>
-<li><strong>trigfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – Single-detector trigger file</li>
+<li><strong>bankfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – Template bank file</li>
+<li><strong>trigfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – Single-detector trigger file</li>
 <li><strong>param</strong> (<em>string</em>) – Parameter to be calculated for the recovered triggers</li>
-<li><strong>ifo</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – Standard ifo name, ex. ‘L1’</li>
+<li><strong>ifo</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – Standard ifo name, ex. ‘L1’</li>
 </ul>
 </td>
 </tr>
@@ -1775,7 +1775,7 @@ them from an hdf found injection file</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1789,7 +1789,7 @@ them from an hdf found injection file</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – OptionParser instance.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – OptionParser instance.</td>
 </tr>
 </tbody>
 </table>
@@ -1805,14 +1805,14 @@ single detector triggers.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
-<li><strong>coinc_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of datasets in statmap file to retrieve.</li>
-<li><strong>sngl_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of datasets in single-detector trigger files to retrieve.</li>
-<li><strong>bank_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of datasets in template bank file to retrieve.</li>
+<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
+<li><strong>coinc_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of datasets in statmap file to retrieve.</li>
+<li><strong>sngl_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of datasets in single-detector trigger files to retrieve.</li>
+<li><strong>bank_parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of datasets in template bank file to retrieve.</li>
 <li><strong>Results</strong> – </li>
 <li><strong>-------</strong> – </li>
-<li><strong>bin_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A list of bin names.</li>
-<li><strong>bin_results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A list of dict holding trigger data data.</li>
+<li><strong>bin_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A list of bin names.</li>
+<li><strong>bin_results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A list of dict holding trigger data data.</li>
 </ul>
 </td>
 </tr>
@@ -1845,7 +1845,7 @@ list of segment files.</p>
 <li><strong>segment_files</strong> (<em>string</em><em> or </em><em>list of strings</em>) – A string or list of strings that contain the path to xml files that
 contain a segment table</li>
 <li><strong>ifo</strong> (<em>string</em><em>, </em><em>optional</em>) – The ifo to retrieve segments for from the segment files</li>
-<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
 </ul>
 </td>
 </tr>
@@ -1899,7 +1899,7 @@ list of veto_files.</p>
 <li><strong>segment_files</strong> (<em>string</em><em> or </em><em>list of strings</em>) – A string or list of strings that contain the path to xml files that
 contain a segment table</li>
 <li><strong>ifo</strong> (<em>string</em><em>, </em><em>optional</em>) – The ifo to retrieve segments for from the segment files</li>
-<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
 </ul>
 </td>
 </tr>
@@ -1953,9 +1953,9 @@ contain a segment table</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>segment_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – path to segment xml file</li>
-<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of segment</li>
-<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – </li>
+<li><strong>segment_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – path to segment xml file</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of segment</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – </li>
 </ul>
 </td>
 </tr>
@@ -2022,7 +2022,7 @@ contain a segment table</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -2044,7 +2044,7 @@ contain a segment table</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

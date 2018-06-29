@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -858,7 +858,7 @@ using __init__()</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.6)"><em>argparse.ArgumentParser</em></a>) – The command line arguments parsed by argparse</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.7)"><em>argparse.ArgumentParser</em></a>) – The command line arguments parsed by argparse</td>
 </tr>
 </tbody>
 </table>
@@ -1356,7 +1356,7 @@ retention level.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The new value to use for the retention level.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The new value to use for the retention level.</td>
 </tr>
 </tbody>
 </table>
@@ -1374,7 +1374,7 @@ different nodes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – The new list of tags to consider.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – The new list of tags to consider.</td>
 </tr>
 </tbody>
 </table>
@@ -1447,7 +1447,7 @@ Otherwise an error is raised.</p>
 <dl class="class">
 <dt id="pycbc.workflow.core.FileList">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.core.</code><code class="descname">FileList</code><a class="reference internal" href="_modules/pycbc/workflow/core.html#FileList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.FileList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
 <p>This class holds a list of File objects. It inherits from the
 built-in list class, but also allows a number of features. ONLY
 pycbc.workflow.File instances should be within a FileList instance.</p>
@@ -1646,7 +1646,7 @@ list.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – An identifier of this file. Needs to be unique.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – An identifier of this file. Needs to be unique.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – path to place this file</li>
 </ul>
 </td>
@@ -1759,7 +1759,7 @@ segment dictionary, if it is known at workflow run time.</p>
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
 <li><strong>segmentlists</strong> (<em>List of glue.segments.segmentslist</em>) – List of segment lists that will be stored in this file.</li>
 <li><strong>names</strong> (<em>List of str</em>) – List of names of the segment lists to be stored in the file.</li>
-<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – List of ifos of the segment lists to be stored in this file.</li>
+<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – List of ifos of the segment lists to be stored in this file.</li>
 <li><strong>seg_summ_lists</strong> (<em>glue.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlists that go along with the
 segmentlists. Default=None, in this case segment_summary is taken
 from the valid_segment of the SegFile class.</li>
@@ -1781,8 +1781,8 @@ from the valid_segment of the SegFile class.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
 <li><strong>segmentlist</strong> (<em>glue.segments.segmentslist</em>) – The segment list that will be stored in this file.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segment lists to be stored in the file.</li>
-<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The ifo of the segment lists to be stored in this file.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segment lists to be stored in the file.</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The ifo of the segment lists to be stored in this file.</li>
 <li><strong>seg_summ_list</strong> (<em>glue.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlist that goes along with the
 segmentlist. Default=None, in this case segment_summary is taken
 from the valid_segment of the SegFile class.</li>
@@ -1804,7 +1804,7 @@ from the valid_segment of the SegFile class.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
 <li><strong>segmentlistdict</strong> (<em>glue.segments.segmentslistdict</em>) – See SegFile.__init__</li>
-<li><strong>ifo_list</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>)</em>) – See File.__init__, if not given a list of all ifos in the
+<li><strong>ifo_list</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>)</em>) – See File.__init__, if not given a list of all ifos in the
 segmentlistdict object will be used</li>
 <li><strong>valid_segment</strong> (<em>glue.segments.segment</em><em> or </em><em>glue.segments.segmentlist</em>) – See File.__init__, if not given the extent of all segments in the
 segmentlistdict is used.</li>
@@ -1849,7 +1849,7 @@ these segments.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>minSegLength</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Maximum length of science segments. Segments shorter than this will
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>minSegLength</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum length of science segments. Segments shorter than this will
 be removed.</td>
 </tr>
 </tbody>
@@ -1977,7 +1977,7 @@ and return a single segment spanning that full time.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exe_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The executable path</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>exe_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The executable path</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>truth_value</strong> – Return True if the exe is condor compiled, False otherwise.</td>
 </tr>
@@ -2026,7 +2026,7 @@ and out_basename options.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>exitCode</strong> – The code returned by the process.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
 </td>
 </tr>
 </tbody>
@@ -2210,8 +2210,8 @@ connection to the datafind server.</li>
 <li><strong>observatory</strong> (<em>string</em>) – The observatory to query frames for. Ex. ‘H’, ‘L’ or ‘V’.  NB: not
 ‘H1’, ‘L1’, ‘V1’ which denote interferometers.</li>
 <li><strong>frameType</strong> (<em>string</em>) – The frame type to query for.</li>
-<li><strong>startTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Integer start time to query the datafind server for frames.</li>
-<li><strong>endTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Integer end time to query the datafind server for frames.</li>
+<li><strong>startTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Integer start time to query the datafind server for frames.</li>
+<li><strong>endTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Integer end time to query the datafind server for frames.</li>
 <li><strong>ifo</strong> (<em>string</em>) – The interferometer to use for naming output. Ex. ‘H1’, ‘L1’, ‘V1’.
 Maybe this could be merged with the observatory string, but this
 could cause issues if running on old ‘H2’ and ‘H1’ data.</li>
@@ -2601,9 +2601,9 @@ generation of pygrb workflows. For details about pycbc.workflow see here:
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.configuration.WorkflowConfigParser object</em>) – </li>
 <li><strong>parsed configuration options of a pycbc.workflow.core.Workflow.</strong> (<em>The</em>) – </li>
-<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </li>
+<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>containing the analysis interferometer IDs.</strong> (<em>String</em>) – </li>
-<li><strong>run_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </li>
+<li><strong>run_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>run directory</strong><strong>, </strong><strong>destination for retrieved files.</strong> (<em>The</em>) – </li>
 <li><strong>bank_veto</strong> (<em>Boolean</em>) – </li>
 <li><strong>true</strong><strong>, </strong><strong>will retrieve the bank_veto_bank.xml file.</strong> (<em>If</em>) – </li>
@@ -2668,11 +2668,11 @@ GBM systematic if necessary.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.configuration.WorkflowConfigParser object</em>) – </li>
 <li><strong>parsed configuration options of a pycbc.workflow.core.Workflow.</strong> (<em>The</em>) – </li>
-<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </li>
+<li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>containing the analysis interferometer IDs.</strong> (<em>String</em>) – </li>
 <li><strong>sci_seg</strong> (<em>glue.segments.segment</em>) – </li>
 <li><strong>science segment for the analysis run.</strong> (<em>The</em>) – </li>
-<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – </li>
+<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>output directory</strong><strong>, </strong><strong>destination for xml file.</strong> (<em>The</em>) – </li>
 </ul>
 </td>
@@ -2729,9 +2729,9 @@ the gated frame files.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<em>pycbc.workflow.configuration.WorkflowConfigParser object</em>) – </li>
 <li><strong>parsed configuration options of a pycbc.workflow.core.Workflow.</strong> (<em>The</em>) – </li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – </li>
 <li><strong>start of the workflow analysis time.</strong> (<em>The</em>) – </li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – </li>
 <li><strong>end of the workflow analysis time.</strong> (<em>The</em>) – </li>
 </ul>
 </td>
@@ -2767,8 +2767,8 @@ the gated frame files.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>pycbc.workflow.Workflow</em>) – The core workflow instance we are populating</li>
 <li><strong>inference_file</strong> (<em>pycbc.workflow.File</em>) – The file with posterior samples.</li>
-<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The directory to store result plots and files.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name in the [executables] section of the configuration file
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
 <li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
@@ -2797,9 +2797,9 @@ time from the workflow.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>pycbc.workflow.Workflow</em>) – The core workflow instance we are populating</li>
 <li><strong>inference_files</strong> (<em>pycbc.workflow.FileList</em>) – The files with posterior samples.</li>
-<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The directory to store result plots and files.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A <code class="docutils literal notranslate"><span class="pre">list</span></code> of parameters. Each parameter gets its own plot.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name in the [executables] section of the configuration file
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A <code class="docutils literal notranslate"><span class="pre">list</span></code> of parameters. Each parameter gets its own plot.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
 <li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
@@ -2828,9 +2828,9 @@ time from the workflow.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>pycbc.workflow.Workflow</em>) – The core workflow instance we are populating</li>
 <li><strong>inference_file</strong> (<em>pycbc.workflow.File</em>) – The file with posterior samples.</li>
-<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The directory to store result plots and files.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of parameters to plot.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name in the [executables] section of the configuration file
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of parameters to plot.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
 <li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
@@ -2859,9 +2859,9 @@ time from the workflow.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>pycbc.workflow.Workflow</em>) – The core workflow instance we are populating</li>
 <li><strong>config_file</strong> (<em>pycbc.workflow.File</em>) – The WorkflowConfigParser parasable inference configuration file..</li>
-<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The directory to store result plots and files.</li>
-<li><strong>sections</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of subsections to use.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name in the [executables] section of the configuration file
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
+<li><strong>sections</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of subsections to use.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
 <li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
@@ -2895,9 +2895,9 @@ time from the workflow.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>pycbc.workflow.Workflow</em>) – The core workflow instance we are populating</li>
 <li><strong>inference_file</strong> (<em>pycbc.workflow.File</em>) – The file with posterior samples.</li>
-<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The directory to store result plots and files.</li>
-<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of parameters to use instead of [variable_args].</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name in the [executables] section of the configuration file
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of parameters to use instead of [variable_args].</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
 <li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
@@ -2931,9 +2931,9 @@ single detector trigger files for each ifo.</li>
 <li><strong>tmpltbank_file</strong> (<em>pycbc.workflow.File</em>) – The file object pointing to the HDF format template bank</li>
 <li><strong>insp_segs</strong> (<a class="reference internal" href="#pycbc.workflow.core.SegFile" title="pycbc.workflow.core.SegFile"><em>SegFile</em></a>) – The segment file containing the data read and analyzed by each inspiral
 job.</li>
-<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
-<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
-<li><strong>dax_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the output DAX file.</li>
+<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
+<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
+<li><strong>dax_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the output DAX file.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory to store inference result plots and files</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables</li>
 </ul>
@@ -3184,7 +3184,7 @@ SQL file and dump it back to XML.</p>
 <dl class="class">
 <dt id="pycbc.workflow.jobsetup.JobSegmenter">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.jobsetup.</code><code class="descname">JobSegmenter</code><span class="sig-paren">(</span><em>data_lengths</em>, <em>valid_chunks</em>, <em>valid_lengths</em>, <em>curr_seg</em>, <em>curr_exe_class</em>, <em>compatibility_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/jobsetup.html#JobSegmenter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.jobsetup.JobSegmenter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class is used when running sngl_ifo_job_setup to determine what times
 should be analysed be each job and what data is needed.</p>
 <dl class="method">
@@ -3525,8 +3525,8 @@ for <code class="docutils literal notranslate"><span class="pre">pycbc_create_in
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>config_file</strong> (<a class="reference internal" href="#pycbc.workflow.core.File" title="pycbc.workflow.core.File"><em>pycbc.workflow.core.File</em></a>) – A <code class="docutils literal notranslate"><span class="pre">pycbc.workflow.core.File</span></code> for inference configuration file
 to be used with <code class="docutils literal notranslate"><span class="pre">--config-files</span></code> option.</li>
-<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Seed to use for generating injections.</li>
-<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of tags to include in filenames.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Seed to use for generating injections.</li>
+<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of tags to include in filenames.</li>
 </ul>
 </td>
 </tr>
@@ -3601,14 +3601,14 @@ functionality</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>channel_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A <code class="docutils literal notranslate"><span class="pre">dict</span></code> of <code class="docutils literal notranslate"><span class="pre">str</span></code> to use for <code class="docutils literal notranslate"><span class="pre">--channel-name</span></code> option.</li>
+<li><strong>channel_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A <code class="docutils literal notranslate"><span class="pre">dict</span></code> of <code class="docutils literal notranslate"><span class="pre">str</span></code> to use for <code class="docutils literal notranslate"><span class="pre">--channel-name</span></code> option.</li>
 <li><strong>config_file</strong> (<a class="reference internal" href="#pycbc.workflow.core.File" title="pycbc.workflow.core.File"><em>pycbc.workflow.core.File</em></a>) – A <code class="docutils literal notranslate"><span class="pre">pycbc.workflow.core.File</span></code> for inference configuration file
 to be used with <code class="docutils literal notranslate"><span class="pre">--config-files</span></code> option.</li>
 <li><strong>injection_file</strong> (<a class="reference internal" href="#pycbc.workflow.core.File" title="pycbc.workflow.core.File"><em>pycbc.workflow.core.File</em></a>) – A <code class="docutils literal notranslate"><span class="pre">pycbc.workflow.core.File</span></code> for injection file to be used
 with <code class="docutils literal notranslate"><span class="pre">--injection-file</span></code> option.</li>
-<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – An <code class="docutils literal notranslate"><span class="pre">int</span></code> to be used with <code class="docutils literal notranslate"><span class="pre">--seed</span></code> option.</li>
-<li><strong>fake_strain_seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – An <code class="docutils literal notranslate"><span class="pre">int</span></code> to be used with <code class="docutils literal notranslate"><span class="pre">--fake-strain-seed</span></code> option.</li>
-<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – A list of tags to include in filenames.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – An <code class="docutils literal notranslate"><span class="pre">int</span></code> to be used with <code class="docutils literal notranslate"><span class="pre">--seed</span></code> option.</li>
+<li><strong>fake_strain_seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – An <code class="docutils literal notranslate"><span class="pre">int</span></code> to be used with <code class="docutils literal notranslate"><span class="pre">--fake-strain-seed</span></code> option.</li>
+<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of tags to include in filenames.</li>
 </ul>
 </td>
 </tr>
@@ -4194,9 +4194,9 @@ the input/output files automatically.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The workflow class that stores the jobs that will be run.</li>
-<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Which interferometer are we using?</li>
-<li><strong>trig_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The time of the trigger being followed up.</li>
-<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Location of directory to output to</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Which interferometer are we using?</li>
+<li><strong>trig_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The time of the trigger being followed up.</li>
+<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Location of directory to output to</li>
 <li><strong>injection_file</strong> (<em>pycbc.workflow.File</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, add the injections in the file to strain before making the
 plot.</li>
 <li><strong>data_segments</strong> (<em>glue.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
@@ -4206,10 +4206,10 @@ lie within a valid data segment. A ValueError will be raised if the
 trig_time is not within a valid segment, or if it is not possible to
 find 2*time_window (plus the padding) of continuous data around the
 trigger. This <strong>must</strong> be coalesced.</li>
-<li><strong>time_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The amount of data (not including padding) that will be read in by the
+<li><strong>time_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The amount of data (not including padding) that will be read in by the
 singles_timefreq job. The default value of 100s should be fine for most
 cases.</li>
-<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – List of tags to add to the created nodes, which determine file naming.</li>
+<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – List of tags to add to the created nodes, which determine file naming.</li>
 </ul>
 </td>
 </tr>
@@ -4231,9 +4231,9 @@ these jobs to the workflow.</p>
 <li><strong>workflow</strong> (<em>workflow.Workflow instance</em>) – The pycbc.workflow.Workflow instance to add these jobs to.</li>
 <li><strong>segs</strong> (<em>workflow.File instance</em>) – The pycbc.workflow.File instance that points to the XML file containing
 the segment lists of data read in and data analyzed.</li>
-<li><strong>data_read_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist containing the data read in by each
+<li><strong>data_read_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist containing the data read in by each
 inspiral job in the segs file.</li>
-<li><strong>analyzed_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist containing the data analyzed by each
+<li><strong>analyzed_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist containing the data analyzed by each
 inspiral job in the segs file.</li>
 <li><strong>params</strong> (<em>dictionary</em>) – A dictionary containing the parameters of the template to be used.
 params[ifo+’end_time’] is required for all ifos in workflow.ifos.
@@ -4243,17 +4243,17 @@ needs to supply [spin1y, spin1x, spin2x, spin2y, inclination]
 additionally for precession one must supply u_vals or
 u_vals_+ifo for all ifos. u_vals is the ratio between h_+ and h_x to
 use when constructing h(t). h(t) = (h_+ * u_vals) + h_x.</li>
-<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Directory in which to store the output files.</li>
+<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Directory in which to store the output files.</li>
 <li><strong>inj_file</strong> (<em>workflow.File</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given send this injection file to the job so that injections are
 made into the data.</li>
-<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, then when considering which subsections in the ini file to
+<li><strong>exclude</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, then when considering which subsections in the ini file to
 parse for options to add to single_template_plot, only use subsections
 that <em>do not</em> match strings in this list.</li>
-<li><strong>require</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, then when considering which subsections in the ini file to
+<li><strong>require</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, then when considering which subsections in the ini file to
 parse for options to add to single_template_plot, only use subsections
 matching strings in this list.</li>
-<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – Add this list of tags to all jobs.</li>
-<li><strong>params_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given add this string to plot title and caption to describe the
+<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – Add this list of tags to all jobs.</li>
+<li><strong>params_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given add this string to plot title and caption to describe the
 template that was used.</li>
 <li><strong>use_exact_inj_params</strong> (<em>boolean</em><em> (</em><em>optional</em><em>, </em><em>default=False</em><em>)</em>) – If True do not use masses and spins listed in the params dictionary
 but instead use the injection closest to the filter time as a template.</li>
@@ -4285,12 +4285,12 @@ the input/output files automatically.</p>
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The workflow class that stores the jobs that will be run.</li>
 <li><strong>single</strong> (<em>pycbc.workflow.core.File instance</em>) – The File object storing the single-detector triggers to followup.</li>
 <li><strong>bank_file</strong> (<em>pycbc.workflow.core.File instance</em>) – The File object storing the template bank.</li>
-<li><strong>trig_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The time of the trigger being followed up.</li>
-<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Location of directory to output to</li>
+<li><strong>trig_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The time of the trigger being followed up.</li>
+<li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Location of directory to output to</li>
 <li><strong>veto_file</strong> (<a class="reference internal" href="#pycbc.workflow.core.File" title="pycbc.workflow.core.File"><em>pycbc.workflow.core.File</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given use this file to veto triggers to determine the loudest event.
 FIXME: Veto files <em>should</em> be provided a definer argument and not just
 assume that all segments should be read.</li>
-<li><strong>time_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The amount of data (not including padding) that will be read in by the
+<li><strong>time_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The amount of data (not including padding) that will be read in by the
 singles_timefreq job. The default value of 10s should be fine for most
 cases.</li>
 <li><strong>data_segments</strong> (<em>glue.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
@@ -4300,7 +4300,7 @@ lie within a valid data segment. A ValueError will be raised if the
 trig_time is not within a valid segment, or if it is not possible to
 find 2*time_window (plus the padding) of continuous data around the
 trigger. This <strong>must</strong> be coalesced.</li>
-<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – List of tags to add to the created nodes, which determine file naming.</li>
+<li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – List of tags to add to the created nodes, which determine file naming.</li>
 </ul>
 </td>
 </tr>
@@ -4336,8 +4336,8 @@ single detector trigger files for each ifo.</li>
 <li><strong>tmpltbank_file</strong> (<em>pycbc.workflow.File</em>) – The file object pointing to the HDF format template bank</li>
 <li><strong>insp_segs</strong> (<a class="reference internal" href="#pycbc.workflow.core.SegFile" title="pycbc.workflow.core.SegFile"><em>SegFile</em></a>) – The segment file containing the data read and analyzed by each inspiral
 job.</li>
-<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
-<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
+<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
+<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory to store minifollowups result plots and files</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the minifollowups executables</li>
 </ul>
@@ -4347,7 +4347,7 @@ job.</li>
 minifollops plots.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -4369,8 +4369,8 @@ minifollops plots.</p>
 single detector trigger files for each ifo.</li>
 <li><strong>tmpltbank_file</strong> (<em>pycbc.workflow.File</em>) – The file object pointing to the HDF format template bank</li>
 <li><strong>insp_segs</strong> (<a class="reference internal" href="#pycbc.workflow.core.SegFile" title="pycbc.workflow.core.SegFile"><em>SegFile</em></a>) – The segment file containing the data read by each inspiral job.</li>
-<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
-<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
+<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
+<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory to store minifollowups result plots and files</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the minifollowups executables</li>
 </ul>
@@ -4380,7 +4380,7 @@ single detector trigger files for each ifo.</li>
 minifollops plots.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -4401,8 +4401,8 @@ triggers from a merged single detector trigger HDF file.</p>
 <li><strong>single_trig_file</strong> (<em>pycbc.workflow.File</em>) – The File class holding the single detector triggers.</li>
 <li><strong>tmpltbank_file</strong> (<em>pycbc.workflow.File</em>) – The file object pointing to the HDF format template bank</li>
 <li><strong>insp_segs</strong> (<a class="reference internal" href="#pycbc.workflow.core.SegFile" title="pycbc.workflow.core.SegFile"><em>SegFile</em></a>) – The segment file containing the data read by each inspiral job.</li>
-<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
-<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
+<li><strong>insp_data_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data read.</li>
+<li><strong>insp_anal_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segmentlist storing data analyzed.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory to store minifollowups result plots and files</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the minifollowups executables</li>
 </ul>
@@ -4412,7 +4412,7 @@ triggers from a merged single detector trigger HDF file.</p>
 minifollops plots.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -4427,7 +4427,7 @@ provides additional abstraction and argument handling.</p>
 <dl class="class">
 <dt id="pycbc.workflow.pegasus_workflow.DataStorage">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.pegasus_workflow.</code><code class="descname">DataStorage</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#DataStorage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.DataStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A workflow representation of a place to store and read data from.</p>
 <p>The abstract representation of a place to store and read data from. This
 can include files, database, or remote connections. This object is
@@ -4603,7 +4603,7 @@ white space between arguments. This can be added manually by adding
 <dl class="class">
 <dt id="pycbc.workflow.pegasus_workflow.ProfileShortcuts">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.pegasus_workflow.</code><code class="descname">ProfileShortcuts</code><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#ProfileShortcuts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.ProfileShortcuts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Container of common methods for setting pegasus profile information
 on Executables and nodes. This class expects to be inherited from
 and for a add_profile method to be implemented.</p>
@@ -4649,7 +4649,7 @@ and for a add_profile method to be implemented.</p>
 <dl class="class">
 <dt id="pycbc.workflow.pegasus_workflow.Workflow">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.pegasus_workflow.</code><code class="descname">Workflow</code><span class="sig-paren">(</span><em>name='my_workflow'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Workflow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.workflow.pegasus_workflow.Workflow.add_node">
 <code class="descname">add_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Workflow.add_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Workflow.add_node" title="Permalink to this definition">¶</a></dt>
@@ -5041,7 +5041,7 @@ Choices are
 will raise an error.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)">int</a></p>
 </td>
 </tr>
 </tbody>
@@ -5120,13 +5120,13 @@ as part of the workflow.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – An instance of the Workflow class that manages the workflow.</li>
-<li><strong>categories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The veto categories to include in this cumulative veto.</li>
+<li><strong>categories</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The veto categories to include in this cumulative veto.</li>
 <li><strong>seg_files_list</strong> (<em>Listionary of SegFiles</em>) – The list of segment files to be used as input for combining.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory to write output to.</li>
 <li><strong>tags</strong> (<em>list of strings</em><em>, </em><em>optional</em>) – A list of strings that is used to identify this job</li>
 <li><strong>execute_now</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If true, jobs are executed immediately. If false, they are added to the
 workflow to be run later.</li>
-<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of the combined, cumulative segments in the output file.</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the combined, cumulative segments in the output file.</li>
 </ul>
 </td>
 </tr>
@@ -5145,7 +5145,7 @@ we want to analyze, defined by groups of vetos.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>Workflow object</em>) – Instance of the workflow object</li>
-<li><strong>option</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – ini file option to use to get the veto groups</li>
+<li><strong>option</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – ini file option to use to get the veto groups</li>
 <li><strong>cat_files</strong> (<em>FileList of SegFiles</em>) – The category veto files generated by get_veto_segs</li>
 <li><strong>out_dir</strong> (<em>path</em>) – Location to store output files</li>
 <li><strong>execute_now</strong> (<em>Boolean</em>) – If true outputs are generated at runtime. Else jobs go into the workflow
@@ -5178,9 +5178,9 @@ configuration options.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<em>Workflow object</em>) – Instance of the workflow object</li>
 <li><strong>out_dir</strong> (<em>path</em>) – Location to store output files</li>
-<li><strong>runtime_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Veto category groups with these names in the [workflow-segment] section
+<li><strong>runtime_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Veto category groups with these names in the [workflow-segment] section
 of the ini file will be generated now.</li>
-<li><strong>in_workflow_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Veto category groups with these names in the [workflow-segment] section
+<li><strong>in_workflow_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Veto category groups with these names in the [workflow-segment] section
 of the ini file will be generated in the workflow. If a veto category
 appears here and in runtime_names, it will be generated now.</li>
 <li><strong>tags</strong> (<em>list of strings</em>) – Used to retrieve subsections of the ini file for
@@ -5271,7 +5271,7 @@ are insufficient for a search.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The workflow instance that the calculated segments belong to.</li>
-<li><strong>sciencesegs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary of all science segments within analysis time.</li>
+<li><strong>sciencesegs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Dictionary of all science segments within analysis time.</li>
 </ul>
 </td>
 </tr>
@@ -5298,7 +5298,7 @@ to generate this to the workflow.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – An instance of the Workflow class that manages the workflow.</li>
 <li><strong>ifo</strong> (<em>string</em>) – The string describing the ifo to generate vetoes for.</li>
-<li><strong>category</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The veto category to generate vetoes for.</li>
+<li><strong>category</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The veto category to generate vetoes for.</li>
 <li><strong>start_time</strong> (<em>gps time</em><em> (</em><em>either int/LIGOTimeGPS</em><em>)</em>) – The time at which to begin searching for segments.</li>
 <li><strong>end_time</strong> (<em>gps time</em><em> (</em><em>either int/LIGOTimeGPS</em><em>)</em>) – The time at which to stop searching for segments.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory in which output will be stored.</li>
@@ -5374,7 +5374,7 @@ segments over.</li>
 <li><strong>veto_categories</strong> (<em>list of ints</em>) – List of veto categories to generate segments for. If this stops being
 integers, this can be changed here.</li>
 <li><strong>out_dir</strong> (<em>path</em>) – The directory in which output will be stored.</li>
-<li><strong>maxVetoAtRunTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Generate veto files at run time up to this category. Veto categories
+<li><strong>maxVetoAtRunTime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Generate veto files at run time up to this category. Veto categories
 beyond this in veto_categories will be generated in the workflow.
 If we move to a model where veto
 categories are not explicitly cumulative, this will be rethought.</li>
@@ -5710,7 +5710,7 @@ interferometer data</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -5732,7 +5732,7 @@ interferometer data</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

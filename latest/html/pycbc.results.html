@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results package &mdash; PyCBC 39b0cd documentation</title>
+  <title>pycbc.results package &mdash; PyCBC 7d4314 documentation</title>
   
 
   
@@ -310,15 +310,15 @@ files.</p>
 <li><strong>triggers.</strong> – </li>
 <li><strong>ifo</strong> (<em>string</em>) – The ifo to return triggers for.</li>
 <li><strong>columns</strong> (<em>list of strings</em>) – The list of columns to read from the trigger files.</li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The start time to get triggers from</li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The end time to get triggers from</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The start time to get triggers from</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The end time to get triggers from</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>trigger_dict</strong> – A dictionary of column vectors with column names as keys.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
 </td>
 </tr>
 </tbody>
@@ -347,7 +347,7 @@ files.</p>
 <dl class="class">
 <dt id="pycbc.results.layout.SectionNumber">
 <em class="property">class </em><code class="descclassname">pycbc.results.layout.</code><code class="descname">SectionNumber</code><span class="sig-paren">(</span><em>base</em>, <em>secs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/results/layout.html#SectionNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.results.layout.SectionNumber" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to help with numbering sections in an output page.</p>
 </dd></dl>
 
@@ -391,7 +391,7 @@ Every two are placed on the same row.</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Location to make the well html file</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Location to make the well html file</li>
 <li><strong>cols</strong> (<em>list of tuples</em>) – The format of the items on the well result section. Each tuple
 contains the two files that are shown in the left and right hand
 side of a row in the well.html page.</li>
@@ -524,7 +524,7 @@ PyCBC.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of file load metadata from.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of file load metadata from.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>cp</strong> – A configparser object containing the metadata</td>
 </tr>
@@ -550,7 +550,7 @@ that is stored directly in the plot file. Limited format types available.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>fig</strong> (<em>matplotlib figure</em>) – The matplotlib figure to save to the file</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of file to store the plot.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Name of file to store the plot.</li>
 </ul>
 </td>
 </tr>
@@ -705,7 +705,7 @@ every possible combination of the parameters.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Names of the variables to be plotted.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Names of the variables to be plotted.</li>
 <li><strong>labels</strong> (<em>{None</em><em>, </em><em>dict}</em><em>, </em><em>optional</em>) – A dictionary of parameters -&gt; parameter labels.</li>
 <li><strong>height_ratios</strong> (<em>{None</em><em>, </em><em>list}</em><em>, </em><em>optional</em>) – Set the height ratios of the axes; see <cite>matplotlib.gridspec.GridSpec</cite>
 for details.</li>
@@ -740,10 +740,10 @@ given samples.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>xparam</strong> (<em>string</em>) – The parameter to plot on the x-axis.</li>
 <li><strong>yparam</strong> (<em>string</em>) – The parameter to plot on the y-axis.</li>
-<li><strong>samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>numpy structured array</em><em>, or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to plot.</li>
+<li><strong>samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>numpy structured array</em><em>, or </em><a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – The samples to plot.</li>
 <li><strong>plot_density</strong> (<em>{True</em><em>, </em><em>bool}</em>) – Plot a color map of the density.</li>
 <li><strong>plot_contours</strong> (<em>{True</em><em>, </em><em>bool}</em>) – Plot contours showing the n-th percentiles of the density.</li>
-<li><strong>percentiles</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array}</em>) – What percentile contours to draw. If None, will plot the 50th
+<li><strong>percentiles</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array}</em>) – What percentile contours to draw. If None, will plot the 50th
 and 90th percentiles.</li>
 <li><strong>cmap</strong> (<em>{'viridis'</em><em>, </em><em>string}</em>) – The name of the colormap to use for the density plot.</li>
 <li><strong>contour_color</strong> (<em>{None</em><em>, </em><em>string}</em>) – What color to make the contours. Default is white for density
@@ -790,8 +790,8 @@ samples.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ax</strong> (<em>pyplot.Axes</em>) – The axes on which to draw the plot.</li>
 <li><strong>values</strong> (<em>array</em>) – The parameter values to plot.</li>
-<li><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – A label to use for the title.</li>
-<li><strong>percentiles</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><em>array}</em>) – What percentiles to draw lines at. If None, will draw lines at
+<li><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – A label to use for the title.</li>
+<li><strong>percentiles</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array}</em>) – What percentiles to draw lines at. If None, will draw lines at
 <cite>[5, 50, 95]</cite> (i.e., the bounds on the upper 90th percentile and the
 median).</li>
 <li><strong>color</strong> (<em>{'k'</em><em>, </em><em>string}</em>) – What color to make the histogram; default is black.</li>
@@ -822,7 +822,7 @@ creates.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – Names of the variables to be plotted.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Names of the variables to be plotted.</li>
 <li><strong>samples</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A field array of the samples to plot.</li>
 <li><strong>labels</strong> (<em>{None</em><em>, </em><em>list}</em><em>, </em><em>optional</em>) – A list of names for the parameters.</li>
 <li><strong>mins</strong> (<em>{None</em><em>, </em><em>dict}</em><em>, </em><em>optional</em>) – Minimum value for the axis of each variable in <cite>parameters</cite>.
@@ -928,10 +928,10 @@ removed value.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>ax</strong> (<em>Axes</em>) – The <cite>Axes</cite> instance for the plot.</li>
-<li><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The string to add to the title.</li>
-<li><strong>color</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The color of the text to add to the title.</li>
-<li><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – If title does not exist, then include label at beginning of the string.</li>
-<li><strong>rotated</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If <cite>True</cite> then rotate the text 270 degrees for sideways title.</li>
+<li><strong>fmt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The string to add to the title.</li>
+<li><strong>color</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The color of the text to add to the title.</li>
+<li><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – If title does not exist, then include label at beginning of the string.</li>
+<li><strong>rotated</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <cite>True</cite> then rotate the text 270 degrees for sideways title.</li>
 </ul>
 </td>
 </tr>
@@ -962,8 +962,8 @@ returned string will include LaTeX characters.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The value to format.</li>
-<li><strong>error</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The uncertainty in the value. This is used to determine the
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The value to format.</li>
+<li><strong>error</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The uncertainty in the value. This is used to determine the
 number of significant figures to print. If the value has no
 uncertainty, you can just do value*1e-k, where k+1 is the number
 of significant figures you want.</li>
@@ -1039,7 +1039,7 @@ number of significant figures.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>header</strong> – The necessary html head needed to use latex on an html page.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -1066,7 +1066,7 @@ number of significant figures.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>html_table</strong> – A string containing the html table.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -1093,7 +1093,7 @@ number of significant figures.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>html_table</strong> – A str containing the html code to display a table of this data</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -1120,7 +1120,7 @@ the executable section of the supplied ConfigParser object.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary keyed by the executable name with values giving the
 version string for each executable.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
 </tr>
 </tbody>
 </table>
@@ -1171,7 +1171,7 @@ analysis run.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 27, 2018.
+      Last updated on Jun 29, 2018.
 
     </p>
   </div>
@@ -1193,7 +1193,7 @@ analysis run.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'39b0cd',
+            VERSION:'7d4314',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
