@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.live &mdash; PyCBC 7d4314 documentation</title>
+  <title>pycbc.io.live &mdash; PyCBC fc8af2 documentation</title>
   
 
   
@@ -201,11 +201,11 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">lal</span>
 <span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">u</span> <span class="k">as</span> <span class="n">unicode</span>
-<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">ligolw</span>
-<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">lsctables</span>
-<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
-<span class="kn">from</span> <span class="nn">pycbc.ligolw.utils</span> <span class="k">import</span> <span class="n">process</span> <span class="k">as</span> <span class="n">ligolw_process</span>
-<span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">param</span> <span class="k">as</span> <span class="n">ligolw_param</span>
+<span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">ligolw</span>
+<span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">lsctables</span>
+<span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
+<span class="kn">from</span> <span class="nn">glue.ligolw.utils</span> <span class="k">import</span> <span class="n">process</span> <span class="k">as</span> <span class="n">ligolw_process</span>
+<span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">param</span> <span class="k">as</span> <span class="n">ligolw_param</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">version</span> <span class="k">as</span> <span class="n">pycbc_version</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">pnutils</span>
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank</span> <span class="k">import</span> <span class="n">return_empty_sngl</span>
@@ -214,14 +214,15 @@
 <span class="c1">#FIXME Legacy build PSD xml helpers, delete me when we move away entirely from</span>
 <span class="c1"># xml formats</span>
 <span class="k">def</span> <span class="nf">_build_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">dim_names</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">delta_name</span><span class="p">,</span> <span class="n">delta_unit</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">pycbc.ligolw</span> <span class="k">import</span> <span class="n">array</span> <span class="k">as</span> <span class="n">ligolw_array</span>
+    <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">array</span> <span class="k">as</span> <span class="n">ligolw_array</span>
     <span class="n">Attributes</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span>
     <span class="n">elem</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">(</span>
             <span class="n">Attributes</span><span class="p">({</span><span class="sa">u</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)}))</span>
     <span class="k">if</span> <span class="n">comment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Comment</span><span class="p">())</span><span class="o">.</span><span class="n">pcdata</span> <span class="o">=</span> <span class="n">comment</span>
     <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">from_gps</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;epoch&quot;</span><span class="p">))</span>
-    <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;f0&quot;</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">f0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;s^-1&quot;</span><span class="p">))</span>
+    <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">Param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;f0&quot;</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">f0</span><span class="p">,</span>
+                                                     <span class="n">unit</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;s^-1&quot;</span><span class="p">))</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">delta_name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="n">delta</span><span class="p">,</span>
@@ -229,7 +230,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="n">delta</span><span class="p">,</span>
                                 <span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">ligolw_array</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dim_names</span><span class="o">=</span><span class="n">dim_names</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ligolw_array</span><span class="o">.</span><span class="n">Array</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dim_names</span><span class="o">=</span><span class="n">dim_names</span><span class="p">)</span>
     <span class="n">a</span><span class="o">.</span><span class="n">Unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">sampleUnits</span><span class="p">)</span>
     <span class="n">dim0</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Dim</span><span class="o">.</span><span class="n">tagName</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">dim0</span><span class="o">.</span><span class="n">Unit</span> <span class="o">=</span> <span class="n">delta_unit</span>
@@ -248,8 +249,8 @@
     <span class="n">snr_xml</span> <span class="o">=</span> <span class="n">_build_series</span><span class="p">(</span><span class="n">snr_lal</span><span class="p">,</span> <span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Time,Real,Imaginary&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span>
                             <span class="s1">&#39;deltaT&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
     <span class="n">snr_node</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">snr_xml</span><span class="p">)</span>
-    <span class="n">eid_param</span> <span class="o">=</span> <span class="n">ligolw_param</span><span class="o">.</span><span class="n">new_param</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;event_id&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ilwd:char&#39;</span><span class="p">,</span>
-                                       <span class="n">sngl_inspiral_id</span><span class="p">)</span>
+    <span class="n">eid_param</span> <span class="o">=</span> <span class="n">ligolw_param</span><span class="o">.</span><span class="n">Param</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;event_id&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ilwd:char&#39;</span><span class="p">,</span>
+                                         <span class="n">sngl_inspiral_id</span><span class="p">)</span>
     <span class="n">snr_node</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">eid_param</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="make_psd_xmldoc"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.make_psd_xmldoc">[docs]</a><span class="k">def</span> <span class="nf">make_psd_xmldoc</span><span class="p">(</span><span class="n">psddict</span><span class="p">,</span> <span class="n">xmldoc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -268,7 +269,8 @@
         <span class="n">xmlseries</span> <span class="o">=</span> <span class="n">_build_series</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Frequency,Real&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Frequency&quot;</span><span class="p">),</span>
                                   <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;deltaF&#39;</span><span class="p">,</span> <span class="s1">&#39;s^-1&#39;</span><span class="p">)</span>
         <span class="n">fs</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">xmlseries</span><span class="p">)</span>
-        <span class="n">fs</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;instrument&quot;</span><span class="p">,</span> <span class="n">instrument</span><span class="p">))</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">Param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;instrument&quot;</span><span class="p">,</span>
+                                                       <span class="n">instrument</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">xmldoc</span></div>
 
 <div class="viewcode-block" id="SingleCoincForGraceDB"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.SingleCoincForGraceDB">[docs]</a><span class="k">class</span> <span class="nc">SingleCoincForGraceDB</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -535,7 +537,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jun 29, 2018.
+      Last updated on Jun 30, 2018.
 
     </p>
   </div>
@@ -557,7 +559,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'7d4314',
+            VERSION:'fc8af2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
