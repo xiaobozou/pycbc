@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC 06a7cf documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC 37e3d5 documentation</title>
   
 
   
@@ -823,6 +823,62 @@
 
 <span class="n">det_tc</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">_det_tc</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">_optimal_orientation_from_detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">,</span> <span class="n">tc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Low-level function to be called from _optimal_dec_from_detector</span>
+<span class="sd">    and _optimal_ra_from_detector&quot;&quot;&quot;</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">Detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">)</span>
+    <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">optimal_orientation</span><span class="p">(</span><span class="n">tc</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span>
+
+
+<span class="k">def</span> <span class="nf">_optimal_dec_from_detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">,</span> <span class="n">tc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;For a given detector and GPS time, return the optimal orientation</span>
+<span class="sd">    (directly overhead of the detector) in declination.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    detector_name : string</span>
+<span class="sd">        The name of the detector, e.g., &#39;H1&#39;.</span>
+<span class="sd">    tc : float</span>
+<span class="sd">        The GPS time of the coalescence of the signal in the `ref_frame`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float :</span>
+<span class="sd">        The declination of the signal, in radians.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_optimal_orientation_from_detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">,</span> <span class="n">tc</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">optimal_dec_from_detector</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">_optimal_dec_from_detector</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_optimal_ra_from_detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">,</span> <span class="n">tc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;For a given detector and GPS time, return the optimal orientation</span>
+<span class="sd">    (directly overhead of the detector) in right ascension.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    detector_name : string</span>
+<span class="sd">        The name of the detector, e.g., &#39;H1&#39;.</span>
+<span class="sd">    tc : float</span>
+<span class="sd">        The GPS time of the coalescence of the signal in the `ref_frame`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float :</span>
+<span class="sd">        The declination of the signal, in radians.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_optimal_orientation_from_detector</span><span class="p">(</span><span class="n">detector_name</span><span class="p">,</span> <span class="n">tc</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">optimal_ra_from_detector</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">_optimal_ra_from_detector</span><span class="p">)</span>
+
+
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
@@ -908,6 +964,7 @@
            <span class="s1">&#39;spin2y_from_mass1_mass2_xi2_phi_a_phi_s&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chirp_distance&#39;</span><span class="p">,</span> <span class="s1">&#39;det_tc&#39;</span><span class="p">,</span> <span class="s1">&#39;snr_from_loglr&#39;</span><span class="p">,</span>
            <span class="s1">&#39;freq_from_final_mass_spin&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_from_final_mass_spin&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span><span class="s1">&#39;optimal_ra_from_detector&#39;</span>
           <span class="p">]</span>
 </pre></div>
 
@@ -922,7 +979,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 03, 2018.
+      Last updated on Jul 05, 2018.
 
     </p>
   </div>
@@ -944,7 +1001,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'06a7cf',
+            VERSION:'37e3d5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
