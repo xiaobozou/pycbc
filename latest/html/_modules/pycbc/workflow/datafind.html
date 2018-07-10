@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.datafind &mdash; PyCBC 4520b5 documentation</title>
+  <title>pycbc.workflow.datafind &mdash; PyCBC 74ba27 documentation</title>
   
 
   
@@ -903,7 +903,7 @@
             <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;file://&#39;</span><span class="p">):</span>
                 <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
-                    <span class="s1">&#39;file:///cvmfs/oasis.opensciencegrid.org/&#39;</span><span class="p">):</span>
+                    <span class="s1">&#39;file:///cvmfs/oasis.opensciencegrid.org/ligo/frames&#39;</span><span class="p">):</span>
                     <span class="c1"># Datafind returned a URL valid on the osg as well</span>
                     <span class="c1"># so add the additional PFNs to allow OSG access.</span>
                     <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;osg&#39;</span><span class="p">)</span>
@@ -916,6 +916,11 @@
                     <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
                         <span class="s1">&#39;file:///cvmfs/oasis.opensciencegrid.org/&#39;</span><span class="p">,</span>
                         <span class="s1">&#39;gsiftp://ldas-grid.ligo.caltech.edu/hdfs/&#39;</span><span class="p">),</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;osg&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span>
+                    <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="p">):</span>
+                    <span class="c1"># Datafind returned a URL valid on the osg as well</span>
+                    <span class="c1"># so add the additional PFNs to allow OSG access.</span>
+                    <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;osg&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;notlocal&#39;</span><span class="p">)</span>
 
@@ -1279,7 +1284,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'4520b5',
+            VERSION:'74ba27',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
