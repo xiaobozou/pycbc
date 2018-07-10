@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.inference_followups &mdash; PyCBC 74ba27 documentation</title>
+  <title>pycbc.workflow.inference_followups &mdash; PyCBC ad51cf documentation</title>
   
 
   
@@ -480,11 +480,11 @@
                     <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">parameters</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
-    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">files</span> <span class="o">+=</span> <span class="n">make_inference_posterior_plot</span><span class="p">(</span>
                     <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
                     <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">parameter</span><span class="p">],</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="n">analysis_seg</span><span class="p">,</span>
-                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;param</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">files</span></div>
 
 <div class="viewcode-block" id="make_inference_samples_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_samples_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_samples_plot</span><span class="p">(</span>
@@ -602,9 +602,10 @@
     <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
 
     <span class="c1"># add command line options</span>
-    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">plot_exe</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
-                                  <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                                  <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+                                  <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;param</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="p">)])</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">plot_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="n">inference_files</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
@@ -648,7 +649,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'74ba27',
+            VERSION:'ad51cf',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
