@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC ad51cf documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC fe7aac documentation</title>
   
 
   
@@ -440,11 +440,15 @@ burn in.</li>
 
 <dl class="function">
 <dt id="pycbc.inference.burn_in.n_acl">
-<code class="descclassname">pycbc.inference.burn_in.</code><code class="descname">n_acl</code><span class="sig-paren">(</span><em>sampler</em>, <em>fp</em>, <em>nacls=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/burn_in.html#n_acl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.burn_in.n_acl" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.inference.burn_in.</code><code class="descname">n_acl</code><span class="sig-paren">(</span><em>sampler</em>, <em>fp</em>, <em>nacls=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/burn_in.html#n_acl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.burn_in.n_acl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Burn in based on ACL.</p>
-<p>The sampler is considered burned in if the number of itertions is &gt;=
-<code class="docutils literal notranslate"><span class="pre">nacls</span></code> times the maximum ACL over all parameters, as measured from the
-first iteration.</p>
+<p>This applies the following test to determine burn in:</p>
+<ol class="arabic simple">
+<li>The first half of the samples are ignored.</li>
+<li>An ACL is calculated from the second half.</li>
+<li>If the <code class="docutils literal notranslate"><span class="pre">nacls</span></code> times the ACL is &lt; the number of iterations / 2,
+the sampler is considered to be burned in at the half-way point.</li>
+</ol>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -454,7 +458,7 @@ first iteration.</p>
 <cite>inference.sampler</cite>, or the class itself.</li>
 <li><strong>fp</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile" title="pycbc.io.inference_hdf.InferenceFile"><em>InferenceFile</em></a>) – Open inference hdf file containing the samples to load for determing
 burn in.</li>
-<li><strong>nacls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of ACLs to use for burn in. Default is 10.</li>
+<li><strong>nacls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of ACLs to use for burn in. Default is 5.</li>
 </ul>
 </td>
 </tr>
@@ -3189,7 +3193,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'ad51cf',
+            VERSION:'fe7aac',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
