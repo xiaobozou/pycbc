@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.frame.frame &mdash; PyCBC e876fd documentation</title>
+  <title>pycbc.frame.frame &mdash; PyCBC 67d0fd documentation</title>
   
 
   
@@ -301,7 +301,7 @@
             <span class="k">if</span> <span class="n">file_extension</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;.lcf&quot;</span><span class="p">,</span> <span class="s2">&quot;.cache&quot;</span><span class="p">]:</span>
                 <span class="n">cache</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CacheImport</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">file_extension</span> <span class="o">==</span> <span class="s2">&quot;.gwf&quot;</span><span class="p">:</span>
-                <span class="n">cache</span> <span class="o">=</span> <span class="n">lalframe</span><span class="o">.</span><span class="n">FrOpen</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">cache</span>
+                <span class="n">cache</span> <span class="o">=</span> <span class="n">lalframe</span><span class="o">.</span><span class="n">FrOpen</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dir_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span><span class="o">.</span><span class="n">cache</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Invalid location name&quot;</span><span class="p">)</span>
 
@@ -982,7 +982,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 10, 2018.
+      Last updated on Jul 11, 2018.
 
     </p>
   </div>
@@ -1004,7 +1004,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'e876fd',
+            VERSION:'67d0fd',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
