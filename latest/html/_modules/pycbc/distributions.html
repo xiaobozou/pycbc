@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions &mdash; PyCBC 4c3b55 documentation</title>
+  <title>pycbc.distributions &mdash; PyCBC ad08de documentation</title>
   
 
   
@@ -294,21 +294,23 @@
     <span class="k">return</span> <span class="n">lstring</span>
 
 
-<div class="viewcode-block" id="read_args_from_config"><a class="viewcode-back" href="../../pycbc.distributions.html#pycbc.distributions.read_args_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior_section</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Loads static and variable arguments from a configuration file.</span>
+<div class="viewcode-block" id="read_params_from_config"><a class="viewcode-back" href="../../pycbc.distributions.html#pycbc.distributions.read_params_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_params_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">prior_section</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">,</span>
+                            <span class="n">vargs_section</span><span class="o">=</span><span class="s1">&#39;variable_args&#39;</span><span class="p">,</span>
+                            <span class="n">sargs_section</span><span class="o">=</span><span class="s1">&#39;static_args&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loads static and variable parameters from a configuration file.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    cp : WorkflowConfigParser</span>
 <span class="sd">        An open config parser to read from.</span>
-<span class="sd">    section_group : {None, str}</span>
-<span class="sd">        When reading the config file, only read from sections that begin with</span>
-<span class="sd">        `{section_group}_`. For example, if `section_group=&#39;foo&#39;`, the</span>
-<span class="sd">        variable arguments will be retrieved from section</span>
-<span class="sd">        `[foo_variable_args]`. If None, no prefix will be appended to section</span>
-<span class="sd">        names.</span>
 <span class="sd">    prior_section : str, optional</span>
 <span class="sd">        Check that priors exist in the given section. Default is &#39;prior.&#39;</span>
+<span class="sd">    vargs_section : str, optional</span>
+<span class="sd">        The section to get the parameters that will be varied/need priors</span>
+<span class="sd">        defined for them. Default is &#39;variable_args&#39;.</span>
+<span class="sd">    sargs_section : str, optional</span>
+<span class="sd">        The section to get the parameters that will remain fixed. Default is</span>
+<span class="sd">        &#39;static_args&#39;.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -317,26 +319,18 @@
 <span class="sd">    static_args : dict</span>
 <span class="sd">        Dictionary of names -&gt; values giving the parameters to keep fixed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">section_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">section_prefix</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_group</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">section_prefix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-
     <span class="c1"># sanity check that each parameter in [variable_args] has a priors section</span>
-    <span class="n">variable_args</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">variable_args&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_prefix</span><span class="p">))</span>
-    <span class="n">subsections</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_prefix</span><span class="p">,</span>
-                                                   <span class="n">prior_section</span><span class="p">))</span>
+    <span class="n">variable_args</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">vargs_section</span><span class="p">)</span>
+    <span class="n">subsections</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="n">prior_section</span><span class="p">)</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">subsections</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)])</span>
     <span class="n">missing_prior</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">variable_args</span><span class="p">)</span> <span class="o">-</span> <span class="n">tags</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">missing_prior</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;You are missing a priors section in the config file &quot;</span>
                        <span class="s2">&quot;for parameter(s): </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_prior</span><span class="p">)))</span>
-
-    <span class="c1"># get parameters that do not change in sampler</span>
+    <span class="c1"># get static args</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">static_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">key</span><span class="p">,</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">static_args&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_prefix</span><span class="p">),</span> <span class="n">key</span><span class="p">,</span> <span class="p">[]))</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">static_args&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_prefix</span><span class="p">))])</span>
+        <span class="n">static_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">key</span><span class="p">,</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="n">sargs_section</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="p">[]))</span>
+                           <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">sargs_section</span><span class="p">)])</span>
     <span class="k">except</span> <span class="n">_ConfigParser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
         <span class="n">static_args</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># try converting values to float</span>
@@ -349,30 +343,48 @@
             <span class="c1"># try converting to a list of strings; this function will just</span>
             <span class="c1"># return val if it does not begin (end) with [ (])</span>
             <span class="n">static_args</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_convert_liststring_to_list</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">static_args</span></div>
 
-    <span class="c1"># get additional constraints to apply in prior</span>
+
+<div class="viewcode-block" id="read_constraints_from_config"><a class="viewcode-back" href="../../pycbc.distributions.html#pycbc.distributions.read_constraints_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_constraints_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">constraint_section</span><span class="o">=</span><span class="s1">&#39;constraint&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loads parameter constraints from a configuration file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cp : WorkflowConfigParser</span>
+<span class="sd">        An open config parser to read from.</span>
+<span class="sd">    constraint_section : str, optional</span>
+<span class="sd">        The section to get the constraints from. Default is &#39;constraint&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        List of ``Constraint`` objects. Empty if no constraints were provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cons</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">constraint&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_prefix</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">subsection</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
-        <span class="n">constraint_arg</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="s2">&quot;constraint_arg&quot;</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">subsection</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="n">constraint_section</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">constraint_section</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
+        <span class="n">constraint_arg</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span>
+            <span class="n">constraint_section</span><span class="p">,</span> <span class="s2">&quot;constraint_arg&quot;</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
+        <span class="c1"># get any other keyword arguments</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">section</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">subsection</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;constraint_arg&quot;</span><span class="p">]:</span>
-                <span class="k">continue</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tag</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">subsection</span><span class="p">)</span>
+        <span class="n">section</span> <span class="o">=</span> <span class="n">constraint_section</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">subsection</span>
+        <span class="n">extra_opts</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+                      <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;constraint_arg&quot;</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">extra_opts</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;required_parameters&quot;</span><span class="p">:</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;required_parameters&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_VARARGS_DELIM</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="k">pass</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_VARARGS_DELIM</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
         <span class="n">cons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">constraints</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">variable_args</span><span class="p">,</span>
                                                   <span class="n">constraint_arg</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
 
-    <span class="k">return</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">static_args</span><span class="p">,</span> <span class="n">cons</span></div>
+    <span class="k">return</span> <span class="n">cons</span></div>
 </pre></div>
 
            </div>
@@ -408,7 +420,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'4c3b55',
+            VERSION:'ad08de',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

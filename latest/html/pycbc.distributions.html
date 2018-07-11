@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions package &mdash; PyCBC 4c3b55 documentation</title>
+  <title>pycbc.distributions package &mdash; PyCBC ad08de documentation</title>
   
 
   
@@ -2113,29 +2113,23 @@ parameter in self’s params.</p>
 <p>This modules provides classes and functions for drawing and calculating the
 probability density function of distributions.</p>
 <dl class="function">
-<dt id="pycbc.distributions.read_args_from_config">
-<code class="descclassname">pycbc.distributions.</code><code class="descname">read_args_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section_group=None</em>, <em>prior_section='prior'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_args_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_args_from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads static and variable arguments from a configuration file.</p>
+<dt id="pycbc.distributions.read_constraints_from_config">
+<code class="descclassname">pycbc.distributions.</code><code class="descname">read_constraints_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>constraint_section='constraint'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_constraints_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_constraints_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads parameter constraints from a configuration file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config parser to read from.</li>
-<li><strong>section_group</strong> (<em>{None</em><em>, </em><em>str}</em>) – When reading the config file, only read from sections that begin with
-<cite>{section_group}_</cite>. For example, if <cite>section_group=’foo’</cite>, the
-variable arguments will be retrieved from section
-<cite>[foo_variable_args]</cite>. If None, no prefix will be appended to section
-names.</li>
-<li><strong>prior_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Check that priors exist in the given section. Default is ‘prior.’</li>
+<li><strong>constraint_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The section to get the constraints from. Default is ‘constraint’.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>variable_args</strong> (<em>list</em>) – The names of the parameters to vary in the PE run.</li>
-<li><strong>static_args</strong> (<em>dict</em>) – Dictionary of names -&gt; values giving the parameters to keep fixed.</li>
-</ul>
-</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of <code class="docutils literal notranslate"><span class="pre">Constraint</span></code> objects. Empty if no constraints were provided.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
 </td>
 </tr>
 </tbody>
@@ -2161,6 +2155,35 @@ given configuration file.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.distributions.read_params_from_config">
+<code class="descclassname">pycbc.distributions.</code><code class="descname">read_params_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>prior_section='prior'</em>, <em>vargs_section='variable_args'</em>, <em>sargs_section='static_args'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_params_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_params_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads static and variable parameters from a configuration file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config parser to read from.</li>
+<li><strong>prior_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Check that priors exist in the given section. Default is ‘prior.’</li>
+<li><strong>vargs_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The section to get the parameters that will be varied/need priors
+defined for them. Default is ‘variable_args’.</li>
+<li><strong>sargs_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The section to get the parameters that will remain fixed. Default is
+‘static_args’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>variable_args</strong> (<em>list</em>) – The names of the parameters to vary in the PE run.</li>
+<li><strong>static_args</strong> (<em>dict</em>) – Dictionary of names -&gt; values giving the parameters to keep fixed.</li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -2213,7 +2236,7 @@ given configuration file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'4c3b55',
+            VERSION:'ad08de',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
