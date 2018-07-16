@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC d0066d documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC 936824 documentation</title>
   
 
   
@@ -1932,10 +1932,11 @@
                          <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg_summ_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
 
             <span class="c1"># Add using glue library to set all segment tables</span>
-            <span class="k">with</span> <span class="n">ligolw_segments</span><span class="o">.</span><span class="n">LigolwSegments</span><span class="p">(</span><span class="n">outdoc</span><span class="p">,</span> <span class="n">process</span><span class="p">)</span> <span class="k">as</span> <span class="n">xmlsegs</span><span class="p">:</span>
-                <span class="n">xmlsegs</span><span class="o">.</span><span class="n">insert_from_segmentlistdict</span><span class="p">({</span><span class="n">ifo</span> <span class="p">:</span> <span class="n">fsegs</span><span class="p">},</span> <span class="n">name</span><span class="p">,</span>
-                                                    <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                                                    <span class="n">valid</span> <span class="o">=</span> <span class="p">{</span><span class="n">ifo</span> <span class="p">:</span> <span class="n">vsegs</span><span class="p">})</span>
+            <span class="k">with</span> <span class="n">ligolw_segments</span><span class="o">.</span><span class="n">LigolwSegments</span><span class="p">(</span><span class="n">outdoc</span><span class="p">,</span> <span class="n">process</span><span class="p">)</span> <span class="k">as</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ligolw_segments</span><span class="o">.</span><span class="n">LigolwSegmentList</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="n">fsegs</span><span class="p">,</span>
+                                    <span class="n">instruments</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span><span class="n">ifo</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                                    <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">valid</span><span class="o">=</span><span class="n">vsegs</span><span class="p">))</span>
+
         <span class="c1"># write file</span>
         <span class="k">if</span> <span class="n">override_file_if_exists</span> <span class="ow">and</span> \
                                  <span class="bp">self</span><span class="o">.</span><span class="n">has_pfn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">):</span>
@@ -2079,7 +2080,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 11, 2018.
+      Last updated on Jul 16, 2018.
 
     </p>
   </div>
@@ -2101,7 +2102,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'d0066d',
+            VERSION:'936824',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

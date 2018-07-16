@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.frame.frame &mdash; PyCBC d0066d documentation</title>
+  <title>pycbc.frame.frame &mdash; PyCBC 936824 documentation</title>
   
 
   
@@ -277,7 +277,7 @@
     <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
                       <span class="n">dtype</span><span class="o">=</span><span class="n">d_type</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">locations_to_cache</span><span class="p">(</span><span class="n">locations</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">locations_to_cache</span><span class="p">(</span><span class="n">locations</span><span class="p">,</span> <span class="n">latest</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return a cumulative cache file build from the list of locations</span>
 
 <span class="sd">    Parameters</span>
@@ -285,6 +285,9 @@
 <span class="sd">    locations : list</span>
 <span class="sd">        A list of strings containing files, globs, or cache files used to build</span>
 <span class="sd">    a combined lal cache file object.</span>
+<span class="sd">    latest : Optional, {False, Boolean}</span>
+<span class="sd">        Only return a cache with the most recent frame in the locations.</span>
+<span class="sd">        If false, all results are returned.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -294,7 +297,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cum_cache</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">Cache</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+        <span class="n">flist</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">latest</span><span class="p">:</span>
+            <span class="n">flist</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">flist</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">flist</span><span class="p">:</span>
             <span class="n">dir_name</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">file_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 
@@ -660,7 +667,7 @@
 <span class="sd">        result may change due to more files being added to the filesystem,</span>
 <span class="sd">        for example.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cache</span> <span class="o">=</span> <span class="n">locations_to_cache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_src</span><span class="p">)</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">locations_to_cache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_src</span><span class="p">,</span> <span class="n">latest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="n">lalframe</span><span class="o">.</span><span class="n">FrStreamCacheOpen</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span>
 
@@ -982,7 +989,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 11, 2018.
+      Last updated on Jul 16, 2018.
 
     </p>
   </div>
@@ -1004,7 +1011,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'d0066d',
+            VERSION:'936824',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
