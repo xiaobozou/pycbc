@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC 936824 documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC 70d54c documentation</title>
   
 
   
@@ -229,6 +229,8 @@
 <span class="kn">import</span> <span class="nn">lal</span>
 <span class="kn">import</span> <span class="nn">lalsimulation</span> <span class="k">as</span> <span class="nn">lalsim</span>
 <span class="kn">from</span> <span class="nn">pycbc.detector</span> <span class="k">import</span> <span class="n">Detector</span>
+
+<span class="kn">from</span> <span class="nn">.coordinates</span> <span class="k">import</span> <span class="n">spherical_to_cartesian</span> <span class="k">as</span> <span class="n">_spherical_to_cartesian</span>
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -583,11 +585,13 @@
     <span class="sd">&quot;&quot;&quot;Returns the effective spin from mass1, mass2, spin1z, and spin2z.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">spin1z</span> <span class="o">*</span> <span class="n">mass1</span> <span class="o">+</span> <span class="n">spin2z</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_a">[docs]</a><span class="k">def</span> <span class="nf">chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the aligned mass-weighted spin difference from mass1, mass2,</span>
 <span class="sd">    spin1z, and spin2z.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">spin2z</span> <span class="o">*</span> <span class="n">mass2</span> <span class="o">-</span> <span class="n">spin1z</span> <span class="o">*</span> <span class="n">mass1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mass2</span> <span class="o">+</span> <span class="n">mass1</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="chi_p"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p">[docs]</a><span class="k">def</span> <span class="nf">chi_p</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin from mass1, mass2, spin1x,</span>
@@ -597,6 +601,7 @@
     <span class="n">xi2</span> <span class="o">=</span> <span class="n">primary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="phi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_a">[docs]</a><span class="k">def</span> <span class="nf">phi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the angle between the in-plane perpendicular spins.&quot;&quot;&quot;</span>
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">),</span>
@@ -605,11 +610,33 @@
                                 <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">-</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi_s</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Returns the sum of the in-plane perpendicular spins.&quot;&quot;&quot;</span>
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">)</span>
     <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">phi1</span> <span class="o">+</span> <span class="n">phi2</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="chi_eff_from_spherical"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_eff_from_spherical">[docs]</a><span class="k">def</span> <span class="nf">chi_eff_from_spherical</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1_a</span><span class="p">,</span> <span class="n">spin1_polar</span><span class="p">,</span>
+                           <span class="n">spin2_a</span><span class="p">,</span> <span class="n">spin2_polar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the effective spin using spins in spherical coordinates.&quot;&quot;&quot;</span>
+    <span class="n">spin1z</span> <span class="o">=</span> <span class="n">spin1_a</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">spin1_polar</span><span class="p">)</span>
+    <span class="n">spin2z</span> <span class="o">=</span> <span class="n">spin2_a</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">spin2_polar</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_eff</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="chi_p_from_spherical"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p_from_spherical">[docs]</a><span class="k">def</span> <span class="nf">chi_p_from_spherical</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1_a</span><span class="p">,</span> <span class="n">spin1_azimuthal</span><span class="p">,</span> <span class="n">spin1_polar</span><span class="p">,</span>
+                         <span class="n">spin2_a</span><span class="p">,</span> <span class="n">spin2_azimuthal</span><span class="p">,</span> <span class="n">spin2_polar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the effective precession spin using spins in spherical</span>
+<span class="sd">    coordinates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_spherical_to_cartesian</span><span class="p">(</span>
+        <span class="n">spin1_a</span><span class="p">,</span> <span class="n">spin1_azimuthal</span><span class="p">,</span> <span class="n">spin1_polar</span><span class="p">)</span>
+    <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_spherical_to_cartesian</span><span class="p">(</span>
+        <span class="n">spin2_a</span><span class="p">,</span> <span class="n">spin2_azimuthal</span><span class="p">,</span> <span class="n">spin2_polar</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">chi_p</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="primary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_spin">[docs]</a><span class="k">def</span> <span class="nf">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the primary mass.&quot;&quot;&quot;</span>
@@ -626,6 +653,7 @@
     <span class="n">sp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="secondary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_spin">[docs]</a><span class="k">def</span> <span class="nf">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the secondary mass.&quot;&quot;&quot;</span>
     <span class="n">mass1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
@@ -641,12 +669,14 @@
     <span class="n">ss</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="primary_xi"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_xi">[docs]</a><span class="k">def</span> <span class="nf">primary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the larger mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">spinx</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">)</span>
     <span class="n">spiny</span> <span class="o">=</span> <span class="n">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="secondary_xi"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_xi">[docs]</a><span class="k">def</span> <span class="nf">secondary_xi</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the smaller mass.</span>
@@ -655,11 +685,13 @@
     <span class="n">spiny</span> <span class="o">=</span> <span class="n">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xi2_from_mass1_mass2_spin2x_spin2y</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="xi1_from_spin1x_spin1y"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.xi1_from_spin1x_spin1y">[docs]</a><span class="k">def</span> <span class="nf">xi1_from_spin1x_spin1y</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the larger mass.</span>
 <span class="sd">    This function assumes it&#39;s given spins of the primary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin1x</span><span class="p">,</span> <span class="n">spin1y</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="xi2_from_mass1_mass2_spin2x_spin2y"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.xi2_from_mass1_mass2_spin2x_spin2y">[docs]</a><span class="k">def</span> <span class="nf">xi2_from_mass1_mass2_spin2x_spin2y</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the effective precession spin argument for the smaller mass.</span>
@@ -670,10 +702,12 @@
     <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">a1</span> <span class="o">/</span> <span class="p">(</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span><span class="p">)</span> <span class="o">*</span> <span class="n">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spin2x</span><span class="p">,</span> <span class="n">spin2y</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="chi_perp_from_spinx_spiny"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_perp_from_spinx_spiny">[docs]</a><span class="k">def</span> <span class="nf">chi_perp_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the in-plane spin from the x/y components of the spin.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">spinx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">spiny</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="chi_perp_from_mass1_mass2_xi2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_perp_from_mass1_mass2_xi2">[docs]</a><span class="k">def</span> <span class="nf">chi_perp_from_mass1_mass2_xi2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the in-plane spin from mass1, mass2, and xi2 for the</span>
@@ -683,6 +717,7 @@
     <span class="n">a1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">q</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a2</span> <span class="o">/</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">xi2</span></div>
+
 
 <div class="viewcode-block" id="chi_p_from_xi1_xi2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p_from_xi1_xi2">[docs]</a><span class="k">def</span> <span class="nf">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns effective precession spin from xi1 and xi2.</span>
@@ -697,11 +732,13 @@
     <span class="n">chi_p</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">chi_p</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="phi1_from_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi1_from_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane</span>
 <span class="sd">    spin for the primary mass from phi_s and phi_a.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">+</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span></div>
+
 
 <div class="viewcode-block" id="phi2_from_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi2_from_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane</span>
@@ -709,21 +746,25 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">phi_s</span> <span class="o">-</span> <span class="n">phi_a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span></div>
 
+
 <div class="viewcode-block" id="phi_from_spinx_spiny"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.phi_from_spinx_spiny">[docs]</a><span class="k">def</span> <span class="nf">phi_from_spinx_spiny</span><span class="p">(</span><span class="n">spinx</span><span class="p">,</span> <span class="n">spiny</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the angle between the x-component axis and the in-plane spin.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">phi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">spiny</span><span class="p">,</span> <span class="n">spinx</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phi</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="spin1z_from_mass1_mass2_chi_eff_chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1z_from_mass1_mass2_chi_eff_chi_a">[docs]</a><span class="k">def</span> <span class="nf">spin1z_from_mass1_mass2_chi_eff_chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns spin1z.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">-</span> <span class="n">chi_a</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="spin2z_from_mass1_mass2_chi_eff_chi_a"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2z_from_mass1_mass2_chi_eff_chi_a">[docs]</a><span class="k">def</span> <span class="nf">spin2z_from_mass1_mass2_chi_eff_chi_a</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns spin2z.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">chi_eff</span> <span class="o">+</span> <span class="n">chi_a</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="spin1x_from_xi1_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1x_from_xi1_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin1x_from_xi1_phi_a_phi_s</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns x-component spin for primary mass.</span>
@@ -731,11 +772,13 @@
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="spin1y_from_xi1_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin1y_from_xi1_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin1y_from_xi1_phi_a_phi_s</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns y-component spin for primary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">phi1</span> <span class="o">=</span> <span class="n">phi1_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_s</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xi1</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="spin2x_from_mass1_mass2_xi2_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2x_from_mass1_mass2_xi2_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin2x_from_mass1_mass2_xi2_phi_a_phi_s</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns x-component spin for secondary mass.</span>
@@ -744,12 +787,14 @@
     <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span></div>
 
+
 <div class="viewcode-block" id="spin2y_from_mass1_mass2_xi2_phi_a_phi_s"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.spin2y_from_mass1_mass2_xi2_phi_a_phi_s">[docs]</a><span class="k">def</span> <span class="nf">spin2y_from_mass1_mass2_xi2_phi_a_phi_s</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns y-component spin for secondary mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">chi_perp</span> <span class="o">=</span> <span class="n">chi_perp_from_mass1_mass2_xi2</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
     <span class="n">phi2</span> <span class="o">=</span> <span class="n">phi2_from_phi_a_phi_s</span><span class="p">(</span><span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">chi_perp</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="dquadmon_from_lambda"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.dquadmon_from_lambda">[docs]</a><span class="k">def</span> <span class="nf">dquadmon_from_lambda</span><span class="p">(</span><span class="n">lambdav</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the quadrupole moment of a neutron star given its lambda</span>
@@ -783,6 +828,7 @@
     <span class="sd">&quot;&quot;&quot;Returns the chirp distance given the luminosity distance and chirp mass.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">dist</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">ref_mass</span> <span class="o">/</span> <span class="n">mchirp</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span></div>
+
 
 <span class="k">def</span> <span class="nf">distance_from_chirp_distance_mchirp</span><span class="p">(</span><span class="n">chirp_distance</span><span class="p">,</span> <span class="n">mchirp</span><span class="p">,</span> <span class="n">ref_mass</span><span class="o">=</span><span class="mf">1.4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the luminosity distance given a chirp distance and chirp mass.</span>
@@ -923,21 +969,23 @@
     <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
-    <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span><span class="n">qnmfreq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">spin</span><span class="p">),</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
-
+    <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span>
+        <span class="n">qnmfreq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">spin</span><span class="p">),</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
     <span class="n">f_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
     <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
-
     <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span>
+
 
 <div class="viewcode-block" id="freq_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.freq_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">freq_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+
 
 <div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dquadmon_from_lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda_tilde&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;secondary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;mtotal_from_mass1_mass2&#39;</span><span class="p">,</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dquadmon_from_lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda_tilde&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;primary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;secondary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;mtotal_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;q_from_mass1_mass2&#39;</span><span class="p">,</span> <span class="s1">&#39;invq_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;eta_from_mass1_mass2&#39;</span><span class="p">,</span> <span class="s1">&#39;mchirp_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;mass1_from_mtotal_q&#39;</span><span class="p">,</span> <span class="s1">&#39;mass2_from_mtotal_q&#39;</span><span class="p">,</span>
@@ -964,7 +1012,8 @@
            <span class="s1">&#39;spin2y_from_mass1_mass2_xi2_phi_a_phi_s&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chirp_distance&#39;</span><span class="p">,</span> <span class="s1">&#39;det_tc&#39;</span><span class="p">,</span> <span class="s1">&#39;snr_from_loglr&#39;</span><span class="p">,</span>
            <span class="s1">&#39;freq_from_final_mass_spin&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_from_final_mass_spin&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span><span class="s1">&#39;optimal_ra_from_detector&#39;</span>
+           <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span><span class="s1">&#39;optimal_ra_from_detector&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;chi_eff_from_spherical&#39;</span><span class="p">,</span> <span class="s1">&#39;chi_p_from_spherical&#39;</span><span class="p">,</span>
           <span class="p">]</span>
 </pre></div>
 
@@ -1001,7 +1050,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'936824',
+            VERSION:'70d54c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
