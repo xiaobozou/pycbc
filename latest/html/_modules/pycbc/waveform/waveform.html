@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.waveform &mdash; PyCBC 70d54c documentation</title>
+  <title>pycbc.waveform.waveform &mdash; PyCBC f3c1e7 documentation</title>
   
 
   
@@ -234,9 +234,10 @@
 <span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">parameters</span>
 <span class="kn">from</span> <span class="nn">pycbc.filter</span> <span class="k">import</span> <span class="n">interpolate_complex_frequency</span><span class="p">,</span> <span class="n">resample_to_delta_t</span>
 <span class="kn">import</span> <span class="nn">pycbc</span>
-<span class="kn">from</span> <span class="nn">spa_tmplt</span> <span class="k">import</span> <span class="n">spa_tmplt</span><span class="p">,</span> <span class="n">spa_tmplt_norm</span><span class="p">,</span> <span class="n">spa_tmplt_end</span><span class="p">,</span> \
+<span class="kn">from</span> <span class="nn">.spa_tmplt</span> <span class="k">import</span> <span class="n">spa_tmplt</span><span class="p">,</span> <span class="n">spa_tmplt_norm</span><span class="p">,</span> <span class="n">spa_tmplt_end</span><span class="p">,</span> \
                       <span class="n">spa_tmplt_precondition</span><span class="p">,</span> <span class="n">spa_amplitude_factor</span><span class="p">,</span> \
                       <span class="n">spa_length_in_time</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="nb">range</span> <span class="k">as</span> <span class="n">xrange</span>
 
 <div class="viewcode-block" id="NoWaveformError"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.NoWaveformError">[docs]</a><span class="k">class</span> <span class="nc">NoWaveformError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This should be raised if generating a waveform would just result in all</span>
@@ -460,8 +461,8 @@
     <span class="n">_cuda_fd_approximants</span><span class="p">[</span><span class="s2">&quot;IMRPhenomC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imrphenomc_tmplt</span>
     <span class="n">_cuda_fd_approximants</span><span class="p">[</span><span class="s2">&quot;SpinTaylorF2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cuda_spintaylorf2</span>
 
-<span class="n">cuda_td</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_lalsim_td_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">+</span> <span class="n">_cuda_td_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-<span class="n">cuda_fd</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">_lalsim_fd_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">+</span> <span class="n">_cuda_fd_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">cuda_td</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_lalsim_td_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">_cuda_td_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+<span class="n">cuda_fd</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">_lalsim_fd_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">_cuda_fd_approximants</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
 
 
 <span class="c1"># List the various available approximants ####################################</span>
@@ -1301,7 +1302,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'70d54c',
+            VERSION:'f3c1e7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

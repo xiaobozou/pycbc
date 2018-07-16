@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.weave &mdash; PyCBC 70d54c documentation</title>
+  <title>pycbc.weave &mdash; PyCBC f3c1e7 documentation</title>
   
 
   
@@ -219,9 +219,11 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">atexit</span><span class="o">,</span> <span class="nn">signal</span>
 <span class="kn">import</span> <span class="nn">fcntl</span>
-<span class="kn">import</span> <span class="nn">weave.inline_tools</span> <span class="k">as</span> <span class="nn">inline_tools</span>
+<span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">PY3</span>
 
-<span class="n">_compile_function</span> <span class="o">=</span> <span class="n">inline_tools</span><span class="o">.</span><span class="n">compile_function</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">PY3</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">weave.inline_tools</span> <span class="k">as</span> <span class="nn">inline_tools</span>
+    <span class="n">_compile_function</span> <span class="o">=</span> <span class="n">inline_tools</span><span class="o">.</span><span class="n">compile_function</span>
 
 <span class="c1">## Blatently taken from weave to implement a crude file locking scheme</span>
 <div class="viewcode-block" id="pycbc_compile_function"><a class="viewcode-back" href="../../pycbc.html#pycbc.weave.pycbc_compile_function">[docs]</a><span class="k">def</span> <span class="nf">pycbc_compile_function</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">arg_names</span><span class="p">,</span><span class="n">local_dict</span><span class="p">,</span><span class="n">global_dict</span><span class="p">,</span>
@@ -258,8 +260,13 @@
 
     <span class="k">return</span> <span class="n">func</span></div>
 
-<span class="n">inline_tools</span><span class="o">.</span><span class="n">compile_function</span> <span class="o">=</span> <span class="n">pycbc_compile_function</span>
-<span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">PY3</span><span class="p">:</span>
+    <span class="n">inline_tools</span><span class="o">.</span><span class="n">compile_function</span> <span class="o">=</span> <span class="n">pycbc_compile_function</span>
+    <span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">inline</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Oh no! You tried to use capabilities&quot;</span>
+                           <span class="s2">&quot; we haven&#39;t ported to python3 yet&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="insert_weave_option_group"><a class="viewcode-back" href="../../pycbc.html#pycbc.weave.insert_weave_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_weave_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -398,7 +405,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'70d54c',
+            VERSION:'f3c1e7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
