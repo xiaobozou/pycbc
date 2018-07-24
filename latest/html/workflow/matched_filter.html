@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The workflow matched-filter module &mdash; PyCBC ca0ea0 documentation</title>
+  <title>The workflow matched-filter module &mdash; PyCBC 4af387 documentation</title>
   
 
   
@@ -407,6 +407,58 @@ workflow module</p>
 <h4>pycbc_inspiral<a class="headerlink" href="#pycbc-inspiral" title="Permalink to this headline">¶</a></h4>
 <p>pycbc_inspiral is pycbc’s inspiral matched-filtering program. Designed as a replacement and improvement of lalapps_inspiral. The help message of pycbc_inspiral follows:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pycbc_inspiral --help
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/__init__.py:36: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility
+  from ._conv import register_converters as _register_converters
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/__init__.py:45: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility
+  from . import h5a, h5d, h5ds, h5f, h5fd, h5g, h5r, h5s, h5t, h5p, h5z
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/h5py/_hl/group.py:22: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility
+  from .. import h5g, h5i, h5o, h5r, h5t, h5l, h5p
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/linalg/basic.py:17: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._solve_toeplitz import levinson
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/linalg/__init__.py:191: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._decomp_update import *
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/special/__init__.py:640: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._ufuncs import *
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/special/_ellip_harm.py:7: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._ellip_harm_2 import _ellipsoid, _ellipsoid_norm
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/lil.py:16: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _csparsetools
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:167: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._shortest_path import shortest_path, floyd_warshall, dijkstra,\
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/csgraph/_validation.py:5: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._tools import csgraph_to_dense, csgraph_from_dense,\
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:169: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._traversal import breadth_first_order, depth_first_order, \
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:171: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._min_spanning_tree import minimum_spanning_tree
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:172: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._reordering import reverse_cuthill_mckee, maximum_bipartite_matching, \
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/optimize/_numdiff.py:8: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._group_columns import group_dense, group_sparse
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/interpolate/_bsplines.py:9: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _bspl
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/spatial/__init__.py:94: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from .ckdtree import *
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/spatial/__init__.py:95: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from .qhull import *
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/spatial/_spherical_voronoi.py:18: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _voronoi
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/spatial/distance.py:121: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _hausdorff
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/io/matlab/mio4.py:18: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from .mio_utils import squeeze_element, chars_to_strings
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/io/matlab/mio5.py:98: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from .mio5_utils import VarReader5
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/signal/_max_len_seq.py:8: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._max_len_seq_inner import _max_len_seq_inner
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/signal/_upfirdn.py:36: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._upfirdn_apply import _output_len, _apply
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/ndimage/measurements.py:36: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _ni_label
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/signal/spectral.py:10: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from ._spectral import lombscargle
+/home/travis/build/pycbc-build/environment/lib/python2.7/site-packages/scipy/stats/_continuous_distns.py:17: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  from . import _stats
 usage: 
 
 Find single detector gravitational-wave triggers.
@@ -1001,7 +1053,7 @@ stage you can call the various sub-functions directly.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 21, 2018.
+      Last updated on Jul 24, 2018.
 
     </p>
   </div>
@@ -1023,7 +1075,7 @@ stage you can call the various sub-functions directly.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'ca0ea0',
+            VERSION:'4af387',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

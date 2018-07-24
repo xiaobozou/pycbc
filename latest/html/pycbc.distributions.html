@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions package &mdash; PyCBC ca0ea0 documentation</title>
+  <title>pycbc.distributions package &mdash; PyCBC 4af387 documentation</title>
   
 
   
@@ -1159,7 +1159,7 @@ representing the bounds. Otherwise, <cite>None</cite>.</p>
 <p>This modules provides classes for evaluating multi-dimensional constraints.</p>
 <dl class="class">
 <dt id="pycbc.distributions.constraints.CartesianSpinSpace">
-<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">CartesianSpinSpace</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#CartesianSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.CartesianSpinSpace" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">CartesianSpinSpace</code><span class="sig-paren">(</span><em>constraint_arg</em>, <em>transforms=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#CartesianSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.CartesianSpinSpace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
 <p>Pre-defined constraint that check if Cartesian parameters
 are within acceptable values.</p>
@@ -1177,7 +1177,7 @@ are within acceptable values.</p>
 
 <dl class="class">
 <dt id="pycbc.distributions.constraints.Constraint">
-<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">Constraint</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#Constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.Constraint" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">Constraint</code><span class="sig-paren">(</span><em>constraint_arg</em>, <em>transforms=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#Constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.Constraint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Creates a constraint that evaluates to True if parameters obey
 the constraint and False if they do not.</p>
@@ -1195,7 +1195,7 @@ the constraint and False if they do not.</p>
 
 <dl class="class">
 <dt id="pycbc.distributions.constraints.EffectiveSpinSpace">
-<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">EffectiveSpinSpace</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#EffectiveSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.EffectiveSpinSpace" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">EffectiveSpinSpace</code><span class="sig-paren">(</span><em>constraint_arg</em>, <em>transforms=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#EffectiveSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.EffectiveSpinSpace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
 <p>Pre-defined constraint that check if effective spin parameters
 are within acceptable values.</p>
@@ -1213,7 +1213,7 @@ are within acceptable values.</p>
 
 <dl class="class">
 <dt id="pycbc.distributions.constraints.MtotalLT">
-<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">MtotalLT</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#MtotalLT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.MtotalLT" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">MtotalLT</code><span class="sig-paren">(</span><em>constraint_arg</em>, <em>transforms=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#MtotalLT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.MtotalLT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
 <p>Pre-defined constraint that check if total mass is less than a value.</p>
 <dl class="attribute">
@@ -2114,7 +2114,7 @@ parameter in self’s params.</p>
 probability density function of distributions.</p>
 <dl class="function">
 <dt id="pycbc.distributions.read_constraints_from_config">
-<code class="descclassname">pycbc.distributions.</code><code class="descname">read_constraints_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>constraint_section='constraint'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_constraints_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_constraints_from_config" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.distributions.</code><code class="descname">read_constraints_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>transforms=None</em>, <em>constraint_section='constraint'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_constraints_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_constraints_from_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads parameter constraints from a configuration file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2122,6 +2122,7 @@ probability density function of distributions.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config parser to read from.</li>
+<li><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to apply to parameters before applying constraints.</li>
 <li><strong>constraint_section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – The section to get the constraints from. Default is ‘constraint’.</li>
 </ul>
 </td>
@@ -2214,7 +2215,7 @@ defined for them. Default is ‘variable_args’.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Jul 21, 2018.
+      Last updated on Jul 24, 2018.
 
     </p>
   </div>
@@ -2236,7 +2237,7 @@ defined for them. Default is ‘variable_args’.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'ca0ea0',
+            VERSION:'4af387',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
