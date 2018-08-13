@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference package &mdash; PyCBC 404fc1 documentation</title>
+  <title>pycbc.inference package &mdash; PyCBC 3b6f5b documentation</title>
   
 
   
@@ -1250,7 +1250,9 @@ waveform.</li>
 values are the data (assumed to be unwhitened). The list of keys must
 match the waveform generator’s detectors keys, and the epoch of every
 data set must be the same as the waveform generator’s epoch.</li>
-<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency to use for computing inner products.</li>
+<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of starting frequencies, in which the keys are the detector
+names and the values are the starting frequency for that detector to be
+used for computing inner products.</li>
 <li><strong>psds</strong> (<em>{None</em><em>, </em><em>dict}</em>) – A dictionary of FrequencySeries keyed by the detector names. The
 dictionary must have a psd for each detector specified in the data
 dictionary. If provided, the inner products in each detector will be
@@ -1281,24 +1283,24 @@ will be used.</li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">signal</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psd</span> <span class="o">=</span> <span class="n">pypsd</span><span class="o">.</span><span class="n">aLIGOZeroDetHighPower</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="n">seglen</span><span class="p">,</span> <span class="mf">20.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H1&#39;</span><span class="p">:</span> <span class="n">psd</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">:</span> <span class="n">psd</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">([</span><span class="s1">&#39;tc&#39;</span><span class="p">],</span> <span class="n">generator</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span> <span class="n">return_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_lower</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H1&#39;</span><span class="p">:</span> <span class="n">fmin</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">:</span> <span class="n">fmin</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">([</span><span class="s1">&#39;tc&#39;</span><span class="p">],</span> <span class="n">generator</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f_lower</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span> <span class="n">return_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now compute the log likelihood ratio and prior-weighted likelihood ratio;
 since we have not provided a prior, these should be equal to each other:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span><span class="o">.</span><span class="n">loglr</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">),</span> <span class="n">likelihood_eval</span><span class="o">.</span><span class="n">logplr</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">)</span>
-<span class="go">    (ArrayWithAligned(277.92945279883855), ArrayWithAligned(277.92945279883855))</span>
+<span class="go">    (278.9612860719217, 278.9612860719217)</span>
 </pre></div>
 </div>
 <p>Compute the log likelihood and log posterior; since we have not
 provided a prior, these should both be equal to zero:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span><span class="o">.</span><span class="n">loglikelihood</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">),</span> <span class="n">likelihood_eval</span><span class="o">.</span><span class="n">logposterior</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">)</span>
-<span class="go">    (ArrayWithAligned(0.0), ArrayWithAligned(0.0))</span>
+<span class="go">    (0.0, 0.0)</span>
 </pre></div>
 </div>
 <p>Compute the SNR; for this system and PSD, this should be approximately 24:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span><span class="o">.</span><span class="n">snr</span><span class="p">([</span><span class="n">tsig</span><span class="p">])</span>
-<span class="go">    ArrayWithAligned(23.576660187517593)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span><span class="o">.</span><span class="n">snr</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Using the same likelihood evaluator, evaluate the log prior-weighted
@@ -1320,7 +1322,7 @@ to calling <code class="docutils literal notranslate"><span class="pre">logplr</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">distributions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">uniform_prior</span> <span class="o">=</span> <span class="n">distributions</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="p">(</span><span class="n">tsig</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="n">tsig</span><span class="o">+</span><span class="mf">0.2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">prior_eval</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">JointDistribution</span><span class="p">([</span><span class="s1">&#39;tc&#39;</span><span class="p">],</span> <span class="n">uniform_prior</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior_eval</span><span class="p">,</span> <span class="n">return_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">GaussianLikelihood</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f_lower</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior_eval</span><span class="p">,</span> <span class="n">return_meta</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood_eval</span><span class="o">.</span><span class="n">logplr</span><span class="p">([</span><span class="n">tsig</span><span class="p">]),</span> <span class="n">likelihood_eval</span><span class="o">.</span><span class="n">logposterior</span><span class="p">([</span><span class="n">tsig</span><span class="p">])</span>
 <span class="go">    (ArrayWithAligned(278.84574353071264), ArrayWithAligned(0.9162907318741418))</span>
 </pre></div>
@@ -3171,7 +3173,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 11, 2018.
+      Last updated on Aug 13, 2018.
 
     </p>
   </div>
@@ -3193,7 +3195,7 @@ function used by the sampler as an
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'404fc1',
+            VERSION:'3b6f5b',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

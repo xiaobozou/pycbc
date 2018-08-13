@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.option_utils &mdash; PyCBC 404fc1 documentation</title>
+  <title>pycbc.inference.option_utils &mdash; PyCBC 3b6f5b documentation</title>
   
 
   
@@ -233,6 +233,7 @@
 <span class="kn">from</span> <span class="nn">pycbc.strain</span> <span class="k">import</span> <span class="n">from_cli_multi_ifos</span> <span class="k">as</span> <span class="n">strain_from_cli_multi_ifos</span>
 <span class="kn">from</span> <span class="nn">pycbc.strain</span> <span class="k">import</span> <span class="n">gates_from_cli</span><span class="p">,</span> <span class="n">psd_gates_from_cli</span><span class="p">,</span> <span class="n">apply_gates_to_td</span><span class="p">,</span> \
                        <span class="n">apply_gates_to_fd</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">MultiDetOptionAction</span>
 
 
 <span class="c1">#-----------------------------------------------------------------------------</span>
@@ -290,7 +291,7 @@
     <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
         <span class="n">map_args</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
         <span class="n">sampling_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">map_args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span>
-        <span class="n">replaced_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span> 
+        <span class="n">replaced_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">sampling_params</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">replaced_params</span><span class="p">)</span></div>
 
 
@@ -486,10 +487,9 @@
 
 <div class="viewcode-block" id="add_low_frequency_cutoff_opt"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_low_frequency_cutoff_opt">[docs]</a><span class="k">def</span> <span class="nf">add_low_frequency_cutoff_opt</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adds the low-frequency-cutoff option to the given parser.&quot;&quot;&quot;</span>
-    <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
-    <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
-    <span class="c1"># will require (minor) changes to the Likelihood class</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+    <span class="c1"># Allow for different frequency cutoffs to be used for every detector</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
+                        <span class="n">action</span><span class="o">=</span><span class="n">MultiDetOptionAction</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;IFO:FLOW&#39;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff for each IFO.&quot;</span><span class="p">)</span></div>
 
 
@@ -501,11 +501,7 @@
 <span class="sd">    dict</span>
 <span class="sd">        Dictionary of instruments -&gt; low frequency cutoff.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
-    <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
-    <span class="c1"># will require (minor) changes to the Likelihood class</span>
-    <span class="k">return</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">}</span></div>
-
+    <span class="k">return</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span></div>
 
 <div class="viewcode-block" id="data_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.data_from_cli">[docs]</a><span class="k">def</span> <span class="nf">data_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Loads the data needed for a likelihood evaluator from the given</span>
@@ -1095,7 +1091,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 11, 2018.
+      Last updated on Aug 13, 2018.
 
     </p>
   </div>
@@ -1117,7 +1113,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'404fc1',
+            VERSION:'3b6f5b',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
