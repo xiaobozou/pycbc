@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC template bank generation documentation (pycbc.tmpltbank) &mdash; PyCBC 5f63aa documentation</title>
+  <title>PyCBC template bank generation documentation (pycbc.tmpltbank) &mdash; PyCBC 94a494 documentation</title>
   
 
   
@@ -438,8 +438,7 @@ usage: pycbc_geom_nonspinbank [-h] [--version] [-V]
                               [--witness-frame-type WITNESS_FRAME_TYPE]
                               [--witness-tf-file WITNESS_TF_FILE]
                               [--witness-filter-length WITNESS_FILTER_LENGTH]
-                              [--calculate-time-metric-components]
-                              [--calculate-ethinca-metric]
+                              [--calculate-time-metric-components | --calculate-ethinca-metric]
                               [--ethinca-pn-order {threePointFivePN,twoPN,twoPointFivePN,threePN,onePointFivePN,onePN,zeroPN}]
                               [--filter-cutoff {HybridMECO,SEOBNRv1RD,LightRing,MECO,LRD,FRD,EOBNRv2RD,SEOBNRv2RD,BKLISCO,ERD,SEOBNRv4RD,EOBNRv2HMRD,SEOBNRv2Peak,IMRPhenomCFinal,IMRPhenomDPeak,SEOBNRv4Peak,SEOBNRv1Peak,IMRPhenomBFinal,SchwarzISCO}]
                               [--ethinca-frequency-step ETHINCA_FREQUENCY_STEP]
@@ -881,8 +880,7 @@ usage: pycbc_geom_aligned_bank [-h] [--version] [-V] [-s STACK_DISTANCE] [-3]
                                [--delta-ns-mass DELTA_NS_MASS]
                                [--max-ns-spin-mag MAX_NS_SPIN_MAG]
                                [--max-bh-spin-mag MAX_BH_SPIN_MAG]
-                               [--ns-bh-boundary-mass NS_BH_BOUNDARY_MASS]
-                               [--nsbh-flag]
+                               [--ns-bh-boundary-mass NS_BH_BOUNDARY_MASS | --nsbh-flag]
                                [--psd-model {AdVBNSOptimizedSensitivityP1200087,AdVDesignSensitivityP1200087,AdVEarlyHighSensitivityP1200087,AdVEarlyLowSensitivityP1200087,AdVLateHighSensitivityP1200087,AdVLateLowSensitivityP1200087,AdVMidHighSensitivityP1200087,AdVMidLowSensitivityP1200087,AdvVirgo,CosmicExplorerP1600143,CosmicExplorerPessimisticP1600143,CosmicExplorerWidebandP1600143,EinsteinTelescopeP1600143,GEO,GEOHF,KAGRA,KAGRADesignSensitivityT1600593,KAGRAEarlySensitivityT1600593,KAGRALateSensitivityT1600593,KAGRAMidSensitivityT1600593,KAGRAOpeningSensitivityT1600593,TAMA,Virgo,aLIGOBHBH20Deg,aLIGOBHBH20DegGWINC,aLIGOBNSOptimizedSensitivityP1200087,aLIGODesignSensitivityP1200087,aLIGOEarlyHighSensitivityP1200087,aLIGOEarlyLowSensitivityP1200087,aLIGOHighFrequency,aLIGOHighFrequencyGWINC,aLIGOLateHighSensitivityP1200087,aLIGOLateLowSensitivityP1200087,aLIGOMidHighSensitivityP1200087,aLIGOMidLowSensitivityP1200087,aLIGONSNSOpt,aLIGONSNSOptGWINC,aLIGONoSRMHighPower,aLIGONoSRMLowPower,aLIGONoSRMLowPowerGWINC,aLIGOQuantumBHBH20Deg,aLIGOQuantumHighFrequency,aLIGOQuantumNSNSOpt,aLIGOQuantumNoSRMHighPower,aLIGOQuantumNoSRMLowPower,aLIGOQuantumZeroDetHighPower,aLIGOQuantumZeroDetLowPower,aLIGOThermal,aLIGOZeroDetHighPower,aLIGOZeroDetHighPowerGWINC,aLIGOZeroDetLowPower,aLIGOZeroDetLowPowerGWINC,eLIGOModel,eLIGOShot,iLIGOModel,iLIGOSRD,iLIGOSeismic,iLIGOShot,iLIGOThermal,flat_unity}]
                                [--psd-file PSD_FILE] [--asd-file ASD_FILE]
                                [--psd-inverse-length PSD_INVERSE_LENGTH]
@@ -925,8 +923,7 @@ usage: pycbc_geom_aligned_bank [-h] [--version] [-V] [-s STACK_DISTANCE] [-3]
                                [--witness-frame-type WITNESS_FRAME_TYPE]
                                [--witness-tf-file WITNESS_TF_FILE]
                                [--witness-filter-length WITNESS_FILTER_LENGTH]
-                               [--calculate-time-metric-components]
-                               [--calculate-ethinca-metric]
+                               [--calculate-time-metric-components | --calculate-ethinca-metric]
                                [--ethinca-pn-order {threePointFivePN,twoPN,twoPointFivePN,threePN,onePointFivePN,onePN,zeroPN}]
                                [--filter-cutoff {HybridMECO,SEOBNRv1RD,LightRing,MECO,LRD,FRD,EOBNRv2RD,SEOBNRv2RD,BKLISCO,ERD,SEOBNRv4RD,EOBNRv2HMRD,SEOBNRv2Peak,IMRPhenomCFinal,IMRPhenomDPeak,SEOBNRv4Peak,SEOBNRv1Peak,IMRPhenomBFinal,SchwarzISCO}]
                                [--ethinca-frequency-step ETHINCA_FREQUENCY_STEP]
@@ -1499,8 +1496,7 @@ usage: pycbc_aligned_stoch_bank [-h] [--version] [--verbose] [-V]
                                 [--delta-ns-mass DELTA_NS_MASS]
                                 [--max-ns-spin-mag MAX_NS_SPIN_MAG]
                                 [--max-bh-spin-mag MAX_BH_SPIN_MAG]
-                                [--ns-bh-boundary-mass NS_BH_BOUNDARY_MASS]
-                                [--nsbh-flag]
+                                [--ns-bh-boundary-mass NS_BH_BOUNDARY_MASS | --nsbh-flag]
                                 [--psd-model {AdVBNSOptimizedSensitivityP1200087,AdVDesignSensitivityP1200087,AdVEarlyHighSensitivityP1200087,AdVEarlyLowSensitivityP1200087,AdVLateHighSensitivityP1200087,AdVLateLowSensitivityP1200087,AdVMidHighSensitivityP1200087,AdVMidLowSensitivityP1200087,AdvVirgo,CosmicExplorerP1600143,CosmicExplorerPessimisticP1600143,CosmicExplorerWidebandP1600143,EinsteinTelescopeP1600143,GEO,GEOHF,KAGRA,KAGRADesignSensitivityT1600593,KAGRAEarlySensitivityT1600593,KAGRALateSensitivityT1600593,KAGRAMidSensitivityT1600593,KAGRAOpeningSensitivityT1600593,TAMA,Virgo,aLIGOBHBH20Deg,aLIGOBHBH20DegGWINC,aLIGOBNSOptimizedSensitivityP1200087,aLIGODesignSensitivityP1200087,aLIGOEarlyHighSensitivityP1200087,aLIGOEarlyLowSensitivityP1200087,aLIGOHighFrequency,aLIGOHighFrequencyGWINC,aLIGOLateHighSensitivityP1200087,aLIGOLateLowSensitivityP1200087,aLIGOMidHighSensitivityP1200087,aLIGOMidLowSensitivityP1200087,aLIGONSNSOpt,aLIGONSNSOptGWINC,aLIGONoSRMHighPower,aLIGONoSRMLowPower,aLIGONoSRMLowPowerGWINC,aLIGOQuantumBHBH20Deg,aLIGOQuantumHighFrequency,aLIGOQuantumNSNSOpt,aLIGOQuantumNoSRMHighPower,aLIGOQuantumNoSRMLowPower,aLIGOQuantumZeroDetHighPower,aLIGOQuantumZeroDetLowPower,aLIGOThermal,aLIGOZeroDetHighPower,aLIGOZeroDetHighPowerGWINC,aLIGOZeroDetLowPower,aLIGOZeroDetLowPowerGWINC,eLIGOModel,eLIGOShot,iLIGOModel,iLIGOSRD,iLIGOSeismic,iLIGOShot,iLIGOThermal,flat_unity}]
                                 [--psd-file PSD_FILE] [--asd-file ASD_FILE]
                                 [--psd-inverse-length PSD_INVERSE_LENGTH]
@@ -1544,8 +1540,7 @@ usage: pycbc_aligned_stoch_bank [-h] [--version] [--verbose] [-V]
                                 [--witness-frame-type WITNESS_FRAME_TYPE]
                                 [--witness-tf-file WITNESS_TF_FILE]
                                 [--witness-filter-length WITNESS_FILTER_LENGTH]
-                                [--calculate-time-metric-components]
-                                [--calculate-ethinca-metric]
+                                [--calculate-time-metric-components | --calculate-ethinca-metric]
                                 [--ethinca-pn-order {threePointFivePN,twoPN,twoPointFivePN,threePN,onePointFivePN,onePN,zeroPN}]
                                 [--filter-cutoff {HybridMECO,SEOBNRv1RD,LightRing,MECO,LRD,FRD,EOBNRv2RD,SEOBNRv2RD,BKLISCO,ERD,SEOBNRv4RD,EOBNRv2HMRD,SEOBNRv2Peak,IMRPhenomCFinal,IMRPhenomDPeak,SEOBNRv4Peak,SEOBNRv1Peak,IMRPhenomBFinal,SchwarzISCO}]
                                 [--ethinca-frequency-step ETHINCA_FREQUENCY_STEP]
@@ -2935,7 +2930,7 @@ O1-like data.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'5f63aa',
+            VERSION:'94a494',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
