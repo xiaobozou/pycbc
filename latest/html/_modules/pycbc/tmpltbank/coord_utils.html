@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.tmpltbank.coord_utils &mdash; PyCBC 3b6f5b documentation</title>
+  <title>pycbc.tmpltbank.coord_utils &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -215,6 +215,7 @@
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="nb">range</span>
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank.lambda_mapping</span> <span class="k">import</span> <span class="n">get_chirp_params</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">pnutils</span>
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank.em_progenitors</span> <span class="k">import</span> <span class="n">generate_em_constraint_data</span><span class="p">,</span> <span class="n">load_ns_sequence</span><span class="p">,</span> <span class="n">min_eta_for_em_bright</span>
@@ -674,7 +675,7 @@
 <span class="sd">        Position of the point(s) in the resulting coordinate.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">evecs</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">evecs</span><span class="p">)):</span>
         <span class="n">temp</span> <span class="o">+=</span> <span class="p">(</span><span class="n">evecs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">index</span><span class="p">]</span> <span class="o">*</span> <span class="n">rescale_factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">old_vector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">temp</span></div>
 
@@ -731,7 +732,7 @@
     <span class="n">bXis</span> <span class="o">=</span> <span class="n">get_cov_params</span><span class="p">(</span><span class="n">bMass1</span><span class="p">,</span> <span class="n">bMass2</span><span class="p">,</span> <span class="n">bSpin1</span><span class="p">,</span> <span class="n">bSpin2</span><span class="p">,</span> <span class="n">metricParams</span><span class="p">,</span> <span class="n">fUpper</span><span class="p">)</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">aXis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bXis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">aXis</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">aXis</span><span class="p">)):</span>
         <span class="n">dist</span> <span class="o">+=</span> <span class="p">(</span><span class="n">aXis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">bXis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
 
     <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">aXis</span><span class="p">,</span> <span class="n">bXis</span></div>
@@ -953,7 +954,7 @@
     <span class="c1"># NOTE: totmass and f_cutoff are both numpy arrays as this function is</span>
     <span class="c1">#       designed so that the cutoff can be calculated for many systems</span>
     <span class="c1">#       simulataneously</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">metric_freqs</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">metric_freqs</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># If frequency is lower than halfway between the first two entries</span>
             <span class="c1"># use the first (lowest) value</span>
@@ -1014,7 +1015,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -1036,7 +1037,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

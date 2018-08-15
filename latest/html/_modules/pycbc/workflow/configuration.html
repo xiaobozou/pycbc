@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.configuration &mdash; PyCBC 3b6f5b documentation</title>
+  <title>pycbc.workflow.configuration &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -230,15 +230,16 @@
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">urlparse</span>
-<span class="kn">import</span> <span class="nn">cookielib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">distutils.spawn</span>
-<span class="kn">import</span> <span class="nn">ConfigParser</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">glue.pipeline</span>
 
-<span class="kn">from</span> <span class="nn">cookielib</span> <span class="k">import</span> <span class="p">(</span><span class="n">_warn_unhandled_exception</span><span class="p">,</span> <span class="n">LoadError</span><span class="p">,</span> <span class="n">Cookie</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">configparser</span> <span class="k">as</span> <span class="n">ConfigParser</span>
+<span class="kn">from</span> <span class="nn">six.moves.urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">http_cookiejar</span> <span class="k">as</span> <span class="n">cookielib</span>
+<span class="kn">from</span> <span class="nn">six.moves.http_cookiejar</span> <span class="k">import</span> <span class="p">(</span><span class="n">_warn_unhandled_exception</span><span class="p">,</span>
+                                      <span class="n">LoadError</span><span class="p">,</span> <span class="n">Cookie</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="k">def</span> <span class="nf">_really_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">ignore_discard</span><span class="p">,</span> <span class="n">ignore_expires</span><span class="p">):</span>
@@ -340,7 +341,7 @@
 <span class="sd">    that file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">u</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
     <span class="c1"># create the name of the destination file</span>
     <span class="k">if</span> <span class="n">directory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1208,7 +1209,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -1230,7 +1231,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.array &mdash; PyCBC 3b6f5b documentation</title>
+  <title>pycbc.types.array &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -222,6 +222,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This modules provides a device independent Array class based on PyCUDA and Numpy.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
 <span class="n">BACKEND_PREFIX</span><span class="o">=</span><span class="s2">&quot;pycbc.types.array_&quot;</span>
 
@@ -487,7 +488,6 @@
     <span class="k">def</span> <span class="nf">_icheckother</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Checks the input to in-place operations &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_typecheck</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> 
-
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_ALLOWED_SCALARS</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;real&#39;</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="nb">complex</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;dtypes are incompatible&#39;</span><span class="p">)</span>
@@ -551,23 +551,27 @@
     <span class="nd">@_convert</span>
     <span class="nd">@_checkother</span>
     <span class="nd">@_returntype</span>
-    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Divide Array by Array or scalar and return an Array. &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">/</span> <span class="n">other</span>
 
     <span class="nd">@_returntype</span>
     <span class="nd">@_convert</span>
     <span class="nd">@_checkother</span>
-    <span class="k">def</span> <span class="nf">__rdiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Divide Array by Array or scalar and return an Array. &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">__rdiv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="fm">__rtruediv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="nd">@_convert</span>
     <span class="nd">@_icheckother</span>
-    <span class="k">def</span> <span class="nf">__idiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__itruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Divide Array by Array or scalar and return an Array. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">/=</span> <span class="n">other</span>
         <span class="k">return</span> <span class="bp">self</span>
+        
+    <span class="n">__div__</span> <span class="o">=</span> <span class="fm">__truediv__</span>
+    <span class="n">__idiv__</span> <span class="o">=</span> <span class="fm">__itruediv__</span>
+    <span class="n">__rdiv__</span> <span class="o">=</span> <span class="fm">__rtruediv__</span>
 
     <span class="nd">@_returntype</span>
     <span class="nd">@_convert</span>
@@ -1247,7 +1251,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -1269,7 +1273,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Handling PSDs &mdash; PyCBC 3b6f5b documentation</title>
+  <title>Handling PSDs &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -291,7 +291,7 @@ and demonstrate how to generate one.</p>
 <span class="c1"># Estimate the PSD</span>
 <span class="c1">## We&#39;ll choose 4 seconds PSD samples that are overlapped 50 %</span>
 <span class="n">seg_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">4</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span>
-<span class="n">seg_stride</span> <span class="o">=</span> <span class="n">seg_len</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">seg_stride</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seg_len</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">estimated_psd</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">psd</span><span class="o">.</span><span class="n">welch</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span>
                       <span class="n">seg_len</span><span class="o">=</span><span class="n">seg_len</span><span class="p">,</span>
                       <span class="n">seg_stride</span><span class="o">=</span><span class="n">seg_stride</span><span class="p">)</span>
@@ -333,7 +333,7 @@ and demonstrate how to generate one.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -355,7 +355,7 @@ and demonstrate how to generate one.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

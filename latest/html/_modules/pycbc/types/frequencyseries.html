@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.types.frequencyseries &mdash; PyCBC 3b6f5b documentation</title>
+  <title>pycbc.types.frequencyseries &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -214,7 +214,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Provides a class representing a frequency series.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span><span class="o">,</span> <span class="nn">h5py</span>
 <span class="kn">from</span> <span class="nn">pycbc.types.array</span> <span class="k">import</span> <span class="n">Array</span><span class="p">,</span> <span class="n">_convert</span><span class="p">,</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">_noreal</span>
 <span class="kn">import</span> <span class="nn">lal</span> <span class="k">as</span> <span class="nn">_lal</span>
@@ -651,7 +651,7 @@
 
         <span class="c1"># add 0.5 to round integer</span>
         <span class="n">tlen</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">/</span> <span class="n">delta_t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
-        <span class="n">flen</span> <span class="o">=</span> <span class="n">tlen</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">flen</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tlen</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         
         <span class="k">if</span> <span class="n">flen</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The value of delta_t (</span><span class="si">%s</span><span class="s2">) would be &quot;</span>
@@ -806,7 +806,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -828,7 +828,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions &mdash; PyCBC 3b6f5b documentation</title>
+  <title>pycbc.distributions &mdash; PyCBC 5f63aa documentation</title>
   
 
   
@@ -334,7 +334,8 @@
     <span class="k">except</span> <span class="n">_ConfigParser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
         <span class="n">static_args</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># try converting values to float</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">static_args</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">static_args</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">static_args</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># the following will raise a ValueError if it cannot be cast to</span>
             <span class="c1"># float (as we would expect for string arguments)</span>
@@ -402,7 +403,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 13, 2018.
+      Last updated on Aug 15, 2018.
 
     </p>
   </div>
@@ -424,7 +425,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3b6f5b',
+            VERSION:'5f63aa',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
