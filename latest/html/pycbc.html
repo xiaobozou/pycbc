@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 27ce96 documentation</title>
+  <title>pycbc package &mdash; PyCBC d07c8f documentation</title>
   
 
   
@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="catalog.html">Catalog of Observed Gravitational-wave Mergers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detector.html">Gravitational-wave Detectors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
@@ -1929,7 +1930,8 @@ default to standard cosmology.</li>
 </div>
 <div class="section" id="module-pycbc.detector">
 <span id="pycbc-detector-module"></span><h2>pycbc.detector module<a class="headerlink" href="#module-pycbc.detector" title="Permalink to this headline">¶</a></h2>
-<p>This module provides utilities for calculating detector responses.</p>
+<p>This module provides utilities for calculating detector responses and timing
+between observatories.</p>
 <dl class="class">
 <dt id="pycbc.detector.Detector">
 <em class="property">class </em><code class="descclassname">pycbc.detector.</code><code class="descname">Detector</code><span class="sig-paren">(</span><em>detector_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector" title="Permalink to this definition">¶</a></dt>
@@ -1939,6 +1941,26 @@ default to standard cosmology.</li>
 <dt id="pycbc.detector.Detector.antenna_pattern">
 <code class="descname">antenna_pattern</code><span class="sig-paren">(</span><em>right_ascension</em>, <em>declination</em>, <em>polarization</em>, <em>t_gps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.antenna_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.antenna_pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the detector response.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>right_ascension</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.ndarray</em>) – The right ascension of the source</li>
+<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.ndarray</em>) – The declination of the source</li>
+<li><strong>polarization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.ndarray</em>) – The polarization angle of the source</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>fplus</strong> (<em>float or numpy.ndarray</em>) – The plus polarization factor for this sky location / orientation</li>
+<li><strong>fcross</strong> (<em>float or numpy.ndarray</em>) – The cross polarization factor for this sky location / orientation</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1962,15 +1984,33 @@ default to standard cosmology.</li>
 <dl class="method">
 <dt id="pycbc.detector.Detector.optimal_orientation">
 <code class="descname">optimal_orientation</code><span class="sig-paren">(</span><em>t_gps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.optimal_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.optimal_orientation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the optimal orientation in right ascension and declination
-for a given GPS time.</p>
+<dd><dl class="docutils">
+<dt>Return the optimal orientation in right ascension and declination</dt>
+<dd>for a given GPS time.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>t_gps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Time in gps seconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>ra</strong> (<em>float</em>) – Right ascension that is optimally oriented for the detector</li>
+<li><strong>dec</strong> (<em>float</em>) – Declination that is optimally oriented for the detector</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pycbc.detector.Detector.project_wave">
 <code class="descname">project_wave</code><span class="sig-paren">(</span><em>hp</em>, <em>hc</em>, <em>longitude</em>, <em>latitude</em>, <em>polarization</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.project_wave"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.project_wave" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the strain of a wave with given amplitudes and angles as
-measured by the detector.</p>
+<dd><p>Return the strain of a waveform as measured by the detector.</p>
+<p>Apply the time shift for the given detector relative to the assumed
+geocentric frame and apply the antenna patterns to the plus and cross
+polarizations.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2007,6 +2047,36 @@ other detector. Note that this would return the same value as
 <dt id="pycbc.detector.Detector.time_delay_from_earth_center">
 <code class="descname">time_delay_from_earth_center</code><span class="sig-paren">(</span><em>right_ascension</em>, <em>declination</em>, <em>t_gps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.time_delay_from_earth_center"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.time_delay_from_earth_center" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the time delay from the earth center</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.detector.Detector.time_delay_from_location">
+<code class="descname">time_delay_from_location</code><span class="sig-paren">(</span><em>other_location</em>, <em>right_ascension</em>, <em>declination</em>, <em>t_gps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.time_delay_from_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.time_delay_from_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the time delay from the given location to detector for
+a signal with the given sky location</p>
+<p>In other words return <cite>t1 - t2</cite> where <cite>t1</cite> is the
+arrival time in this detector and <cite>t2</cite> is the arrival time in the
+other location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>other_location</strong> (<em>numpy.ndarray of coordinates</em>) – A detector instance.</li>
+<li><strong>right_ascension</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The right ascension (in rad) of the signal.</li>
+<li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The declination (in rad) of the signal.</li>
+<li><strong>t_gps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The GPS time (in s) of the signal.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The arrival time difference between the detectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -5028,7 +5098,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 17, 2018.
+      Last updated on Aug 20, 2018.
 
     </p>
   </div>
@@ -5050,7 +5120,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'27ce96',
+            VERSION:'d07c8f',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
