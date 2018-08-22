@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.pnutils &mdash; PyCBC 14c7d2 documentation</title>
+  <title>pycbc.pnutils &mdash; PyCBC a5b53c documentation</title>
   
 
   
@@ -391,10 +391,10 @@
     <span class="k">return</span> <span class="n">parsecs_to_meters</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span></div>
 
 <div class="viewcode-block" id="velocity_to_frequency"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.velocity_to_frequency">[docs]</a><span class="k">def</span> <span class="nf">velocity_to_frequency</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">velocity_to_frequency</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="frequency_to_velocity"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.frequency_to_velocity">[docs]</a><span class="k">def</span> <span class="nf">frequency_to_velocity</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">frequency_to_velocity</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="f_SchwarzISCO"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_SchwarzISCO">[docs]</a><span class="k">def</span> <span class="nf">f_SchwarzISCO</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -411,7 +411,7 @@
 <span class="sd">    f : float or numpy.array</span>
 <span class="sd">        Frequency in Hz</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">velocity_to_frequency</span><span class="p">((</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">M</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">f_schwarzchild_isco</span><span class="p">(</span><span class="n">M</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="f_BKLISCO"><a class="viewcode-back" href="../../pycbc.html#pycbc.pnutils.f_BKLISCO">[docs]</a><span class="k">def</span> <span class="nf">f_BKLISCO</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1182,7 +1182,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'14c7d2',
+            VERSION:'a5b53c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

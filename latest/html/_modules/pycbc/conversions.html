@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC 14c7d2 documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC a5b53c documentation</title>
   
 
   
@@ -196,7 +196,8 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pycbc.conversions</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2017  Collin Capano, Christopher M. Biwer</span>
+<span></span><span class="c1"># Copyright (C) 2017  Collin Capano, Christopher M. Biwer, Duncan Brown,</span>
+<span class="c1"># and Steven Reyes</span>
 <span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
 <span class="c1"># under the terms of the GNU General Public License as published by the</span>
 <span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
@@ -556,6 +557,7 @@
     <span class="n">mtotal</span> <span class="o">=</span> <span class="n">mtotal_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_tau0_tau3</span><span class="p">(</span><span class="n">tau0</span><span class="p">,</span> <span class="n">tau3</span><span class="p">,</span> <span class="n">f_lower</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mass2_from_mtotal_eta</span><span class="p">(</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="lambda_tilde"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.lambda_tilde">[docs]</a><span class="k">def</span> <span class="nf">lambda_tilde</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; The effective lambda parameter</span>
@@ -984,6 +986,7 @@
 <div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
 
+
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
@@ -1002,9 +1005,235 @@
     <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">ia1</span><span class="p">)</span></div>
 
 
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                         post-Newtonian functions</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dquadmon_from_lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda_tilde&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;primary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;secondary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;mtotal_from_mass1_mass2&#39;</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">velocity_to_frequency</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Calculate the gravitational-wave frequency from the</span>
+<span class="sd">    total mass and invariant velocity.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    v : float</span>
+<span class="sd">        Invariant velocity</span>
+<span class="sd">    M : float</span>
+<span class="sd">        Binary total mass</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f : float</span>
+<span class="sd">        Gravitational-wave frequency</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">v</span><span class="o">**</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">frequency_to_velocity</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Calculate the invariant velocity from the total</span>
+<span class="sd">    mass and gravitational-wave frequency.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f: float</span>
+<span class="sd">        Gravitational-wave frequency</span>
+<span class="sd">    M: float</span>
+<span class="sd">        Binary total mass</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    v : float or numpy.array</span>
+<span class="sd">        Invariant velocity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f_schwarzchild_isco</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Innermost stable circular orbit (ISCO) for a test particle</span>
+<span class="sd">    orbiting a Schwarzschild black hole</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    M : float or numpy.array</span>
+<span class="sd">        Total mass in solar mass units</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f : float or numpy.array</span>
+<span class="sd">        Frequency in Hz</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">velocity_to_frequency</span><span class="p">((</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">6.0</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">M</span><span class="p">)</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                          p-g mode non-linear tide functions</span>
+<span class="c1">#</span>
+<span class="c1"># ============================================================================</span>
+<span class="c1">#</span>
+
+<span class="k">def</span> <span class="nf">nltides_coefs</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the coefficents needed to compute the</span>
+<span class="sd">    shift in t(f) and phi(f) due to non-linear tides.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    amplitude: float</span>
+<span class="sd">        Amplitude of effect</span>
+<span class="sd">    n: float</span>
+<span class="sd">        Growth dependence of effect</span>
+<span class="sd">    m1: float</span>
+<span class="sd">        Mass of component 1</span>
+<span class="sd">    m2: float</span>
+<span class="sd">        Mass of component 2</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f_ref : float</span>
+<span class="sd">        Reference frequency used to define A and n</span>
+<span class="sd">    t_of_f_factor: float</span>
+<span class="sd">        The constant factor needed to compute t(f)</span>
+<span class="sd">    phi_of_f_factor: float</span>
+<span class="sd">        The constant factor needed to compute phi(f)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Use 100.0 Hz as a reference frequency</span>
+    <span class="n">f_ref</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+    <span class="c1"># Calculate chirp mass</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+    <span class="n">mc</span> <span class="o">*=</span> <span class="n">lal</span><span class="o">.</span><span class="n">lal</span><span class="o">.</span><span class="n">MSUN_SI</span>
+
+    <span class="c1"># Calculate constants in phasing</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">96.</span><span class="o">/</span><span class="mf">5.</span><span class="p">)</span> <span class="o">*</span> \
+        <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">lal</span><span class="o">.</span><span class="n">G_SI</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="n">mc</span> <span class="o">*</span> <span class="n">f_ref</span> <span class="o">/</span> <span class="n">lal</span><span class="o">.</span><span class="n">lal</span><span class="o">.</span><span class="n">C_SI</span><span class="o">**</span><span class="mf">3.</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">5.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">6.</span> <span class="o">*</span> <span class="n">amplitude</span>
+    <span class="n">t_of_f_factor</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span><span class="o">*</span><span class="n">f_ref</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mf">4.</span><span class="p">))</span>
+    <span class="n">phi_of_f_factor</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.</span><span class="o">*</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mf">3.</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">f_ref</span><span class="p">,</span> <span class="n">t_of_f_factor</span><span class="p">,</span> <span class="n">phi_of_f_factor</span>
+
+<span class="k">def</span> <span class="nf">nltides_gw_phase_difference</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the gravitational-wave phase shift bwtween</span>
+<span class="sd">    f and f_coalescence = infinity due to non-linear tides.</span>
+<span class="sd">    To compute the phase shift between e.g. f_low and f_isco,</span>
+<span class="sd">    call this function twice and compute the difference.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f: float or numpy.array</span>
+<span class="sd">        Frequency from which to compute phase</span>
+<span class="sd">    f0: float or numpy.array</span>
+<span class="sd">        Frequency that NL effects switch on</span>
+<span class="sd">    amplitude: float or numpy.array</span>
+<span class="sd">        Amplitude of effect</span>
+<span class="sd">    n: float or numpy.array</span>
+<span class="sd">        Growth dependence of effect</span>
+<span class="sd">    m1: float or numpy.array</span>
+<span class="sd">        Mass of component 1</span>
+<span class="sd">    m2: float or numpy.array</span>
+<span class="sd">        Mass of component 2</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    delta_phi: float or numpy.array</span>
+<span class="sd">        Phase in radians</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">f0</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span>
+    <span class="n">amplitude</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">m1</span><span class="p">,</span> <span class="n">ia5</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+    <span class="n">m2</span><span class="p">,</span> <span class="n">ia6</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, f0 must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">amplitude</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, amplitude must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, n must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, m1 must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, m2 must have same shape&quot;</span><span class="p">)</span>
+
+    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">,</span> <span class="n">ia5</span><span class="p">,</span> <span class="n">ia6</span><span class="p">])</span>
+
+    <span class="n">delta_phi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">f_ref</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">phi_of_f_factor</span> <span class="o">=</span> <span class="n">nltides_coefs</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">f</span> <span class="o">&lt;=</span> <span class="n">f0</span>
+    <span class="n">delta_phi</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">phi_of_f_factor</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">f0</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">/</span><span class="n">f_ref</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">-</span><span class="mf">3.</span><span class="p">)</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">f</span> <span class="o">&gt;</span> <span class="n">f0</span>
+    <span class="n">delta_phi</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">phi_of_f_factor</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">/</span><span class="n">f_ref</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">-</span><span class="mf">3.</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">delta_phi</span><span class="p">,</span><span class="n">input_is_array</span><span class="p">)</span>
+
+<div class="viewcode-block" id="nltides_gw_phase_diff_isco"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.nltides_gw_phase_diff_isco">[docs]</a><span class="k">def</span> <span class="nf">nltides_gw_phase_diff_isco</span><span class="p">(</span><span class="n">f_low</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the gravitational-wave phase shift bwtween</span>
+<span class="sd">    f_low and f_isco due to non-linear tides.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f_low: float</span>
+<span class="sd">        Frequency from which to compute phase. If the other</span>
+<span class="sd">        arguments are passed as numpy arrays then the value</span>
+<span class="sd">        of f_low is duplicated for all elements in the array</span>
+<span class="sd">    f0: float or numpy.array</span>
+<span class="sd">        Frequency that NL effects switch on</span>
+<span class="sd">    amplitude: float or numpy.array</span>
+<span class="sd">        Amplitude of effect</span>
+<span class="sd">    n: float or numpy.array</span>
+<span class="sd">        Growth dependence of effect</span>
+<span class="sd">    m1: float or numpy.array</span>
+<span class="sd">        Mass of component 1</span>
+<span class="sd">    m2: float or numpy.array</span>
+<span class="sd">        Mass of component 2</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    delta_phi: float or numpy.array</span>
+<span class="sd">        Phase in radians</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f0</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span>
+    <span class="n">amplitude</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">m1</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+    <span class="n">m2</span><span class="p">,</span> <span class="n">ia5</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">amplitude</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, amplitude must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, n must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, m1 must have same shape&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, m2 must have same shape&quot;</span><span class="p">)</span>
+
+    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">,</span> <span class="n">ia5</span><span class="p">])</span>
+
+    <span class="n">f_low</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="n">f_low</span>
+
+    <span class="n">phi_l</span> <span class="o">=</span> <span class="n">nltides_gw_phase_difference</span><span class="p">(</span>
+                <span class="n">f_low</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+    <span class="n">f_isco</span> <span class="o">=</span> <span class="n">f_schwarzchild_isco</span><span class="p">(</span><span class="n">m1</span><span class="o">+</span><span class="n">m2</span><span class="p">)</span>
+
+    <span class="n">phi_i</span> <span class="o">=</span> <span class="n">nltides_gw_phase_difference</span><span class="p">(</span>
+                <span class="n">f_isco</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">phi_i</span> <span class="o">-</span> <span class="n">phi_l</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dquadmon_from_lambda&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda_tilde&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_mass&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;secondary_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;mtotal_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;q_from_mass1_mass2&#39;</span><span class="p">,</span> <span class="s1">&#39;invq_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;eta_from_mass1_mass2&#39;</span><span class="p">,</span> <span class="s1">&#39;mchirp_from_mass1_mass2&#39;</span><span class="p">,</span>
            <span class="s1">&#39;mass1_from_mtotal_q&#39;</span><span class="p">,</span> <span class="s1">&#39;mass2_from_mtotal_q&#39;</span><span class="p">,</span>
@@ -1031,9 +1260,9 @@
            <span class="s1">&#39;spin2y_from_mass1_mass2_xi2_phi_a_phi_s&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chirp_distance&#39;</span><span class="p">,</span> <span class="s1">&#39;det_tc&#39;</span><span class="p">,</span> <span class="s1">&#39;snr_from_loglr&#39;</span><span class="p">,</span>
            <span class="s1">&#39;freq_from_final_mass_spin&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_from_final_mass_spin&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span><span class="s1">&#39;optimal_ra_from_detector&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span> <span class="s1">&#39;optimal_ra_from_detector&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chi_eff_from_spherical&#39;</span><span class="p">,</span> <span class="s1">&#39;chi_p_from_spherical&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;return_base10_log&#39;</span>
+           <span class="s1">&#39;return_base10_log&#39;</span><span class="p">,</span> <span class="s1">&#39;nltides_gw_phase_diff_isco&#39;</span>
           <span class="p">]</span>
 </pre></div>
 
@@ -1070,7 +1299,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'14c7d2',
+            VERSION:'a5b53c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

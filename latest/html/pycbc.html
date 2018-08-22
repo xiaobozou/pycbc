@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 14c7d2 documentation</title>
+  <title>pycbc package &mdash; PyCBC a5b53c documentation</title>
   
 
   
@@ -1754,6 +1754,37 @@ coordinates.</p>
 <dd><p>Simply return the log base 10 of the input.
 :param x:
 :type x: float or array</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.conversions.nltides_gw_phase_diff_isco">
+<code class="descclassname">pycbc.conversions.</code><code class="descname">nltides_gw_phase_diff_isco</code><span class="sig-paren">(</span><em>f_low</em>, <em>f0</em>, <em>amplitude</em>, <em>n</em>, <em>m1</em>, <em>m2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#nltides_gw_phase_diff_isco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.nltides_gw_phase_diff_isco" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the gravitational-wave phase shift bwtween
+f_low and f_isco due to non-linear tides.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f_low</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency from which to compute phase. If the other
+arguments are passed as numpy arrays then the value
+of f_low is duplicated for all elements in the array</li>
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Frequency that NL effects switch on</li>
+<li><strong>amplitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Amplitude of effect</li>
+<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Growth dependence of effect</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Mass of component 1</li>
+<li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>numpy.array</em>) – Mass of component 2</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>delta_phi</strong> – Phase in radians</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -5128,7 +5159,7 @@ run-time by sending a SIGUSR1 to the process.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'14c7d2',
+            VERSION:'a5b53c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

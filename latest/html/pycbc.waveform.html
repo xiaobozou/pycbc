@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform package &mdash; PyCBC 14c7d2 documentation</title>
+  <title>pycbc.waveform package &mdash; PyCBC a5b53c documentation</title>
   
 
   
@@ -1530,23 +1530,32 @@ For more details, see BaseGenerator.</p>
 <span id="pycbc-waveform-nltides-module"></span><h2>pycbc.waveform.nltides module<a class="headerlink" href="#module-pycbc.waveform.nltides" title="Permalink to this headline">¶</a></h2>
 <p>Utilities for introducing nonlinear tidal effects into waveform approximants</p>
 <dl class="function">
-<dt id="pycbc.waveform.nltides.nonlinear_phase_difference">
-<code class="descclassname">pycbc.waveform.nltides.</code><code class="descname">nonlinear_phase_difference</code><span class="sig-paren">(</span><em>f</em>, <em>f0</em>, <em>A</em>, <em>n</em>, <em>m1</em>, <em>m2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/nltides.html#nonlinear_phase_difference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.nltides.nonlinear_phase_difference" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the phase difference for nonlinear tides</p>
-<p>Implemenents the phase difference approximation of nonlinear
-tides in Essick, et al. <a class="reference external" href="https://arxiv.org/pdf/1609.06362v2.pdf">https://arxiv.org/pdf/1609.06362v2.pdf</a></p>
+<dt id="pycbc.waveform.nltides.nltides_fourier_phase_difference">
+<code class="descclassname">pycbc.waveform.nltides.</code><code class="descname">nltides_fourier_phase_difference</code><span class="sig-paren">(</span><em>f</em>, <em>delta_f</em>, <em>f0</em>, <em>amplitude</em>, <em>n</em>, <em>m1</em>, <em>m2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/nltides.html#nltides_fourier_phase_difference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.nltides.nltides_fourier_phase_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the change to the Fourier phase change due
+to non-linear tides. Note that the Fourier phase Psi(f)
+is not the same as the gravitational-wave phase phi(f) and
+is computed by
+Delta Psi(f) = 2 pi f Delta t(f) - Delta phi(f)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>f</strong> (<em>numpy.ndarray</em>) – Array of frequency values to calculate the fourier phase difference.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>numpy.array</em>) – Array of frequency values to calculate the fourier phase difference</li>
+<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency resolution of f array</li>
 <li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency that NL effects switch on</li>
-<li><strong>A</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of effect</li>
+<li><strong>amplitude</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Amplitude of effect</li>
 <li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Growth dependence of effect</li>
 <li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of component 1</li>
 <li><strong>m2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Mass of component 2</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>delta_psi</strong> – Fourier phase as a function of frequency</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
 </td>
 </tr>
 </tbody>
@@ -1556,7 +1565,9 @@ tides in Essick, et al. <a class="reference external" href="https://arxiv.org/pd
 <dl class="function">
 <dt id="pycbc.waveform.nltides.nonlinear_tidal_spa">
 <code class="descclassname">pycbc.waveform.nltides.</code><code class="descname">nonlinear_tidal_spa</code><span class="sig-paren">(</span><em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/nltides.html#nonlinear_tidal_spa"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.nltides.nonlinear_tidal_spa" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generates a frequency-domain waveform that implements the
+TaylorF2+NL tide model described in <a class="reference external" href="https://arxiv.org/abs/1808.07013">https://arxiv.org/abs/1808.07013</a></p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-pycbc.waveform.parameters">
@@ -3156,7 +3167,7 @@ See <cite>get_fd_waveform</cite>.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'14c7d2',
+            VERSION:'a5b53c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
