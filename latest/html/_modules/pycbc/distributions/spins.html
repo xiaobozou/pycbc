@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.distributions.spins &mdash; PyCBC 2cfe46 documentation</title>
+  <title>pycbc.distributions.spins &mdash; PyCBC 0efb36 documentation</title>
   
 
   
@@ -344,14 +344,11 @@
 <span class="sd">        bool</span>
 <span class="sd">            Whether or not the values satisfy physical</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">mass1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">])</span>
-        <span class="n">mass2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">])</span>
-        <span class="n">phi_a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;phi_a&#39;</span><span class="p">])</span>
-        <span class="n">phi_s</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;phi_s&#39;</span><span class="p">])</span>
-        <span class="n">chi_eff</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;chi_eff&#39;</span><span class="p">])</span>
-        <span class="n">chi_a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;chi_a&#39;</span><span class="p">])</span>
-        <span class="n">xi1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;xi1&#39;</span><span class="p">])</span>
-        <span class="n">xi2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;xi2&#39;</span><span class="p">])</span>
+        <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">chi_a</span><span class="p">,</span> <span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> \
+            <span class="n">conversions</span><span class="o">.</span><span class="n">ensurearray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">],</span>
+                                    <span class="n">values</span><span class="p">[</span><span class="s1">&#39;phi_a&#39;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;phi_s&#39;</span><span class="p">],</span>
+                                    <span class="n">values</span><span class="p">[</span><span class="s1">&#39;chi_eff&#39;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;chi_a&#39;</span><span class="p">],</span>
+                                    <span class="n">values</span><span class="p">[</span><span class="s1">&#39;xi1&#39;</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;xi2&#39;</span><span class="p">])</span>
         <span class="n">s1x</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">spin1x_from_xi1_phi_a_phi_s</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
         <span class="n">s2x</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">spin2x_from_mass1_mass2_xi2_phi_a_phi_s</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span>
             <span class="n">xi2</span><span class="p">,</span> <span class="n">phi_a</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">)</span>
@@ -526,7 +523,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2cfe46',
+            VERSION:'0efb36',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

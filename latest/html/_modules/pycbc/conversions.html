@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC 2cfe46 documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC 0efb36 documentation</title>
   
 
   
@@ -241,15 +241,32 @@
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
-<span class="k">def</span> <span class="nf">ensurearray</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Ensures that the given argument is a numpy array. If it is not, the</span>
-<span class="sd">    argument is converted to an array.</span>
+<span class="k">def</span> <span class="nf">ensurearray</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Apply numpy&#39;s broadcast rules to the given arguments.</span>
+
+<span class="sd">    This will ensure that all of the arguments are numpy arrays and that they</span>
+<span class="sd">    all have the same shape. See ``numpy.broadcast_arrays`` for more details.</span>
+
+<span class="sd">    It also returns a boolean indicating whether any of the inputs were</span>
+<span class="sd">    originally arrays.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    *args :</span>
+<span class="sd">        The arguments to check.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list :</span>
+<span class="sd">        A list with length ``N+1`` where ``N`` is the number of given</span>
+<span class="sd">        arguments. The first N values are the input arguments as ``ndarrays``s.</span>
+<span class="sd">        The last value is a boolean indicating whether any of the</span>
+<span class="sd">        inputs was an array.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">input_is_array</span><span class="p">:</span>
-        <span class="n">arr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
-        <span class="n">arg</span> <span class="o">=</span> <span class="n">arr</span>
-    <span class="k">return</span> <span class="n">arg</span><span class="p">,</span> <span class="n">input_is_array</span>
+    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_is_array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">args</span>
 
 
 <span class="k">def</span> <span class="nf">formatreturn</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">input_is_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -268,11 +285,7 @@
 <span class="c1">#</span>
 <div class="viewcode-block" id="primary_mass"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_mass">[docs]</a><span class="k">def</span> <span class="nf">primary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the larger of mass1 and mass2 (p = primary).&quot;&quot;&quot;</span>
-    <span class="n">mass1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
-    <span class="n">mass2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ia1</span> <span class="ow">or</span> <span class="n">ia2</span>
-    <span class="k">if</span> <span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mass2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1 and mass2 must have same shape&quot;</span><span class="p">)</span>
+    <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="n">mp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
     <span class="n">mp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">mass2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -281,9 +294,7 @@
 
 <div class="viewcode-block" id="secondary_mass"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_mass">[docs]</a><span class="k">def</span> <span class="nf">secondary_mass</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the smaller of mass1 and mass2 (s = secondary).&quot;&quot;&quot;</span>
-    <span class="n">mass1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
-    <span class="n">mass2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ia1</span> <span class="ow">or</span> <span class="n">ia2</span>
+    <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mass2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1 and mass2 must have same shape&quot;</span><span class="p">)</span>
     <span class="n">ms</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
@@ -565,11 +576,10 @@
 <span class="sd">    The mass-weighted dominant effective lambda parameter defined in</span>
 <span class="sd">    https://journals.aps.org/prd/pdf/10.1103/PhysRevD.91.043002</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">m1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
-    <span class="n">m2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    <span class="n">lsum</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">lambda1</span> <span class="o">+</span> <span class="n">lambda2</span><span class="p">)</span>
-    <span class="n">ldiff</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">lambda1</span> <span class="o">-</span> <span class="n">lambda2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">])</span>
+    <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">)</span>
+    <span class="n">lsum</span> <span class="o">=</span> <span class="n">lambda1</span> <span class="o">+</span> <span class="n">lambda2</span>
+    <span class="n">ldiff</span> <span class="o">=</span> <span class="n">lambda1</span> <span class="o">-</span> <span class="n">lambda2</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">&lt;</span> <span class="n">m2</span>
     <span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
@@ -643,14 +653,8 @@
 
 <div class="viewcode-block" id="primary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.primary_spin">[docs]</a><span class="k">def</span> <span class="nf">primary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the primary mass.&quot;&quot;&quot;</span>
-    <span class="n">mass1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
-    <span class="n">mass2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    <span class="n">spin1</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">spin1</span><span class="p">)</span>
-    <span class="n">spin2</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">spin2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">])</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mass2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spin1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-        <span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spin2</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1, mass2, spin1, spin2 must have same shape&quot;</span><span class="p">)</span>
+    <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">)</span>
     <span class="n">sp</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spin1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
     <span class="n">sp</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -659,14 +663,8 @@
 
 <div class="viewcode-block" id="secondary_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.secondary_spin">[docs]</a><span class="k">def</span> <span class="nf">secondary_spin</span><span class="p">(</span><span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the dimensionless spin of the secondary mass.&quot;&quot;&quot;</span>
-    <span class="n">mass1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass1</span><span class="p">)</span>
-    <span class="n">mass2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">mass2</span><span class="p">)</span>
-    <span class="n">spin1</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">spin1</span><span class="p">)</span>
-    <span class="n">spin2</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">spin2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">])</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mass2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spin1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-        <span class="n">mass1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">spin2</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mass1, mass2, spin1, spin2 must have same shape&quot;</span><span class="p">)</span>
+    <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">spin1</span><span class="p">,</span> <span class="n">spin2</span><span class="p">)</span>
     <span class="n">ss</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spin2</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">mass1</span> <span class="o">&lt;</span> <span class="n">mass2</span>
     <span class="n">ss</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -725,11 +723,7 @@
 <div class="viewcode-block" id="chi_p_from_xi1_xi2"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.chi_p_from_xi1_xi2">[docs]</a><span class="k">def</span> <span class="nf">chi_p_from_xi1_xi2</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns effective precession spin from xi1 and xi2.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">xi1</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">xi1</span><span class="p">)</span>
-    <span class="n">xi2</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">xi2</span><span class="p">)</span>
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ia1</span> <span class="ow">or</span> <span class="n">ia2</span>
-    <span class="k">if</span> <span class="n">xi1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">xi2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;xi1, xi2 must have same shape&quot;</span><span class="p">)</span>
+    <span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">xi1</span><span class="p">,</span> <span class="n">xi2</span><span class="p">)</span>
     <span class="n">chi_p</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">xi1</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">xi1</span> <span class="o">&lt;</span> <span class="n">xi2</span>
     <span class="n">chi_p</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">xi2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -1030,6 +1024,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">PI</span> <span class="o">*</span> <span class="n">M</span> <span class="o">*</span> <span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span>
 
+
 <span class="k">def</span> <span class="nf">f_schwarzchild_isco</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Innermost stable circular orbit (ISCO) for a test particle</span>
@@ -1097,6 +1092,7 @@
 
     <span class="k">return</span> <span class="n">f_ref</span><span class="p">,</span> <span class="n">t_of_f_factor</span><span class="p">,</span> <span class="n">phi_of_f_factor</span>
 
+
 <span class="k">def</span> <span class="nf">nltides_gw_phase_difference</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the gravitational-wave phase shift bwtween</span>
 <span class="sd">    f and f_coalescence = infinity due to non-linear tides.</span>
@@ -1123,26 +1119,8 @@
 <span class="sd">    delta_phi: float or numpy.array</span>
 <span class="sd">        Phase in radians</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">f</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">f0</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span>
-    <span class="n">amplitude</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">m1</span><span class="p">,</span> <span class="n">ia5</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
-    <span class="n">m2</span><span class="p">,</span> <span class="n">ia6</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, f0 must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">amplitude</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, amplitude must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, n must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, m1 must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f, m2 must have same shape&quot;</span><span class="p">)</span>
-
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">,</span> <span class="n">ia5</span><span class="p">,</span> <span class="n">ia6</span><span class="p">])</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
     <span class="n">delta_phi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
@@ -1154,7 +1132,8 @@
     <span class="n">mask</span> <span class="o">=</span> <span class="n">f</span> <span class="o">&gt;</span> <span class="n">f0</span>
     <span class="n">delta_phi</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">phi_of_f_factor</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">/</span><span class="n">f_ref</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">-</span><span class="mf">3.</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">delta_phi</span><span class="p">,</span><span class="n">input_is_array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">delta_phi</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span>
+
 
 <div class="viewcode-block" id="nltides_gw_phase_diff_isco"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.nltides_gw_phase_diff_isco">[docs]</a><span class="k">def</span> <span class="nf">nltides_gw_phase_diff_isco</span><span class="p">(</span><span class="n">f_low</span><span class="p">,</span> <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate the gravitational-wave phase shift bwtween</span>
@@ -1182,23 +1161,8 @@
 <span class="sd">    delta_phi: float or numpy.array</span>
 <span class="sd">        Phase in radians</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">f0</span><span class="p">,</span> <span class="n">ia1</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f0</span><span class="p">)</span>
-    <span class="n">amplitude</span><span class="p">,</span> <span class="n">ia2</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">amplitude</span><span class="p">)</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">ia3</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">m1</span><span class="p">,</span> <span class="n">ia4</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
-    <span class="n">m2</span><span class="p">,</span> <span class="n">ia5</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">amplitude</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, amplitude must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">n</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, n must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, m1 must have same shape&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">m2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f0, m2 must have same shape&quot;</span><span class="p">)</span>
-
-    <span class="n">input_is_array</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">ia1</span><span class="p">,</span> <span class="n">ia2</span><span class="p">,</span> <span class="n">ia3</span><span class="p">,</span> <span class="n">ia4</span><span class="p">,</span> <span class="n">ia5</span><span class="p">])</span>
+    <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">f0</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
     <span class="n">f_low</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="n">f_low</span>
 
@@ -1280,7 +1244,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2cfe46',
+            VERSION:'0efb36',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
