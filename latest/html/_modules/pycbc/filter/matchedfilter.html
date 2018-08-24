@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.matchedfilter &mdash; PyCBC 0518cb documentation</title>
+  <title>pycbc.filter.matchedfilter &mdash; PyCBC 16ef9c documentation</title>
   
 
   
@@ -1908,7 +1908,8 @@
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">veto_info</span></div>
 
 <div class="viewcode-block" id="compute_followup_snr_series"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.matchedfilter.compute_followup_snr_series">[docs]</a><span class="k">def</span> <span class="nf">compute_followup_snr_series</span><span class="p">(</span><span class="n">data_reader</span><span class="p">,</span> <span class="n">htilde</span><span class="p">,</span> <span class="n">trig_time</span><span class="p">,</span>
-                                <span class="n">duration</span><span class="o">=</span><span class="mf">0.095</span><span class="p">,</span> <span class="n">check_state</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                                <span class="n">duration</span><span class="o">=</span><span class="mf">0.095</span><span class="p">,</span> <span class="n">check_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">coinc_window</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given a StrainBuffer, a template frequency series and a trigger time,</span>
 <span class="sd">    compute a portion of the SNR time series centered on the trigger for its</span>
 <span class="sd">    rapid sky localization and followup.</span>
@@ -1937,15 +1938,15 @@
 <span class="sd">        If True, and the detector was offline or flagged for bad data quality</span>
 <span class="sd">        at any point during the inspiral, then return (None, None) instead.</span>
 
+<span class="sd">    coinc_window : float (optional)</span>
+<span class="sd">        Maximum possible time between coincident triggers at different</span>
+<span class="sd">        detectors. This is needed to properly determine data padding.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    snr : TimeSeries</span>
 <span class="sd">        The portion of SNR around the trigger. None if the detector is offline</span>
 <span class="sd">        or has bad data quality, and check_state is True.</span>
-
-<span class="sd">    psd : FrequencySeries</span>
-<span class="sd">        The noise PSD corresponding to the trigger time. None if the detector</span>
-<span class="sd">        is offline or has bad data quality, and check_state is True.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">check_state</span><span class="p">:</span>
         <span class="c1"># was the detector observing for the full amount of involved data?</span>
@@ -1955,7 +1956,7 @@
         <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
                 <span class="ow">and</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span>
                         <span class="n">state_start_time</span><span class="p">,</span> <span class="n">state_duration</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="c1"># was the data quality ok for the full amount of involved data?</span>
         <span class="n">dq_start_time</span> <span class="o">=</span> <span class="n">state_start_time</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq_padding</span>
@@ -1963,41 +1964,50 @@
         <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
                 <span class="ow">and</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span>
                         <span class="n">dq_start_time</span><span class="p">,</span> <span class="n">dq_duration</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
     <span class="n">stilde</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">overwhitened_data</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
 
     <span class="n">norm</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">*</span> <span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">psd</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 
+    <span class="n">sr</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">sample_rate</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">sr</span>
+
     <span class="n">qtilde</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">correlate</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">qtilde</span><span class="p">)</span>
-    <span class="n">snr</span> <span class="o">=</span> <span class="n">qtilde</span> <span class="o">*</span> <span class="mi">0</span>
+    <span class="n">snr</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">ifft</span><span class="p">(</span><span class="n">qtilde</span><span class="p">,</span> <span class="n">snr</span><span class="p">)</span>
 
-    <span class="n">valid_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">qtilde</span><span class="p">)</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">trim_padding</span><span class="p">)</span>
-    <span class="n">valid_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valid_end</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">blocksize</span> <span class="o">*</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
+    <span class="n">valid_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">trim_padding</span><span class="p">)</span>
+    <span class="n">valid_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valid_end</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">blocksize</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span>
 
-    <span class="n">half_dur_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data_reader</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">valid_start</span> <span class="o">-=</span> <span class="n">half_dur_samples</span>
+    <span class="n">half_dur_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sr</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">coinc_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sr</span> <span class="o">*</span> <span class="n">coinc_window</span><span class="p">)</span>
+    <span class="n">valid_start</span> <span class="o">-=</span> <span class="n">half_dur_samples</span> <span class="o">+</span> <span class="n">coinc_samples</span>
     <span class="n">valid_end</span> <span class="o">+=</span> <span class="n">half_dur_samples</span>
     <span class="k">if</span> <span class="n">valid_start</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">valid_end</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Requested SNR duration (</span><span class="si">{0}</span><span class="s1"> s) too long&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">((</span><span class="s1">&#39;Requested SNR duration (</span><span class="si">{0}</span><span class="s1"> s)&#39;</span>
+                          <span class="s1">&#39; too long&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
 
-    <span class="n">snr</span> <span class="o">=</span> <span class="n">snr</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="n">valid_start</span><span class="p">,</span> <span class="n">valid_end</span><span class="p">)]</span>
-    <span class="n">snr_dt</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">sample_rate</span>
-    <span class="n">snr_epoch</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">start_time</span> <span class="o">-</span> <span class="n">half_dur_samples</span> <span class="o">*</span> <span class="n">snr_dt</span>
-    <span class="n">snr</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">snr_dt</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">snr_epoch</span><span class="p">)</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">start_time</span> <span class="o">-</span> <span class="p">(</span><span class="n">half_dur_samples</span> <span class="o">+</span> <span class="n">coinc_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">snr</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">snr</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="n">valid_start</span><span class="p">,</span> <span class="n">valid_end</span><span class="p">)],</span>
+                     <span class="n">delta_t</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
 
-    <span class="n">onsource_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">trig_time</span> <span class="o">-</span> <span class="n">snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">))</span>
+    <span class="n">onsource_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">trig_time</span> <span class="o">-</span> <span class="n">snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">sr</span><span class="p">))</span>
     <span class="n">onsource_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">onsource_idx</span> <span class="o">-</span> <span class="n">half_dur_samples</span><span class="p">,</span>
                            <span class="n">onsource_idx</span> <span class="o">+</span> <span class="n">half_dur_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">snr</span><span class="p">[</span><span class="n">onsource_slice</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm</span><span class="p">,</span> <span class="n">stilde</span><span class="o">.</span><span class="n">psd</span></div>
+    <span class="k">return</span> <span class="n">snr</span><span class="p">[</span><span class="n">onsource_slice</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm</span></div>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="s1">&#39;matched_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmasq&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="s1">&#39;get_cutoff_indices&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;sigmasq_series&#39;</span><span class="p">,</span> <span class="s1">&#39;make_frequency_series&#39;</span><span class="p">,</span> <span class="s1">&#39;overlap&#39;</span><span class="p">,</span> <span class="s1">&#39;overlap_cplx&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;matched_filter_core&#39;</span><span class="p">,</span> <span class="s1">&#39;correlate&#39;</span><span class="p">,</span> <span class="s1">&#39;MatchedFilterControl&#39;</span><span class="p">,</span> <span class="s1">&#39;LiveBatchMatchedFilter&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;MatchedFilterSkyMaxControl&#39;</span><span class="p">,</span><span class="s1">&#39;MatchedFilterSkyMaxControlNoPhase&#39;</span><span class="p">,</span><span class="s1">&#39;compute_max_snr_over_sky_loc_stat_no_phase&#39;</span><span class="p">,</span> <span class="s1">&#39;compute_max_snr_over_sky_loc_stat&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;compute_followup_snr_series&#39;</span><span class="p">,</span><span class="s1">&#39;compute_u_val_for_sky_loc_stat_no_phase&#39;</span><span class="p">,</span><span class="s1">&#39;compute_u_val_for_sky_loc_stat&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;sigmasq_series&#39;</span><span class="p">,</span> <span class="s1">&#39;make_frequency_series&#39;</span><span class="p">,</span> <span class="s1">&#39;overlap&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;overlap_cplx&#39;</span><span class="p">,</span> <span class="s1">&#39;matched_filter_core&#39;</span><span class="p">,</span> <span class="s1">&#39;correlate&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;MatchedFilterControl&#39;</span><span class="p">,</span> <span class="s1">&#39;LiveBatchMatchedFilter&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;MatchedFilterSkyMaxControl&#39;</span><span class="p">,</span> <span class="s1">&#39;MatchedFilterSkyMaxControlNoPhase&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;compute_max_snr_over_sky_loc_stat_no_phase&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;compute_max_snr_over_sky_loc_stat&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;compute_followup_snr_series&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;compute_u_val_for_sky_loc_stat_no_phase&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;compute_u_val_for_sky_loc_stat&#39;</span><span class="p">]</span>
 
 </pre></div>
 
@@ -2034,7 +2044,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0518cb',
+            VERSION:'16ef9c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

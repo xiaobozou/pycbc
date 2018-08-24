@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.live &mdash; PyCBC 0518cb documentation</title>
+  <title>pycbc.io.live &mdash; PyCBC 16ef9c documentation</title>
   
 
   
@@ -258,14 +258,14 @@
     <span class="sd">&quot;&quot;&quot;Add a set of PSDs to a LIGOLW XML document. If the document is not</span>
 <span class="sd">    given, a new one is created first.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">xmldoc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">xmldoc</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">Document</span><span class="p">()</span>
-        <span class="n">root_name</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;psd&quot;</span>
-        <span class="n">Attributes</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span>
-        <span class="n">lw</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span>
-            <span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">(</span><span class="n">Attributes</span><span class="p">({</span><span class="sa">u</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">root_name</span><span class="p">})))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">lw</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">xmldoc</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">Document</span><span class="p">()</span> <span class="k">if</span> <span class="n">xmldoc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># the PSDs must be children of a LIGO_LW with name &quot;psd&quot;</span>
+    <span class="n">root_name</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;psd&quot;</span>
+    <span class="n">Attributes</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span>
+    <span class="n">lw</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span>
+        <span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">(</span><span class="n">Attributes</span><span class="p">({</span><span class="sa">u</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">root_name</span><span class="p">})))</span>
+
     <span class="k">for</span> <span class="n">instrument</span><span class="p">,</span> <span class="n">psd</span> <span class="ow">in</span> <span class="n">psddict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">xmlseries</span> <span class="o">=</span> <span class="n">_build_series</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Frequency,Real&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Frequency&quot;</span><span class="p">),</span>
                                   <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;deltaF&#39;</span><span class="p">,</span> <span class="s1">&#39;s^-1&#39;</span><span class="p">)</span>
@@ -293,8 +293,11 @@
 <span class="sd">        low_frequency_cutoff: float</span>
 <span class="sd">            Minimum valid frequency for the PSD estimates.</span>
 <span class="sd">        followup_data: dict of dicts, optional</span>
-<span class="sd">            Dictionary providing SNR time series and PSDs for each detector,</span>
-<span class="sd">            to be used in sky localization with BAYESTAR.</span>
+<span class="sd">            Dictionary providing SNR time series for each detector,</span>
+<span class="sd">            to be used in sky localization with BAYESTAR. The format should</span>
+<span class="sd">            be `followup_data[&#39;H1&#39;][&#39;snr_series&#39;]`. More detectors can be</span>
+<span class="sd">            present than given in `ifos`. If so, the extra detectors will only</span>
+<span class="sd">            be used for sky localization.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/template_id&#39;</span> <span class="o">%</span> <span class="n">ifos</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
@@ -305,7 +308,6 @@
         <span class="k">if</span> <span class="s1">&#39;followup_data&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">fud</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;followup_data&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span> <span class="o">=</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">fud</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="s1">&#39;snr_series&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">fud</span><span class="p">}</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">snr_series_psd</span> <span class="o">=</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">fud</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="s1">&#39;psd&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">fud</span><span class="p">}</span>
             <span class="n">usable_ifos</span> <span class="o">=</span> <span class="n">fud</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
             <span class="n">followup_ifos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">usable_ifos</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">ifos</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
@@ -425,9 +427,10 @@
         <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">coinc_inspiral_table</span><span class="p">)</span>
 
         <span class="c1"># append the PSDs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">psds</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;psds&#39;</span><span class="p">]</span>
         <span class="n">psds_lal</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;psds&#39;</span><span class="p">]:</span>
-            <span class="n">psd</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;psds&#39;</span><span class="p">][</span><span class="n">ifo</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">psds</span><span class="p">:</span>
+            <span class="n">psd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
             <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
             <span class="n">fseries</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateREAL8FrequencySeries</span><span class="p">(</span>
                 <span class="s2">&quot;psd&quot;</span><span class="p">,</span> <span class="n">psd</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">],</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
@@ -479,8 +482,8 @@
             <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">snr_series_fname</span><span class="p">,</span>
                                           <span class="n">group</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/snr&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">snr_series_psd</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">snr_series_fname</span><span class="p">,</span>
-                                              <span class="n">group</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/psd&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">snr_series_fname</span><span class="p">,</span>
+                                    <span class="n">group</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/psd&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
 
         <span class="n">gid</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">try</span><span class="p">:</span>
@@ -562,7 +565,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0518cb',
+            VERSION:'16ef9c',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
