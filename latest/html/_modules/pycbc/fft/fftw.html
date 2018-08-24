@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.fft.fftw &mdash; PyCBC 103e15 documentation</title>
+  <title>pycbc.fft.fftw &mdash; PyCBC 8a177b documentation</title>
   
 
   
@@ -415,6 +415,18 @@
     <span class="k">if</span> <span class="n">retval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not export wisdom to file </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span></div>
 
+<div class="viewcode-block" id="set_planning_limit"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.fftw.set_planning_limit">[docs]</a><span class="k">def</span> <span class="nf">set_planning_limit</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_fftw_threaded_set</span><span class="p">:</span>
+        <span class="n">set_threads_backend</span><span class="p">()</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="n">double_lib</span><span class="o">.</span><span class="n">fftw_set_timelimit</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="n">float_lib</span><span class="o">.</span><span class="n">fftwf_set_timelimit</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+
 <span class="c1"># Create function maps for the dtypes</span>
 <span class="n">plan_function</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;float32&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;complex64&#39;</span><span class="p">:</span> <span class="n">float_lib</span><span class="o">.</span><span class="n">fftwf_plan_dft_r2c_1d</span><span class="p">},</span>
                  <span class="s1">&#39;float64&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;complex128&#39;</span><span class="p">:</span> <span class="n">double_lib</span><span class="o">.</span><span class="n">fftw_plan_dft_r2c_1d</span><span class="p">},</span>
@@ -743,7 +755,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'103e15',
+            VERSION:'8a177b',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
