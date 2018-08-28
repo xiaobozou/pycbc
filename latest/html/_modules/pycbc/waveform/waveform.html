@@ -1118,6 +1118,15 @@
 
     <span class="c1"># total duration of the waveform</span>
     <span class="n">tmplt_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">)</span> <span class="o">*</span> <span class="n">waveform</span><span class="o">.</span><span class="n">delta_t</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;The time domain template is longer than the intended &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;duration in the frequency domain. This situation is &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;not supported in this function. Please shorten the &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;waveform appropriately before calling this function or &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;increase the allowed waveform length. &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;Waveform length (in samples): </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">))</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;. Intended length: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
     <span class="c1"># for IMR templates the zero of time is at max amplitude (merger)</span>
     <span class="c1"># thus the start time is minus the duration of the template from</span>
     <span class="c1"># lower frequency cutoff to merger, i.e. minus the &#39;chirp time&#39;</span>
@@ -1277,7 +1286,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 27, 2018.
+      Last updated on Aug 28, 2018.
 
     </p>
   </div>
