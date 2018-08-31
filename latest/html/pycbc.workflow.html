@@ -1161,6 +1161,18 @@ WorkflowConfigParser.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.workflow.configuration.istext">
+<code class="descclassname">pycbc.workflow.configuration.</code><code class="descname">istext</code><span class="sig-paren">(</span><em>s</em>, <em>text_characters=None</em>, <em>threshold=0.3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/configuration.html#istext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.configuration.istext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if the string is a set of binary data or a text file.
+This is done by checking if a large proportion of characters are &gt; 0X7E
+(0x7F is &lt;DEL&gt; and unprintable) or low bit control codes. In other words
+things that you wouldn’t see (often) in a text file. (ASCII past 0x7F
+might appear, but rarely).</p>
+<p>Code modified from
+<a class="reference external" href="https://www.safaribooksonline.com/library/view/python-cookbook-2nd/0596007973/ch01s12.html">https://www.safaribooksonline.com/library/view/python-cookbook-2nd/0596007973/ch01s12.html</a></p>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.workflow.configuration.resolve_url">
 <code class="descclassname">pycbc.workflow.configuration.</code><code class="descname">resolve_url</code><span class="sig-paren">(</span><em>url</em>, <em>directory=None</em>, <em>permissions=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/configuration.html#resolve_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.configuration.resolve_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves a URL to a local file, and returns the path to
@@ -5707,7 +5719,7 @@ interferometer data</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Aug 28, 2018.
+      Last updated on Aug 31, 2018.
 
     </p>
   </div>
