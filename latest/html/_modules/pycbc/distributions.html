@@ -226,6 +226,7 @@
 <span class="kn">from</span> <span class="nn">pycbc.distributions.uniform_log</span> <span class="k">import</span> <span class="n">UniformLog10</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.masses</span> <span class="k">import</span> <span class="n">UniformComponentMasses</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.spins</span> <span class="k">import</span> <span class="n">IndependentChiPChiEff</span>
+<span class="kn">from</span> <span class="nn">pycbc.distributions.qnm</span> <span class="k">import</span> <span class="n">UniformF0Tau</span>
 <span class="kn">from</span> <span class="nn">pycbc.distributions.joint</span> <span class="k">import</span> <span class="n">JointDistribution</span>
 
 <span class="c1"># a dict of all available distributions</span>
@@ -244,6 +245,7 @@
     <span class="n">UniformSolidAngle</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">UniformSolidAngle</span><span class="p">,</span>
     <span class="n">UniformSky</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">UniformSky</span><span class="p">,</span>
     <span class="n">UniformLog10</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">UniformLog10</span><span class="p">,</span>
+    <span class="n">UniformF0Tau</span><span class="o">.</span><span class="n">name</span> <span class="p">:</span> <span class="n">UniformF0Tau</span><span class="p">,</span>
 <span class="p">}</span>
 
 <div class="viewcode-block" id="read_distributions_from_config"><a class="viewcode-back" href="../../pycbc.distributions.html#pycbc.distributions.read_distributions_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_distributions_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;prior&quot;</span><span class="p">):</span>
@@ -400,7 +402,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

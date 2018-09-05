@@ -1870,19 +1870,6 @@ If None, it will be set to the frequency at which the amplitude is
 </dd></dl>
 
 <dl class="function">
-<dt id="pycbc.waveform.ringdown.get_lm_f0tau">
-<code class="descclassname">pycbc.waveform.ringdown.</code><code class="descname">get_lm_f0tau</code><span class="sig-paren">(</span><em>mass</em>, <em>spin</em>, <em>l</em>, <em>m</em>, <em>nmodes</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/ringdown.html#get_lm_f0tau"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.ringdown.get_lm_f0tau" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the f_0 and the tau of each overtone for a given lm mode</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.waveform.ringdown.get_lm_f0tau_allmodes">
-<code class="descclassname">pycbc.waveform.ringdown.</code><code class="descname">get_lm_f0tau_allmodes</code><span class="sig-paren">(</span><em>mass</em>, <em>spin</em>, <em>modes</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/ringdown.html#get_lm_f0tau_allmodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.ringdown.get_lm_f0tau_allmodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a dictionary with the f_0 and tau for all the modes
-in the list lmns (list of strings)</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="pycbc.waveform.ringdown.get_td_from_final_mass_spin">
 <code class="descclassname">pycbc.waveform.ringdown.</code><code class="descname">get_td_from_final_mass_spin</code><span class="sig-paren">(</span><em>template=None</em>, <em>taper=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/ringdown.html#get_td_from_final_mass_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.ringdown.get_td_from_final_mass_spin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return time domain ringdown with all the modes specified.</p>
@@ -2772,7 +2759,7 @@ for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>frame_axis</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to choose among orbital_l, view and total_j</li>
 <li><strong>modes_choice</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to turn on  among orbital_l, view and total_j</li>
 <li><strong>side_bands</strong> (<em>{0</em><em>, </em><em>int}</em>) – Flag for generating sidebands</li>
-<li><strong>mode_array</strong> (<em>{0</em><em>, </em><em>int}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
+<li><strong>mode_array</strong> (<em>{None</em><em>, </em><em>list}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
 <li><strong>numrel_data</strong> (<em>{</em><em>, </em><em>str}</em>) – Sets the NR flags; only needed for NR waveforms.</li>
 <li><strong>frame_axis</strong> – Allow to choose among orbital_l, view and total_j</li>
 <li><strong>modes_choice</strong> – Allow to turn on  among orbital_l, view and total_j</li>
@@ -2839,7 +2826,7 @@ for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>frame_axis</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to choose among orbital_l, view and total_j</li>
 <li><strong>modes_choice</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to turn on  among orbital_l, view and total_j</li>
 <li><strong>side_bands</strong> (<em>{0</em><em>, </em><em>int}</em>) – Flag for generating sidebands</li>
-<li><strong>mode_array</strong> (<em>{0</em><em>, </em><em>int}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
+<li><strong>mode_array</strong> (<em>{None</em><em>, </em><em>list}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
 <li><strong>f_final</strong> (<em>{0</em><em>, </em><em>float}</em>) – The ending frequency of the waveform. The default (0) indicates that the choice is made by the respective approximant.</li>
 <li><strong>f_final_func</strong> (<em>{</em><em>, </em><em>str}</em>) – Use the given frequency function to compute f_final based on the parameters of the waveform.</li>
 </ul>
@@ -2903,7 +2890,7 @@ for keyword arguments. A common example would be a row in an xml table.</li>
 <li><strong>frame_axis</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to choose among orbital_l, view and total_j</li>
 <li><strong>modes_choice</strong> (<em>{0</em><em>, </em><em>int}</em>) – Allow to turn on  among orbital_l, view and total_j</li>
 <li><strong>side_bands</strong> (<em>{0</em><em>, </em><em>int}</em>) – Flag for generating sidebands</li>
-<li><strong>mode_array</strong> (<em>{0</em><em>, </em><em>int}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
+<li><strong>mode_array</strong> (<em>{None</em><em>, </em><em>list}</em>) – Choose which (l,m) modes to include when generating a waveform. Only if approximant supports this feature.By default pass None and let lalsimulation use it’s default behaviour.Example: mode_array = [ [2,2], [2,-2] ]</li>
 </ul>
 </td>
 </tr>
@@ -3141,7 +3128,7 @@ See <cite>get_fd_waveform</cite>.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

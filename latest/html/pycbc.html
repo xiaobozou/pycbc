@@ -262,6 +262,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.joint">pycbc.distributions.joint module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.masses">pycbc.distributions.masses module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.power_law">pycbc.distributions.power_law module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.qnm">pycbc.distributions.qnm module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.sky_location">pycbc.distributions.sky_location module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.spins">pycbc.distributions.spins module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pycbc.distributions.html#module-pycbc.distributions.uniform">pycbc.distributions.uniform module</a></li>
@@ -1723,13 +1724,132 @@ defined as <cite>sqrt(2*loglr)</cite>.If the log likelihood ratio is &lt; 0, ret
 
 <dl class="function">
 <dt id="pycbc.conversions.freq_from_final_mass_spin">
-<code class="descclassname">pycbc.conversions.</code><code class="descname">freq_from_final_mass_spin</code><span class="sig-paren">(</span><em>final_mass</em>, <em>final_spin</em>, <em>l=2</em>, <em>m=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#freq_from_final_mass_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.freq_from_final_mass_spin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">pycbc.conversions.</code><code class="descname">freq_from_final_mass_spin</code><span class="sig-paren">(</span><em>final_mass</em>, <em>final_spin</em>, <em>l=2</em>, <em>m=2</em>, <em>nmodes=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#freq_from_final_mass_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.freq_from_final_mass_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns QNM frequency for the given mass and spin and mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Mass of the black hole (in solar masses).</li>
+<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Dimensionless spin of the final black hole.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em><em>, </em><em>optional</em>) – l-index of the harmonic. Default is 2.</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em><em>, </em><em>optional</em>) – m-index of the harmonic. Default is 2.</li>
+<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The number of overtones to generate. Default is 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The frequency of the QNM(s), in Hz. If only a single mode is requested
+(and mass, spin, l, and m are not arrays), this will be a float. If
+multiple modes requested, will be an array with shape
+<code class="docutils literal notranslate"><span class="pre">[input</span> <span class="pre">shape</span> <span class="pre">x]</span> <span class="pre">nmodes</span></code>, where <code class="docutils literal notranslate"><span class="pre">input</span> <span class="pre">shape</span></code> is the broadcasted
+shape of the inputs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.tau_from_final_mass_spin">
-<code class="descclassname">pycbc.conversions.</code><code class="descname">tau_from_final_mass_spin</code><span class="sig-paren">(</span><em>final_mass</em>, <em>final_spin</em>, <em>l=2</em>, <em>m=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau_from_final_mass_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau_from_final_mass_spin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">pycbc.conversions.</code><code class="descname">tau_from_final_mass_spin</code><span class="sig-paren">(</span><em>final_mass</em>, <em>final_spin</em>, <em>l=2</em>, <em>m=2</em>, <em>nmodes=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#tau_from_final_mass_spin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.tau_from_final_mass_spin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns QNM damping time for the given mass and spin and mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Mass of the black hole (in solar masses).</li>
+<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Dimensionless spin of the final black hole.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em><em>, </em><em>optional</em>) – l-index of the harmonic. Default is 2.</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><em>array</em><em>, </em><em>optional</em>) – m-index of the harmonic. Default is 2.</li>
+<li><strong>nmodes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The number of overtones to generate. Default is 1.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The damping time of the QNM(s), in seconds. If only a single mode is
+requested (and mass, spin, l, and m are not arrays), this will be a
+float. If multiple modes requested, will be an array with shape
+<code class="docutils literal notranslate"><span class="pre">[input</span> <span class="pre">shape</span> <span class="pre">x]</span> <span class="pre">nmodes</span></code>, where <code class="docutils literal notranslate"><span class="pre">input</span> <span class="pre">shape</span></code> is the broadcasted
+shape of the inputs.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.conversions.final_spin_from_f0_tau">
+<code class="descclassname">pycbc.conversions.</code><code class="descname">final_spin_from_f0_tau</code><span class="sig-paren">(</span><em>f0</em>, <em>tau</em>, <em>l=2</em>, <em>m=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#final_spin_from_f0_tau"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.final_spin_from_f0_tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final spin based on the given frequency and damping time.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, only l = m = 2 is supported. Any other indices will raise
+a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Frequency of the QNM (in Hz).</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Damping time of the QNM (in seconds).</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – l-index of the harmonic. Default is 2.</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – m-index of the harmonic. Default is 2.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The spin of the final black hole. If the combination of frequency
+and damping times give an unphysical result, <code class="docutils literal notranslate"><span class="pre">numpy.nan</span></code> will be
+returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.conversions.final_mass_from_f0_tau">
+<code class="descclassname">pycbc.conversions.</code><code class="descname">final_mass_from_f0_tau</code><span class="sig-paren">(</span><em>f0</em>, <em>tau</em>, <em>l=2</em>, <em>m=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/conversions.html#final_mass_from_f0_tau"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.conversions.final_mass_from_f0_tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final mass (in solar masses) based on the given frequency
+and damping time.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, only l = m = 2 is supported. Any other indices will raise
+a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Frequency of the QNM (in Hz).</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array</em>) – Damping time of the QNM (in seconds).</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – l-index of the harmonic. Default is 2.</li>
+<li><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – m-index of the harmonic. Default is 2.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The mass of the final black hole. If the combination of frequency
+and damping times give an unphysical result, <code class="docutils literal notranslate"><span class="pre">numpy.nan</span></code> will be
+returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.conversions.chi_eff_from_spherical">
@@ -5125,7 +5245,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

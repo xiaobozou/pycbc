@@ -958,23 +958,285 @@
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
 <span class="c1">#</span>
-<span class="k">def</span> <span class="nf">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode</span>
+<span class="k">def</span> <span class="nf">_genqnmfreq</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">,</span> <span class="n">qnmfreq</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convenience function to generate QNM frequencies from lalsimulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mass : float</span>
+<span class="sd">        The mass of the black hole (in solar masses).</span>
+<span class="sd">    spin : float</span>
+<span class="sd">        The dimensionless spin of the black hole.</span>
+<span class="sd">    l : int</span>
+<span class="sd">        l-index of the harmonic.</span>
+<span class="sd">    m : int</span>
+<span class="sd">        m-index of the harmonic.</span>
+<span class="sd">    nmodes : int</span>
+<span class="sd">        The number of overtones to generate.</span>
+<span class="sd">    qnmfreq : lal.COMPLEX16Vector, optional</span>
+<span class="sd">        LAL vector to write the results into. Must be the same length as</span>
+<span class="sd">        ``nmodes``. If None, will create one.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lal.COMPLEX16Vector</span>
+<span class="sd">        LAL vector containing the complex QNM frequencies.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">qnmfreq</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nmodes</span><span class="p">))</span>
     <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span>
-        <span class="n">qnmfreq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">spin</span><span class="p">),</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
-    <span class="n">f_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
-    <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span>
+        <span class="n">qnmfreq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">spin</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">nmodes</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">qnmfreq</span>
 
 
-<div class="viewcode-block" id="freq_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.freq_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">freq_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+<span class="k">def</span> <span class="nf">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the f0 and the tau of each overtone for a given l, m mode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mass : float or array</span>
+<span class="sd">        Mass of the black hole (in solar masses).</span>
+<span class="sd">    spin : float or array</span>
+<span class="sd">        Dimensionless spin of the final black hole.</span>
+<span class="sd">    l : int or array</span>
+<span class="sd">        l-index of the harmonic.</span>
+<span class="sd">    m : int or array</span>
+<span class="sd">        m-index of the harmonic.</span>
+<span class="sd">    nmodes : int</span>
+<span class="sd">        The number of overtones to generate.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f0 : float or array</span>
+<span class="sd">        The frequency of the QNM(s), in Hz. If only a single mode is requested</span>
+<span class="sd">        (and mass, spin, l, and m are not arrays), this will be a float. If</span>
+<span class="sd">        multiple modes requested, will be an array with shape</span>
+<span class="sd">        ``[input shape x] nmodes``, where ``input shape`` is the broadcasted</span>
+<span class="sd">        shape of the inputs.</span>
+<span class="sd">    tau : float or array</span>
+<span class="sd">        The damping time of the QNM(s), in seconds. Return type is same as f0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert to arrays</span>
+    <span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
+        <span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="c1"># we&#39;ll ravel the arrays so we can evaluate each parameter combination</span>
+    <span class="c1"># one at a a time</span>
+    <span class="n">origshape</span> <span class="o">=</span> <span class="n">mass</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">nmodes</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;nmodes must be &gt;= 1&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nmodes</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">newshape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">origshape</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="n">nmodes</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">newshape</span> <span class="o">=</span> <span class="n">origshape</span>
+    <span class="n">f0s</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mass</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">))</span>
+    <span class="n">taus</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mass</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">))</span>
+    <span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">spin</span> <span class="o">=</span> <span class="n">spin</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">qnmfreq</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mass</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">_genqnmfreq</span><span class="p">(</span><span class="n">mass</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">spin</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">nmodes</span><span class="p">,</span>
+                              <span class="n">qnmfreq</span><span class="o">=</span><span class="n">qnmfreq</span><span class="p">)</span>
+        <span class="n">f0s</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">]</span>
+        <span class="n">taus</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="o">/</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">]</span>
+    <span class="n">f0s</span> <span class="o">=</span> <span class="n">f0s</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">newshape</span><span class="p">)</span>
+    <span class="n">taus</span> <span class="o">=</span> <span class="n">taus</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">newshape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">formatreturn</span><span class="p">(</span><span class="n">f0s</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">),</span>
+            <span class="n">formatreturn</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">))</span>
 
 
-<div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+<span class="k">def</span> <span class="nf">get_lm_f0tau_allmodes</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a dictionary of all of the frequencies and damping times for the</span>
+<span class="sd">    requested modes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mass : float or array</span>
+<span class="sd">        Mass of the black hole (in solar masses).</span>
+<span class="sd">    spin : float or array</span>
+<span class="sd">        Dimensionless spin of the final black hole.</span>
+<span class="sd">    modes : list of str</span>
+<span class="sd">        The modes to get. Each string in the list should be formatted &#39;lmN&#39;,</span>
+<span class="sd">        where l (m) is the l (m) index of the harmonic and N is the number of</span>
+<span class="sd">        overtones to generate (note, N is not the index of the overtone). For</span>
+<span class="sd">        example, &#39;221&#39; will generate the 0th overtone of the l = m = 2 mode.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f0 : dict</span>
+<span class="sd">        Dictionary mapping the modes to the frequencies. The dictionary keys</span>
+<span class="sd">        are &#39;lmn&#39; string, where l (m) is the l (m) index of the harmonic and</span>
+<span class="sd">        n is the index of the overtone. For example, &#39;220&#39; is the l = m = 2</span>
+<span class="sd">        mode and the 0th overtone.</span>
+<span class="sd">    tau : dict</span>
+<span class="sd">        Dictionary mapping the modes to the damping times. The keys are the</span>
+<span class="sd">        same as ``f0``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">f0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}{}</span><span class="s1">&#39;</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">tmp_f0</span><span class="p">,</span> <span class="n">tmp_tau</span> <span class="o">=</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nmodes</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># in this case, tmp_f0 and tmp_tau will just be floats</span>
+            <span class="n">f0</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_f0</span>
+            <span class="n">tau</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_tau</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+                <span class="c1"># we need to wrap tmp_f0 with formatreturn to ensure that if</span>
+                <span class="c1"># only a mass, spin pair was requested, the value stored to</span>
+                <span class="c1"># the dict is a float</span>
+                <span class="n">f0</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">tmp_f0</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+                <span class="n">tau</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">tmp_tau</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">f0</span><span class="p">,</span> <span class="n">tau</span>
+
+
+<div class="viewcode-block" id="freq_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.freq_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">freq_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns QNM frequency for the given mass and spin and mode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    final_mass : float or array</span>
+<span class="sd">        Mass of the black hole (in solar masses).</span>
+<span class="sd">    final_spin : float or array</span>
+<span class="sd">        Dimensionless spin of the final black hole.</span>
+<span class="sd">    l : int or array, optional</span>
+<span class="sd">        l-index of the harmonic. Default is 2.</span>
+<span class="sd">    m : int or array, optional</span>
+<span class="sd">        m-index of the harmonic. Default is 2.</span>
+<span class="sd">    nmodes : int, optional</span>
+<span class="sd">        The number of overtones to generate. Default is 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or array</span>
+<span class="sd">        The frequency of the QNM(s), in Hz. If only a single mode is requested</span>
+<span class="sd">        (and mass, spin, l, and m are not arrays), this will be a float. If</span>
+<span class="sd">        multiple modes requested, will be an array with shape</span>
+<span class="sd">        ``[input shape x] nmodes``, where ``input shape`` is the broadcasted</span>
+<span class="sd">        shape of the inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="tau_from_final_mass_spin"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.tau_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">tau_from_final_mass_spin</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns QNM damping time for the given mass and spin and mode.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    final_mass : float or array</span>
+<span class="sd">        Mass of the black hole (in solar masses).</span>
+<span class="sd">    final_spin : float or array</span>
+<span class="sd">        Dimensionless spin of the final black hole.</span>
+<span class="sd">    l : int or array, optional</span>
+<span class="sd">        l-index of the harmonic. Default is 2.</span>
+<span class="sd">    m : int or array, optional</span>
+<span class="sd">        m-index of the harmonic. Default is 2.</span>
+<span class="sd">    nmodes : int, optional</span>
+<span class="sd">        The number of overtones to generate. Default is 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or array</span>
+<span class="sd">        The damping time of the QNM(s), in seconds. If only a single mode is</span>
+<span class="sd">        requested (and mass, spin, l, and m are not arrays), this will be a</span>
+<span class="sd">        float. If multiple modes requested, will be an array with shape</span>
+<span class="sd">        ``[input shape x] nmodes``, where ``input shape`` is the broadcasted</span>
+<span class="sd">        shape of the inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<span class="c1"># The following are from Table VIII of Berti et al., PRD 73 064030,</span>
+<span class="c1"># arXiv:gr-qc/0512160 (2006).</span>
+<span class="c1"># Keys are l,m. Constants are for converting from</span>
+<span class="c1"># frequency and damping time to mass and spin.</span>
+<span class="n">_berti_spin_constants</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.4187</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4990</span><span class="p">),</span>
+    <span class="p">}</span>
+
+<span class="n">_berti_mass_constants</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span> <span class="p">(</span><span class="mf">1.5251</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1568</span><span class="p">,</span> <span class="mf">0.1292</span><span class="p">),</span>
+    <span class="p">}</span>
+
+
+<div class="viewcode-block" id="final_spin_from_f0_tau"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.final_spin_from_f0_tau">[docs]</a><span class="k">def</span> <span class="nf">final_spin_from_f0_tau</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the final spin based on the given frequency and damping time.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        Currently, only l = m = 2 is supported. Any other indices will raise</span>
+<span class="sd">        a ``KeyError``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f0 : float or array</span>
+<span class="sd">        Frequency of the QNM (in Hz).</span>
+<span class="sd">    tau : float or array</span>
+<span class="sd">        Damping time of the QNM (in seconds).</span>
+<span class="sd">    l : int, optional</span>
+<span class="sd">        l-index of the harmonic. Default is 2.</span>
+<span class="sd">    m : int, optional</span>
+<span class="sd">        m-index of the harmonic. Default is 2.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or array</span>
+<span class="sd">        The spin of the final black hole. If the combination of frequency</span>
+<span class="sd">        and damping times give an unphysical result, ``numpy.nan`` will be</span>
+<span class="sd">        returned.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">f0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+    <span class="c1"># from Berti et al. 2006</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">_berti_spin_constants</span><span class="p">[</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">]</span>
+    <span class="n">origshape</span> <span class="o">=</span> <span class="n">f0</span><span class="o">.</span><span class="n">shape</span>
+    <span class="c1"># flatten inputs for storing results</span>
+    <span class="n">f0</span> <span class="o">=</span> <span class="n">f0</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">tau</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">spins</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">f0</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">spins</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">f0</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*</span> <span class="n">tau</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="p">((</span><span class="n">Q</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">spins</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+    <span class="n">spins</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">origshape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">formatreturn</span><span class="p">(</span><span class="n">spins</span><span class="p">,</span> <span class="n">input_is_array</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="final_mass_from_f0_tau"><a class="viewcode-back" href="../../pycbc.html#pycbc.conversions.final_mass_from_f0_tau">[docs]</a><span class="k">def</span> <span class="nf">final_mass_from_f0_tau</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the final mass (in solar masses) based on the given frequency</span>
+<span class="sd">    and damping time.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        Currently, only l = m = 2 is supported. Any other indices will raise</span>
+<span class="sd">        a ``KeyError``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f0 : float or array</span>
+<span class="sd">        Frequency of the QNM (in Hz).</span>
+<span class="sd">    tau : float or array</span>
+<span class="sd">        Damping time of the QNM (in seconds).</span>
+<span class="sd">    l : int, optional</span>
+<span class="sd">        l-index of the harmonic. Default is 2.</span>
+<span class="sd">    m : int, optional</span>
+<span class="sd">        m-index of the harmonic. Default is 2.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or array</span>
+<span class="sd">        The mass of the final black hole. If the combination of frequency</span>
+<span class="sd">        and damping times give an unphysical result, ``numpy.nan`` will be</span>
+<span class="sd">        returned.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># from Berti et al. 2006</span>
+    <span class="n">spin</span> <span class="o">=</span> <span class="n">final_spin_from_f0_tau</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">_berti_mass_constants</span><span class="p">[</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">spin</span><span class="p">)</span><span class="o">**</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f0</span><span class="o">*</span><span class="n">lal</span><span class="o">.</span><span class="n">MTSUN_SI</span><span class="p">)</span></div>
+
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -1201,9 +1463,10 @@
            <span class="s1">&#39;spin2y_from_mass1_mass2_xi2_phi_a_phi_s&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chirp_distance&#39;</span><span class="p">,</span> <span class="s1">&#39;det_tc&#39;</span><span class="p">,</span> <span class="s1">&#39;snr_from_loglr&#39;</span><span class="p">,</span>
            <span class="s1">&#39;freq_from_final_mass_spin&#39;</span><span class="p">,</span> <span class="s1">&#39;tau_from_final_mass_spin&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;final_spin_from_f0_tau&#39;</span><span class="p">,</span> <span class="s1">&#39;final_mass_from_f0_tau&#39;</span><span class="p">,</span>
            <span class="s1">&#39;optimal_dec_from_detector&#39;</span><span class="p">,</span> <span class="s1">&#39;optimal_ra_from_detector&#39;</span><span class="p">,</span>
            <span class="s1">&#39;chi_eff_from_spherical&#39;</span><span class="p">,</span> <span class="s1">&#39;chi_p_from_spherical&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;nltides_gw_phase_diff_isco&#39;</span>
+           <span class="s1">&#39;nltides_gw_phase_diff_isco&#39;</span><span class="p">,</span>
           <span class="p">]</span>
 </pre></div>
 
@@ -1218,7 +1481,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

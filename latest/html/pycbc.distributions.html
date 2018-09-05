@@ -1742,6 +1742,151 @@ is the distriubtion to use for the radius.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-pycbc.distributions.qnm">
+<span id="pycbc-distributions-qnm-module"></span><h2>pycbc.distributions.qnm module<a class="headerlink" href="#module-pycbc.distributions.qnm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pycbc.distributions.qnm.UniformF0Tau">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.qnm.</code><code class="descname">UniformF0Tau</code><span class="sig-paren">(</span><em>f0=None</em>, <em>tau=None</em>, <em>final_mass=None</em>, <em>final_spin=None</em>, <em>rdfreq='f0'</em>, <em>damping_time='tau'</em>, <em>norm_tolerance=0.001</em>, <em>norm_seed=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/qnm.html#UniformF0Tau"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.qnm.UniformF0Tau" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.uniform.Uniform</span></code></a></p>
+<p>A distribution uniform in QNM frequency and damping time.</p>
+<p>Constraints may be placed to exclude frequencies and damping times
+corresponding to specific masses and spins.</p>
+<p>To ensure a properly normalized pdf that accounts for the constraints
+on final mass and spin, a renormalization factor is calculated upon
+initialization. This is calculated numerically: f0 and tau are drawn
+randomly, then the norm is scaled by the fraction of points that yield
+final masses and spins within the constraints. The <cite>norm_tolerance</cite> keyword
+arguments sets the error on the estimate of the norm from this numerical
+method. If this value is too large, such that no points are found in
+the allowed region, a ValueError is raised.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>f0</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>boundaries.Bounds</em></a>) – The range of QNM frequencies (in Hz).</li>
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>boundaries.Bounds</em></a>) – The range of QNM damping times (in s).</li>
+<li><strong>final_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>boundaries.Bounds</em></a><em>, </em><em>optional</em>) – The range of final masses to allow. Default is [0,inf).</li>
+<li><strong>final_spin</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> or </em><a class="reference internal" href="pycbc.html#pycbc.boundaries.Bounds" title="pycbc.boundaries.Bounds"><em>boundaries.Bounds</em></a><em>, </em><em>optional</em>) – The range final spins to allow. Must be in [-0.996, 0.996], which is
+the default.</li>
+<li><strong>rdfreq</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Use the given string as the name for the f0 parameter. Default is ‘f0’.</li>
+<li><strong>damping_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Use the given string as the name for the tau parameter. Default is
+‘tau’.</li>
+<li><strong>norm_tolerance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The tolerance on the estimate of the normalization. Default is 1e-3.</li>
+<li><strong>norm_seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Seed to use for the random number generator when estimating the norm.
+Default is 0. After the norm is estimated, the random number generator
+is set back to the state it was in upon initialization.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Create a distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">UniformF0Tau</span><span class="p">(</span><span class="n">f0</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">2048.</span><span class="p">),</span> <span class="n">tau</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Check that all random samples drawn from the distribution yield final
+masses &gt; 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">conversions</span><span class="o">.</span><span class="n">final_mass_from_f0_tau</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span>
+<span class="go">        samples[&#39;tau&#39;]) &gt; 1.).all()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Create a distribution with tighter bounds on final mass and spin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">UniformF0Tau</span><span class="p">(</span><span class="n">f0</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">2048.</span><span class="p">),</span> <span class="n">tau</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e-2</span><span class="p">),</span>
+<span class="go">        final_mass=(20., 200.), final_spin=(0,0.996))</span>
+</pre></div>
+</div>
+<p>Check that all random samples drawn from the distribution are in the
+final mass and spin constraints:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">conversions</span><span class="o">.</span><span class="n">final_mass_from_f0_tau</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span>
+<span class="go">        samples[&#39;tau&#39;]) &gt;= 20.).all()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">conversions</span><span class="o">.</span><span class="n">final_mass_from_f0_tau</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span>
+<span class="go">        samples[&#39;tau&#39;]) &lt; 200.).all()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">conversions</span><span class="o">.</span><span class="n">final_spin_from_f0_tau</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span>
+<span class="go">        samples[&#39;tau&#39;]) &gt;= 0.).all()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">conversions</span><span class="o">.</span><span class="n">final_spin_from_f0_tau</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;f0&#39;</span><span class="p">],</span>
+<span class="go">        samples[&#39;tau&#39;]) &lt; 0.996).all()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="pycbc.distributions.qnm.UniformF0Tau.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/qnm.html#UniformF0Tau.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.qnm.UniformF0Tau.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize this class from a config file.</p>
+<p>Bounds on <code class="docutils literal notranslate"><span class="pre">f0</span></code>, <code class="docutils literal notranslate"><span class="pre">tau</span></code>, <code class="docutils literal notranslate"><span class="pre">final_mass</span></code> and <code class="docutils literal notranslate"><span class="pre">final_spin</span></code> should
+be specified by providing <code class="docutils literal notranslate"><span class="pre">min-{param}</span></code> and <code class="docutils literal notranslate"><span class="pre">max-{param}</span></code>. If
+the <code class="docutils literal notranslate"><span class="pre">f0</span></code> or <code class="docutils literal notranslate"><span class="pre">tau</span></code> param should be renamed, <code class="docutils literal notranslate"><span class="pre">rdfreq</span></code> and
+<code class="docutils literal notranslate"><span class="pre">damping_time</span></code> should be provided; these must match
+<code class="docutils literal notranslate"><span class="pre">variable_args</span></code>. If <code class="docutils literal notranslate"><span class="pre">rdfreq</span></code> and <code class="docutils literal notranslate"><span class="pre">damping_time</span></code> are not
+provided, <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> are expected to be <code class="docutils literal notranslate"><span class="pre">f0</span></code> and <code class="docutils literal notranslate"><span class="pre">tau</span></code>.</p>
+<p>Only <code class="docutils literal notranslate"><span class="pre">min/max-f0</span></code> and <code class="docutils literal notranslate"><span class="pre">min/max-tau</span></code> need to be provided.</p>
+<p>Example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[{section}-f0+tau]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform_f0_tau</span>
+<span class="na">min-f0</span> <span class="o">=</span> <span class="s">10</span>
+<span class="na">max-f0</span> <span class="o">=</span> <span class="s">2048</span>
+<span class="na">min-tau</span> <span class="o">=</span> <span class="s">0.0001</span>
+<span class="na">max-tau</span> <span class="o">=</span> <span class="s">0.010</span>
+<span class="na">min-final_mass</span> <span class="o">=</span> <span class="s">10</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – WorkflowConfigParser instance to read.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the section to read.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the variable args. These should be separated by
+<code class="docutils literal notranslate"><span class="pre">pycbc.VARARGS_DELIM</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">This class initialized with the parameters provided in the config
+file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.qnm.UniformF0Tau" title="pycbc.distributions.qnm.UniformF0Tau">UniformF0Tau</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.qnm.UniformF0Tau.name">
+<code class="descname">name</code><em class="property"> = 'uniform_f0_tau'</em><a class="headerlink" href="#pycbc.distributions.qnm.UniformF0Tau.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.qnm.UniformF0Tau.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/qnm.html#UniformF0Tau.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.qnm.UniformF0Tau.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw random samples from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The number of draws to do. Default is 1.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A structured array of the random draws.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-pycbc.distributions.sky_location">
 <span id="pycbc-distributions-sky-location-module"></span><h2>pycbc.distributions.sky_location module<a class="headerlink" href="#module-pycbc.distributions.sky_location" title="Permalink to this headline">¶</a></h2>
 <p>This modules provides classes for evaluating sky distributions in
@@ -2212,7 +2357,7 @@ defined for them. Default is ‘variable_args’.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

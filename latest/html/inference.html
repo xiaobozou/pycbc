@@ -267,7 +267,7 @@ A list of all distributions that can be used is found with</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python ../examples/distributions/list_distributions.py
-[&#39;uniform_power_law&#39;, &#39;gaussian&#39;, &#39;uniform_log10&#39;, &#39;uniform_solidangle&#39;, &#39;uniform_sky&#39;, &#39;cos_angle&#39;, &#39;uniform_radius&#39;, &#39;independent_chip_chieff&#39;, &#39;sin_angle&#39;, &#39;uniform&#39;, &#39;uniform_angle&#39;, &#39;arbitrary&#39;, &#39;fromfile&#39;, &#39;uniform_component_masses&#39;]
+[&#39;uniform_power_law&#39;, &#39;gaussian&#39;, &#39;uniform_log10&#39;, &#39;uniform_solidangle&#39;, &#39;uniform_sky&#39;, &#39;cos_angle&#39;, &#39;uniform_radius&#39;, &#39;uniform_f0_tau&#39;, &#39;independent_chip_chieff&#39;, &#39;sin_angle&#39;, &#39;uniform&#39;, &#39;uniform_angle&#39;, &#39;arbitrary&#39;, &#39;fromfile&#39;, &#39;uniform_component_masses&#39;]
 </pre></div>
 </div>
 <p>One or more of the <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> may be transformed to a different parameter space for purposes of sampling. This is done by specifying a <code class="docutils literal notranslate"><span class="pre">[sampling_parameters]</span></code> section. This section specifies which <code class="docutils literal notranslate"><span class="pre">variable_args</span></code> to replace with which parameters for sampling. This must be followed by one or more <code class="docutils literal notranslate"><span class="pre">[sampling_transforms-{sampling_params}]</span></code> sections that provide the transform class to use. For example, the following would cause the sampler to sample in chirp mass (<code class="docutils literal notranslate"><span class="pre">mchirp</span></code>) and mass ratio (<code class="docutils literal notranslate"><span class="pre">q</span></code>) instead of <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>:</p>
@@ -795,7 +795,7 @@ You can supply <code class="docutils literal notranslate"><span class="pre">thin
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

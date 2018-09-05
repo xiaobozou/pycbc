@@ -223,6 +223,7 @@
 <span class="kn">import</span> <span class="nn">lalsimulation</span> <span class="k">as</span> <span class="nn">lalsim</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span><span class="p">,</span> <span class="n">FrequencySeries</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="n">complex128</span><span class="p">,</span> <span class="n">zeros</span>
 <span class="kn">from</span> <span class="nn">pycbc.waveform.waveform</span> <span class="k">import</span> <span class="n">get_obj_attrs</span>
+<span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">get_lm_f0tau_allmodes</span>
 
 <span class="n">default_qnm_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;t_0&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
 <span class="n">qnm_required_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;f_0&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">,</span> <span class="s1">&#39;amp&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">]</span>
@@ -307,34 +308,6 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;tau_</span><span class="si">%d%d%d</span><span class="s1"> is required&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">taus</span></div>
-
-<span class="c1"># Functions to obtain f_0 and tau from mass and spin #########################</span>
-
-<div class="viewcode-block" id="get_lm_f0tau"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_lm_f0tau">[docs]</a><span class="k">def</span> <span class="nf">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
-    <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span><span class="n">qnmfreq</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
-
-    <span class="n">f_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
-    <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
-
-    <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span></div>
-
-<div class="viewcode-block" id="get_lm_f0tau_allmodes"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_lm_f0tau_allmodes">[docs]</a><span class="k">def</span> <span class="nf">get_lm_f0tau_allmodes</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a dictionary with the f_0 and tau for all the modes</span>
-<span class="sd">    in the list lmns (list of strings)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
-        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-        <span class="n">tmp_f0</span><span class="p">,</span> <span class="n">tmp_tau</span> <span class="o">=</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
-            <span class="n">f_0</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_f0</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-            <span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_tau</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span></div>
 
 <span class="c1"># Functions to obtain t_final and f_final #####################################</span>
 
@@ -1298,7 +1271,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

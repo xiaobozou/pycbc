@@ -302,7 +302,18 @@
         <span class="c1"># we&#39;ll expand the static args to be arrays with the same size as</span>
         <span class="c1"># the other values</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_args</span><span class="p">:</span>
-            <span class="n">injvals</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">param</span><span class="p">],</span> <span class="n">numinj</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+            <span class="c1"># if val is a list or numpy array, we need to store it as an</span>
+            <span class="c1"># object; otherwise, we&#39;ll get a shape mismatch between fields</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">numinj</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numinj</span><span class="p">):</span>
+                    <span class="n">arr</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># otherwise, we can just repeat the value the needed number of</span>
+                <span class="c1"># times</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">numinj</span><span class="p">)</span>
+            <span class="n">injvals</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span>
         <span class="c1"># make sure a coalescence time is specified for injections</span>
         <span class="k">if</span> <span class="s1">&#39;tc&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">injvals</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no tc found in the given injection file; &quot;</span>
@@ -864,7 +875,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 01, 2018.
+      Last updated on Sep 05, 2018.
 
     </p>
   </div>

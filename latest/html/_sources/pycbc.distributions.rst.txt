@@ -68,6 +68,14 @@ pycbc.distributions.power\_law module
     :undoc-members:
     :show-inheritance:
 
+pycbc.distributions.qnm module
+------------------------------
+
+.. automodule:: pycbc.distributions.qnm
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pycbc.distributions.sky\_location module
 ----------------------------------------
 
