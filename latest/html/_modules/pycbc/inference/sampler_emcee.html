@@ -460,7 +460,7 @@
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;emcee_pt&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                 <span class="n">betas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">emcee</span>
@@ -476,7 +476,7 @@
         <span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">PTSampler</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span>
                                   <span class="n">_callloglikelihood</span><span class="p">(</span><span class="n">likelihood_call</span><span class="p">),</span>
                                   <span class="n">_callprior</span><span class="p">(</span><span class="n">likelihood_call</span><span class="p">),</span>
-                                  <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">)</span>
+                                  <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="n">betas</span><span class="p">)</span>
         <span class="c1"># initialize</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">EmceePTSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
               <span class="n">sampler</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">)</span>
@@ -501,8 +501,26 @@
 <span class="sd">        EmceePTSampler</span>
 <span class="sd">            An emcee sampler initialized based on the given arguments.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
-                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
+        <span class="kn">import</span> <span class="nn">h5py</span>
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+                <span class="n">opts</span><span class="o">.</span><span class="n">inverse_temperatures_input_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must specify either ntemps or &quot;</span>
+                             <span class="s2">&quot;inverse-temperatures-input-file, not both.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">inverse_temperatures_input_file</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">inverse_temperatures_input_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">betas</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;betas&#39;</span><span class="p">])</span>
+                    <span class="n">ntemps</span> <span class="o">=</span> <span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;No attribute called betas&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">betas</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">ntemps</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">ntemps</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="n">betas</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ntemps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1248,7 +1266,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 05, 2018.
+      Last updated on Sep 06, 2018.
 
     </p>
   </div>
