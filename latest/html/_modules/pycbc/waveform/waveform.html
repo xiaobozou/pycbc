@@ -764,7 +764,7 @@
     <span class="n">hc</span> <span class="o">=</span> <span class="n">hc</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span><span class="o">.</span><span class="n">cyclic_time_shift</span><span class="p">(</span><span class="n">hc</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span></div>
 
-<div class="viewcode-block" id="get_td_waveform_from_fd"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_td_waveform_from_fd">[docs]</a><span class="k">def</span> <span class="nf">get_td_waveform_from_fd</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="get_td_waveform_from_fd"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.waveform.get_td_waveform_from_fd">[docs]</a><span class="k">def</span> <span class="nf">get_td_waveform_from_fd</span><span class="p">(</span><span class="n">rwrap</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return time domain version of fourier domain approximant.</span>
 
 <span class="sd">    This returns a time domain version of a fourier domain approximant, with</span>
@@ -772,6 +772,10 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    rwrap: float</span>
+<span class="sd">        Cyclic time shift parameter in seconds. A fudge factor to ensure</span>
+<span class="sd">        that the entire time series is contiguous in the array and not</span>
+<span class="sd">        wrapped around the end.</span>
 <span class="sd">    params: dict</span>
 <span class="sd">        The parameters defining the waveform to generator.</span>
 <span class="sd">        See `get_fd_waveform`.</span>
@@ -798,7 +802,6 @@
     <span class="c1"># factor to ensure the vectors are all large enough. We don&#39;t need to</span>
     <span class="c1"># completely trust our duration estimator in this case, at a small</span>
     <span class="c1"># increase in computational cost</span>
-    <span class="n">rwrap</span> <span class="o">=</span> <span class="mf">0.2</span>
     <span class="n">fudge_duration</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">full_duration</span><span class="p">)</span> <span class="o">+</span> <span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rwrap</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span>
     <span class="n">fsamples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fudge_duration</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_t&#39;</span><span class="p">])</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">nearest_larger_binary_number</span><span class="p">(</span><span class="n">fsamples</span><span class="p">)</span>
@@ -1286,7 +1289,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 06, 2018.
+      Last updated on Sep 07, 2018.
 
     </p>
   </div>

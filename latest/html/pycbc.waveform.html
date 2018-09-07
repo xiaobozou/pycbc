@@ -3082,7 +3082,7 @@ zeros being returned, e.g., if a requested <cite>f_final</cite> is &lt;= <cite>f
 
 <dl class="function">
 <dt id="pycbc.waveform.waveform.get_td_waveform_from_fd">
-<code class="descclassname">pycbc.waveform.waveform.</code><code class="descname">get_td_waveform_from_fd</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/waveform.html#get_td_waveform_from_fd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.waveform.get_td_waveform_from_fd" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.waveform.waveform.</code><code class="descname">get_td_waveform_from_fd</code><span class="sig-paren">(</span><em>rwrap=0.2</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/waveform.html#get_td_waveform_from_fd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.waveform.get_td_waveform_from_fd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return time domain version of fourier domain approximant.</p>
 <p>This returns a time domain version of a fourier domain approximant, with
 padding and tapering at the start of the waveform.</p>
@@ -3090,13 +3090,20 @@ padding and tapering at the start of the waveform.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The parameters defining the waveform to generator.
-See <cite>get_fd_waveform</cite>.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rwrap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Cyclic time shift parameter in seconds. A fudge factor to ensure
+that the entire time series is contiguous in the array and not
+wrapped around the end.</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The parameters defining the waveform to generator.
+See <cite>get_fd_waveform</cite>.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
 <li><strong>hp</strong> (<em>pycbc.types.TimeSeries</em>) – Plus polarization time series</li>
 <li><strong>hc</strong> (<em>pycbc.types.TimeSeries</em>) – Cross polarization time series</li>
 </ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -3128,7 +3135,7 @@ See <cite>get_fd_waveform</cite>.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 06, 2018.
+      Last updated on Sep 07, 2018.
 
     </p>
   </div>
