@@ -393,41 +393,89 @@ attribute.</li>
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.table">
 <code class="descname">table</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.table" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>WaveformArray</em> – An instance of a WaveformArray containing all of the information about
+<dd><p>An instance of a WaveformArray containing all of the information about
 the parameters of the bank.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="pycbc.io.html#pycbc.io.record.WaveformArray" title="pycbc.io.record.WaveformArray">WaveformArray</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.has_compressed_waveforms">
 <code class="descname">has_compressed_waveforms</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.has_compressed_waveforms" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{False, bool}</em> – True if compressed waveforms are present in the the (hdf) file; False
+<dd><p>True if compressed waveforms are present in the the (hdf) file; False
 otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{False, bool}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.parameters">
 <code class="descname">parameters</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>tuple</em> – The parameters loaded from the input file. Same as <cite>table.fieldnames</cite>.</p>
+<dd><p>The parameters loaded from the input file. Same as <cite>table.fieldnames</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.indoc">
 <code class="descname">indoc</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.indoc" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, xmldoc}</em> – If an xml file was provided, an in-memory representation of the xml.
+<dd><p>If an xml file was provided, an in-memory representation of the xml.
 Otherwise, None.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, xmldoc}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.filehandler">
 <code class="descname">filehandler</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.filehandler" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, h5py.File}</em> – If an hdf file was provided, the file handler pointing to the hdf file
+<dd><p>If an hdf file was provided, the file handler pointing to the hdf file
 (left open after initialization). Otherwise, None.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, h5py.File}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.bank.TemplateBank.extra_args">
 <code class="descname">extra_args</code><a class="headerlink" href="#pycbc.waveform.bank.TemplateBank.extra_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, dict}</em> – Any extra keyword arguments that were provided on initialization.</p>
+<dd><p>Any extra keyword arguments that were provided on initialization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, dict}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -660,37 +708,77 @@ True.</li>
 <dl class="attribute">
 <dt id="pycbc.waveform.compress.CompressedWaveform.load_to_memory">
 <code class="descname">load_to_memory</code><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform.load_to_memory" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>bool</em> – Whether or not to load <cite>sample_points</cite>/<cite>amplitude</cite>/<cite>phase</cite> into memory
+<dd><p>Whether or not to load <cite>sample_points</cite>/<cite>amplitude</cite>/<cite>phase</cite> into memory
 the first time they are accessed, if they are hdf datasets. Can be
 set directly to toggle this behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.compress.CompressedWaveform.interpolation">
 <code class="descname">interpolation</code><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform.interpolation" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str</em> – The interpolation that was used when compressing the waveform, for
+<dd><p>The interpolation that was used when compressing the waveform, for
 checking the mismatch. Also the default interpolation used when
 decompressing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.compress.CompressedWaveform.tolerance">
 <code class="descname">tolerance</code><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform.tolerance" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, float}</em> – The tolerance that was used when compressing the waveform.</p>
+<dd><p>The tolerance that was used when compressing the waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, float}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.compress.CompressedWaveform.mismatch">
 <code class="descname">mismatch</code><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform.mismatch" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, float}</em> – The mismatch between the decompressed waveform and the original
+<dd><p>The mismatch between the decompressed waveform and the original
 waveform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, float}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.compress.CompressedWaveform.precision">
 <code class="descname">precision</code><a class="headerlink" href="#pycbc.waveform.compress.CompressedWaveform.precision" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{‘double’, str}</em> – The precision used to generate and store the compressed waveform
+<dd><p>The precision used to generate and store the compressed waveform
 points. Options are ‘double’ or ‘single’; default is ‘double</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{‘double’, str}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -1061,13 +1149,21 @@ needed by the waveform generators.</p>
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.BaseCBCGenerator.possible_args">
 <code class="descname">possible_args</code><a class="headerlink" href="#pycbc.waveform.generator.BaseCBCGenerator.possible_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>set</em> – The set of names of arguments that may be used in the <cite>variable_args</cite>
+<dd><p>The set of names of arguments that may be used in the <cite>variable_args</cite>
 or <cite>frozen_params</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.7)">set</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
-<code class="descname">possible_args</code><em class="property"> = set(['modes_choice', 'lambda_octu1', 'f_ref', 'tidal_order', 'lambda_octu2', 'frame_axis', 'spin1y', 'spin1x', 'spin1z', 'coa_phase', 'eccentricity_order', 'lambda1', 'lambda2', 'quadfmode2', 'mean_per_ano', 'quadfmode1', 'phase_order', 'dquad_mon1', 'dquad_mon2', 'numrel_data', 'f_final', 'inclination', 'f_lower', 'octufmode1', 'octufmode2', 'delta_t', 'spin2x', 'spin2y', 'spin2z', 'long_asc_nodes', 'spin_order', 'eccentricity', 'delta_f', 'distance', 'mass1', 'mass2', 'taper', 'approximant', 'side_bands', 'mode_array', 'f_final_func', 'amplitude_order'])</em></dt>
+<code class="descname">possible_args</code><em class="property"> = set(['amplitude_order', 'approximant', 'coa_phase', 'delta_f', 'delta_t', 'distance', 'dquad_mon1', 'dquad_mon2', 'eccentricity', 'eccentricity_order', 'f_final', 'f_final_func', 'f_lower', 'f_ref', 'frame_axis', 'inclination', 'lambda1', 'lambda2', 'lambda_octu1', 'lambda_octu2', 'long_asc_nodes', 'mass1', 'mass2', 'mean_per_ano', 'mode_array', 'modes_choice', 'numrel_data', 'octufmode1', 'octufmode2', 'phase_order', 'quadfmode1', 'quadfmode2', 'side_bands', 'spin1x', 'spin1y', 'spin1z', 'spin2x', 'spin2y', 'spin2z', 'spin_order', 'taper', 'tidal_order'])</em></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1102,29 +1198,61 @@ pycbc.waveform.cbc_parameters.</li>
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.BaseGenerator.generator">
 <code class="descname">generator</code><a class="headerlink" href="#pycbc.waveform.generator.BaseGenerator.generator" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>function</em> – The function that is called for waveform generation.</p>
+<dd><p>The function that is called for waveform generation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">function</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.BaseGenerator.variable_args">
 <code class="descname">variable_args</code><a class="headerlink" href="#pycbc.waveform.generator.BaseGenerator.variable_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>tuple</em> – The list of names of variable arguments. Values passed to the
+<dd><p>The list of names of variable arguments. Values passed to the
 <cite>generate_from_args</cite> function must be in the same order as the
 arguments in this list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.BaseGenerator.frozen_params">
 <code class="descname">frozen_params</code><a class="headerlink" href="#pycbc.waveform.generator.BaseGenerator.frozen_params" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – A dictionary of the frozen keyword arguments that are always passed
+<dd><p>A dictionary of the frozen keyword arguments that are always passed
 to the waveform generator function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.BaseGenerator.current_params">
 <code class="descname">current_params</code><a class="headerlink" href="#pycbc.waveform.generator.BaseGenerator.current_params" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – A dictionary of the frozen keyword arguments and variable arguments
+<dd><p>A dictionary of the frozen keyword arguments and variable arguments
 that were last passed to the waveform generator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1238,7 +1366,7 @@ call-to-call of the generate function.</li>
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.location_args">
 <code class="descname">location_args</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.location_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>set([‘tc’, ‘ra’, ‘dec’, ‘polarization’])</em> – The set of location parameters. These are not passed to the rFrame
+<dd><p>The set of location parameters. These are not passed to the rFrame
 generator class; instead, they are used to apply the detector response
 function and/or shift the waveform in time. The parameters are:</p>
 <blockquote>
@@ -1252,57 +1380,121 @@ function and/or shift the waveform in time. The parameters are:</p>
 <p>All of these must be provided in either the variable args or the
 frozen params if detectors is not None. If detectors
 is None, tc may optionally be provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.7)">set</a>([‘tc’, ‘ra’, ‘dec’, ‘polarization’])</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.detectors">
 <code class="descname">detectors</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.detectors" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The dictionary of detectors that antenna patterns are calculated for
+<dd><p>The dictionary of detectors that antenna patterns are calculated for
 on each call of generate. If no detectors were provided, will be
 <code class="docutils literal notranslate"><span class="pre">{'RF':</span> <span class="pre">None}</span></code>, where “RF” means “radiation frame”.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.detector_names">
 <code class="descname">detector_names</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.detector_names" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>list</em> – The list of detector names. If no detectors were provided, then this
+<dd><p>The list of detector names. If no detectors were provided, then this
 will be [‘RF’] for “radiation frame”.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.epoch">
 <code class="descname">epoch</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.epoch" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>lal.LIGOTimeGPS</em> – The GPS start time of the frequency series returned by the generate function.
+<dd><p>The GPS start time of the frequency series returned by the generate function.
 A time shift is applied to the waveform equal to tc-epoch. Update by using
 <code class="docutils literal notranslate"><span class="pre">set_epoch</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">lal.LIGOTimeGPS</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.current_params">
 <code class="descname">current_params</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.current_params" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – A dictionary of name, value pairs of the arguments that were last
+<dd><p>A dictionary of name, value pairs of the arguments that were last
 used by the generate function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.rframe_generator">
 <code class="descname">rframe_generator</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.rframe_generator" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>instance of rFrameGeneratorClass</em> – The instance of the radiation-frame generator that is used for waveform
+<dd><p>The instance of the radiation-frame generator that is used for waveform
 generation. All parameters in current_params except for the
 location params are passed to this class’s generate function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">instance of rFrameGeneratorClass</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.frozen_location_args">
 <code class="descname">frozen_location_args</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.frozen_location_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – Any location parameters that were included in the frozen_params.</p>
+<dd><p>Any location parameters that were included in the frozen_params.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.waveform.generator.FDomainDetFrameGenerator.variable_args">
 <code class="descname">variable_args</code><a class="headerlink" href="#pycbc.waveform.generator.FDomainDetFrameGenerator.variable_args" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>tuple</em> – The list of names of arguments that are passed to the generate
+<dd><p>The list of names of arguments that are passed to the generate
 function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)">tuple</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <p class="rubric">Examples</p>
@@ -1339,7 +1531,7 @@ function from the given args.</p>
 
 <dl class="attribute">
 <dt>
-<code class="descname">location_args</code><em class="property"> = set(['polarization', 'dec', 'tc', 'ra'])</em></dt>
+<code class="descname">location_args</code><em class="property"> = set(['dec', 'polarization', 'ra', 'tc'])</em></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3135,7 +3327,7 @@ See <cite>get_fd_waveform</cite>.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 11, 2018.
+      Last updated on Sep 21, 2018.
 
     </p>
   </div>

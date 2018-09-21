@@ -754,27 +754,59 @@ understood by the waveform generator.</li>
 <dl class="attribute">
 <dt id="pycbc.inference.likelihood.BaseLikelihoodEvaluator.waveform_generator">
 <code class="descname">waveform_generator</code><a class="headerlink" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator.waveform_generator" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The waveform generator that the class was initialized with.</p>
+<dd><p>The waveform generator that the class was initialized with.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.likelihood.BaseLikelihoodEvaluator.data">
 <code class="descname">data</code><a class="headerlink" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator.data" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>dict</em> – The data that the class was initialized with.</p>
+<dd><p>The data that the class was initialized with.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.likelihood.BaseLikelihoodEvaluator.lognl">
 <code class="descname">lognl</code><a class="headerlink" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator.lognl" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, float}</em> – The log of the noise likelihood summed over the number of detectors.</p>
+<dd><p>The log of the noise likelihood summed over the number of detectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, float}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.likelihood.BaseLikelihoodEvaluator.return_meta">
 <code class="descname">return_meta</code><a class="headerlink" href="#pycbc.inference.likelihood.BaseLikelihoodEvaluator.return_meta" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{True, bool}</em> – If True, <code class="docutils literal notranslate"><span class="pre">prior</span></code>, <code class="docutils literal notranslate"><span class="pre">logposterior</span></code>, and <code class="docutils literal notranslate"><span class="pre">logplr</span></code> will return the
+<dd><p>If True, <code class="docutils literal notranslate"><span class="pre">prior</span></code>, <code class="docutils literal notranslate"><span class="pre">logposterior</span></code>, and <code class="docutils literal notranslate"><span class="pre">logplr</span></code> will return the
 value of the prior, the loglikelihood ratio, and the log jacobian,
 along with the posterior/plr.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{True, bool}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1419,9 +1451,7 @@ for details), the posterior is:</p>
 \[\begin{split}p(\Theta,\phi|d) &amp;\propto p(\Theta)p(\phi)p(d|\Theta,\phi) \\
                  &amp;\propto p(\Theta)\frac{1}{2\pi}\exp\left[-\frac{1}{2}\sum_{i}^{N_D} \left&lt;h_i(\Theta,\phi) - d_i, h_i(\Theta,\phi) - d_i\right&gt;\right].\end{split}\]</div>
 <p>Here, the sum is over the number of detectors <span class="math notranslate nohighlight">\(N_D\)</span>, <span class="math notranslate nohighlight">\(d_i\)</span>
-and <span class="math notranslate nohighlight">\(h_i\)</span> are the data and signal in the <span class="math notranslate nohighlight">\(i`th detector,
-respectively, and we have assumed a uniform prior on :math:`phi \in [0,
-2\pi)\)</span>. With the form of the signal model given above, the inner product
+and <span class="math notranslate nohighlight">\(h_i\)</span> are the data and signal in the <span class="math notranslate nohighlight">\(i\)</span>. With the form of the signal model given above, the inner product
 in the exponent can be written as:</p>
 <div class="math notranslate nohighlight">
 \[\]</div>
@@ -1912,14 +1942,30 @@ pycbc.inference.likelihood module.</li>
 <dl class="attribute">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.p0">
 <code class="descname">p0</code><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.p0" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>nwalkers x ndim array</em> – The initial position of the walkers. Set by using set_p0. If not set
+<dd><p>The initial position of the walkers. Set by using set_p0. If not set
 yet, a ValueError is raised when the attribute is accessed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">nwalkers x ndim array</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.sampler_base.BaseMCMCSampler.pos">
 <code class="descname">pos</code><a class="headerlink" href="#pycbc.inference.sampler_base.BaseMCMCSampler.pos" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>{None, array}</em> – An array of the current walker positions.</p>
+<dd><p>An array of the current walker positions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">{None, array}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -3170,7 +3216,7 @@ function used by the sampler as an
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 11, 2018.
+      Last updated on Sep 21, 2018.
 
     </p>
   </div>
