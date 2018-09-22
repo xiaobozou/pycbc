@@ -673,10 +673,11 @@
             <span class="n">group</span> <span class="o">=</span> <span class="n">subgroup</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">group</span><span class="p">,</span> <span class="n">subgroup</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;low_frequency_cutoff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">low_frequency_cutoff</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">psds</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">delta_f</span></div>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delta_f&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">delta_f</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ifo</span><span class="o">=</span><span class="n">ifo</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">low_frequency_cutoff</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="InferenceFile.write_data"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.write_data">[docs]</a>    <span class="k">def</span> <span class="nf">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strain_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">psd_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">low_frequency_cutoff_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -691,7 +692,7 @@
 <span class="sd">            A dictionary of stilde. If None, no stilde will be written.</span>
 <span class="sd">        psd_dict : {None, dict}</span>
 <span class="sd">            A dictionary of psds. If None, no psds will be written.</span>
-<span class="sd">        low_freuency_cutoff_dict : {None, dict}</span>
+<span class="sd">        low_frequency_cutoff_dict : {None, dict}</span>
 <span class="sd">            A dictionary of low frequency cutoffs used for each detector in</span>
 <span class="sd">            `psd_dict`; must be provided if `psd_dict` is not None.</span>
 <span class="sd">        group : {None, str}</span>
@@ -1012,7 +1013,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 21, 2018.
+      Last updated on Sep 22, 2018.
 
     </p>
   </div>
