@@ -606,9 +606,6 @@
     <span class="n">kwds</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">required_args</span><span class="o">=</span><span class="n">fd_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
     <span class="n">lal_pars</span> <span class="o">=</span> <span class="n">_check_lal_pars</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="n">flags</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimInspiralCreateWaveformFlags</span><span class="p">()</span>
-    <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimInspiralSetSpinOrder</span><span class="p">(</span><span class="n">flags</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;spin_order&#39;</span><span class="p">])</span>
-    <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimInspiralSetTidalOrder</span><span class="p">(</span><span class="n">flags</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;tidal_order&#39;</span><span class="p">])</span>
 
     <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimInspiralChooseFDWaveformSequence</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]),</span>
                <span class="nb">float</span><span class="p">(</span><span class="n">pnutils</span><span class="o">.</span><span class="n">solar_mass_to_kg</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">])),</span>
@@ -1289,7 +1286,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 22, 2018.
+      Last updated on Sep 23, 2018.
 
     </p>
   </div>
