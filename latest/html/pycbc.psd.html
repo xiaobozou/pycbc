@@ -840,6 +840,34 @@ a <cite>numpy.ndarray</cite> that specifies the window.</li>
 <span id="pycbc-psd-read-module"></span><h2>pycbc.psd.read module<a class="headerlink" href="#module-pycbc.psd.read" title="Permalink to this headline">¶</a></h2>
 <p>Utilities to read PSDs from files.</p>
 <dl class="function">
+<dt id="pycbc.psd.read.from_numpy_arrays">
+<code class="descclassname">pycbc.psd.read.</code><code class="descname">from_numpy_arrays</code><span class="sig-paren">(</span><em>freq_data</em>, <em>noise_data</em>, <em>length</em>, <em>delta_f</em>, <em>low_freq_cutoff</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/psd/read.html#from_numpy_arrays"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.psd.read.from_numpy_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolate n PSD (as two 1-dimensional arrays of frequency and data)
+to the desired length, delta_f and low frequency cutoff.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freq_data</strong> (<em>array</em>) – Array of frequencies.</li>
+<li><strong>noise_data</strong> (<em>array</em>) – PSD values corresponding to frequencies in freq_arr.</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Length of the frequency series in samples.</li>
+<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency resolution of the frequency series in Herz.</li>
+<li><strong>low_freq_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequencies below this value are set to zero.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>psd</strong> – The generated frequency series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.psd.read.from_txt">
 <code class="descclassname">pycbc.psd.read.</code><code class="descname">from_txt</code><span class="sig-paren">(</span><em>filename</em>, <em>length</em>, <em>delta_f</em>, <em>low_freq_cutoff</em>, <em>is_asd_file=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/psd/read.html#from_txt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.psd.read.from_txt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read an ASCII file containing one-sided ASD or PSD  data and generate
@@ -871,6 +899,42 @@ Default: True</li>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> – If the ASCII file contains negative, infinite or NaN frequencies
 or amplitude densities.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.psd.read.from_xml">
+<code class="descclassname">pycbc.psd.read.</code><code class="descname">from_xml</code><span class="sig-paren">(</span><em>filename</em>, <em>length</em>, <em>delta_f</em>, <em>low_freq_cutoff</em>, <em>ifo_string=None</em>, <em>root_name='psd'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/psd/read.html#from_xml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.psd.read.from_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read an ASCII file containing one-sided ASD or PSD  data and generate
+a frequency series with the corresponding PSD. The ASD or PSD data is
+interpolated in order to match the desired resolution of the
+generated frequency series.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>string</em>) – Path to a two-column ASCII file. The first column must contain
+the frequency (positive frequencies only) and the second column
+must contain the amplitude density OR power spectral density.</li>
+<li><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Length of the frequency series in samples.</li>
+<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency resolution of the frequency series in Herz.</li>
+<li><strong>low_freq_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequencies below this value are set to zero.</li>
+<li><strong>ifo_string</strong> (<em>string</em>) – Use the PSD in the file’s PSD dictionary with this ifo string.
+If not given and only one PSD present in the file return that, if not
+given and multiple (or zero) PSDs present an exception will be raised.</li>
+<li><strong>root_name</strong> (<em>string</em><em> (</em><em>default='psd'</em><em>)</em>) – If given use this as the root name for the PSD XML file. If this means
+nothing to you, then it is probably safe to ignore this option.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>psd</strong> – The generated frequency series.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
 </td>
 </tr>
 </tbody>

@@ -478,6 +478,8 @@ usage: pycbc_geom_nonspinbank [-h] [--version] [-V]
                               [--psd-model {AdVBNSOptimizedSensitivityP1200087,AdVDesignSensitivityP1200087,AdVEarlyHighSensitivityP1200087,AdVEarlyLowSensitivityP1200087,AdVLateHighSensitivityP1200087,AdVLateLowSensitivityP1200087,AdVMidHighSensitivityP1200087,AdVMidLowSensitivityP1200087,AdvVirgo,CosmicExplorerP1600143,CosmicExplorerPessimisticP1600143,CosmicExplorerWidebandP1600143,EinsteinTelescopeP1600143,GEO,GEOHF,KAGRA,KAGRADesignSensitivityT1600593,KAGRAEarlySensitivityT1600593,KAGRALateSensitivityT1600593,KAGRAMidSensitivityT1600593,KAGRAOpeningSensitivityT1600593,TAMA,Virgo,aLIGOBHBH20Deg,aLIGOBHBH20DegGWINC,aLIGOBNSOptimizedSensitivityP1200087,aLIGODesignSensitivityP1200087,aLIGOEarlyHighSensitivityP1200087,aLIGOEarlyLowSensitivityP1200087,aLIGOHighFrequency,aLIGOHighFrequencyGWINC,aLIGOLateHighSensitivityP1200087,aLIGOLateLowSensitivityP1200087,aLIGOMidHighSensitivityP1200087,aLIGOMidLowSensitivityP1200087,aLIGONSNSOpt,aLIGONSNSOptGWINC,aLIGONoSRMHighPower,aLIGONoSRMLowPower,aLIGONoSRMLowPowerGWINC,aLIGOQuantumBHBH20Deg,aLIGOQuantumHighFrequency,aLIGOQuantumNSNSOpt,aLIGOQuantumNoSRMHighPower,aLIGOQuantumNoSRMLowPower,aLIGOQuantumZeroDetHighPower,aLIGOQuantumZeroDetLowPower,aLIGOThermal,aLIGOZeroDetHighPower,aLIGOZeroDetHighPowerGWINC,aLIGOZeroDetLowPower,aLIGOZeroDetLowPowerGWINC,eLIGOModel,eLIGOShot,iLIGOModel,iLIGOSRD,iLIGOSeismic,iLIGOShot,iLIGOThermal,flat_unity}]
                               [--psd-file PSD_FILE] [--asd-file ASD_FILE]
                               [--psd-inverse-length PSD_INVERSE_LENGTH]
+                              [--psd-file-xml-ifo-string PSD_FILE_XML_IFO_STRING]
+                              [--psd-file-xml-root-name PSD_FILE_XML_ROOT_NAME]
                               [--psdvar_short_segment SECONDS]
                               [--psdvar_long_segment SECONDS]
                               [--psdvar_overlap SECONDS]
@@ -647,6 +649,16 @@ Options to select the method of PSD generation:
   --psd-inverse-length PSD_INVERSE_LENGTH
                         (Optional) The maximum length of the impulse response
                         of the overwhitening filter (s) (default: None)
+  --psd-file-xml-ifo-string PSD_FILE_XML_IFO_STRING
+                        If using an XML PSD file, use the PSD in the file&#39;s
+                        PSD dictionary with this ifo string. If not given and
+                        only one PSD present in the file return that, if not
+                        given and multiple (or zero) PSDs present an exception
+                        will be raised. (default: None)
+  --psd-file-xml-root-name PSD_FILE_XML_ROOT_NAME
+                        If given use this as the root name for the PSD XML
+                        file. If this means nothing to you, then it is
+                        probably safe to ignore this option. (default: psd)
   --psdvar_short_segment SECONDS
                         Length of short segment when calculating the PSD
                         variability. (default: None)

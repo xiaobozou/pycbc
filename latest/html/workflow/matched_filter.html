@@ -560,6 +560,16 @@ Options to select the method of PSD generation:
   --psd-inverse-length PSD_INVERSE_LENGTH
                         (Optional) The maximum length of the impulse response
                         of the overwhitening filter (s)
+  --psd-file-xml-ifo-string PSD_FILE_XML_IFO_STRING
+                        If using an XML PSD file, use the PSD in the file&#39;s
+                        PSD dictionary with this ifo string. If not given and
+                        only one PSD present in the file return that, if not
+                        given and multiple (or zero) PSDs present an exception
+                        will be raised.
+  --psd-file-xml-root-name PSD_FILE_XML_ROOT_NAME
+                        If given use this as the root name for the PSD XML
+                        file. If this means nothing to you, then it is
+                        probably safe to ignore this option.
   --psdvar_short_segment SECONDS
                         Length of short segment when calculating the PSD
                         variability.
