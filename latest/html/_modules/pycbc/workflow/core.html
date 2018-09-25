@@ -479,26 +479,33 @@
             <span class="n">opt</span> <span class="o">=</span> <span class="s1">&#39;--</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">opt</span><span class="p">,)</span>
             <span class="k">if</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_input_options</span><span class="p">:</span>
                 <span class="c1"># This now expects the option to be a file</span>
+                <span class="c1"># Check is we have a list of files</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">path</span><span class="p">]</span>
+                <span class="n">dax_reprs</span> <span class="o">=</span> <span class="p">[]</span>
+
                 <span class="c1"># Get LFN and PFN</span>
-                <span class="n">curr_lfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                    <span class="n">curr_lfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-                <span class="c1"># If the file exists make sure to use.</span>
-                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-                    <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="c1"># If the file exists make sure to use.</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                        <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">value</span>
 
-                <span class="k">if</span> <span class="n">curr_lfn</span> <span class="ow">in</span> <span class="n">file_input_from_config_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="n">file_pfn</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="k">assert</span><span class="p">(</span><span class="n">file_pfn</span> <span class="o">==</span> <span class="n">curr_pfn</span><span class="p">)</span>
-                    <span class="n">curr_file</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">curr_file</span> <span class="o">=</span> <span class="n">File</span><span class="o">.</span><span class="n">from_path</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                    <span class="n">tuple_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_pfn</span><span class="p">,</span> <span class="n">curr_file</span><span class="p">)</span>
-                    <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">]</span> <span class="o">=</span> <span class="n">tuple_val</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">common_input_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="p">)</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">curr_file</span><span class="o">.</span><span class="n">dax_repr</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span></div>
+                    <span class="k">if</span> <span class="n">curr_lfn</span> <span class="ow">in</span> <span class="n">file_input_from_config_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">file_pfn</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">assert</span><span class="p">(</span><span class="n">file_pfn</span> <span class="o">==</span> <span class="n">curr_pfn</span><span class="p">)</span>
+                        <span class="n">curr_file</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">curr_file</span> <span class="o">=</span> <span class="n">File</span><span class="o">.</span><span class="n">from_path</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">tuple_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_pfn</span><span class="p">,</span> <span class="n">curr_file</span><span class="p">)</span>
+                        <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">]</span> <span class="o">=</span> <span class="n">tuple_val</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">common_input_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="p">)</span>
+                    <span class="n">dax_reprs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="o">.</span><span class="n">dax_repr</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">]</span> <span class="o">+</span> <span class="n">dax_reprs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">common_options</span> <span class="o">+=</span> <span class="p">[</span><span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Executable.add_opt"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Executable.add_opt">[docs]</a>    <span class="k">def</span> <span class="nf">add_opt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add option to job.</span>
@@ -2077,7 +2084,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 24, 2018.
+      Last updated on Sep 25, 2018.
 
     </p>
   </div>
