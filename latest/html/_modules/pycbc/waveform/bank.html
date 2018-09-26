@@ -236,6 +236,10 @@
 <div class="viewcode-block" id="sigma_cached"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.sigma_cached">[docs]</a><span class="k">def</span> <span class="nf">sigma_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psd</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Cache sigma calculate for use in tandem with the FilterBank class</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_sigmasq&#39;</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">LimitedSizeDict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="n">LimitedSizeDict</span><span class="p">(</span><span class="n">size_limit</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+
     <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="s1">&#39;_sigma_cached_key&#39;</span><span class="p">):</span>
         <span class="n">psd</span><span class="o">.</span><span class="n">_sigma_cached_key</span> <span class="o">=</span> <span class="p">{}</span>
@@ -773,7 +777,6 @@
 
         <span class="c1"># Add sigmasq as a method of this instance</span>
         <span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">sigma_cached</span><span class="p">,</span> <span class="n">htilde</span><span class="p">)</span>
-        <span class="n">htilde</span><span class="o">.</span><span class="n">_sigmasq</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">htilde</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_from_hash</span><span class="p">(</span><span class="nb">hash</span><span class="p">((</span><span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span>
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass2</span><span class="p">,</span>
@@ -1066,7 +1069,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 25, 2018.
+      Last updated on Sep 26, 2018.
 
     </p>
   </div>

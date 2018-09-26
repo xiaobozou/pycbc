@@ -512,12 +512,14 @@
         <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;__builtins__&quot;</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span> <span class="n">safe_dict</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SingleDetPowerChisq.cached_chisq_bins"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq.SingleDetPowerChisq.cached_chisq_bins">[docs]</a>    <span class="k">def</span> <span class="nf">cached_chisq_bins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">psd</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">LimitedSizeDict</span>
+
         <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="s1">&#39;_chisq_cached_key&#39;</span><span class="p">):</span>
             <span class="n">psd</span><span class="o">.</span><span class="n">_chisq_cached_key</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="s1">&#39;_bin_cache&#39;</span><span class="p">):</span>
-            <span class="n">template</span><span class="o">.</span><span class="n">_bin_cache</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">template</span><span class="o">.</span><span class="n">_bin_cache</span> <span class="o">=</span> <span class="n">LimitedSizeDict</span><span class="p">(</span><span class="n">size_limite</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">template</span><span class="o">.</span><span class="n">_bin_cache</span> <span class="ow">or</span> <span class="nb">id</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">params</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">psd</span><span class="o">.</span><span class="n">_chisq_cached_key</span><span class="p">:</span>
             <span class="n">psd</span><span class="o">.</span><span class="n">_chisq_cached_key</span><span class="p">[</span><span class="nb">id</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">params</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -705,7 +707,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 25, 2018.
+      Last updated on Sep 26, 2018.
 
     </p>
   </div>

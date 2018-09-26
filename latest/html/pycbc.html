@@ -2369,7 +2369,14 @@ pkg-config.</p>
 <div class="section" id="module-pycbc.opt">
 <span id="pycbc-opt-module"></span><h2>pycbc.opt module<a class="headerlink" href="#module-pycbc.opt" title="Permalink to this headline">¶</a></h2>
 <p>This module defines optimization flags and determines hardware features that some
-other modules and packages may use.</p>
+other modules and packages may use in addition to some optimized utilities.</p>
+<dl class="class">
+<dt id="pycbc.opt.LimitedSizeDict">
+<em class="property">class </em><code class="descclassname">pycbc.opt.</code><code class="descname">LimitedSizeDict</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/opt.html#LimitedSizeDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.opt.LimitedSizeDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a></p>
+<p>Fixed sized dict for FIFO caching</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="pycbc.opt.getconf">
 <code class="descclassname">pycbc.opt.</code><code class="descname">getconf</code><span class="sig-paren">(</span><em>confvar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/opt.html#getconf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.opt.getconf" title="Permalink to this definition">¶</a></dt>
@@ -5269,7 +5276,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 25, 2018.
+      Last updated on Sep 26, 2018.
 
     </p>
   </div>

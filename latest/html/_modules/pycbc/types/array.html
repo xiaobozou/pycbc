@@ -236,6 +236,7 @@
 <span class="kn">import</span> <span class="nn">pycbc.scheme</span> <span class="k">as</span> <span class="nn">_scheme</span>
 <span class="kn">from</span> <span class="nn">pycbc.scheme</span> <span class="k">import</span> <span class="n">schemed</span><span class="p">,</span> <span class="n">cpuonly</span>
 <span class="kn">from</span> <span class="nn">pycbc.types.aligned</span> <span class="k">import</span> <span class="n">ArrayWithAligned</span>
+<span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">LimitedSizeDict</span>
 
 <span class="c1">#! FIXME: the uint32 datatype has not been fully tested,</span>
 <span class="c1"># we should restrict any functions that do not allow an</span>
@@ -324,7 +325,7 @@
 <span class="sd">        The default is to copy the given object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_scheme</span><span class="o">=</span><span class="n">_scheme</span><span class="o">.</span><span class="n">mgr</span><span class="o">.</span><span class="n">state</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="n">LimitedSizeDict</span><span class="p">(</span><span class="n">size_limit</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
         
         <span class="c1">#Unwrap initial_array</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_array</span><span class="p">,</span> <span class="n">Array</span><span class="p">):</span>
@@ -944,7 +945,7 @@
         <span class="k">if</span> <span class="n">new_size</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="n">LimitedSizeDict</span><span class="p">(</span><span class="n">size_limit</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
             <span class="n">new_arr</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">new_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">new_size</span><span class="p">:</span>
                 <span class="n">new_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span>
@@ -957,7 +958,7 @@
     <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;shift vector</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_saved</span> <span class="o">=</span> <span class="n">LimitedSizeDict</span><span class="p">(</span><span class="n">size_limit</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
         <span class="n">new_arr</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">shift</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1248,7 +1249,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Sep 25, 2018.
+      Last updated on Sep 26, 2018.
 
     </p>
   </div>
