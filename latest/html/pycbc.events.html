@@ -590,6 +590,29 @@ slides in seconds.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.events.coinc.time_multi_coincidence">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">time_multi_coincidence</code><span class="sig-paren">(</span><em>times</em>, <em>slide_step=0</em>, <em>slop=0.003</em>, <em>pivot='H1'</em>, <em>fixed='L1'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#time_multi_coincidence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.time_multi_coincidence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find multi detector concidences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>times</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary keyed by ifo of the times of each single detector trigger.</li>
+<li><strong>slide_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The interval between time slides</li>
+<li><strong>slop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The amount of time to add to the TOF between detectors for coincidence</li>
+<li><strong>pivot</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – ifo used to test coincidence against in first stage</li>
+<li><strong>fixed</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the other ifo used in the first stage coincidence which we’ll use
+as a fixed time reference for coincident triggers. All other detectors
+are time slid by being fixed to this detector.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.events.coinc.timeslide_durations">
 <code class="descclassname">pycbc.events.coinc.</code><code class="descname">timeslide_durations</code><span class="sig-paren">(</span><em>start1</em>, <em>start2</em>, <em>end1</em>, <em>end2</em>, <em>timeslide_offsets</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#timeslide_durations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.timeslide_durations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the coincident time for each timeslide.</p>

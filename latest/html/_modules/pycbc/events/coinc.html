@@ -219,6 +219,7 @@
 <span class="sd">coincident triggers.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">pycbc.pnutils</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">lal</span>
+<span class="kn">from</span> <span class="nn">pycbc.detector</span> <span class="k">import</span> <span class="n">Detector</span>
 
 <div class="viewcode-block" id="background_bin_from_string"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.background_bin_from_string">[docs]</a><span class="k">def</span> <span class="nf">background_bin_from_string</span><span class="p">(</span><span class="n">background_bins</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return template ids for each bin as defined by the format string</span>
@@ -433,6 +434,94 @@
 
     <span class="k">return</span> <span class="n">idx1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">idx2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span> <span class="n">slide</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="time_multi_coincidence"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.time_multi_coincidence">[docs]</a><span class="k">def</span> <span class="nf">time_multi_coincidence</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">slide_step</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">slop</span><span class="o">=.</span><span class="mi">003</span><span class="p">,</span>
+                           <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="s1">&#39;L1&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Find multi detector concidences.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    times: dict of numpy.ndarrays</span>
+<span class="sd">        Dictionary keyed by ifo of the times of each single detector trigger.</span>
+<span class="sd">    slide_step: float</span>
+<span class="sd">        The interval between time slides</span>
+<span class="sd">    slop: float</span>
+<span class="sd">        The amount of time to add to the TOF between detectors for coincidence</span>
+<span class="sd">    pivot: str</span>
+<span class="sd">        ifo used to test coincidence against in first stage</span>
+<span class="sd">    fixed: str</span>
+<span class="sd">        the other ifo used in the first stage coincidence which we&#39;ll use</span>
+<span class="sd">        as a fixed time reference for coincident triggers. All other detectors</span>
+<span class="sd">        are time slid by being fixed to this detector.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pivots are used to determine standard coincidence triggers, we then</span>
+    <span class="c1"># pair off additional detectors to those.</span>
+    <span class="k">def</span> <span class="nf">win</span><span class="p">(</span><span class="n">ifo1</span><span class="p">,</span> <span class="n">ifo2</span><span class="p">):</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="n">Detector</span><span class="p">(</span><span class="n">ifo1</span><span class="p">)</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="n">Detector</span><span class="p">(</span><span class="n">ifo2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">d1</span><span class="o">.</span><span class="n">light_travel_time_to_detector</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span> <span class="o">+</span> <span class="n">slop</span>
+
+    <span class="c1"># Find coincs first between the two fully time-slid detectors</span>
+    <span class="n">pivot_id</span><span class="p">,</span> <span class="n">fix_id</span><span class="p">,</span> <span class="n">slide</span> <span class="o">=</span> <span class="n">time_coincidence</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">pivot</span><span class="p">],</span> <span class="n">times</span><span class="p">[</span><span class="n">fixed</span><span class="p">],</span>
+                                               <span class="n">win</span><span class="p">(</span><span class="n">pivot</span><span class="p">,</span> <span class="n">fixed</span><span class="p">),</span>
+                                               <span class="n">slide_step</span><span class="o">=</span><span class="n">slide_step</span><span class="p">)</span>
+
+    <span class="c1"># additional detectors do not slide independently of the fixed one</span>
+    <span class="c1"># Each trigger in an additional detector must be concident with an</span>
+    <span class="c1"># existing coincident one. All times moved to &#39;fixed&#39; relative time</span>
+    <span class="n">fixed_time</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">fixed</span><span class="p">][</span><span class="n">fix_id</span><span class="p">]</span>
+    <span class="n">pivot_time</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">pivot</span><span class="p">][</span><span class="n">pivot_id</span><span class="p">]</span> <span class="o">-</span> <span class="n">slide_step</span> <span class="o">*</span> <span class="n">slide</span>
+
+    <span class="n">ctimes</span> <span class="o">=</span> <span class="p">{</span><span class="n">fixed</span><span class="p">:</span> <span class="n">fixed_time</span><span class="p">,</span> <span class="n">pivot</span><span class="p">:</span><span class="n">pivot_time</span><span class="p">}</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">fixed</span><span class="p">:</span><span class="n">fix_id</span><span class="p">,</span> <span class="n">pivot</span><span class="p">:</span><span class="n">pivot_id</span><span class="p">}</span>
+
+    <span class="n">dep_ifos</span> <span class="o">=</span> <span class="p">[</span><span class="n">ifo</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">times</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">ifo</span> <span class="o">!=</span> <span class="n">fixed</span> <span class="ow">and</span> <span class="n">ifo</span> <span class="o">!=</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">ifo1</span> <span class="ow">in</span> <span class="n">dep_ifos</span><span class="p">:</span>
+        <span class="n">otime</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">ifo1</span><span class="p">]</span>
+        <span class="n">sort</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">ifo1</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">otime</span><span class="p">[</span><span class="n">sort</span><span class="p">]</span>
+
+        <span class="c1"># Find coincidences between dependent ifo triggers and existing coinc.</span>
+        <span class="k">for</span> <span class="n">ifo2</span> <span class="ow">in</span> <span class="n">ids</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="c1"># Currently assumes that additional detectors do not slide</span>
+            <span class="c1"># independently of the &#39;fixed one&#39;</span>
+            <span class="c1">#</span>
+            <span class="c1"># To modify that assumption, the code here would be modified</span>
+            <span class="c1"># by adding a function that remaps the coinc time frame and unmaps</span>
+            <span class="c1"># it and the end of this loop.</span>
+            <span class="c1"># This remapping must ensure</span>
+            <span class="c1">#    * function of the standard slide number</span>
+            <span class="c1">#    * ensure all times remain within coincident segment</span>
+            <span class="c1">#    * unbiased distribution of triggers after mapping.</span>
+
+            <span class="n">w</span> <span class="o">=</span> <span class="n">win</span><span class="p">(</span><span class="n">ifo1</span><span class="p">,</span> <span class="n">ifo2</span><span class="p">)</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">ctimes</span><span class="p">[</span><span class="n">ifo2</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">ctimes</span><span class="p">[</span><span class="n">ifo2</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+
+            <span class="c1"># remove elements that will not form a coinc</span>
+            <span class="c1"># There is only at most one trigger for an existing coinc</span>
+            <span class="c1"># (assumes triggers spaced &gt; slide step)</span>
+            <span class="n">nz</span> <span class="o">=</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span>
+            <span class="n">dep_ids</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">nz</span><span class="p">]</span>
+
+            <span class="c1"># The property that only one trigger can be within the window is ensured</span>
+            <span class="c1"># by the peak finding algorithm we use for each template.</span>
+            <span class="c1"># If that is modifed, this function may need to be</span>
+            <span class="c1"># extended.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Somehow triggers are closer than time-delay window&#39;</span><span class="p">)</span>
+
+            <span class="n">slide</span> <span class="o">=</span> <span class="n">slide</span><span class="p">[</span><span class="n">nz</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ctimes</span><span class="p">:</span>
+                <span class="n">ctimes</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">ctimes</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="n">nz</span><span class="p">]</span>
+                <span class="n">ids</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="n">nz</span><span class="p">]</span>
+
+        <span class="c1"># Add this detector now to the cumulative set and proceed to the next</span>
+        <span class="c1"># ifo coincidence test</span>
+        <span class="n">ids</span><span class="p">[</span><span class="n">ifo1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sort</span><span class="p">[</span><span class="n">dep_ids</span><span class="p">]</span>
+        <span class="n">ctimes</span><span class="p">[</span><span class="n">ifo1</span><span class="p">]</span> <span class="o">=</span> <span class="n">otime</span><span class="p">[</span><span class="n">ids</span><span class="p">[</span><span class="n">ifo1</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">ids</span><span class="p">,</span> <span class="n">slide</span></div>
 
 <div class="viewcode-block" id="cluster_coincs"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.cluster_coincs">[docs]</a><span class="k">def</span> <span class="nf">cluster_coincs</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">timeslide_id</span><span class="p">,</span> <span class="n">slide</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Cluster coincident events for each timeslide separately, across</span>
