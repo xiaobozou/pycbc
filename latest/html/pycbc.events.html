@@ -1177,6 +1177,28 @@ and rescale by the fitted coefficients alpha and lambda</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pycbc.events.stat.NewSNRStatistic.coinc_multiifo">
+<code class="descname">coinc_multiifo</code><span class="sig-paren">(</span><em>s</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRStatistic.coinc_multiifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRStatistic.coinc_multiifo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the coincident detection statistic.
+:param s: statistics
+:type s: dictionary keyed by ifo of single detector ranking
+:param slide:
+:type slide: (unused in this statistic)
+:param step:
+:type step: (unused in this statistic)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Array of coincident ranking statistic values</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="pycbc.events.stat.NewSNRStatistic.single">
 <code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRStatistic.single" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the single detector statistic, here equal to newsnr</p>
