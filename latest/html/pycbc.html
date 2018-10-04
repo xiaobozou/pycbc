@@ -2274,15 +2274,18 @@ properly.</p>
 <dl class="function">
 <dt id="pycbc.detector.overhead_antenna_pattern">
 <code class="descclassname">pycbc.detector.</code><code class="descname">overhead_antenna_pattern</code><span class="sig-paren">(</span><em>right_ascension</em>, <em>declination</em>, <em>polarization</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#overhead_antenna_pattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.overhead_antenna_pattern" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the detector response where (0, 0) indicates an overhead source.
-This functions uses coordinates such that the detector can be thought to
-be on the north pole.</p>
+<dd><p>Return the antenna pattern factors F+ and Fx as a function of sky
+location and polarization angle for a hypothetical interferometer located
+at the north pole. Angles are in radians. Declinations of ±π/2 correspond
+to the normal to the detector plane (i.e. overhead and underneath) while
+the point with zero right ascension and declination is the direction
+of one of the interferometer arms.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>right_ascention</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>right_ascension</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 <li><strong>declination</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 <li><strong>polarization</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
 </ul>
@@ -5276,7 +5279,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Oct 02, 2018.
+      Last updated on Oct 04, 2018.
 
     </p>
   </div>

@@ -192,7 +192,9 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pycbc.detector</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2012  Alex Nitz</span>
+<span></span><span class="c1"># -*- coding: UTF-8 -*-</span>
+
+<span class="c1"># Copyright (C) 2012  Alex Nitz</span>
 <span class="c1">#</span>
 <span class="c1">#</span>
 <span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
@@ -442,13 +444,16 @@
         <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span></div></div>
 
 <div class="viewcode-block" id="overhead_antenna_pattern"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.overhead_antenna_pattern">[docs]</a><span class="k">def</span> <span class="nf">overhead_antenna_pattern</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the detector response where (0, 0) indicates an overhead source. </span>
-<span class="sd">    This functions uses coordinates such that the detector can be thought to</span>
-<span class="sd">    be on the north pole.</span>
+    <span class="sd">&quot;&quot;&quot;Return the antenna pattern factors F+ and Fx as a function of sky</span>
+<span class="sd">    location and polarization angle for a hypothetical interferometer located</span>
+<span class="sd">    at the north pole. Angles are in radians. Declinations of ±π/2 correspond</span>
+<span class="sd">    to the normal to the detector plane (i.e. overhead and underneath) while</span>
+<span class="sd">    the point with zero right ascension and declination is the direction</span>
+<span class="sd">    of one of the interferometer arms.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    right_ascention: float</span>
+<span class="sd">    right_ascension: float</span>
 <span class="sd">    declination: float</span>
 <span class="sd">    polarization: float</span>
 
@@ -486,7 +491,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
-      Last updated on Oct 02, 2018.
+      Last updated on Oct 04, 2018.
 
     </p>
   </div>
