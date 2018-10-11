@@ -575,7 +575,7 @@
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">,</span> <span class="n">input_is_array</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span>
         <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lambda1</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">)</span>
     <span class="n">lsum</span> <span class="o">=</span> <span class="n">lambda1</span> <span class="o">+</span> <span class="n">lambda2</span>
-    <span class="n">ldiff</span> <span class="o">=</span> <span class="n">lambda1</span> <span class="o">-</span> <span class="n">lambda2</span>
+    <span class="n">ldiff</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ensurearray</span><span class="p">(</span><span class="n">lambda1</span> <span class="o">-</span> <span class="n">lambda2</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">&lt;</span> <span class="n">m2</span>
     <span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">ldiff</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
