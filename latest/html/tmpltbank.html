@@ -245,8 +245,8 @@ These codes currently consist of</p>
 <li><a class="reference internal" href="#tmpltbank-nonspinbank"><span class="std std-ref">A program to generate a non-spinning template bank (pycbc_geom_nonspinbank)</span></a></li>
 <li><a class="reference internal" href="#tmpltbank-alignedgeombank"><span class="std std-ref">A program to generate an aligned-spin template bank using a geometrical lattice algorithm (pycbc_geom_aligned_bank)</span></a></li>
 <li><a class="reference internal" href="#tmpltbank-alignedstochbank"><span class="std std-ref">Two programs to generate an aligned-spin template bank using a stochastic placement algorithm. This is done either using a metric to approximate distances, or by computing explicit matches from waveforms. (pycbc_aligned_stoch_bank, lalapps_cbc_sbank)</span></a></li>
-<li><a class="reference internal" href="#tmpltbank-sbankworkflow"><span class="std std-ref">A workflow generator for generating large template banks using the lalapps_cbc_sbank executables, but allowing the parallel use of multiple cores to optimize the generation of large template banks. (pycbc_create_sbank_workflow)</span></a></li>
-<li><a class="reference internal" href="#tmpltbank-uberbankworkflow"><span class="std std-ref">A workflow generator for generating the “uberbank”. This consists of a chain of calls to the geometric aligned-spin lattice code and the sbank workflow generator to create a template bank suitable for analysing Advanced LIGO and Advanced Virgo data. (pycbc_create_uberbank_workflow)</span></a></li>
+<li><a class="reference internal" href="#tmpltbank-sbankworkflow"><span class="std std-ref">A workflow generator for generating large template banks using the lalapps_cbc_sbank executables, but allowing the parallel use of multiple cores to optimize the generation of large template banks. (pycbc_make_sbank_workflow)</span></a></li>
+<li><a class="reference internal" href="#tmpltbank-uberbankworkflow"><span class="std std-ref">A workflow generator for generating the “uberbank”. This consists of a chain of calls to the geometric aligned-spin lattice code and the sbank workflow generator to create a template bank suitable for analysing Advanced LIGO and Advanced Virgo data. (pycbc_make_uberbank_workflow)</span></a></li>
 </ul>
 <p>Each of these codes and workflow generators is described in turn and is accompanied by some examples of how to run the code, some relevant background and references and the options described from the codes’ help messages.</p>
 <p>The output of all these codes is currently a sngl_inspiral_table XML object.
@@ -1781,20 +1781,20 @@ Ethinca metric options:
 <div class="section" id="sbank-workflow-generator">
 <span id="tmpltbank-sbankworkflow"></span><h3>Sbank workflow generator<a class="headerlink" href="#sbank-workflow-generator" title="Permalink to this headline">¶</a></h3>
 <p>In the case where one sbank job will not do the job you can use
-pycbc_create_sbank_workflow to parallelize your template bank placement
+pycbc_make_sbank_workflow to parallelize your template bank placement
 needs.</p>
 <p>The command line options for this code read as follows</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pycbc_create_sbank_workflow --help
-usage: pycbc_create_sbank_workflow [-h] [--version]
-                                   [--workflow-name WORKFLOW_NAME]
-                                   [-d OUTPUT_DIR] [--output-file OUTPUT_FILE]
-                                   [--dax-filename DAX_FILENAME]
-                                   [--map-filename MAP_FILENAME]
-                                   [--is-sub-workflow]
-                                   [--tags [TAGS [TAGS ...]]]
-                                   [--config-files CONFIGFILE [CONFIGFILE ...]]
-                                   [--config-overrides [SECTION:OPTION:VALUE [SECTION:OPTION:VALUE ...]]]
-                                   [--config-delete [SECTION:OPTION [SECTION:OPTION ...]]]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pycbc_make_sbank_workflow --help
+usage: pycbc_make_sbank_workflow [-h] [--version]
+                                 [--workflow-name WORKFLOW_NAME]
+                                 [-d OUTPUT_DIR] [--output-file OUTPUT_FILE]
+                                 [--dax-filename DAX_FILENAME]
+                                 [--map-filename MAP_FILENAME]
+                                 [--is-sub-workflow]
+                                 [--tags [TAGS [TAGS ...]]]
+                                 [--config-files CONFIGFILE [CONFIGFILE ...]]
+                                 [--config-overrides [SECTION:OPTION:VALUE [SECTION:OPTION:VALUE ...]]]
+                                 [--config-delete [SECTION:OPTION [SECTION:OPTION ...]]]
 
 Workflow generator for the lalapps_cbc_sbank template bank generation. This is
 intended to be standalone, without putting things like the SbankExecutable
@@ -1857,7 +1857,7 @@ generation. One can read about the general setup of such files
 <a class="reference internal" href="workflow/initialization.html#workflowconfigparsermod"><span class="std std-ref">at the following page</span></a>, but we provide
 some examples here. First we give a simple example, with some options commented
 out, but still shown and explained.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_create_sbank_workflow</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_make_sbank_workflow</span>
 <span class="c1">;</span>
 <span class="c1">; Template bank documentation can be found here:</span>
 <span class="c1">;</span>
@@ -1995,7 +1995,7 @@ out, but still shown and explained.</p>
 </div>
 <p>Then a more complex example, where we exercise more fine-grained control over
 the parallel job and use different settings during each cycle of the generator.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_create_sbank_workflow</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_make_sbank_workflow</span>
 <span class="c1">;</span>
 <span class="c1">; Template bank documentation can be found here:</span>
 <span class="c1">;</span>
@@ -2223,7 +2223,7 @@ called the “uberbank”. The references for this are the following:</p>
 <li>Capano et al., Phys.Rev. D93 (2016) 124007</li>
 </ul>
 <p>The uberbank construction process is now written up in a single workflow,
-pycbc_create_uberbank_workflow. The current setup of this workflow is as
+pycbc_make_uberbank_workflow. The current setup of this workflow is as
 follows:</p>
 <ul class="simple">
 <li>Run in parallel one sbank workflow and one geometric workflow</li>
@@ -2236,13 +2236,13 @@ rest with potentially different settings. There is a lot of scope for editing
 and reordering this workflow, potentially adding, or removing various of the
 stages.</p>
 <p>The command-line help for the workflow generator is as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pycbc_create_uberbank_workflow --help
-usage: pycbc_create_uberbank_workflow [-h] [--version]
-                                      [--workflow-name WORKFLOW_NAME]
-                                      [-d OUTPUT_DIR]
-                                      [--config-files CONFIGFILE [CONFIGFILE ...]]
-                                      [--config-overrides [SECTION:OPTION:VALUE [SECTION:OPTION:VALUE ...]]]
-                                      [--config-delete [SECTION:OPTION [SECTION:OPTION ...]]]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ pycbc_make_uberbank_workflow --help
+usage: pycbc_make_uberbank_workflow [-h] [--version]
+                                    [--workflow-name WORKFLOW_NAME]
+                                    [-d OUTPUT_DIR]
+                                    [--config-files CONFIGFILE [CONFIGFILE ...]]
+                                    [--config-overrides [SECTION:OPTION:VALUE [SECTION:OPTION:VALUE ...]]]
+                                    [--config-delete [SECTION:OPTION [SECTION:OPTION ...]]]
 
 Workflow generator for the &#39;uberbank&#39; template bank construction. The script
 as written runs one configurable example of sbank, and one of
@@ -2287,7 +2287,7 @@ file contains options for all 3 stages of the workflow, and so is a little more
 involved than the sbank example given above. Here we provide a particularly
 detailed configuration for generating a bank equivalent to the uberbank on
 O1-like data.</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_create_uberbank_workflow</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Configuration file for pycbc_make_uberbank_workflow</span>
 <span class="c1">;</span>
 <span class="c1">; Tests and decisions for the choices made here are documented here:</span>
 <span class="c1">;</span>
@@ -2381,7 +2381,7 @@ O1-like data.</p>
 
 <span class="c1">; All executables are listed here, will be equivalent to `which exe`</span>
 <span class="na">sbank</span> <span class="o">=</span> <span class="s">${which:lalapps_cbc_sbank}</span>
-<span class="na">sbank_workflow</span> <span class="o">=</span> <span class="s">${which:pycbc_create_sbank_workflow}</span>
+<span class="na">sbank_workflow</span> <span class="o">=</span> <span class="s">${which:pycbc_make_sbank_workflow}</span>
 <span class="na">sbank_mchirp_bins</span> <span class="o">=</span> <span class="s">${which:lalapps_cbc_sbank_hdf5_choose_mchirp_boundaries}</span>
 <span class="na">h5add</span> <span class="o">=</span> <span class="s">${which:lalapps_cbc_sbank_hdf5_bankcombiner}</span>
 <span class="na">geom_aligned_bank</span> <span class="o">=</span> <span class="s">${which:pycbc_geom_aligned_bank}</span>
@@ -2701,7 +2701,7 @@ O1-like data.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 11, 2018.
+      Last updated on Oct 12, 2018.
 
     </p>
   </div>
