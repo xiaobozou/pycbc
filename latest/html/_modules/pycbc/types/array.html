@@ -295,14 +295,23 @@
 <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span> 
 <span class="k">def</span> <span class="nf">_to_device</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Move input to device &quot;&quot;&quot;</span>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using the &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
     
 <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_copy_base_array</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Copy a backend array&quot;&quot;&quot;</span>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using the &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
 <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_scheme_matches_base_array</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Check that input matches array type for scheme &quot;&quot;&quot;</span>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using the &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Array"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array">[docs]</a><span class="k">class</span> <span class="nc">Array</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Array used to do numeric calculations on a various compute</span>
@@ -828,7 +837,10 @@
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the elementwise squared norm of the array &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return the elementwise squared norm of the array &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.multiply_and_add"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.multiply_and_add">[docs]</a>    <span class="nd">@_returntype</span>
     <span class="nd">@_checkother</span>
@@ -838,90 +850,134 @@
         <span class="sd">&quot;&quot;&quot; Return other multiplied by mult_fac and with self added.</span>
 <span class="sd">        Self is modified in place and returned as output.</span>
 <span class="sd">        Precisions of inputs must match.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.inner"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.inner">[docs]</a>    <span class="nd">@_vrcheckother</span>
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.vdot"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.vdot">[docs]</a>    <span class="nd">@_vrcheckother</span>
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">vdot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.clear"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.clear">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-        <span class="sd">&quot;&quot;&quot; Clear out the values of the array. &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Clear out the values of the array. &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.weighted_inner"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.weighted_inner">[docs]</a>    <span class="nd">@_vrcheckother</span>
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">weighted_inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the inner product of the array with complex conjugation.</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.sum"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.sum">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the sum of the the array. &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return the sum of the the array. &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.cumsum"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.cumsum">[docs]</a>    <span class="nd">@_returntype</span>
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the cumulative sum of the the array. &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return the cumulative sum of the the array. &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
      
 <div class="viewcode-block" id="Array.max"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.max">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@_nocomplex</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the maximum value in the array. &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return the maximum value in the array. &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
             
 <div class="viewcode-block" id="Array.max_loc"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.max_loc">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@_nocomplex</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">max_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the maximum value in the array along with the index location &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot;Return the maximum value in the array along with the index location &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.abs_arg_max"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.abs_arg_max">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">abs_arg_max</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return location of the maximum argument max &quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return location of the maximum argument max &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.abs_max_loc"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.abs_max_loc">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">abs_max_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the maximum elementwise norm in the array along with the index location&quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot;Return the maximum elementwise norm in the array along with the index location&quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.min"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.min">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@_nocomplex</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the maximum value in the array. &quot;&quot;&quot;</span> </div>
+        <span class="sd">&quot;&quot;&quot; Return the maximum value in the array. &quot;&quot;&quot;</span> 
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="Array.take"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.take">[docs]</a>    <span class="nd">@_returnarray</span>
     <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">take</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the values at the given indices. &quot;&quot;&quot;</span>                           </div>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Array.dot"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.dot">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@_vcheckother</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Return the dot product&quot;&quot;&quot;</span></div>
+        <span class="sd">&quot;&quot;&quot; Return the dot product&quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
     
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_getvalue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Helper function to return a single value from an array. May be very</span>
 <span class="sd">           slow if the memory is on a gpu.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
     <span class="nd">@_memoize_single</span>
     <span class="nd">@_returntype</span>
@@ -984,6 +1040,9 @@
         <span class="sd">&quot;&quot;&quot;Helper function to copy between two arrays. The arrays references</span>
 <span class="sd">           should be bare array types and not `Array` class instances. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
                 
     <span class="nd">@_convert</span>
     <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -1045,6 +1104,9 @@
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Returns a pointer to the memory of this array &quot;&quot;&quot;</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
         
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">itemsize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1066,7 +1128,10 @@
 <div class="viewcode-block" id="Array.numpy"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.numpy">[docs]</a>    <span class="nd">@_convert</span>
     <span class="nd">@schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">numpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns a Numpy Array that contains this data &quot;&quot;&quot;</span>     </div>
+        <span class="sd">&quot;&quot;&quot; Returns a Numpy Array that contains this data &quot;&quot;&quot;</span>     
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+        <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
     
 <div class="viewcode-block" id="Array.lal"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.Array.lal">[docs]</a>    <span class="nd">@_convert</span>
     <span class="k">def</span> <span class="nf">lal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1195,7 +1260,9 @@
 <span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return an Array filled with zeros.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span></div>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="load_array"><a class="viewcode-back" href="../../../pycbc.types.html#pycbc.types.array.load_array">[docs]</a><span class="k">def</span> <span class="nf">load_array</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

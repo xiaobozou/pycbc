@@ -254,11 +254,15 @@
 
 <div class="viewcode-block" id="set_backend"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.backend_support.set_backend">[docs]</a><span class="nd">@pycbc</span><span class="o">.</span><span class="n">scheme</span><span class="o">.</span><span class="n">schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">set_backend</span><span class="p">(</span><span class="n">backend_list</span><span class="p">):</span>
-    <span class="k">pass</span></div>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_backend"><a class="viewcode-back" href="../../../pycbc.fft.html#pycbc.fft.backend_support.get_backend">[docs]</a><span class="nd">@pycbc</span><span class="o">.</span><span class="n">scheme</span><span class="o">.</span><span class="n">schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_backend</span><span class="p">():</span>
-    <span class="k">return</span></div>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This function is a stub that should be overridden using &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;the scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
 <span class="c1"># Import all scheme-dependent backends, to get _all_backends accurate:</span>
 
