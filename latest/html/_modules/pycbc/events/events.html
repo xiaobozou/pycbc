@@ -430,6 +430,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">coltype</span><span class="p">)</span> <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accumulate</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span>
@@ -497,49 +498,6 @@
         <span class="n">keep</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">keep</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="EventManager.maximize_over_bank"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.maximize_over_bank">[docs]</a>    <span class="k">def</span> <span class="nf">maximize_over_bank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tcolumn</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">tcolumn</span><span class="p">)</span>
-        <span class="n">cvec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
-        <span class="n">tvec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">[</span><span class="n">tcolumn</span><span class="p">]</span>
-
-        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">#        mint = tvec.min()</span>
-<span class="c1">#        maxt = tvec.max()</span>
-<span class="c1">#        edges = numpy.arange(mint, maxt, window)</span>
-
-<span class="c1">#        # Get the location of each time bin</span>
-<span class="c1">#        bins = numpy.searchsorted(tvec, edges)</span>
-<span class="c1">#        bins = numpy.append(bins, len(tvec))</span>
-<span class="c1">#        for i in range(len(bins)-1):</span>
-<span class="c1">#            kmin = bins[i]</span>
-<span class="c1">#            kmax = bins[i+1]</span>
-<span class="c1">#            if kmin == kmax:</span>
-<span class="c1">#                continue</span>
-<span class="c1">#            event_idx = numpy.argmax(cvec[kmin:kmax]) + kmin</span>
-<span class="c1">#            indices.append(event_idx)</span>
-
-        <span class="c1"># This algorithm is confusing, but it is what lalapps_inspiral does</span>
-        <span class="c1"># REMOVE ME!!!!!!!!!!!</span>
-        <span class="n">gps</span> <span class="o">=</span> <span class="n">tvec</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">gps_start_time</span>
-        <span class="n">gps_sec</span>  <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">gps</span><span class="p">)</span>
-        <span class="n">gps_nsec</span> <span class="o">=</span> <span class="p">(</span><span class="n">gps</span> <span class="o">-</span> <span class="n">gps_sec</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e9</span>
-
-        <span class="n">wnsec</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window</span> <span class="o">*</span> <span class="mf">1e9</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
-        <span class="n">win</span> <span class="o">=</span> <span class="n">gps_nsec</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">/</span> <span class="n">wnsec</span>
-
-        <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tvec</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">gps_sec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">gps_sec</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="ow">and</span>  <span class="n">win</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">win</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
-                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cvec</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cvec</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]):</span>
-                    <span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="EventManager.add_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.add_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">add_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">vectors</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Add a vector indexed &quot;&quot;&quot;</span>
         <span class="c1"># initialize with zeros - since vectors can be None, look for the</span>
@@ -576,8 +534,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">template_params</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.finalize_template_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.finalize_template_events">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_template_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accumulate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template_events</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_dtype</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EventManager.finalize_events"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.finalize_events">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">accumulate</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EventManager.make_output_dir"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.events.EventManager.make_output_dir">[docs]</a>    <span class="k">def</span> <span class="nf">make_output_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
@@ -976,7 +937,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 16, 2018.
+      Last updated on Oct 18, 2018.
 
     </p>
   </div>
