@@ -269,6 +269,10 @@ Direct Time from V1 to V1 is 0.0 seconds
 <div class="section" id="time-source-gravitational-wave-passes-through-detector">
 <h2>Time source gravitational-wave passes through detector<a class="headerlink" href="#time-source-gravitational-wave-passes-through-detector" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycbc.detector</span> <span class="k">import</span> <span class="n">Detector</span>
+<span class="kn">from</span> <span class="nn">astropy.utils</span> <span class="k">import</span> <span class="n">iers</span>
+
+<span class="c1"># Make sure the documentation can be built without an internet connection</span>
+<span class="n">iers</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">auto_download</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="c1"># The source of the gravitational waves</span>
 <span class="n">right_ascension</span> <span class="o">=</span> <span class="mf">0.7</span>
@@ -363,7 +367,7 @@ fp=-0.385346273135, fc=0.706066713694
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 18, 2018.
+      Last updated on Oct 24, 2018.
 
     </p>
   </div>
