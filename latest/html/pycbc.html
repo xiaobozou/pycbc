@@ -4697,6 +4697,110 @@ with the original variable name and value(s).</td>
 </dd></dl>
 
 <dl class="class">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta">
+<em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">Mass1Mass2ToMchirpEta</code><a class="reference internal" href="_modules/pycbc/transforms.html#Mass1Mass2ToMchirpEta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.MchirpEtaToMass1Mass2" title="pycbc.transforms.MchirpEtaToMass1Mass2"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.MchirpEtaToMass1Mass2</span></code></a></p>
+<p>The inverse of MchirpEtaToMass1Mass2.</p>
+<dl class="attribute">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.inverse">
+<code class="descname">inverse</code><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pycbc.transforms.MchirpEtaToMass1Mass2" title="pycbc.transforms.MchirpEtaToMass1Mass2"><code class="xref py py-class docutils literal notranslate"><span class="pre">MchirpEtaToMass1Mass2</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.inverse_jacobian">
+<code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jacobian for transforming mchirp and eta to mass1 and
+mass2.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms from chirp mass and symmetric mass ratio to
+component masses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<em>a mapping object</em>) – </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Convert a dict of numpy.array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">MchirpEtaToMass1Mass2</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="p">({</span><span class="s1">&#39;mchirp&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.</span><span class="p">]),</span> <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">])})</span>
+<span class="go">{&#39;mass1&#39;: array([ 16.4375183]), &#39;mass2&#39;: array([ 8.21875915]),</span>
+<span class="go"> &#39;mchirp&#39;: array([ 10.]), &#39;eta&#39;: array([ 0.25])}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
+of transformed values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.jacobian">
+<code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jacobian for transforming mass1 and mass2 to
+mchirp and eta.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.name">
+<code class="descname">name</code><em class="property"> = 'mass1_mass2_to_mchirp_eta'</em><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.Mass1Mass2ToMchirpEta.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpEta.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms from component masses to chirp mass and
+symmetric mass ratio.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<em>a mapping object</em>) – </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Convert a dict of numpy.array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">MchirpQToMass1Mass2</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">({</span><span class="s1">&#39;mass1&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.2</span><span class="p">]),</span> <span class="s1">&#39;mass2&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.2</span><span class="p">])})</span>
+<span class="go">    {&#39;mass1&#39;: array([ 8.2]), &#39;mass2&#39;: array([ 8.2]),</span>
+<span class="go">     &#39;mchirp&#39;: array([ 9.97717521]), &#39;eta&#39;: 0.25}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
+of transformed values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pycbc.transforms.Mass1Mass2ToMchirpQ">
 <em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">Mass1Mass2ToMchirpQ</code><a class="reference internal" href="_modules/pycbc/transforms.html#Mass1Mass2ToMchirpQ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.Mass1Mass2ToMchirpQ" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.MchirpQToMass1Mass2" title="pycbc.transforms.MchirpQToMass1Mass2"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.MchirpQToMass1Mass2</span></code></a></p>
@@ -4783,6 +4887,104 @@ mass ratio.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">({</span><span class="s1">&#39;mass1&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">16.4</span><span class="p">]),</span> <span class="s1">&#39;mass2&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.2</span><span class="p">])})</span>
 <span class="go">    {&#39;mass1&#39;: array([ 16.4]), &#39;mass2&#39;: array([ 8.2]),</span>
 <span class="go">     &#39;mchirp&#39;: array([ 9.97717521]), &#39;q&#39;: 2.0}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
+of transformed values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2">
+<em class="property">class </em><code class="descclassname">pycbc.transforms.</code><code class="descname">MchirpEtaToMass1Mass2</code><a class="reference internal" href="_modules/pycbc/transforms.html#MchirpEtaToMass1Mass2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.transforms.BaseTransform" title="pycbc.transforms.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.transforms.BaseTransform</span></code></a></p>
+<p>Converts chirp mass and symmetric mass ratio to component masses.</p>
+<dl class="method">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2.inverse_jacobian">
+<code class="descname">inverse_jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#MchirpEtaToMass1Mass2.inverse_jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2.inverse_jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jacobian for transforming mass1 and mass2 to
+mchirp and eta.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#MchirpEtaToMass1Mass2.inverse_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms from component masses to chirp mass and
+symmetric mass ratio.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<em>a mapping object</em>) – </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Convert a dict of numpy.array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">MchirpQToMass1Mass2</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">({</span><span class="s1">&#39;mass1&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.2</span><span class="p">]),</span> <span class="s1">&#39;mass2&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">8.2</span><span class="p">])})</span>
+<span class="go">    {&#39;mass1&#39;: array([ 8.2]), &#39;mass2&#39;: array([ 8.2]),</span>
+<span class="go">     &#39;mchirp&#39;: array([ 9.97717521]), &#39;eta&#39;: 0.25}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – A dict with key as parameter name and value as numpy.array or float
+of transformed values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2.jacobian">
+<code class="descname">jacobian</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#MchirpEtaToMass1Mass2.jacobian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2.jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jacobian for transforming mchirp and eta to mass1 and
+mass2.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2.name">
+<code class="descname">name</code><em class="property"> = 'mchirp_eta_to_mass1_mass2'</em><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.transforms.MchirpEtaToMass1Mass2.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>maps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/transforms.html#MchirpEtaToMass1Mass2.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.transforms.MchirpEtaToMass1Mass2.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function transforms from chirp mass and symmetric mass ratio to
+component masses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maps</strong> (<em>a mapping object</em>) – </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Convert a dict of numpy.array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">MchirpEtaToMass1Mass2</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="p">({</span><span class="s1">&#39;mchirp&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.</span><span class="p">]),</span> <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">])})</span>
+<span class="go">{&#39;mass1&#39;: array([ 16.4375183]), &#39;mass2&#39;: array([ 8.21875915]),</span>
+<span class="go"> &#39;mchirp&#39;: array([ 10.]), &#39;eta&#39;: array([ 0.25])}</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
