@@ -236,7 +236,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;arbitrary&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bandwidth</span><span class="o">=</span><span class="s2">&quot;scott&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># initialize the bounds</span>
         <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">bounds</span> <span class="o">=</span> <span class="p">{}</span>
@@ -268,6 +268,7 @@
                                  <span class="s2">&quot;be finite&quot;</span><span class="p">)</span>
         <span class="c1"># build the kde</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kde</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_kde_from_arrays</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_bandwidth</span><span class="p">(</span><span class="n">bandwidth</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -325,6 +326,9 @@
             <span class="k">return</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pdf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Arbitrary.set_bandwidth"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.Arbitrary.set_bandwidth">[docs]</a>    <span class="k">def</span> <span class="nf">set_bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_bw</span><span class="o">=</span><span class="s2">&quot;scott&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kde</span><span class="o">.</span><span class="n">set_bandwidth</span><span class="p">(</span><span class="n">set_bw</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Arbitrary.rvs"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.Arbitrary.rvs">[docs]</a>    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Gives a set of random values drawn from the kde.</span>
@@ -430,8 +434,9 @@
             <span class="n">ps</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ps</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-        <span class="n">param_vals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_arrays_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">ps</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">FromFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">param_vals</span><span class="p">)</span>
+        <span class="n">param_vals</span><span class="p">,</span> <span class="n">bw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_arrays_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">ps</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FromFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">bandwidth</span><span class="o">=</span><span class="n">bw</span><span class="p">,</span>
+                                       <span class="o">**</span><span class="n">param_vals</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -468,8 +473,13 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
         <span class="n">params_values</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">f</span><span class="p">[</span><span class="n">p</span><span class="p">][:]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">bandwidth</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;bandwidth&quot;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">bandwidth</span> <span class="o">=</span> <span class="s2">&quot;scott&quot;</span>
+
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">params_values</span></div>
+        <span class="k">return</span> <span class="n">params_values</span><span class="p">,</span> <span class="n">bandwidth</span></div>
 
 <div class="viewcode-block" id="FromFile.from_config"><a class="viewcode-back" href="../../../pycbc.distributions.html#pycbc.distributions.arbitrary.FromFile.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">):</span>
@@ -525,7 +535,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 24, 2018.
+      Last updated on Oct 25, 2018.
 
     </p>
   </div>

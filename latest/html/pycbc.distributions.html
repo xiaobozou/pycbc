@@ -828,7 +828,7 @@ parameter in self’s params.</p>
 a file.</p>
 <dl class="class">
 <dt id="pycbc.distributions.arbitrary.Arbitrary">
-<em class="property">class </em><code class="descclassname">pycbc.distributions.arbitrary.</code><code class="descname">Arbitrary</code><span class="sig-paren">(</span><em>bounds=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.distributions.arbitrary.</code><code class="descname">Arbitrary</code><span class="sig-paren">(</span><em>bounds=None</em>, <em>bandwidth='scott'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
 <p>A distribution constructed from a set of parameter values using a kde.
 Bounds may be optionally provided to limit the range.</p>
@@ -909,6 +909,11 @@ parameter in self’s params.</p>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.set_bandwidth">
+<code class="descname">set_bandwidth</code><span class="sig-paren">(</span><em>set_bw='scott'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.set_bandwidth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.set_bandwidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -2661,7 +2666,7 @@ defined for them. Default is ‘variable_args’.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 24, 2018.
+      Last updated on Oct 25, 2018.
 
     </p>
   </div>
