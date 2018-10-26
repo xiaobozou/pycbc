@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.geweke &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.inference.geweke &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -216,6 +217,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span>
 
+
 <div class="viewcode-block" id="geweke"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.geweke.geweke">[docs]</a><span class="k">def</span> <span class="nf">geweke</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">seg_length</span><span class="p">,</span> <span class="n">seg_stride</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">,</span> <span class="n">ref_start</span><span class="p">,</span>
            <span class="n">ref_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seg_start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Calculates Geweke conervergence statistic for a chain of data.</span>
@@ -271,8 +273,8 @@
         <span class="n">x_start</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">x_start_end</span><span class="p">]</span>
 
         <span class="c1"># compute statistic</span>
-        <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x_start</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">x_end</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-                     <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x_start</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="o">+</span> <span class="n">x_end</span><span class="o">.</span><span class="n">var</span><span class="p">()))</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x_start</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">x_end</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="n">x_start</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="o">+</span> <span class="n">x_end</span><span class="o">.</span><span class="n">var</span><span class="p">()))</span>
 
         <span class="c1"># store end of first segment</span>
         <span class="n">ends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_start_end</span><span class="p">)</span>

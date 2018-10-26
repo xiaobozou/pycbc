@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.gelman_rubin &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.inference.gelman_rubin &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -216,6 +217,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span>
 
+
 <div class="viewcode-block" id="walk"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.gelman_rubin.walk">[docs]</a><span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Calculates Gelman-Rubin conervergence statistic along chains of data.</span>
 <span class="sd">    This function will advance along the chains and calculate the</span>
@@ -257,10 +259,11 @@
 
     <span class="c1"># loop over end indexes and calculate statistic</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ends</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">chains</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">chains</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
         <span class="n">stats</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">gelman_rubin</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">starts</span><span class="p">,</span> <span class="n">ends</span><span class="p">,</span> <span class="n">stats</span></div>
+
 
 <div class="viewcode-block" id="gelman_rubin"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.gelman_rubin.gelman_rubin">[docs]</a><span class="k">def</span> <span class="nf">gelman_rubin</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">auto_burn_in</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Calculates the univariate Gelman-Rubin convergence statistic</span>
@@ -342,19 +345,25 @@
 
     <span class="c1"># get V the combined variance of all chains</span>
     <span class="c1"># this will have shape (nparameters)</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="n">w_diag</span> <span class="o">/</span> <span class="n">niterations</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span> <span class="o">*</span> <span class="n">b_diag</span> <span class="o">/</span> <span class="n">niterations</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">((</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="n">w_diag</span> <span class="o">/</span> <span class="n">niterations</span> <span class="o">+</span>
+         <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span> <span class="o">*</span> <span class="n">b_diag</span> <span class="o">/</span> <span class="n">niterations</span><span class="p">)</span>
 
     <span class="c1"># get factors in variance of V calculation</span>
     <span class="c1"># this will have shape (nparameters)</span>
     <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b_diag</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">nchains</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">mid_term</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">means</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="n">nparameters</span><span class="p">:</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nparameters</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nparameters</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
-    <span class="n">end_term</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">means</span><span class="p">)[</span><span class="n">nparameters</span><span class="p">:</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nparameters</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nparameters</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">mid_term</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span>
+        <span class="n">var</span><span class="p">,</span> <span class="n">means</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="n">nparameters</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">nparameters</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nparameters</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">end_term</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span>
+        <span class="n">var</span><span class="p">,</span> <span class="n">means</span><span class="p">)[</span><span class="n">nparameters</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">nparameters</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nparameters</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
     <span class="n">wb</span> <span class="o">=</span> <span class="n">niterations</span> <span class="o">/</span> <span class="n">nchains</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">mid_term</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu_hat</span> <span class="o">*</span> <span class="n">end_term</span><span class="p">)</span>
 
     <span class="c1"># get variance of V</span>
     <span class="c1"># this will have shape (nparameters)</span>
-    <span class="n">var_v</span> <span class="o">=</span> <span class="p">((</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> \
-             <span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span> <span class="o">*</span> <span class="n">wb</span><span class="p">)</span> <span class="o">/</span> <span class="n">niterations</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">var_v</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span>
+        <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span>
+        <span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="n">niterations</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">nchains</span><span class="p">)</span> <span class="o">*</span> <span class="n">wb</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="n">niterations</span><span class="o">**</span><span class="mi">2</span>
 
     <span class="c1"># get degrees of freedom</span>
     <span class="c1"># this will have shape (nparameters)</span>
@@ -375,7 +384,6 @@
     <span class="n">psrf</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r2_estimate</span> <span class="o">*</span> <span class="n">df_adj</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">psrf</span></div>
-
 </pre></div>
 
            </div>

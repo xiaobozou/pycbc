@@ -12,22 +12,6 @@ pycbc.io.hdf module
     :undoc-members:
     :show-inheritance:
 
-pycbc.io.inference\_hdf module
-------------------------------
-
-.. automodule:: pycbc.io.inference_hdf
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.io.inference\_txt module
-------------------------------
-
-.. automodule:: pycbc.io.inference_txt
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.io.live module
 --------------------
 

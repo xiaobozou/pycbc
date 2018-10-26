@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results package &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.results package &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -59,7 +60,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -816,7 +817,7 @@ creates.</li>
 
 <dl class="function">
 <dt id="pycbc.results.scatter_histograms.create_multidim_plot">
-<code class="descclassname">pycbc.results.scatter_histograms.</code><code class="descname">create_multidim_plot</code><span class="sig-paren">(</span><em>parameters</em>, <em>samples</em>, <em>labels=None</em>, <em>mins=None</em>, <em>maxs=None</em>, <em>expected_parameters=None</em>, <em>expected_parameters_color='r'</em>, <em>plot_marginal=True</em>, <em>plot_scatter=True</em>, <em>marginal_percentiles=None</em>, <em>contour_percentiles=None</em>, <em>zvals=None</em>, <em>show_colorbar=True</em>, <em>cbar_label=None</em>, <em>vmin=None</em>, <em>vmax=None</em>, <em>scatter_cmap='plasma'</em>, <em>scatter_size=5</em>, <em>plot_density=False</em>, <em>plot_contours=True</em>, <em>density_cmap='viridis'</em>, <em>contour_color=None</em>, <em>hist_color='black'</em>, <em>line_color=None</em>, <em>fill_color='gray'</em>, <em>use_kombine=False</em>, <em>fig=None</em>, <em>axis_dict=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/results/scatter_histograms.html#create_multidim_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.results.scatter_histograms.create_multidim_plot" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.results.scatter_histograms.</code><code class="descname">create_multidim_plot</code><span class="sig-paren">(</span><em>parameters</em>, <em>samples</em>, <em>labels=None</em>, <em>mins=None</em>, <em>maxs=None</em>, <em>expected_parameters=None</em>, <em>expected_parameters_color='r'</em>, <em>plot_marginal=True</em>, <em>plot_scatter=True</em>, <em>marginal_percentiles=None</em>, <em>contour_percentiles=None</em>, <em>zvals=None</em>, <em>show_colorbar=True</em>, <em>cbar_label=None</em>, <em>vmin=None</em>, <em>vmax=None</em>, <em>scatter_cmap='plasma'</em>, <em>plot_density=False</em>, <em>plot_contours=True</em>, <em>density_cmap='viridis'</em>, <em>contour_color=None</em>, <em>hist_color='black'</em>, <em>line_color=None</em>, <em>fill_color='gray'</em>, <em>use_kombine=False</em>, <em>fig=None</em>, <em>axis_dict=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/results/scatter_histograms.html#create_multidim_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.results.scatter_histograms.create_multidim_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a figure with several plots and histograms.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -825,7 +826,8 @@ creates.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – Names of the variables to be plotted.</li>
 <li><strong>samples</strong> (<a class="reference internal" href="pycbc.io.html#pycbc.io.record.FieldArray" title="pycbc.io.record.FieldArray"><em>FieldArray</em></a>) – A field array of the samples to plot.</li>
-<li><strong>labels</strong> (<em>{None</em><em>, </em><em>list}</em><em>, </em><em>optional</em>) – A list of names for the parameters.</li>
+<li><strong>labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – A dictionary mapping parameters to labels. If none provided, will just
+use the parameter strings as the labels.</li>
 <li><strong>mins</strong> (<em>{None</em><em>, </em><em>dict}</em><em>, </em><em>optional</em>) – Minimum value for the axis of each variable in <cite>parameters</cite>.
 If None, it will use the minimum of the corresponding variable in
 <cite>samples</cite>.</li>
@@ -853,7 +855,6 @@ will be raised if zvals is None and this is True.</li>
 <li><strong>vmax</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Maximum value for the colorbar. If None, will use the maxmimum of
 zvals.</li>
 <li><strong>scatter_cmap</strong> (<em>{'plasma'</em><em>, </em><em>string}</em>) – The color map to use for the scatter points. Default is ‘plasma’.</li>
-<li><strong>scatter_size</strong> (<em>{5</em><em>, </em><em>scalar</em><em> or </em><em>array}</em>) – Size of points to pass to scatter plot</li>
 <li><strong>plot_density</strong> (<em>{False</em><em>, </em><em>bool}</em>) – Plot the density of points as a color map.</li>
 <li><strong>plot_contours</strong> (<em>{True</em><em>, </em><em>bool}</em>) – Draw contours showing the 50th and 90th percentile confidence regions.</li>
 <li><strong>density_cmap</strong> (<em>{'viridis'</em><em>, </em><em>string}</em>) – The color map to use for the density plot.</li>

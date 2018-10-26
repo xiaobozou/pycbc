@@ -4,6 +4,14 @@ pycbc.strain package
 Submodules
 ----------
 
+pycbc.strain.calibration module
+-------------------------------
+
+.. automodule:: pycbc.strain.calibration
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pycbc.strain.gate module
 ------------------------
 

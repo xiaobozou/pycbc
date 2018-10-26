@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC 23025b documentation</title>
+  <title>Index &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -58,7 +59,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -200,7 +201,7 @@
       <li><a href="pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.data">data (pycbc.events.coinc.CoincExpireBuffer attribute)</a>
 
       <ul>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.data">(pycbc.inference.likelihood.BaseLikelihoodEvaluator attribute)</a>, <a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.data">[1]</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.base_data.BaseDataModel.data">(pycbc.inference.models.base_data.BaseDataModel attribute)</a>, <a href="pycbc.inference.models.html#pycbc.inference.models.base_data.BaseDataModel.data">[1]</a>
 </li>
         <li><a href="pycbc.types.html#pycbc.types.array.Array.data">(pycbc.types.array.Array attribute)</a>
 </li>
@@ -208,6 +209,8 @@
       <li><a href="pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.data">data() (pycbc.events.coinc.MultiRingBuffer method)</a>
 </li>
       <li><a href="pycbc.inference.html#pycbc.inference.option_utils.data_from_cli">data_from_cli() (in module pycbc.inference.option_utils)</a>
+</li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.data_group">data_group (pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.Database">Database (class in pycbc.workflow.pegasus_workflow)</a>
 </li>
@@ -235,13 +238,15 @@
 </li>
       <li><a href="pycbc.types.html#pycbc.types.optparse.DictWithDefaultReturn.default_set">default_set (pycbc.types.optparse.DictWithDefaultReturn attribute)</a>
 </li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.default_stats">default_stats (pycbc.inference.models.base.BaseModel attribute)</a>
+</li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.parameters.ParameterList.defaults">defaults() (pycbc.waveform.parameters.ParameterList method)</a>
 </li>
       <li><a href="pycbc.html#pycbc.scheme.DefaultScheme">DefaultScheme (class in pycbc.scheme)</a>
 </li>
       <li><a href="pycbc.io.html#pycbc.io.record.FieldArray.del_functions">del_functions() (pycbc.io.record.FieldArray method)</a>
 </li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_txt.InferenceTXTFile.delimiter">delimiter (pycbc.io.inference_txt.InferenceTXTFile attribute)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.txt.InferenceTXTFile.delimiter">delimiter (pycbc.inference.io.txt.InferenceTXTFile attribute)</a>
 </li>
       <li><a href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.delta_f">delta_f (pycbc.types.frequencyseries.FrequencySeries attribute)</a>, <a href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries.delta_f">[1]</a>
 
@@ -261,16 +266,26 @@
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.parameters.ParameterList.descriptions">descriptions (pycbc.waveform.parameters.ParameterList attribute)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.strain.detect_loud_glitches">detect_loud_glitches() (in module pycbc.strain.strain)</a>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise.det_cplx_loglr">det_cplx_loglr() (pycbc.inference.models.gaussian_noise.GaussianNoise method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise.det_lognl">det_lognl() (pycbc.inference.models.gaussian_noise.GaussianNoise method)</a>
+</li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise.det_optimal_snrsq">det_optimal_snrsq() (pycbc.inference.models.gaussian_noise.GaussianNoise method)</a>
+</li>
+      <li><a href="pycbc.strain.html#pycbc.strain.strain.detect_loud_glitches">detect_loud_glitches() (in module pycbc.strain.strain)</a>
+</li>
       <li><a href="pycbc.html#pycbc.detector.Detector">Detector (class in pycbc.detector)</a>
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.detector_names">detector_names (pycbc.waveform.generator.FDomainDetFrameGenerator attribute)</a>
 </li>
-      <li><a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.detectors">detectors (pycbc.waveform.generator.FDomainDetFrameGenerator attribute)</a>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base_data.BaseDataModel.detectors">detectors (pycbc.inference.models.base_data.BaseDataModel attribute)</a>
+
+      <ul>
+        <li><a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.detectors">(pycbc.waveform.generator.FDomainDetFrameGenerator attribute)</a>
 </li>
+      </ul></li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.calc_moments.determine_eigen_directions">determine_eigen_directions() (in module pycbc.tmpltbank.calc_moments)</a>
 </li>
       <li><a href="pycbc.types.html#pycbc.types.timeseries.TimeSeries.detrend">detrend() (pycbc.types.timeseries.TimeSeries method)</a>

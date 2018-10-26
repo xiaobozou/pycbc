@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.entropy &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.inference.entropy &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -201,7 +202,9 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
+
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+
 
 <div class="viewcode-block" id="kl"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.entropy.kl">[docs]</a><span class="k">def</span> <span class="nf">kl</span><span class="p">(</span><span class="n">samples1</span><span class="p">,</span> <span class="n">samples2</span><span class="p">,</span> <span class="n">pdf1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pdf2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
        <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">hist_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hist_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -234,10 +237,10 @@
     <span class="n">hist_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">hist_min</span><span class="p">,</span> <span class="n">hist_max</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">pdf1</span><span class="p">:</span>
         <span class="n">samples1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">samples1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
-                                       <span class="nb">range</span><span class="o">=</span><span class="n">hist_range</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                      <span class="nb">range</span><span class="o">=</span><span class="n">hist_range</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">pdf2</span><span class="p">:</span>
         <span class="n">samples2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">samples2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
-                                   <span class="nb">range</span><span class="o">=</span><span class="n">hist_range</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                      <span class="nb">range</span><span class="o">=</span><span class="n">hist_range</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><span class="n">samples1</span><span class="p">,</span> <span class="n">qk</span><span class="o">=</span><span class="n">samples2</span><span class="p">)</span></div>
 </pre></div>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.option_utils &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.inference.option_utils &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -196,7 +197,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pycbc.inference.option_utils</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright (C) 2016 Collin Capano</span>
+<span></span><span class="c1"># Copyright (C) 2016 Collin Capano, Duncan Brown</span>
 <span class="c1">#</span>
 <span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
 <span class="c1"># under the terms of the GNU General Public License as published by the</span>
@@ -216,285 +217,61 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">pycbc.inference.sampler</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">inject</span>
-<span class="kn">from</span> <span class="nn">pycbc.io.record</span> <span class="k">import</span> <span class="n">FieldArray</span>
-<span class="kn">from</span> <span class="nn">pycbc.inference</span> <span class="k">import</span> <span class="n">burn_in</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">waveform</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">transforms</span>
-<span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">bounded</span>
-<span class="kn">from</span> <span class="nn">pycbc.distributions</span> <span class="k">import</span> <span class="n">constraints</span>
-<span class="kn">from</span> <span class="nn">pycbc.io.inference_hdf</span> <span class="k">import</span> <span class="n">InferenceFile</span><span class="p">,</span> <span class="n">check_integrity</span>
-<span class="kn">from</span> <span class="nn">pycbc.io.inference_txt</span> <span class="k">import</span> <span class="n">InferenceTXTFile</span>
-<span class="kn">from</span> <span class="nn">pycbc.inference</span> <span class="k">import</span> <span class="n">likelihood</span>
-<span class="kn">from</span> <span class="nn">pycbc.pool</span> <span class="k">import</span> <span class="n">choose_pool</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">from</span> <span class="nn">pycbc.workflow</span> <span class="k">import</span> <span class="n">WorkflowConfigParser</span>
 <span class="kn">from</span> <span class="nn">pycbc.psd</span> <span class="k">import</span> <span class="n">from_cli_multi_ifos</span> <span class="k">as</span> <span class="n">psd_from_cli_multi_ifos</span>
 <span class="kn">from</span> <span class="nn">pycbc.strain</span> <span class="k">import</span> <span class="n">from_cli_multi_ifos</span> <span class="k">as</span> <span class="n">strain_from_cli_multi_ifos</span>
-<span class="kn">from</span> <span class="nn">pycbc.strain</span> <span class="k">import</span> <span class="n">gates_from_cli</span><span class="p">,</span> <span class="n">psd_gates_from_cli</span><span class="p">,</span> <span class="n">apply_gates_to_td</span><span class="p">,</span> \
-                       <span class="n">apply_gates_to_fd</span>
-<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">MultiDetOptionAction</span>
+<span class="kn">from</span> <span class="nn">pycbc.strain</span> <span class="k">import</span> <span class="p">(</span><span class="n">gates_from_cli</span><span class="p">,</span> <span class="n">psd_gates_from_cli</span><span class="p">,</span>
+                          <span class="n">apply_gates_to_td</span><span class="p">,</span> <span class="n">apply_gates_to_fd</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">waveform</span>
 
 
-<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1">#</span>
 <span class="c1">#                   Utilities for loading config files</span>
 <span class="c1">#</span>
-<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="read_sampling_args_from_config"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.read_sampling_args_from_config">[docs]</a><span class="k">def</span> <span class="nf">read_sampling_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                   <span class="n">section</span><span class="o">=</span><span class="s1">&#39;sampling_parameters&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reads sampling parameters from the given config file.</span>
-
-<span class="sd">    Parameters are read from the `[({section_group}_){section}]` section.</span>
-<span class="sd">    The options should list the variable args to transform; the parameters they</span>
-<span class="sd">    point to should list the parameters they are to be transformed to for</span>
-<span class="sd">    sampling. If a multiple parameters are transformed together, they should</span>
-<span class="sd">    be comma separated. Example:</span>
-
-<span class="sd">    .. code-block:: ini</span>
-
-<span class="sd">        [sampling_parameters]</span>
-<span class="sd">        mass1, mass2 = mchirp, logitq</span>
-<span class="sd">        spin1_a = logitspin1_a</span>
-
-<span class="sd">    Note that only the final sampling parameters should be listed, even if</span>
-<span class="sd">    multiple intermediate transforms are needed. (In the above example, a</span>
-<span class="sd">    transform is needed to go from mass1, mass2 to mchirp, q, then another one</span>
-<span class="sd">    needed to go from q to logitq.) These transforms should be specified</span>
-<span class="sd">    in separate sections; see `transforms.read_transforms_from_config` for</span>
-<span class="sd">    details.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    cp : WorkflowConfigParser</span>
-<span class="sd">        An open config parser to read from.</span>
-<span class="sd">    section_group : str, optional</span>
-<span class="sd">        Append `{section_group}_` to the section name. Default is None.</span>
-<span class="sd">    section : str, optional</span>
-<span class="sd">        The name of the section. Default is &#39;sampling_parameters&#39;.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    sampling_params : list</span>
-<span class="sd">        The list of sampling parameters to use instead.</span>
-<span class="sd">    replaced_params : list</span>
-<span class="sd">        The list of variable args to replace in the sampler.</span>
+<div class="viewcode-block" id="add_config_opts_to_parser"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_config_opts_to_parser">[docs]</a><span class="k">def</span> <span class="nf">add_config_opts_to_parser</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adds options for the configuration files to the given parser.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">section_group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">section_prefix</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section_group</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--config-files&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;A file parsable by &quot;</span>
+                             <span class="s2">&quot;pycbc.workflow.WorkflowConfigParser.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--config-overrides&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;SECTION:OPTION:VALUE&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List of section:option:value combinations to &quot;</span>
+                             <span class="s2">&quot;add into the configuration file.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="config_parser_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.config_parser_from_cli">[docs]</a><span class="k">def</span> <span class="nf">config_parser_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loads a config file from the given options, applying any overrides</span>
+<span class="sd">    specified. Specifically, config files are loaded from the `--config-files`</span>
+<span class="sd">    options while overrides are loaded from `--config-overrides`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># read configuration file</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Reading configuration file&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">overrides</span> <span class="o">=</span> <span class="p">[</span><span class="n">override</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">override</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">config_overrides</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">section_prefix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">section</span> <span class="o">=</span> <span class="n">section_prefix</span> <span class="o">+</span> <span class="n">section</span>
-    <span class="n">replaced_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">sampling_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">section</span><span class="p">):</span>
-        <span class="n">map_args</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-        <span class="n">sampling_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">map_args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span>
-        <span class="n">replaced_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))))</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">sampling_params</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">replaced_params</span><span class="p">)</span></div>
+        <span class="n">overrides</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">WorkflowConfigParser</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">config_files</span><span class="p">,</span> <span class="n">overrides</span><span class="p">)</span></div>
 
 
-<span class="c1">#-----------------------------------------------------------------------------</span>
-<span class="c1">#</span>
-<span class="c1">#                    Utilities for setting up a sampler</span>
-<span class="c1">#</span>
-<span class="c1">#-----------------------------------------------------------------------------</span>
-
-<div class="viewcode-block" id="add_sampler_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_sampler_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_sampler_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adds the options needed to set up an inference sampler.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    parser : object</span>
-<span class="sd">        ArgumentParser instance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sampler_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Arguments for setting up &quot;</span>
-        <span class="s2">&quot;a sampler&quot;</span><span class="p">)</span>
-
-    <span class="c1"># required options</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sampler&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">choices</span><span class="o">=</span><span class="n">pycbc</span><span class="o">.</span><span class="n">inference</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">samplers</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sampler class to use for finding posterior.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--niterations&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of iterations to perform. If &#39;use_sampler&#39; is given to &quot;</span>
-             <span class="s2">&quot;burn-in-function, this will be counted after the sampler&#39;s burn &quot;</span>
-             <span class="s2">&quot;function has run. Otherwise, this is the total number of &quot;</span>
-             <span class="s2">&quot;iterations, including any burn in.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--n-independent-samples&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Run the sampler until the specified number of &quot;</span>
-             <span class="s2">&quot;independent samples is obtained, at minimum. Requires &quot;</span>
-             <span class="s2">&quot;checkpoint-interval. At each checkpoint the burn-in iteration &quot;</span>
-             <span class="s2">&quot;and ACL is updated. The number of independent samples is the &quot;</span>
-             <span class="s2">&quot;number of samples across all walkers starting at the &quot;</span>
-             <span class="s2">&quot;burn-in-iteration and skipping every `ACL`th iteration. &quot;</span>
-             <span class="s2">&quot;Either this or niteration should be specified (but not both).&quot;</span><span class="p">)</span>
-    <span class="c1"># sampler-specific options</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--nwalkers&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of walkers to use in sampler. Required for MCMC &quot;</span>
-             <span class="s2">&quot;samplers.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--ntemps&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of temperatures to use in sampler. Required for parallel &quot;</span>
-             <span class="s2">&quot;tempered MCMC samplers.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--inverse-temperatures-input-file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Input hdf file from which beta (inverse-temperature) values &quot;</span>
-             <span class="s2">&quot;should be read in. Applicable for emcee_pt samplers.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--burn-in-function&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span>
-        <span class="n">choices</span><span class="o">=</span><span class="n">burn_in</span><span class="o">.</span><span class="n">burn_in_functions</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use the given function to determine when chains are burned in. &quot;</span>
-             <span class="s2">&quot;If none provided, no burn in will be estimated. &quot;</span>
-             <span class="s2">&quot;If multiple functions are provided, will use the maximum &quot;</span>
-             <span class="s2">&quot;iteration from all functions.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--min-burn-in&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Force the burn-in to be at least the given number of &quot;</span>
-             <span class="s2">&quot;iterations.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--skip-burn-in&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;DEPRECATED. Turning this option on has no effect; &quot;</span>
-             <span class="s2">&quot;it will be removed in future versions. If no burn in is &quot;</span>
-             <span class="s2">&quot;desired, simply do not provide a burn-in-function argument.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--update-interval&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;If using kombine, specify the number of steps to take between &quot;</span>
-             <span class="s2">&quot;proposal updates. Note: for purposes of updating, kombine &quot;</span>
-             <span class="s2">&quot;counts iterations since the last checkpoint. This interval &quot;</span>
-             <span class="s2">&quot;should therefore be less than the checkpoint interval, else &quot;</span>
-             <span class="s2">&quot;no updates will occur. To ensure that updates happen at equal &quot;</span>
-             <span class="s2">&quot;intervals, make checkpoint-interval a multiple of &quot;</span>
-             <span class="s2">&quot;update-interval.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--nprocesses&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of processes to use. If not given then use maximum.&quot;</span><span class="p">)</span>
-    <span class="n">sampler_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--use-mpi&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use MPI to parallelize the sampler&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sampler_group</span></div>
-
-
-<div class="viewcode-block" id="sampler_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.sampler_from_cli">[docs]</a><span class="k">def</span> <span class="nf">sampler_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Parses the given command-line options to set up a sampler.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    opts : object</span>
-<span class="sd">        ArgumentParser options.</span>
-<span class="sd">    likelihood_evaluator : LikelihoodEvaluator</span>
-<span class="sd">        The likelihood evaluator to use with the sampler.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    pycbc.inference.sampler</span>
-<span class="sd">        A sampler initialized based on the given arguments.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Used to help paralleize over multiple cores / MPI</span>
-    <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">nprocesses</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">likelihood</span><span class="o">.</span><span class="n">_global_instance</span> <span class="o">=</span> <span class="n">likelihood_evaluator</span>
-        <span class="n">likelihood_call</span> <span class="o">=</span> <span class="n">likelihood</span><span class="o">.</span><span class="n">_call_global_likelihood</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">likelihood_call</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="n">sclass</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">inference</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">samplers</span><span class="p">[</span><span class="n">opts</span><span class="o">.</span><span class="n">sampler</span><span class="p">]</span>
-
-    <span class="n">pool</span> <span class="o">=</span> <span class="n">choose_pool</span><span class="p">(</span><span class="n">mpi</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">use_mpi</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">nprocesses</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">pool</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">pool</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">nprocesses</span>
-
-    <span class="k">return</span> <span class="n">sclass</span><span class="o">.</span><span class="n">from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span>
-                           <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
-
-
-<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1">#</span>
 <span class="c1">#                       Utilities for loading data</span>
 <span class="c1">#</span>
-<span class="c1">#-----------------------------------------------------------------------------</span>
-
-<div class="viewcode-block" id="validate_checkpoint_files"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.validate_checkpoint_files">[docs]</a><span class="k">def</span> <span class="nf">validate_checkpoint_files</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">backup_file</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks if the given checkpoint and/or backup files are valid.</span>
-
-<span class="sd">    The checkpoint file is considered valid if:</span>
-
-<span class="sd">        * it passes all tests run by ``InferenceFile.check_integrity``;</span>
-<span class="sd">        * it has at least one sample written to it (indicating at least one</span>
-<span class="sd">          checkpoint has happened).</span>
-
-<span class="sd">    The same applies to the backup file. The backup file must also have the</span>
-<span class="sd">    same number of samples as the checkpoint file, otherwise, the backup is</span>
-<span class="sd">    considered invalid.</span>
-
-<span class="sd">    If the checkpoint (backup) file is found to be valid, but the backup</span>
-<span class="sd">    (checkpoint) file is not valid, then the checkpoint (backup) is copied to</span>
-<span class="sd">    the backup (checkpoint). Thus, this function ensures that checkpoint and</span>
-<span class="sd">    backup files are either both valid or both invalid.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    checkpoint_file : string</span>
-<span class="sd">        Name of the checkpoint file.</span>
-<span class="sd">    backup_file : string</span>
-<span class="sd">        Name of the backup file.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    checkpoint_valid : bool</span>
-<span class="sd">        Whether or not the checkpoint (and backup) file may be used for loading</span>
-<span class="sd">        samples.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># check if checkpoint file exists and is valid</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Validating checkpoint and backup files&quot;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">check_integrity</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">)</span>
-        <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IOError</span><span class="p">):</span>
-        <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># backup file</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">check_integrity</span><span class="p">(</span><span class="n">backup_file</span><span class="p">)</span>
-        <span class="n">backup_valid</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IOError</span><span class="p">):</span>
-        <span class="n">backup_valid</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># check if there are any samples in the file; if not, we&#39;ll just start from</span>
-    <span class="c1"># scratch</span>
-    <span class="k">if</span> <span class="n">checkpoint_valid</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">nsamples</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
-                <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="n">nsamples</span> <span class="o">!=</span> <span class="mi">0</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># check if there are any samples in the backup file</span>
-    <span class="k">if</span> <span class="n">backup_valid</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="n">backup_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                <span class="n">backup_nsamples</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
-                <span class="n">backup_valid</span> <span class="o">=</span> <span class="n">backup_nsamples</span> <span class="o">!=</span> <span class="mi">0</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="n">backup_valid</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># check that the checkpoint and backup have the same number of samples;</span>
-    <span class="c1"># if not, assume the checkpoint has the correct number</span>
-    <span class="k">if</span> <span class="n">checkpoint_valid</span> <span class="ow">and</span> <span class="n">backup_valid</span><span class="p">:</span>
-        <span class="n">backup_valid</span> <span class="o">=</span> <span class="n">nsamples</span> <span class="o">==</span> <span class="n">backup_nsamples</span>
-    <span class="c1"># decide what to do based on the files&#39; statuses</span>
-    <span class="k">if</span> <span class="n">checkpoint_valid</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">backup_valid</span><span class="p">:</span>
-        <span class="c1"># copy the checkpoint to the backup</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Backup invalid; copying checkpoint file&quot;</span><span class="p">)</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">backup_file</span><span class="p">)</span>
-        <span class="n">backup_valid</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">elif</span> <span class="n">backup_valid</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">checkpoint_valid</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Checkpoint invalid; copying backup file&quot;</span><span class="p">)</span>
-        <span class="c1"># copy the backup to the checkpoint</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">backup_file</span><span class="p">,</span> <span class="n">checkpoint_file</span><span class="p">)</span>
-        <span class="n">checkpoint_valid</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="n">checkpoint_valid</span></div>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 
 
 <div class="viewcode-block" id="add_low_frequency_cutoff_opt"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_low_frequency_cutoff_opt">[docs]</a><span class="k">def</span> <span class="nf">add_low_frequency_cutoff_opt</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adds the low-frequency-cutoff option to the given parser.&quot;&quot;&quot;</span>
-    <span class="c1"># Allow for different frequency cutoffs to be used for every detector</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
-                        <span class="n">action</span><span class="o">=</span><span class="n">MultiDetOptionAction</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;IFO:FLOW&#39;</span><span class="p">,</span>
+    <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
+    <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
+    <span class="c1"># will require (minor) changes to the Likelihood class</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--low-frequency-cutoff&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff for each IFO.&quot;</span><span class="p">)</span></div>
 
 
@@ -506,10 +283,15 @@
 <span class="sd">    dict</span>
 <span class="sd">        Dictionary of instruments -&gt; low frequency cutoff.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span></div>
+    <span class="c1"># FIXME: this just uses the same frequency cutoff for every instrument for</span>
+    <span class="c1"># now. We should allow for different frequency cutoffs to be used; that</span>
+    <span class="c1"># will require (minor) changes to the Likelihood class</span>
+    <span class="n">instruments</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span> <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">ifo</span><span class="p">:</span> <span class="n">opts</span><span class="o">.</span><span class="n">low_frequency_cutoff</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">instruments</span><span class="p">}</span></div>
+
 
 <div class="viewcode-block" id="data_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.data_from_cli">[docs]</a><span class="k">def</span> <span class="nf">data_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Loads the data needed for a likelihood evaluator from the given</span>
+    <span class="sd">&quot;&quot;&quot;Loads the data needed for a model from the given</span>
 <span class="sd">    command-line options. Gates specifed on the command line are also applied.</span>
 
 <span class="sd">    Parameters</span>
@@ -532,11 +314,11 @@
     <span class="n">psd_gates</span> <span class="o">=</span> <span class="n">psd_gates_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
 
     <span class="c1"># get strain time series</span>
-    <span class="n">strain_dict</span> <span class="o">=</span> <span class="n">strain_from_cli_multi_ifos</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">,</span>
+    <span class="n">instruments</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span> <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="n">strain_dict</span> <span class="o">=</span> <span class="n">strain_from_cli_multi_ifos</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">instruments</span><span class="p">,</span>
                                              <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
     <span class="c1"># apply gates if not waiting to overwhiten</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">opts</span><span class="o">.</span><span class="n">gate_overwhitened</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying gates to strain data&quot;</span><span class="p">)</span>
         <span class="n">strain_dict</span> <span class="o">=</span> <span class="n">apply_gates_to_td</span><span class="p">(</span><span class="n">strain_dict</span><span class="p">,</span> <span class="n">gates</span><span class="p">)</span>
 
     <span class="c1"># get strain time series to use for PSD estimation</span>
@@ -548,8 +330,8 @@
         <span class="n">psd_opts</span><span class="o">.</span><span class="n">gps_start_time</span> <span class="o">=</span> <span class="n">psd_opts</span><span class="o">.</span><span class="n">psd_start_time</span>
         <span class="n">psd_opts</span><span class="o">.</span><span class="n">gps_end_time</span> <span class="o">=</span> <span class="n">psd_opts</span><span class="o">.</span><span class="n">psd_end_time</span>
         <span class="n">psd_strain_dict</span> <span class="o">=</span> <span class="n">strain_from_cli_multi_ifos</span><span class="p">(</span><span class="n">psd_opts</span><span class="p">,</span>
-                                                    <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">,</span>
-                                                    <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+                                                     <span class="n">instruments</span><span class="p">,</span>
+                                                     <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
         <span class="c1"># apply any gates</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying gates to PSD data&quot;</span><span class="p">)</span>
         <span class="n">psd_strain_dict</span> <span class="o">=</span> <span class="n">apply_gates_to_td</span><span class="p">(</span><span class="n">psd_strain_dict</span><span class="p">,</span> <span class="n">psd_gates</span><span class="p">)</span>
@@ -559,23 +341,21 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">psd_strain_dict</span> <span class="o">=</span> <span class="n">strain_dict</span>
 
-
     <span class="c1"># FFT strain and save each of the length of the FFT, delta_f, and</span>
     <span class="c1"># low frequency cutoff to a dict</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;FFT strain&quot;</span><span class="p">)</span>
     <span class="n">stilde_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">length_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">delta_f_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">low_frequency_cutoff_dict</span> <span class="o">=</span> <span class="n">low_frequency_cutoff_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">instruments</span><span class="p">:</span>
         <span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">strain_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span>
         <span class="n">length_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span>
         <span class="n">delta_f_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">delta_f</span>
 
     <span class="c1"># get PSD as frequency series</span>
-    <span class="n">psd_dict</span> <span class="o">=</span> <span class="n">psd_from_cli_multi_ifos</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">length_dict</span><span class="p">,</span> <span class="n">delta_f_dict</span><span class="p">,</span>
-                               <span class="n">low_frequency_cutoff_dict</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">instruments</span><span class="p">,</span>
-                               <span class="n">strain_dict</span><span class="o">=</span><span class="n">psd_strain_dict</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+    <span class="n">psd_dict</span> <span class="o">=</span> <span class="n">psd_from_cli_multi_ifos</span><span class="p">(</span>
+        <span class="n">opts</span><span class="p">,</span> <span class="n">length_dict</span><span class="p">,</span> <span class="n">delta_f_dict</span><span class="p">,</span> <span class="n">low_frequency_cutoff_dict</span><span class="p">,</span>
+        <span class="n">instruments</span><span class="p">,</span> <span class="n">strain_dict</span><span class="o">=</span><span class="n">psd_strain_dict</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
 
     <span class="c1"># apply any gates to overwhitened data, if desired</span>
     <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">gate_overwhitened</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">gate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -584,279 +364,122 @@
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">:</span>
             <span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">/=</span> <span class="n">psd_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
         <span class="n">stilde_dict</span> <span class="o">=</span> <span class="n">apply_gates_to_fd</span><span class="p">(</span><span class="n">stilde_dict</span><span class="p">,</span> <span class="n">gates</span><span class="p">)</span>
-        <span class="c1"># unwhiten the data for the likelihood generator</span>
+        <span class="c1"># unwhiten the data for the model</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">:</span>
             <span class="n">stilde_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">*=</span> <span class="n">psd_dict</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">strain_dict</span><span class="p">,</span> <span class="n">stilde_dict</span><span class="p">,</span> <span class="n">psd_dict</span></div>
 
 
-
-<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1">#</span>
-<span class="c1">#                Utilities for loading and plotting results</span>
+<span class="c1">#                Utilities for plotting results</span>
 <span class="c1">#</span>
-<span class="c1">#-----------------------------------------------------------------------------</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 
-<div class="viewcode-block" id="add_inference_results_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_inference_results_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_inference_results_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">include_parameters_group</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adds the options used to call pycbc.inference.results_from_cli function</span>
-<span class="sd">    to an argument parser. These are options releated to loading the results</span>
-<span class="sd">    from a run of pycbc_inference, for purposes of plotting and/or creating</span>
-<span class="sd">    tables.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    parser : object</span>
-<span class="sd">        ArgumentParser instance.</span>
-<span class="sd">    include_parameters_group : bool</span>
-<span class="sd">        If true then include `--parameters-group` option.</span>
+<div class="viewcode-block" id="ParseLabelArg"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.ParseLabelArg">[docs]</a><span class="k">class</span> <span class="nc">ParseLabelArg</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Argparse action that will parse arguments that can accept labels.</span>
+
+<span class="sd">    This assumes that the values set on the command line for its assigned</span>
+<span class="sd">    argument are strings formatted like ``PARAM[:LABEL]``. When the arguments</span>
+<span class="sd">    are parsed, the ``LABEL`` bit is stripped off and added to a dictionary</span>
+<span class="sd">    mapping ``PARAM -&gt; LABEL``. This dictionary is stored to the parsed</span>
+<span class="sd">    namespace called ``{dest}_labels``, where ``{dest}`` is the argument&#39;s</span>
+<span class="sd">    ``dest`` setting (by default, this is the same as the option string).</span>
+<span class="sd">    Likewise, the argument&#39;s ``dest`` in the parsed namespace is updated so</span>
+<span class="sd">    that it is just ``PARAM``.</span>
+
+<span class="sd">    If no ``LABEL`` is provided, then ``PARAM`` will be used for ``LABEL``.</span>
+
+<span class="sd">    This action can work on arguments that have ``nargs != 0`` and ``type`` set</span>
+<span class="sd">    to ``str``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+        <span class="c1"># check that type is string</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;the type for this action must be a string&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nargs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;nargs must not be 0 for this action&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ParseLabelArg</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="n">nargs</span><span class="p">,</span>
+                                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="n">results_reading_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Arguments for loading &quot;</span>
-        <span class="s2">&quot;inference results&quot;</span><span class="p">)</span>
-
-    <span class="c1"># required options</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to input HDF files.&quot;</span><span class="p">)</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--parameters&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span>
-        <span class="n">metavar</span><span class="o">=</span><span class="s2">&quot;PARAM[:LABEL]&quot;</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of parameters to load. If none provided will load all of &quot;</span>
-             <span class="s2">&quot;the variable args in the input-file. If provided, the &quot;</span>
-             <span class="s2">&quot;parameters can be any of the variable args or posteriors in &quot;</span>
-             <span class="s2">&quot;the input file, derived parameters from them, or any function &quot;</span>
-             <span class="s2">&quot;of them. Syntax for functions is python; any math functions in &quot;</span>
-             <span class="s2">&quot;the numpy libary may be used. Can optionally also specify a &quot;</span>
-             <span class="s2">&quot;label for each parameter. If no label is provided, will try to &quot;</span>
-             <span class="s2">&quot;retrieve a label from the input-file. If no label can be found &quot;</span>
-             <span class="s2">&quot;in the input-file, will try to get a label from &quot;</span>
-             <span class="s2">&quot;pycbc.waveform.parameters. If no label can be found in either &quot;</span>
-             <span class="s2">&quot;place, will just use the parameter.&quot;</span><span class="p">)</span>
-
-    <span class="c1"># optionals</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--thin-start&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sample number to start collecting samples to plot. If none &quot;</span>
-             <span class="s2">&quot;provided, will start at the end of the burn-in.&quot;</span><span class="p">)</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--thin-interval&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Interval to use for thinning samples. If none provided, will &quot;</span>
-             <span class="s2">&quot;use the auto-correlation length found in the file.&quot;</span><span class="p">)</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--thin-end&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Sample number to stop collecting samples to plot. If none &quot;</span>
-             <span class="s2">&quot;provided, will stop at the last sample from the sampler.&quot;</span><span class="p">)</span>
-    <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--iteration&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Only retrieve the given iteration. To load the last n-th sampe &quot;</span>
-             <span class="s2">&quot;use -n, e.g., -1 will load the last iteration. This overrides &quot;</span>
-             <span class="s2">&quot;the thin-start/interval/end options.&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">include_parameters_group</span><span class="p">:</span>
-        <span class="n">results_reading_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-            <span class="s2">&quot;--parameters-group&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-            <span class="n">default</span><span class="o">=</span><span class="n">InferenceFile</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span>
-            <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="n">InferenceFile</span><span class="o">.</span><span class="n">samples_group</span><span class="p">,</span> <span class="n">InferenceFile</span><span class="o">.</span><span class="n">stats_group</span><span class="p">],</span>
-            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Group in the HDF InferenceFile to look for parameters.&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">results_reading_group</span></div>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">option_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">singlearg</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">singlearg</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">]</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">psplit</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">psplit</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">param</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">psplit</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">param</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+        <span class="c1"># update the namespace</span>
+        <span class="k">if</span> <span class="n">singlearg</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_labels&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">),</span> <span class="n">labels</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="parse_parameters_opt"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.parse_parameters_opt">[docs]</a><span class="k">def</span> <span class="nf">parse_parameters_opt</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Parses the --parameters opt in the results_reading_group.</span>
+<div class="viewcode-block" id="ParseParametersArg"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.ParseParametersArg">[docs]</a><span class="k">class</span> <span class="nc">ParseParametersArg</span><span class="p">(</span><span class="n">ParseLabelArg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Argparse action that will parse parameters and labels from an opton.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    parameters : list of str or None</span>
-<span class="sd">        The parameters to parse.</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    parameters : list of str</span>
-<span class="sd">        The parameters.</span>
-<span class="sd">    labels : dict</span>
-<span class="sd">        A dictionary mapping parameters for which labels were provide to those</span>
-<span class="sd">        labels.</span>
+<span class="sd">    Does the same as ``ParseLabelArg``, with the additional functionality that</span>
+<span class="sd">    if ``LABEL`` is a known parameter in ``pycbc.waveform.parameters``, then</span>
+<span class="sd">    the label attribute there will be used in the labels dictionary.</span>
+<span class="sd">    Otherwise, ``LABEL`` will be used.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a parser and add two arguments that use this action (note that the</span>
+<span class="sd">    first argument accepts multiple inputs while the second only accepts a</span>
+<span class="sd">    single input):</span>
+
+<span class="sd">    &gt;&gt;&gt; import argparse</span>
+<span class="sd">    &gt;&gt;&gt; parser = argparse.ArgumentParser()</span>
+<span class="sd">    &gt;&gt;&gt; parser.add_argument(&#39;--parameters&#39;, type=str, nargs=&quot;+&quot;,</span>
+<span class="sd">                            action=ParseParametersArg)</span>
+<span class="sd">    &gt;&gt;&gt; parser.add_argument(&#39;--z-arg&#39;, type=str, action=ParseParametersArg)</span>
+
+<span class="sd">    Parse a command line that uses these options:</span>
+
+<span class="sd">    &gt;&gt;&gt; import shlex</span>
+<span class="sd">    &gt;&gt;&gt; cli = &quot;--parameters &#39;mass1+mass2:mtotal&#39; ra ni --z-arg foo:bar&quot;</span>
+<span class="sd">    &gt;&gt;&gt; opts = parser.parse_args(shlex.split(cli))</span>
+<span class="sd">    &gt;&gt;&gt; opts.parameters</span>
+<span class="sd">    [&#39;mass1+mass2&#39;, &#39;ra&#39;, &#39;ni&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; opts.parameters_labels</span>
+<span class="sd">    {&#39;mass1+mass2&#39;: &#39;$M~(\\mathrm{M}_\\odot)$&#39;, &#39;ni&#39;: &#39;ni&#39;, &#39;ra&#39;: &#39;$\\alpha$&#39;}</span>
+<span class="sd">    &gt;&gt;&gt; opts.z_arg</span>
+<span class="sd">    &#39;foo&#39;</span>
+<span class="sd">    &gt;&gt;&gt; opts.z_arg_labels</span>
+<span class="sd">    {&#39;foo&#39;: &#39;bar&#39;}</span>
+
+<span class="sd">    In the above, the first argument to ``--parameters`` was ``mtotal``. Since</span>
+<span class="sd">    this is a recognized parameter in ``pycbc.waveform.parameters``, the label</span>
+<span class="sd">    dictionary contains the latex string associated with the ``mtotal``</span>
+<span class="sd">    parameter. A label was not provided for the second argument, and so ``ra``</span>
+<span class="sd">    was used. Since ``ra`` is also a recognized parameter, its associated latex</span>
+<span class="sd">    string was used in the labels dictionary. Since ``ni`` and ``bar`` (the</span>
+<span class="sd">    label for ``z-arg``) are not recognized parameters, they were just used</span>
+<span class="sd">    as-is in the labels dictionaries.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{}</span>
-    <span class="c1"># load the labels</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">p</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-            <span class="n">parameters</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
-            <span class="c1"># try to get the label from waveform.parameters</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">option_string</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ParseParametersArg</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span>
+                                                 <span class="n">option_string</span><span class="o">=</span><span class="n">option_string</span><span class="p">)</span>
+        <span class="c1"># try to replace the labels with a label from waveform.parameters</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_labels&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">label</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">waveform</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+                <span class="n">labels</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                <span class="k">pass</span>
-            <span class="n">labels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
-    <span class="k">return</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">labels</span></div>
-
-
-<div class="viewcode-block" id="results_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.results_from_cli">[docs]</a><span class="k">def</span> <span class="nf">results_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">load_samples</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Loads an inference result file along with any labels associated with it</span>
-<span class="sd">    from the command line options.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    opts : ArgumentParser options</span>
-<span class="sd">        The options from the command line.</span>
-<span class="sd">    load_samples : {True, bool}</span>
-<span class="sd">        Load samples from the results file using the parameters, thin_start,</span>
-<span class="sd">        and thin_interval specified in the options. The samples are returned</span>
-<span class="sd">        as a FieldArray instance.</span>
-
-<span class="sd">    \**kwargs :</span>
-<span class="sd">        All other keyword arguments are passed to the InferenceFile&#39;s</span>
-<span class="sd">        read_samples function.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fp_all : pycbc.io.InferenceFile</span>
-<span class="sd">        The result file as an InferenceFile. If more than one input file,</span>
-<span class="sd">        then it returns a list.</span>
-<span class="sd">    parameters_all : list</span>
-<span class="sd">        List of the parameters to use, parsed from the parameters option.</span>
-<span class="sd">        If more than one input file, then it returns a list.</span>
-<span class="sd">    labels_all : list</span>
-<span class="sd">        List of labels to associate with the parameters. If more than one</span>
-<span class="sd">        input file, then it returns a list.</span>
-<span class="sd">    samples_all : {None, FieldArray}</span>
-<span class="sd">        If load_samples, the samples as a FieldArray; otherwise, None.</span>
-<span class="sd">        If more than one input file, then it returns a list.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># lists for files and samples from all input files</span>
-    <span class="n">fp_all</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">parameters_all</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">labels_all</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">samples_all</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="n">input_files</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">input_file</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">input_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_files</span><span class="p">]</span>
-
-    <span class="c1"># loop over all input files</span>
-    <span class="k">for</span> <span class="n">input_file</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Reading input file </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">input_file</span><span class="p">)</span>
-
-        <span class="c1"># read input file</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-
-        <span class="c1"># get parameters and a dict of labels for each parameter</span>
-        <span class="n">parameters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span> <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span> \
-                         <span class="k">else</span> <span class="n">opts</span><span class="o">.</span><span class="n">parameters</span>
-        <span class="n">parameters</span><span class="p">,</span> <span class="n">ldict</span> <span class="o">=</span> <span class="n">parse_parameters_opt</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># convert labels dict to list</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">label</span> <span class="o">=</span> <span class="n">ldict</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="n">label</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_label</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-
-        <span class="c1"># load the samples</span>
-        <span class="k">if</span> <span class="n">load_samples</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading samples&quot;</span><span class="p">)</span>
-
-            <span class="c1"># check if need extra parameters for a non-sampling parameter</span>
-            <span class="n">file_parameters</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">get_common_cbc_transforms</span><span class="p">(</span>
-                                                 <span class="n">parameters</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
-
-            <span class="c1"># read samples from file</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span>
-                <span class="n">file_parameters</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">thin_start</span><span class="p">,</span>
-                <span class="n">thin_interval</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">thin_interval</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">thin_end</span><span class="p">,</span>
-                <span class="n">iteration</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">iteration</span><span class="p">,</span>
-                <span class="n">samples_group</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">parameters_group</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-            <span class="c1"># add parameters not included in file</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
-
-        <span class="c1"># else do not read samples</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">samples</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="c1"># add results to lists from all input files</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">fp_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-            <span class="n">parameters_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-            <span class="n">labels_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-            <span class="n">samples_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
-
-        <span class="c1"># else only one input file then do not return lists</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">fp_all</span> <span class="o">=</span> <span class="n">fp</span>
-            <span class="n">parameters_all</span> <span class="o">=</span> <span class="n">parameters</span>
-            <span class="n">labels_all</span> <span class="o">=</span> <span class="n">labels</span>
-            <span class="n">samples_all</span> <span class="o">=</span> <span class="n">samples</span>
-
-    <span class="k">return</span> <span class="n">fp_all</span><span class="p">,</span> <span class="n">parameters_all</span><span class="p">,</span> <span class="n">labels_all</span><span class="p">,</span> <span class="n">samples_all</span></div>
-
-<div class="viewcode-block" id="get_file_type"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.get_file_type">[docs]</a><span class="k">def</span> <span class="nf">get_file_type</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Returns I/O object to use for file.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    filename : str</span>
-<span class="sd">        Name of file.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    file_type : {InferenceFile, InferenceTXTFile}</span>
-<span class="sd">        The type of inference file object to use.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">txt_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;.csv&quot;</span><span class="p">]</span>
-    <span class="n">hdf_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;.h5&quot;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">hdf_extensions</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">InferenceFile</span>
-    <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">txt_extensions</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">InferenceTXTFile</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Extension is not supported.&quot;</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="get_zvalues"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.get_zvalues">[docs]</a><span class="k">def</span> <span class="nf">get_zvalues</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">likelihood_stats</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Reads the data for the z-value of the plots from the inference file.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    fp : InferenceFile</span>
-<span class="sd">        An open inference file; needed to get the value of the log noise</span>
-<span class="sd">        likelihood.</span>
-<span class="sd">    arg : str</span>
-<span class="sd">        The argument to plot; must be one of `loglr`, `snr`, `logplr`,</span>
-<span class="sd">        `logposterior`, or `prior`. If not one of these, a ValueError is</span>
-<span class="sd">        raised.</span>
-<span class="sd">    likelihood_stats : FieldArray</span>
-<span class="sd">        The likelihood stats; the sort of thing returned by</span>
-<span class="sd">        `fp.read_likelihood_stats`.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    zvals : numpy.array</span>
-<span class="sd">        An array of the desired likelihood values to plot.</span>
-<span class="sd">    zlbl : str</span>
-<span class="sd">        The label to use for the values on a plot.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">arg</span> <span class="o">==</span> <span class="s1">&#39;loglr&#39;</span><span class="p">:</span>
-        <span class="n">zvals</span> <span class="o">=</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">loglr</span>
-        <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\log\mathcal</span><span class="si">{L}</span><span class="s1">(\vec{\vartheta})$&#39;</span>
-    <span class="k">elif</span> <span class="n">arg</span> <span class="o">==</span> <span class="s1">&#39;snr&#39;</span><span class="p">:</span>
-        <span class="n">zvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">snr_from_loglr</span><span class="p">(</span><span class="n">likelihood_stats</span><span class="o">.</span><span class="n">loglr</span><span class="p">)</span>
-        <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\rho(\vec{\vartheta})$&#39;</span>
-    <span class="k">elif</span> <span class="n">arg</span> <span class="o">==</span> <span class="s1">&#39;logplr&#39;</span><span class="p">:</span>
-        <span class="n">zvals</span> <span class="o">=</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">loglr</span> <span class="o">+</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">prior</span>
-        <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\log[\mathcal</span><span class="si">{L}</span><span class="s1">(\vec{\vartheta})p(\vec{\vartheta})]$&#39;</span>
-    <span class="k">elif</span> <span class="n">arg</span> <span class="o">==</span> <span class="s1">&#39;logposterior&#39;</span><span class="p">:</span>
-        <span class="n">zvals</span> <span class="o">=</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">loglr</span> <span class="o">+</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">prior</span> <span class="o">+</span> <span class="n">fp</span><span class="o">.</span><span class="n">lognl</span>
-        <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\log[p(d|\vec{\vartheta})p(\vec{\vartheta})]$&#39;</span>
-    <span class="k">elif</span> <span class="n">arg</span> <span class="o">==</span> <span class="s1">&#39;prior&#39;</span><span class="p">:</span>
-        <span class="n">zvals</span> <span class="o">=</span> <span class="n">likelihood_stats</span><span class="o">.</span><span class="n">prior</span>
-        <span class="n">zlbl</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\log p(\vec{\vartheta})$&#39;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognized arg </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">zvals</span><span class="p">,</span> <span class="n">zlbl</span></div>
+                <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="add_plot_posterior_option_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.add_plot_posterior_option_group">[docs]</a><span class="k">def</span> <span class="nf">add_plot_posterior_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -868,7 +491,7 @@
 <span class="sd">        ArgumentParser instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pgroup</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Options for what plots to create and &quot;</span>
-                                         <span class="s2">&quot;their formats.&quot;</span><span class="p">)</span>
+                                       <span class="s2">&quot;their formats.&quot;</span><span class="p">)</span>
     <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--plot-marginal&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Plot 1D marginalized distributions on the &quot;</span>
                              <span class="s2">&quot;diagonal axes.&quot;</span><span class="p">)</span>
@@ -902,7 +525,8 @@
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Same as mins, but for the maximum values to &quot;</span>
                              <span class="s2">&quot;plot.&quot;</span><span class="p">)</span>
     <span class="c1"># add expected parameters options</span>
-    <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--expected-parameters&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PARAM:VAL&#39;</span><span class="p">,</span>
+    <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--expected-parameters&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span>
+                        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;PARAM:VAL&#39;</span><span class="p">,</span>
                         <span class="n">default</span><span class="o">=</span><span class="p">[],</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify expected parameter values to plot. If &quot;</span>
                              <span class="s2">&quot;provided, a cross will be plotted in each axis &quot;</span>
@@ -922,9 +546,6 @@
                              <span class="s2">&quot;injection in the file to work. Any values &quot;</span>
                              <span class="s2">&quot;specified by expected-parameters will override &quot;</span>
                              <span class="s2">&quot;the values obtained for the injection.&quot;</span><span class="p">)</span>
-    <span class="c1"># FIXME: the following should be made an attribute of the results file</span>
-    <span class="n">pgroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--injection-hdf-group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;H1/injections&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF group that contains injection values.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pgroup</span></div>
 
 
@@ -961,45 +582,6 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;option --maxs not specified correctly; see help&quot;</span><span class="p">)</span>
         <span class="n">maxs</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">mins</span><span class="p">,</span> <span class="n">maxs</span></div>
-
-
-<div class="viewcode-block" id="injections_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.injections_from_cli">[docs]</a><span class="k">def</span> <span class="nf">injections_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Gets injection parameters from the inference file(s).</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    opts : argparser</span>
-<span class="sd">        Argparser object that has the command-line objects to parse.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    FieldArray</span>
-<span class="sd">        Array of the injection parameters from all of the input files given</span>
-<span class="sd">        by ``opts.input_file``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">input_files</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">input_file</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">input_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_files</span><span class="p">]</span>
-    <span class="n">parameters</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_parameters_opt</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">InferenceFile</span><span class="p">(</span><span class="n">input_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-            <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span>
-    <span class="n">injections</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1"># loop over all input files getting the injection files</span>
-    <span class="k">for</span> <span class="n">input_file</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">:</span>
-        <span class="c1"># read injections from HDF input file as FieldArray</span>
-        <span class="n">these_injs</span> <span class="o">=</span> <span class="n">inject</span><span class="o">.</span><span class="n">InjectionSet</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span>
-            <span class="n">hdf_group</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">injection_hdf_group</span><span class="p">)</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">FieldArray</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">injections</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">injections</span> <span class="o">=</span> <span class="n">these_injs</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">injections</span> <span class="o">=</span> <span class="n">injections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">these_injs</span><span class="p">)</span>
-    <span class="c1"># check if need extra parameters than parameters stored in injection file</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">get_common_cbc_transforms</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
-                                                 <span class="n">injections</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">)</span>
-    <span class="c1"># add parameters not included in injection file</span>
-    <span class="n">injections</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">injections</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">injections</span></div>
 
 
 <div class="viewcode-block" id="expected_parameters_from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.option_utils.expected_parameters_from_cli">[docs]</a><span class="k">def</span> <span class="nf">expected_parameters_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
@@ -1039,22 +621,17 @@
     <span class="n">scatter_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Options for configuring the &quot;</span>
                                               <span class="s2">&quot;scatter plot.&quot;</span><span class="p">)</span>
 
-    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--z-arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">,</span> <span class="s1">&#39;logplr&#39;</span><span class="p">,</span> <span class="s1">&#39;logposterior&#39;</span><span class="p">,</span>
-                             <span class="s1">&#39;prior&#39;</span><span class="p">],</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s1">&#39;What to color the scatter points by. If not set, &#39;</span>
-                         <span class="s1">&#39;all points will be the same color. Choices are: &#39;</span>
-                         <span class="s1">&#39;loglr: the log likelihood ratio; snr: SNR; &#39;</span>
-                         <span class="s1">&#39;logplr: loglr + log of the prior; &#39;</span>
-                         <span class="s1">&#39;logposterior: log likelihood function + log prior; &#39;</span>
-                         <span class="s1">&#39;prior: the log of the prior.&#39;</span><span class="p">)</span>
-    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--vmin&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Minimum value for the colorbar.&quot;</span><span class="p">)</span>
-    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--vmax&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum value for the colorbar.&quot;</span><span class="p">)</span>
-    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--scatter-cmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the colormap to use for points. Default is &quot;</span>
-                         <span class="s2">&quot;plasma.&quot;</span><span class="p">)</span>
+    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--z-arg&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="n">ParseParametersArg</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;What to color the scatter points by. Syntax is the same as the &#39;</span>
+             <span class="s1">&#39;parameters option.&#39;</span><span class="p">)</span>
+    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--vmin&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Minimum value for the colorbar.&quot;</span><span class="p">)</span>
+    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--vmax&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum value for the colorbar.&quot;</span><span class="p">)</span>
+    <span class="n">scatter_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--scatter-cmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the colormap to use for points. Default is plasma.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">scatter_group</span></div>
 
@@ -1068,19 +645,20 @@
 <span class="sd">        ArgumentParser instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">density_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Options for configuring the &quot;</span>
-                                          <span class="s2">&quot;contours and density color map&quot;</span><span class="p">)</span>
+                                              <span class="s2">&quot;contours and density color map&quot;</span><span class="p">)</span>
 
-    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--density-cmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the colormap to use for the density. &quot;</span>
-                         <span class="s2">&quot;Default is viridis.&quot;</span><span class="p">)</span>
-    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--contour-color&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the color to use for the contour lines. &quot;</span>
-                         <span class="s2">&quot;Default is white for density plots and black &quot;</span>
-                         <span class="s2">&quot;for scatter plots.&quot;</span><span class="p">)</span>
-    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--use-kombine-kde&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
-                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use kombine&#39;s KDE for determining contours. Default &quot;</span>
-                         <span class="s2">&quot;is to use scipy&#39;s gaussian_kde.&quot;</span><span class="p">)</span>
+    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--density-cmap&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the colormap to use for the density. &quot;</span>
+             <span class="s2">&quot;Default is viridis.&quot;</span><span class="p">)</span>
+    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--contour-color&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Specify the color to use for the contour lines. Default is &quot;</span>
+             <span class="s2">&quot;white for density plots and black for scatter plots.&quot;</span><span class="p">)</span>
+    <span class="n">density_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;--use-kombine-kde&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Use kombine&#39;s KDE for determining contours. &quot;</span>
+             <span class="s2">&quot;Default is to use scipy&#39;s gaussian_kde.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">density_group</span></div>
 </pre></div>

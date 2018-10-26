@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview: module code &mdash; PyCBC 23025b documentation</title>
+  <title>Overview: module code &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -192,7 +193,8 @@
            <div itemprop="articleBody">
             
   <h1>All modules for which code is available</h1>
-<ul><li><a href="glue/ligolw/lsctables.html">glue.ligolw.lsctables</a></li>
+<ul><li><a href="abc.html">abc</a></li>
+<li><a href="glue/ligolw/lsctables.html">glue.ligolw.lsctables</a></li>
 <li><a href="glue/ligolw/table.html">glue.ligolw.table</a></li>
 <li><a href="pycbc.html">pycbc</a></li>
 <ul><li><a href="pycbc/bin_utils.html">pycbc.bin_utils</a></li>
@@ -250,17 +252,30 @@
 <li><a href="pycbc/inference/entropy.html">pycbc.inference.entropy</a></li>
 <li><a href="pycbc/inference/gelman_rubin.html">pycbc.inference.gelman_rubin</a></li>
 <li><a href="pycbc/inference/geweke.html">pycbc.inference.geweke</a></li>
-<li><a href="pycbc/inference/likelihood.html">pycbc.inference.likelihood</a></li>
-<li><a href="pycbc/inference/option_utils.html">pycbc.inference.option_utils</a></li>
-<li><a href="pycbc/inference/sampler_base.html">pycbc.inference.sampler_base</a></li>
-<li><a href="pycbc/inference/sampler_emcee.html">pycbc.inference.sampler_emcee</a></li>
-<li><a href="pycbc/inference/sampler_kombine.html">pycbc.inference.sampler_kombine</a></li>
-<li><a href="pycbc/inference/sampler_mcmc.html">pycbc.inference.sampler_mcmc</a></li>
-<li><a href="pycbc/inject/inject.html">pycbc.inject.inject</a></li>
+<li><a href="pycbc/inference/io.html">pycbc.inference.io</a></li>
+<ul><li><a href="pycbc/inference/io/base_hdf.html">pycbc.inference.io.base_hdf</a></li>
+<li><a href="pycbc/inference/io/base_mcmc.html">pycbc.inference.io.base_mcmc</a></li>
+<li><a href="pycbc/inference/io/base_multitemper.html">pycbc.inference.io.base_multitemper</a></li>
+<li><a href="pycbc/inference/io/emcee.html">pycbc.inference.io.emcee</a></li>
+<li><a href="pycbc/inference/io/emcee_pt.html">pycbc.inference.io.emcee_pt</a></li>
+<li><a href="pycbc/inference/io/posterior.html">pycbc.inference.io.posterior</a></li>
+<li><a href="pycbc/inference/io/txt.html">pycbc.inference.io.txt</a></li>
+</ul><li><a href="pycbc/inference/models.html">pycbc.inference.models</a></li>
+<ul><li><a href="pycbc/inference/models/analytic.html">pycbc.inference.models.analytic</a></li>
+<li><a href="pycbc/inference/models/base.html">pycbc.inference.models.base</a></li>
+<li><a href="pycbc/inference/models/base_data.html">pycbc.inference.models.base_data</a></li>
+<li><a href="pycbc/inference/models/gaussian_noise.html">pycbc.inference.models.gaussian_noise</a></li>
+<li><a href="pycbc/inference/models/marginalized_gaussian_noise.html">pycbc.inference.models.marginalized_gaussian_noise</a></li>
+</ul><li><a href="pycbc/inference/option_utils.html">pycbc.inference.option_utils</a></li>
+<li><a href="pycbc/inference/sampler.html">pycbc.inference.sampler</a></li>
+<ul><li><a href="pycbc/inference/sampler/base.html">pycbc.inference.sampler.base</a></li>
+<li><a href="pycbc/inference/sampler/base_mcmc.html">pycbc.inference.sampler.base_mcmc</a></li>
+<li><a href="pycbc/inference/sampler/base_multitemper.html">pycbc.inference.sampler.base_multitemper</a></li>
+<li><a href="pycbc/inference/sampler/emcee.html">pycbc.inference.sampler.emcee</a></li>
+<li><a href="pycbc/inference/sampler/emcee_pt.html">pycbc.inference.sampler.emcee_pt</a></li>
+</ul><li><a href="pycbc/inject/inject.html">pycbc.inject.inject</a></li>
 <li><a href="pycbc/inject/injfilterrejector.html">pycbc.inject.injfilterrejector</a></li>
 <li><a href="pycbc/io/hdf.html">pycbc.io.hdf</a></li>
-<li><a href="pycbc/io/inference_hdf.html">pycbc.io.inference_hdf</a></li>
-<li><a href="pycbc/io/inference_txt.html">pycbc.io.inference_txt</a></li>
 <li><a href="pycbc/io/live.html">pycbc.io.live</a></li>
 <li><a href="pycbc/io/record.html">pycbc.io.record</a></li>
 <li><a href="pycbc/libutils.html">pycbc.libutils</a></li>
@@ -293,7 +308,8 @@
 <li><a href="pycbc/scheme.html">pycbc.scheme</a></li>
 <li><a href="pycbc/sensitivity.html">pycbc.sensitivity</a></li>
 <li><a href="pycbc/strain.html">pycbc.strain</a></li>
-<ul><li><a href="pycbc/strain/gate.html">pycbc.strain.gate</a></li>
+<ul><li><a href="pycbc/strain/calibration.html">pycbc.strain.calibration</a></li>
+<li><a href="pycbc/strain/gate.html">pycbc.strain.gate</a></li>
 <li><a href="pycbc/strain/recalibrate.html">pycbc.strain.recalibrate</a></li>
 <li><a href="pycbc/strain/strain.html">pycbc.strain.strain</a></li>
 </ul><li><a href="pycbc/tmpltbank/bank_output_utils.html">pycbc.tmpltbank.bank_output_utils</a></li>

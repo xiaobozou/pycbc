@@ -1,6 +1,15 @@
 pycbc.inference package
 =======================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    pycbc.inference.io
+    pycbc.inference.models
+    pycbc.inference.sampler
+
 Submodules
 ----------
 
@@ -36,58 +45,10 @@ pycbc.inference.geweke module
     :undoc-members:
     :show-inheritance:
 
-pycbc.inference.likelihood module
----------------------------------
-
-.. automodule:: pycbc.inference.likelihood
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.inference.option\_utils module
 ------------------------------------
 
 .. automodule:: pycbc.inference.option_utils
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.inference.sampler module
-------------------------------
-
-.. automodule:: pycbc.inference.sampler
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.inference.sampler\_base module
-------------------------------------
-
-.. automodule:: pycbc.inference.sampler_base
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.inference.sampler\_emcee module
--------------------------------------
-
-.. automodule:: pycbc.inference.sampler_emcee
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.inference.sampler\_kombine module
----------------------------------------
-
-.. automodule:: pycbc.inference.sampler_kombine
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-pycbc.inference.sampler\_mcmc module
-------------------------------------
-
-.. automodule:: pycbc.inference.sampler_mcmc
     :members:
     :undoc-members:
     :show-inheritance:

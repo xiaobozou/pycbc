@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC 23025b documentation</title>
+  <title>Index &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -58,7 +59,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -197,11 +198,7 @@
 
 <table style="width: 100%" class="indextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pycbc.inference.html#pycbc.inference.burn_in.n_acl">n_acl() (in module pycbc.inference.burn_in)</a>
-</li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.n_independent_samples">n_independent_samples (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.n_independent_samples">n_independent_samples() (pycbc.inference.sampler_base.BaseMCMCSampler class method)</a>
+      <li><a href="pycbc.inference.html#pycbc.inference.burn_in.MCMCBurnInTests.nacl">nacl() (pycbc.inference.burn_in.MCMCBurnInTests method)</a>
 </li>
       <li><a href="pycbc.html#pycbc.boundaries.ClosedBound.name">name (pycbc.boundaries.ClosedBound attribute)</a>
 
@@ -250,35 +247,41 @@
 </li>
         <li><a href="pycbc.distributions.html#pycbc.distributions.uniform_log.UniformLog10.name">(pycbc.distributions.uniform_log.UniformLog10 attribute)</a>, <a href="pycbc.distributions.html#pycbc.distributions.uniform_log.UniformLog10.name">[1]</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.name">(pycbc.inference.likelihood.BaseLikelihoodEvaluator attribute)</a>
+        <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.name">(pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood.name">(pycbc.inference.likelihood.GaussianLikelihood attribute)</a>
+        <li><a href="pycbc.inference.io.html#pycbc.inference.io.emcee.EmceeFile.name">(pycbc.inference.io.emcee.EmceeFile attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood.name">(pycbc.inference.likelihood.MarginalizedPhaseGaussianLikelihood attribute)</a>
+        <li><a href="pycbc.inference.io.html#pycbc.inference.io.emcee_pt.EmceePTFile.name">(pycbc.inference.io.emcee_pt.EmceePTFile attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.TestEggbox.name">(pycbc.inference.likelihood.TestEggbox attribute)</a>
+        <li><a href="pycbc.inference.io.html#pycbc.inference.io.posterior.PosteriorFile.name">(pycbc.inference.io.posterior.PosteriorFile attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.TestNormal.name">(pycbc.inference.likelihood.TestNormal attribute)</a>
+        <li><a href="pycbc.inference.io.html#pycbc.inference.io.txt.InferenceTXTFile.name">(pycbc.inference.io.txt.InferenceTXTFile attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.TestRosenbrock.name">(pycbc.inference.likelihood.TestRosenbrock attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.analytic.TestEggbox.name">(pycbc.inference.models.analytic.TestEggbox attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.likelihood.TestVolcano.name">(pycbc.inference.likelihood.TestVolcano attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.analytic.TestNormal.name">(pycbc.inference.models.analytic.TestNormal attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.name">(pycbc.inference.sampler_base.BaseMCMCSampler attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.analytic.TestRosenbrock.name">(pycbc.inference.models.analytic.TestRosenbrock attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.name">(pycbc.inference.sampler_emcee.EmceeEnsembleSampler attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.analytic.TestVolcano.name">(pycbc.inference.models.analytic.TestVolcano attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.name">(pycbc.inference.sampler_emcee.EmceePTSampler attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.name">(pycbc.inference.models.base.BaseModel attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler.name">(pycbc.inference.sampler_kombine.KombineSampler attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise.name">(pycbc.inference.models.gaussian_noise.GaussianNoise attribute)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_mcmc.MCMCSampler.name">(pycbc.inference.sampler_mcmc.MCMCSampler attribute)</a>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.marginalized_gaussian_noise.MarginalizedGaussianNoise.name">(pycbc.inference.models.marginalized_gaussian_noise.MarginalizedGaussianNoise attribute)</a>
 </li>
-        <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.name">(pycbc.io.inference_hdf.InferenceFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.name">(pycbc.inference.sampler.base.BaseSampler attribute)</a>
 </li>
-        <li><a href="pycbc.io.html#pycbc.io.inference_txt.InferenceTXTFile.name">(pycbc.io.inference_txt.InferenceTXTFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee.EmceeEnsembleSampler.name">(pycbc.inference.sampler.emcee.EmceeEnsembleSampler attribute)</a>
+</li>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee_pt.EmceePTSampler.name">(pycbc.inference.sampler.emcee_pt.EmceePTSampler attribute)</a>
 </li>
         <li><a href="pycbc.io.html#pycbc.io.record.FieldArray.name">(pycbc.io.record.FieldArray attribute)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.calibration.CubicSpline.name">(pycbc.strain.calibration.CubicSpline attribute)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.calibration.Recalibrate.name">(pycbc.strain.calibration.Recalibrate attribute)</a>
 </li>
         <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.name">(pycbc.strain.recalibrate.Recalibrate attribute)</a>, <a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.name">[1]</a>
 </li>
@@ -367,16 +370,16 @@
 </li>
       <li><a href="pycbc.strain.html#pycbc.strain.strain.next_power_of_2">next_power_of_2() (in module pycbc.strain.strain)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_mcmc.MCMCSampler.niterations">niterations (pycbc.inference.sampler_mcmc.MCMCSampler attribute)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_mcmc.MCMCMetadataIO.niterations">niterations (pycbc.inference.io.base_mcmc.MCMCMetadataIO attribute)</a>
 
       <ul>
-        <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.niterations">(pycbc.io.inference_hdf.InferenceFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.niterations">(pycbc.inference.sampler.base_mcmc.BaseMCMC attribute)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.nltides.nltides_fourier_phase_difference">nltides_fourier_phase_difference() (in module pycbc.waveform.nltides)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.html#pycbc.conversions.nltides_gw_phase_diff_isco">nltides_gw_phase_diff_isco() (in module pycbc.conversions)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Node">Node (class in pycbc.workflow.core)</a>
@@ -386,6 +389,8 @@
 </li>
       </ul></li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.parameters.ParameterList.nodefaults">nodefaults (pycbc.waveform.parameters.ParameterList attribute)</a>
+</li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.NoInputFileError">NoInputFileError</a>
 </li>
       <li><a href="pycbc.noise.html#pycbc.noise.gaussian.noise_from_psd">noise_from_psd() (in module pycbc.noise.gaussian)</a>
 </li>
@@ -423,10 +428,10 @@
 </li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ns_g_mass_to_ns_compactness">ns_g_mass_to_ns_compactness() (in module pycbc.tmpltbank.em_progenitors)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.ntemps">ntemps (pycbc.inference.sampler_emcee.EmceePTSampler attribute)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_multitemper.MultiTemperedMetadataIO.ntemps">ntemps (pycbc.inference.io.base_multitemper.MultiTemperedMetadataIO attribute)</a>
 
       <ul>
-        <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.ntemps">(pycbc.io.inference_hdf.InferenceFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_multitemper.MultiTemperedSupport.ntemps">(pycbc.inference.sampler.base_multitemper.MultiTemperedSupport attribute)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.strain.html#pycbc.strain.strain.StrainBuffer.null_advance_strain">null_advance_strain() (pycbc.strain.strain.StrainBuffer method)</a>
@@ -443,10 +448,10 @@
       </ul></li>
       <li><a href="pycbc.html#pycbc.scheme.NumpyScheme">NumpyScheme (class in pycbc.scheme)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.nwalkers">nwalkers (pycbc.inference.sampler_base.BaseMCMCSampler attribute)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_mcmc.MCMCMetadataIO.nwalkers">nwalkers (pycbc.inference.io.base_mcmc.MCMCMetadataIO attribute)</a>
 
       <ul>
-        <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.nwalkers">(pycbc.io.inference_hdf.InferenceFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.nwalkers">(pycbc.inference.sampler.base_mcmc.BaseMCMC attribute)</a>
 </li>
       </ul></li>
   </ul></td>

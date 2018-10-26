@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC 23025b documentation</title>
+  <title>Index &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -58,7 +59,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -209,29 +210,27 @@
       </ul></li>
       <li><a href="pycbc.types.html#pycbc.types.timeseries.TimeSeries.sample_times">sample_times (pycbc.types.timeseries.TimeSeries attribute)</a>, <a href="pycbc.types.html#pycbc.types.timeseries.TimeSeries.sample_times">[1]</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.sampler">sampler (pycbc.inference.sampler_base.BaseMCMCSampler attribute)</a>, <a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.sampler">[1]</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.sampler_group">sampler_group (pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
 </li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.sampler_class">sampler_class (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.inference.html#pycbc.inference.option_utils.sampler_from_cli">sampler_from_cli() (in module pycbc.inference.option_utils)</a>
-</li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.sampler_group">sampler_group (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.sampler_name">sampler_name (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.samples">samples (pycbc.inference.sampler_base.BaseMCMCSampler attribute)</a>
-</li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.samples_group">samples_group (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.samples_parser">samples_parser (pycbc.io.inference_hdf.InferenceFile attribute)</a>
-</li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.sampling_args">sampling_args (pycbc.inference.likelihood.BaseLikelihoodEvaluator attribute)</a>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.samples">samples (pycbc.inference.sampler.base.BaseSampler attribute)</a>
 
       <ul>
-        <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.sampling_args">(pycbc.io.inference_hdf.InferenceFile attribute)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee.EmceeEnsembleSampler.samples">(pycbc.inference.sampler.emcee.EmceeEnsembleSampler attribute)</a>
+</li>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee_pt.EmceePTSampler.samples">(pycbc.inference.sampler.emcee_pt.EmceePTSampler attribute)</a>
 </li>
       </ul></li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.sampling_transforms">sampling_transforms (pycbc.inference.likelihood.BaseLikelihoodEvaluator attribute)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.samples_from_cli">samples_from_cli() (pycbc.inference.io.base_hdf.BaseInferenceFile method)</a>
+</li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.samples_group">samples_group (pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
+</li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.sampling_params">sampling_params (pycbc.inference.models.base.BaseModel attribute)</a>
+
+      <ul>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.sampling_params">(pycbc.inference.sampler.base.BaseSampler attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.SamplingTransforms">SamplingTransforms (class in pycbc.inference.models.base)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.configparser_test.sanity_check_subsections">sanity_check_subsections() (in module pycbc.workflow.configparser_test)</a>
 
@@ -327,7 +326,9 @@
       </ul></li>
       <li><a href="pycbc.distributions.html#pycbc.distributions.arbitrary.Arbitrary.set_bandwidth">set_bandwidth() (pycbc.distributions.arbitrary.Arbitrary method)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.set_callfunc">set_callfunc() (pycbc.inference.likelihood.BaseLikelihoodEvaluator class method)</a>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_burn_in">set_burn_in() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
+</li>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_burn_in_from_config">set_burn_in_from_config() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.ProfileShortcuts.set_category">set_category() (pycbc.workflow.pegasus_workflow.ProfileShortcuts method)</a>
 </li>
@@ -337,9 +338,13 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.grb_utils.set_grb_start_end">set_grb_start_end() (in module pycbc.workflow.grb_utils)</a>
 </li>
-      <li><a href="pycbc.workflow.html#pycbc.workflow.core.Workflow.set_job_properties">set_job_properties() (pycbc.workflow.core.Workflow static method)</a>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.set_initial_conditions">set_initial_conditions() (pycbc.inference.sampler.base.BaseSampler method)</a>
+
+      <ul>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_initial_conditions">(pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.set_lognl">set_lognl() (pycbc.inference.likelihood.BaseLikelihoodEvaluator method)</a>
+      </ul></li>
+      <li><a href="pycbc.workflow.html#pycbc.workflow.core.Workflow.set_job_properties">set_job_properties() (pycbc.workflow.core.Workflow static method)</a>
 </li>
       <li><a href="pycbc.results.html#pycbc.results.scatter_histograms.set_marginal_histogram_title">set_marginal_histogram_title() (in module pycbc.results.scatter_histograms)</a>
 </li>
@@ -351,27 +356,27 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.ProfileShortcuts.set_num_retries">set_num_retries() (pycbc.workflow.pegasus_workflow.ProfileShortcuts method)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_base.BaseMCMCSampler.set_p0">set_p0() (pycbc.inference.sampler_base.BaseMCMCSampler method)</a>
-
-      <ul>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.set_p0">(pycbc.inference.sampler_emcee.EmceeEnsembleSampler method)</a>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_p0">set_p0() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
 </li>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.set_p0">(pycbc.inference.sampler_emcee.EmceePTSampler method)</a>
-</li>
-      </ul></li>
       <li><a href="pycbc.fft.html#pycbc.fft.fftw.set_planning_limit">set_planning_limit() (in module pycbc.fft.fftw)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.ProfileShortcuts.set_priority">set_priority() (pycbc.workflow.pegasus_workflow.ProfileShortcuts method)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.set_singles_buffer">set_singles_buffer() (pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator method)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.set_state_from_file">set_state_from_file() (pycbc.inference.sampler_emcee.EmceeEnsembleSampler method)</a>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_state_from_file">set_state_from_file() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
 
       <ul>
-        <li><a href="pycbc.inference.html#pycbc.inference.sampler_kombine.KombineSampler.set_state_from_file">(pycbc.inference.sampler_kombine.KombineSampler method)</a>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee.EmceeEnsembleSampler.set_state_from_file">(pycbc.inference.sampler.emcee.EmceeEnsembleSampler method)</a>
+</li>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee_pt.EmceePTSampler.set_state_from_file">(pycbc.inference.sampler.emcee_pt.EmceePTSampler method)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.pegasus_workflow.ProfileShortcuts.set_storage">set_storage() (pycbc.workflow.pegasus_workflow.ProfileShortcuts method)</a>
+</li>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_target">set_target() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
+</li>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_target_from_config">set_target_from_config() (pycbc.inference.sampler.base_mcmc.BaseMCMC method)</a>
 </li>
       <li><a href="pycbc.fft.html#pycbc.fft.fftw.set_threads_backend">set_threads_backend() (in module pycbc.fft.fftw)</a>
 </li>
@@ -417,6 +422,8 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.matched_filter.setup_matchedfltr_workflow">setup_matchedfltr_workflow() (in module pycbc.workflow.matched_filter)</a>
 </li>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.setup_output">setup_output() (pycbc.inference.sampler.base.BaseSampler method)</a>
+</li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.psd.setup_psd_calculate">setup_psd_calculate() (in module pycbc.workflow.psd)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.psdfiles.setup_psd_pregenerated">setup_psd_pregenerated() (in module pycbc.workflow.psdfiles)</a>
@@ -441,10 +448,10 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.coincidence.setup_statmap_inj">setup_statmap_inj() (in module pycbc.workflow.coincidence)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.results.html#pycbc.results.render.setup_template_render">setup_template_render() (in module pycbc.results.render)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.tmpltbank.setup_tmpltbank_dax_generated">setup_tmpltbank_dax_generated() (in module pycbc.workflow.tmpltbank)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.tmpltbank.setup_tmpltbank_pregenerated">setup_tmpltbank_pregenerated() (in module pycbc.workflow.tmpltbank)</a>
@@ -523,6 +530,8 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.minifollowups.SingleTemplateExecutable">SingleTemplateExecutable (class in pycbc.workflow.minifollowups)</a>
 </li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_mcmc.SingleTempMCMCIO">SingleTempMCMCIO (class in pycbc.inference.io.base_mcmc)</a>
+</li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.minifollowups.SingleTimeFreqExecutable">SingleTimeFreqExecutable (class in pycbc.workflow.minifollowups)</a>
 </li>
       <li><a href="pycbc.population.html#pycbc.population.rates_functions.skew_lognormal_samples">skew_lognormal_samples() (in module pycbc.population.rates_functions)</a>
@@ -536,8 +545,6 @@
       <li><a href="pycbc.workflow.html#pycbc.workflow.jobsetup.sngl_ifo_job_setup">sngl_ifo_job_setup() (in module pycbc.workflow.jobsetup)</a>
 </li>
       <li><a href="pycbc.io.html#pycbc.io.hdf.SingleDetTriggers.snr">snr (pycbc.io.hdf.SingleDetTriggers attribute)</a>
-</li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.snr">snr() (pycbc.inference.likelihood.BaseLikelihoodEvaluator method)</a>
 </li>
       <li><a href="pycbc.html#pycbc.conversions.snr_from_loglr">snr_from_loglr() (in module pycbc.conversions)</a>
 </li>
@@ -693,19 +700,25 @@
       </ul></li>
       <li><a href="pycbc.events.html#pycbc.events.stat.Stat">Stat (class in pycbc.events.stat)</a>
 </li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.static_args">static_args (pycbc.io.inference_hdf.InferenceFile attribute)</a>
+      <li><a href="pycbc.waveform.html#pycbc.waveform.generator.BaseGenerator.static_args">static_args (pycbc.waveform.generator.BaseGenerator attribute)</a>
 
       <ul>
-        <li><a href="pycbc.waveform.html#pycbc.waveform.generator.BaseGenerator.static_args">(pycbc.waveform.generator.BaseGenerator attribute)</a>
-</li>
         <li><a href="pycbc.waveform.html#pycbc.waveform.generator.FDomainDetFrameGenerator.static_args">(pycbc.waveform.generator.FDomainDetFrameGenerator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.static_params">static_params (pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
+
+      <ul>
+        <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.static_params">(pycbc.inference.models.base.BaseModel attribute)</a>
+</li>
+        <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base.BaseSampler.static_params">(pycbc.inference.sampler.base.BaseSampler attribute)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.results.html#pycbc.results.table.static_table">static_table() (in module pycbc.results.table)</a>
 </li>
       <li><a href="pycbc.io.html#pycbc.io.hdf.StatmapData">StatmapData (class in pycbc.io.hdf)</a>
 </li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.stats_group">stats_group (pycbc.io.inference_hdf.InferenceFile attribute)</a>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.ModelStats.statnames">statnames (pycbc.inference.models.base.ModelStats attribute)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.straighten">straighten() (pycbc.events.coinc.MultiRingBuffer method)</a>
 </li>

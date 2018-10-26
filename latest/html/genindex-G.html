@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC 23025b documentation</title>
+  <title>Index &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -58,7 +59,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -203,7 +204,7 @@
 </li>
       <li><a href="pycbc.distributions.html#pycbc.distributions.gaussian.Gaussian">Gaussian (class in pycbc.distributions.gaussian)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood">GaussianLikelihood (class in pycbc.inference.likelihood)</a>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise">GaussianNoise (class in pycbc.inference.models.gaussian_noise)</a>
 </li>
       <li><a href="pycbc.inference.html#pycbc.inference.gelman_rubin.gelman_rubin">gelman_rubin() (in module pycbc.inference.gelman_rubin)</a>
 </li>
@@ -289,6 +290,8 @@
 </li>
       <li><a href="pycbc.html#pycbc.transforms.get_common_cbc_transforms">get_common_cbc_transforms() (in module pycbc.transforms)</a>
 </li>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.get_common_parameters">get_common_parameters() (in module pycbc.inference.io)</a>
+</li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_conv_params">get_conv_params() (in module pycbc.tmpltbank.coord_utils)</a>
 </li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.coord_utils.get_cov_params">get_cov_params() (in module pycbc.tmpltbank.coord_utils)</a>
@@ -300,6 +303,8 @@
       <li><a href="pycbc.workflow.html#pycbc.workflow.segment.get_cumulative_segs">get_cumulative_segs() (in module pycbc.workflow.segment)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.segment.get_cumulative_veto_group_files">get_cumulative_veto_group_files() (in module pycbc.workflow.segment)</a>
+</li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.get_current_stats">get_current_stats() (pycbc.inference.models.base.BaseModel method)</a>
 </li>
       <li><a href="pycbc.filter.html#pycbc.filter.matchedfilter.get_cutoff_indices">get_cutoff_indices() (in module pycbc.filter.matchedfilter)</a>
 </li>
@@ -339,7 +344,7 @@
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.waveform.get_fd_waveform_sequence">get_fd_waveform_sequence() (in module pycbc.waveform.waveform)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.option_utils.get_file_type">get_file_type() (in module pycbc.inference.option_utils)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.get_file_type">get_file_type() (in module pycbc.inference.io)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.segment.get_files_for_vetoes">get_files_for_vetoes() (in module pycbc.workflow.segment)</a>
 </li>
@@ -397,6 +402,8 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser.get_opt_tags">get_opt_tags() (pycbc.workflow.configuration.WorkflowConfigParser method)</a>
 </li>
+      <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.base_mcmc.get_optional_arg_from_config">get_optional_arg_from_config() (in module pycbc.inference.sampler.base_mcmc)</a>
+</li>
       <li><a href="pycbc.tmpltbank.html#pycbc.tmpltbank.option_utils.get_options_from_group">get_options_from_group() (in module pycbc.tmpltbank.option_utils)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.trigger_fits.get_param">get_param() (in module pycbc.events.trigger_fits)</a>
@@ -449,7 +456,7 @@
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.grb_utils.get_sky_grid_scale">get_sky_grid_scale() (in module pycbc.workflow.grb_utils)</a>
 </li>
-      <li><a href="pycbc.io.html#pycbc.io.inference_hdf.InferenceFile.get_slice">get_slice() (pycbc.io.inference_hdf.InferenceFile method)</a>
+      <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.get_slice">get_slice() (pycbc.inference.io.base_hdf.BaseInferenceFile method)</a>
 </li>
       <li><a href="pycbc.io.html#pycbc.io.hdf.ForegroundTriggers.get_snglfile_array_dict">get_snglfile_array_dict() (pycbc.io.hdf.ForegroundTriggers method)</a>
 </li>
@@ -501,11 +508,13 @@
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.waveform.get_waveform_filter_norm">get_waveform_filter_norm() (in module pycbc.waveform.waveform)</a>
 </li>
-      <li><a href="pycbc.inference.html#pycbc.inference.option_utils.get_zvalues">get_zvalues() (in module pycbc.inference.option_utils)</a>
-</li>
       <li><a href="pycbc.html#pycbc.opt.getconf">getconf() (in module pycbc.opt)</a>
 </li>
       <li><a href="pycbc.waveform.html#pycbc.waveform.bank.LiveFilterBank.getslice">getslice() (pycbc.waveform.bank.LiveFilterBank method)</a>
+</li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.ModelStats.getstats">getstats() (pycbc.inference.models.base.ModelStats method)</a>
+</li>
+      <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.ModelStats.getstatsdict">getstatsdict() (pycbc.inference.models.base.ModelStats method)</a>
 </li>
       <li><a href="pycbc.inference.html#pycbc.inference.geweke.geweke">geweke() (in module pycbc.inference.geweke)</a>
 </li>

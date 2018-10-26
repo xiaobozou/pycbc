@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.results.scatter_histograms &mdash; PyCBC 23025b documentation</title>
+  <title>pycbc.results.scatter_histograms &mdash; PyCBC e5f632 documentation</title>
   
 
   
@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -57,7 +58,7 @@
             
             
               <div class="version">
-                1.12.4
+                None
               </div>
             
           
@@ -224,26 +225,31 @@
 <span class="sd">Module to generate figures with scatter plots and histograms.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib</span>
+
 <span class="c1"># Only if a backend is not already set ... This should really *not* be done</span>
 <span class="c1"># here, but in the executables you should set matplotlib.use()</span>
 <span class="c1"># This matches the check that matplotlib does internally, but this *may* be</span>
 <span class="c1"># version dependenant. If this is a problem then remove this and control from</span>
 <span class="c1"># the executables directly.</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">if</span> <span class="s1">&#39;matplotlib.backends&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+<span class="k">if</span> <span class="s1">&#39;matplotlib.backends&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>  <span class="c1"># nopep8</span>
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;agg&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">offsetbox</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span>
-<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="p">(</span><span class="n">offsetbox</span><span class="p">,</span> <span class="n">pyplot</span><span class="p">,</span> <span class="n">gridspec</span><span class="p">)</span>
+
 <span class="kn">from</span> <span class="nn">pycbc.results</span> <span class="k">import</span> <span class="n">str_utils</span>
 <span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">FieldArray</span>
 
+
 <div class="viewcode-block" id="create_axes_grid"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.scatter_histograms.create_axes_grid">[docs]</a><span class="k">def</span> <span class="nf">create_axes_grid</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">width_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">no_diagonals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                     <span class="n">width_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">no_diagonals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Given a list of parameters, creates a figure with an axis for</span>
 <span class="sd">    every possible combination of the parameters.</span>
 
@@ -286,12 +292,13 @@
     <span class="n">fig</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fsize</span><span class="p">)</span>
     <span class="c1"># create the axis grid</span>
     <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="n">width_ratios</span><span class="p">,</span>
-        <span class="n">height_ratios</span><span class="o">=</span><span class="n">height_ratios</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+                           <span class="n">height_ratios</span><span class="o">=</span><span class="n">height_ratios</span><span class="p">,</span>
+                           <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
     <span class="c1"># create grid of axis numbers to easily create axes in the right locations</span>
     <span class="n">axes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ndim</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>
 
     <span class="c1"># Select possible combinations of plots and establish rows and columns.</span>
-    <span class="n">combos</span> <span class="o">=</span>  <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">combos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
     <span class="c1"># add the diagonals</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">no_diagonals</span><span class="p">:</span>
         <span class="n">combos</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span>
@@ -352,9 +359,10 @@
 
 
 <div class="viewcode-block" id="create_density_plot"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.scatter_histograms.create_density_plot">[docs]</a><span class="k">def</span> <span class="nf">create_density_plot</span><span class="p">(</span><span class="n">xparam</span><span class="p">,</span> <span class="n">yparam</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">plot_density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">plot_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
-        <span class="n">contour_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">exclude_region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_kombine</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                        <span class="n">plot_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                        <span class="n">contour_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude_region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_kombine</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes and plots posterior density and confidence intervals using the</span>
 <span class="sd">    given samples.</span>
 
@@ -436,7 +444,9 @@
     <span class="k">if</span> <span class="n">ymax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ymax</span> <span class="o">=</span> <span class="n">ysamples</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">npts</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">:</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="p">),</span> <span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">:</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npts</span><span class="p">)]</span> <span class="c1"># pylint:disable=invalid-slice-index</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span>
+        <span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">:</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">npts</span><span class="p">),</span>  <span class="c1"># pylint:disable=invalid-slice-index</span>
+        <span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">:</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">npts</span><span class="p">)]</span>  <span class="c1"># pylint:disable=invalid-slice-index</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
     <span class="k">if</span> <span class="n">use_kombine</span><span class="p">:</span>
         <span class="n">Z</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">kde</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
@@ -453,7 +463,7 @@
 
     <span class="k">if</span> <span class="n">plot_density</span><span class="p">:</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">],</span>
-            <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                  <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">contour_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">contour_color</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
 
@@ -482,9 +492,10 @@
 
 
 <div class="viewcode-block" id="create_marginalized_hist"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.scatter_histograms.create_marginalized_hist">[docs]</a><span class="k">def</span> <span class="nf">create_marginalized_hist</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">expected_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-        <span class="n">rotated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span>
+                             <span class="n">title</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">expected_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">rotated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                             <span class="n">plot_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plots a 1D marginalized histogram of the given param from the given</span>
 <span class="sd">    samples.</span>
 
@@ -530,7 +541,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">orientation</span> <span class="o">=</span> <span class="s1">&#39;vertical&#39;</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="n">htype</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span>
-            <span class="n">facecolor</span><span class="o">=</span><span class="n">fillcolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="n">fillcolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">percentiles</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">,</span> <span class="mf">95.</span><span class="p">]</span>
     <span class="n">values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span>
@@ -551,8 +562,8 @@
         <span class="n">values_max</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
         <span class="n">negerror</span> <span class="o">=</span> <span class="n">values_med</span> <span class="o">-</span> <span class="n">values_min</span>
         <span class="n">poserror</span> <span class="o">=</span> <span class="n">values_max</span> <span class="o">-</span> <span class="n">values_med</span>
-        <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="n">str_utils</span><span class="o">.</span><span class="n">format_value</span><span class="p">(</span><span class="n">values_med</span><span class="p">,</span> <span class="n">negerror</span><span class="p">,</span>
-              <span class="n">plus_error</span><span class="o">=</span><span class="n">poserror</span><span class="p">,</span> <span class="n">ndecs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;$&#39;</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="si">{0}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">str_utils</span><span class="o">.</span><span class="n">format_value</span><span class="p">(</span>
+            <span class="n">values_med</span><span class="p">,</span> <span class="n">negerror</span><span class="p">,</span> <span class="n">plus_error</span><span class="o">=</span><span class="n">poserror</span><span class="p">,</span> <span class="n">ndecs</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">rotated</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
@@ -666,17 +677,17 @@
 
 
 <div class="viewcode-block" id="create_multidim_plot"><a class="viewcode-back" href="../../../pycbc.results.html#pycbc.results.scatter_histograms.create_multidim_plot">[docs]</a><span class="k">def</span> <span class="nf">create_multidim_plot</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">mins</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">expected_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">expected_parameters_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
-                <span class="n">plot_marginal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_scatter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">marginal_percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contour_percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">zvals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scatter_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">scatter_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                <span class="n">plot_density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">density_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
-                <span class="n">contour_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hist_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
-                <span class="n">line_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
-                <span class="n">use_kombine</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                         <span class="n">mins</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maxs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">expected_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">expected_parameters_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+                         <span class="n">plot_marginal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_scatter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">marginal_percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contour_percentiles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">zvals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scatter_cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span>
+                         <span class="n">plot_density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                         <span class="n">density_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                         <span class="n">contour_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hist_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                         <span class="n">line_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                         <span class="n">use_kombine</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate a figure with several plots and histograms.</span>
 
 <span class="sd">    Parameters</span>
@@ -685,8 +696,9 @@
 <span class="sd">        Names of the variables to be plotted.</span>
 <span class="sd">    samples : FieldArray</span>
 <span class="sd">        A field array of the samples to plot.</span>
-<span class="sd">    labels: {None, list}, optional</span>
-<span class="sd">        A list of names for the parameters.</span>
+<span class="sd">    labels: dict, optional</span>
+<span class="sd">        A dictionary mapping parameters to labels. If none provided, will just</span>
+<span class="sd">        use the parameter strings as the labels.</span>
 <span class="sd">    mins : {None, dict}, optional</span>
 <span class="sd">        Minimum value for the axis of each variable in `parameters`.</span>
 <span class="sd">        If None, it will use the minimum of the corresponding variable in</span>
@@ -728,8 +740,6 @@
 <span class="sd">        zvals.</span>
 <span class="sd">    scatter_cmap : {&#39;plasma&#39;, string}</span>
 <span class="sd">        The color map to use for the scatter points. Default is &#39;plasma&#39;.</span>
-<span class="sd">    scatter_size : {5, scalar or array}</span>
-<span class="sd">        Size of points to pass to scatter plot</span>
 <span class="sd">    plot_density : {False, bool}</span>
 <span class="sd">        Plot the density of points as a color map.</span>
 <span class="sd">    plot_contours : {True, bool}</span>
@@ -754,16 +764,13 @@
 <span class="sd">        `{(&#39;param1&#39;, &#39;param2&#39;): (pyplot.axes, row index, column index)}`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span>
-    <span class="c1"># turn labels into a dict for easier access</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
-
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">}</span>
     <span class="c1"># set up the figure with a grid of axes</span>
     <span class="c1"># if only plotting 2 parameters, make the marginal plots smaller</span>
     <span class="n">nparams</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nparams</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">width_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">height_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">width_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">height_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">width_ratios</span> <span class="o">=</span> <span class="n">height_ratios</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -792,18 +799,18 @@
 
     <span class="c1"># values for axis bounds</span>
     <span class="k">if</span> <span class="n">mins</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mins</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">samples</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">}</span>
+        <span class="n">mins</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">samples</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">}</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># copy the dict</span>
-        <span class="n">mins</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">val</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">mins</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">mins</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">mins</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     <span class="k">if</span> <span class="n">maxs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">maxs</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">samples</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">}</span>
+        <span class="n">maxs</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">samples</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">}</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># copy the dict</span>
-        <span class="n">maxs</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">val</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">maxs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">maxs</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">maxs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 
     <span class="c1"># remove common offsets</span>
-    <span class="k">for</span> <span class="n">pi</span><span class="p">,</span><span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">pi</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">values</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">remove_common_offset</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">offset</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="c1"># we&#39;ll add the offset removed to the label</span>
@@ -825,10 +832,9 @@
             <span class="n">width_ratios</span><span class="o">=</span><span class="n">width_ratios</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="n">height_ratios</span><span class="p">,</span>
             <span class="n">no_diagonals</span><span class="o">=</span><span class="ow">not</span> <span class="n">plot_marginal</span><span class="p">)</span>
 
-
     <span class="c1"># Diagonals...</span>
     <span class="k">if</span> <span class="n">plot_marginal</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">pi</span><span class="p">,</span><span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">pi</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
             <span class="n">ax</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">axis_dict</span><span class="p">[</span><span class="n">param</span><span class="p">,</span> <span class="n">param</span><span class="p">]</span>
             <span class="c1"># if only plotting 2 parameters and on the second parameter,</span>
             <span class="c1"># rotate the marginal plot</span>
@@ -841,7 +847,8 @@
                     <span class="n">expected_value</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">expected_value</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">create_marginalized_hist</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="p">[</span><span class="n">param</span><span class="p">],</span>
+            <span class="n">create_marginalized_hist</span><span class="p">(</span>
+                <span class="n">ax</span><span class="p">,</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="p">[</span><span class="n">param</span><span class="p">],</span>
                 <span class="n">color</span><span class="o">=</span><span class="n">hist_color</span><span class="p">,</span> <span class="n">fillcolor</span><span class="o">=</span><span class="n">fill_color</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="n">line_color</span><span class="p">,</span>
                 <span class="n">title</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">expected_value</span><span class="o">=</span><span class="n">expected_value</span><span class="p">,</span>
                 <span class="n">expected_color</span><span class="o">=</span><span class="n">expected_parameters_color</span><span class="p">,</span>
@@ -858,9 +865,8 @@
                 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.</span>
-            <span class="n">plt</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">samples</span><span class="p">[</span><span class="n">px</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">samples</span><span class="p">[</span><span class="n">py</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">zvals</span><span class="p">,</span>
-                             <span class="n">s</span><span class="o">=</span><span class="n">scatter_size</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
-                             <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">plt</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">samples</span><span class="p">[</span><span class="n">px</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">samples</span><span class="p">[</span><span class="n">py</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">zvals</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                             <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
                              <span class="n">cmap</span><span class="o">=</span><span class="n">scatter_cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">plot_contours</span> <span class="ow">or</span> <span class="n">plot_density</span><span class="p">:</span>
@@ -871,13 +877,14 @@
                 <span class="n">exclude_region</span> <span class="o">=</span> <span class="s1">&#39;m_s &gt; m_p&#39;</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">exclude_region</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">create_density_plot</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">plot_density</span><span class="o">=</span><span class="n">plot_density</span><span class="p">,</span>
-                    <span class="n">plot_contours</span><span class="o">=</span><span class="n">plot_contours</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">density_cmap</span><span class="p">,</span>
-                    <span class="n">percentiles</span><span class="o">=</span><span class="n">contour_percentiles</span><span class="p">,</span>
-                    <span class="n">contour_color</span><span class="o">=</span><span class="n">contour_color</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">mins</span><span class="p">[</span><span class="n">px</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">maxs</span><span class="p">[</span><span class="n">px</span><span class="p">],</span>
-                    <span class="n">ymin</span><span class="o">=</span><span class="n">mins</span><span class="p">[</span><span class="n">py</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">maxs</span><span class="p">[</span><span class="n">py</span><span class="p">],</span>
-                    <span class="n">exclude_region</span><span class="o">=</span><span class="n">exclude_region</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-                    <span class="n">use_kombine</span><span class="o">=</span><span class="n">use_kombine</span><span class="p">)</span>
+            <span class="n">create_density_plot</span><span class="p">(</span>
+                <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">plot_density</span><span class="o">=</span><span class="n">plot_density</span><span class="p">,</span>
+                <span class="n">plot_contours</span><span class="o">=</span><span class="n">plot_contours</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">density_cmap</span><span class="p">,</span>
+                <span class="n">percentiles</span><span class="o">=</span><span class="n">contour_percentiles</span><span class="p">,</span>
+                <span class="n">contour_color</span><span class="o">=</span><span class="n">contour_color</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">mins</span><span class="p">[</span><span class="n">px</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="n">maxs</span><span class="p">[</span><span class="n">px</span><span class="p">],</span>
+                <span class="n">ymin</span><span class="o">=</span><span class="n">mins</span><span class="p">[</span><span class="n">py</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">maxs</span><span class="p">[</span><span class="n">py</span><span class="p">],</span>
+                <span class="n">exclude_region</span><span class="o">=</span><span class="n">exclude_region</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                <span class="n">use_kombine</span><span class="o">=</span><span class="n">use_kombine</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">expected_parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
