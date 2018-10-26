@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; PyCBC e5f632 documentation</title>
+  <title>Index &mdash; PyCBC afd13d documentation</title>
   
 
   
@@ -361,7 +361,7 @@
 </li>
       <li><a href="pycbc.io.html#pycbc.io.record.FieldArray.addattr">addattr() (pycbc.io.record.FieldArray method)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.adjust_strain">adjust_strain() (pycbc.strain.recalibrate.Recalibrate method)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.adjust_strain">adjust_strain() (pycbc.strain.recalibrate.PhysicalModel method)</a>
 </li>
       <li><a href="pycbc.strain.html#pycbc.strain.strain.StrainBuffer.advance">advance() (pycbc.strain.strain.StrainBuffer method)</a>
 </li>
@@ -393,10 +393,10 @@
 </li>
       <li><a href="pycbc.psd.html#pycbc.psd.analytical.aLIGOBHBH20DegGWINC">aLIGOBHBH20DegGWINC() (in module pycbc.psd.analytical)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.psd.html#pycbc.psd.analytical.aLIGOBNSOptimizedSensitivityP1200087">aLIGOBNSOptimizedSensitivityP1200087() (in module pycbc.psd.analytical)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.psd.html#pycbc.psd.analytical.aLIGODesignSensitivityP1200087">aLIGODesignSensitivityP1200087() (in module pycbc.psd.analytical)</a>
 </li>
       <li><a href="pycbc.psd.html#pycbc.psd.analytical.aLIGOEarlyHighSensitivityP1200087">aLIGOEarlyHighSensitivityP1200087() (in module pycbc.psd.analytical)</a>
@@ -503,6 +503,10 @@
 
       <ul>
         <li><a href="pycbc.strain.html#pycbc.strain.calibration.Recalibrate.apply_calibration">(pycbc.strain.calibration.Recalibrate method)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.CubicSpline.apply_calibration">(pycbc.strain.recalibrate.CubicSpline method)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.apply_calibration">(pycbc.strain.recalibrate.Recalibrate method)</a>
 </li>
       </ul></li>
       <li><a href="pycbc.html#pycbc.boundaries.Bounds.apply_conditions">apply_conditions() (pycbc.boundaries.Bounds method)</a>
@@ -985,14 +989,14 @@
 </li>
       <li><a href="pycbc.html#pycbc.boundaries.Bounds.contains_conditioned">contains_conditioned() (pycbc.boundaries.Bounds method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.ContentHandler">ContentHandler (class in pycbc.workflow.core)</a>
 
       <ul>
         <li><a href="pycbc.workflow.html#pycbc.workflow.datafind.ContentHandler">(class in pycbc.workflow.datafind)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.population.html#pycbc.population.scale_injections.contracted_dVdc">contracted_dVdc() (in module pycbc.population.scale_injections)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.coincidence.convert_bank_to_hdf">convert_bank_to_hdf() (in module pycbc.workflow.coincidence)</a>
@@ -1168,7 +1172,11 @@
       <li><a href="pycbc.types.html#pycbc.types.timeseries.TimeSeries.crop">crop() (pycbc.types.timeseries.TimeSeries method)</a>
 </li>
       <li><a href="pycbc.strain.html#pycbc.strain.calibration.CubicSpline">CubicSpline (class in pycbc.strain.calibration)</a>
+
+      <ul>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.CubicSpline">(class in pycbc.strain.recalibrate)</a>
 </li>
+      </ul></li>
       <li><a href="pycbc.html#pycbc.scheme.CUDAScheme">CUDAScheme (class in pycbc.scheme)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.trigger_fits.cum_fit">cum_fit() (in module pycbc.events.trigger_fits)</a>
@@ -1805,10 +1813,10 @@
       </ul></li>
       <li><a href="pycbc.fft.html#pycbc.fft.fftw_pruned.first_phase">first_phase() (in module pycbc.fft.fftw_pruned)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.population.html#pycbc.population.rates_functions.fit">fit() (in module pycbc.population.rates_functions)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.events.html#pycbc.events.trigger_fits.fit_above_thresh">fit_above_thresh() (in module pycbc.events.trigger_fits)</a>
 </li>
       <li><a href="pycbc.events.html#pycbc.events.trigger_fits.fit_fn">fit_fn() (in module pycbc.events.trigger_fits)</a>
@@ -1933,6 +1941,8 @@
         <li><a href="pycbc.inference.sampler.html#pycbc.inference.sampler.emcee_pt.EmceePTSampler.from_config">(pycbc.inference.sampler.emcee_pt.EmceePTSampler class method)</a>
 </li>
         <li><a href="pycbc.strain.html#pycbc.strain.calibration.Recalibrate.from_config">(pycbc.strain.calibration.Recalibrate class method)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.from_config">(pycbc.strain.recalibrate.PhysicalModel class method)</a>
 </li>
         <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.from_config">(pycbc.strain.recalibrate.Recalibrate class method)</a>
 </li>
@@ -3132,6 +3142,8 @@
       <li><a href="pycbc.strain.html#pycbc.strain.calibration.Recalibrate.map_to_adjust">map_to_adjust() (pycbc.strain.calibration.Recalibrate method)</a>
 
       <ul>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.map_to_adjust">(pycbc.strain.recalibrate.PhysicalModel method)</a>
+</li>
         <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.map_to_adjust">(pycbc.strain.recalibrate.Recalibrate method)</a>
 </li>
       </ul></li>
@@ -3458,7 +3470,11 @@
 </li>
         <li><a href="pycbc.strain.html#pycbc.strain.calibration.Recalibrate.name">(pycbc.strain.calibration.Recalibrate attribute)</a>
 </li>
-        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.name">(pycbc.strain.recalibrate.Recalibrate attribute)</a>, <a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.name">[1]</a>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.CubicSpline.name">(pycbc.strain.recalibrate.CubicSpline attribute)</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.name">(pycbc.strain.recalibrate.PhysicalModel attribute)</a>, <a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.name">[1]</a>
+</li>
+        <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.name">(pycbc.strain.recalibrate.Recalibrate attribute)</a>
 </li>
         <li><a href="pycbc.html#pycbc.transforms.AlignedMassSpinToCartesianSpin.name">(pycbc.transforms.AlignedMassSpinToCartesianSpin attribute)</a>
 </li>
@@ -3779,6 +3795,8 @@
 </li>
       <li><a href="pycbc.html#pycbc.conversions.phi_s">phi_s() (in module pycbc.conversions)</a>
 </li>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel">PhysicalModel (class in pycbc.strain.recalibrate)</a>
+</li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.jobsetup.JobSegmenter.pick_tile_size">pick_tile_size() (pycbc.workflow.jobsetup.JobSegmenter method)</a>
 </li>
       <li><a href="pycbc.html#pycbc.libutils.pkg_config">pkg_config() (in module pycbc.libutils)</a>
@@ -4001,10 +4019,10 @@
 </li>
       <li><a href="pycbc.filter.html#module-pycbc.filter.simd_correlate">pycbc.filter.simd_correlate (module)</a>
 </li>
-      <li><a href="pycbc.filter.html#module-pycbc.filter.zpk">pycbc.filter.zpk (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pycbc.filter.html#module-pycbc.filter.zpk">pycbc.filter.zpk (module)</a>
+</li>
       <li><a href="pycbc.frame.html#module-pycbc.frame">pycbc.frame (module)</a>
 </li>
       <li><a href="pycbc.frame.html#module-pycbc.frame.frame">pycbc.frame.frame (module)</a>
@@ -5207,7 +5225,7 @@
 </li>
       <li><a href="pycbc.inference.models.html#pycbc.inference.models.analytic.TestVolcano">TestVolcano (class in pycbc.inference.models.analytic)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.tf_from_file">tf_from_file() (pycbc.strain.recalibrate.Recalibrate class method)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.tf_from_file">tf_from_file() (pycbc.strain.recalibrate.PhysicalModel class method)</a>
 </li>
       <li><a href="pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile.thin_end">thin_end (pycbc.inference.io.base_hdf.BaseInferenceFile attribute)</a>
 </li>
@@ -5361,7 +5379,7 @@
 </li>
       <li><a href="pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.update">update() (pycbc.inference.models.base.BaseModel method)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_c">update_c() (pycbc.strain.recalibrate.Recalibrate method)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.update_c">update_c() (pycbc.strain.recalibrate.PhysicalModel method)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Executable.update_current_retention_level">update_current_retention_level() (pycbc.workflow.core.Executable method)</a>
 </li>
@@ -5369,11 +5387,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Executable.update_current_tags">update_current_tags() (pycbc.workflow.core.Executable method)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_g">update_g() (pycbc.strain.recalibrate.Recalibrate method)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.update_g">update_g() (pycbc.strain.recalibrate.PhysicalModel method)</a>
 </li>
       <li><a href="pycbc.workflow.html#pycbc.workflow.core.Executable.update_output_directory">update_output_directory() (pycbc.workflow.core.Executable method)</a>
 </li>
-      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.Recalibrate.update_r">update_r() (pycbc.strain.recalibrate.Recalibrate method)</a>
+      <li><a href="pycbc.strain.html#pycbc.strain.recalibrate.PhysicalModel.update_r">update_r() (pycbc.strain.recalibrate.PhysicalModel method)</a>
 </li>
       <li><a href="pycbc.io.html#pycbc.io.live.SingleCoincForGraceDB.upload">upload() (pycbc.io.live.SingleCoincForGraceDB method)</a>
 </li>

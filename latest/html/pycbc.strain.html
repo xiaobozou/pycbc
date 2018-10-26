@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain package &mdash; PyCBC e5f632 documentation</title>
+  <title>pycbc.strain package &mdash; PyCBC afd13d documentation</title>
   
 
   
@@ -464,14 +464,65 @@ duration, and the taper duration.</li>
 <span id="pycbc-strain-recalibrate-module"></span><h2>pycbc.strain.recalibrate module<a class="headerlink" href="#module-pycbc.strain.recalibrate" title="Permalink to this headline">¶</a></h2>
 <p>Classes and functions for adjusting strain data.</p>
 <dl class="class">
-<dt id="pycbc.strain.recalibrate.Recalibrate">
-<em class="property">class </em><code class="descclassname">pycbc.strain.recalibrate.</code><code class="descname">Recalibrate</code><span class="sig-paren">(</span><em>freq=None</em>, <em>fc0=None</em>, <em>c0=None</em>, <em>d0=None</em>, <em>a_tst0=None</em>, <em>a_pu0=None</em>, <em>fs0=None</em>, <em>qinv0=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.CubicSpline">
+<em class="property">class </em><code class="descclassname">pycbc.strain.recalibrate.</code><code class="descname">CubicSpline</code><span class="sig-paren">(</span><em>minimum_frequency</em>, <em>maximum_frequency</em>, <em>n_points</em>, <em>ifo_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#CubicSpline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.CubicSpline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.strain.recalibrate.Recalibrate" title="pycbc.strain.recalibrate.Recalibrate"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.strain.recalibrate.Recalibrate</span></code></a></p>
+<p>Cubic spline recalibration</p>
+<p>see <a class="reference external" href="https://dcc.ligo.org/LIGO-T1400682/public">https://dcc.ligo.org/LIGO-T1400682/public</a></p>
+<p>This assumes the spline points follow
+np.logspace(np.log(minimum_frequency), np.log(maximum_frequency),
+n_points)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>minimum_frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>frequency of spline points</strong> (<em>maximum</em>) – </li>
+<li><strong>maximum_frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – </li>
+<li><strong>frequency of spline points</strong> – </li>
+<li><strong>n_points</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – </li>
+<li><strong>of spline points</strong> (<em>number</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycbc.strain.recalibrate.CubicSpline.apply_calibration">
+<code class="descname">apply_calibration</code><span class="sig-paren">(</span><em>strain</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#CubicSpline.apply_calibration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.CubicSpline.apply_calibration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply calibration model</p>
+<p>This applies cubic spline calibration to the strain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain to be recalibrated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>strain_adjusted</strong> – The recalibrated strain.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.strain.recalibrate.CubicSpline.name">
+<code class="descname">name</code><em class="property"> = 'cubic_spline'</em><a class="headerlink" href="#pycbc.strain.recalibrate.CubicSpline.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.strain.recalibrate.PhysicalModel">
+<em class="property">class </em><code class="descclassname">pycbc.strain.recalibrate.</code><code class="descname">PhysicalModel</code><span class="sig-paren">(</span><em>freq=None</em>, <em>fc0=None</em>, <em>c0=None</em>, <em>d0=None</em>, <em>a_tst0=None</em>, <em>a_pu0=None</em>, <em>fs0=None</em>, <em>qinv0=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class for adjusting time-varying calibration parameters of given
 strain data.</p>
 <dl class="attribute">
-<dt id="pycbc.strain.recalibrate.Recalibrate.name">
-<code class="descname">name</code><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.name" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of this calibration model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -507,8 +558,8 @@ cavity.</li>
 </tbody>
 </table>
 <dl class="method">
-<dt id="pycbc.strain.recalibrate.Recalibrate.adjust_strain">
-<code class="descname">adjust_strain</code><span class="sig-paren">(</span><em>strain</em>, <em>delta_fs=None</em>, <em>delta_qinv=None</em>, <em>delta_fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.adjust_strain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.adjust_strain" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.adjust_strain">
+<code class="descname">adjust_strain</code><span class="sig-paren">(</span><em>strain</em>, <em>delta_fs=None</em>, <em>delta_qinv=None</em>, <em>delta_fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.adjust_strain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.adjust_strain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjust the FrequencySeries strain by changing the time-dependent
 calibration parameters kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -543,8 +594,8 @@ A_{pu0} at time t.</li>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="pycbc.strain.recalibrate.Recalibrate.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>ifo</em>, <em>section</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.from_config" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>ifo</em>, <em>section</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.from_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read a config file to get calibration options and transfer
 functions which will be used to intialize the model.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -571,8 +622,8 @@ the calibration options.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycbc.strain.recalibrate.Recalibrate.map_to_adjust">
-<code class="descname">map_to_adjust</code><span class="sig-paren">(</span><em>strain</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.map_to_adjust"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.map_to_adjust" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.map_to_adjust">
+<code class="descname">map_to_adjust</code><span class="sig-paren">(</span><em>strain</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.map_to_adjust"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.map_to_adjust" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map an input dictionary of sampling parameters to the
 adjust_strain function by filtering the dictionary for the
 calibration parameters, then calling adjust_strain.</p>
@@ -603,8 +654,8 @@ calibration parameters.</li>
 <dd></dd></dl>
 
 <dl class="classmethod">
-<dt id="pycbc.strain.recalibrate.Recalibrate.tf_from_file">
-<em class="property">classmethod </em><code class="descname">tf_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>delimiter=' '</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.tf_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.tf_from_file" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.tf_from_file">
+<em class="property">classmethod </em><code class="descname">tf_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>delimiter=' '</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.tf_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.tf_from_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert the contents of a file with the columns
 [freq, real(h), imag(h)] to a numpy.array with columns
 [freq, real(h)+j*imag(h)].</p>
@@ -629,8 +680,8 @@ calibration parameters.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycbc.strain.recalibrate.Recalibrate.update_c">
-<code class="descname">update_c</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.update_c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.update_c" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.update_c">
+<code class="descname">update_c</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.update_c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.update_c" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the sensing function c(f,t) given the new parameters
 kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -656,8 +707,8 @@ kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycbc.strain.recalibrate.Recalibrate.update_g">
-<code class="descname">update_g</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.update_g"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.update_g" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.update_g">
+<code class="descname">update_g</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.update_g"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.update_g" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the open loop gain g(f,t) given the new parameters
 kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -691,8 +742,8 @@ a_pu0 at time t.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycbc.strain.recalibrate.Recalibrate.update_r">
-<code class="descname">update_r</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.update_r"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.update_r" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.strain.recalibrate.PhysicalModel.update_r">
+<code class="descname">update_r</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#PhysicalModel.update_r"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.PhysicalModel.update_r" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the response function R(f,t) given the new parameters
 kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -724,6 +775,93 @@ a_pu0 at time t.</li>
 </tbody>
 </table>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.strain.recalibrate.Recalibrate">
+<em class="property">class </em><code class="descclassname">pycbc.strain.recalibrate.</code><code class="descname">Recalibrate</code><span class="sig-paren">(</span><em>ifo_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for modifying calibration</p>
+<dl class="method">
+<dt id="pycbc.strain.recalibrate.Recalibrate.apply_calibration">
+<code class="descname">apply_calibration</code><span class="sig-paren">(</span><em>strain</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.apply_calibration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.apply_calibration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply calibration model</p>
+<p>This method should be overwritten by subclasses</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain to be recalibrated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>strain_adjusted</strong> – The recalibrated strain.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.strain.recalibrate.Recalibrate.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>ifo</em>, <em>section</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a config file to get calibration options and transfer
+functions which will be used to intialize the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config file.</li>
+<li><strong>ifo</strong> (<em>string</em>) – The detector (H1, L1) for which the calibration model will
+be loaded.</li>
+<li><strong>section</strong> (<em>string</em>) – The section name in the config file from which to retrieve
+the calibration options.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of the class.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.strain.recalibrate.Recalibrate.map_to_adjust">
+<code class="descname">map_to_adjust</code><span class="sig-paren">(</span><em>strain</em>, <em>prefix='recalib_'</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/recalibrate.html#Recalibrate.map_to_adjust"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.map_to_adjust" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map an input dictionary of sampling parameters to the
+adjust_strain function by filtering the dictionary for the
+calibration parameters, then calling adjust_strain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain to be recalibrated.</li>
+<li><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Prefix for calibration parameter names</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Dictionary of sampling parameters which includes
+calibration parameters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>strain_adjusted</strong> – The recalibrated strain.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.strain.recalibrate.Recalibrate.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#pycbc.strain.recalibrate.Recalibrate.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
