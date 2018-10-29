@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC 25bf36 documentation</title>
+  <title>pycbc package &mdash; PyCBC 8f642a documentation</title>
   
 
   
@@ -2093,31 +2093,26 @@ coordinates. The polar angle is in [0,pi].</p>
 <div class="section" id="module-pycbc.cosmology">
 <span id="pycbc-cosmology-module"></span><h2>pycbc.cosmology module<a class="headerlink" href="#module-pycbc.cosmology" title="Permalink to this headline">¶</a></h2>
 <p>This modules provides functions for computing cosmological quantities, such as
-redshift.</p>
+redshift. This is mostly a wrapper around <code class="docutils literal notranslate"><span class="pre">astropy.cosmology</span></code>.</p>
+<p>Note: in all functions, <code class="docutils literal notranslate"><span class="pre">distance</span></code> is short hand for <code class="docutils literal notranslate"><span class="pre">luminosity_distance</span></code>.
+Any other distance measure is explicitly named; e.g., <code class="docutils literal notranslate"><span class="pre">comoving_distance</span></code>.</p>
 <dl class="function">
 <dt id="pycbc.cosmology.redshift">
-<code class="descclassname">pycbc.cosmology.</code><code class="descname">redshift</code><span class="sig-paren">(</span><em>distance</em>, <em>h=None</em>, <em>om=None</em>, <em>ol=None</em>, <em>w0=None</em>, <em>w1=None</em>, <em>w2=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/cosmology.html#redshift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.cosmology.redshift" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the redshift associated with the given distance.</p>
-<p>Cosmological constants <cite>h, om, ol, w0, w1, w2</cite> may optionally be provided
-(see below). Otherwise, standard LambdaCDM will be used by default; see
-<cite>LALCosmologyCalculator</cite> for details.</p>
+<code class="descclassname">pycbc.cosmology.</code><code class="descname">redshift</code><span class="sig-paren">(</span><em>distance</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/cosmology.html#redshift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.cosmology.redshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the redshift associated with the given luminosity distance.</p>
+<p>If the requested cosmology is one of the pre-defined ones in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">astropy.cosmology.parameters.available</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DistToZ</span></code> is
+used to provide a fast interpolation. This takes a few seconds to setup
+on the first call.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>distance</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The luminosity distance, in Mpc.</li>
-<li><strong>h</strong> (<em>{None</em><em>, </em><em>float}</em>) – The normalized Hubble constant to use. If None, will default to
-standard cosmology.</li>
-<li><strong>om</strong> (<em>{None</em><em>, </em><em>float}</em>) – The matter energy density. If None, will default to standard cosmology.</li>
-<li><strong>ol</strong> (<em>{None</em><em>, </em><em>float}</em>) – The cosmological-constant density. If None, will default to standard
-cosmology.</li>
-<li><strong>w0</strong> (<em>{None</em><em>, </em><em>float}</em>) – The 0th-order dark energy equation of state parameter. If None, will
-default to standard cosmology.</li>
-<li><strong>w1</strong> (<em>{None</em><em>, </em><em>float}</em>) – The first-order dark energy equation of state parameter. If None, will
-default to standard cosmology.</li>
-<li><strong>w2</strong> (<em>{None</em><em>, </em><em>float}</em>) – The second-order dark energy equation of state parameter. If None, will
-default to standard cosmology.</li>
+<li><strong>**kwargs</strong> – All other keyword args are passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">get_cosmology()</span></code> to
+select a cosmology. If none provided, will use
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">DEFAULT_COSMOLOGY</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -2125,6 +2120,89 @@ default to standard cosmology.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.cosmology.redshift_from_comoving_volume">
+<code class="descclassname">pycbc.cosmology.</code><code class="descname">redshift_from_comoving_volume</code><span class="sig-paren">(</span><em>vc</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/cosmology.html#redshift_from_comoving_volume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.cosmology.redshift_from_comoving_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the redshift from the given comoving volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The comoving volume, in units of cubed Mpc.</li>
+<li><strong>**kwargs</strong> – All other keyword args are passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">get_cosmology()</span></code> to
+select a cosmology. If none provided, will use
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">DEFAULT_COSMOLOGY</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The redshift at the given comoving volume.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.cosmology.distance_from_comoving_volume">
+<code class="descclassname">pycbc.cosmology.</code><code class="descname">distance_from_comoving_volume</code><span class="sig-paren">(</span><em>vc</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/cosmology.html#distance_from_comoving_volume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.cosmology.distance_from_comoving_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the luminosity distance from the given comoving volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The comoving volume, in units of cubed Mpc.</li>
+<li><strong>**kwargs</strong> – All other keyword args are passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">get_cosmology()</span></code> to
+select a cosmology. If none provided, will use
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">DEFAULT_COSMOLOGY</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The luminosity distance at the given comoving volume.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.cosmology.cosmological_quantity_from_redshift">
+<code class="descclassname">pycbc.cosmology.</code><code class="descname">cosmological_quantity_from_redshift</code><span class="sig-paren">(</span><em>z</em>, <em>quantity</em>, <em>strip_unit=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/cosmology.html#cosmological_quantity_from_redshift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.cosmology.cosmological_quantity_from_redshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of a cosmological quantity (e.g., age) at a redshift.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The redshift.</li>
+<li><strong>quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the quantity to get. The name may be any attribute of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">astropy.cosmology.FlatLambdaCDM</span></code>.</li>
+<li><strong>strip_unit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Just return the value of the quantity, sans units. Default is True.</li>
+<li><strong>**kwargs</strong> – All other keyword args are passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">get_cosmology()</span></code> to
+select a cosmology. If none provided, will use
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">DEFAULT_COSMOLOGY</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The value of the quantity at the requested value. If <code class="docutils literal notranslate"><span class="pre">strip_unit</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, will return the value. Otherwise, will return the value with
+units.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or astropy.units.quantity</p>
 </td>
 </tr>
 </tbody>
