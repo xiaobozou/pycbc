@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>glue.ligolw.lsctables &mdash; PyCBC c5624c documentation</title>
+  <title>glue.ligolw.lsctables &mdash; PyCBC 5a0297 documentation</title>
   
 
   
@@ -239,11 +239,11 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">xml</span> <span class="k">import</span> <span class="n">sax</span>
 
+<span class="kn">from</span> <span class="nn">ligo</span> <span class="k">import</span> <span class="n">segments</span>
 
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">git_version</span>
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">iterutils</span>
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">offsetvector</span>
-<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span>
 <span class="kn">import</span> <span class="nn">lal</span>
 <span class="kn">from</span> <span class="nn">lal</span> <span class="k">import</span> <span class="n">LIGOTimeGPS</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">ligolw</span>
@@ -2088,6 +2088,19 @@
 			<span class="bp">self</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2z</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 		<span class="k">else</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">spin2x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spin2z</span> <span class="o">=</span> <span class="n">spin</span>
+
+	<span class="c1">#</span>
+	<span class="c1"># simulate tempate_id column</span>
+	<span class="c1"># FIXME:  add a proper column for this</span>
+	<span class="c1">#</span>
+
+	<span class="nd">@property</span>
+	<span class="k">def</span> <span class="nf">template_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Gamma0</span><span class="p">)</span>
+
+	<span class="nd">@template_id</span><span class="o">.</span><span class="n">setter</span>
+	<span class="k">def</span> <span class="nf">template_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template_id</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">Gamma0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">template_id</span><span class="p">)</span>
 
 	<span class="c1">#</span>
 	<span class="c1"># Methods</span>
