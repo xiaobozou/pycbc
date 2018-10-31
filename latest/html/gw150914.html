@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Signal Processing with GW150914 &mdash; PyCBC 55aa22 documentation</title>
+  <title>Signal Processing with GW150914 &mdash; PyCBC 484ae2 documentation</title>
   
 
   
@@ -225,7 +225,7 @@ as an example.</p>
     <span class="n">psd</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">welch</span><span class="p">(</span><span class="n">h1</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">h1</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
 
     <span class="c1"># whiten</span>
-    <span class="n">white_strain</span> <span class="o">=</span> <span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span> <span class="o">/</span> <span class="n">psd</span> <span class="o">**</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
+    <span class="n">white_strain</span> <span class="o">=</span> <span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">to_frequencyseries</span><span class="p">()</span> <span class="o">/</span> <span class="n">psd</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">to_timeseries</span><span class="p">()</span>
 
     <span class="c1"># remove some of the high and low</span>
     <span class="n">smooth</span> <span class="o">=</span> <span class="n">highpass_fir</span><span class="p">(</span><span class="n">white_strain</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
@@ -242,7 +242,6 @@ as an example.</p>
 <span class="n">pylab</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">1126259462.21</span><span class="p">,</span> <span class="mf">1126259462.45</span><span class="p">)</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Smoothed-Whitened Strain&#39;</span><span class="p">)</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">pylab</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GPS Time (s)&#39;</span><span class="p">)</span>
 <span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -354,7 +353,7 @@ it can be heard in the Hanford data.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 30, 2018.
+      Last updated on Oct 31, 2018.
 
     </p>
   </div>
