@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 0db1e8 documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC 287d82 documentation</title>
   
 
   
@@ -1903,7 +1903,7 @@ generate cache files from the inputs.</p>
 
 <dl class="method">
 <dt id="pycbc.workflow.core.Workflow.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filename=None</em>, <em>output_map_path=None</em>, <em>staging_site=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#Workflow.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.Workflow.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename=None</em>, <em>output_map_path=None</em>, <em>transformation_catalog_path=None</em>, <em>staging_site=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#Workflow.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.Workflow.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this workflow to DAX file</p>
 </dd></dl>
 
@@ -1935,12 +1935,17 @@ instance for the configuration file.</p>
 
 <dl class="staticmethod">
 <dt id="pycbc.workflow.core.Workflow.set_job_properties">
-<em class="property">static </em><code class="descname">set_job_properties</code><span class="sig-paren">(</span><em>job</em>, <em>output_map_file</em>, <em>staging_site=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#Workflow.set_job_properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.Workflow.set_job_properties" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">set_job_properties</code><span class="sig-paren">(</span><em>job</em>, <em>output_map_file</em>, <em>transformation_catalog_file</em>, <em>staging_site=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#Workflow.set_job_properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.Workflow.set_job_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.workflow.core.Workflow.staging_site">
 <code class="descname">staging_site</code><a class="headerlink" href="#pycbc.workflow.core.Workflow.staging_site" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.workflow.core.Workflow.transformation_catalog">
+<code class="descname">transformation_catalog</code><a class="headerlink" href="#pycbc.workflow.core.Workflow.transformation_catalog" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -4457,7 +4462,7 @@ represent the order operation on the physical data.</p>
 
 <dl class="class">
 <dt id="pycbc.workflow.pegasus_workflow.Executable">
-<em class="property">class </em><code class="descclassname">pycbc.workflow.pegasus_workflow.</code><code class="descname">Executable</code><span class="sig-paren">(</span><em>name</em>, <em>namespace=None</em>, <em>os='linux'</em>, <em>arch='x86_64'</em>, <em>installed=True</em>, <em>version=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Executable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Executable" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.workflow.pegasus_workflow.</code><code class="descname">Executable</code><span class="sig-paren">(</span><em>name</em>, <em>namespace=None</em>, <em>os='linux'</em>, <em>arch='x86_64'</em>, <em>installed=True</em>, <em>version=None</em>, <em>container=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Executable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Executable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.workflow.pegasus_workflow.ProfileShortcuts" title="pycbc.workflow.pegasus_workflow.ProfileShortcuts"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.workflow.pegasus_workflow.ProfileShortcuts</span></code></a></p>
 <p>The workflow representation of an Executable</p>
 <dl class="method">
@@ -4698,7 +4703,7 @@ Parent child relationships are determined by data dependencies</p>
 
 <dl class="method">
 <dt id="pycbc.workflow.pegasus_workflow.Workflow.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Workflow.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Workflow.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename=None</em>, <em>tc=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/pegasus_workflow.html#Workflow.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.pegasus_workflow.Workflow.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write this workflow to DAX file</p>
 </dd></dl>
 
@@ -5724,7 +5729,7 @@ interferometer data</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 31, 2018.
+      Last updated on Nov 01, 2018.
 
     </p>
   </div>

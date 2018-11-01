@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.inference_followups &mdash; PyCBC 0db1e8 documentation</title>
+  <title>pycbc.workflow.inference_followups &mdash; PyCBC 287d82 documentation</title>
   
 
   
@@ -291,6 +291,8 @@
                                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
     <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s2">&quot;.dax.map&quot;</span><span class="p">,</span>
                                      <span class="s2">&quot;--output-map&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s2">&quot;.tc.txt&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;--transformation-catalog&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
 
     <span class="c1"># get dax name and use it for the workflow name</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
@@ -300,6 +302,9 @@
     <span class="n">map_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--output-dir&quot;</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
 
+    <span class="c1"># get the transformation catalog name</span>
+    <span class="n">tc_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
     <span class="c1"># add this node to the workflow</span>
     <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
 
@@ -308,7 +313,7 @@
     <span class="n">fil</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">job</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">DAX</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
     <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s2">&quot;--basename </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">)</span>
+    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 
     <span class="c1"># make dax a child of the inference workflow generator node</span>
@@ -629,7 +634,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 31, 2018.
+      Last updated on Nov 01, 2018.
 
     </p>
   </div>

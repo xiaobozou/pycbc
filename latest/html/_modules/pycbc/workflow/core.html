@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC 0db1e8 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC 287d82 documentation</title>
   
 
   
@@ -365,6 +365,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ifo_string</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">cp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">universe</span><span class="o">=</span><span class="n">universe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container_cls</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">installed</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;pycbc|installed&#39;</span><span class="p">)</span>
@@ -380,8 +382,43 @@
         <span class="c1"># Determine the level at which output files should be kept</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_current_retention_level</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_retention_level</span><span class="p">)</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">Executable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tagged_name</span><span class="p">,</span>
-                                         <span class="n">installed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">installed</span><span class="p">)</span>
+        <span class="c1"># Determine if this executables should be run in a container</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                         <span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">container_img</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                        <span class="s1">&#39;image&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_site</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="s1">&#39;image_site&#39;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_site</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="s1">&#39;mount&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">container_cls</span> <span class="o">=</span> <span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-container&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                                                    <span class="n">name</span><span class="p">),</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span><span class="p">,</span>
+                                                    <span class="bp">self</span><span class="o">.</span><span class="n">container_img</span><span class="p">,</span>
+                                                    <span class="n">imagesite</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">container_site</span><span class="p">,</span>
+                                                    <span class="n">mount</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span><span class="p">)</span>
+
+            <span class="nb">super</span><span class="p">(</span><span class="n">Executable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tagged_name</span><span class="p">,</span>
+                                             <span class="n">installed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">installed</span><span class="p">,</span>
+                                             <span class="n">container</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">container_cls</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">Executable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tagged_name</span><span class="p">,</span>
+                                             <span class="n">installed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">installed</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_pegasus_profile_options</span><span class="p">()</span>
 
@@ -432,6 +469,7 @@
 
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;group_jobs&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_profile</span><span class="p">(</span><span class="s1">&#39;pegasus&#39;</span><span class="p">,</span> <span class="s1">&#39;clusters.size&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_jobs</span><span class="p">)</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ifo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the ifo.</span>
@@ -777,6 +815,15 @@
         <span class="k">return</span> <span class="n">path</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transformation_catalog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.tc.txt&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;tc.txt&#39;</span>
+        <span class="n">path</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">staging_site</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">workflow_section</span> <span class="o">=</span> <span class="s1">&#39;workflow-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -826,11 +873,22 @@
             <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Workflow.set_job_properties"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.set_job_properties">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">transformation_catalog_file</span><span class="p">,</span>
+                           <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica.file=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
                          <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">output_map_file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
         <span class="n">job</span><span class="o">.</span><span class="n">uses</span><span class="p">(</span><span class="n">output_map_file</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">Link</span><span class="o">.</span><span class="n">INPUT</span><span class="p">)</span>
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.dir.storage.mapper.replica=File&#39;</span><span class="p">)</span>
+
+        <span class="c1"># FIXME this is an ugly hack to connect the right transformation</span>
+        <span class="c1"># catalog to the right DAX beacuse Pegasus 4.9 does not support</span>
+        <span class="c1"># the full transformation catalog syntax in the DAX. This will go</span>
+        <span class="c1"># away in Pegasus 5.x when this code is re-written.</span>
+
+        <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;-Dpegasus.catalog.transformation.file=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
+                         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">transformation_catalog_file</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">uses</span><span class="p">(</span><span class="n">transformation_catalog_file</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">Link</span><span class="o">.</span><span class="n">INPUT</span><span class="p">)</span>
 
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--output-site local&#39;</span><span class="p">)</span>
         <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--cleanup inplace&#39;</span><span class="p">)</span>
@@ -845,7 +903,9 @@
         <span class="k">if</span> <span class="n">staging_site</span><span class="p">:</span>
             <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--staging-site </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">staging_site</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Workflow.save"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">output_map_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Workflow.save"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">output_map_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">transformation_catalog_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
         <span class="k">if</span> <span class="n">output_map_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">output_map_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_map</span>
         <span class="n">output_map_file</span> <span class="o">=</span> <span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">output_map_path</span><span class="p">))</span>
@@ -853,9 +913,20 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="n">output_map_file</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="n">transformation_catalog_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">transformation_catalog_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformation_catalog</span>
+        <span class="n">transformation_catalog_file</span> <span class="o">=</span> <span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span>
+                                                        <span class="n">transformation_catalog_path</span><span class="p">))</span>
+        <span class="n">transformation_catalog_file</span><span class="o">.</span><span class="n">addPFN</span><span class="p">(</span><span class="n">Pegasus</span><span class="o">.</span><span class="n">DAX3</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span>
+            <span class="n">transformation_catalog_path</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">in_workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="n">transformation_catalog_file</span><span class="p">)</span>
+
         <span class="n">staging_site</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">staging_site</span>
 
-        <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="p">)</span>
+        <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span>
+                                    <span class="n">transformation_catalog_file</span><span class="p">,</span>
+                                    <span class="n">staging_site</span><span class="p">)</span>
 
         <span class="c1"># add executable pfns for local site to dax</span>
         <span class="k">for</span> <span class="n">exe</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executables</span><span class="p">:</span>
@@ -880,7 +951,8 @@
         <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
         <span class="c1"># save the dax file</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Workflow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Workflow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+                                   <span class="n">tc</span><span class="o">=</span><span class="n">transformation_catalog_path</span><span class="p">)</span>
 
         <span class="c1"># add workflow storage locations to the output mapper</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_map_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
@@ -2089,7 +2161,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Oct 31, 2018.
+      Last updated on Nov 01, 2018.
 
     </p>
   </div>
