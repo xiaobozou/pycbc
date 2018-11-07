@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.datafind &mdash; PyCBC b3a2c8 documentation</title>
+  <title>pycbc.workflow.datafind &mdash; PyCBC cfe58f documentation</title>
   
 
   
@@ -922,36 +922,9 @@
                     <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="p">):</span>
                     <span class="c1"># Datafind returned a URL valid on the osg as well</span>
                     <span class="c1"># so add the additional PFNs to allow OSG access.</span>
-                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;osg&#39;</span><span class="p">,</span> <span class="s1">&#39;orangegrid&#39;</span><span class="p">]:</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;osg&#39;</span><span class="p">,</span> <span class="s1">&#39;orangegrid&#39;</span><span class="p">,</span> <span class="s1">&#39;osgconnect&#39;</span><span class="p">]:</span>
                         <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="s1">&#39;H1_LOSC_4_V1&#39;</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">:</span>
-                            <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                                <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;gwdata/O1/strain.4k/frame.v1/H1/&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;https://www.gw-openscience.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;archive/data/O1/&#39;</span><span class="p">),</span>
-                                <span class="n">site</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
-                        <span class="k">elif</span> <span class="s1">&#39;L1_LOSC_4_V1&#39;</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">:</span>
-                            <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                                <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;gwdata/O1/strain.4k/frame.v1/L1/&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;https://www.gw-openscience.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;archive/data/O1/&#39;</span><span class="p">),</span>
-                                <span class="n">site</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
-                        <span class="k">elif</span> <span class="s1">&#39;H1_LOSC_16_V1&#39;</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">:</span>
-                            <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                                <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;gwdata/O1/strain.16k/frame.v1/H1/&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;https://www.gw-openscience.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;archive/data/O1_16KHZ/&#39;</span><span class="p">),</span>
-                                <span class="n">site</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
-                        <span class="k">elif</span> <span class="s1">&#39;L1_LOSC_16_V1&#39;</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">:</span>
-                            <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                                <span class="s1">&#39;file:///cvmfs/gwosc.osgstorage.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;gwdata/O1/strain.16k/frame.v1/L1/&#39;</span><span class="p">,</span>
-                                <span class="s1">&#39;https://www.gw-openscience.org/&#39;</span><span class="o">+</span>
-                                <span class="s1">&#39;archive/data/O1_16KHZ/&#39;</span><span class="p">),</span>
-                                <span class="n">site</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+                        <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-scratch&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">currFile</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;notlocal&#39;</span><span class="p">)</span>
 
@@ -1293,7 +1266,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 06, 2018.
+      Last updated on Nov 07, 2018.
 
     </p>
   </div>

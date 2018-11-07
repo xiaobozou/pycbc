@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC b3a2c8 documentation</title>
+  <title>pycbc_make_coinc_search_workflow: A workflow to search for gravitational waves &mdash; PyCBC cfe58f documentation</title>
   
 
   
@@ -699,12 +699,11 @@ workflow submission required one of:
 optional arguments:
   -h, --help              show this help message and exit
   -c, --cache-file FILE   replica cache file for data reuse
-  -g, --local-gsiftp-server HOST provide a gsiftp url on HOST
-                                 for the local site storage
-                                 and scratch directories
-  -r, --remote-staging-server HOST provide a gsiftp url on HOST
-                                 for the remote site storage
-                                 and scratch directories
+  -g, --local-staging-server uri://host provide a uri on host
+                                 for the local site scratch
+                                 (default is file://)
+  -r, --remote-staging-server uri://host provide a uri on host
+                                 for the remote site scratch.
   -p, --pegasus-properties FILE use the specified file as
                                the pegasus properties file
   -P, --append-pegasus-property STRING add the extra property
@@ -1205,11 +1204,21 @@ follwing lines to your <code class="docutils literal notranslate"><span class="p
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--no-create-proxy \
 --execution-sites osg \
 --append-pegasus-property &#39;pegasus.transfer.bypass.input.staging=true&#39; \
---remote-staging-server `hostname -f` \
+--local-staging-server gsiftp://`hostname -f` \
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> will give the correct value if there is a gsiftp server running on the submit machine.  If not, change this as needed. The remote-staging-site is the intermediary computer than can pass files between the submitting computer and the computers doing the work.  <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> returns the full name of the computer. The full name of the computer that <code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-f</span></code> has to be one that is accessible to both the submit machine and the workers. The <code class="docutils literal notranslate"><span class="pre">--no-create-proxy</span></code> may be omitted if you have LIGO.org credentials and will be
 retrieving data from authenticated locations in CVMFS.</p>
+<p>You will also need to specify where the code should get the data needed to generate reduced order model waveforms. To do this add the following additional arguments to <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;local:env|LAL_DATA_PATH:/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/lalsuite-extra/current/share/lalsimulation&#39;</span> \
+<span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:env|LAL_DATA_PATH:/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/lalsuite-extra/current/share/lalsimulation&#39;</span> \
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">current</span></code> is a symbolic link to the latest version of the data and can be replaced with a specific release (e.g.  <code class="docutils literal notranslate"><span class="pre">e02dab8c</span></code>) if required.</p>
+<p>If you are using the PyInstaller bundled executable, you will need to give <code class="docutils literal notranslate"><span class="pre">pycbc_submit_dax</span></code> the additional argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">append</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">profile</span> <span class="s1">&#39;osg:env|NO_TMPDIR:1&#39;</span> \
+</pre></div>
+</div>
 <p>The set of arguments above will allow <code class="docutils literal notranslate"><span class="pre">pycbc_inspiral</span></code> to run on any OSG machine to which you have access, as well as
 the local compute cluster. If you do not want your jobs to run on the local cluster, but only on shared resources, then add
 the argument:</p>
@@ -1271,7 +1280,7 @@ such as specifying an LDG accounting group, if you will be running from an LDG c
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 06, 2018.
+      Last updated on Nov 07, 2018.
 
     </p>
   </div>

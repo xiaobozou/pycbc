@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.minifollowups &mdash; PyCBC b3a2c8 documentation</title>
+  <title>pycbc.workflow.minifollowups &mdash; PyCBC cfe58f documentation</title>
   
 
   
@@ -214,7 +214,7 @@
 <span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
 
 <span class="kn">import</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">os.path</span>
-<span class="kn">import</span> <span class="nn">urlparse</span>
+<span class="kn">import</span> <span class="nn">urlparse</span><span class="o">,</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">distutils.spawn</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.core</span> <span class="k">import</span> <span class="n">Executable</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">makedir</span><span class="p">,</span> <span class="n">File</span><span class="p">,</span> <span class="n">Workflow</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.plotting</span> <span class="k">import</span> <span class="n">PlotExecutable</span><span class="p">,</span> <span class="n">requirestr</span><span class="p">,</span> <span class="n">excludestr</span>
@@ -277,7 +277,8 @@
     <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
     <span class="n">config_file</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span>
-    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">config_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
 
     <span class="n">exe</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;foreground_minifollowup&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">dax_output</span><span class="p">)</span>
 
@@ -363,7 +364,8 @@
     <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
     <span class="n">config_file</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span>
-    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">config_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
 
     <span class="n">exe</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;singles_minifollowup&#39;</span><span class="p">,</span>
                      <span class="n">ifos</span><span class="o">=</span><span class="n">curr_ifo</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">dax_output</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
@@ -457,7 +459,8 @@
     <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
     <span class="n">config_file</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span>
-    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">config_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
 
     <span class="n">exe</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;injection_minifollowup&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">dax_output</span><span class="p">)</span>
 
@@ -973,7 +976,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 06, 2018.
+      Last updated on Nov 07, 2018.
 
     </p>
   </div>

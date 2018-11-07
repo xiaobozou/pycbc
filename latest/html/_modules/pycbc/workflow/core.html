@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC b3a2c8 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC cfe58f documentation</title>
   
 
   
@@ -225,7 +225,7 @@
 <span class="sd">creating a workflow. For details about the workflow module see here:</span>
 <span class="sd">https://ldas-jobs.ligo.caltech.edu/~cbc/docs/pycbc/ahope.html</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">stat</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">urlparse</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">stat</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">urlparse</span><span class="o">,</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">ConfigParser</span><span class="o">,</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">cPickle</span><span class="o">,</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">combinations</span><span class="p">,</span> <span class="n">groupby</span><span class="p">,</span> <span class="n">permutations</span>
@@ -384,23 +384,23 @@
 
         <span class="c1"># Determine if this executables should be run in a container</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
-                                         <span class="s1">&#39;type&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                         <span class="s1">&#39;container|type&#39;</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">container_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">container_img</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
-                                        <span class="s1">&#39;image&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">container_img</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                        <span class="s1">&#39;container|image&#39;</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">container_site</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
-                                             <span class="s1">&#39;image_site&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_site</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="s1">&#39;container|image_site&#39;</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">container_site</span> <span class="o">=</span> <span class="s1">&#39;local&#39;</span>
 
             <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_container-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
-                                             <span class="s1">&#39;mount&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pegasus_profile-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">,</span>
+                                             <span class="s1">&#39;container|mount&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">container_mount</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -496,7 +496,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">cp</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">sec</span><span class="p">):</span>
             <span class="n">namespace</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">namespace</span> <span class="o">==</span> <span class="s1">&#39;pycbc&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">namespace</span> <span class="o">==</span> <span class="s1">&#39;pycbc&#39;</span> <span class="ow">or</span> <span class="n">namespace</span> <span class="o">==</span> <span class="s1">&#39;container&#39;</span><span class="p">:</span>
                 <span class="k">continue</span>
 
             <span class="n">value</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">sec</span><span class="p">,</span> <span class="n">opt</span><span class="p">))</span>
@@ -530,9 +530,12 @@
                 <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
                     <span class="n">curr_lfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-                    <span class="c1"># If the file exists make sure to use.</span>
+                    <span class="c1"># If the file exists make sure to use the</span>
+                    <span class="c1"># fill path as a file:// URL</span>
                     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-                        <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                        <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                                    <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span>
+                                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span> 
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">value</span>
 
@@ -853,7 +856,9 @@
 
             <span class="n">resolved</span> <span class="o">=</span> <span class="n">resolve_url</span><span class="p">(</span><span class="n">pfn</span><span class="p">,</span> <span class="n">permissions</span><span class="o">=</span><span class="n">stat</span><span class="o">.</span><span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IXUSR</span><span class="p">)</span>
             <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">clear_pfns</span><span class="p">()</span>
-            <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">add_pfn</span><span class="p">(</span><span class="n">resolved</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">executable</span><span class="o">.</span><span class="n">add_pfn</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                                    <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span>
+                                    <span class="n">resolved</span><span class="p">)),</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
 
         <span class="n">cmd_list</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_command_line</span><span class="p">()</span>
 
@@ -870,7 +875,9 @@
 
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
+            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span> 
+                    <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Workflow.set_job_properties"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.Workflow.set_job_properties">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">output_map_file</span><span class="p">,</span> <span class="n">transformation_catalog_file</span><span class="p">,</span>
@@ -1890,7 +1897,9 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">file_exists</span><span class="p">:</span>
             <span class="n">instnc</span><span class="o">.</span><span class="n">to_segment_xml</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">instnc</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">instnc</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+            <span class="n">instnc</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                       <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span>
+                       <span class="n">instnc</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">instnc</span></div>
 
 <div class="viewcode-block" id="SegFile.from_segment_xml"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.SegFile.from_segment_xml">[docs]</a>    <span class="nd">@classmethod</span>
@@ -2023,7 +2032,9 @@
                                  <span class="bp">self</span><span class="o">.</span><span class="n">has_pfn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">):</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span> 
+                     <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span>
+                     <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
         <span class="n">ligolw_utils</span><span class="o">.</span><span class="n">write_filename</span><span class="p">(</span><span class="n">outdoc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)</span></div></div>
 
 
@@ -2161,7 +2172,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 06, 2018.
+      Last updated on Nov 07, 2018.
 
     </p>
   </div>

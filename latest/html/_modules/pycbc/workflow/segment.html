@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.segment &mdash; PyCBC b3a2c8 documentation</title>
+  <title>pycbc.workflow.segment &mdash; PyCBC cfe58f documentation</title>
   
 
   
@@ -228,7 +228,7 @@
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">stat</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">urlparse</span>
+<span class="kn">import</span> <span class="nn">urlparse</span><span class="o">,</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">lal</span>
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span><span class="p">,</span> <span class="n">segmentsUtils</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">ligolw</span>
@@ -1081,7 +1081,9 @@
             <span class="n">cum_node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">cum_node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
                 <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+                <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                                         <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span>
+                        <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
         <span class="n">add_inputs</span> <span class="o">+=</span> <span class="n">cum_node</span><span class="o">.</span><span class="n">output_files</span>
 
     <span class="c1"># add cumulative files for each ifo together</span>
@@ -1102,7 +1104,9 @@
         <span class="n">add_node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">add_node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                                     <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">outfile</span></div>
 
 <div class="viewcode-block" id="add_cumulative_files"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.add_cumulative_files">[docs]</a><span class="k">def</span> <span class="nf">add_cumulative_files</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">input_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span>
@@ -1143,7 +1147,9 @@
         <span class="n">add_node</span><span class="o">.</span><span class="n">executed</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">add_node</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span>
             <span class="n">fil</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
+            <span class="n">fil</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">urlparse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="s1">&#39;file:&#39;</span><span class="p">,</span>
+                                     <span class="n">urllib</span><span class="o">.</span><span class="n">pathname2url</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">storage_path</span><span class="p">)),</span>
+                    <span class="n">site</span><span class="o">=</span><span class="s1">&#39;local&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">add_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="find_playground_segments"><a class="viewcode-back" href="../../../workflow/segments.html#pycbc.workflow.segment.find_playground_segments">[docs]</a><span class="k">def</span> <span class="nf">find_playground_segments</span><span class="p">(</span><span class="n">segs</span><span class="p">):</span>
@@ -1595,7 +1601,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 06, 2018.
+      Last updated on Nov 07, 2018.
 
     </p>
   </div>
