@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.coincidence &mdash; PyCBC 0e73fd documentation</title>
+  <title>pycbc.workflow.coincidence &mdash; PyCBC 86fa29 documentation</title>
   
 
   
@@ -301,6 +301,30 @@
         <span class="k">if</span> <span class="n">veto_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--veto-files&#39;</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">)</span>
             <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--segment-name&#39;</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--template-fraction-range&#39;</span><span class="p">,</span> <span class="n">template_str</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
+
+<div class="viewcode-block" id="PyCBCFindMultiifoCoincExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCFindMultiifoCoincExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCFindMultiifoCoincExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find coinc triggers using a folded interval method&quot;&quot;&quot;</span>
+    <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">ALL_TRIGGERS</span>
+    <span class="n">file_input_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;--statistic-files&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="PyCBCFindMultiifoCoincExecutable.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCFindMultiifoCoincExecutable.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">stat_files</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">,</span>
+                    <span class="n">veto_name</span><span class="p">,</span> <span class="n">template_str</span><span class="p">,</span> <span class="n">pivot_ifo</span><span class="p">,</span> <span class="n">fixed_ifo</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">segs</span> <span class="o">=</span> <span class="n">trig_files</span><span class="o">.</span><span class="n">get_times_covered_by_files</span><span class="p">()</span>
+        <span class="n">seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">segs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">segs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--template-bank&#39;</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--trigger-files&#39;</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stat_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--statistic-files&#39;</span><span class="p">,</span> <span class="n">stat_files</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">veto_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s1">&#39;--veto-files&#39;</span><span class="p">,</span> <span class="n">veto_file</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--segment-name&#39;</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--pivot-ifo&#39;</span><span class="p">,</span> <span class="n">pivot_ifo</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--fixed-ifo&#39;</span><span class="p">,</span> <span class="n">fixed_ifo</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--template-fraction-range&#39;</span><span class="p">,</span> <span class="n">template_str</span><span class="p">)</span>
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
@@ -692,6 +716,46 @@
 
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;...leaving coincidence &#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">statmap_files</span></div>
+
+<div class="viewcode-block" id="setup_multiifo_interval_coinc"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_multiifo_interval_coinc">[docs]</a><span class="k">def</span> <span class="nf">setup_multiifo_interval_coinc</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span> <span class="n">trig_files</span><span class="p">,</span> <span class="n">stat_files</span><span class="p">,</span>
+                         <span class="n">veto_files</span><span class="p">,</span> <span class="n">veto_names</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">pivot_ifo</span><span class="p">,</span> <span class="n">fixed_ifo</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function sets up exact match multiifo coincidence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">make_analysis_dir</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up coincidence&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hdfbank</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Must use exactly 1 bank file for this coincidence &#39;</span>
+                         <span class="s1">&#39;method, I got </span><span class="si">%i</span><span class="s1"> !&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">hdfbank</span><span class="p">))</span>
+    <span class="n">hdfbank</span> <span class="o">=</span> <span class="n">hdfbank</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">ifos</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">trig_files</span><span class="o">.</span><span class="n">categorize_by_attr</span><span class="p">(</span><span class="s1">&#39;ifo&#39;</span><span class="p">)</span>
+    <span class="n">findcoinc_exe</span> <span class="o">=</span> <span class="n">PyCBCFindMultiifoCoincExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;multiifo_coinc&#39;</span><span class="p">,</span>
+                                             <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                             <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+    <span class="c1"># Wall time knob and memory knob</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;parallelization-factor&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">))</span>
+
+    <span class="n">bg_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">veto_files</span><span class="p">,</span> <span class="n">veto_names</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+            <span class="n">group_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+            <span class="n">coinc_node</span> <span class="o">=</span> <span class="n">findcoinc_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">trig_files</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span>
+                                                   <span class="n">stat_files</span><span class="p">,</span>
+                                                   <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span><span class="p">,</span>
+                                                   <span class="n">group_str</span><span class="p">,</span>
+                                                   <span class="n">pivot_ifo</span><span class="p">,</span>
+                                                   <span class="n">fixed_ifo</span><span class="p">,</span>
+                                                   <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">veto_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+            <span class="n">bg_files</span> <span class="o">+=</span> <span class="n">coinc_node</span><span class="o">.</span><span class="n">output_files</span>
+            <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">coinc_node</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;...leaving coincidence &#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bg_files</span></div>
 </pre></div>
 
            </div>
@@ -705,7 +769,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 07, 2018.
+      Last updated on Nov 12, 2018.
 
     </p>
   </div>
