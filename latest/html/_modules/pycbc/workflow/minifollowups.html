@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.minifollowups &mdash; PyCBC 86fa29 documentation</title>
+  <title>pycbc.workflow.minifollowups &mdash; PyCBC 96037f documentation</title>
   
 
   
@@ -306,9 +306,16 @@
     <span class="c1"># execute this in a sub-workflow</span>
     <span class="n">fil</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+    <span class="c1"># determine if a staging site has been specified</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-foreground_minifollowups&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;staging-site&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="n">job</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">DAX</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
     <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--basename </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">)</span>
+    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="n">staging_site</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
@@ -401,10 +408,17 @@
     <span class="c1"># execute this in a sub-workflow</span>
     <span class="n">fil</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+    <span class="c1"># determine if a staging site has been specified</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-sngl_minifollowups&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;staging-site&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="n">job</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">DAX</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
     <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--basename </span><span class="si">%s</span><span class="s1">&#39;</span> \
                      <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">)</span>
+    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="n">staging_site</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
@@ -489,9 +503,16 @@
     <span class="c1"># execute this in a sub-workflow</span>
     <span class="n">fil</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+    <span class="c1"># determine if a staging site has been specified</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workflow-injection_minifollowups&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;staging-site&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">staging_site</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="n">job</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">DAX</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
     <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s1">&#39;--basename </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">)</span>
+    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">,</span> <span class="n">tc_file</span><span class="p">,</span> <span class="n">staging_site</span><span class="o">=</span><span class="n">staging_site</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
     <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
     <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
@@ -976,7 +997,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Nov 12, 2018.
+      Last updated on Nov 16, 2018.
 
     </p>
   </div>
