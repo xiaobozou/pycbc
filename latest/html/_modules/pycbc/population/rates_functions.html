@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.population.rates_functions &mdash; PyCBC a33758 documentation</title>
+  <title>pycbc.population.rates_functions &mdash; PyCBC 17d8b8 documentation</title>
   
 
   
@@ -209,8 +209,9 @@
 <span class="kn">import</span> <span class="nn">bisect</span>
 <span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">mchirp_from_mass1_mass2</span>
 
-<div class="viewcode-block" id="process_full_data"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.process_full_data">[docs]</a><span class="k">def</span> <span class="nf">process_full_data</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lo_tlt_mass</span><span class="p">,</span> <span class="n">hi_tlt_mass</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read the zero and time-lagged triggers identified by BBH templates.</span>
+<div class="viewcode-block" id="process_full_data"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.process_full_data">[docs]</a><span class="k">def</span> <span class="nf">process_full_data</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">mass2</span><span class="p">,</span> <span class="n">lo_mchirp</span><span class="p">,</span> <span class="n">hi_mchirp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read the zero-lag and time-lag triggers identified by templates in</span>
+<span class="sd">       a specified range of chirp mass.</span>
 
 <span class="sd">       Parameters</span>
 <span class="sd">       ----------</span>
@@ -222,8 +223,10 @@
 <span class="sd">              First mass of the waveform in the template bank</span>
 <span class="sd">       mass2: array</span>
 <span class="sd">              Second mass of the waveform in the template bank</span>
-<span class="sd">       min_bh_mass: float</span>
-<span class="sd">              Minimimum mass for the black hole</span>
+<span class="sd">       lo_mchirp: float</span>
+<span class="sd">              Minimum chirp mass for the template</span>
+<span class="sd">       hi_mchirp: float</span>
+<span class="sd">              Maximum chirp mass for the template</span>
 
 <span class="sd">       Returns</span>
 <span class="sd">       -------</span>
@@ -235,12 +238,12 @@
         <span class="n">id_bkg</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;background_exc/template_id&#39;</span><span class="p">][:]</span>
         <span class="n">id_fg</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;foreground/template_id&#39;</span><span class="p">][:]</span>
 
-        <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mass1</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo_tlt_mass</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_tlt_mass</span> <span class="o">-</span> <span class="n">mass1</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">]))</span>
-        <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mass2</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo_tlt_mass</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_tlt_mass</span> <span class="o">-</span> <span class="n">mass2</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">]))</span>
-        <span class="n">idx_bkg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mass1</span><span class="p">[</span><span class="n">id_fg</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo_tlt_mass</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_tlt_mass</span> <span class="o">-</span> <span class="n">mass1</span><span class="p">[</span><span class="n">id_fg</span><span class="p">]))</span>
-        <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mass2</span><span class="p">[</span><span class="n">id_fg</span><span class="p">]</span> <span class="o">-</span> <span class="n">lo_tlt_mass</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_tlt_mass</span> <span class="o">-</span> <span class="n">mass2</span><span class="p">[</span><span class="n">id_fg</span><span class="p">]))</span>
-        <span class="n">idx_fg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">mchirp_bkg</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">],</span> <span class="n">mass2</span><span class="p">[</span><span class="n">id_bkg</span><span class="p">])</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mchirp_bkg</span> <span class="o">-</span> <span class="n">lo_mchirp</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_mchirp</span> <span class="o">-</span> <span class="n">mchirp_bkg</span><span class="p">))</span>
+        <span class="n">idx_bkg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mchirp_fg</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">mass1</span><span class="p">[</span><span class="n">id_fg</span><span class="p">],</span> <span class="n">mass2</span><span class="p">[</span><span class="n">id_fg</span><span class="p">])</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">((</span><span class="n">mchirp_fg</span> <span class="o">-</span> <span class="n">lo_mchirp</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi_mchirp</span> <span class="o">-</span> <span class="n">mchirp_fg</span><span class="p">))</span>
+        <span class="n">idx_fg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="n">zerolagstat</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;foreground/stat&#39;</span><span class="p">][:][</span><span class="n">idx_fg</span><span class="p">]</span>
         <span class="n">cstat_back_exc</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;background_exc/stat&#39;</span><span class="p">][:][</span><span class="n">idx_bkg</span><span class="p">]</span>
@@ -250,7 +253,8 @@
            <span class="s1">&#39;dec_factors&#39;</span><span class="p">:</span> <span class="n">dec_factors</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">],</span>
            <span class="s1">&#39;cstat_back_exc&#39;</span><span class="p">:</span> <span class="n">cstat_back_exc</span><span class="p">[</span><span class="n">cstat_back_exc</span> <span class="o">&gt;</span> <span class="n">rhomin</span><span class="p">]}</span></div>
 
-<div class="viewcode-block" id="save_bkg_falloff"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.save_bkg_falloff">[docs]</a><span class="k">def</span> <span class="nf">save_bkg_falloff</span><span class="p">(</span><span class="n">fname_statmap</span><span class="p">,</span> <span class="n">fname_bank</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">lo_tlt_mass</span><span class="p">,</span> <span class="n">hi_tlt_mass</span><span class="p">):</span>
+
+<div class="viewcode-block" id="save_bkg_falloff"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.save_bkg_falloff">[docs]</a><span class="k">def</span> <span class="nf">save_bkg_falloff</span><span class="p">(</span><span class="n">fname_statmap</span><span class="p">,</span> <span class="n">fname_bank</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span> <span class="n">lo_mchirp</span><span class="p">,</span> <span class="n">hi_mchirp</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Read the STATMAP files to derive snr falloff for the background events.</span>
 <span class="sd">        Save the output to a txt file</span>
 <span class="sd">        Bank file is also provided to restrict triggers to BBH templates.</span>
@@ -265,17 +269,17 @@
 <span class="sd">               Destination where txt file is saved</span>
 <span class="sd">        rhomin: float</span>
 <span class="sd">               Minimum value of SNR threhold (will need including ifar)</span>
-<span class="sd">        lo_tlt_mass: float</span>
-<span class="sd">               Low mass for template for trigger to be considered</span>
-<span class="sd">        hi_tlt_mass: float</span>
-<span class="sd">               High mass for template for trigger to be considered</span>
+<span class="sd">        lo_mchirp: float</span>
+<span class="sd">               Minimum chirp mass for the template</span>
+<span class="sd">        hi_mchirp: float</span>
+<span class="sd">               Maximum chirp mass for template</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fname_bank</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">bulk</span><span class="p">:</span>
         <span class="n">mass1_bank</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span>
         <span class="n">mass2_bank</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:]</span>
         <span class="n">full_data</span> <span class="o">=</span> <span class="n">process_full_data</span><span class="p">(</span><span class="n">fname_statmap</span><span class="p">,</span> <span class="n">rhomin</span><span class="p">,</span>
-                           <span class="n">mass1_bank</span><span class="p">,</span> <span class="n">mass2_bank</span><span class="p">,</span> <span class="n">lo_tlt_mass</span><span class="p">,</span> <span class="n">hi_tlt_mass</span><span class="p">)</span>
+                           <span class="n">mass1_bank</span><span class="p">,</span> <span class="n">mass2_bank</span><span class="p">,</span> <span class="n">lo_mchirp</span><span class="p">,</span> <span class="n">hi_mchirp</span><span class="p">)</span>
 
     <span class="n">max_bg_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">full_data</span><span class="p">[</span><span class="s1">&#39;cstat_back_exc&#39;</span><span class="p">])</span>
     <span class="n">bg_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">rhomin</span><span class="p">,</span> <span class="n">max_bg_stat</span><span class="p">,</span> <span class="mi">76</span><span class="p">)</span>
@@ -285,13 +289,9 @@
     <span class="n">zerolagstat</span> <span class="o">=</span> <span class="n">full_data</span><span class="p">[</span><span class="s1">&#39;zerolagstat&#39;</span><span class="p">]</span>
     <span class="n">coincs</span> <span class="o">=</span> <span class="n">zerolagstat</span><span class="p">[</span><span class="n">zerolagstat</span> <span class="o">&gt;=</span> <span class="n">rhomin</span><span class="p">]</span>
 
-    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/background_bins.txt&quot;</span><span class="p">,</span>
-               <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">bg_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-               <span class="n">bg_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">bg_counts</span><span class="p">]),</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.4e</span><span class="s1">&#39;</span><span class="p">,</span>
-               <span class="n">header</span><span class="o">=</span><span class="s2">&quot;bin min, bin max, count&quot;</span><span class="p">)</span>
+    <span class="n">bkg</span> <span class="o">=</span> <span class="p">(</span><span class="n">bg_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">bg_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">bg_counts</span><span class="p">)</span>
 
-    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="s2">&quot;/coincs.txt&quot;</span><span class="p">,</span> <span class="n">coincs</span><span class="p">,</span>
-               <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.4e</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">&quot;coincs above threshold </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">rhomin</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">bkg</span><span class="p">,</span> <span class="n">coincs</span></div>
 
 <div class="viewcode-block" id="log_rho_bg"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.log_rho_bg">[docs]</a><span class="k">def</span> <span class="nf">log_rho_bg</span><span class="p">(</span><span class="n">trigs</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Calculate the log of background fall-off</span>
@@ -314,13 +314,14 @@
 
     <span class="n">N</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 
-    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">trigs</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">bins</span><span class="p">)),</span> <span class="s1">&#39;triggers can not besmaller than bin lower limit&#39;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">trigs</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">bins</span><span class="p">)),</span> \
+        <span class="s1">&#39;Trigger SNR values cannot all be below the lowest bin limit!&#39;</span>
 
     <span class="c1"># If there are any triggers that are louder than the max bin, put one</span>
-    <span class="c1"># fictituous count in a bin that extends from the limits of the slide</span>
+    <span class="c1"># fictitious count in a bin that extends from the limits of the slide</span>
     <span class="c1"># triggers out to the loudest trigger.</span>
 
-    <span class="c1"># If there is no counts for a foreground trigger put a fictious count</span>
+    <span class="c1"># If there is no counts for a foreground trigger put a fictitious count</span>
     <span class="c1"># in the background bin</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">trigs</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">bins</span><span class="p">)):</span>
         <span class="n">N</span> <span class="o">=</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span>
@@ -338,7 +339,7 @@
             <span class="n">log_rhos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">log_rhos</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="log_rho_fg_mc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.log_rho_fg_mc">[docs]</a><span class="k">def</span> <span class="nf">log_rho_fg_mc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">injstats</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
+<div class="viewcode-block" id="log_rho_fgmc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.log_rho_fgmc">[docs]</a><span class="k">def</span> <span class="nf">log_rho_fgmc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">injstats</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
     <span class="n">counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">injstats</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
 
     <span class="n">N</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
@@ -351,7 +352,7 @@
 
     <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">dens</span><span class="p">[</span><span class="n">tinds</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="fg_mc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.fg_mc">[docs]</a><span class="k">def</span> <span class="nf">fg_mc</span><span class="p">(</span><span class="n">log_fg_ratios</span><span class="p">,</span> <span class="n">mu_log_vt</span><span class="p">,</span> <span class="n">sigma_log_vt</span><span class="p">,</span> <span class="n">Rf</span><span class="p">,</span> <span class="n">maxfg</span><span class="p">):</span>
+<div class="viewcode-block" id="fgmc"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.fgmc">[docs]</a><span class="k">def</span> <span class="nf">fgmc</span><span class="p">(</span><span class="n">log_fg_ratios</span><span class="p">,</span> <span class="n">mu_log_vt</span><span class="p">,</span> <span class="n">sigma_log_vt</span><span class="p">,</span> <span class="n">Rf</span><span class="p">,</span> <span class="n">maxfg</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function to fit the likelihood Fixme</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -372,12 +373,11 @@
 
         <span class="n">plR</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">lfr</span> <span class="ow">in</span> <span class="n">log_fg_ratios</span><span class="p">:</span>
-
             <span class="n">plR</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">logaddexp</span><span class="p">(</span><span class="n">lfr</span> <span class="o">+</span> <span class="n">log_Lf</span><span class="p">,</span> <span class="n">log_Lb</span><span class="p">)</span>
 
         <span class="n">plR</span> <span class="o">-=</span> <span class="p">(</span><span class="n">Lf</span> <span class="o">+</span> <span class="n">Lb</span><span class="p">)</span>
-
         <span class="n">plRn</span> <span class="o">=</span> <span class="n">plR</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">plR</span><span class="p">)</span>
+
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">plRn</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plRn</span><span class="p">))</span>
 
         <span class="n">pquit</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ks_2samp</span><span class="p">(</span><span class="n">Lb</span><span class="p">,</span> <span class="n">Lb</span><span class="p">[</span><span class="n">idx</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
@@ -408,11 +408,11 @@
 <span class="sd">            The standard deviation</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
-    <span class="n">mu_norm</span><span class="p">,</span> <span class="n">sigma_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">lR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">mu_norm</span><span class="p">,</span> <span class="n">sigma_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lR</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">lR</span><span class="p">)</span>
 
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span>
-    <span class="n">kde</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">lR</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">lR</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">kde</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">lR</span><span class="p">)</span>
     <span class="n">pxs</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 
     <span class="c1"># Initial guess has been taken as the mean and std-dev of the data</span>
@@ -453,7 +453,7 @@
 
 <span class="c1"># The flat in log and power-law mass distribution models  #</span>
 
-<span class="c1"># PDF for the two caninical models</span>
+<span class="c1"># PDF for the two canonical models plus flat in mass model</span>
 <div class="viewcode-block" id="prob_lnm"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.prob_lnm">[docs]</a><span class="k">def</span> <span class="nf">prob_lnm</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Return probability density for uniform in log</span>
 <span class="sd">        Parameters</span>
@@ -541,7 +541,40 @@
 
     <span class="k">return</span> <span class="n">p_m1_m2</span><span class="o">/</span><span class="mf">2.</span></div>
 
-<span class="c1"># Functions to generate samples for the two canonical models</span>
+<div class="viewcode-block" id="prob_flat"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.prob_flat">[docs]</a><span class="k">def</span> <span class="nf">prob_flat</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return probability density for uniform in component mass</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        m1: array</span>
+<span class="sd">            Component masses 1</span>
+<span class="sd">        m2: array</span>
+<span class="sd">            Component masses 2</span>
+<span class="sd">        s1z: array</span>
+<span class="sd">            Aligned spin 1 (not in use currently)</span>
+<span class="sd">        s2z:</span>
+<span class="sd">            Aligned spin 2 (not in use currently)</span>
+<span class="sd">        **kwargs: string</span>
+<span class="sd">            Keyword arguments as model parameters</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p_m1_m2: array</span>
+<span class="sd">           the probability density for m1, m2 pair</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">min_mass</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;min_mass&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+    <span class="n">max_mass</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_mass&#39;</span><span class="p">,</span> <span class="mf">2.</span><span class="p">)</span>
+
+    <span class="n">bound</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">m2</span><span class="p">)</span>
+    <span class="n">bound</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">max_mass</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">m2</span> <span class="o">-</span> <span class="n">min_mass</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bound</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">p_m1_m2</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_mass</span> <span class="o">-</span> <span class="n">min_mass</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">p_m1_m2</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">p_m1_m2</span></div>
+
+<span class="c1"># Generate samples for the two canonical models plus flat in mass model</span>
 <div class="viewcode-block" id="draw_imf_samples"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.draw_imf_samples">[docs]</a><span class="k">def</span> <span class="nf">draw_imf_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Draw samples for power-law model</span>
 
@@ -609,6 +642,32 @@
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="draw_flat_samples"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.draw_flat_samples">[docs]</a><span class="k">def</span> <span class="nf">draw_flat_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Draw samples for uniform in mass</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs: string</span>
+<span class="sd">           Keyword arguments as model parameters and number of samples</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array</span>
+<span class="sd">           The first mass</span>
+<span class="sd">        array</span>
+<span class="sd">           The second mass</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1">#PDF doesnt match with sampler</span>
+    <span class="n">nsamples</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nsamples&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">min_mass</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;min_mass&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+    <span class="n">max_mass</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_mass&#39;</span><span class="p">,</span> <span class="mf">2.</span><span class="p">)</span>
+
+    <span class="n">m1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">min_mass</span><span class="p">,</span> <span class="n">max_mass</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span>
+    <span class="n">m2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">min_mass</span><span class="p">,</span> <span class="n">max_mass</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span></div>
+
 <span class="c1"># Functions to generate chirp mass samples for the two canonical models</span>
 <div class="viewcode-block" id="mchirp_sampler_lnm"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.mchirp_sampler_lnm">[docs]</a><span class="k">def</span> <span class="nf">mchirp_sampler_lnm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Draw chirp mass samples for uniform-in-log model</span>
@@ -642,6 +701,24 @@
 <span class="sd">           The chirp mass samples for the population</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">draw_imf_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">mchirp_astro</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mchirp_astro</span></div>
+
+<div class="viewcode-block" id="mchirp_sampler_flat"><a class="viewcode-back" href="../../../pycbc.population.html#pycbc.population.rates_functions.mchirp_sampler_flat">[docs]</a><span class="k">def</span> <span class="nf">mchirp_sampler_flat</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Draw chirp mass samples for flat in mass model</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs: string</span>
+<span class="sd">           Keyword arguments as model parameters and number of samples</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        mchirp-astro: array</span>
+<span class="sd">           The chirp mass samples for the population</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span> <span class="o">=</span> <span class="n">draw_flat_samples</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">mchirp_astro</span> <span class="o">=</span> <span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">mchirp_astro</span></div>

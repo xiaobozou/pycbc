@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.population package &mdash; PyCBC a33758 documentation</title>
+  <title>pycbc.population package &mdash; PyCBC 17d8b8 documentation</title>
   
 
   
@@ -256,6 +256,26 @@
 <span id="pycbc-population-rates-functions-module"></span><h2>pycbc.population.rates_functions module<a class="headerlink" href="#module-pycbc.population.rates_functions" title="Permalink to this headline">¶</a></h2>
 <p>A set of helper functions for evaluating rates.</p>
 <dl class="function">
+<dt id="pycbc.population.rates_functions.draw_flat_samples">
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">draw_flat_samples</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#draw_flat_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.draw_flat_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw samples for uniform in mass</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> (<em>string</em>) – Keyword arguments as model parameters and number of samples</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><em>array</em> – The first mass</li>
+<li><em>array</em> – The second mass</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.population.rates_functions.draw_imf_samples">
 <code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">draw_imf_samples</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#draw_imf_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.draw_imf_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw samples for power-law model</p>
@@ -296,8 +316,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="pycbc.population.rates_functions.fg_mc">
-<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">fg_mc</code><span class="sig-paren">(</span><em>log_fg_ratios</em>, <em>mu_log_vt</em>, <em>sigma_log_vt</em>, <em>Rf</em>, <em>maxfg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#fg_mc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.fg_mc" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.population.rates_functions.fgmc">
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">fgmc</code><span class="sig-paren">(</span><em>log_fg_ratios</em>, <em>mu_log_vt</em>, <em>sigma_log_vt</em>, <em>Rf</em>, <em>maxfg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#fgmc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.fgmc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to fit the likelihood Fixme</p>
 </dd></dl>
 
@@ -348,9 +368,27 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="pycbc.population.rates_functions.log_rho_fg_mc">
-<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">log_rho_fg_mc</code><span class="sig-paren">(</span><em>t</em>, <em>injstats</em>, <em>bins</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#log_rho_fg_mc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.log_rho_fg_mc" title="Permalink to this definition">¶</a></dt>
+<dt id="pycbc.population.rates_functions.log_rho_fgmc">
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">log_rho_fgmc</code><span class="sig-paren">(</span><em>t</em>, <em>injstats</em>, <em>bins</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#log_rho_fgmc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.log_rho_fgmc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.population.rates_functions.mchirp_sampler_flat">
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">mchirp_sampler_flat</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#mchirp_sampler_flat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.mchirp_sampler_flat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw chirp mass samples for flat in mass model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> (<em>string</em>) – Keyword arguments as model parameters and number of samples</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>mchirp-astro</strong> – The chirp mass samples for the population</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.population.rates_functions.mchirp_sampler_imf">
@@ -383,6 +421,31 @@
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>mchirp-astro</strong> – The chirp mass samples for the population</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.population.rates_functions.prob_flat">
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">prob_flat</code><span class="sig-paren">(</span><em>m1</em>, <em>m2</em>, <em>s1z</em>, <em>s2z</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#prob_flat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.prob_flat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return probability density for uniform in component mass
+:param m1: Component masses 1
+:type m1: array
+:param m2: Component masses 2
+:type m2: array
+:param s1z: Aligned spin 1 (not in use currently)
+:type s1z: array
+:param s2z: Aligned spin 2 (not in use currently)
+:param **kwargs: Keyword arguments as model parameters
+:type **kwargs: string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>p_m1_m2</strong> – the probability density for m1, m2 pair</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">array</td>
 </tr>
 </tbody>
 </table>
@@ -440,8 +503,9 @@
 
 <dl class="function">
 <dt id="pycbc.population.rates_functions.process_full_data">
-<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">process_full_data</code><span class="sig-paren">(</span><em>fname</em>, <em>rhomin</em>, <em>mass1</em>, <em>mass2</em>, <em>lo_tlt_mass</em>, <em>hi_tlt_mass</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#process_full_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.process_full_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the zero and time-lagged triggers identified by BBH templates.</p>
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">process_full_data</code><span class="sig-paren">(</span><em>fname</em>, <em>rhomin</em>, <em>mass1</em>, <em>mass2</em>, <em>lo_mchirp</em>, <em>hi_mchirp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#process_full_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.process_full_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the zero-lag and time-lag triggers identified by templates in
+a specified range of chirp mass.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -451,7 +515,8 @@
 <li><strong>rhomin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum value of SNR threhold (will need including ifar)</li>
 <li><strong>mass1</strong> (<em>array</em>) – First mass of the waveform in the template bank</li>
 <li><strong>mass2</strong> (<em>array</em>) – Second mass of the waveform in the template bank</li>
-<li><strong>min_bh_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimimum mass for the black hole</li>
+<li><strong>lo_mchirp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum chirp mass for the template</li>
+<li><strong>hi_mchirp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum chirp mass for the template</li>
 </ul>
 </td>
 </tr>
@@ -467,7 +532,7 @@
 
 <dl class="function">
 <dt id="pycbc.population.rates_functions.save_bkg_falloff">
-<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">save_bkg_falloff</code><span class="sig-paren">(</span><em>fname_statmap</em>, <em>fname_bank</em>, <em>path</em>, <em>rhomin</em>, <em>lo_tlt_mass</em>, <em>hi_tlt_mass</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#save_bkg_falloff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.save_bkg_falloff" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.population.rates_functions.</code><code class="descname">save_bkg_falloff</code><span class="sig-paren">(</span><em>fname_statmap</em>, <em>fname_bank</em>, <em>path</em>, <em>rhomin</em>, <em>lo_mchirp</em>, <em>hi_mchirp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/population/rates_functions.html#save_bkg_falloff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.population.rates_functions.save_bkg_falloff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read the STATMAP files to derive snr falloff for the background events.
 Save the output to a txt file
 Bank file is also provided to restrict triggers to BBH templates.</p>
@@ -480,8 +545,8 @@ Bank file is also provided to restrict triggers to BBH templates.</p>
 <li><strong>fname_bank</strong> (<em>string</em>) – File name of the template bank</li>
 <li><strong>path</strong> (<em>string</em>) – Destination where txt file is saved</li>
 <li><strong>rhomin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum value of SNR threhold (will need including ifar)</li>
-<li><strong>lo_tlt_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Low mass for template for trigger to be considered</li>
-<li><strong>hi_tlt_mass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – High mass for template for trigger to be considered</li>
+<li><strong>lo_mchirp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Minimum chirp mass for the template</li>
+<li><strong>hi_mchirp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Maximum chirp mass for template</li>
 </ul>
 </td>
 </tr>
