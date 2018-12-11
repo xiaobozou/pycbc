@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.stat &mdash; PyCBC cce2bf documentation</title>
+  <title>pycbc.events.stat &mdash; PyCBC d1c891 documentation</title>
   
 
   
@@ -234,17 +234,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    trigs: dict of numpy.ndarrays</span>
-<span class="sd">        Dictionary holding single detector trigger information.</span>
-<span class="sd">    &#39;chisq_dof&#39;, &#39;snr&#39;, and &#39;chisq&#39; are required keys</span>
+<span class="sd">    trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">        Dictionary-like object holding single detector trigger information.</span>
+<span class="sd">        &#39;chisq_dof&#39;, &#39;snr&#39;, and &#39;chisq&#39; are required keys</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    numpy.ndarray</span>
 <span class="sd">        Array of newsnr values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dof</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.</span>
-    <span class="n">newsnr</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">],</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dof</span><span class="p">)</span>
+    <span class="n">dof</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">][:]</span> <span class="o">-</span> <span class="mf">2.</span>
+    <span class="n">newsnr</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][:],</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">][:]</span> <span class="o">/</span> <span class="n">dof</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">newsnr</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="get_newsnr_sgveto"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.get_newsnr_sgveto">[docs]</a><span class="k">def</span> <span class="nf">get_newsnr_sgveto</span><span class="p">(</span><span class="n">trigs</span><span class="p">):</span>
@@ -253,17 +253,19 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    trigs: dict of numpy.ndarrays</span>
-<span class="sd">        Dictionary holding single detector trigger information.</span>
-<span class="sd">    &#39;chisq_dof&#39;, &#39;snr&#39;, and &#39;chisq&#39; are required keys</span>
+<span class="sd">    trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">        Dictionary-like object holding single detector trigger information.</span>
+<span class="sd">        &#39;chisq_dof&#39;, &#39;snr&#39;, &#39;sg_chisq&#39; and &#39;chisq&#39; are required keys</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    numpy.ndarray</span>
 <span class="sd">        Array of newsnr values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dof</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.</span>
-    <span class="n">nsnr_sg</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr_sgveto</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">],</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dof</span><span class="p">,</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sg_chisq&#39;</span><span class="p">])</span>
+    <span class="n">dof</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">][:]</span> <span class="o">-</span> <span class="mf">2.</span>
+    <span class="n">nsnr_sg</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr_sgveto</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][:],</span>
+                                   <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">][:]</span> <span class="o">/</span> <span class="n">dof</span><span class="p">,</span>
+                                   <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sg_chisq&#39;</span><span class="p">][:])</span>
     <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nsnr_sg</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span></div>
 
 
@@ -303,7 +305,8 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        trigs: dict of numpy.ndarrays</span>
+<span class="sd">        trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">            Dictionary-like object holding single detector trigger information.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -357,7 +360,8 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        trigs: dict of numpy.ndarrays</span>
+<span class="sd">        trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">            Dictionary-like object holding single detector trigger information.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -384,9 +388,8 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        trigs: dict of numpy.ndarrays</span>
-<span class="sd">            Dictionary of the single detector trigger information. &#39;chisq_dof&#39;,</span>
-<span class="sd">        &#39;snr&#39;, and &#39;chisq&#39; are required keys</span>
+<span class="sd">        trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">            Dictionary-like object holding single detector trigger information.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -394,7 +397,7 @@
 <span class="sd">            Array of single detector values</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">newsnr</span> <span class="o">=</span> <span class="n">get_newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">)</span>
-        <span class="n">rchisq</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.</span><span class="p">)</span>
+        <span class="n">rchisq</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">][:]</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">*</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;chisq_dof&#39;</span><span class="p">][:]</span> <span class="o">-</span> <span class="mf">2.</span><span class="p">)</span>
         <span class="n">newsnr</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">newsnr</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="n">rchisq</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">newsnr</span></div>
 
@@ -454,10 +457,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        trigs: dict of numpy.ndarrays</span>
-<span class="sd">            Dictionary holding single detector trigger information.</span>
-<span class="sd">        &#39;chisq_dof&#39;, &#39;snr&#39;, &#39;chisq&#39;, &#39;coa_phase&#39;, &#39;end_time&#39;, and &#39;sigmasq&#39;</span>
-<span class="sd">        are required keys.</span>
+<span class="sd">        trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">            Dictionary-like object holding single detector trigger information.</span>
+<span class="sd">            &#39;chisq_dof&#39;, &#39;snr&#39;, &#39;chisq&#39;, &#39;coa_phase&#39;, &#39;end_time&#39;, and &#39;sigmasq&#39;</span>
+<span class="sd">            are required keys.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -467,10 +470,10 @@
         <span class="n">sngl_stat</span> <span class="o">=</span> <span class="n">get_newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">)</span>
         <span class="n">singles</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sngl_stat</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span><span class="p">)</span>
         <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snglstat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sngl_stat</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][:]</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">singles</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PhaseTDStatistic.logsignalrate"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.PhaseTDStatistic.logsignalrate">[docs]</a>    <span class="k">def</span> <span class="nf">logsignalrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">slide</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
@@ -671,10 +674,10 @@
         <span class="n">sngl_stat</span> <span class="o">=</span> <span class="n">ExpFitCombinedSNR</span><span class="o">.</span><span class="n">single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trigs</span><span class="p">)</span>
         <span class="n">singles</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sngl_stat</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">single_dtype</span><span class="p">)</span>
         <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snglstat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sngl_stat</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span>
-        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;coa_phase&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;sigmasq&#39;</span><span class="p">][:]</span>
+        <span class="n">singles</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][:]</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">singles</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PhaseTDExpFitStatistic.coinc"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.PhaseTDExpFitStatistic.coinc">[docs]</a>    <span class="k">def</span> <span class="nf">coinc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s0</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">slide</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
@@ -708,10 +711,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        trigs: dict of numpy.ndarrays</span>
-<span class="sd">            Dictionary of the single detector trigger information. &#39;chisq_dof&#39;,</span>
-<span class="sd">        &#39;snr&#39;, &#39;cont_chisq&#39;, &#39;cont_chisq_dof&#39;, and &#39;chisq&#39; are required arrays</span>
-<span class="sd">        for this statistic.</span>
+<span class="sd">        trigs: dict of numpy.ndarrays, h5py group (or similar dict-like object)</span>
+<span class="sd">            Dictionary-like object holding single detector trigger information.</span>
+<span class="sd">            &#39;snr&#39;, &#39;cont_chisq&#39;, &#39;cont_chisq_dof&#39;, &#39;chisq_dof&#39; and &#39;chisq&#39;</span>
+<span class="sd">            are required keys for this statistic.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -719,8 +722,8 @@
 <span class="sd">            The array of single detector values</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">chisq_newsnr</span> <span class="o">=</span> <span class="n">get_newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">)</span>
-        <span class="n">rautochisq</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;cont_chisq&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;cont_chisq_dof&#39;</span><span class="p">]</span>
-        <span class="n">autochisq_newsnr</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">],</span> <span class="n">rautochisq</span><span class="p">)</span>
+        <span class="n">rautochisq</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;cont_chisq&#39;</span><span class="p">][:]</span> <span class="o">/</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;cont_chisq_dof&#39;</span><span class="p">][:]</span>
+        <span class="n">autochisq_newsnr</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">newsnr</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">][:],</span> <span class="n">rautochisq</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">chisq_newsnr</span><span class="p">,</span> <span class="n">autochisq_newsnr</span><span class="p">,</span>
                            <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
@@ -738,14 +741,24 @@
     <span class="s1">&#39;newsnr_sgveto&#39;</span><span class="p">:</span> <span class="n">NewSNRSGStatistic</span>
 <span class="p">}</span>
 
+<span class="n">sngl_statistic_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;newsnr&#39;</span><span class="p">:</span> <span class="n">NewSNRStatistic</span><span class="p">,</span>
+    <span class="s1">&#39;new_snr&#39;</span><span class="p">:</span> <span class="n">NewSNRStatistic</span><span class="p">,</span> <span class="c1"># For backwards compatibility</span>
+    <span class="s1">&#39;snr&#39;</span><span class="p">:</span> <span class="n">NetworkSNRStatistic</span><span class="p">,</span>
+    <span class="s1">&#39;newsnr_cut&#39;</span><span class="p">:</span> <span class="n">NewSNRCutStatistic</span><span class="p">,</span>
+    <span class="s1">&#39;exp_fit_csnr&#39;</span><span class="p">:</span> <span class="n">ExpFitCombinedSNR</span><span class="p">,</span>
+    <span class="s1">&#39;max_cont_trad_newsnr&#39;</span><span class="p">:</span> <span class="n">MaxContTradNewSNRStatistic</span><span class="p">,</span>
+    <span class="s1">&#39;newsnr_sgveto&#39;</span><span class="p">:</span> <span class="n">NewSNRSGStatistic</span>
+<span class="p">}</span>
+
 <div class="viewcode-block" id="get_statistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.get_statistic">[docs]</a><span class="k">def</span> <span class="nf">get_statistic</span><span class="p">(</span><span class="n">stat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Error-handling sugar around dict lookup</span>
+<span class="sd">    Error-handling sugar around dict lookup for coincident statistics</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    stat : string</span>
-<span class="sd">        Name of the statistic</span>
+<span class="sd">        Name of the coincident statistic</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -762,6 +775,30 @@
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not an available detection statistic&#39;</span> <span class="o">%</span> <span class="n">stat</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="get_sngl_statistic"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.stat.get_sngl_statistic">[docs]</a><span class="k">def</span> <span class="nf">get_sngl_statistic</span><span class="p">(</span><span class="n">stat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Error-handling sugar around dict lookup for single-detector statistics</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    stat : string</span>
+<span class="sd">        Name of the single-detector statistic</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    class</span>
+<span class="sd">        Subclass of Stat base class</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        If the string is not recognized as corresponding to a Stat subclass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sngl_statistic_dict</span><span class="p">[</span><span class="n">stat</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not an available detection statistic&#39;</span> <span class="o">%</span> <span class="n">stat</span><span class="p">)</span></div>
+
 </pre></div>
 
            </div>
@@ -775,7 +812,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 07, 2018.
+      Last updated on Dec 11, 2018.
 
     </p>
   </div>

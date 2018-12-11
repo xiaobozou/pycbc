@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.hdf &mdash; PyCBC cce2bf documentation</title>
+  <title>pycbc.io.hdf &mdash; PyCBC d1c891 documentation</title>
   
 
   
@@ -217,6 +217,7 @@
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank</span> <span class="k">import</span> <span class="n">return_search_summary</span>
 <span class="kn">from</span> <span class="nn">pycbc.tmpltbank</span> <span class="k">import</span> <span class="n">return_empty_sngl</span>
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">events</span><span class="p">,</span> <span class="n">conversions</span><span class="p">,</span> <span class="n">pnutils</span>
+<span class="kn">from</span> <span class="nn">pycbc.events.stat</span> <span class="k">import</span> <span class="n">sngl_statistic_dict</span>
 
 <div class="viewcode-block" id="HFile"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.HFile">[docs]</a><span class="k">class</span> <span class="nc">HFile</span><span class="p">(</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Low level extensions to the capabilities of reading an hdf5 File</span>
@@ -599,24 +600,19 @@
 <span class="sd">        clustered so that no more than 1 event within +/- cluster-window will</span>
 <span class="sd">        be considered.&quot;&quot;&quot;</span>
         <span class="c1"># If this becomes memory intensive we can optimize</span>
+        <span class="n">stat_instance</span> <span class="o">=</span> <span class="n">sngl_statistic_dict</span><span class="p">[</span><span class="n">ranking_statistic</span><span class="p">]([])</span>
+        <span class="n">stat</span> <span class="o">=</span> <span class="n">stat_instance</span><span class="o">.</span><span class="n">single</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trigs</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="c1"># Used for naming in plots ... Seems an odd place for this to live!</span>
         <span class="k">if</span> <span class="n">ranking_statistic</span> <span class="o">==</span> <span class="s2">&quot;newsnr&quot;</span><span class="p">:</span>
-            <span class="n">stat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">newsnr</span>
-            <span class="c1"># newsnr doesn&#39;t return an array if len(stat) == 1</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">stat</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stat_name</span> <span class="o">=</span> <span class="s2">&quot;Reweighted SNR&quot;</span>
         <span class="k">elif</span> <span class="n">ranking_statistic</span> <span class="o">==</span> <span class="s2">&quot;newsnr_sgveto&quot;</span><span class="p">:</span>
-            <span class="n">stat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">newsnr_sgveto</span>
-            <span class="c1"># newsnr doesn&#39;t return an array if len(stat) == 1</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">snr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">stat</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stat_name</span> <span class="o">=</span> <span class="s2">&quot;Reweighted SNR (+sgveto)&quot;</span>
         <span class="k">elif</span> <span class="n">ranking_statistic</span> <span class="o">==</span> <span class="s2">&quot;snr&quot;</span><span class="p">:</span>
-            <span class="n">stat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">stat_name</span> <span class="o">=</span> <span class="s2">&quot;SNR&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Don&#39;t recognize statistic </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ranking_statistic</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stat_name</span> <span class="o">=</span> <span class="n">ranking_statistic</span>
+
         <span class="n">times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_time</span>
         <span class="n">index</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">new_times</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1024,7 +1020,7 @@
     <span class="k">elif</span> <span class="n">chisq_choice</span> <span class="o">==</span> <span class="s1">&#39;max_bank_cont_trad&#39;</span><span class="p">:</span>
         <span class="n">chisq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">bank_chisq</span><span class="p">,</span> <span class="n">cont_chisq</span><span class="p">),</span> <span class="n">trad_chisq</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">err_msg</span><span class="o">=</span><span class="s2">&quot;Do not recognized --chisq-choice </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">chisq_choice</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Do not recognize --chisq-choice </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">chisq_choice</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">chisq</span></div>
 
@@ -1058,7 +1054,6 @@
             <span class="n">recursively_save_dict_contents_to_group</span><span class="p">(</span><span class="n">h5file</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot save </span><span class="si">%s</span><span class="s1"> type&#39;</span><span class="o">%</span><span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">))</span></div>
-
 </pre></div>
 
            </div>
@@ -1072,7 +1067,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 07, 2018.
+      Last updated on Dec 11, 2018.
 
     </p>
   </div>

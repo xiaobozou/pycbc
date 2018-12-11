@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events package &mdash; PyCBC cce2bf documentation</title>
+  <title>pycbc.events package &mdash; PyCBC d1c891 documentation</title>
   
 
   
@@ -1047,18 +1047,13 @@ and rescale by the fitted coefficients alpha and lambda</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary of the single detector trigger information. ‘chisq_dof’,</li>
-<li><strong>'cont_chisq'</strong><strong>, </strong><strong>'cont_chisq_dof'</strong><strong>, </strong><strong>and 'chisq' are required arrays</strong> (<em>'snr'</em><em>,</em>) – </li>
-<li><strong>this statistic.</strong> (<em>for</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.
+‘snr’, ‘cont_chisq’, ‘cont_chisq_dof’, ‘chisq_dof’ and ‘chisq’
+are required keys for this statistic.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>stat</strong> – The array of single detector values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>stat</strong> – The array of single detector values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
 </tr>
 </tbody>
 </table>
@@ -1079,7 +1074,7 @@ and rescale by the fitted coefficients alpha and lambda</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The array of single detector values</td>
 </tr>
@@ -1130,17 +1125,11 @@ and rescale by the fitted coefficients alpha and lambda</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary of the single detector trigger information. ‘chisq_dof’,</li>
-<li><strong>and 'chisq' are required keys</strong> (<em>'snr'</em><em>,</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>newsnr</strong> – Array of single detector values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>newsnr</strong> – Array of single detector values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
 </tr>
 </tbody>
 </table>
@@ -1161,7 +1150,7 @@ and rescale by the fitted coefficients alpha and lambda</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The array of single detector values</td>
 </tr>
@@ -1234,7 +1223,7 @@ and rescale by the fitted coefficients alpha and lambda</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The array of single detector values</td>
 </tr>
@@ -1294,18 +1283,13 @@ and adding the sine-Gaussian veto to the single detector ranking</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
-<li><strong>'snr'</strong><strong>, </strong><strong>'chisq'</strong><strong>, </strong><strong>'coa_phase'</strong><strong>, </strong><strong>'end_time'</strong><strong>, </strong><strong>and 'sigmasq'</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
-<li><strong>required keys.</strong> (<em>are</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.
+‘chisq_dof’, ‘snr’, ‘chisq’, ‘coa_phase’, ‘end_time’, and ‘sigmasq’
+are required keys.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of single detector parameter values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Array of single detector parameter values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
 </tr>
 </tbody>
 </table>
@@ -1361,18 +1345,13 @@ amplitude ratios between triggers in different ifos.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
-<li><strong>'snr'</strong><strong>, </strong><strong>'chisq'</strong><strong>, </strong><strong>'coa_phase'</strong><strong>, </strong><strong>'end_time'</strong><strong>, </strong><strong>and 'sigmasq'</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
-<li><strong>required keys.</strong> (<em>are</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.
+‘chisq_dof’, ‘snr’, ‘chisq’, ‘coa_phase’, ‘end_time’, and ‘sigmasq’
+are required keys.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of single detector parameter values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Array of single detector parameter values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
 </tr>
 </tbody>
 </table>
@@ -1395,17 +1374,12 @@ amplitude ratios between triggers in different ifos.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
-<li><strong>'snr'</strong><strong>, </strong><strong>and 'chisq' are required keys</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.
+‘chisq_dof’, ‘snr’, and ‘chisq’ are required keys</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of newsnr values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Array of newsnr values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
 </tr>
 </tbody>
 </table>
@@ -1419,17 +1393,32 @@ amplitude ratios between triggers in different ifos.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
-<li><strong>'snr'</strong><strong>, </strong><strong>and 'chisq' are required keys</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em><em>, </em><em>h5py group</em><em> (or </em><em>similar dict-like object</em><em>)</em>) – Dictionary-like object holding single detector trigger information.
+‘chisq_dof’, ‘snr’, ‘sg_chisq’ and ‘chisq’ are required keys</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of newsnr values</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Array of newsnr values</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.stat.get_sngl_statistic">
+<code class="descclassname">pycbc.events.stat.</code><code class="descname">get_sngl_statistic</code><span class="sig-paren">(</span><em>stat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#get_sngl_statistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.get_sngl_statistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error-handling sugar around dict lookup for single-detector statistics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stat</strong> (<em>string</em>) – Name of the single-detector statistic</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Subclass of Stat base class</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">class</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> – If the string is not recognized as corresponding to a Stat subclass</td>
 </tr>
 </tbody>
 </table>
@@ -1438,12 +1427,12 @@ amplitude ratios between triggers in different ifos.</p>
 <dl class="function">
 <dt id="pycbc.events.stat.get_statistic">
 <code class="descclassname">pycbc.events.stat.</code><code class="descname">get_statistic</code><span class="sig-paren">(</span><em>stat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#get_statistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.get_statistic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Error-handling sugar around dict lookup</p>
+<dd><p>Error-handling sugar around dict lookup for coincident statistics</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stat</strong> (<em>string</em>) – Name of the statistic</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stat</strong> (<em>string</em>) – Name of the coincident statistic</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Subclass of Stat base class</td>
 </tr>
@@ -2069,7 +2058,7 @@ contain a segment table</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 07, 2018.
+      Last updated on Dec 11, 2018.
 
     </p>
   </div>
