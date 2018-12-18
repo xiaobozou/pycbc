@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.base &mdash; PyCBC bb8242 documentation</title>
+  <title>pycbc.inference.models.base &mdash; PyCBC b14421 documentation</title>
   
 
   
@@ -894,7 +894,22 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_init_args_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Helper function for loading parameters.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Helper function for loading parameters.</span>
+
+<span class="sd">        This retrieves the prior, variable parameters, static parameterss,</span>
+<span class="sd">        constraints, and sampling transforms.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cp : ConfigParser</span>
+<span class="sd">            Config parser to read.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict :</span>
+<span class="sd">            Dictionary of the arguments. Has keys ``variable_params``,</span>
+<span class="sd">            ``static_params``, ``prior``, and ``sampling_transforms``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
         <span class="n">prior_section</span> <span class="o">=</span> <span class="s2">&quot;prior&quot;</span>
         <span class="n">vparams_section</span> <span class="o">=</span> <span class="s1">&#39;variable_params&#39;</span>
@@ -915,6 +930,13 @@
         <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;variable_params&#39;</span><span class="p">:</span> <span class="n">variable_params</span><span class="p">,</span>
                 <span class="s1">&#39;static_params&#39;</span><span class="p">:</span> <span class="n">static_params</span><span class="p">,</span>
                 <span class="s1">&#39;prior&#39;</span><span class="p">:</span> <span class="n">prior</span><span class="p">}</span>
+        <span class="c1"># try to load sampling transforms</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="n">SamplingTransforms</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+                <span class="n">cp</span><span class="p">,</span> <span class="n">variable_params</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;sampling_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
         <span class="c1"># get any other keyword arguments provided</span>
         <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span>
                                                <span class="n">skip_args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
@@ -933,13 +955,6 @@
 <span class="sd">            provided keyword will over ride what is in the config file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
-        <span class="c1"># try to load sampling transforms</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="n">SamplingTransforms</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
-                <span class="n">cp</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;variable_params&#39;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;sampling_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
         <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
 
@@ -968,7 +983,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 15, 2018.
+      Last updated on Dec 18, 2018.
 
     </p>
   </div>

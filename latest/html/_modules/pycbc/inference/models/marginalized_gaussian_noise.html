@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.marginalized_gaussian_noise &mdash; PyCBC bb8242 documentation</title>
+  <title>pycbc.inference.models.marginalized_gaussian_noise &mdash; PyCBC b14421 documentation</title>
   
 
   
@@ -228,7 +228,6 @@
 <span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">generator</span>
 
 <span class="kn">from</span> <span class="nn">.gaussian_noise</span> <span class="k">import</span> <span class="n">GaussianNoise</span>
-<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">SamplingTransforms</span>
 
 
 <div class="viewcode-block" id="MarginalizedGaussianNoise"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.marginalized_gaussian_noise.MarginalizedGaussianNoise">[docs]</a><span class="k">class</span> <span class="nc">MarginalizedGaussianNoise</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">):</span>
@@ -507,13 +506,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">prior_section</span> <span class="o">=</span> <span class="s2">&quot;marginalized_prior&quot;</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
-        <span class="c1"># try to load sampling transforms</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="n">SamplingTransforms</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
-                <span class="n">cp</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;variable_params&#39;</span><span class="p">])</span>
-        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;sampling_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
         <span class="n">marg_prior</span> <span class="o">=</span> <span class="n">read_distributions_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">prior_section</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">marg_prior</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;No priors are specified for the &quot;</span>
@@ -723,7 +715,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 15, 2018.
+      Last updated on Dec 18, 2018.
 
     </p>
   </div>
