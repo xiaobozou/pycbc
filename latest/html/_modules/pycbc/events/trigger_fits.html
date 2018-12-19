@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.trigger_fits &mdash; PyCBC b14421 documentation</title>
+  <title>pycbc.events.trigger_fits &mdash; PyCBC 55ac0e documentation</title>
   
 
   
@@ -460,7 +460,7 @@
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span>
     <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span><span class="s1">&#39;eta&#39;</span><span class="p">:</span>
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;chi_eff&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">par</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;chi_eff&#39;</span><span class="p">,</span> <span class="s1">&#39;effective_spin&#39;</span><span class="p">]:</span>
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_eff</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;template_duration&#39;</span><span class="p">:</span>
         <span class="c1"># default to SEOBNRv4 duration function</span>
@@ -468,6 +468,10 @@
                                            <span class="n">args</span><span class="o">.</span><span class="n">approximant</span> <span class="ow">or</span> <span class="s2">&quot;SEOBNRv4&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">min_duration</span><span class="p">:</span>
             <span class="n">parvals</span> <span class="o">+=</span> <span class="n">args</span><span class="o">.</span><span class="n">min_duration</span>
+    <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;tau0&#39;</span><span class="p">:</span>
+        <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">tau0_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">f_lower</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">par</span> <span class="o">==</span> <span class="s1">&#39;tau3&#39;</span><span class="p">:</span>
+        <span class="n">parvals</span> <span class="o">=</span> <span class="n">conversions</span><span class="o">.</span><span class="n">tau3_from_mass1_mass2</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">f_lower</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">named_frequency_cutoffs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">parvals</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">frequency_cutoff_from_name</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -526,7 +530,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 18, 2018.
+      Last updated on Dec 19, 2018.
 
     </p>
   </div>

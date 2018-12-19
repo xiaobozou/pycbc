@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.triggers &mdash; PyCBC b14421 documentation</title>
+  <title>pycbc.events.triggers &mdash; PyCBC 55ac0e documentation</title>
   
 
   
@@ -218,9 +218,10 @@
 
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">conversions</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">types</span>
 <span class="kn">from</span> <span class="nn">pycbc.events</span> <span class="k">import</span> <span class="n">coinc</span>
 <span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">hdf</span>
+<span class="kn">from</span> <span class="nn">pycbc.events</span> <span class="k">import</span> <span class="n">trigger_fits</span> <span class="k">as</span> <span class="n">trstats</span>
 <span class="kn">import</span> <span class="nn">pycbc.detector</span>
 
 <div class="viewcode-block" id="insert_bank_bins_option_group"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.insert_bank_bins_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_bank_bins_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
@@ -433,7 +434,7 @@
 
     <span class="k">return</span> <span class="n">bin_names</span><span class="p">,</span> <span class="n">bin_results</span></div>
 
-<div class="viewcode-block" id="get_found_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_found_param">[docs]</a><span class="k">def</span> <span class="nf">get_found_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">bankfile</span><span class="p">,</span> <span class="n">trigfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
+<div class="viewcode-block" id="get_found_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_found_param">[docs]</a><span class="k">def</span> <span class="nf">get_found_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">bankfile</span><span class="p">,</span> <span class="n">trigfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Translates some popular trigger parameters into functions that calculate</span>
 <span class="sd">    them from an hdf found injection file</span>
@@ -450,6 +451,8 @@
 <span class="sd">        Parameter to be calculated for the recovered triggers</span>
 <span class="sd">    ifo: string or None</span>
 <span class="sd">        Standard ifo name, ex. &#39;L1&#39;</span>
+<span class="sd">    args : Namespace object returned from ArgumentParser instance</span>
+<span class="sd">        Calling code command line options, used for f_lower value</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -469,21 +472,12 @@
         <span class="k">return</span> <span class="n">trigfile</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="n">param</span><span class="p">][:][</span><span class="n">foundtrg</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">bankfile</span>
-        <span class="n">found_param_dict</span> <span class="o">=</span> <span class="p">{</span>
-          <span class="s2">&quot;mtotal&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">],</span>
-          <span class="s2">&quot;mchirp&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                     <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">],</span>
-          <span class="s2">&quot;eta&quot;</span>    <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                     <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">],</span>
-          <span class="s2">&quot;effective_spin&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_eff</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
-                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
-                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">]</span>
-        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">trstats</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                        <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
+                                        <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
+                                        <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">]</span></div>
 
-    <span class="k">return</span> <span class="n">found_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
-
-<div class="viewcode-block" id="get_inj_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_inj_param">[docs]</a><span class="k">def</span> <span class="nf">get_inj_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
+<div class="viewcode-block" id="get_inj_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_inj_param">[docs]</a><span class="k">def</span> <span class="nf">get_inj_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Translates some popular injection parameters into functions that calculate</span>
 <span class="sd">    them from an hdf found injection file</span>
@@ -496,6 +490,8 @@
 <span class="sd">        Parameter to be calculated for the injected signals</span>
 <span class="sd">    ifo: string</span>
 <span class="sd">        Standard detector name, ex. &#39;L1&#39;</span>
+<span class="sd">    args: Namespace object returned from ArgumentParser instance</span>
+<span class="sd">        Calling code command line options, used for f_lower value</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -503,28 +499,21 @@
 <span class="sd">        The calculated parameter values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">det</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">Detector</span><span class="p">(</span><span class="n">ifo</span><span class="p">)</span>
-    <span class="n">time_delay</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="c1">#lambda dec, ra, t :</span>
-                                 <span class="n">det</span><span class="o">.</span><span class="n">time_delay_from_earth_center</span><span class="p">)</span><span class="c1">#(dec, ra, t))</span>
 
     <span class="n">inj</span> <span class="o">=</span> <span class="n">injfile</span><span class="p">[</span><span class="s2">&quot;injections&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">inj</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">inj</span><span class="p">[</span><span class="s2">&quot;injections/&quot;</span><span class="o">+</span><span class="n">param</span><span class="p">]</span>
-    <span class="n">inj_param_dict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;mtotal&quot;</span> <span class="p">:</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
-        <span class="s2">&quot;mchirp&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">mchirp_from_mass1_mass2</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                                                     <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:]),</span>
-        <span class="s2">&quot;eta&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">eta_from_mass1_mass2</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                                                  <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:]),</span>
-        <span class="s2">&quot;effective_spin&quot;</span> <span class="p">:</span> <span class="n">conversions</span><span class="o">.</span><span class="n">chi_eff</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
-                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
-                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
-                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:]),</span>
-        <span class="s2">&quot;end_time_&quot;</span><span class="o">+</span><span class="n">ifo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
-            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">time_delay</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">][:],</span>
-                                            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:],</span>
-                                            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]),</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">inj_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
+
+    <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s2">&quot;end_time_&quot;</span><span class="o">+</span><span class="n">ifo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">det</span><span class="o">.</span><span class="n">time_delay_from_earth_center</span><span class="p">(</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">][:],</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:],</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">trstats</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
+                                        <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:])</span></div>
 </pre></div>
 
            </div>
@@ -538,7 +527,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 18, 2018.
+      Last updated on Dec 19, 2018.
 
     </p>
   </div>
