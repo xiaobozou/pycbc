@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.hdf &mdash; PyCBC 55ac0e documentation</title>
+  <title>pycbc.io.hdf &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -365,15 +365,28 @@
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">idx</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DictArray.save"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.DictArray.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">HFile</span><span class="p">(</span><span class="n">outname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>
+                      <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span>
+                      <span class="n">compression_opts</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="StatmapData"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.StatmapData">[docs]</a><span class="k">class</span> <span class="nc">StatmapData</span><span class="p">(</span><span class="n">DictArray</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                       <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="s1">&#39;time1&#39;</span><span class="p">,</span> <span class="s1">&#39;time2&#39;</span><span class="p">,</span> <span class="s1">&#39;trigger_id1&#39;</span><span class="p">,</span> <span class="s1">&#39;trigger_id2&#39;</span><span class="p">,</span>
-               <span class="s1">&#39;template_id&#39;</span><span class="p">,</span> <span class="s1">&#39;decimation_factor&#39;</span><span class="p">,</span> <span class="s1">&#39;timeslide_id&#39;</span><span class="p">]</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">StatmapData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">groups</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="s1">&#39;time1&#39;</span><span class="p">,</span> <span class="s1">&#39;time2&#39;</span><span class="p">,</span> <span class="s1">&#39;trigger_id1&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;trigger_id2&#39;</span><span class="p">,</span> <span class="s1">&#39;template_id&#39;</span><span class="p">,</span> <span class="s1">&#39;decimation_factor&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;timeslide_id&#39;</span><span class="p">)):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">StatmapData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
+                                          <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="o">=</span><span class="n">seg</span>
@@ -400,21 +413,46 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StatmapData.save"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.StatmapData.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outname</span><span class="p">):</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">HFile</span><span class="p">(</span><span class="n">outname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">StatmapData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">HFile</span><span class="p">(</span><span class="n">outname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">f</span><span class="p">[</span><span class="s1">&#39;segments/</span><span class="si">%s</span><span class="s1">/start&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;start&#39;</span><span class="p">][:]</span>
+                <span class="n">f</span><span class="p">[</span><span class="s1">&#39;segments/</span><span class="si">%s</span><span class="s1">/end&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;end&#39;</span><span class="p">][:]</span></div></div>
 
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>
-                      <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span>
-                      <span class="n">compression_opts</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
-                      <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="MultiifoStatmapData"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.MultiifoStatmapData">[docs]</a><span class="k">class</span> <span class="nc">MultiifoStatmapData</span><span class="p">(</span><span class="n">StatmapData</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">files</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="s1">&#39;template_id&#39;</span><span class="p">,</span> <span class="s1">&#39;decimation_factor&#39;</span><span class="p">,</span> <span class="s1">&#39;timeslide_id&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
+            <span class="n">groups</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/time&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">]</span>
+            <span class="n">groups</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/trigger_id&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">]</span>
 
+        <span class="nb">super</span><span class="p">(</span><span class="n">MultiifoStatmapData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
+                                                  <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="n">seg</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">f</span><span class="p">[</span><span class="s1">&#39;segments/</span><span class="si">%s</span><span class="s1">/start&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;start&#39;</span><span class="p">][:]</span>
-            <span class="n">f</span><span class="p">[</span><span class="s1">&#39;segments/</span><span class="si">%s</span><span class="s1">/end&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;end&#39;</span><span class="p">][:]</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+    <span class="k">def</span> <span class="nf">_return</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">ifolist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;ifos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">,</span> <span class="n">seg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seg</span><span class="p">,</span>
+                              <span class="n">ifos</span><span class="o">=</span><span class="n">ifolist</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MultiifoStatmapData.cluster"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.MultiifoStatmapData.cluster">[docs]</a>    <span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Cluster the dict array, assuming it has the relevant Coinc colums,</span>
+<span class="sd">        time1, time2, stat, and timeslide_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If no events, do nothing</span>
+        <span class="n">pivot_ifo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;pivot&#39;</span><span class="p">]</span>
+        <span class="n">fixed_ifo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;fixed&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/time&#39;</span> <span class="o">%</span> <span class="n">pivot_ifo</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/time&#39;</span> <span class="o">%</span> <span class="n">fixed_ifo</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="kn">from</span> <span class="nn">pycbc.events</span> <span class="k">import</span> <span class="n">cluster_coincs</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;timeslide_interval&#39;</span><span class="p">]</span>
+        <span class="n">cid</span> <span class="o">=</span> <span class="n">cluster_coincs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stat</span><span class="p">,</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/time&#39;</span> <span class="o">%</span> <span class="n">pivot_ifo</span><span class="p">],</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/time&#39;</span> <span class="o">%</span> <span class="n">fixed_ifo</span><span class="p">],</span>
+                             <span class="bp">self</span><span class="o">.</span><span class="n">timeslide_id</span><span class="p">,</span>
+                             <span class="n">interval</span><span class="p">,</span>
+                             <span class="n">window</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="FileData"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.hdf.FileData">[docs]</a><span class="k">class</span> <span class="nc">FileData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -1067,7 +1105,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -1092,8 +1130,9 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
         <script type="text/javascript" src="../../../_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

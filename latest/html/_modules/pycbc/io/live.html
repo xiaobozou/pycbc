@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.live &mdash; PyCBC 55ac0e documentation</title>
+  <title>pycbc.io.live &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -299,6 +299,9 @@
 <span class="sd">            be `followup_data[&#39;H1&#39;][&#39;snr_series&#39;]`. More detectors can be</span>
 <span class="sd">            present than given in `ifos`. If so, the extra detectors will only</span>
 <span class="sd">            be used for sky localization.</span>
+<span class="sd">        channel_names: dict of strings, optional</span>
+<span class="sd">            Strain channel names for each detector.</span>
+<span class="sd">            Will be recorded in the sngl_inspiral table.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/template_id&#39;</span> <span class="o">%</span> <span class="n">ifos</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
@@ -382,6 +385,8 @@
             <span class="k">if</span> <span class="n">sngl</span><span class="o">.</span><span class="n">snr</span><span class="p">:</span>
                 <span class="n">sngl</span><span class="o">.</span><span class="n">eff_distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">sngl</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">sngl</span><span class="o">.</span><span class="n">snr</span>
                 <span class="n">network_snrsq</span> <span class="o">+=</span> <span class="n">sngl</span><span class="o">.</span><span class="n">snr</span> <span class="o">**</span> <span class="mf">2.0</span>
+            <span class="k">if</span> <span class="s1">&#39;channel_names&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;channel_names&#39;</span><span class="p">]:</span>
+                <span class="n">sngl</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;channel_names&#39;</span><span class="p">][</span><span class="n">ifo</span><span class="p">]</span>
             <span class="n">sngl_inspiral_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sngl</span><span class="p">)</span>
 
             <span class="c1"># Set up coinc_map entry</span>
@@ -544,7 +549,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -569,8 +574,9 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
         <script type="text/javascript" src="../../../_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io package &mdash; PyCBC 55ac0e documentation</title>
+  <title>pycbc.io package &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -295,6 +295,11 @@ DictArray.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pycbc.io.hdf.DictArray.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#DictArray.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.DictArray.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="pycbc.io.hdf.DictArray.select">
 <code class="descname">select</code><span class="sig-paren">(</span><em>idx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#DictArray.select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.DictArray.select" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a new DictArray containing only the indexed values</p>
@@ -389,7 +394,7 @@ DictArray.</p>
 
 <dl class="class">
 <dt id="pycbc.io.hdf.HFile">
-<em class="property">class </em><code class="descclassname">pycbc.io.hdf.</code><code class="descname">HFile</code><span class="sig-paren">(</span><em>name</em>, <em>mode=None</em>, <em>driver=None</em>, <em>libver=None</em>, <em>userblock_size=None</em>, <em>swmr=False</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#HFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.HFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.io.hdf.</code><code class="descname">HFile</code><span class="sig-paren">(</span><em>name</em>, <em>mode=None</em>, <em>driver=None</em>, <em>libver=None</em>, <em>userblock_size=None</em>, <em>swmr=False</em>, <em>rdcc_nslots=None</em>, <em>rdcc_nbytes=None</em>, <em>rdcc_w0=None</em>, <em>track_order=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#HFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.HFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">h5py._hl.files.File</span></code></p>
 <p>Low level extensions to the capabilities of reading an hdf5 File</p>
 <dl class="method">
@@ -422,6 +427,19 @@ element is an array of indices of elements passing the function.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.io.hdf.MultiifoStatmapData">
+<em class="property">class </em><code class="descclassname">pycbc.io.hdf.</code><code class="descname">MultiifoStatmapData</code><span class="sig-paren">(</span><em>data=None</em>, <em>seg=None</em>, <em>attrs=None</em>, <em>files=None</em>, <em>ifos=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#MultiifoStatmapData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.MultiifoStatmapData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.io.hdf.StatmapData" title="pycbc.io.hdf.StatmapData"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.io.hdf.StatmapData</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.io.hdf.MultiifoStatmapData.cluster">
+<code class="descname">cluster</code><span class="sig-paren">(</span><em>window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#MultiifoStatmapData.cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.MultiifoStatmapData.cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster the dict array, assuming it has the relevant Coinc colums,
+time1, time2, stat, and timeslide_id</p>
 </dd></dl>
 
 </dd></dl>
@@ -585,7 +603,7 @@ be considered.</p>
 
 <dl class="class">
 <dt id="pycbc.io.hdf.StatmapData">
-<em class="property">class </em><code class="descclassname">pycbc.io.hdf.</code><code class="descname">StatmapData</code><span class="sig-paren">(</span><em>data=None</em>, <em>seg=None</em>, <em>attrs=None</em>, <em>files=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#StatmapData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.StatmapData" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.io.hdf.</code><code class="descname">StatmapData</code><span class="sig-paren">(</span><em>data=None</em>, <em>seg=None</em>, <em>attrs=None</em>, <em>files=None</em>, <em>groups=('stat'</em>, <em>'time1'</em>, <em>'time2'</em>, <em>'trigger_id1'</em>, <em>'trigger_id2'</em>, <em>'template_id'</em>, <em>'decimation_factor'</em>, <em>'timeslide_id')</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/io/hdf.html#StatmapData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.io.hdf.StatmapData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.io.hdf.DictArray" title="pycbc.io.hdf.DictArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.io.hdf.DictArray</span></code></a></p>
 <dl class="method">
 <dt id="pycbc.io.hdf.StatmapData.cluster">
@@ -1667,7 +1685,7 @@ example:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -1692,8 +1710,9 @@ example:</p>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
         <script type="text/javascript" src="_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

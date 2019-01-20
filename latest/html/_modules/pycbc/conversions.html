@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.conversions &mdash; PyCBC 55ac0e documentation</title>
+  <title>pycbc.conversions &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -276,6 +276,19 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">input_is_array</span> <span class="ow">and</span> <span class="n">arg</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">arg</span>
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                           Fundamental conversions</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+
+<span class="k">def</span> <span class="nf">sec_to_year</span><span class="p">(</span><span class="n">sec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Converts number of seconds to number of years &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sec</span> <span class="o">/</span> <span class="n">lal</span><span class="o">.</span><span class="n">YRJUL_SI</span>
+
 
 <span class="c1">#</span>
 <span class="c1"># =============================================================================</span>
@@ -1486,7 +1499,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -1511,8 +1524,9 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
         <script type="text/javascript" src="../../_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

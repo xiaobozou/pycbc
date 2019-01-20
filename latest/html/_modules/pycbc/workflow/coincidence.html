@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.coincidence &mdash; PyCBC 55ac0e documentation</title>
+  <title>pycbc.workflow.coincidence &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -344,6 +344,22 @@
         <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">node</span></div></div>
 
+<div class="viewcode-block" id="PyCBCMultiifoStatMapExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCMultiifoStatMapExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCMultiifoStatMapExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate FAP, IFAR, etc&quot;&quot;&quot;</span>
+    <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span>
+<div class="viewcode-block" id="PyCBCMultiifoStatMapExecutable.create_node"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCMultiifoStatMapExecutable.create_node">[docs]</a>    <span class="k">def</span> <span class="nf">create_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">segs</span> <span class="o">=</span> <span class="n">coinc_files</span><span class="o">.</span><span class="n">get_times_covered_by_files</span><span class="p">()</span>
+        <span class="n">seg</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="n">segs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">segs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">set_memory</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_input_list_opt</span><span class="p">(</span><span class="s1">&#39;--coinc-files&#39;</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s1">&#39;--ifos&#39;</span><span class="p">,</span> <span class="n">ifos</span><span class="p">)</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">seg</span><span class="p">,</span> <span class="s1">&#39;.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-file&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span></div></div>
+
 <div class="viewcode-block" id="PyCBCStatMapInjExecutable"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.PyCBCStatMapInjExecutable">[docs]</a><span class="k">class</span> <span class="nc">PyCBCStatMapInjExecutable</span><span class="p">(</span><span class="n">Executable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculate FAP, IFAR, etc&quot;&quot;&quot;</span>
     <span class="n">current_retention_level</span> <span class="o">=</span> <span class="n">Executable</span><span class="o">.</span><span class="n">MERGED_TRIGGERS</span>
@@ -516,6 +532,18 @@
             <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">trig2hdf_node</span><span class="p">)</span>
             <span class="n">trig_files</span> <span class="o">+=</span> <span class="n">trig2hdf_node</span><span class="o">.</span><span class="n">output_files</span>
     <span class="k">return</span> <span class="n">trig_files</span></div>
+
+<div class="viewcode-block" id="setup_multiifo_statmap"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_multiifo_statmap">[docs]</a><span class="k">def</span> <span class="nf">setup_multiifo_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+
+    <span class="n">statmap_exe</span> <span class="o">=</span> <span class="n">PyCBCMultiifoStatMapExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;multiifo_statmap&#39;</span><span class="p">,</span>
+                                              <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">,</span>
+                                              <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+    <span class="n">ifolist</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ifos</span><span class="p">)</span>
+    <span class="n">stat_node</span> <span class="o">=</span> <span class="n">statmap_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">coinc_files</span><span class="p">,</span> <span class="n">ifolist</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">stat_node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">stat_node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stat_node</span><span class="o">.</span><span class="n">output_files</span></div>
 
 <div class="viewcode-block" id="setup_statmap"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.coincidence.setup_statmap">[docs]</a><span class="k">def</span> <span class="nf">setup_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_files</span><span class="p">,</span> <span class="n">bank_file</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
@@ -740,8 +768,9 @@
     <span class="c1"># Wall time knob and memory knob</span>
     <span class="n">factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">get_opt_tags</span><span class="p">(</span><span class="s1">&#39;workflow-coincidence&#39;</span><span class="p">,</span> <span class="s1">&#39;parallelization-factor&#39;</span><span class="p">,</span> <span class="n">tags</span><span class="p">))</span>
 
-    <span class="n">bg_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">statmap_files</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">veto_file</span><span class="p">,</span> <span class="n">veto_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">veto_files</span><span class="p">,</span> <span class="n">veto_names</span><span class="p">):</span>
+        <span class="n">bg_files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
             <span class="n">group_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
             <span class="n">coinc_node</span> <span class="o">=</span> <span class="n">findcoinc_exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">(</span><span class="n">trig_files</span><span class="p">,</span> <span class="n">hdfbank</span><span class="p">,</span>
@@ -754,8 +783,10 @@
             <span class="n">bg_files</span> <span class="o">+=</span> <span class="n">coinc_node</span><span class="o">.</span><span class="n">output_files</span>
             <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">coinc_node</span><span class="p">)</span>
 
+        <span class="n">statmap_files</span> <span class="o">+=</span> <span class="p">[</span><span class="n">setup_multiifo_statmap</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">bg_files</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">veto_name</span><span class="p">])]</span>
+
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;...leaving coincidence &#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bg_files</span></div>
+    <span class="k">return</span> <span class="n">statmap_files</span></div>
 </pre></div>
 
            </div>
@@ -769,7 +800,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -794,8 +825,9 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
         <script type="text/javascript" src="../../../_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

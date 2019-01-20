@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Inference IO &mdash; PyCBC 55ac0e documentation</title>
+  <title>Inference IO &mdash; PyCBC 1375ce documentation</title>
   
 
   
@@ -230,12 +230,12 @@ these IO classes.</p>
 <p>The guidelines for creating sampler IO classes are similar to the <a class="reference internal" href="sampler_api.html#sampler-api-overview"><span class="std std-ref">sampler
 classes</span></a>, though only having a single level of
 inheritance is not required (since the base file class, <a class="reference internal" href="../pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile" title="pycbc.inference.io.base_hdf.BaseInferenceFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseInferenceFile</span></code></a>,
-itself inherits from <a class="reference external" href="http://docs.h5py.org/en/stable/high/file.html#File" title="(in h5py v2.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code></a>). The following apply to
+itself inherits from <a class="reference external" href="http://docs.h5py.org/en/stable/high/file.html#File" title="(in h5py v2.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code></a>). The following apply to
 all sampler IO classes:</p>
 <ol class="arabic simple">
 <li>All sampler IO classes must inherit from <a class="reference internal" href="../pycbc.inference.io.html#pycbc.inference.io.base_hdf.BaseInferenceFile" title="pycbc.inference.io.base_hdf.BaseInferenceFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseInferenceFile</span></code></a>. This is an
 <a class="reference external" href="https://docs.python.org/3/library/abc.html#module-abc" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">base</span> <span class="pre">class</span></code></a> that inherits from
-<a class="reference external" href="http://docs.h5py.org/en/stable/high/file.html#File" title="(in h5py v2.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code></a>; consequently, all samplers will write to
+<a class="reference external" href="http://docs.h5py.org/en/stable/high/file.html#File" title="(in h5py v2.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">h5py.File</span></code></a>; consequently, all samplers will write to
 hdf files.</li>
 <li>All sampler IO classes must have a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute that is unique across
 all IO classes in <a class="reference internal" href="../pycbc.inference.io.html#module-pycbc.inference.io" title="pycbc.inference.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycbc.inference.io</span></code></a>. This name is saved to the
@@ -410,7 +410,7 @@ main gwastro repository.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Dec 19, 2018.
+      Last updated on Jan 20, 2019.
 
     </p>
   </div>
@@ -435,8 +435,9 @@ main gwastro repository.</li>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
         <script type="text/javascript" src="../_static/typed.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
