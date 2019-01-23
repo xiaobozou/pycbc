@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.autocorrelation &mdash; PyCBC 1375ce documentation</title>
+  <title>pycbc.filter.autocorrelation &mdash; PyCBC 273358 documentation</title>
   
 
   
@@ -285,7 +285,7 @@
 
     <span class="c1"># correlate</span>
     <span class="c1"># do not need to give the congjugate since correlate function does it</span>
-    <span class="n">cdata</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fdata</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">complex64</span><span class="p">),</span>
+    <span class="n">cdata</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fdata</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">fdata</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
                            <span class="n">delta_f</span><span class="o">=</span><span class="n">fdata</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">correlate</span><span class="p">(</span><span class="n">fdata</span><span class="p">,</span> <span class="n">fdata</span><span class="p">,</span> <span class="n">cdata</span><span class="p">)</span>
 
@@ -383,7 +383,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 20, 2019.
+      Last updated on Jan 23, 2019.
 
     </p>
   </div>

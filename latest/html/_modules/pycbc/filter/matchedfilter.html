@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.matchedfilter &mdash; PyCBC 1375ce documentation</title>
+  <title>pycbc.filter.matchedfilter &mdash; PyCBC 273358 documentation</title>
   
 
   
@@ -243,11 +243,6 @@
     <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span></div>
 
-<span class="nd">@pycbc</span><span class="o">.</span><span class="n">scheme</span><span class="o">.</span><span class="n">schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">_correlate_factory</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This class is a stub that should be overridden using the &quot;</span>
-    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">BatchCorrelator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Create a batch correlation engine</span>
@@ -255,12 +250,16 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Correlate x and y, store in z. Arrays need not be equal length, but</span>
 <span class="sd">        must be at least size long and of the same dtype. No error checking</span>
-<span class="sd">        will be performed, so be careful. All dtypes must be the same.</span>
+<span class="sd">        will be performed, so be careful. All dtypes must be complex64.</span>
 <span class="sd">        Note, must be created within the processing context that it will be used in.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_vectors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+        <span class="c1"># keep reference to arrays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zs</span> <span class="o">=</span> <span class="n">zs</span>
 
         <span class="c1"># Store each pointer as in integer array</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Array</span><span class="p">([</span><span class="n">v</span><span class="o">.</span><span class="n">ptr</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
@@ -271,6 +270,13 @@
         <span class="k">pass</span>
 
     <span class="n">execute</span> <span class="o">=</span> <span class="n">batch_correlate_execute</span>
+
+
+<span class="nd">@pycbc</span><span class="o">.</span><span class="n">scheme</span><span class="o">.</span><span class="n">schemed</span><span class="p">(</span><span class="n">BACKEND_PREFIX</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_correlate_factory</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;This class is a stub that should be overridden using the &quot;</span>
+    <span class="n">err_msg</span> <span class="o">+=</span> <span class="s2">&quot;scheme. You shouldn&#39;t be seeing this error!&quot;</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Correlator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -2027,7 +2033,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 20, 2019.
+      Last updated on Jan 23, 2019.
 
     </p>
   </div>

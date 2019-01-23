@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Waveforms &mdash; PyCBC 1375ce documentation</title>
+  <title>Waveforms &mdash; PyCBC 273358 documentation</title>
   
 
   
@@ -337,17 +337,17 @@
 
 <span class="c1"># Generate the aLIGO ZDHP PSD</span>
 <span class="n">delta_f</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">duration</span>
-<span class="n">flen</span> <span class="o">=</span> <span class="n">tlen</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">flen</span> <span class="o">=</span> <span class="n">tlen</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">psd</span> <span class="o">=</span> <span class="n">aLIGOZeroDetHighPower</span><span class="p">(</span><span class="n">flen</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">f_low</span><span class="p">)</span>
 
 <span class="c1"># Note: This takes a while the first time as an FFT plan is generated</span>
 <span class="c1"># subsequent calls are much faster.</span>
 <span class="n">m</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">match</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">psd</span><span class="o">=</span><span class="n">psd</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="o">=</span><span class="n">f_low</span><span class="p">)</span>
-<span class="nb">print</span> <span class="s1">&#39;The match is: </span><span class="si">%1.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">m</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The match is: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python ../examples/waveform/match_waveform.py
-The match is: 0.953
+The match is: 0.9534
 </pre></div>
 </div>
 </div>
@@ -469,7 +469,7 @@ The match is: 0.953
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 20, 2019.
+      Last updated on Jan 23, 2019.
 
     </p>
   </div>

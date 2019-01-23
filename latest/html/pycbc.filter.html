@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter package &mdash; PyCBC 1375ce documentation</title>
+  <title>pycbc.filter package &mdash; PyCBC 273358 documentation</title>
   
 
   
@@ -1000,24 +1000,18 @@ Here we return the value of u for the given indices.</p>
 <span id="pycbc-filter-matchedfilter-cpu-module"></span><h2>pycbc.filter.matchedfilter_cpu module<a class="headerlink" href="#module-pycbc.filter.matchedfilter_cpu" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="pycbc.filter.matchedfilter_cpu.CPUCorrelator">
-<em class="property">class </em><code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">CPUCorrelator</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#CPUCorrelator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.CPUCorrelator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">CPUCorrelator</code><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.CPUCorrelator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.filter.matchedfilter._BaseCorrelator</span></code></p>
 <dl class="method">
 <dt id="pycbc.filter.matchedfilter_cpu.CPUCorrelator.correlate">
-<code class="descname">correlate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#CPUCorrelator.correlate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.CPUCorrelator.correlate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the correlation of the vectors specified at object
-instantiation, writing into the output vector given when the
-object was instantiated. The intention is that this method
-should be called many times, with the contents of those vectors
-changing between invocations, but not their locations in memory
-or length.</p>
-</dd></dl>
+<code class="descname">correlate</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.CPUCorrelator.correlate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.filter.matchedfilter_cpu.batch_correlate_execute">
-<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">batch_correlate_execute</code><span class="sig-paren">(</span><em>self</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#batch_correlate_execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.batch_correlate_execute" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">batch_correlate_execute</code><span class="sig-paren">(</span><em>self</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.batch_correlate_execute" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -1026,18 +1020,8 @@ or length.</p>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="pycbc.filter.matchedfilter_cpu.correlate_batch_inline">
-<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">correlate_batch_inline</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#correlate_batch_inline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.correlate_batch_inline" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="pycbc.filter.matchedfilter_cpu.correlate_inline">
-<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">correlate_inline</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#correlate_inline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.correlate_inline" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
 <dt id="pycbc.filter.matchedfilter_cpu.correlate_numpy">
-<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">correlate_numpy</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/filter/matchedfilter_cpu.html#correlate_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.correlate_numpy" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.filter.matchedfilter_cpu.</code><code class="descname">correlate_numpy</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.filter.matchedfilter_cpu.correlate_numpy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -1442,7 +1426,7 @@ to a TimeSeries instance, do:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 20, 2019.
+      Last updated on Jan 23, 2019.
 
     </p>
   </div>
