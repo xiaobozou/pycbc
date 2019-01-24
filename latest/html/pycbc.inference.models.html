@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models package &mdash; PyCBC 273358 documentation</title>
+  <title>pycbc.inference.models package &mdash; PyCBC cfbb66 documentation</title>
   
 
   
@@ -1095,7 +1095,7 @@ called.</p>
 <p>This module provides model classes that assume the noise is Gaussian.</p>
 <dl class="class">
 <dt id="pycbc.inference.models.gaussian_noise.GaussianNoise">
-<em class="property">class </em><code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">GaussianNoise</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>waveform_generator</em>, <em>f_lower</em>, <em>psds=None</em>, <em>f_upper=None</em>, <em>norm=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#GaussianNoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">GaussianNoise</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>waveform_generator</em>, <em>low_frequency_cutoff</em>, <em>psds=None</em>, <em>f_upper=None</em>, <em>norm=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#GaussianNoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.models.base_data.BaseDataModel" title="pycbc.inference.models.base_data.BaseDataModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.models.base_data.BaseDataModel</span></code></a></p>
 <p>Model that assumes data is stationary Gaussian noise.</p>
 <p>With Gaussian noise the log likelihood functions for signal
@@ -1144,7 +1144,8 @@ waveform.</li>
 values are the data (assumed to be unwhitened). The list of keys must
 match the waveform generator’s detectors keys, and the epoch of every
 data set must be the same as the waveform generator’s epoch.</li>
-<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency to use for computing inner products.</li>
+<li><strong>low_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The starting frequency to use for computing inner products.
+Must be specified in the config file under section [model].</li>
 <li><strong>psds</strong> (<em>{None</em><em>, </em><em>dict}</em>) – A dictionary of FrequencySeries keyed by the detector names. The
 dictionary must have a psd for each detector specified in the data
 dictionary. If provided, the inner products in each detector will be
@@ -1629,7 +1630,7 @@ of the class specified by the name argument.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 23, 2019.
+      Last updated on Jan 24, 2019.
 
     </p>
   </div>

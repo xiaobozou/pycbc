@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC 273358 documentation</title>
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC cfbb66 documentation</title>
   
 
   
@@ -988,6 +988,7 @@ pycbc_create_injections --verbose <span class="se">\</span>
 it <code class="docutils literal notranslate"><span class="pre">inference.ini</span></code>:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[model]</span>
 <span class="na">name</span> <span class="o">=</span> <span class="s">gaussian_noise</span>
+<span class="na">low-frequency-cutoff</span> <span class="o">=</span> <span class="s">20</span>
 
 <span class="k">[sampler]</span>
 <span class="na">name</span> <span class="o">=</span> <span class="s">emcee_pt</span>
@@ -1345,7 +1346,7 @@ pycbc_inference --verbose <span class="se">\</span>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 23, 2019.
+      Last updated on Jan 24, 2019.
 
     </p>
   </div>

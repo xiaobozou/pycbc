@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.gaussian_noise &mdash; PyCBC 273358 documentation</title>
+  <title>pycbc.inference.models.gaussian_noise &mdash; PyCBC cfbb66 documentation</title>
   
 
   
@@ -217,6 +217,9 @@
 <span class="sd">&quot;&quot;&quot;This module provides model classes that assume the noise is Gaussian.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">ConfigParser</span> <span class="k">import</span> <span class="n">NoSectionError</span><span class="p">,</span> <span class="n">NoOptionError</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="nb">filter</span> <span class="k">as</span> <span class="n">pyfilter</span>
@@ -291,8 +294,9 @@
 <span class="sd">        values are the data (assumed to be unwhitened). The list of keys must</span>
 <span class="sd">        match the waveform generator&#39;s detectors keys, and the epoch of every</span>
 <span class="sd">        data set must be the same as the waveform generator&#39;s epoch.</span>
-<span class="sd">    f_lower : float</span>
+<span class="sd">    low_frequency_cutoff : float</span>
 <span class="sd">        The starting frequency to use for computing inner products.</span>
+<span class="sd">        Must be specified in the config file under section [model].</span>
 <span class="sd">    psds : {None, dict}</span>
 <span class="sd">        A dictionary of FrequencySeries keyed by the detector names. The</span>
 <span class="sd">        dictionary must have a psd for each detector specified in the data</span>
@@ -415,7 +419,8 @@
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gaussian_noise&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">waveform_generator</span><span class="p">,</span>
-                 <span class="n">f_lower</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f_upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">f_upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># set up the boiler-plate attributes; note: we&#39;ll compute the</span>
         <span class="c1"># log evidence later</span>
@@ -441,10 +446,10 @@
         <span class="c1"># we&#39;ll use the first data set for setting values</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-        <span class="c1"># figure out the kmin, kmax to use</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span> <span class="o">=</span> <span class="n">f_lower</span>
-        <span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span> <span class="o">=</span> <span class="n">pyfilter</span><span class="o">.</span><span class="n">get_cutoff_indices</span><span class="p">(</span><span class="n">f_lower</span><span class="p">,</span> <span class="n">f_upper</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
-                                                 <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Set low frequency cutoff</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span> <span class="o">=</span> <span class="n">low_frequency_cutoff</span>
+        <span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span> <span class="o">=</span> <span class="n">pyfilter</span><span class="o">.</span><span class="n">get_cutoff_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span><span class="p">,</span> <span class="n">f_upper</span><span class="p">,</span>
+                                                 <span class="n">d</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span> <span class="o">=</span> <span class="n">kmin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kmax</span> <span class="o">=</span> <span class="n">kmax</span>
         <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -657,7 +662,29 @@
             <span class="n">attrs</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
         <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;lognl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lognl</span>
         <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">detectors</span><span class="p">:</span>
-            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_lognl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">det</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_lognl</span><span class="p">(</span><span class="n">det</span><span class="p">)</span></div></div>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_lognl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">det</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_lognl</span><span class="p">(</span><span class="n">det</span><span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_init_args_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds loading low_frequency_cutoff to parent function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="c1"># add low_frequency_cutoff to the arguments</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">low_frequency_cutoff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+                <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">))</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">NoOptionError</span><span class="p">,</span> <span class="n">NoSectionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff for calculation of inner &quot;</span>
+                            <span class="s2">&quot;product needs to be specified in config file &quot;</span>
+                            <span class="s2">&quot;under section &#39;model&#39;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># everything the float() can throw</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff could not be &quot;</span>
+                            <span class="s2">&quot;converted to float &quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_frequency_cutoff</span>
+        <span class="k">return</span> <span class="n">args</span></div>
 </pre></div>
 
            </div>
@@ -671,7 +698,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 23, 2019.
+      Last updated on Jan 24, 2019.
 
     </p>
   </div>

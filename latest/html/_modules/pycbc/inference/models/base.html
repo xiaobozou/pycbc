@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.base &mdash; PyCBC 273358 documentation</title>
+  <title>pycbc.inference.models.base &mdash; PyCBC cfbb66 documentation</title>
   
 
   
@@ -938,8 +938,8 @@
             <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">args</span><span class="p">[</span><span class="s1">&#39;sampling_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
         <span class="c1"># get any other keyword arguments provided</span>
-        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span>
-                                               <span class="n">skip_args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">skip_args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
         <span class="k">return</span> <span class="n">args</span>
 
 <div class="viewcode-block" id="BaseModel.from_config"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.from_config">[docs]</a>    <span class="nd">@classmethod</span>
@@ -983,7 +983,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 23, 2019.
+      Last updated on Jan 24, 2019.
 
     </p>
   </div>
