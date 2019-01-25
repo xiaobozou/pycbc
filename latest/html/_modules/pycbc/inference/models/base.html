@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.base &mdash; PyCBC cfbb66 documentation</title>
+  <title>pycbc.inference.models.base &mdash; PyCBC d93d27 documentation</title>
   
 
   
@@ -531,6 +531,13 @@
 <span class="sd">    sampling_transforms : list, optional</span>
 <span class="sd">        List of transforms to use to go between the ``variable_params`` and the</span>
 <span class="sd">        sampling parameters. Required if ``sampling_params`` is not None.</span>
+<span class="sd">    waveform_transforms : list, optional</span>
+<span class="sd">        A list of transforms to convert the ``variable_params`` into something</span>
+<span class="sd">        understood by the likelihood model. This is useful if the prior is</span>
+<span class="sd">        more easily parameterized in parameters that are different than what</span>
+<span class="sd">        the likelihood is most easily defined in. Since these are used solely</span>
+<span class="sd">        for converting parameters, and not for rescaling the parameter space,</span>
+<span class="sd">        a Jacobian is not required for these transforms.</span>
 
 <span class="sd">    Properties</span>
 <span class="sd">    ----------</span>
@@ -552,7 +559,7 @@
     <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_params</span><span class="p">,</span> <span class="n">static_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">sampling_transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                 <span class="n">sampling_transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">waveform_transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># store variable and static args</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
             <span class="n">variable_params</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable_params</span><span class="p">,)</span>
@@ -569,8 +576,9 @@
             <span class="k">assert</span> <span class="n">prior</span><span class="o">.</span><span class="n">variable_args</span> <span class="o">==</span> <span class="n">variable_params</span><span class="p">,</span> <span class="p">(</span>
                 <span class="s2">&quot;variable params of prior and model must be the same&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prior_distribution</span> <span class="o">=</span> <span class="n">prior</span>
-        <span class="c1"># store sampling transforms</span>
+        <span class="c1"># store transforms</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sampling_transforms</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waveform_transforms</span> <span class="o">=</span> <span class="n">waveform_transforms</span>
         <span class="c1"># initialize current params to None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_current_params</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># initialize a model stats</span>
@@ -816,6 +824,11 @@
         <span class="c1"># variable args</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_transforms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_transforms</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># apply waveform transforms</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">waveform_transforms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">waveform_transforms</span><span class="p">,</span>
+                                                 <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="c1"># apply boundary conditions</span>
         <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior_distribution</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">params</span>
@@ -897,7 +910,8 @@
         <span class="sd">&quot;&quot;&quot;Helper function for loading parameters.</span>
 
 <span class="sd">        This retrieves the prior, variable parameters, static parameterss,</span>
-<span class="sd">        constraints, and sampling transforms.</span>
+<span class="sd">        constraints, sampling transforms, and waveform transforms</span>
+<span class="sd">        (if provided).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -908,7 +922,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        dict :</span>
 <span class="sd">            Dictionary of the arguments. Has keys ``variable_params``,</span>
-<span class="sd">            ``static_params``, ``prior``, and ``sampling_transforms``.</span>
+<span class="sd">            ``static_params``, ``prior``, and ``sampling_transforms``. If</span>
+<span class="sd">            waveform transforms are in the config file, will also have</span>
+<span class="sd">            ``waveform_transforms``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">section</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
         <span class="n">prior_section</span> <span class="o">=</span> <span class="s2">&quot;prior&quot;</span>
@@ -937,9 +953,12 @@
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="n">sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">args</span><span class="p">[</span><span class="s1">&#39;sampling_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
-        <span class="c1"># get any other keyword arguments provided</span>
-        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-                <span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">skip_args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+        <span class="c1"># get any waveform transforms</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">get_subsections</span><span class="p">(</span><span class="s1">&#39;waveform_transforms&#39;</span><span class="p">)):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading waveform transforms&quot;</span><span class="p">)</span>
+            <span class="n">args</span><span class="p">[</span><span class="s1">&#39;waveform_transforms&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">transforms</span><span class="o">.</span><span class="n">read_transforms_from_config</span><span class="p">(</span>
+                    <span class="n">cp</span><span class="p">,</span> <span class="s1">&#39;waveform_transforms&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">args</span>
 
 <div class="viewcode-block" id="BaseModel.from_config"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.base.BaseModel.from_config">[docs]</a>    <span class="nd">@classmethod</span>
@@ -955,6 +974,9 @@
 <span class="sd">            provided keyword will over ride what is in the config file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">args</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="c1"># get any other keyword arguments provided in the model section</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                                               <span class="n">skip_args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
         <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
 
@@ -983,7 +1005,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 24, 2019.
+      Last updated on Jan 25, 2019.
 
     </p>
   </div>

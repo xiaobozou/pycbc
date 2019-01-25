@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models.gaussian_noise &mdash; PyCBC cfbb66 documentation</title>
+  <title>pycbc.inference.models.gaussian_noise &mdash; PyCBC d93d27 documentation</title>
   
 
   
@@ -224,6 +224,7 @@
 
 <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="nb">filter</span> <span class="k">as</span> <span class="n">pyfilter</span>
 <span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">NoWaveformError</span>
+<span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">generator</span>
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">Array</span>
 
 <span class="kn">from</span> <span class="nn">.base_data</span> <span class="k">import</span> <span class="n">BaseDataModel</span>
@@ -277,18 +278,12 @@
 <span class="sd">    normalization using the ``norm`` keyword argument.</span>
 
 <span class="sd">    For more details on initialization parameters and definition of terms, see</span>
-<span class="sd">    ``BaseModel``.</span>
+<span class="sd">    :py:class:`models.BaseDataModel`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    variable_params : (tuple of) string(s)</span>
 <span class="sd">        A tuple of parameter names that will be varied.</span>
-<span class="sd">    waveform_generator : generator class</span>
-<span class="sd">        A generator class that creates waveforms. This must have a ``generate``</span>
-<span class="sd">        function which takes parameter values as keyword arguments, a</span>
-<span class="sd">        detectors attribute which is a dictionary of detectors keyed by their</span>
-<span class="sd">        names, and an epoch which specifies the start time of the generated</span>
-<span class="sd">        waveform.</span>
 <span class="sd">    data : dict</span>
 <span class="sd">        A dictionary of data, in which the keys are the detector names and the</span>
 <span class="sd">        values are the data (assumed to be unwhitened). The list of keys must</span>
@@ -302,7 +297,7 @@
 <span class="sd">        dictionary must have a psd for each detector specified in the data</span>
 <span class="sd">        dictionary. If provided, the inner products in each detector will be</span>
 <span class="sd">        weighted by 1/psd of that detector.</span>
-<span class="sd">    f_upper : {None, float}</span>
+<span class="sd">    high_frequency_cutoff : float, optional</span>
 <span class="sd">        The ending frequency to use for computing inner products. If not</span>
 <span class="sd">        provided, the minimum of the largest frequency stored in the data</span>
 <span class="sd">        and a given waveform will be used.</span>
@@ -310,7 +305,9 @@
 <span class="sd">        An extra normalization weight to apply to the inner products. Can be</span>
 <span class="sd">        either a float or an array. If ``None``, ``4*data.values()[0].delta_f``</span>
 <span class="sd">        will be used.</span>
-<span class="sd">    **kwargs :</span>
+<span class="sd">    static_params : dict, optional</span>
+<span class="sd">        A dictionary of parameter names -&gt; values to keep fixed.</span>
+<span class="sd">    \**kwargs :</span>
 <span class="sd">        All other keyword arguments are passed to ``BaseDataModel``.</span>
 
 <span class="sd">    Examples</span>
@@ -318,28 +315,28 @@
 <span class="sd">    Create a signal, and set up the model using that signal:</span>
 
 <span class="sd">    &gt;&gt;&gt; from pycbc import psd as pypsd</span>
+<span class="sd">    &gt;&gt;&gt; from pycbc.inference.models import GaussianNoise</span>
 <span class="sd">    &gt;&gt;&gt; from pycbc.waveform.generator import (FDomainDetFrameGenerator,</span>
 <span class="sd">    ...                                       FDomainCBCGenerator)</span>
-<span class="sd">    &gt;&gt;&gt; import pycbc.inference</span>
 <span class="sd">    &gt;&gt;&gt; seglen = 4</span>
 <span class="sd">    &gt;&gt;&gt; sample_rate = 2048</span>
 <span class="sd">    &gt;&gt;&gt; N = seglen*sample_rate/2+1</span>
 <span class="sd">    &gt;&gt;&gt; fmin = 30.</span>
-<span class="sd">    &gt;&gt;&gt; m1, m2, s1z, s2z, tsig, ra, dec, pol, dist = (</span>
-<span class="sd">    ...     38.6, 29.3, 0., 0., 3.1, 1.37, -1.26, 2.76, 3*500.)</span>
+<span class="sd">    &gt;&gt;&gt; static_params = {&#39;approximant&#39;: &#39;IMRPhenomD&#39;, &#39;f_lower&#39;: fmin,</span>
+<span class="sd">    ...                  &#39;mass1&#39;: 38.6, &#39;mass2&#39;: 29.3,</span>
+<span class="sd">    ...                  &#39;spin1z&#39;: 0., &#39;spin2z&#39;: 0., &#39;ra&#39;: 1.37, &#39;dec&#39;: -1.26,</span>
+<span class="sd">    ...                  &#39;polarization&#39;: 2.76, &#39;distance&#39;: 3*500.}</span>
 <span class="sd">    &gt;&gt;&gt; variable_params = [&#39;tc&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; tsig = 3.1</span>
 <span class="sd">    &gt;&gt;&gt; generator = FDomainDetFrameGenerator(</span>
-<span class="sd">    ...     FDomainCBCGenerator, 0.,</span>
-<span class="sd">    ...     variable_args=variable_params, detectors=[&#39;H1&#39;, &#39;L1&#39;],</span>
-<span class="sd">    ...     delta_f=1./seglen, f_lower=fmin,</span>
-<span class="sd">    ...     approximant=&#39;SEOBNRv2_ROM_DoubleSpin&#39;,</span>
-<span class="sd">    ...     mass1=m1, mass2=m2, spin1z=s1z, spin2z=s2z,</span>
-<span class="sd">    ...     ra=ra, dec=dec, polarization=pol, distance=dist)</span>
+<span class="sd">    ...     FDomainCBCGenerator, 0., detectors=[&#39;H1&#39;, &#39;L1&#39;],</span>
+<span class="sd">    ...     variable_args=variable_params,</span>
+<span class="sd">    ...     delta_f=1./seglen, **static_params)</span>
 <span class="sd">    &gt;&gt;&gt; signal = generator.generate(tc=tsig)</span>
 <span class="sd">    &gt;&gt;&gt; psd = pypsd.aLIGOZeroDetHighPower(N, 1./seglen, 20.)</span>
 <span class="sd">    &gt;&gt;&gt; psds = {&#39;H1&#39;: psd, &#39;L1&#39;: psd}</span>
-<span class="sd">    &gt;&gt;&gt; model = pycbc.inference.models.GaussianNoise(</span>
-<span class="sd">    ...     variable_params, signal, generator, fmin, psds=psds)</span>
+<span class="sd">    &gt;&gt;&gt; model = GaussianNoise(variable_params, signal, fmin, psds=psds,</span>
+<span class="sd">    ...                       static_params=static_params)</span>
 
 <span class="sd">    Set the current position to the coalescence time of the signal:</span>
 
@@ -349,21 +346,21 @@
 <span class="sd">    since we have not provided a prior, these should be equal to each other:</span>
 
 <span class="sd">    &gt;&gt;&gt; print(&#39;{:.2f}&#39;.format(model.loglr))</span>
-<span class="sd">    278.96</span>
+<span class="sd">    282.29</span>
 <span class="sd">    &gt;&gt;&gt; print(&#39;{:.2f}&#39;.format(model.logplr))</span>
-<span class="sd">    278.96</span>
+<span class="sd">    282.29</span>
 
 <span class="sd">    Print all of the default_stats:</span>
 
 <span class="sd">    &gt;&gt;&gt; print(&#39;,\n&#39;.join([&#39;{}: {:.2f}&#39;.format(s, v)</span>
 <span class="sd">    ...                   for (s, v) in sorted(model.current_stats.items())]))</span>
-<span class="sd">    H1_cplx_loglr: 175.57+0.00j,</span>
-<span class="sd">    H1_optimal_snrsq: 351.13,</span>
-<span class="sd">    L1_cplx_loglr: 103.40+0.00j,</span>
-<span class="sd">    L1_optimal_snrsq: 206.79,</span>
+<span class="sd">    H1_cplx_loglr: 177.66+0.00j,</span>
+<span class="sd">    H1_optimal_snrsq: 355.33,</span>
+<span class="sd">    L1_cplx_loglr: 104.63+0.00j,</span>
+<span class="sd">    L1_optimal_snrsq: 209.26,</span>
 <span class="sd">    logjacobian: 0.00,</span>
 <span class="sd">    loglikelihood: 0.00,</span>
-<span class="sd">    loglr: 278.96,</span>
+<span class="sd">    loglr: 282.29,</span>
 <span class="sd">    logprior: 0.00</span>
 
 <span class="sd">    Compute the SNR; for this system and PSD, this should be approximately 24:</span>
@@ -371,7 +368,7 @@
 <span class="sd">    &gt;&gt;&gt; from pycbc.conversions import snr_from_loglr</span>
 <span class="sd">    &gt;&gt;&gt; x = snr_from_loglr(model.loglr)</span>
 <span class="sd">    &gt;&gt;&gt; print(&#39;{:.2f}&#39;.format(x))</span>
-<span class="sd">    23.62</span>
+<span class="sd">    23.76</span>
 
 <span class="sd">    Since there is no noise, the SNR should be the same as the quadrature sum</span>
 <span class="sd">    of the optimal SNRs in each detector:</span>
@@ -379,20 +376,20 @@
 <span class="sd">    &gt;&gt;&gt; x = (model.det_optimal_snrsq(&#39;H1&#39;) +</span>
 <span class="sd">    ...      model.det_optimal_snrsq(&#39;L1&#39;))**0.5</span>
 <span class="sd">    &gt;&gt;&gt; print(&#39;{:.2f}&#39;.format(x))</span>
-<span class="sd">    23.62</span>
+<span class="sd">    23.76</span>
 
 <span class="sd">    Using the same model, evaluate the log likelihood ratio at several points</span>
 <span class="sd">    in time and check that the max is at tsig:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
-<span class="sd">    &gt;&gt;&gt; times = numpy.arange(seglen*sample_rate)/float(sample_rate)</span>
+<span class="sd">    &gt;&gt;&gt; times = numpy.linspace(tsig-1, tsig+1, num=101)</span>
 <span class="sd">    &gt;&gt;&gt; loglrs = numpy.zeros(len(times))</span>
 <span class="sd">    &gt;&gt;&gt; for (ii, t) in enumerate(times):</span>
 <span class="sd">    ...     model.update(tc=t)</span>
 <span class="sd">    ...     loglrs[ii] = model.loglr</span>
-<span class="sd">    &gt;&gt;&gt; print(&#39;tsig: {:.3f}, time of max loglr: {:.3f}&#39;.format(</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;tsig: {:.2f}, time of max loglr: {:.2f}&#39;.format(</span>
 <span class="sd">    ...     tsig, times[loglrs.argmax()]))</span>
-<span class="sd">    tsig: 3.100, time of max loglr: 3.100</span>
+<span class="sd">    tsig: 3.10, time of max loglr: 3.10</span>
 
 <span class="sd">    Create a prior and use it (see distributions module for more details):</span>
 
@@ -403,52 +400,43 @@
 <span class="sd">    ...     signal, generator, 20., psds=psds, prior=prior)</span>
 <span class="sd">    &gt;&gt;&gt; model.update(tc=tsig)</span>
 <span class="sd">    &gt;&gt;&gt; print(&#39;{:.2f}&#39;.format(model.logplr))</span>
-<span class="sd">    279.88</span>
+<span class="sd">    283.21</span>
 <span class="sd">    &gt;&gt;&gt; print(&#39;,\n&#39;.join([&#39;{}: {:.2f}&#39;.format(s, v)</span>
 <span class="sd">    ...                   for (s, v) in sorted(model.current_stats.items())]))</span>
-<span class="sd">    H1_cplx_loglr: 175.57+0.00j,</span>
-<span class="sd">    H1_optimal_snrsq: 351.13,</span>
-<span class="sd">    L1_cplx_loglr: 103.40+0.00j,</span>
-<span class="sd">    L1_optimal_snrsq: 206.79,</span>
+<span class="sd">    H1_cplx_loglr: 177.66+0.00j,</span>
+<span class="sd">    H1_optimal_snrsq: 355.33,</span>
+<span class="sd">    L1_cplx_loglr: 104.63+0.00j,</span>
+<span class="sd">    L1_optimal_snrsq: 209.26,</span>
 <span class="sd">    logjacobian: 0.00,</span>
 <span class="sd">    loglikelihood: 0.00,</span>
-<span class="sd">    loglr: 278.96,</span>
+<span class="sd">    loglr: 282.29,</span>
 <span class="sd">    logprior: 0.92</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gaussian_noise&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">waveform_generator</span><span class="p">,</span>
-                 <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">f_upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">high_frequency_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="c1"># set up the boiler-plate attributes; note: we&#39;ll compute the</span>
-        <span class="c1"># log evidence later</span>
+        <span class="c1"># set up the boiler-plate attributes</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
-                                            <span class="n">waveform_generator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="c1"># check that the data and waveform generator have the same detectors</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">detectors</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">!=</span>
-                <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;waveform generator&#39;s detectors (</span><span class="si">{0}</span><span class="s2">) does not &quot;</span>
-                <span class="s2">&quot;match data (</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">detector_names</span><span class="p">)),</span>
-                    <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))))</span>
-        <span class="c1"># check that the data and waveform generator have the same epoch</span>
-        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">epoch</span> <span class="o">!=</span> <span class="n">d</span><span class="o">.</span><span class="n">epoch</span>
-               <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;waveform generator does not have the same epoch &quot;</span>
-                             <span class="s2">&quot;as all of the data sets.&quot;</span><span class="p">)</span>
+                                            <span class="n">static_params</span><span class="o">=</span><span class="n">static_params</span><span class="p">,</span>
+                                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># create the waveform generator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span> <span class="o">=</span> <span class="n">create_waveform_generator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variable_params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">recalibration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">recalibration</span><span class="p">,</span>
+            <span class="n">gates</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gates</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">static_params</span><span class="p">)</span>
         <span class="c1"># check that the data sets all have the same lengths</span>
-        <span class="n">dlens</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="n">dlens</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">dlens</span> <span class="o">==</span> <span class="n">dlens</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;all data must be of the same length&quot;</span><span class="p">)</span>
         <span class="c1"># we&#39;ll use the first data set for setting values</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
         <span class="c1"># Set low frequency cutoff</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span> <span class="o">=</span> <span class="n">low_frequency_cutoff</span>
-        <span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span> <span class="o">=</span> <span class="n">pyfilter</span><span class="o">.</span><span class="n">get_cutoff_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span><span class="p">,</span> <span class="n">f_upper</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_f_upper</span> <span class="o">=</span> <span class="n">high_frequency_cutoff</span>
+        <span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span> <span class="o">=</span> <span class="n">pyfilter</span><span class="o">.</span><span class="n">get_cutoff_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_upper</span><span class="p">,</span>
                                                  <span class="n">d</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span> <span class="o">=</span> <span class="n">kmin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kmax</span> <span class="o">=</span> <span class="n">kmax</span>
@@ -470,6 +458,21 @@
         <span class="c1"># whiten the data</span>
         <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">waveform_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The waveform generator used.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">low_frequency_cutoff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The low frequency cutoff of the inner product.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">high_frequency_cutoff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The high frequency cutoff of the inner product.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_upper</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_extra_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -651,7 +654,9 @@
 <span class="sd">            The inference file to write to.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;f_lower&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f_lower</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_frequency_cutoff</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">high_frequency_cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;high_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">high_frequency_cutoff</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_psds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fp</span><span class="o">.</span><span class="n">write_psd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_psds</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -664,27 +669,147 @@
         <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">detectors</span><span class="p">:</span>
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_lognl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">det</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_lognl</span><span class="p">(</span><span class="n">det</span><span class="p">)</span></div>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_init_args_from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds loading low_frequency_cutoff to parent function.</span>
+<div class="viewcode-block" id="GaussianNoise.from_config"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.GaussianNoise.from_config">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initializes an instance of this class from the given config file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cp : WorkflowConfigParser</span>
+<span class="sd">            Config file parser to read.</span>
+<span class="sd">        \**kwargs :</span>
+<span class="sd">            All additional keyword arguments are passed to the class. Any</span>
+<span class="sd">            provided keyword will over ride what is in the config file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
-        <span class="c1"># add low_frequency_cutoff to the arguments</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">low_frequency_cutoff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
-                <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">))</span>
-        <span class="k">except</span> <span class="p">(</span><span class="n">NoOptionError</span><span class="p">,</span> <span class="n">NoSectionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff for calculation of inner &quot;</span>
-                            <span class="s2">&quot;product needs to be specified in config file &quot;</span>
-                            <span class="s2">&quot;under section &#39;model&#39;&quot;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">e</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="c1"># everything the float() can throw</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff could not be &quot;</span>
-                            <span class="s2">&quot;converted to float &quot;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">e</span>
-        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_frequency_cutoff</span>
-        <span class="k">return</span> <span class="n">args</span></div>
+        <span class="n">args</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_init_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;low_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_frequency_cutoff_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="n">args</span><span class="p">[</span><span class="s1">&#39;high_frequency_cutoff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">high_frequency_cutoff_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="c1"># get any other keyword arguments provided in the model section</span>
+        <span class="n">ignore_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;low-frequency-cutoff&#39;</span><span class="p">,</span> <span class="s1">&#39;high-frequency-cutoff&#39;</span><span class="p">]</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">extra_args_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span>
+                                               <span class="n">skip_args</span><span class="o">=</span><span class="n">ignore_args</span><span class="p">))</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div></div>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                               Support functions</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+
+
+<div class="viewcode-block" id="create_waveform_generator"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.create_waveform_generator">[docs]</a><span class="k">def</span> <span class="nf">create_waveform_generator</span><span class="p">(</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+                              <span class="n">recalibration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="o">**</span><span class="n">static_params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a waveform generator for use with a model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable_params : list of str</span>
+<span class="sd">        The names of the parameters varied.</span>
+<span class="sd">    data : dict</span>
+<span class="sd">        Dictionary mapping detector names to either a</span>
+<span class="sd">        :py:class:`&lt;pycbc.types.TimeSeries TimeSeries&gt;` or</span>
+<span class="sd">        :py:class:`&lt;pycbc.types.FrequencySeries FrequencySeries&gt;`.</span>
+<span class="sd">    recalibration : dict, optional</span>
+<span class="sd">        Dictionary mapping detector names to</span>
+<span class="sd">        :py:class:`&lt;pycbc.calibration.Recalibrate&gt;` instances for</span>
+<span class="sd">        recalibrating data.</span>
+<span class="sd">    gates : dict of tuples, optional</span>
+<span class="sd">        Dictionary of detectors -&gt; tuples of specifying gate times. The</span>
+<span class="sd">        sort of thing returned by :py:func:`pycbc.gate.gates_from_cli`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pycbc.waveform.FDomainDetFrameGenerator</span>
+<span class="sd">        A waveform generator for frequency domain generation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># figure out what generator to use based on the approximant</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">approximant</span> <span class="o">=</span> <span class="n">static_params</span><span class="p">[</span><span class="s1">&#39;approximant&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no approximant provided in the static args&quot;</span><span class="p">)</span>
+    <span class="n">generator_function</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">select_waveform_generator</span><span class="p">(</span><span class="n">approximant</span><span class="p">)</span>
+    <span class="c1"># get data parameters; we&#39;ll just use one of the data to get the</span>
+    <span class="c1"># values, then check that all the others are the same</span>
+    <span class="n">delta_f</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">delta_f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">delta_f</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">delta_f</span>
+            <span class="n">delta_t</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">delta_t</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">==</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">delta_t</span> <span class="o">==</span> <span class="n">delta_t</span><span class="p">,</span>
+                        <span class="n">d</span><span class="o">.</span><span class="n">start_time</span> <span class="o">==</span> <span class="n">start_time</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;data must all have the same delta_t, &quot;</span>
+                                 <span class="s2">&quot;delta_f, and start_time&quot;</span><span class="p">)</span>
+    <span class="n">waveform_generator</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">FDomainDetFrameGenerator</span><span class="p">(</span>
+        <span class="n">generator_function</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+        <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+        <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">,</span>
+        <span class="n">recalib</span><span class="o">=</span><span class="n">recalibration</span><span class="p">,</span> <span class="n">gates</span><span class="o">=</span><span class="n">gates</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">static_params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">waveform_generator</span></div>
+
+
+<div class="viewcode-block" id="low_frequency_cutoff_from_config"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.low_frequency_cutoff_from_config">[docs]</a><span class="k">def</span> <span class="nf">low_frequency_cutoff_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the low frequency cutoff from the given config file.</span>
+
+<span class="sd">    This looks for ``low-frequency-cutoff`` in the ``[model]`` section and</span>
+<span class="sd">    casts it to float. If none is found, or the casting to float fails, an</span>
+<span class="sd">    error is raised.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cp : WorkflowConfigParser</span>
+<span class="sd">        Config file parser to read.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float :</span>
+<span class="sd">        The low frequency cutoff.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">low_frequency_cutoff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;low-frequency-cutoff&#39;</span><span class="p">))</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">NoOptionError</span><span class="p">,</span> <span class="n">NoSectionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff for calculation of inner &quot;</span>
+                        <span class="s2">&quot;product needs to be specified in config file &quot;</span>
+                        <span class="s2">&quot;under section &#39;model&#39;&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># everything the float() can throw</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Low frequency cutoff could not be &quot;</span>
+                        <span class="s2">&quot;converted to float &quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">low_frequency_cutoff</span></div>
+
+
+<div class="viewcode-block" id="high_frequency_cutoff_from_config"><a class="viewcode-back" href="../../../../pycbc.inference.models.html#pycbc.inference.models.gaussian_noise.high_frequency_cutoff_from_config">[docs]</a><span class="k">def</span> <span class="nf">high_frequency_cutoff_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the high frequency cutoff from the given config file.</span>
+
+<span class="sd">    This looks for ``high-frequency-cutoff`` in the ``[model]`` section and</span>
+<span class="sd">    casts it to float. If none is found, will just return ``None``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cp : WorkflowConfigParser</span>
+<span class="sd">        Config file parser to read.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or None :</span>
+<span class="sd">        The high frequency cutoff.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cp</span><span class="o">.</span><span class="n">has_option</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;high-frequency-cutoff&#39;</span><span class="p">):</span>
+        <span class="n">high_frequency_cutoff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;high-frequency-cutoff&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">high_frequency_cutoff</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">high_frequency_cutoff</span></div>
 </pre></div>
 
            </div>
@@ -698,7 +823,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 24, 2019.
+      Last updated on Jan 25, 2019.
 
     </p>
   </div>

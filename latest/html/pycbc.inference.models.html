@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models package &mdash; PyCBC cfbb66 documentation</title>
+  <title>pycbc.inference.models package &mdash; PyCBC d93d27 documentation</title>
   
 
   
@@ -398,7 +398,7 @@ are passed.</p>
 <p>Base class for models.</p>
 <dl class="class">
 <dt id="pycbc.inference.models.base.BaseModel">
-<em class="property">class </em><code class="descclassname">pycbc.inference.models.base.</code><code class="descname">BaseModel</code><span class="sig-paren">(</span><em>variable_params</em>, <em>static_params=None</em>, <em>prior=None</em>, <em>sampling_transforms=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base.html#BaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base.BaseModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.inference.models.base.</code><code class="descname">BaseModel</code><span class="sig-paren">(</span><em>variable_params</em>, <em>static_params=None</em>, <em>prior=None</em>, <em>sampling_transforms=None</em>, <em>waveform_transforms=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base.html#BaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base.BaseModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for all models.</p>
 <p>Given some model <span class="math notranslate nohighlight">\(h\)</span> with parameters <span class="math notranslate nohighlight">\(\Theta\)</span>, Bayes Theorem
@@ -438,6 +438,12 @@ parameters for sampling.</li>
 the same length as <code class="docutils literal notranslate"><span class="pre">sampling_params</span></code>.</li>
 <li><strong>sampling_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go between the <code class="docutils literal notranslate"><span class="pre">variable_params</span></code> and the
 sampling parameters. Required if <code class="docutils literal notranslate"><span class="pre">sampling_params</span></code> is not None.</li>
+<li><strong>waveform_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – A list of transforms to convert the <code class="docutils literal notranslate"><span class="pre">variable_params</span></code> into something
+understood by the likelihood model. This is useful if the prior is
+more easily parameterized in parameters that are different than what
+the likelihood is most easily defined in. Since these are used solely
+for converting parameters, and not for rescaling the parameter space,
+a Jacobian is not required for these transforms.</li>
 <li><strong>Properties</strong> – </li>
 <li><strong>----------</strong> – </li>
 <li><strong>logjacobian</strong> – Returns the log of the jacobian needed to go from the parameter space
@@ -912,7 +918,7 @@ details.</p>
 <p>Base classes for models with data.</p>
 <dl class="class">
 <dt id="pycbc.inference.models.base_data.BaseDataModel">
-<em class="property">class </em><code class="descclassname">pycbc.inference.models.base_data.</code><code class="descname">BaseDataModel</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>waveform_generator</em>, <em>waveform_transforms=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base_data.html#BaseDataModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.inference.models.base_data.</code><code class="descname">BaseDataModel</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>recalibration=None</em>, <em>gates=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base_data.html#BaseDataModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.models.base.BaseModel" title="pycbc.inference.models.base.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.models.base.BaseModel</span></code></a></p>
 <p>Base class for models that require data and a waveform generator.</p>
 <p>This adds propeties for the log of the likelihood that the data contain
@@ -928,29 +934,16 @@ functions, in addition to the <code class="docutils literal notranslate"><span c
 <li><strong>variable_params</strong> (<em>(</em><em>tuple of</em><em>) </em><em>string</em><em>(</em><em>s</em><em>)</em>) – A tuple of parameter names that will be varied.</li>
 <li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of data, in which the keys are the detector names and the
 values are the data.</li>
-<li><strong>waveform_generator</strong> (<em>generator class</em>) – A generator class that creates waveforms.</li>
-<li><strong>waveform_transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of transforms to use to go from the variable args to parameters
-understood by the waveform generator.</li>
+<li><strong>recalibration</strong> (<em>dict of pycbc.calibration.Recalibrate</em><em>, </em><em>optional</em>) – Dictionary of detectors -&gt; recalibration class instances for
+recalibrating data.</li>
+<li><strong>gates</strong> (<em>dict of tuples</em><em>, </em><em>optional</em>) – Dictionary of detectors -&gt; tuples of specifying gate times. The
+sort of thing returned by <cite>pycbc.gate.gates_from_cli</cite>.</li>
 <li><strong>**kwargs</strong> – All other keyword arguments are passed to <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code>.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
-<dt id="pycbc.inference.models.base_data.BaseDataModel.waveform_generator">
-<code class="descname">waveform_generator</code><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.waveform_generator" title="Permalink to this definition">¶</a></dt>
-<dd><p>The waveform generator that the class was initialized with.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="pycbc.inference.models.base_data.BaseDataModel.data">
 <code class="descname">data</code><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.data" title="Permalink to this definition">¶</a></dt>
@@ -964,16 +957,6 @@ understood by the waveform generator.</li>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="pycbc.inference.models.base_data.BaseDataModel.Properties">
-<code class="descname">Properties</code><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.Properties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="descname">----------</code></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.models.base_data.BaseDataModel.lognl">
@@ -1001,42 +984,13 @@ understood by the waveform generator.</li>
 <dl class="attribute">
 <dt>
 <code class="descname">data</code></dt>
-<dd><p>Returns the data that was set.</p>
+<dd><p>Dictionary mapping detector names to data.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.models.base_data.BaseDataModel.detectors">
 <code class="descname">detectors</code><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.detectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the detectors used.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="pycbc.inference.models.base_data.BaseDataModel.from_config">
-<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>data=None</em>, <em>delta_f=None</em>, <em>delta_t=None</em>, <em>gates=None</em>, <em>recalibration=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base_data.html#BaseDataModel.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.from_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initializes an instance of this class from the given config file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – Config file parser to read.</li>
-<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of data, in which the keys are the detector names and
-the values are the data. This is not retrieved from the config
-file, and so must be provided.</li>
-<li><strong>delta_f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency spacing of the data; needed for waveform generation.</li>
-<li><strong>delta_t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The time spacing of the data; needed for time-domain waveform
-generators.</li>
-<li><strong>recalibration</strong> (<em>dict of pycbc.calibration.Recalibrate</em><em>, </em><em>optional</em>) – Dictionary of detectors -&gt; recalibration class instances for
-recalibrating data.</li>
-<li><strong>gates</strong> (<em>dict of tuples</em><em>, </em><em>optional</em>) – Dictionary of detectors -&gt; tuples of specifying gate times. The
-sort of thing returned by <cite>pycbc.gate.gates_from_cli</cite>.</li>
-<li><strong>**kwargs</strong> – All additional keyword arguments are passed to the class. Any
-provided keyword will over ride what is in the config file.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -1067,12 +1021,6 @@ current parameter values.</p>
 called.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt>
-<code class="descname">waveform_generator</code></dt>
-<dd><p>Returns the waveform generator that was set.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="pycbc.inference.models.base_data.BaseDataModel.write_metadata">
 <code class="descname">write_metadata</code><span class="sig-paren">(</span><em>fp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/base_data.html#BaseDataModel.write_metadata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.base_data.BaseDataModel.write_metadata" title="Permalink to this definition">¶</a></dt>
@@ -1095,7 +1043,7 @@ called.</p>
 <p>This module provides model classes that assume the noise is Gaussian.</p>
 <dl class="class">
 <dt id="pycbc.inference.models.gaussian_noise.GaussianNoise">
-<em class="property">class </em><code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">GaussianNoise</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>waveform_generator</em>, <em>low_frequency_cutoff</em>, <em>psds=None</em>, <em>f_upper=None</em>, <em>norm=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#GaussianNoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">GaussianNoise</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>low_frequency_cutoff</em>, <em>psds=None</em>, <em>high_frequency_cutoff=None</em>, <em>norm=None</em>, <em>static_params=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#GaussianNoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.inference.models.base_data.BaseDataModel" title="pycbc.inference.models.base_data.BaseDataModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.models.base_data.BaseDataModel</span></code></a></p>
 <p>Model that assumes data is stationary Gaussian noise.</p>
 <p>With Gaussian noise the log likelihood functions for signal
@@ -1128,18 +1076,13 @@ assumed to be whitened. The likelihood function of the noise,</p>
 unequally sampled data can be supported by passing the appropriate
 normalization using the <code class="docutils literal notranslate"><span class="pre">norm</span></code> keyword argument.</p>
 <p>For more details on initialization parameters and definition of terms, see
-<code class="docutils literal notranslate"><span class="pre">BaseModel</span></code>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">models.BaseDataModel</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>variable_params</strong> (<em>(</em><em>tuple of</em><em>) </em><em>string</em><em>(</em><em>s</em><em>)</em>) – A tuple of parameter names that will be varied.</li>
-<li><strong>waveform_generator</strong> (<em>generator class</em>) – A generator class that creates waveforms. This must have a <code class="docutils literal notranslate"><span class="pre">generate</span></code>
-function which takes parameter values as keyword arguments, a
-detectors attribute which is a dictionary of detectors keyed by their
-names, and an epoch which specifies the start time of the generated
-waveform.</li>
 <li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – A dictionary of data, in which the keys are the detector names and the
 values are the data (assumed to be unwhitened). The list of keys must
 match the waveform generator’s detectors keys, and the epoch of every
@@ -1150,12 +1093,13 @@ Must be specified in the config file under section [model].</li>
 dictionary must have a psd for each detector specified in the data
 dictionary. If provided, the inner products in each detector will be
 weighted by 1/psd of that detector.</li>
-<li><strong>f_upper</strong> (<em>{None</em><em>, </em><em>float}</em>) – The ending frequency to use for computing inner products. If not
+<li><strong>high_frequency_cutoff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – The ending frequency to use for computing inner products. If not
 provided, the minimum of the largest frequency stored in the data
 and a given waveform will be used.</li>
 <li><strong>norm</strong> (<em>{None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> or </em><em>array}</em>) – An extra normalization weight to apply to the inner products. Can be
 either a float or an array. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">4*data.values()[0].delta_f</span></code>
 will be used.</li>
+<li><strong>static_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – A dictionary of parameter names -&gt; values to keep fixed.</li>
 <li><strong>**kwargs</strong> – All other keyword arguments are passed to <code class="docutils literal notranslate"><span class="pre">BaseDataModel</span></code>.</li>
 </ul>
 </td>
@@ -1165,28 +1109,28 @@ will be used.</li>
 <p class="rubric">Examples</p>
 <p>Create a signal, and set up the model using that signal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">psd</span> <span class="k">as</span> <span class="n">pypsd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc.inference.models</span> <span class="k">import</span> <span class="n">GaussianNoise</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc.waveform.generator</span> <span class="k">import</span> <span class="p">(</span><span class="n">FDomainDetFrameGenerator</span><span class="p">,</span>
 <span class="gp">... </span>                                      <span class="n">FDomainCBCGenerator</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycbc.inference</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seglen</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">2048</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="n">seglen</span><span class="o">*</span><span class="n">sample_rate</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fmin</span> <span class="o">=</span> <span class="mf">30.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1z</span><span class="p">,</span> <span class="n">s2z</span><span class="p">,</span> <span class="n">tsig</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">pol</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="mf">38.6</span><span class="p">,</span> <span class="mf">29.3</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">1.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.26</span><span class="p">,</span> <span class="mf">2.76</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mf">500.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">static_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;approximant&#39;</span><span class="p">:</span> <span class="s1">&#39;IMRPhenomD&#39;</span><span class="p">,</span> <span class="s1">&#39;f_lower&#39;</span><span class="p">:</span> <span class="n">fmin</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="s1">&#39;mass1&#39;</span><span class="p">:</span> <span class="mf">38.6</span><span class="p">,</span> <span class="s1">&#39;mass2&#39;</span><span class="p">:</span> <span class="mf">29.3</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="s1">&#39;spin1z&#39;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;spin2z&#39;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;ra&#39;</span><span class="p">:</span> <span class="mf">1.37</span><span class="p">,</span> <span class="s1">&#39;dec&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.26</span><span class="p">,</span>
+<span class="gp">... </span>                 <span class="s1">&#39;polarization&#39;</span><span class="p">:</span> <span class="mf">2.76</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="o">*</span><span class="mf">500.</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">variable_params</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tc&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tsig</span> <span class="o">=</span> <span class="mf">3.1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span> <span class="o">=</span> <span class="n">FDomainDetFrameGenerator</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">FDomainCBCGenerator</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="n">delta_f</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">seglen</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">fmin</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">approximant</span><span class="o">=</span><span class="s1">&#39;SEOBNRv2_ROM_DoubleSpin&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">mass1</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="n">m2</span><span class="p">,</span> <span class="n">spin1z</span><span class="o">=</span><span class="n">s1z</span><span class="p">,</span> <span class="n">spin2z</span><span class="o">=</span><span class="n">s2z</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">,</span> <span class="n">polarization</span><span class="o">=</span><span class="n">pol</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">dist</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">FDomainCBCGenerator</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">variable_args</span><span class="o">=</span><span class="n">variable_params</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">delta_f</span><span class="o">=</span><span class="mf">1.</span><span class="o">/</span><span class="n">seglen</span><span class="p">,</span> <span class="o">**</span><span class="n">static_params</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">signal</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psd</span> <span class="o">=</span> <span class="n">pypsd</span><span class="o">.</span><span class="n">aLIGOZeroDetHighPower</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="n">seglen</span><span class="p">,</span> <span class="mf">20.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">psds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H1&#39;</span><span class="p">:</span> <span class="n">psd</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">:</span> <span class="n">psd</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">inference</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">GaussianNoise</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">variable_params</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNoise</span><span class="p">(</span><span class="n">variable_params</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">static_params</span><span class="o">=</span><span class="n">static_params</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Set the current position to the coalescence time of the signal:</p>
@@ -1196,21 +1140,21 @@ will be used.</li>
 <p>Now compute the log likelihood ratio and prior-weighted likelihood ratio;
 since we have not provided a prior, these should be equal to each other:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">loglr</span><span class="p">))</span>
-<span class="go">278.96</span>
+<span class="go">282.29</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">logplr</span><span class="p">))</span>
-<span class="go">278.96</span>
+<span class="go">282.29</span>
 </pre></div>
 </div>
 <p>Print all of the default_stats:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <span class="gp">... </span>                  <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">current_stats</span><span class="o">.</span><span class="n">items</span><span class="p">())]))</span>
-<span class="go">H1_cplx_loglr: 175.57+0.00j,</span>
-<span class="go">H1_optimal_snrsq: 351.13,</span>
-<span class="go">L1_cplx_loglr: 103.40+0.00j,</span>
-<span class="go">L1_optimal_snrsq: 206.79,</span>
+<span class="go">H1_cplx_loglr: 177.66+0.00j,</span>
+<span class="go">H1_optimal_snrsq: 355.33,</span>
+<span class="go">L1_cplx_loglr: 104.63+0.00j,</span>
+<span class="go">L1_optimal_snrsq: 209.26,</span>
 <span class="go">logjacobian: 0.00,</span>
 <span class="go">loglikelihood: 0.00,</span>
-<span class="go">loglr: 278.96,</span>
+<span class="go">loglr: 282.29,</span>
 <span class="go">logprior: 0.00</span>
 </pre></div>
 </div>
@@ -1218,7 +1162,7 @@ since we have not provided a prior, these should be equal to each other:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">snr_from_loglr</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">snr_from_loglr</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">loglr</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="go">23.62</span>
+<span class="go">23.76</span>
 </pre></div>
 </div>
 <p>Since there is no noise, the SNR should be the same as the quadrature sum
@@ -1226,20 +1170,20 @@ of the optimal SNRs in each detector:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">det_optimal_snrsq</span><span class="p">(</span><span class="s1">&#39;H1&#39;</span><span class="p">)</span> <span class="o">+</span>
 <span class="gp">... </span>     <span class="n">model</span><span class="o">.</span><span class="n">det_optimal_snrsq</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="go">23.62</span>
+<span class="go">23.76</span>
 </pre></div>
 </div>
 <p>Using the same model, evaluate the log likelihood ratio at several points
 in time and check that the max is at tsig:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">seglen</span><span class="o">*</span><span class="n">sample_rate</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tsig</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">tsig</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">loglrs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">model</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">loglrs</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">loglr</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tsig: </span><span class="si">{:.3f}</span><span class="s1">, time of max loglr: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tsig: </span><span class="si">{:.2f}</span><span class="s1">, time of max loglr: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">tsig</span><span class="p">,</span> <span class="n">times</span><span class="p">[</span><span class="n">loglrs</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]))</span>
-<span class="go">tsig: 3.100, time of max loglr: 3.100</span>
+<span class="go">tsig: 3.10, time of max loglr: 3.10</span>
 </pre></div>
 </div>
 <p>Create a prior and use it (see distributions module for more details):</p>
@@ -1250,16 +1194,16 @@ in time and check that the max is at tsig:</p>
 <span class="gp">... </span>    <span class="n">signal</span><span class="p">,</span> <span class="n">generator</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="n">psds</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tc</span><span class="o">=</span><span class="n">tsig</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">logplr</span><span class="p">))</span>
-<span class="go">279.88</span>
+<span class="go">283.21</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <span class="gp">... </span>                  <span class="k">for</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">current_stats</span><span class="o">.</span><span class="n">items</span><span class="p">())]))</span>
-<span class="go">H1_cplx_loglr: 175.57+0.00j,</span>
-<span class="go">H1_optimal_snrsq: 351.13,</span>
-<span class="go">L1_cplx_loglr: 103.40+0.00j,</span>
-<span class="go">L1_optimal_snrsq: 206.79,</span>
+<span class="go">H1_cplx_loglr: 177.66+0.00j,</span>
+<span class="go">H1_optimal_snrsq: 355.33,</span>
+<span class="go">L1_cplx_loglr: 104.63+0.00j,</span>
+<span class="go">L1_optimal_snrsq: 209.26,</span>
 <span class="go">logjacobian: 0.00,</span>
 <span class="go">loglikelihood: 0.00,</span>
-<span class="go">loglr: 278.96,</span>
+<span class="go">loglr: 282.29,</span>
 <span class="go">logprior: 0.92</span>
 </pre></div>
 </div>
@@ -1317,10 +1261,47 @@ in time and check that the max is at tsig:</p>
 </table>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#GaussianNoise.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes an instance of this class from the given config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – Config file parser to read.</li>
+<li><strong>**kwargs</strong> – All additional keyword arguments are passed to the class. Any
+provided keyword will over ride what is in the config file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.high_frequency_cutoff">
+<code class="descname">high_frequency_cutoff</code><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise.high_frequency_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The high frequency cutoff of the inner product.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.low_frequency_cutoff">
+<code class="descname">low_frequency_cutoff</code><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise.low_frequency_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The low frequency cutoff of the inner product.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.name">
 <code class="descname">name</code><em class="property"> = 'gaussian_noise'</em><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.waveform_generator">
+<code class="descname">waveform_generator</code><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.GaussianNoise.waveform_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>The waveform generator used.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="pycbc.inference.models.gaussian_noise.GaussianNoise.write_metadata">
@@ -1337,6 +1318,78 @@ in time and check that the max is at tsig:</p>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.inference.models.gaussian_noise.create_waveform_generator">
+<code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">create_waveform_generator</code><span class="sig-paren">(</span><em>variable_params</em>, <em>data</em>, <em>recalibration=None</em>, <em>gates=None</em>, <em>**static_params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#create_waveform_generator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.create_waveform_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a waveform generator for use with a model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variable_params</strong> (<em>list of str</em>) – The names of the parameters varied.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Dictionary mapping detector names to either a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;pycbc.types.TimeSeries</span> <span class="pre">TimeSeries&gt;</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;pycbc.types.FrequencySeries</span> <span class="pre">FrequencySeries&gt;</span></code>.</li>
+<li><strong>recalibration</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><em>optional</em>) – Dictionary mapping detector names to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">&lt;pycbc.calibration.Recalibrate&gt;</span></code> instances for
+recalibrating data.</li>
+<li><strong>gates</strong> (<em>dict of tuples</em><em>, </em><em>optional</em>) – Dictionary of detectors -&gt; tuples of specifying gate times. The
+sort of thing returned by <code class="xref py py-func docutils literal notranslate"><span class="pre">pycbc.gate.gates_from_cli()</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A waveform generator for frequency domain generation.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pycbc.waveform.FDomainDetFrameGenerator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.inference.models.gaussian_noise.high_frequency_cutoff_from_config">
+<code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">high_frequency_cutoff_from_config</code><span class="sig-paren">(</span><em>cp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#high_frequency_cutoff_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.high_frequency_cutoff_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the high frequency cutoff from the given config file.</p>
+<p>This looks for <code class="docutils literal notranslate"><span class="pre">high-frequency-cutoff</span></code> in the <code class="docutils literal notranslate"><span class="pre">[model]</span></code> section and
+casts it to float. If none is found, will just return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – Config file parser to read.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The high frequency cutoff.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a> or <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)">None</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.inference.models.gaussian_noise.low_frequency_cutoff_from_config">
+<code class="descclassname">pycbc.inference.models.gaussian_noise.</code><code class="descname">low_frequency_cutoff_from_config</code><span class="sig-paren">(</span><em>cp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/gaussian_noise.html#low_frequency_cutoff_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.gaussian_noise.low_frequency_cutoff_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the low frequency cutoff from the given config file.</p>
+<p>This looks for <code class="docutils literal notranslate"><span class="pre">low-frequency-cutoff</span></code> in the <code class="docutils literal notranslate"><span class="pre">[model]</span></code> section and
+casts it to float. If none is found, or the casting to float fails, an
+error is raised.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – Config file parser to read.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The low frequency cutoff.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -1630,7 +1683,7 @@ of the class specified by the name argument.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 24, 2019.
+      Last updated on Jan 25, 2019.
 
     </p>
   </div>

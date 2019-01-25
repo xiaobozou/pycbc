@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.detector &mdash; PyCBC cfbb66 documentation</title>
+  <title>pycbc.detector &mdash; PyCBC d93d27 documentation</title>
   
 
   
@@ -233,11 +233,16 @@
 <span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span>
 <span class="kn">from</span> <span class="nn">astropy.time</span> <span class="k">import</span> <span class="n">Time</span>
 <span class="kn">from</span> <span class="nn">astropy</span> <span class="k">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">astropy.units.si</span> <span class="k">import</span> <span class="n">sday</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
 
 <span class="c1"># Response functions are modelled after those in lalsuite and as also</span>
 <span class="c1"># presented in https://arxiv.org/pdf/gr-qc/0008066.pdf</span>
 
+<div class="viewcode-block" id="gmst_accurate"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.gmst_accurate">[docs]</a><span class="k">def</span> <span class="nf">gmst_accurate</span><span class="p">(</span><span class="n">gps_time</span><span class="p">):</span>
+    <span class="n">gmst</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">gps_time</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span>
+                <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">sidereal_time</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rad</span>
+    <span class="k">return</span> <span class="n">gmst</span></div>
 
 <div class="viewcode-block" id="get_available_detectors"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.get_available_detectors">[docs]</a><span class="k">def</span> <span class="nf">get_available_detectors</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Return list of detectors known in the currently sourced lalsuite.</span>
@@ -261,13 +266,39 @@
 <div class="viewcode-block" id="Detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector">[docs]</a><span class="k">class</span> <span class="nc">Detector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A gravitational wave detector</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">detector_name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">detector_name</span><span class="p">,</span> <span class="n">reference_time</span><span class="o">=</span><span class="mf">1126259462.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Create class representing a gravitational-wave detector</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        detector_name: str</span>
+<span class="sd">            The two character detector string, i.e. H1, L1, V1, K1, I1</span>
+<span class="sd">        reference_time: float</span>
+<span class="sd">            Default is time of GW150914. In this case, the earth&#39;s rotation</span>
+<span class="sd">        will be estimated from a reference time. If &#39;None&#39;, we will</span>
+<span class="sd">        calculate the time for each gps time requested explicitly</span>
+<span class="sd">        using a slower but higher precision method.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">detector_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span> <span class="o">=</span>  <span class="n">lalsimulation</span><span class="o">.</span><span class="n">DetectorPrefixToLALDetector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">response</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">location</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">vertexLatitudeRadians</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">vertexLongitudeRadians</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_time</span> <span class="o">=</span> <span class="n">reference_time</span>
+        <span class="k">if</span> <span class="n">reference_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sday</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sday</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gmst_reference</span> <span class="o">=</span> <span class="n">gmst_accurate</span><span class="p">(</span><span class="n">reference_time</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Detector.gmst_estimate"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.gmst_estimate">[docs]</a>    <span class="k">def</span> <span class="nf">gmst_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gps_time</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">gmst_accurate</span><span class="p">(</span><span class="n">gps_time</span><span class="p">)</span>
+
+        <span class="n">dphase</span> <span class="o">=</span> <span class="p">(</span><span class="n">gps_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_time</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sday</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="n">gmst</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gmst_reference</span> <span class="o">+</span> <span class="n">dphase</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">gmst</span></div>
 
 <div class="viewcode-block" id="Detector.light_travel_time_to_detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.light_travel_time_to_detector">[docs]</a>    <span class="k">def</span> <span class="nf">light_travel_time_to_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">det</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Return the light travel time from this detector</span>
@@ -304,8 +335,7 @@
 <span class="sd">        fcross: float or numpy.ndarray</span>
 <span class="sd">            The cross polarization factor for this sky location / orientation</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">gmst</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">t_gps</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">gha</span> <span class="o">=</span> <span class="n">gmst</span><span class="o">.</span><span class="n">sidereal_time</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="n">right_ascension</span>
+        <span class="n">gha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gmst_estimate</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span> <span class="o">-</span> <span class="n">right_ascension</span>
 
         <span class="n">cosgha</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">gha</span><span class="p">)</span>
         <span class="n">singha</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">gha</span><span class="p">)</span>
@@ -369,9 +399,7 @@
 <span class="sd">        float</span>
 <span class="sd">            The arrival time difference between the detectors.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">gmst</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">t_gps</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span>
-                    <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">sidereal_time</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rad</span>
-        <span class="n">ra_angle</span> <span class="o">=</span> <span class="n">gmst</span> <span class="o">-</span> <span class="n">right_ascension</span>
+        <span class="n">ra_angle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gmst_estimate</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span> <span class="o">-</span> <span class="n">right_ascension</span>
         <span class="n">cosd</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">declination</span><span class="p">)</span>
 
         <span class="n">e0</span> <span class="o">=</span> <span class="n">cosd</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">ra_angle</span><span class="p">)</span>
@@ -442,9 +470,7 @@
 <span class="sd">        dec: float</span>
 <span class="sd">            Declination that is optimally oriented for the detector</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">gmst</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">t_gps</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;gps&#39;</span><span class="p">,</span>
-                    <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">sidereal_time</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rad</span>
-        <span class="n">ra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">+</span> <span class="p">(</span><span class="n">gmst</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+        <span class="n">ra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gmst_estimate</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
         <span class="n">dec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span>
         <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span></div></div>
 
@@ -465,7 +491,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    f_plus: float</span>
-<span class="sd">    f_cros: float   </span>
+<span class="sd">    f_cros: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># convert from declination coordinate to polar (angle dropped from north axis)</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="n">declination</span>
@@ -496,7 +522,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 24, 2019.
+      Last updated on Jan 25, 2019.
 
     </p>
   </div>

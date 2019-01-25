@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc package &mdash; PyCBC cfbb66 documentation</title>
+  <title>pycbc package &mdash; PyCBC d93d27 documentation</title>
   
 
   
@@ -2216,7 +2216,7 @@ units.</p>
 between observatories.</p>
 <dl class="class">
 <dt id="pycbc.detector.Detector">
-<em class="property">class </em><code class="descclassname">pycbc.detector.</code><code class="descname">Detector</code><span class="sig-paren">(</span><em>detector_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.detector.</code><code class="descname">Detector</code><span class="sig-paren">(</span><em>detector_name</em>, <em>reference_time=1126259462.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A gravitational wave detector</p>
 <dl class="method">
@@ -2244,6 +2244,11 @@ between observatories.</p>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="pycbc.detector.Detector.gmst_estimate">
+<code class="descname">gmst_estimate</code><span class="sig-paren">(</span><em>gps_time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#Detector.gmst_estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.Detector.gmst_estimate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="pycbc.detector.Detector.light_travel_time_to_detector">
@@ -2381,6 +2386,11 @@ we hope this function will work correctly, it’s possible it will need
 updating in the future. Better if lal would expose this information
 properly.</p>
 </dd></dl>
+
+<dl class="function">
+<dt id="pycbc.detector.gmst_accurate">
+<code class="descclassname">pycbc.detector.</code><code class="descname">gmst_accurate</code><span class="sig-paren">(</span><em>gps_time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/detector.html#gmst_accurate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.detector.gmst_accurate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="pycbc.detector.overhead_antenna_pattern">
@@ -5592,7 +5602,7 @@ run-time by sending a SIGUSR1 to the process.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 24, 2019.
+      Last updated on Jan 25, 2019.
 
     </p>
   </div>
