@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC 2b66db documentation</title>
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC a33c4c documentation</title>
   
 
   
@@ -493,13 +493,13 @@ file, in order to do more sophisticated analyses.</p>
 <h4>Sampling transforms<a class="headerlink" href="#sampling-transforms" title="Permalink to this headline">¶</a></h4>
 <p>One or more of the <code class="docutils literal notranslate"><span class="pre">variable_params</span></code> may be transformed to a different
 parameter space for purposes of sampling. This is done by specifying a
-<code class="docutils literal notranslate"><span class="pre">[sampling_parameters]</span></code> section. This section specifies which
+<code class="docutils literal notranslate"><span class="pre">[sampling_params]</span></code> section. This section specifies which
 <code class="docutils literal notranslate"><span class="pre">variable_params</span></code> to replace with which parameters for sampling. This must be
 followed by one or more <code class="docutils literal notranslate"><span class="pre">[sampling_transforms-{sampling_params}]</span></code> sections
 that provide the transform class to use. For example, the following would cause
 the sampler to sample in chirp mass (<code class="docutils literal notranslate"><span class="pre">mchirp</span></code>) and mass ratio (<code class="docutils literal notranslate"><span class="pre">q</span></code>) instead
 of <code class="docutils literal notranslate"><span class="pre">mass1</span></code> and <code class="docutils literal notranslate"><span class="pre">mass2</span></code>:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[sampling_parameters]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[sampling_params]</span>
 <span class="na">mass1, mass2: mchirp, q</span>
 
 <span class="k">[sampling_transforms-mchirp+q]</span>
@@ -1346,7 +1346,7 @@ pycbc_inference --verbose <span class="se">\</span>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Jan 31, 2019.
+      Last updated on Feb 01, 2019.
 
     </p>
   </div>
