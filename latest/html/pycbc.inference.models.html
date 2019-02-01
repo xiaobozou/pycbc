@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.models package &mdash; PyCBC 9597d5 documentation</title>
+  <title>pycbc.inference.models package &mdash; PyCBC 0536aa documentation</title>
   
 
   
@@ -1566,6 +1566,25 @@ provided keyword will over ride what is in the config file.</li>
 <dl class="attribute">
 <dt id="pycbc.inference.models.marginalized_gaussian_noise.MarginalizedGaussianNoise.name">
 <code class="descname">name</code><em class="property"> = 'marginalized_gaussian_noise'</em><a class="headerlink" href="#pycbc.inference.models.marginalized_gaussian_noise.MarginalizedGaussianNoise.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.inference.models.single_template">
+<span id="pycbc-inference-models-single-template-module"></span><h2>pycbc.inference.models.single_template module<a class="headerlink" href="#module-pycbc.inference.models.single_template" title="Permalink to this headline">¶</a></h2>
+<p>This module provides model classes that assume the noise is Gaussian.</p>
+<dl class="class">
+<dt id="pycbc.inference.models.single_template.SingleTemplate">
+<em class="property">class </em><code class="descclassname">pycbc.inference.models.single_template.</code><code class="descname">SingleTemplate</code><span class="sig-paren">(</span><em>data</em>, <em>psds</em>, <em>low_frequency_cutoff=None</em>, <em>high_frequency_cutoff=None</em>, <em>sample_rate=32768</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/models/single_template.html#SingleTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.models.single_template.SingleTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.inference.models.base_data.BaseDataModel" title="pycbc.inference.models.base_data.BaseDataModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.inference.models.base_data.BaseDataModel</span></code></a></p>
+<p>Model that assumes we know all the intrinsic parameters.</p>
+<p>This model assumes we know all the intrinsic parameters, and are only
+maximizing over the extrinsic ones. We also assume a dominant mode waveform
+approximant only and non-precessing.</p>
+<dl class="attribute">
+<dt id="pycbc.inference.models.single_template.SingleTemplate.name">
+<code class="descname">name</code><em class="property"> = 'single_template'</em><a class="headerlink" href="#pycbc.inference.models.single_template.SingleTemplate.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
