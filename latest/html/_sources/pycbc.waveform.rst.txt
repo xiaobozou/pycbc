@@ -20,6 +20,14 @@ pycbc.waveform.compress module
     :undoc-members:
     :show-inheritance:
 
+pycbc.waveform.decompress\_cpu module
+-------------------------------------
+
+.. automodule:: pycbc.waveform.decompress_cpu
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 pycbc.waveform.generator module
 -------------------------------
 
@@ -83,6 +91,14 @@ pycbc.waveform.utils module
 ---------------------------
 
 .. automodule:: pycbc.waveform.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc.waveform.utils\_cpu module
+--------------------------------
+
+.. automodule:: pycbc.waveform.utils_cpu
     :members:
     :undoc-members:
     :show-inheritance:

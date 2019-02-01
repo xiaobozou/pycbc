@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform package &mdash; PyCBC a33c4c documentation</title>
+  <title>pycbc.waveform package &mdash; PyCBC 9597d5 documentation</title>
   
 
   
@@ -1040,6 +1040,51 @@ FrequencySeries with the decompressed waveform.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="pycbc.waveform.compress.inline_linear_interp">
+<code class="descclassname">pycbc.waveform.compress.</code><code class="descname">inline_linear_interp</code><span class="sig-paren">(</span><em>amp</em>, <em>phase</em>, <em>sample_frequencies</em>, <em>output</em>, <em>df</em>, <em>f_lower</em>, <em>imin</em>, <em>start_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/compress.html#inline_linear_interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.compress.inline_linear_interp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a frequency-domain waveform via linear interpolation
+from sampled amplitude and phase. The sample frequency locations
+for the amplitude and phase must be the same. This function may
+be less accurate than scipy’s linear interpolation, but should be
+much faster.  Additionally, it is ‘schemed’ and so may run under
+either CPU or GPU schemes.</p>
+<p>This function is not ordinarily called directly, but rather by
+giving the argument ‘interpolation’ the value ‘inline_linear’
+when calling the function ‘fd_decompress’ below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>amp</strong> (<em>array</em>) – The amplitude of the waveform at the sample frequencies.</li>
+<li><strong>phase</strong> (<em>array</em>) – The phase of the waveform at the sample frequencies.</li>
+<li><strong>sample_frequencies</strong> (<em>array</em>) – The frequency (in Hz) of the waveform at the sample frequencies.</li>
+<li><strong>output</strong> (<em>{None</em><em>, </em><em>FrequencySeries}</em>) – The output array to save the decompressed waveform to. If this contains
+slots for frequencies &gt; the maximum frequency in sample_frequencies,
+the rest of the values are zeroed. If not provided, must provide a df.</li>
+<li><strong>df</strong> (<em>{None</em><em>, </em><em>float}</em>) – The frequency step to use for the decompressed waveform. Must be
+provided if out is None.</li>
+<li><strong>f_lower</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The frequency to start the decompression at. All values at
+frequencies less than this will be 0 in the decompressed waveform.</li>
+<li><strong>imin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index at which to start in the sampled frequency series. Must
+therefore be 0 &lt;= imin &lt; len(sample_frequencies)</li>
+<li><strong>start_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The index at which to start in the output frequency;
+i.e., ceil(f_lower/df).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>output</strong> – If out was provided, writes to that array. Otherwise, a new
+FrequencySeries with the decompressed waveform.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.waveform.compress.mchirp_compression">
 <code class="descclassname">pycbc.waveform.compress.</code><code class="descname">mchirp_compression</code><span class="sig-paren">(</span><em>m1</em>, <em>m2</em>, <em>fmin</em>, <em>fmax</em>, <em>min_seglen=0.02</em>, <em>df_multiple=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/compress.html#mchirp_compression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.compress.mchirp_compression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the frequencies needed to compress a waveform with the given
@@ -1140,6 +1185,16 @@ attribute.</li>
 <dd><p>Computes a statistic indicating between which sample points a waveform
 and the interpolated waveform differ the most.</p>
 </dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.waveform.decompress_cpu">
+<span id="pycbc-waveform-decompress-cpu-module"></span><h2>pycbc.waveform.decompress_cpu module<a class="headerlink" href="#module-pycbc.waveform.decompress_cpu" title="Permalink to this headline">¶</a></h2>
+<p>Utilities for handling frequency compressed an unequally spaced frequency
+domain waveforms.</p>
+<dl class="function">
+<dt id="pycbc.waveform.decompress_cpu.inline_linear_interp">
+<code class="descclassname">pycbc.waveform.decompress_cpu.</code><code class="descname">inline_linear_interp</code><span class="sig-paren">(</span><em>amp</em>, <em>phase</em>, <em>sample_frequencies</em>, <em>output</em>, <em>df</em>, <em>f_lower</em>, <em>imin</em>, <em>start_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/decompress_cpu.html#inline_linear_interp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.decompress_cpu.inline_linear_interp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-pycbc.waveform.generator">
@@ -2902,6 +2957,18 @@ it is considered to be a discontinuity. Default is 0.99*pi.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.waveform.utils_cpu">
+<span id="pycbc-waveform-utils-cpu-module"></span><h2>pycbc.waveform.utils_cpu module<a class="headerlink" href="#module-pycbc.waveform.utils_cpu" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the CPU-specific code for
+convenience utilities for manipulating waveforms</p>
+<dl class="function">
+<dt id="pycbc.waveform.utils_cpu.apply_fseries_time_shift">
+<code class="descclassname">pycbc.waveform.utils_cpu.</code><code class="descname">apply_fseries_time_shift</code><span class="sig-paren">(</span><em>htilde</em>, <em>dt</em>, <em>kmin=0</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/waveform/utils_cpu.html#apply_fseries_time_shift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.waveform.utils_cpu.apply_fseries_time_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shifts a frequency domain waveform in time. The waveform is assumed to
+be sampled at equal frequency intervals.</p>
 </dd></dl>
 
 </div>

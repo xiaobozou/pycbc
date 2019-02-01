@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.utils &mdash; PyCBC a33c4c documentation</title>
+  <title>pycbc.waveform.utils &mdash; PyCBC 9597d5 documentation</title>
   
 
   
@@ -229,10 +229,7 @@
 <span class="kn">import</span> <span class="nn">lalsimulation</span> <span class="k">as</span> <span class="nn">sim</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">frexp</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">copy</span>
-<span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">omp_libs</span><span class="p">,</span> <span class="n">omp_flags</span>
-<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">WEAVE_FLAGS</span>
-<span class="kn">from</span> <span class="nn">pycbc.weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">pycbc.scheme</span> <span class="k">import</span> <span class="n">schemed</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">signal</span>
 
 <div class="viewcode-block" id="ceilpow2"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.ceilpow2">[docs]</a><span class="k">def</span> <span class="nf">ceilpow2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -556,61 +553,11 @@
         <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">ts_lal</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[:],</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">ts_lal</span><span class="o">.</span><span class="n">deltaT</span><span class="p">,</span>
                           <span class="n">epoch</span><span class="o">=</span><span class="n">ts_lal</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span></div>
 
-<span class="n">_apply_shift_code</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    #include &lt;math.h&gt;</span>
-<span class="s2">    // cast the output to a float array for faster processing</span>
-<span class="s2">    // this takes advantage of the fact that complex arrays store</span>
-<span class="s2">    // their real and imaginary values next to each other in memory</span>
-<span class="s2">    double* outptr = (double*) out;</span>
-<span class="s2">    outptr += 2*kmin; // move to the start position</span>
-<span class="s2">    double cphi = (double) phi;</span>
-<span class="s2">    double re_h, im_h;</span>
-<span class="s2">    int update_interval = 100;</span>
-<span class="s2">    int jj = update_interval;</span>
-<span class="s2">    double re_shift, im_shift, re_lastshift, im_lastshift;</span>
-<span class="s2">    double re_inc = cos(cphi);</span>
-<span class="s2">    double im_inc = sin(cphi);</span>
-<span class="s2">    for (int kk=kmin; kk&lt;kmax; kk++){</span>
-<span class="s2">        if (jj == update_interval) {</span>
-<span class="s2">            // recompute the added value to reduce numerical error</span>
-<span class="s2">            re_shift = cos(cphi * (double) kk);</span>
-<span class="s2">            im_shift = sin(cphi * (double) kk);</span>
-<span class="s2">            jj = 0;</span>
-<span class="s2">        }</span>
-<span class="s2">        re_h = *outptr;</span>
-<span class="s2">        im_h = *(outptr+1);</span>
-<span class="s2">        *outptr = re_shift * re_h - im_shift * im_h; // the real part</span>
-<span class="s2">        *(outptr+1) = re_shift * im_h + im_shift * re_h; // the imag part</span>
-<span class="s2">        // increase the shift for the next element</span>
-<span class="s2">        re_lastshift = re_shift;</span>
-<span class="s2">        im_lastshift = im_shift;</span>
-<span class="s2">        re_shift = re_lastshift * re_inc - im_lastshift * im_inc;</span>
-<span class="s2">        im_shift = re_lastshift * im_inc + im_lastshift * re_inc;</span>
-<span class="s2">        jj += 1;</span>
-<span class="s2">        outptr += 2; // move to the next element</span>
-<span class="s2">    }</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-<span class="c1"># for single precision</span>
-<span class="n">_apply_shift_code32</span> <span class="o">=</span> <span class="n">_apply_shift_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
-
-<div class="viewcode-block" id="apply_fseries_time_shift"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.apply_fseries_time_shift">[docs]</a><span class="k">def</span> <span class="nf">apply_fseries_time_shift</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">kmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="apply_fseries_time_shift"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.apply_fseries_time_shift">[docs]</a><span class="nd">@schemed</span><span class="p">(</span><span class="s2">&quot;pycbc.waveform.utils_&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">apply_fseries_time_shift</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">kmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Shifts a frequency domain waveform in time. The waveform is assumed to</span>
 <span class="sd">    be sampled at equal frequency intervals.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-    <span class="n">phi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span> <span class="c1"># pylint:disable=unused-variable</span>
-    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
-    <span class="k">if</span> <span class="n">htilde</span><span class="o">.</span><span class="n">precision</span> <span class="o">==</span> <span class="s1">&#39;single&#39;</span><span class="p">:</span>
-        <span class="n">code</span> <span class="o">=</span> <span class="n">_apply_shift_code32</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">code</span> <span class="o">=</span> <span class="n">_apply_shift_code</span>
-    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;kmin&#39;</span><span class="p">,</span> <span class="s1">&#39;kmax&#39;</span><span class="p">],</span>
-           <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span><span class="o">+</span><span class="n">omp_flags</span><span class="p">,</span>
-           <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
-        <span class="n">htilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span>
-                                 <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">htilde</span></div>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="apply_fd_time_shift"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.utils.apply_fd_time_shift">[docs]</a><span class="k">def</span> <span class="nf">apply_fd_time_shift</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">shifttime</span><span class="p">,</span> <span class="n">kmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fseries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Shifts a frequency domain waveform in time. The shift applied is</span>
