@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.strain package &mdash; PyCBC 55f902 documentation</title>
+  <title>pycbc.strain package &mdash; PyCBC c46979 documentation</title>
   
 
   
@@ -457,6 +457,168 @@ duration, and the taper duration.</li>
 <code class="descclassname">pycbc.strain.gate.</code><code class="descname">psd_gates_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/gate.html#psd_gates_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.gate.psd_gates_from_cli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the –psd-gate option into something understandable by
 <cite>strain.gate_data</cite>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.strain.lines">
+<span id="pycbc-strain-lines-module"></span><h2>pycbc.strain.lines module<a class="headerlink" href="#module-pycbc.strain.lines" title="Permalink to this headline">¶</a></h2>
+<p>Functions for removing frequency lines from real data.</p>
+<dl class="function">
+<dt id="pycbc.strain.lines.avg_inner_product">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">avg_inner_product</code><span class="sig-paren">(</span><em>data1</em>, <em>data2</em>, <em>bin_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#avg_inner_product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.avg_inner_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the time-domain inner product averaged over bins.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data1</strong> (<em>pycbc.types.TimeSeries</em>) – First data set.</li>
+<li><strong>data2</strong> (<em>pycbc.types.TimeSeries</em>) – Second data set, with same duration and sample rate as data1.</li>
+<li><strong>bin_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Duration of the bins the data will be divided into to calculate
+the inner product.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>inner_prod</strong> (<em>list</em>) – The (complex) inner product of data1 and data2 obtained in each bin.</li>
+<li><strong>amp</strong> (<em>float</em>) – The absolute value of the median of the inner product.</li>
+<li><strong>phi</strong> (<em>float</em>) – The angle of the median of the inner product.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.strain.lines.calibration_lines">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">calibration_lines</code><span class="sig-paren">(</span><em>freqs</em>, <em>data</em>, <em>tref=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#calibration_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.calibration_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the calibration lines from strain data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List containing the frequencies of the calibration lines.</li>
+<li><strong>data</strong> (<em>pycbc.types.TimeSeries</em>) – Strain data to extract the calibration lines from.</li>
+<li><strong>tref</strong> (<em>{None</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Reference time for the line. If None, will use data.start_time.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> – The strain data with the calibration lines removed.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pycbc.types.TimeSeries</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.strain.lines.clean_data">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">clean_data</code><span class="sig-paren">(</span><em>freqs</em>, <em>data</em>, <em>chunk</em>, <em>avg_bin</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#clean_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.clean_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract time-varying (wandering) lines from strain data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freqs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List containing the frequencies of the wandering lines.</li>
+<li><strong>data</strong> (<em>pycbc.types.TimeSeries</em>) – Strain data to extract the wandering lines from.</li>
+<li><strong>chunk</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Duration of the chunks the data will be divided into to account
+for the time variation of the wandering lines. Should be smaller
+than data.duration, and allow for at least a few chunks.</li>
+<li><strong>avg_bin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Duration of the bins each chunk will be divided into for averaging
+the inner product when measuring the parameters of the line. Should
+be smaller than chunk.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> – The strain data with the wandering lines removed.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pycbc.types.TimeSeries</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.strain.lines.complex_median">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">complex_median</code><span class="sig-paren">(</span><em>complex_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#complex_median"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.complex_median" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the median value of a list of complex numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>complex_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – List of complex numbers to calculate the median.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>a + 1.j*b</strong> – The median of the real and imaginary parts.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">complex number</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.strain.lines.line_model">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">line_model</code><span class="sig-paren">(</span><em>freq</em>, <em>data</em>, <em>tref</em>, <em>amp=1</em>, <em>phi=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#line_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.line_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple time-domain model for a frequency line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency of the line.</li>
+<li><strong>data</strong> (<em>pycbc.types.TimeSeries</em>) – Reference data, to get delta_t, start_time, duration and sample_times.</li>
+<li><strong>tref</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Reference time for the line model.</li>
+<li><strong>amp</strong> (<em>{1.</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Amplitude of the frequency line.</li>
+<li><strong>phi</strong> (<em>{0. float}</em><em>, </em><em>optional</em>) – Phase of the frequency line (radians).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>freq_line</strong> – A timeseries of the line model with frequency ‘freq’. The returned
+data are complex to allow measuring the amplitude and phase of the
+corresponding frequency line in the strain data. For extraction, use
+only the real part of the data.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pycbc.types.TimeSeries</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.strain.lines.matching_line">
+<code class="descclassname">pycbc.strain.lines.</code><code class="descname">matching_line</code><span class="sig-paren">(</span><em>freq</em>, <em>data</em>, <em>tref</em>, <em>bin_size=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/strain/lines.html#matching_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.strain.lines.matching_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the parameter of the line with frequency ‘freq’ in the data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>freq</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Frequency of the line to find in the data.</li>
+<li><strong>data</strong> (<em>pycbc.types.TimeSeries</em>) – Data from which the line wants to be measured.</li>
+<li><strong>tref</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Reference time for the frequency line.</li>
+<li><strong>bin_size</strong> (<em>{1</em><em>, </em><em>float}</em><em>, </em><em>optional</em>) – Duration of the bins the data will be divided into for averaging.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>line_model</strong> – A timeseries containing the frequency line with the amplitude
+and phase measured from the data.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pycbc.types.TimeSeries</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
