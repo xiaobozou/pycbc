@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events package &mdash; PyCBC 1f7e0f documentation</title>
+  <title>pycbc.events package &mdash; PyCBC 11f771 documentation</title>
   
 
   
@@ -559,6 +559,84 @@ templates, based on the ranking statistic</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.cluster_coincs_multiifo">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">cluster_coincs_multiifo</code><span class="sig-paren">(</span><em>stat</em>, <em>time_coincs</em>, <em>timeslide_id</em>, <em>slide</em>, <em>window</em>, <em>argmax=&lt;function argmax&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#cluster_coincs_multiifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.cluster_coincs_multiifo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster coincident events for each timeslide separately, across
+templates, based on the ranking statistic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>stat</strong> (<em>numpy.ndarray</em>) – vector of ranking values to maximize</li>
+<li><strong>time_coincs</strong> (<em>tuple of numpy.ndarrays</em>) – trigger times for each ifo, or -1 if an ifo does not participate in a coinc</li>
+<li><strong>timeslide_id</strong> (<em>numpy.ndarray</em>) – vector that determines the timeslide offset</li>
+<li><strong>slide</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – length of the timeslides offset interval</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – duration of clustering window in seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cindex</strong> – The set of indices corresponding to the surviving coincidences</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.cluster_over_time">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">cluster_over_time</code><span class="sig-paren">(</span><em>stat</em>, <em>time</em>, <em>window</em>, <em>argmax=&lt;function argmax&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#cluster_over_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.cluster_over_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster events given their times and ranking statistic values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>stat</strong> (<em>numpy.ndarray</em>) – vector of ranking values to maximize</li>
+<li><strong>time</strong> (<em>numpy.ndarray</em>) – averaged time</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – length to cluster over</li>
+<li><strong>argmax</strong> (<em>function</em>) – the function used to calculate the maximum value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cindex</strong> – The set of indices corresponding to the surviving coincidences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.mean_if_greater_than_zero">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">mean_if_greater_than_zero</code><span class="sig-paren">(</span><em>vals</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#mean_if_greater_than_zero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.mean_if_greater_than_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate mean of an iterator of numerical values, but ignore it
+if the value if it is less than zero. This is used when the timestamps
+are marked as -1 when a particular IFO is not included in the particular
+coincidence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vals</strong> (<em>iterator of numerical values</em>) – values to be mean averaged</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>mean</strong> (<em>float</em>) – The mean of the values in the original vector which are
+greater than zero</li>
+<li><strong>num_above_zero</strong> (<em>int</em>) – The number of entries in the vector which are above zero</li>
+</ul>
 </td>
 </tr>
 </tbody>

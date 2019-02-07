@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.coinc &mdash; PyCBC 1f7e0f documentation</title>
+  <title>pycbc.events.coinc &mdash; PyCBC 11f771 documentation</title>
   
 
   
@@ -552,15 +552,17 @@
 <span class="sd">    cindex: numpy.ndarray</span>
 <span class="sd">        The set of indices corresponding to the surviving coincidences.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;clustering coinc triggers over </span><span class="si">%s</span><span class="s1">s window&#39;</span> <span class="o">%</span> <span class="n">window</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">time1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">time2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No coinc triggers in one, or both, ifos.&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
-    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">slide</span><span class="p">):</span>
-        <span class="n">time</span> <span class="o">=</span> <span class="p">(</span><span class="n">time2</span> <span class="o">+</span> <span class="p">(</span><span class="n">time1</span> <span class="o">+</span> <span class="n">timeslide_id</span> <span class="o">*</span> <span class="n">slide</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="c1"># for a time shifted coinc, time1 is greater than time2 by approximately timeslide_id*slide</span>
+        <span class="c1"># adding this quantity gives a mean coinc time located around time1</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="p">(</span><span class="n">time1</span> <span class="o">+</span> <span class="n">time2</span> <span class="o">+</span> <span class="n">timeslide_id</span> <span class="o">*</span> <span class="n">slide</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">time</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">time2</span> <span class="o">+</span> <span class="n">time1</span><span class="p">)</span>
 
@@ -569,7 +571,106 @@
 
     <span class="n">span</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">+</span> <span class="n">window</span> <span class="o">*</span> <span class="mi">10</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="n">span</span> <span class="o">*</span> <span class="n">tslide</span>
+    <span class="n">cidx</span> <span class="o">=</span> <span class="n">cluster_over_time</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cidx</span></div>
 
+<div class="viewcode-block" id="cluster_coincs_multiifo"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.cluster_coincs_multiifo">[docs]</a><span class="k">def</span> <span class="nf">cluster_coincs_multiifo</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time_coincs</span><span class="p">,</span> <span class="n">timeslide_id</span><span class="p">,</span> <span class="n">slide</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cluster coincident events for each timeslide separately, across</span>
+<span class="sd">    templates, based on the ranking statistic</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    stat: numpy.ndarray</span>
+<span class="sd">        vector of ranking values to maximize</span>
+<span class="sd">    time_coincs: tuple of numpy.ndarrays</span>
+<span class="sd">        trigger times for each ifo, or -1 if an ifo does not participate in a coinc</span>
+<span class="sd">    timeslide_id: numpy.ndarray</span>
+<span class="sd">        vector that determines the timeslide offset</span>
+<span class="sd">    slide: float</span>
+<span class="sd">        length of the timeslides offset interval</span>
+<span class="sd">    window: float</span>
+<span class="sd">        duration of clustering window in seconds</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cindex: numpy.ndarray</span>
+<span class="sd">        The set of indices corresponding to the surviving coincidences</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_coinc_zip</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">time_coincs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_coinc_zip</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;No coincident triggers.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+
+    <span class="n">time_avg_num</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">#find number of ifos and mean time over participating ifos for each coinc</span>
+    <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">time_coinc_zip</span><span class="p">:</span>
+        <span class="n">time_avg_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_if_greater_than_zero</span><span class="p">(</span><span class="n">tc</span><span class="p">))</span>
+
+    <span class="n">time_avg</span><span class="p">,</span> <span class="n">num_ifos</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">time_avg_num</span><span class="p">)</span>
+
+    <span class="n">time_avg</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time_avg</span><span class="p">)</span>
+    <span class="n">num_ifos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">num_ifos</span><span class="p">)</span>
+
+    <span class="c1"># shift all but the pivot ifo by (num_ifos-1) * timeslide_id * slide</span>
+    <span class="c1"># this leads to a mean coinc time located around pivot time</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">slide</span><span class="p">):</span>
+        <span class="n">nifos_minusone</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_ifos</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">num_ifos</span><span class="p">))</span>
+        <span class="n">time_avg</span> <span class="o">=</span> <span class="n">time_avg</span> <span class="o">+</span> <span class="p">(</span><span class="n">nifos_minusone</span> <span class="o">*</span> <span class="n">timeslide_id</span> <span class="o">*</span> <span class="n">slide</span><span class="p">)</span><span class="o">/</span><span class="n">num_ifos</span>
+
+    <span class="n">tslide</span> <span class="o">=</span> <span class="n">timeslide_id</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float128</span><span class="p">)</span>
+    <span class="n">time_avg</span> <span class="o">=</span> <span class="n">time_avg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float128</span><span class="p">)</span>
+
+    <span class="n">span</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_avg</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">time_avg</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">+</span> <span class="n">window</span> <span class="o">*</span> <span class="mi">10</span>
+    <span class="n">time_avg</span> <span class="o">=</span> <span class="n">time_avg</span> <span class="o">+</span> <span class="n">span</span> <span class="o">*</span> <span class="n">tslide</span>
+    <span class="n">cidx</span> <span class="o">=</span> <span class="n">cluster_over_time</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time_avg</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cidx</span></div>
+
+<div class="viewcode-block" id="mean_if_greater_than_zero"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.mean_if_greater_than_zero">[docs]</a><span class="k">def</span> <span class="nf">mean_if_greater_than_zero</span><span class="p">(</span><span class="n">vals</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Calculate mean of an iterator of numerical values, but ignore it</span>
+<span class="sd">    if the value if it is less than zero. This is used when the timestamps</span>
+<span class="sd">    are marked as -1 when a particular IFO is not included in the particular</span>
+<span class="sd">    coincidence.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vals: iterator of numerical values</span>
+<span class="sd">        values to be mean averaged</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mean: float</span>
+<span class="sd">        The mean of the values in the original vector which are</span>
+<span class="sd">        greater than zero</span>
+<span class="sd">    num_above_zero: int</span>
+<span class="sd">        The number of entries in the vector which are above zero</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="n">above_zero</span> <span class="o">=</span> <span class="n">vals</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">vals</span><span class="p">[</span><span class="n">above_zero</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">above_zero</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="cluster_over_time"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.cluster_over_time">[docs]</a><span class="k">def</span> <span class="nf">cluster_over_time</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cluster events given their times and ranking statistic values</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    stat: numpy.ndarray</span>
+<span class="sd">        vector of ranking values to maximize</span>
+<span class="sd">    time: numpy.ndarray</span>
+<span class="sd">        averaged time</span>
+<span class="sd">    window: float</span>
+<span class="sd">        length to cluster over</span>
+<span class="sd">    argmax: function</span>
+<span class="sd">        the function used to calculate the maximum value</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cindex: numpy.ndarray</span>
+<span class="sd">        The set of indices corresponding to the surviving coincidences.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;clustering coinc triggers over </span><span class="si">%s</span><span class="s1">s window&#39;</span> <span class="o">%</span> <span class="n">window</span><span class="p">)</span>
+
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">time_sorting</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
     <span class="n">stat</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[</span><span class="n">time_sorting</span><span class="p">]</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">time_sorting</span><span class="p">]</span>
