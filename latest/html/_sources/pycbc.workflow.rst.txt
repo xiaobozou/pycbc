@@ -44,14 +44,6 @@ pycbc.workflow.datafind module
     :undoc-members:
     :show-inheritance:
 
-pycbc.workflow.gatefiles module
--------------------------------
-
-.. automodule:: pycbc.workflow.gatefiles
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pycbc.workflow.grb\_utils module
 --------------------------------
 

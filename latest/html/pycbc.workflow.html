@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC c46979 documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC 1f7e0f documentation</title>
   
 
   
@@ -2597,66 +2597,6 @@ any instances of missing data.</li>
 sci_avlble_file.</li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pycbc.workflow.gatefiles">
-<span id="pycbc-workflow-gatefiles-module"></span><h2>pycbc.workflow.gatefiles module<a class="headerlink" href="#module-pycbc.workflow.gatefiles" title="Permalink to this headline">¶</a></h2>
-<p>This module is responsible for setting up the gating files used by CBC
-workflows.</p>
-<dl class="function">
-<dt id="pycbc.workflow.gatefiles.setup_gate_pregenerated">
-<code class="descclassname">pycbc.workflow.gatefiles.</code><code class="descname">setup_gate_pregenerated</code><span class="sig-paren">(</span><em>workflow</em>, <em>output_dir=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/gatefiles.html#setup_gate_pregenerated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.gatefiles.setup_gate_pregenerated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup CBC workflow to use pregenerated gating files.
-The file given in cp.get(‘workflow’,’gating-file-(ifo)’) will
-be used as the –gating-file for all jobs for that ifo.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – An instanced class that manages the constructed workflow.</li>
-<li><strong>output_dir</strong> (<em>path string</em>) – The directory where data products will be placed.</li>
-<li><strong>tags</strong> (<em>list of strings</em>) – If given these tags are used to uniquely name and identify output files
-that would be produced in multiple calls to this function.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gate_files</strong> – The FileList holding the gating files</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList">pycbc.workflow.core.FileList</a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="pycbc.workflow.gatefiles.setup_gating_workflow">
-<code class="descclassname">pycbc.workflow.gatefiles.</code><code class="descname">setup_gating_workflow</code><span class="sig-paren">(</span><em>workflow</em>, <em>output_dir=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/gatefiles.html#setup_gating_workflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.gatefiles.setup_gating_workflow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup gating section of CBC workflow. At present this only supports pregenerated
-gating files, in the future these could be created within the workflow.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – An instanced class that manages the constructed workflow.</li>
-<li><strong>output_dir</strong> (<em>path string</em>) – The directory where data products will be placed.</li>
-<li><strong>tags</strong> (<em>list of strings</em>) – If given these tags are used to uniquely name and identify output files
-that would be produced in multiple calls to this function.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gate_files</strong> – The FileList holding the gate files, 0 or 1 per ifo</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList">pycbc.workflow.core.FileList</a></p>
 </td>
 </tr>
 </tbody>
@@ -5789,7 +5729,7 @@ interferometer data</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Feb 06, 2019.
+      Last updated on Feb 07, 2019.
 
     </p>
   </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC c46979 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC 1f7e0f documentation</title>
   
 
   
@@ -540,12 +540,13 @@
                         <span class="n">curr_pfn</span> <span class="o">=</span> <span class="n">value</span>
 
                     <span class="k">if</span> <span class="n">curr_lfn</span> <span class="ow">in</span> <span class="n">file_input_from_config_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                        <span class="n">file_pfn</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">file_pfn</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
                         <span class="k">assert</span><span class="p">(</span><span class="n">file_pfn</span> <span class="o">==</span> <span class="n">curr_pfn</span><span class="p">)</span>
                         <span class="n">curr_file</span> <span class="o">=</span> <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="n">curr_file</span> <span class="o">=</span> <span class="n">File</span><span class="o">.</span><span class="n">from_path</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-                        <span class="n">tuple_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_pfn</span><span class="p">,</span> <span class="n">curr_file</span><span class="p">)</span>
+                        <span class="n">local_file_path</span> <span class="o">=</span> <span class="n">resolve_url</span><span class="p">(</span><span class="n">curr_pfn</span><span class="p">)</span>
+                        <span class="n">curr_file</span> <span class="o">=</span> <span class="n">File</span><span class="o">.</span><span class="n">from_path</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">)</span>
+                        <span class="n">tuple_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">local_file_path</span><span class="p">,</span> <span class="n">curr_file</span><span class="p">,</span> <span class="n">curr_pfn</span><span class="p">)</span>
                         <span class="n">file_input_from_config_dict</span><span class="p">[</span><span class="n">curr_lfn</span><span class="p">]</span> <span class="o">=</span> <span class="n">tuple_val</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">common_input_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="p">)</span>
                     <span class="n">dax_reprs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_file</span><span class="o">.</span><span class="n">dax_repr</span><span class="p">)</span>
@@ -2173,7 +2174,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Feb 06, 2019.
+      Last updated on Feb 07, 2019.
 
     </p>
   </div>
