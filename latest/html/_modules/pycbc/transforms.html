@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.transforms &mdash; PyCBC 11f771 documentation</title>
+  <title>pycbc.transforms &mdash; PyCBC 7c813d documentation</title>
   
 
   
@@ -1765,7 +1765,8 @@
                 <span class="n">converter</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="n">requested_params</span><span class="p">)):</span>
             <span class="k">continue</span>
         <span class="n">intersect</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">requested_params</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intersect</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">intersect</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">inputs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">intersect</span> <span class="ow">or</span> <span class="n">intersect</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span> <span class="ow">or</span>
+                <span class="n">intersect</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">variable_args</span><span class="p">)):</span>
             <span class="k">continue</span>
         <span class="n">requested_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
         <span class="n">from_base_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">converter</span><span class="p">)</span>
@@ -1920,7 +1921,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
-      Last updated on Feb 07, 2019.
+      Last updated on Feb 08, 2019.
 
     </p>
   </div>
