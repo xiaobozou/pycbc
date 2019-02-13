@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 9af828 documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC e0d410 documentation</title>
   
 
   
@@ -462,6 +462,25 @@ workflows. For details about this module and its capabilities see here:
 </dd></dl>
 
 <dl class="class">
+<dt id="pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable">
+<em class="property">class </em><code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">PyCBCMultiifoStatMapInjExecutable</code><span class="sig-paren">(</span><em>cp</em>, <em>name</em>, <em>universe=None</em>, <em>ifos=None</em>, <em>out_dir=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#PyCBCMultiifoStatMapInjExecutable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.workflow.core.Executable" title="pycbc.workflow.core.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.workflow.core.Executable</span></code></a></p>
+<p>Calculate FAP, IFAR, etc</p>
+<dl class="method">
+<dt id="pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable.create_node">
+<code class="descname">create_node</code><span class="sig-paren">(</span><em>zerolag</em>, <em>full_data</em>, <em>injfull</em>, <em>fullinj</em>, <em>ifos</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#PyCBCMultiifoStatMapInjExecutable.create_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable.create_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default node constructor.</p>
+<p>This is usually overridden by subclasses of Executable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable.current_retention_level">
+<code class="descname">current_retention_level</code><em class="property"> = 3</em><a class="headerlink" href="#pycbc.workflow.coincidence.PyCBCMultiifoStatMapInjExecutable.current_retention_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pycbc.workflow.coincidence.PyCBCStatMapExecutable">
 <em class="property">class </em><code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">PyCBCStatMapExecutable</code><span class="sig-paren">(</span><em>cp</em>, <em>name</em>, <em>universe=None</em>, <em>ifos=None</em>, <em>out_dir=None</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#PyCBCStatMapExecutable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.PyCBCStatMapExecutable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.workflow.core.Executable" title="pycbc.workflow.core.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.workflow.core.Executable</span></code></a></p>
@@ -536,6 +555,14 @@ workflows. For details about this module and its capabilities see here:
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="pycbc.workflow.coincidence.get_ordered_ifo_list">
+<code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">get_ordered_ifo_list</code><span class="sig-paren">(</span><em>ifocomb</em>, <em>ifo_ids</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#get_ordered_ifo_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.get_ordered_ifo_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sorts the combination of ifos (ifocomb) based on the given
+precedence list (ifo_ids dictionary) and returns the first ifo as pivot
+the second ifo as fixed, and the ordered list joined as a string.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="pycbc.workflow.coincidence.make_foreground_censored_veto">
 <code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">make_foreground_censored_veto</code><span class="sig-paren">(</span><em>workflow</em>, <em>bg_file</em>, <em>veto_file</em>, <em>veto_name</em>, <em>censored_name</em>, <em>out_dir</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#make_foreground_censored_veto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.make_foreground_censored_veto" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -544,6 +571,12 @@ workflows. For details about this module and its capabilities see here:
 <dt id="pycbc.workflow.coincidence.merge_single_detector_hdf_files">
 <code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">merge_single_detector_hdf_files</code><span class="sig-paren">(</span><em>workflow</em>, <em>bank_file</em>, <em>trigger_files</em>, <em>out_dir</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#merge_single_detector_hdf_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.merge_single_detector_hdf_files" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.workflow.coincidence.select_files_by_ifo_combination">
+<code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">select_files_by_ifo_combination</code><span class="sig-paren">(</span><em>ifocomb</em>, <em>insps</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#select_files_by_ifo_combination"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.select_files_by_ifo_combination" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function selects single-detector files (‘insps’) for a given ifo combination</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="pycbc.workflow.coincidence.setup_background_bins">
@@ -577,13 +610,18 @@ workflows. For details about this module and its capabilities see here:
 
 <dl class="function">
 <dt id="pycbc.workflow.coincidence.setup_multiifo_interval_coinc_inj">
-<code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">setup_multiifo_interval_coinc_inj</code><span class="sig-paren">(</span><em>workflow</em>, <em>hdfbank</em>, <em>full_data_trig_files</em>, <em>inj_trig_files</em>, <em>stat_files</em>, <em>veto_file</em>, <em>veto_name</em>, <em>out_dir</em>, <em>pivot_ifo</em>, <em>fixed_ifo</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#setup_multiifo_interval_coinc_inj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.setup_multiifo_interval_coinc_inj" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">setup_multiifo_interval_coinc_inj</code><span class="sig-paren">(</span><em>workflow</em>, <em>hdfbank</em>, <em>full_data_trig_files</em>, <em>inj_trig_files</em>, <em>stat_files</em>, <em>background_file</em>, <em>veto_file</em>, <em>veto_name</em>, <em>out_dir</em>, <em>pivot_ifo</em>, <em>fixed_ifo</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#setup_multiifo_interval_coinc_inj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.setup_multiifo_interval_coinc_inj" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function sets up exact match multiifo coincidence for injections</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycbc.workflow.coincidence.setup_multiifo_statmap">
 <code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">setup_multiifo_statmap</code><span class="sig-paren">(</span><em>workflow</em>, <em>ifos</em>, <em>coinc_files</em>, <em>out_dir</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#setup_multiifo_statmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.setup_multiifo_statmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.workflow.coincidence.setup_multiifo_statmap_inj">
+<code class="descclassname">pycbc.workflow.coincidence.</code><code class="descname">setup_multiifo_statmap_inj</code><span class="sig-paren">(</span><em>workflow</em>, <em>ifos</em>, <em>coinc_files</em>, <em>background_file</em>, <em>out_dir</em>, <em>tags=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/coincidence.html#setup_multiifo_statmap_inj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.coincidence.setup_multiifo_statmap_inj" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -5734,7 +5772,7 @@ interferometer data</p>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 12, 2019.
+        Last updated on Feb 13, 2019.
       </span>
 
     </p>
