@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.io.hdf &mdash; PyCBC e76626 documentation</title>
+  <title>pycbc.io.hdf &mdash; PyCBC d1f4eb documentation</title>
   
 
   
@@ -578,6 +578,8 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loading triggers&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trigs_f</span> <span class="o">=</span> <span class="n">HFile</span><span class="p">(</span><span class="n">trig_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trigs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trigs_f</span><span class="p">[</span><span class="n">detector</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ifo</span> <span class="o">=</span> <span class="n">detector</span>  <span class="c1"># convenience attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">detector</span> <span class="o">=</span> <span class="n">detector</span>
         <span class="k">if</span> <span class="n">bank_file</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loading bank&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bank</span> <span class="o">=</span> <span class="n">HFile</span><span class="p">(</span><span class="n">bank_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -603,6 +605,7 @@
         <span class="k">if</span> <span class="n">filter_func</span><span class="p">:</span>
             <span class="c1"># get required columns into the namespace with dummy attribute</span>
             <span class="c1"># names to avoid confusion with other class properties</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setting up filter function&#39;</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trigs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">filter_func</span><span class="p">:</span>
                     <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trigs</span><span class="p">[</span><span class="n">c</span><span class="p">][:])</span>
@@ -1135,7 +1138,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 13, 2019.
+        Last updated on Feb 14, 2019.
       </span>
 
     </p>

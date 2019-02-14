@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.coinc &mdash; PyCBC e76626 documentation</title>
+  <title>pycbc.events.coinc &mdash; PyCBC d1f4eb documentation</title>
   
 
   
@@ -631,10 +631,9 @@
     <span class="k">return</span> <span class="n">cidx</span></div>
 
 <div class="viewcode-block" id="mean_if_greater_than_zero"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.mean_if_greater_than_zero">[docs]</a><span class="k">def</span> <span class="nf">mean_if_greater_than_zero</span><span class="p">(</span><span class="n">vals</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Calculate mean of an iterator of numerical values, but ignore it</span>
-<span class="sd">    if the value if it is less than zero. This is used when the timestamps</span>
-<span class="sd">    are marked as -1 when a particular IFO is not included in the particular</span>
-<span class="sd">    coincidence.</span>
+    <span class="sd">&quot;&quot;&quot; Calculate mean over numerical values, ignoring values less than zero.</span>
+<span class="sd">    E.g. used for mean time over coincident triggers when timestamps are set</span>
+<span class="sd">    to -1 for ifos not included in the coincidence.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -654,14 +653,15 @@
     <span class="k">return</span> <span class="n">vals</span><span class="p">[</span><span class="n">above_zero</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">above_zero</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="cluster_over_time"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.cluster_over_time">[docs]</a><span class="k">def</span> <span class="nf">cluster_over_time</span><span class="p">(</span><span class="n">stat</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">argmax</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmax</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cluster events given their times and ranking statistic values</span>
+    <span class="sd">&quot;&quot;&quot;Cluster generalized transient events over time via maximum stat over a</span>
+<span class="sd">    symmetric sliding window</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    stat: numpy.ndarray</span>
 <span class="sd">        vector of ranking values to maximize</span>
 <span class="sd">    time: numpy.ndarray</span>
-<span class="sd">        averaged time</span>
+<span class="sd">        time to use for clustering</span>
 <span class="sd">    window: float</span>
 <span class="sd">        length to cluster over</span>
 <span class="sd">    argmax: function</span>
@@ -672,7 +672,7 @@
 <span class="sd">    cindex: numpy.ndarray</span>
 <span class="sd">        The set of indices corresponding to the surviving coincidences.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;clustering coinc triggers over </span><span class="si">%s</span><span class="s1">s window&#39;</span> <span class="o">%</span> <span class="n">window</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;clustering events over </span><span class="si">%s</span><span class="s1">s window&#39;</span> <span class="o">%</span> <span class="n">window</span><span class="p">)</span>
 
     <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">time_sorting</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
@@ -1344,7 +1344,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 13, 2019.
+        Last updated on Feb 14, 2019.
       </span>
 
     </p>

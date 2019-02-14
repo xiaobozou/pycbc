@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events package &mdash; PyCBC e76626 documentation</title>
+  <title>pycbc.events package &mdash; PyCBC d1f4eb documentation</title>
   
 
   
@@ -600,14 +600,15 @@ templates, based on the ranking statistic</p>
 <dl class="function">
 <dt id="pycbc.events.coinc.cluster_over_time">
 <code class="descclassname">pycbc.events.coinc.</code><code class="descname">cluster_over_time</code><span class="sig-paren">(</span><em>stat</em>, <em>time</em>, <em>window</em>, <em>argmax=&lt;function argmax&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#cluster_over_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.cluster_over_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cluster events given their times and ranking statistic values</p>
+<dd><p>Cluster generalized transient events over time via maximum stat over a
+symmetric sliding window</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>stat</strong> (<em>numpy.ndarray</em>) – vector of ranking values to maximize</li>
-<li><strong>time</strong> (<em>numpy.ndarray</em>) – averaged time</li>
+<li><strong>time</strong> (<em>numpy.ndarray</em>) – time to use for clustering</li>
 <li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – length to cluster over</li>
 <li><strong>argmax</strong> (<em>function</em>) – the function used to calculate the maximum value</li>
 </ul>
@@ -626,10 +627,9 @@ templates, based on the ranking statistic</p>
 <dl class="function">
 <dt id="pycbc.events.coinc.mean_if_greater_than_zero">
 <code class="descclassname">pycbc.events.coinc.</code><code class="descname">mean_if_greater_than_zero</code><span class="sig-paren">(</span><em>vals</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#mean_if_greater_than_zero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.mean_if_greater_than_zero" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate mean of an iterator of numerical values, but ignore it
-if the value if it is less than zero. This is used when the timestamps
-are marked as -1 when a particular IFO is not included in the particular
-coincidence.</p>
+<dd><p>Calculate mean over numerical values, ignoring values less than zero.
+E.g. used for mean time over coincident triggers when timestamps are set
+to -1 for ifos not included in the coincidence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1072,6 +1072,14 @@ approximates combined (new)snr for coincs with similar newsnr in each ifo</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="pycbc.events.stat.ExpFitSGCombinedSNR">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">ExpFitSGCombinedSNR</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitSGCombinedSNR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitSGCombinedSNR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.ExpFitCombinedSNR" title="pycbc.events.stat.ExpFitCombinedSNR"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.events.stat.ExpFitCombinedSNR</span></code></a></p>
+<p>ExpFitCombinedSNR but with sine-Gaussian veto added to the</p>
+<p>single detector ranking</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="pycbc.events.stat.ExpFitStatistic">
 <em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">ExpFitStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
@@ -1092,7 +1100,7 @@ template over single-ifo newsnr values.</p>
 <dl class="method">
 <dt id="pycbc.events.stat.ExpFitStatistic.find_fits">
 <code class="descname">find_fits</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.find_fits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.find_fits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get fit coeffs for a specific ifo and template id</p>
+<dd><p>Get fit coeffs for a specific ifo and template id(s)</p>
 </dd></dl>
 
 <dl class="method">
@@ -1105,7 +1113,7 @@ template over single-ifo newsnr values.</p>
 <code class="descname">lognoiserate</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.lognoiserate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.lognoiserate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the log noise rate density over single-ifo newsnr</p>
 <p>Read in single trigger information, make the newsnr statistic
-and rescale by the fitted coefficients alpha and lambda</p>
+and rescale by the fitted coefficients alpha and rate</p>
 </dd></dl>
 
 <dl class="method">
@@ -1227,7 +1235,7 @@ are required keys for this statistic.</td>
 <dl class="method">
 <dt id="pycbc.events.stat.NewSNRSGStatistic.single">
 <code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRSGStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRSGStatistic.single" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate the single detector statistic, here equal to newsnr</p>
+<dd><p>Calculate the single detector statistic, here equal to newsnr_sgveto</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2143,7 +2151,7 @@ contain a segment table</li>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 13, 2019.
+        Last updated on Feb 14, 2019.
       </span>
 
     </p>
