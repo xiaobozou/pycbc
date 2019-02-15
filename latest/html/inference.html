@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC d1f4eb documentation</title>
+  <title>PyCBC inference documentation (pycbc.inference) &mdash; PyCBC a2914c documentation</title>
   
 
   
@@ -118,6 +118,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#sampling-transforms">Sampling transforms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#waveform-transforms">Waveform transforms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#calibration-parameters">Calibration parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constraints">Constraints</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#checkpointing-and-output-files">Checkpointing and output files</a></li>
@@ -812,6 +813,40 @@ analysis. E.g. for an analysis using H1 only, the required options would be
 <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-a-pu</span></code>, <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-c</span></code>,
 <code class="docutils literal notranslate"><span class="pre">h1-transfer-function-d</span></code>.</p>
 </div>
+<div class="section" id="constraints">
+<h4>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h4>
+<p>One or more constraints may be applied to the parameters; these are
+specified by the <code class="docutils literal notranslate"><span class="pre">[constraint]</span></code> section(s). Additional constraints may be
+supplied by adding more <code class="docutils literal notranslate"><span class="pre">[constraint-{tag}]</span></code> sections. Any tag may be used; the
+only requirement is that they be unique. If multiple constraint sections are
+provided, the union of all constraints is applied. Alternatively, multiple
+constraints may be joined in a single argument using numpy’s logical operators.</p>
+<p>The parameter that constraints are applied to may be any parameter in
+<code class="docutils literal notranslate"><span class="pre">variable_params</span></code> or any output parameter of the transforms. Functions may be
+applied to these parameters to obtain constraints on derived parameters. Any
+function in the conversions, coordinates, or cosmology module may be used,
+along with any numpy ufunc. So, in the following example, the mass ratio (q) is
+constrained to be &lt;= 4 by using a function from the conversions module.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[variable_params]</span>
+<span class="na">mass1</span> <span class="o">=</span>
+<span class="na">mass2</span> <span class="o">=</span>
+
+<span class="k">[prior-mass1]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform</span>
+<span class="na">min-mass1</span> <span class="o">=</span> <span class="s">3</span>
+<span class="na">max-mass1</span> <span class="o">=</span> <span class="s">12</span>
+
+<span class="k">[prior-mass2]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform</span>
+<span class="na">min-mass2</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">min-mass2</span> <span class="o">=</span> <span class="s">3</span>
+
+<span class="k">[constraint-1]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">custom</span>
+<span class="na">constraint_args</span> <span class="o">=</span> <span class="s">q_from_mass1_mass2(mass1, mass2) &lt;= 4</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="checkpointing-and-output-files">
 <h3>Checkpointing and output files<a class="headerlink" href="#checkpointing-and-output-files" title="Permalink to this headline">¶</a></h3>
@@ -1357,7 +1392,7 @@ pycbc_inference --verbose <span class="se">\</span>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 14, 2019.
+        Last updated on Feb 15, 2019.
       </span>
 
     </p>
