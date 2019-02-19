@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.utils &mdash; PyCBC de7f01 documentation</title>
+  <title>pycbc.waveform.utils &mdash; PyCBC f59e1d documentation</title>
   
 
   
@@ -639,13 +639,13 @@
     <span class="n">winlen</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_t</span><span class="p">)</span>
     <span class="n">window</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">get_window</span><span class="p">((</span><span class="s1">&#39;kaiser&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="p">),</span> <span class="n">winlen</span><span class="p">))</span>
     <span class="n">xmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">start</span> <span class="o">-</span> <span class="n">out</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_t</span><span class="p">)</span>
-    <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">winlen</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">winlen</span><span class="o">//</span><span class="mi">2</span>
     <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[:</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[:</span><span class="n">winlen</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">xmin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">out</span><span class="p">[:</span><span class="n">xmin</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;right&#39;</span><span class="p">:</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">winlen</span><span class="o">//</span><span class="mi">2</span><span class="p">:]</span>
         <span class="k">if</span> <span class="n">xmax</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
             <span class="n">out</span><span class="p">[</span><span class="n">xmax</span><span class="p">:]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
@@ -683,12 +683,12 @@
     <span class="n">winlen</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
     <span class="n">window</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">get_window</span><span class="p">((</span><span class="s1">&#39;kaiser&#39;</span><span class="p">,</span> <span class="n">beta</span><span class="p">),</span> <span class="n">winlen</span><span class="p">))</span>
     <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start</span> <span class="o">/</span> <span class="n">out</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
-    <span class="n">kmax</span> <span class="o">=</span> <span class="n">kmin</span> <span class="o">+</span> <span class="n">winlen</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="n">kmin</span> <span class="o">+</span> <span class="n">winlen</span><span class="o">//</span><span class="mi">2</span>
     <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[:</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[:</span><span class="n">winlen</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">out</span><span class="p">[:</span><span class="n">kmin</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.</span>
     <span class="k">elif</span> <span class="n">side</span> <span class="o">==</span> <span class="s1">&#39;right&#39;</span><span class="p">:</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">winlen</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="n">window</span><span class="p">[</span><span class="n">winlen</span><span class="o">//</span><span class="mi">2</span><span class="p">:]</span>
         <span class="n">out</span><span class="p">[</span><span class="n">kmax</span><span class="p">:]</span> <span class="o">*=</span> <span class="mf">0.</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;unrecognized side argument </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">side</span><span class="p">))</span>
