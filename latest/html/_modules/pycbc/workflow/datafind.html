@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.datafind &mdash; PyCBC 0b35c0 documentation</title>
+  <title>pycbc.workflow.datafind &mdash; PyCBC 3acd4d documentation</title>
   
 
   
@@ -236,7 +236,8 @@
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">urlparse</span>
 <span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span><span class="p">,</span> <span class="n">lal</span>
+<span class="kn">from</span> <span class="nn">ligo</span> <span class="k">import</span> <span class="n">segments</span>
+<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">lal</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">ligolw</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.core</span> <span class="k">import</span> <span class="n">SegFile</span><span class="p">,</span> <span class="n">File</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">make_analysis_dir</span>
 <span class="kn">from</span> <span class="nn">pycbc.frame</span> <span class="k">import</span> <span class="n">datafind_connection</span>
@@ -1048,7 +1049,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    ---------</span>
-<span class="sd">    summSegList : glue.segments.segmentlist</span>
+<span class="sd">    summSegList : ligo.segments.segmentlist</span>
 <span class="sd">        The times that are covered in the segment summary table.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Parse the segmentName</span>
@@ -1271,7 +1272,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 20, 2019.
+        Last updated on Feb 22, 2019.
       </span>
 
     </p>

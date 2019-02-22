@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.grb_utils &mdash; PyCBC 0b35c0 documentation</title>
+  <title>pycbc.workflow.grb_utils &mdash; PyCBC 3acd4d documentation</title>
   
 
   
@@ -236,7 +236,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">urlparse</span><span class="o">,</span> <span class="nn">urllib</span>
-<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span>
+<span class="kn">from</span> <span class="nn">ligo</span> <span class="k">import</span> <span class="n">segments</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">ligolw</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">ilwd</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.core</span> <span class="k">import</span> <span class="n">File</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">resolve_url</span>
 <span class="kn">from</span> <span class="nn">pycbc.workflow.jobsetup</span> <span class="k">import</span> <span class="n">select_generic_executable</span>
@@ -350,7 +350,7 @@
 <span class="sd">    ifos : str</span>
 <span class="sd">    String containing the analysis interferometer IDs.</span>
 
-<span class="sd">    sci_seg : glue.segments.segment</span>
+<span class="sd">    sci_seg : ligo.segments.segment</span>
 <span class="sd">    The science segment for the analysis run.</span>
 
 <span class="sd">    out_dir : str</span>
@@ -502,7 +502,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 20, 2019.
+        Last updated on Feb 22, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow package &mdash; PyCBC 0b35c0 documentation</title>
+  <title>pycbc.workflow package &mdash; PyCBC 3acd4d documentation</title>
   
 
   
@@ -1824,7 +1824,7 @@ information and then add that file as output of this node.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>valid_seg</strong> (<em>glue.segments.segment</em>) – The time span over which the job is valid for.</li>
+<li><strong>valid_seg</strong> (<em>ligo.segments.segment</em>) – The time span over which the job is valid for.</li>
 <li><strong>extension</strong> (<em>string</em>) – The extension to be used at the end of the filename.
 E.g. ‘.xml’ or ‘.sqlite’.</li>
 <li><strong>option_name</strong> (<em>string</em>) – The option that is used when setting this job as output. For e.g.
@@ -1873,10 +1873,10 @@ segment dictionary, if it is known at workflow run time.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
-<li><strong>segmentlists</strong> (<em>List of glue.segments.segmentslist</em>) – List of segment lists that will be stored in this file.</li>
+<li><strong>segmentlists</strong> (<em>List of ligo.segments.segmentslist</em>) – List of segment lists that will be stored in this file.</li>
 <li><strong>names</strong> (<em>List of str</em>) – List of names of the segment lists to be stored in the file.</li>
 <li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – List of ifos of the segment lists to be stored in this file.</li>
-<li><strong>seg_summ_lists</strong> (<em>glue.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlists that go along with the
+<li><strong>seg_summ_lists</strong> (<em>ligo.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlists that go along with the
 segmentlists. Default=None, in this case segment_summary is taken
 from the valid_segment of the SegFile class.</li>
 </ul>
@@ -1896,10 +1896,10 @@ from the valid_segment of the SegFile class.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
-<li><strong>segmentlist</strong> (<em>glue.segments.segmentslist</em>) – The segment list that will be stored in this file.</li>
+<li><strong>segmentlist</strong> (<em>ligo.segments.segmentslist</em>) – The segment list that will be stored in this file.</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name of the segment lists to be stored in the file.</li>
 <li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The ifo of the segment lists to be stored in this file.</li>
-<li><strong>seg_summ_list</strong> (<em>glue.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlist that goes along with the
+<li><strong>seg_summ_list</strong> (<em>ligo.segments.segmentslist</em><em> (</em><em>OPTIONAL</em><em>)</em>) – Specify the segment_summary segmentlist that goes along with the
 segmentlist. Default=None, in this case segment_summary is taken
 from the valid_segment of the SegFile class.</li>
 </ul>
@@ -1919,14 +1919,14 @@ from the valid_segment of the SegFile class.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>description</strong> (<em>string</em><em> (</em><em>required</em><em>)</em>) – See File.__init__</li>
-<li><strong>segmentlistdict</strong> (<em>glue.segments.segmentslistdict</em>) – See SegFile.__init__</li>
+<li><strong>segmentlistdict</strong> (<em>ligo.segments.segmentslistdict</em>) – See SegFile.__init__</li>
 <li><strong>ifo_list</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>optional</em><em>)</em>) – See File.__init__, if not given a list of all ifos in the
 segmentlistdict object will be used</li>
-<li><strong>valid_segment</strong> (<em>glue.segments.segment</em><em> or </em><em>glue.segments.segmentlist</em>) – See File.__init__, if not given the extent of all segments in the
+<li><strong>valid_segment</strong> (<em>ligo.segments.segment</em><em> or </em><em>ligo.segments.segmentlist</em>) – See File.__init__, if not given the extent of all segments in the
 segmentlistdict is used.</li>
 <li><strong>file_exists</strong> (<em>boolean</em><em> (</em><em>default = False</em><em>)</em>) – If provided and set to True it is assumed that this file already
 exists on disk and so there is no need to write again.</li>
-<li><strong>seg_summ_dict</strong> (<em>glue.segments.segmentslistdict</em>) – Optional. See SegFile.__init__.</li>
+<li><strong>seg_summ_dict</strong> (<em>ligo.segments.segmentslistdict</em>) – Optional. See SegFile.__init__.</li>
 </ul>
 </td>
 </tr>
@@ -1937,7 +1937,7 @@ exists on disk and so there is no need to write again.</li>
 <dl class="classmethod">
 <dt id="pycbc.workflow.core.SegFile.from_segment_xml">
 <em class="property">classmethod </em><code class="descname">from_segment_xml</code><span class="sig-paren">(</span><em>xml_file</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/workflow/core.html#SegFile.from_segment_xml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.workflow.core.SegFile.from_segment_xml" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read a glue.segments.segmentlist from the file object file containing an
+<dd><p>Read a ligo.segments.segmentlist from the file object file containing an
 xml segment table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2074,11 +2074,11 @@ and return a single segment spanning that full time.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>science_segs</strong> (<em>ifo-keyed dictionary of glue.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>science_segs</strong> (<em>ifo-keyed dictionary of ligo.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>fullSegment</strong> – The segment spanning the first and last time point contained in science_segs.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">glue.segments.segment</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ligo.segments.segment</td>
 </tr>
 </tbody>
 </table>
@@ -2299,7 +2299,7 @@ for the flag given by segmentName.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>summSegList</strong> – The times that are covered in the segment summary table.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">glue.segments.segmentlist</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ligo.segments.segmentlist</p>
 </td>
 </tr>
 </tbody>
@@ -2731,7 +2731,7 @@ GBM systematic if necessary.</p>
 <li><strong>parsed configuration options of a pycbc.workflow.core.Workflow.</strong> (<em>The</em>) – </li>
 <li><strong>ifos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>containing the analysis interferometer IDs.</strong> (<em>String</em>) – </li>
-<li><strong>sci_seg</strong> (<em>glue.segments.segment</em>) – </li>
+<li><strong>sci_seg</strong> (<em>ligo.segments.segment</em>) – </li>
 <li><strong>science segment for the analysis run.</strong> (<em>The</em>) – </li>
 <li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – </li>
 <li><strong>output directory</strong><strong>, </strong><strong>destination for xml file.</strong> (<em>The</em>) – </li>
@@ -2831,7 +2831,7 @@ the gated frame files.</li>
 <li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The directory to store result plots and files.</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
-<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
+<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>ligo.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables.</li>
 </ul>
@@ -2862,7 +2862,7 @@ time from the workflow.</li>
 <li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A <code class="docutils literal notranslate"><span class="pre">list</span></code> of parameters. Each parameter gets its own plot.</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
-<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
+<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>ligo.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables.</li>
 </ul>
@@ -2893,7 +2893,7 @@ time from the workflow.</li>
 <li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of parameters to plot.</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
-<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
+<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>ligo.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables.</li>
 </ul>
@@ -2924,7 +2924,7 @@ time from the workflow.</li>
 <li><strong>sections</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of subsections to use.</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
-<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
+<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>ligo.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables.</li>
 </ul>
@@ -2960,7 +2960,7 @@ time from the workflow.</li>
 <li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – A list of parameters to use instead of [variable_args].</li>
 <li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The name in the [executables] section of the configuration file
 to use.</li>
-<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>glue.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
+<li><strong>analysis_segs</strong> (<em>{None</em><em>, </em><em>ligo.segments.Segment}</em>) – The segment this job encompasses. If None then use the total analysis
 time from the workflow.</li>
 <li><strong>tags</strong> (<em>{None</em><em>, </em><em>optional}</em>) – Tags to add to the inference executables.</li>
 </ul>
@@ -4000,7 +4000,7 @@ the aforementioned valid output.</li>
 <li><strong>out_files</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – The FileList containing the list of jobs. Jobs will be appended
 to this list, and it does not need to be empty when supplied.</li>
 <li><strong>curr_exe_job</strong> (<em>Job</em>) – An instanced of the Job class that has a get_valid times method.</li>
-<li><strong>science_segs</strong> (<em>glue.segments.segmentlist</em>) – The list of times that the jobs should cover</li>
+<li><strong>science_segs</strong> (<em>ligo.segments.segmentlist</em>) – The list of times that the jobs should cover</li>
 <li><strong>datafind_outs</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – The file list containing the datafind files.</li>
 <li><strong>parents</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a><em> (</em><em>optional</em><em>, </em><em>kwarg</em><em>, </em><em>default=None</em><em>)</em>) – The FileList containing the list of jobs that are parents to
 the one being set up.</li>
@@ -4047,7 +4047,7 @@ Executable and Job sub-classes (see jobutils.py).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The Workflow instance that the coincidence jobs will be added to.</li>
-<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of glue.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
+<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of ligo.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
 <li><strong>datafind_outs</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the datafind files that are needed to obtain the
 data used in the analysis.</li>
 <li><strong>tmplt_banks</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the template bank files that will serve as input
@@ -4094,7 +4094,7 @@ additions are needed to define Executable and Job sub-classes
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The Workflow instance that the coincidence jobs will be added to.</li>
-<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of glue.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
+<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of ligo.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
 <li><strong>datafind_outs</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the datafind files that are needed to obtain the
 data used in the analysis.</li>
 <li><strong>tmplt_banks</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the template bank files that will serve as input
@@ -4137,7 +4137,7 @@ there is data and a template bank file.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>Workflow</strong> (<a class="reference internal" href="#pycbc.workflow.core.Workflow" title="pycbc.workflow.core.Workflow"><em>pycbc.workflow.core.Workflow</em></a>) – The workflow instance that the coincidence jobs will be added to.</li>
-<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of glue.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
+<li><strong>science_segs</strong> (<em>ifo-keyed dictionary of ligo.segments.segmentlist instances</em>) – The list of times that are being analysed in this workflow.</li>
 <li><strong>datafind_outs</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the datafind files that are needed to obtain the
 data used in the analysis.</li>
 <li><strong>tmplt_banks</strong> (<a class="reference internal" href="#pycbc.workflow.core.FileList" title="pycbc.workflow.core.FileList"><em>pycbc.workflow.core.FileList</em></a>) – An FileList of the template bank files that will serve as input
@@ -4260,7 +4260,7 @@ the input/output files automatically.</p>
 <li><strong>out_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Location of directory to output to</li>
 <li><strong>injection_file</strong> (<em>pycbc.workflow.File</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – If given, add the injections in the file to strain before making the
 plot.</li>
-<li><strong>data_segments</strong> (<em>glue.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
+<li><strong>data_segments</strong> (<em>ligo.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
 the start/end times given to singles_timefreq will be adjusted if
 [trig_time - time_window, trig_time + time_window] does not completely
 lie within a valid data segment. A ValueError will be raised if the
@@ -4354,7 +4354,7 @@ assume that all segments should be read.</li>
 <li><strong>time_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The amount of data (not including padding) that will be read in by the
 singles_timefreq job. The default value of 10s should be fine for most
 cases.</li>
-<li><strong>data_segments</strong> (<em>glue.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
+<li><strong>data_segments</strong> (<em>ligo.segments.segmentlist</em><em> (</em><em>optional</em><em>, </em><em>default=None</em><em>)</em>) – The list of segments for which data exists and can be read in. If given
 the start/end times given to singles_timefreq will be adjusted if
 [trig_time - time_window, trig_time + time_window] does not completely
 lie within a valid data segment. A ValueError will be raised if the
@@ -5159,7 +5159,7 @@ configuration options.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
 <li><strong>sci_ok_seg_file</strong> (<em>workflow.core.SegFile instance</em>) – The segment file combined from all ifos containing the analyzable
 science segments.</li>
-<li><strong>sci_ok_segs</strong> (<em>Ifo keyed dict of glue.segments.segmentlist instances</em>) – The analyzable science segs for each ifo, keyed by ifo</li>
+<li><strong>sci_ok_segs</strong> (<em>Ifo keyed dict of ligo.segments.segmentlist instances</em>) – The analyzable science segs for each ifo, keyed by ifo</li>
 <li><strong>sci_ok_seg_name</strong> (<em>str</em>) – The name with which analyzable science segs are stored in the output
 XML file.</li>
 </ul>
@@ -5281,7 +5281,7 @@ the Files and uniqueify the actual filename.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>sci_segs</strong> (<em>glue.segments.segmentlist</em>) – The segmentlist generated by this call</li>
+<li><strong>sci_segs</strong> (<em>ligo.segments.segmentlist</em>) – The segmentlist generated by this call</li>
 <li><strong>sci_xml_file</strong> (<em>pycbc.workflow.core.SegFile</em>) – The workflow File object corresponding to this science segments file.</li>
 <li><strong>out_sci_seg_name</strong> (<em>string</em>) – The name of the output segment list in the output XML file.</li>
 </ul>
@@ -5310,7 +5310,7 @@ configuration options.</li>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
 <li><strong>sci_seg_file</strong> (<em>workflow.core.SegFile instance</em>) – The segment file combined from all ifos containing the science segments.</li>
-<li><strong>sci_segs</strong> (<em>Ifo keyed dict of glue.segments.segmentlist instances</em>) – The science segs for each ifo, keyed by ifo</li>
+<li><strong>sci_segs</strong> (<em>Ifo keyed dict of ligo.segments.segmentlist instances</em>) – The science segs for each ifo, keyed by ifo</li>
 <li><strong>sci_seg_name</strong> (<em>str</em>) – The name with which science segs are stored in the output XML file.</li>
 </ul>
 </p>
@@ -5337,8 +5337,8 @@ are insufficient for a search.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>onsource</strong> (<em>glue.segments.segmentlistdict</em>) – A dictionary containing the on source segments for network IFOs</li>
-<li><strong>offsource</strong> (<em>glue.segments.segmentlistdict</em>) – A dictionary containing the off source segments for network IFOs</li>
+<li><strong>onsource</strong> (<em>ligo.segments.segmentlistdict</em>) – A dictionary containing the on source segments for network IFOs</li>
+<li><strong>offsource</strong> (<em>ligo.segments.segmentlistdict</em>) – A dictionary containing the off source segments for network IFOs</li>
 </ul>
 </p>
 </td>
@@ -5772,7 +5772,7 @@ interferometer data</p>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 20, 2019.
+        Last updated on Feb 22, 2019.
       </span>
 
     </p>

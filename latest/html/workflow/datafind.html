@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The workflow datafind and validation module &mdash; PyCBC 0b35c0 documentation</title>
+  <title>The workflow datafind and validation module &mdash; PyCBC 3acd4d documentation</title>
   
 
   
@@ -248,7 +248,7 @@ accordingly. This includes</p>
 <ul class="simple">
 <li>A configuration file (or files) containing the information needed to tell this module how to generate the segments (described below).</li>
 <li>An initialized instance of the pycbc workflow class, containing the ConfigParser.</li>
-<li>An ifo-keyed dictionary of glue.segments.segmentlist instances containing the times that should be analysed for each ifo. See <a class="reference internal" href="segments.html#workflowsegmentsmod"><span class="std std-ref">The workflow segment generation module</span></a> for documentation of the segments module, which in most cases should be used to obtain this input.</li>
+<li>An ifo-keyed dictionary of ligo.segments.segmentlist instances containing the times that should be analysed for each ifo. See <a class="reference internal" href="segments.html#workflowsegmentsmod"><span class="std std-ref">The workflow segment generation module</span></a> for documentation of the segments module, which in most cases should be used to obtain this input.</li>
 </ul>
 <p>The module is then called according to</p>
 <dl class="function">
@@ -722,7 +722,7 @@ for the flag given by segmentName.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>summSegList</strong> – The times that are covered in the segment summary table.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">glue.segments.segmentlist</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ligo.segments.segmentlist</p>
 </td>
 </tr>
 </tbody>
@@ -1093,7 +1093,7 @@ sci_avlble_file.</li>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 20, 2019.
+        Last updated on Feb 22, 2019.
       </span>
 
     </p>

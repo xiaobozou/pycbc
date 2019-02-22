@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.workflow.core &mdash; PyCBC 0b35c0 documentation</title>
+  <title>pycbc.workflow.core &mdash; PyCBC 3acd4d documentation</title>
   
 
   
@@ -239,7 +239,7 @@
 <span class="kn">import</span> <span class="nn">lal.utils</span>
 <span class="kn">import</span> <span class="nn">Pegasus.DAX3</span>
 <span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">lal</span> <span class="k">as</span> <span class="n">gluelal</span>
-<span class="kn">from</span> <span class="nn">glue</span> <span class="k">import</span> <span class="n">segments</span>
+<span class="kn">from</span> <span class="nn">ligo</span> <span class="k">import</span> <span class="n">segments</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">lsctables</span><span class="p">,</span> <span class="n">ligolw</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
 <span class="kn">from</span> <span class="nn">glue.ligolw.utils</span> <span class="k">import</span> <span class="n">segments</span> <span class="k">as</span> <span class="n">ligolw_segments</span>
@@ -1049,7 +1049,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        -----------</span>
-<span class="sd">        valid_seg : glue.segments.segment</span>
+<span class="sd">        valid_seg : ligo.segments.segment</span>
 <span class="sd">            The time span over which the job is valid for.</span>
 <span class="sd">        extension : string</span>
 <span class="sd">            The extension to be used at the end of the filename.</span>
@@ -1242,7 +1242,7 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segs</span><span class="p">,</span> <span class="p">(</span><span class="n">segments</span><span class="o">.</span><span class="n">segmentlist</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">segment_list</span> <span class="o">=</span> <span class="n">segs</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;segs input must be either glue.segments.segment or &quot;</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="s2">&quot;segs input must be either ligo.segments.segment or &quot;</span>
             <span class="n">err</span> <span class="o">+=</span> <span class="s2">&quot;segments.segmentlist. Got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">segs</span><span class="p">)),)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1758,7 +1758,7 @@
 <span class="sd">        See File.__init__ for a full set of documentation for how to</span>
 <span class="sd">        call this class. The only thing unique and added to this class is</span>
 <span class="sd">        the optional segment_dict. NOTE that while segment_dict is a</span>
-<span class="sd">        glue.segments.segmentlistdict rather than the usual dict[ifo]</span>
+<span class="sd">        ligo.segments.segmentlistdict rather than the usual dict[ifo]</span>
 <span class="sd">        we key by dict[ifo:name].</span>
 
 <span class="sd">        Parameters</span>
@@ -1767,10 +1767,10 @@
 <span class="sd">            See File.__init__</span>
 <span class="sd">        description : string (required)</span>
 <span class="sd">            See File.__init__</span>
-<span class="sd">        segment : glue.segments.segment or glue.segments.segmentlist</span>
+<span class="sd">        segment : ligo.segments.segment or ligo.segments.segmentlist</span>
 <span class="sd">            See File.__init__</span>
-<span class="sd">        segment_dict : glue.segments.segmentlistdict (optional, default=None)</span>
-<span class="sd">            A glue.segments.segmentlistdict covering the times covered by the</span>
+<span class="sd">        segment_dict : ligo.segments.segmentlistdict (optional, default=None)</span>
+<span class="sd">            A ligo.segments.segmentlistdict covering the times covered by the</span>
 <span class="sd">            segmentlistdict associated with this file.</span>
 <span class="sd">            Can be added by setting self.segment_dict after initializing an</span>
 <span class="sd">            instance of the class.</span>
@@ -1793,13 +1793,13 @@
 <span class="sd">        ------------</span>
 <span class="sd">        description : string (required)</span>
 <span class="sd">            See File.__init__</span>
-<span class="sd">        segmentlist : glue.segments.segmentslist</span>
+<span class="sd">        segmentlist : ligo.segments.segmentslist</span>
 <span class="sd">            The segment list that will be stored in this file.</span>
 <span class="sd">        name : str</span>
 <span class="sd">            The name of the segment lists to be stored in the file.</span>
 <span class="sd">        ifo : str</span>
 <span class="sd">            The ifo of the segment lists to be stored in this file.</span>
-<span class="sd">        seg_summ_list : glue.segments.segmentslist (OPTIONAL)</span>
+<span class="sd">        seg_summ_list : ligo.segments.segmentslist (OPTIONAL)</span>
 <span class="sd">            Specify the segment_summary segmentlist that goes along with the</span>
 <span class="sd">            segmentlist. Default=None, in this case segment_summary is taken</span>
 <span class="sd">            from the valid_segment of the SegFile class.</span>
@@ -1823,13 +1823,13 @@
 <span class="sd">        ------------</span>
 <span class="sd">        description : string (required)</span>
 <span class="sd">            See File.__init__</span>
-<span class="sd">        segmentlists : List of glue.segments.segmentslist</span>
+<span class="sd">        segmentlists : List of ligo.segments.segmentslist</span>
 <span class="sd">            List of segment lists that will be stored in this file.</span>
 <span class="sd">        names : List of str</span>
 <span class="sd">            List of names of the segment lists to be stored in the file.</span>
 <span class="sd">        ifos : str</span>
 <span class="sd">            List of ifos of the segment lists to be stored in this file.</span>
-<span class="sd">        seg_summ_lists : glue.segments.segmentslist (OPTIONAL)</span>
+<span class="sd">        seg_summ_lists : ligo.segments.segmentslist (OPTIONAL)</span>
 <span class="sd">            Specify the segment_summary segmentlists that go along with the</span>
 <span class="sd">            segmentlists. Default=None, in this case segment_summary is taken</span>
 <span class="sd">            from the valid_segment of the SegFile class.</span>
@@ -1858,18 +1858,18 @@
 <span class="sd">        ------------</span>
 <span class="sd">        description : string (required)</span>
 <span class="sd">            See File.__init__</span>
-<span class="sd">        segmentlistdict : glue.segments.segmentslistdict</span>
+<span class="sd">        segmentlistdict : ligo.segments.segmentslistdict</span>
 <span class="sd">            See SegFile.__init__</span>
 <span class="sd">        ifo_list : string or list (optional)</span>
 <span class="sd">            See File.__init__, if not given a list of all ifos in the</span>
 <span class="sd">            segmentlistdict object will be used</span>
-<span class="sd">        valid_segment : glue.segments.segment or glue.segments.segmentlist</span>
+<span class="sd">        valid_segment : ligo.segments.segment or ligo.segments.segmentlist</span>
 <span class="sd">            See File.__init__, if not given the extent of all segments in the</span>
 <span class="sd">            segmentlistdict is used.</span>
 <span class="sd">        file_exists : boolean (default = False)</span>
 <span class="sd">            If provided and set to True it is assumed that this file already</span>
 <span class="sd">            exists on disk and so there is no need to write again.</span>
-<span class="sd">        seg_summ_dict : glue.segments.segmentslistdict</span>
+<span class="sd">        seg_summ_dict : ligo.segments.segmentslistdict</span>
 <span class="sd">            Optional. See SegFile.__init__.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">ifo_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1911,7 +1911,7 @@
 <div class="viewcode-block" id="SegFile.from_segment_xml"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.core.SegFile.from_segment_xml">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_segment_xml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">xml_file</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Read a glue.segments.segmentlist from the file object file containing an</span>
+<span class="sd">        Read a ligo.segments.segmentlist from the file object file containing an</span>
 <span class="sd">        xml segment table.</span>
 
 <span class="sd">        Parameters</span>
@@ -2141,12 +2141,12 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
-<span class="sd">    science_segs : ifo-keyed dictionary of glue.segments.segmentlist instances</span>
+<span class="sd">    science_segs : ifo-keyed dictionary of ligo.segments.segmentlist instances</span>
 <span class="sd">        The list of times that are being analysed in this workflow.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
-<span class="sd">    fullSegment : glue.segments.segment</span>
+<span class="sd">    fullSegment : ligo.segments.segment</span>
 <span class="sd">        The segment spanning the first and last time point contained in science_segs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">extents</span> <span class="o">=</span> <span class="p">[</span><span class="n">science_segs</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">science_segs</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
@@ -2179,7 +2179,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 20, 2019.
+        Last updated on Feb 22, 2019.
       </span>
 
     </p>
