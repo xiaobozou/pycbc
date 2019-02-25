@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.coinc &mdash; PyCBC 422158 documentation</title>
+  <title>pycbc.events.coinc &mdash; PyCBC 8ce1fc documentation</title>
   
 
   
@@ -790,12 +790,13 @@
         <span class="n">count</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span>
         <span class="k">return</span> <span class="n">count</span></div>
 
-<div class="viewcode-block" id="MultiRingBuffer.buffer_total"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.buffer_total">[docs]</a>    <span class="k">def</span> <span class="nf">buffer_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
-
 <div class="viewcode-block" id="MultiRingBuffer.num_elements"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.num_elements">[docs]</a>    <span class="k">def</span> <span class="nf">num_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">total</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">nbytes</span>
 
 <div class="viewcode-block" id="MultiRingBuffer.discard_last"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.discard_last">[docs]</a>    <span class="k">def</span> <span class="nf">discard_last</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Discard the triggers added in the latest update&quot;&quot;&quot;</span>
@@ -885,6 +886,13 @@
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">initial_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nbytes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">nbytes</span>
 
 <div class="viewcode-block" id="CoincExpireBuffer.increment"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.CoincExpireBuffer.increment">[docs]</a>    <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Increment without adding triggers&quot;&quot;&quot;</span>
@@ -1370,6 +1378,14 @@
 <span class="sd">        coinc_results: dict of arrays</span>
 <span class="sd">            A dictionary of arrays containing the coincident results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Let&#39;s see how large everything is</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;BKG </span><span class="si">%s</span><span class="s1"> singles </span><span class="si">%s</span><span class="s1"> stored </span><span class="si">%s</span><span class="s1"> bytes&#39;</span><span class="p">,</span>
+                         <span class="n">ifo</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">num_elements</span><span class="p">(),</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">singles</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;BKG Coincs </span><span class="si">%s</span><span class="s1"> stored </span><span class="si">%s</span><span class="s1"> bytes&#39;</span><span class="p">,</span>
+                     <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span>
+
         <span class="c1"># If there are no results just return</span>
         <span class="n">valid_ifos</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_ifos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="p">{}</span>
