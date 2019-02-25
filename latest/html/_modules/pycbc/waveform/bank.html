@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.waveform.bank &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.waveform.bank &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -731,13 +731,19 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getslice</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LiveFilterBank.get_template"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.LiveFilterBank.get_template">[docs]</a>    <span class="k">def</span> <span class="nf">get_template</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">min_buffer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
         <span class="n">approximant</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">approximant</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="n">f_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_frequency</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="n">flow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">f_lower</span>
 
         <span class="c1"># Determine the length of time of the filter, rounded up to</span>
         <span class="c1"># nearest power of two</span>
-        <span class="n">min_buffer</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">minimum_buffer</span>
+        <span class="k">if</span> <span class="n">min_buffer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_buffer</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">minimum_buffer</span>
+        <span class="n">min_buffer</span> <span class="o">+=</span> <span class="mf">0.5</span>
 
         <span class="kn">from</span> <span class="nn">pycbc.waveform.waveform</span> <span class="k">import</span> <span class="n">props</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
@@ -791,7 +797,8 @@
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">mass2</span><span class="p">,</span>
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">spin1z</span><span class="p">,</span>
                                       <span class="n">htilde</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">spin2z</span><span class="p">)))</span>
-        <span class="k">return</span> <span class="n">htilde</span></div>
+        <span class="k">return</span> <span class="n">htilde</span></div></div>
+
 
 <div class="viewcode-block" id="FilterBank"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.bank.FilterBank">[docs]</a><span class="k">class</span> <span class="nc">FilterBank</span><span class="p">(</span><span class="n">TemplateBank</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">filter_length</span><span class="p">,</span> <span class="n">delta_f</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span>
@@ -1079,7 +1086,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

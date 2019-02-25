@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.io &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.io &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -354,19 +354,21 @@
     <span class="k">with</span> <span class="n">loadfile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="c1"># check that all datasets in samples have the same shape</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-        <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{}</span><span class="s1">&#39;</span>
-        <span class="c1"># use the first parameter as a reference shape</span>
-        <span class="n">ref_shape</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ref_shape</span>
-                   <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;not all datasets in the samples group have the &quot;</span>
-                          <span class="s2">&quot;same shape&quot;</span><span class="p">)</span>
-        <span class="c1"># check that we can read the first/last sample</span>
-        <span class="n">firstidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
-        <span class="n">lastidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
-            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">firstidx</span><span class="p">]</span>
-            <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">lastidx</span><span class="p">]</span></div>
+        <span class="c1"># but only do the check if parameters have been written</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{}</span><span class="s1">&#39;</span>
+            <span class="c1"># use the first parameter as a reference shape</span>
+            <span class="n">ref_shape</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span><span class="o">.</span><span class="n">shape</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ref_shape</span>
+                       <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;not all datasets in the samples group have the &quot;</span>
+                              <span class="s2">&quot;same shape&quot;</span><span class="p">)</span>
+            <span class="c1"># check that we can read the first/last sample</span>
+            <span class="n">firstidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
+            <span class="n">lastidx</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ref_shape</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+                <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">firstidx</span><span class="p">]</span>
+                <span class="n">_</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">)][</span><span class="n">lastidx</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="validate_checkpoint_files"><a class="viewcode-back" href="../../../pycbc.inference.io.html#pycbc.inference.io.validate_checkpoint_files">[docs]</a><span class="k">def</span> <span class="nf">validate_checkpoint_files</span><span class="p">(</span><span class="n">checkpoint_file</span><span class="p">,</span> <span class="n">backup_file</span><span class="p">):</span>
@@ -861,7 +863,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

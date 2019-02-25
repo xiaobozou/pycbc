@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler package &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.sampler package &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -496,32 +496,86 @@ the given filename. Also allows for other keyword arguments.</dd>
 <dl class="attribute">
 <dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.p0">
 <code class="descname">p0</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.p0" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary of the initial position of the walkers. Set by using
-<code class="docutils literal notranslate"><span class="pre">set_p0</span></code>. If not set yet, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised when the
-attribute is accessed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.pos">
 <code class="descname">pos</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.pos" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary of the current walker positions. If the sampler hasn’t
-been run yet, returns p0.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
-</tr>
-</tbody>
-</table>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.nwalkers">
+<code class="descname">nwalkers</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.nwalkers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.niterations">
+<code class="descname">niterations</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.niterations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.checkpoint_interval">
+<code class="descname">checkpoint_interval</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.checkpoint_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.target_niterations">
+<code class="descname">target_niterations</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.target_niterations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.target_eff_nsamples">
+<code class="descname">target_eff_nsamples</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.target_eff_nsamples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.thin_interval">
+<code class="descname">thin_interval</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.thin_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.max_samples_per_chain">
+<code class="descname">max_samples_per_chain</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.max_samples_per_chain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.thin_safety_factor">
+<code class="descname">thin_safety_factor</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.thin_safety_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.burn_in">
+<code class="descname">burn_in</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.burn_in" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.effective_nsamples">
+<code class="descname">effective_nsamples</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.effective_nsamples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.acls">
+<code class="descname">acls</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.acls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.acts">
+<code class="descname">acts</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.acts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">acls</code></dt>
+<dd><p>The autocorrelation lengths of each parameter’s thinned chain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">acts</code></dt>
+<dd><p>The autocorrelation times of each parameter.</p>
+<p>The autocorrelation time is defined as the ACL times the
+<code class="docutils literal notranslate"><span class="pre">thin_interval</span></code>. It gives the number of iterations between
+independent samples.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -535,8 +589,8 @@ temperatures this would be <code class="docutils literal notranslate"><span clas
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.burn_in">
-<code class="descname">burn_in</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.burn_in" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">burn_in</code></dt>
 <dd><p>The class for doing burn-in tests (if specified).</p>
 </dd></dl>
 
@@ -572,8 +626,8 @@ temperatures this would be <code class="docutils literal notranslate"><span clas
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.checkpoint_interval">
-<code class="descname">checkpoint_interval</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.checkpoint_interval" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">checkpoint_interval</code></dt>
 <dd><p>The number of iterations to do between checkpoints.</p>
 </dd></dl>
 
@@ -598,37 +652,52 @@ given file.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.effective_nsamples">
-<code class="descname">effective_nsamples</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.effective_nsamples" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">effective_nsamples</code></dt>
 <dd><p>The effective number of samples post burn-in that the sampler has
 acquired so far.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.niterations">
-<code class="descname">niterations</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.niterations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the current number of iterations.</p>
+<dl class="method">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.get_thin_interval">
+<code class="descname">get_thin_interval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler/base_mcmc.html#BaseMCMC.get_thin_interval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.get_thin_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the thin interval to use.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">max_samples_per_chain</span></code> is set, this will figure out what thin
+interval is needed to satisfy that criteria. In that case, the thin
+interval used must be a multiple of the currently used thin interval.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.nwalkers">
-<code class="descname">nwalkers</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.nwalkers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the number of walkers.</p>
+<dt>
+<code class="descname">max_samples_per_chain</code></dt>
+<dd><p>The maximum number of samplers per chain that is written to disk.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">niterations</code></dt>
+<dd><p>The current number of iterations.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">nwalkers</code></dt>
+<dd><p>The number of walkers used.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">p0</code></dt>
-<dd><p>The starting position of the walkers in the sampling param space.</p>
-<p>The returned object is a dict mapping the sampling parameters to the
-values.</p>
+<dd><p>A dictionary of the initial position of the walkers.</p>
+<p>This is set by using <code class="docutils literal notranslate"><span class="pre">set_p0</span></code>. If not set yet, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is
+raised when the attribute is accessed.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">pos</code></dt>
-<dd><p>The current position of the walkers.</p>
-<p>Returns a dictionary mapping the sampling paramters to the values.</p>
+<dd><p>A dictionary of the current walker positions.</p>
+<p>If the sampler hasn’t been run yet, returns p0.</p>
 </dd></dl>
 
 <dl class="method">
@@ -724,16 +793,34 @@ starting positions.</li>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.set_thin_interval_from_config">
+<code class="descname">set_thin_interval_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/sampler/base_mcmc.html#BaseMCMC.set_thin_interval_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.set_thin_interval_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets thinning options from the given config file.</p>
+</dd></dl>
+
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.target_eff_nsamples">
-<code class="descname">target_eff_nsamples</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.target_eff_nsamples" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">target_eff_nsamples</code></dt>
 <dd><p>The target number of effective samples the sampler should get.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pycbc.inference.sampler.base_mcmc.BaseMCMC.target_niterations">
-<code class="descname">target_niterations</code><a class="headerlink" href="#pycbc.inference.sampler.base_mcmc.BaseMCMC.target_niterations" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">target_niterations</code></dt>
 <dd><p>The number of iterations the sampler should run for.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">thin_interval</code></dt>
+<dd><p>Returns the thin interval being used.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">thin_safety_factor</code></dt>
+<dd><p>The minimum value that <code class="docutils literal notranslate"><span class="pre">max_samples_per_chain</span></code> may be set to.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1356,7 +1443,7 @@ sampler class to load. That sampler’s <code class="docutils literal notranslat
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.io.base_multitemper &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.io.base_multitemper &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -231,7 +231,7 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">from</span> <span class="nn">.base_mcmc</span> <span class="k">import</span> <span class="n">MCMCMetadataIO</span>
+<span class="kn">from</span> <span class="nn">.base_mcmc</span> <span class="k">import</span> <span class="p">(</span><span class="n">MCMCMetadataIO</span><span class="p">,</span> <span class="n">thin_samples_for_writing</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <div class="viewcode-block" id="ParseTempsArg"><a class="viewcode-back" href="../../../../pycbc.inference.io.html#pycbc.inference.io.base_multitemper.ParseTempsArg">[docs]</a><span class="k">class</span> <span class="nc">ParseTempsArg</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
@@ -308,8 +308,7 @@
     <span class="sd">&quot;&quot;&quot;Provides functions for reading/writing samples from a parallel-tempered</span>
 <span class="sd">    MCMC sampler.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="MultiTemperedMCMCIO.write_samples"><a class="viewcode-back" href="../../../../pycbc.inference.io.html#pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.write_samples">[docs]</a>    <span class="k">def</span> <span class="nf">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                      <span class="n">start_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiTemperedMCMCIO.write_samples"><a class="viewcode-back" href="../../../../pycbc.inference.io.html#pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.write_samples">[docs]</a>    <span class="k">def</span> <span class="nf">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">last_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Writes samples to the given file.</span>
 
 <span class="sd">        Results are written to ``samples_group/{vararg}``, where ``{vararg}``</span>
@@ -324,51 +323,46 @@
 <span class="sd">        parameters : list, optional</span>
 <span class="sd">            Only write the specified parameters to the file. If None, will</span>
 <span class="sd">            write all of the keys in the ``samples`` dict.</span>
-<span class="sd">        start_iteration : int, optional</span>
-<span class="sd">            Write results to the file&#39;s datasets starting at the given</span>
-<span class="sd">            iteration. Default is to append after the last iteration in the</span>
-<span class="sd">            file.</span>
-<span class="sd">        max_iterations : int, optional</span>
-<span class="sd">            Set the maximum size that the arrays in the hdf file may be resized</span>
-<span class="sd">            to. Only applies if the samples have not previously been written</span>
-<span class="sd">            to file. The default (None) is to use the maximum size allowed by</span>
-<span class="sd">            h5py.</span>
+<span class="sd">        last_iteration : int, optional</span>
+<span class="sd">            The iteration of the last sample. If the file&#39;s ``thinned_by``</span>
+<span class="sd">            attribute is &gt; 1, this is needed to determine where to start</span>
+<span class="sd">            thinning the samples to match what has already been stored on disk.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">niterations</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
         <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">niterations</span><span class="p">)</span>
                    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">samples</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="p">(</span>
                <span class="s2">&quot;all samples must have the same shape&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">max_iterations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">max_iterations</span> <span class="o">&lt;</span> <span class="n">niterations</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;The provided max size is less than the &quot;</span>
-                             <span class="s2">&quot;number of iterations&quot;</span><span class="p">)</span>
         <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{name}</span><span class="s1">&#39;</span>
         <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="c1"># thin the samples</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">thin_samples_for_writing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span>
+                                           <span class="n">last_iteration</span><span class="p">)</span>
         <span class="c1"># loop over number of dimensions</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
             <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
-            <span class="n">istart</span> <span class="o">=</span> <span class="n">start_iteration</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+            <span class="c1"># check that there&#39;s something to write after thinning</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># nothing to write, move along</span>
+                <span class="k">continue</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">fp_niterations</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">istart</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">istart</span> <span class="o">=</span> <span class="n">fp_niterations</span>
-                <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">niterations</span>
+                <span class="n">istart</span> <span class="o">=</span> <span class="n">fp_niterations</span>
+                <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">istop</span> <span class="o">&gt;</span> <span class="n">fp_niterations</span><span class="p">:</span>
                     <span class="c1"># resize the dataset</span>
                     <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">istop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="c1"># dataset doesn&#39;t exist yet</span>
-                <span class="k">if</span> <span class="n">istart</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">istart</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;non-zero start_iteration provided, &quot;</span>
-                                     <span class="s2">&quot;but dataset doesn&#39;t exist yet&quot;</span><span class="p">)</span>
                 <span class="n">istart</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">niterations</span>
+                <span class="n">istop</span> <span class="o">=</span> <span class="n">istart</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">istop</span><span class="p">),</span>
                                     <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span>
-                                              <span class="n">max_iterations</span><span class="p">),</span>
-                                    <span class="n">dtype</span><span class="o">=</span><span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+                                              <span class="kc">None</span><span class="p">),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
                                     <span class="n">fletcher32</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
+            <span class="bp">self</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">istart</span><span class="p">:</span><span class="n">istop</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span></div>
 
 <div class="viewcode-block" id="MultiTemperedMCMCIO.read_raw_samples"><a class="viewcode-back" href="../../../../pycbc.inference.io.html#pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.read_raw_samples">[docs]</a>    <span class="k">def</span> <span class="nf">read_raw_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span>
                          <span class="n">thin_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -475,7 +469,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

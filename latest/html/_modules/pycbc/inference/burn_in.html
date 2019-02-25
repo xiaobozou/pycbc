@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.burn_in &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.burn_in &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -229,6 +229,8 @@
 <span class="sd">have burned in.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ks_2samp</span>
 
@@ -374,6 +376,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_tests</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_burned_in</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_iteration</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_index</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
         <span class="c1"># Arguments specific to each test...</span>
         <span class="c1"># for nacl:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nacls</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nacls&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -395,6 +398,36 @@
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="n">niters</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">niters</span>
+
+    <span class="k">def</span> <span class="nf">_getnsamples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convenience function to get the number of samples saved in the file.</span>
+
+<span class="sd">        If no samples have been written to the file yet, just returns 0.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">io</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span><span class="p">]</span>
+                <span class="c1"># we&#39;ll just use the first parameter</span>
+                <span class="n">params</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                <span class="n">nsamples</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+                <span class="n">nsamples</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">nsamples</span>
+
+    <span class="k">def</span> <span class="nf">_index2iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts the index in some samples at which burn in occurs to the</span>
+<span class="sd">        iteration of the sampler that corresponds to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">io</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">thin_interval</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">thinned_by</span>
+        <span class="k">return</span> <span class="n">index</span> <span class="o">*</span> <span class="n">thin_interval</span>
+
+    <span class="k">def</span> <span class="nf">_iter2index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts an iteration to the index it corresponds to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">io</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">thin_interval</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">thinned_by</span>
+        <span class="k">return</span> <span class="n">iteration</span> <span class="o">//</span> <span class="n">thin_interval</span>
 
     <span class="k">def</span> <span class="nf">_getlogposts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convenience function for retrieving log posteriors.</span>
@@ -457,11 +490,12 @@
         <span class="c1"># required things to store</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_burned_in</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]:</span>
-            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">burn_in_idx</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span>
+                <span class="n">filename</span><span class="p">,</span> <span class="n">burn_in_idx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
         <span class="c1"># additional info</span>
-        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;iteration_per_walker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">burn_in_idx</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;iteration_per_walker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">burn_in_idx</span><span class="p">)</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;status_per_walker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_burned_in</span></div>
 
 <div class="viewcode-block" id="MCMCBurnInTests.posterior_step"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.MCMCBurnInTests.posterior_step">[docs]</a>    <span class="k">def</span> <span class="nf">posterior_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
@@ -473,9 +507,10 @@
         <span class="c1"># this test cannot determine when something will burn in</span>
         <span class="c1"># only when it was not burned in in the past</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">burn_in_idx</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span>
+            <span class="n">filename</span><span class="p">,</span> <span class="n">burn_in_idx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
         <span class="c1"># additional info</span>
-        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;iteration_per_walker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">burn_in_idx</span></div>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;iteration_per_walker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">burn_in_idx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MCMCBurnInTests.nacl"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.MCMCBurnInTests.nacl">[docs]</a>    <span class="k">def</span> <span class="nf">nacl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Burn in based on ACL.</span>
@@ -486,11 +521,11 @@
 
 <span class="sd">        2. An ACL is calculated from the second half.</span>
 
-<span class="sd">        3. If ``nacls`` times the ACL is &lt; the number of iterations / 2,</span>
+<span class="sd">        3. If ``nacls`` times the ACL is &lt; the length of the chain / 2,</span>
 <span class="sd">           the chain is considered to be burned in at the half-way point.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">niters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getniters</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-        <span class="n">kstart</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">niters</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span>
+        <span class="n">nsamples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getnsamples</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">kstart</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nsamples</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span>
         <span class="n">acls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getacls</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="n">kstart</span><span class="p">)</span>
         <span class="n">is_burned_in</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nacls</span> <span class="o">*</span> <span class="n">acl</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">kstart</span>
                         <span class="k">for</span> <span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">acl</span><span class="p">)</span> <span class="ow">in</span> <span class="n">acls</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
@@ -498,7 +533,7 @@
         <span class="c1"># required things to store</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">is_burned_in</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]:</span>
-            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kstart</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">kstart</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
         <span class="c1"># additional information</span>
@@ -506,11 +541,11 @@
 
 <div class="viewcode-block" id="MCMCBurnInTests.ks_test"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.MCMCBurnInTests.ks_test">[docs]</a>    <span class="k">def</span> <span class="nf">ks_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Applies ks burn-in test.&quot;&quot;&quot;</span>
+        <span class="n">nsamples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getnsamples</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampler</span><span class="o">.</span><span class="n">io</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-            <span class="n">niters</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
             <span class="c1"># get the samples from the mid point</span>
             <span class="n">samples1</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_raw_samples</span><span class="p">(</span>
-                <span class="p">[</span><span class="s1">&#39;loglikelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;logprior&#39;</span><span class="p">],</span> <span class="n">iteration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">niters</span><span class="o">/</span><span class="mf">2.</span><span class="p">))</span>
+                <span class="p">[</span><span class="s1">&#39;loglikelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;logprior&#39;</span><span class="p">],</span> <span class="n">iteration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">nsamples</span><span class="o">/</span><span class="mf">2.</span><span class="p">))</span>
             <span class="c1"># get the last samples</span>
             <span class="n">samples2</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read_raw_samples</span><span class="p">(</span>
                 <span class="p">[</span><span class="s1">&#39;loglikelihood&#39;</span><span class="p">,</span> <span class="s1">&#39;logprior&#39;</span><span class="p">],</span> <span class="n">iteration</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
@@ -522,7 +557,8 @@
         <span class="c1"># required things to store</span>
         <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">is_the_same</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;is_burned_in&#39;</span><span class="p">]:</span>
-            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">niters</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index2iter</span><span class="p">(</span>
+                <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">nsamples</span><span class="o">/</span><span class="mf">2.</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="s1">&#39;burn_in_iteration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
         <span class="c1"># additional</span>
@@ -559,8 +595,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">is_burned_in</span>
         <span class="k">if</span> <span class="n">is_burned_in</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_iteration</span> <span class="o">=</span> <span class="n">ii</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter2index</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ii</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_iteration</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_iteration</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_index</span> <span class="o">=</span> <span class="n">NOT_BURNED_IN_ITER</span></div>
 
 <div class="viewcode-block" id="MCMCBurnInTests.from_config"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.MCMCBurnInTests.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">sampler</span><span class="p">):</span>
@@ -633,7 +671,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

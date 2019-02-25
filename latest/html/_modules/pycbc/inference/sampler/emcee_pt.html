@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.sampler.emcee_pt &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.sampler.emcee_pt &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -333,6 +333,8 @@
         <span class="n">obj</span><span class="o">.</span><span class="n">set_target_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span>
         <span class="c1"># add burn-in if it&#39;s specified</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">set_burn_in_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">)</span>
+        <span class="c1"># set prethin options</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">set_thin_interval_from_config</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span></div>
 
     <span class="nd">@property</span>
@@ -423,9 +425,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
             <span class="c1"># write samples</span>
-            <span class="n">fp</span><span class="o">.</span><span class="n">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">variable_params</span><span class="p">)</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">variable_params</span><span class="p">,</span>
+                             <span class="n">last_iteration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">niterations</span><span class="p">)</span>
             <span class="c1"># write stats</span>
-            <span class="n">fp</span><span class="o">.</span><span class="n">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_stats</span><span class="p">)</span>
+            <span class="n">fp</span><span class="o">.</span><span class="n">write_samples</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_stats</span><span class="p">,</span> <span class="n">last_iteration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">niterations</span><span class="p">)</span>
             <span class="c1"># write accpetance</span>
             <span class="n">fp</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">acceptance_fraction</span><span class="p">)</span>
             <span class="c1"># write random state</span>
@@ -515,7 +518,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events.coinc &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.events.coinc &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -227,8 +227,10 @@
 <span class="sd">&quot;&quot;&quot; This modules contains functions for calculating and manipulating</span>
 <span class="sd">coincident triggers.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">pycbc.pnutils</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">lal</span>
+
+<span class="kn">import</span> <span class="nn">h5py</span><span class="o">,</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">pycbc.pnutils</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">lal</span>
 <span class="kn">from</span> <span class="nn">pycbc.detector</span> <span class="k">import</span> <span class="n">Detector</span>
+
 
 <div class="viewcode-block" id="background_bin_from_string"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.background_bin_from_string">[docs]</a><span class="k">def</span> <span class="nf">background_bin_from_string</span><span class="p">(</span><span class="n">background_bins</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return template ids for each bin as defined by the format string</span>
@@ -788,6 +790,9 @@
         <span class="n">count</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_count</span>
         <span class="k">return</span> <span class="n">count</span></div>
 
+<div class="viewcode-block" id="MultiRingBuffer.buffer_total"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.buffer_total">[docs]</a>    <span class="k">def</span> <span class="nf">buffer_total</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="MultiRingBuffer.num_elements"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.MultiRingBuffer.num_elements">[docs]</a>    <span class="k">def</span> <span class="nf">num_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring_sizes</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">total</span></div>
@@ -946,10 +951,8 @@
                  <span class="n">stat_files</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span>
                  <span class="n">ifar_limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">timeslide_interval</span><span class="o">=.</span><span class="mi">035</span><span class="p">,</span>
-                 <span class="n">ifar_remove_threshold</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-                 <span class="n">coinc_threshold</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
-                 <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">save_background_on_interrupt</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                 <span class="n">coinc_threshold</span><span class="o">=.</span><span class="mi">002</span><span class="p">,</span>
+                 <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -970,27 +973,32 @@
 <span class="sd">            calculate.</span>
 <span class="sd">        timeslide_interval: float</span>
 <span class="sd">            The time in seconds between consecutive timeslide offsets.</span>
-<span class="sd">        ifar_remove_threshold: float</span>
-<span class="sd">            The inverse false alarm rate to assume a detection is made and remove</span>
-<span class="sd">            from the background estimate. !NOT IMPLEMENTED!</span>
 <span class="sd">        coinc_threshold: float</span>
 <span class="sd">            Amount of time allowed to form a coincidence in addition to the</span>
 <span class="sd">            time of flight in seconds.</span>
 <span class="sd">        return_background: boolean</span>
 <span class="sd">            If true, background triggers will also be included in the file</span>
 <span class="sd">            output.</span>
-<span class="sd">        save_background_on_interrupt: boolean</span>
-<span class="sd">            If true, an interrupt can be given to save a pickled version of</span>
-<span class="sd">            the background instance for later restoration. !NOT IMPLEMENTED!</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">detector</span>
         <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">stat</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_templates</span> <span class="o">=</span> <span class="n">num_templates</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">analysis_block</span> <span class="o">=</span> <span class="n">analysis_block</span>
+
+        <span class="c1"># Only pass a valid stat file for this ifo pair</span>
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">stat_files</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+            <span class="n">ifos_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;ifo0&#39;</span><span class="p">],</span> <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;ifo1&#39;</span><span class="p">]])</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">ifos_set</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">ifos</span><span class="p">):</span>
+                <span class="n">stat_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span><span class="p">]</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Setup ifos </span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1"> with file </span><span class="si">%s</span><span class="s1"> and stat </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+                             <span class="n">ifos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ifos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fname</span><span class="p">,</span> <span class="n">background_statistic</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">stat_calculator</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">get_statistic</span><span class="p">(</span><span class="n">background_statistic</span><span class="p">)(</span><span class="n">stat_files</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">timeslide_interval</span> <span class="o">=</span> <span class="n">timeslide_interval</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">return_background</span> <span class="o">=</span> <span class="n">return_background</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ifar_remove_threshold</span> <span class="o">=</span> <span class="n">ifar_remove_threshold</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span> <span class="o">=</span> <span class="n">ifos</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
@@ -1005,11 +1013,60 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">singles</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="c1">#if save_background_on_interrupt:</span>
-        <span class="c1">#    import signal</span>
-        <span class="c1">#    def sig_handler(signum, frame):</span>
-        <span class="c1">#        pass</span>
-        <span class="c1">#    signal.signal(signal.SIGINT, sig_handler)</span>
+<div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.pick_best_coinc"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.pick_best_coinc">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">pick_best_coinc</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">coinc_results</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Choose the best two-ifo coinc by ifar first, then statistic if needed.</span>
+
+<span class="sd">        This function picks which of the available double-ifo coincs to use.</span>
+<span class="sd">        It chooses the best (highest) ifar. The ranking statistic is used as</span>
+<span class="sd">        a tie-breaker.</span>
+<span class="sd">        A trials factor is applied if multiple types of coincs are possible</span>
+<span class="sd">        at this time given the active ifos.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coinc_results: list of coinc result dicts</span>
+<span class="sd">            Dictionary by detector pair of coinc result dicts.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        best: coinc results dict</span>
+<span class="sd">            If there is a coinc, this will contain the &#39;best&#39; one. Otherwise</span>
+<span class="sd">            it will return the provided dict.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mstat</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mifar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mresult</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># record the trials factor from the possible coincs we could</span>
+        <span class="c1"># maximize over</span>
+        <span class="n">trials</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">coinc_results</span><span class="p">:</span>
+            <span class="c1"># Check that a coinc was possible. See the &#39;add_singles&#39; method</span>
+            <span class="c1"># to see where this flag was added into the results dict</span>
+            <span class="k">if</span> <span class="s1">&#39;coinc_possible&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">trials</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># Check that a coinc exists</span>
+                <span class="k">if</span> <span class="s1">&#39;foreground/ifar&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="n">ifar</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;foreground/ifar&#39;</span><span class="p">]</span>
+                    <span class="n">stat</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;foreground/stat&#39;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">ifar</span> <span class="o">&gt;</span> <span class="n">mifar</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ifar</span> <span class="o">==</span> <span class="n">mifar</span> <span class="ow">and</span> <span class="n">stat</span> <span class="o">&gt;</span> <span class="n">mstat</span><span class="p">):</span>
+                        <span class="n">mifar</span> <span class="o">=</span> <span class="n">ifar</span>
+                        <span class="n">mstat</span> <span class="o">=</span> <span class="n">stat</span>
+                        <span class="n">mresult</span> <span class="o">=</span> <span class="n">result</span>
+
+        <span class="c1"># apply trials factor for the best coinc</span>
+        <span class="k">if</span> <span class="n">mresult</span><span class="p">:</span>
+            <span class="n">mresult</span><span class="p">[</span><span class="s1">&#39;foreground/ifar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mifar</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Found </span><span class="si">%s</span><span class="s1"> coinc with ifar </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
+                         <span class="n">mresult</span><span class="p">[</span><span class="s1">&#39;foreground/type&#39;</span><span class="p">],</span>
+                         <span class="n">mresult</span><span class="p">[</span><span class="s1">&#39;foreground/ifar&#39;</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">mresult</span>
+        <span class="c1"># If no coinc, just return one of the results dictionaries. They will</span>
+        <span class="c1"># all contain the same results (i.e. single triggers) in this case.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">coinc_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">num_templates</span><span class="p">,</span> <span class="n">analysis_chunk</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
@@ -1019,7 +1076,6 @@
                    <span class="n">return_background</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">store_background</span><span class="p">,</span>
                    <span class="n">ifar_limit</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">background_ifar_limit</span><span class="p">,</span>
                    <span class="n">timeslide_interval</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">timeslide_interval</span><span class="p">,</span>
-                   <span class="n">ifar_remove_threshold</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">ifar_remove_threshold</span><span class="p">,</span>
                    <span class="n">ifos</span><span class="o">=</span><span class="n">ifos</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LiveCoincTimeslideBackgroundEstimator.insert_args"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -1089,7 +1145,9 @@
 
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stat_calculator</span><span class="o">.</span><span class="n">single_dtype</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="s1">&#39;stat&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stat_calculator</span><span class="o">.</span><span class="n">single_dtype</span><span class="p">))</span>
 
         <span class="c1"># Create a ring buffer for each template ifo combination</span>
         <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
@@ -1097,7 +1155,7 @@
                                             <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">,</span>
                                             <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">singles_dtype</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_add_singles_to_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_add_singles_to_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add single detector triggers to the internal buffer</span>
 
 <span class="sd">        Parameters</span>
@@ -1121,7 +1179,7 @@
         <span class="c1"># where chisq is the reduced chisq and chisq_dof is the actual DOF</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;adding singles to the background estimate...&quot;</span><span class="p">)</span>
         <span class="n">updated_indices</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
             <span class="n">trigs</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;snr&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
@@ -1143,7 +1201,7 @@
             <span class="n">updated_indices</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;template_id&#39;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">updated_indices</span>
 
-    <span class="k">def</span> <span class="nf">_find_coincs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_find_coincs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">ifos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Look for coincs within the set of single triggers</span>
 
 <span class="sd">        Parameters</span>
@@ -1170,8 +1228,9 @@
 
         <span class="c1"># Calculate all the permutations of coincident triggers for each</span>
         <span class="c1"># new single detector trigger collected</span>
-        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
             <span class="n">trigs</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
+
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">])):</span>
                 <span class="n">trig_stat</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;stat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
                 <span class="n">trig_time</span> <span class="o">=</span> <span class="n">trigs</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
@@ -1210,7 +1269,7 @@
 
         <span class="n">cstat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cstat</span><span class="p">)</span>
         <span class="n">template_ids</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">template_ids</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
             <span class="n">trigger_ids</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">trigger_ids</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
         <span class="c1"># cluster the triggers we&#39;ve found</span>
@@ -1235,11 +1294,11 @@
                 <span class="n">single_expire</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">single_expire</span><span class="p">[</span><span class="n">ifo</span><span class="p">])</span>
                 <span class="n">single_expire</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_expire</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="n">cidx</span><span class="p">][</span><span class="n">bkg_idx</span><span class="p">]</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cstat</span><span class="p">[</span><span class="n">cidx</span><span class="p">][</span><span class="n">bkg_idx</span><span class="p">],</span> <span class="n">single_expire</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cstat</span><span class="p">[</span><span class="n">cidx</span><span class="p">][</span><span class="n">bkg_idx</span><span class="p">],</span> <span class="n">single_expire</span><span class="p">,</span> <span class="n">ifos</span><span class="p">)</span>
             <span class="n">num_zerolag</span> <span class="o">=</span> <span class="n">zerolag_idx</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
             <span class="n">num_background</span> <span class="o">=</span> <span class="n">bkg_idx</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">ifos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">coincs</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">ifos</span><span class="p">)</span>
 
         <span class="c1">####################################Collect coinc results for saving</span>
         <span class="n">coinc_results</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1257,6 +1316,8 @@
                 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">single_data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
                     <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
                     <span class="n">zerolag_results</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="n">single_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="n">zerolag_results</span><span class="p">[</span><span class="s1">&#39;foreground/type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">)</span>
 
             <span class="n">coinc_results</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">zerolag_results</span><span class="p">)</span>
 
@@ -1310,17 +1371,19 @@
 <span class="sd">            A dictionary of arrays containing the coincident results.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># If there are no results just return</span>
-        <span class="n">valid_ifos</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span>
+        <span class="n">valid_ifos</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ifos</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_ifos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="p">{}</span>
 
-        <span class="c1"># Apply CAT2 data quality here</span>
-        <span class="c1"># results = self.veto_singles(results, data_reader)</span>
-
         <span class="c1"># Add single triggers to the internal buffer</span>
-        <span class="n">updated_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_singles_to_buffer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="n">updated_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_singles_to_buffer</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">valid_ifos</span><span class="p">)</span>
 
         <span class="c1"># Calculate zerolag and background coincidences</span>
-        <span class="n">num_background</span><span class="p">,</span> <span class="n">coinc_results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_coincs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="n">num_background</span><span class="p">,</span> <span class="n">coinc_results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_coincs</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
+                                                          <span class="n">ifos</span><span class="o">=</span><span class="n">valid_ifos</span><span class="p">)</span>
+
+        <span class="c1"># record if a coinc is possible in this chunk</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_ifos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;coinc_possible&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="c1"># If there is a hardware injection anywhere near here dump these</span>
         <span class="c1"># results and mark the result group as possibly being influenced</span>
@@ -1344,7 +1407,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

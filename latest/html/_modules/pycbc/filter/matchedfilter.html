@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.filter.matchedfilter &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.filter.matchedfilter &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -1922,6 +1922,85 @@
 
         <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">veto_info</span></div>
 
+<div class="viewcode-block" id="followup_event_significance"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.matchedfilter.followup_event_significance">[docs]</a><span class="k">def</span> <span class="nf">followup_event_significance</span><span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">data_reader</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span>
+                                <span class="n">template_id</span><span class="p">,</span> <span class="n">coinc_times</span><span class="p">,</span>
+                                <span class="n">coinc_threshold</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+                                <span class="n">lookback</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.095</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Followup an event in another detector and determine its significance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Lookback for background must be shorter than the strain buffer</span>
+    <span class="k">if</span> <span class="n">lookback</span> <span class="o">&gt;</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">strain</span><span class="o">.</span><span class="n">duration</span><span class="p">:</span>
+        <span class="n">lookback</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">strain</span><span class="o">.</span><span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Setting lookback for background to &#39;</span>
+                     <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> to ensure data exists&#39;</span> <span class="o">%</span> <span class="n">lookback</span><span class="p">)</span>
+
+    <span class="c1"># calculate onsource time range</span>
+    <span class="kn">from</span> <span class="nn">pycbc.detector</span> <span class="k">import</span> <span class="n">Detector</span>
+    <span class="n">onsource_start</span> <span class="o">=</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">onsource_end</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">fdet</span> <span class="o">=</span> <span class="n">Detector</span><span class="p">(</span><span class="n">ifo</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">cifo</span> <span class="ow">in</span> <span class="n">coinc_times</span><span class="p">:</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">coinc_times</span><span class="p">[</span><span class="n">cifo</span><span class="p">]</span>
+        <span class="n">dtravel</span> <span class="o">=</span>  <span class="n">Detector</span><span class="p">(</span><span class="n">cifo</span><span class="p">)</span><span class="o">.</span><span class="n">light_travel_time_to_detector</span><span class="p">(</span><span class="n">fdet</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">time</span> <span class="o">-</span> <span class="n">dtravel</span> <span class="o">&gt;</span> <span class="n">onsource_start</span><span class="p">:</span>
+            <span class="n">onsource_start</span> <span class="o">=</span> <span class="n">time</span> <span class="o">-</span> <span class="n">dtravel</span>
+        <span class="k">if</span> <span class="n">time</span> <span class="o">+</span> <span class="n">dtravel</span> <span class="o">&lt;</span> <span class="n">onsource_end</span><span class="p">:</span>
+            <span class="n">onsource_end</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="n">dtravel</span>
+
+    <span class="c1"># Source must be within this time window to be considered a possible</span>
+    <span class="c1"># coincidence</span>
+    <span class="n">onsource_start</span> <span class="o">-=</span> <span class="n">coinc_threshold</span>
+    <span class="n">onsource_end</span> <span class="o">+=</span> <span class="n">coinc_threshold</span>
+
+    <span class="c1"># Require all strain be valid within lookback time</span>
+    <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">state_end</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">strain</span><span class="o">.</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">reduced_pad</span>
+        <span class="n">state_start</span> <span class="o">=</span> <span class="n">state_end</span> <span class="o">-</span> <span class="n">lookback</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span><span class="n">state_start</span><span class="p">,</span> <span class="n">state_end</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+    <span class="c1"># We won&#39;t require that all DQ checks be valid for now, except at</span>
+    <span class="c1"># onsource time.</span>
+    <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span><span class="n">onsource_start</span> <span class="o">-</span> <span class="n">duration</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                                              <span class="n">onsource_end</span> <span class="o">+</span> <span class="n">duration</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+    <span class="c1"># Calculate SNR time series for this duration</span>
+    <span class="n">trim_pad</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_reader</span><span class="o">.</span><span class="n">trim_padding</span> <span class="o">*</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">strain</span><span class="o">.</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">bdur</span> <span class="o">=</span> <span class="n">lookback</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">trim_pad</span>
+    <span class="n">htilde</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">template_id</span><span class="p">,</span> <span class="n">min_buffer</span><span class="o">=</span><span class="n">bdur</span><span class="p">)</span>
+    <span class="n">stilde</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">overwhitened_data</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
+
+    <span class="n">snr</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">matched_filter_core</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span>
+                                          <span class="n">h_norm</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">psd</span><span class="p">))</span>
+
+    <span class="c1"># Find peak in on-source and determine p-value</span>
+    <span class="n">onsrc</span> <span class="o">=</span> <span class="n">snr</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">onsource_start</span><span class="p">,</span> <span class="n">onsource_end</span><span class="p">)</span>
+    <span class="n">peak</span> <span class="o">=</span> <span class="n">onsrc</span><span class="o">.</span><span class="n">abs_arg_max</span><span class="p">()</span>
+    <span class="n">peak_time</span> <span class="o">=</span> <span class="n">peak</span> <span class="o">*</span> <span class="n">snr</span><span class="o">.</span><span class="n">delta_t</span> <span class="o">+</span> <span class="n">onsrc</span><span class="o">.</span><span class="n">start_time</span>
+    <span class="n">peak_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">onsrc</span><span class="p">[</span><span class="n">peak</span><span class="p">])</span>
+
+    <span class="n">bstart</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">+</span> <span class="n">htilde</span><span class="o">.</span><span class="n">length_in_time</span> <span class="o">+</span> <span class="n">trim_pad</span>
+
+    <span class="n">bkg</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">snr</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">bstart</span><span class="p">,</span> <span class="n">onsource_start</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">onsource_end</span> <span class="o">-</span> <span class="n">onsource_start</span><span class="p">)</span> <span class="o">*</span> <span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
+    <span class="n">nsamples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bkg</span><span class="p">)</span> <span class="o">/</span> <span class="n">window</span><span class="p">)</span>
+
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">bkg</span><span class="p">[:</span><span class="n">nsamples</span><span class="o">*</span><span class="n">window</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nsamples</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">peaks</span> <span class="o">&gt;=</span> <span class="n">peak_value</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nsamples</span><span class="p">)</span>
+
+    <span class="c1"># Return recentered source SNR for bayestar, along with p-value, and trig</span>
+    <span class="n">baysnr</span> <span class="o">=</span> <span class="n">snr</span><span class="o">.</span><span class="n">time_slice</span><span class="p">(</span><span class="n">peak_time</span> <span class="o">-</span> <span class="n">duration</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                            <span class="n">peak_time</span> <span class="o">+</span> <span class="n">duration</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Adding </span><span class="si">%s</span><span class="s1"> to candidate, pvalue </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> samples&#39;</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span>
+                 <span class="n">pvalue</span><span class="p">,</span> <span class="n">nsamples</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">baysnr</span> <span class="o">*</span> <span class="n">norm</span><span class="p">,</span> <span class="n">peak_time</span><span class="p">,</span> <span class="n">pvalue</span></div>
+
 <div class="viewcode-block" id="compute_followup_snr_series"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.matchedfilter.compute_followup_snr_series">[docs]</a><span class="k">def</span> <span class="nf">compute_followup_snr_series</span><span class="p">(</span><span class="n">data_reader</span><span class="p">,</span> <span class="n">htilde</span><span class="p">,</span> <span class="n">trig_time</span><span class="p">,</span>
                                 <span class="n">duration</span><span class="o">=</span><span class="mf">0.095</span><span class="p">,</span> <span class="n">check_state</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                 <span class="n">coinc_window</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
@@ -1968,47 +2047,36 @@
         <span class="n">state_start_time</span> <span class="o">=</span> <span class="n">trig_time</span> <span class="o">-</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">htilde</span><span class="o">.</span><span class="n">length_in_time</span>
         <span class="n">state_end_time</span> <span class="o">=</span> <span class="n">trig_time</span> <span class="o">+</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">state_duration</span> <span class="o">=</span> <span class="n">state_end_time</span> <span class="o">-</span> <span class="n">state_start_time</span>
-        <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span>
-                        <span class="n">state_start_time</span><span class="p">,</span> <span class="n">state_duration</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span><span class="n">state_start_time</span><span class="p">,</span>
+                                                     <span class="n">state_duration</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">None</span>
 
         <span class="c1"># was the data quality ok for the full amount of involved data?</span>
         <span class="n">dq_start_time</span> <span class="o">=</span> <span class="n">state_start_time</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq_padding</span>
         <span class="n">dq_duration</span> <span class="o">=</span> <span class="n">state_duration</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq_padding</span>
-        <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span>
-                        <span class="n">dq_start_time</span><span class="p">,</span> <span class="n">dq_duration</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">dq</span><span class="o">.</span><span class="n">is_extent_valid</span><span class="p">(</span><span class="n">dq_start_time</span><span class="p">,</span> <span class="n">dq_duration</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">None</span>
 
     <span class="n">stilde</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">overwhitened_data</span><span class="p">(</span><span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
-
-    <span class="n">norm</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">htilde</span><span class="o">.</span><span class="n">delta_f</span> <span class="o">*</span> <span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">psd</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
-
-    <span class="n">sr</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">sample_rate</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">sr</span>
-
-    <span class="n">qtilde</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="n">correlate</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span> <span class="n">qtilde</span><span class="p">)</span>
-    <span class="n">snr</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-    <span class="n">ifft</span><span class="p">(</span><span class="n">qtilde</span><span class="p">,</span> <span class="n">snr</span><span class="p">)</span>
+    <span class="n">snr</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">matched_filter_core</span><span class="p">(</span><span class="n">htilde</span><span class="p">,</span> <span class="n">stilde</span><span class="p">,</span>
+                                          <span class="n">h_norm</span><span class="o">=</span><span class="n">htilde</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">(</span><span class="n">stilde</span><span class="o">.</span><span class="n">psd</span><span class="p">))</span>
 
     <span class="n">valid_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">trim_padding</span><span class="p">)</span>
-    <span class="n">valid_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valid_end</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">blocksize</span> <span class="o">*</span> <span class="n">sr</span><span class="p">)</span>
+    <span class="n">valid_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">valid_end</span> <span class="o">-</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">blocksize</span> <span class="o">*</span> <span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span><span class="p">)</span>
 
-    <span class="n">half_dur_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sr</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">coinc_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sr</span> <span class="o">*</span> <span class="n">coinc_window</span><span class="p">)</span>
+    <span class="n">half_dur_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">coinc_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span> <span class="o">*</span> <span class="n">coinc_window</span><span class="p">)</span>
     <span class="n">valid_start</span> <span class="o">-=</span> <span class="n">half_dur_samples</span> <span class="o">+</span> <span class="n">coinc_samples</span>
     <span class="n">valid_end</span> <span class="o">+=</span> <span class="n">half_dur_samples</span>
     <span class="k">if</span> <span class="n">valid_start</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">valid_end</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">((</span><span class="s1">&#39;Requested SNR duration (</span><span class="si">{0}</span><span class="s1"> s)&#39;</span>
                           <span class="s1">&#39; too long&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duration</span><span class="p">))</span>
 
-    <span class="n">epoch</span> <span class="o">=</span> <span class="n">data_reader</span><span class="o">.</span><span class="n">start_time</span> <span class="o">-</span> <span class="p">(</span><span class="n">half_dur_samples</span> <span class="o">+</span> <span class="n">coinc_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
-    <span class="n">snr</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">snr</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="n">valid_start</span><span class="p">,</span> <span class="n">valid_end</span><span class="p">)],</span>
-                     <span class="n">delta_t</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">)</span>
-
-    <span class="n">onsource_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">trig_time</span> <span class="o">-</span> <span class="n">snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">sr</span><span class="p">))</span>
+    <span class="c1"># Onsource slice for Bayestar followup</span>
+    <span class="n">onsource_idx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">trig_time</span> <span class="o">-</span> <span class="n">snr</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">snr</span><span class="o">.</span><span class="n">sample_rate</span>
+    <span class="n">onsource_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">onsource_idx</span><span class="p">))</span>
     <span class="n">onsource_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">onsource_idx</span> <span class="o">-</span> <span class="n">half_dur_samples</span><span class="p">,</span>
                            <span class="n">onsource_idx</span> <span class="o">+</span> <span class="n">half_dur_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">snr</span><span class="p">[</span><span class="n">onsource_slice</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm</span></div>
@@ -2022,7 +2090,8 @@
            <span class="s1">&#39;compute_max_snr_over_sky_loc_stat&#39;</span><span class="p">,</span>
            <span class="s1">&#39;compute_followup_snr_series&#39;</span><span class="p">,</span>
            <span class="s1">&#39;compute_u_val_for_sky_loc_stat_no_phase&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;compute_u_val_for_sky_loc_stat&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;compute_u_val_for_sky_loc_stat&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;followup_event_significance&#39;</span><span class="p">]</span>
 
 </pre></div>
 
@@ -2038,7 +2107,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

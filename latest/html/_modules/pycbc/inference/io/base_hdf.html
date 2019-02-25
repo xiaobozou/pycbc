@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.io.base_hdf &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.io.base_hdf &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -544,6 +544,17 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
 
+    <span class="nd">@thin_start</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">thin_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thin_start</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets the thin start attribute.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        thin_start : int or None</span>
+<span class="sd">            Value to set the thin start to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;thin_start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thin_start</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">thin_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The default interval to use when reading samples.</span>
@@ -556,6 +567,17 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
 
+    <span class="nd">@thin_interval</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">thin_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thin_interval</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets the thin start attribute.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        thin_interval : int or None</span>
+<span class="sd">            Value to set the thin interval to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;thin_interval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thin_interval</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">thin_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The defaut end index to use when reading samples.</span>
@@ -567,6 +589,17 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;thin_end&#39;</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@thin_end</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">thin_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thin_end</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets the thin end attribute.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        thin_end : int or None</span>
+<span class="sd">            Value to set the thin end to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;thin_end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thin_end</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -991,7 +1024,7 @@
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

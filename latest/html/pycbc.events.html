@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.events package &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.events package &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -313,7 +313,7 @@ multiple expiration vectors.</p>
 
 <dl class="class">
 <dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator">
-<em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">LiveCoincTimeslideBackgroundEstimator</code><span class="sig-paren">(</span><em>num_templates</em>, <em>analysis_block</em>, <em>background_statistic</em>, <em>stat_files</em>, <em>ifos</em>, <em>ifar_limit=100</em>, <em>timeslide_interval=0.035</em>, <em>ifar_remove_threshold=100</em>, <em>coinc_threshold=0.002</em>, <em>return_background=False</em>, <em>save_background_on_interrupt=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">LiveCoincTimeslideBackgroundEstimator</code><span class="sig-paren">(</span><em>num_templates</em>, <em>analysis_block</em>, <em>background_statistic</em>, <em>stat_files</em>, <em>ifos</em>, <em>ifar_limit=100</em>, <em>timeslide_interval=0.035</em>, <em>coinc_threshold=0.002</em>, <em>return_background=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Rolling buffer background estimation.</p>
 <dl class="method">
@@ -384,6 +384,30 @@ of coincident triggers</li>
 <em class="property">static </em><code class="descname">insert_args</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.insert_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="classmethod">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.pick_best_coinc">
+<em class="property">classmethod </em><code class="descname">pick_best_coinc</code><span class="sig-paren">(</span><em>coinc_results</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.pick_best_coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.pick_best_coinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose the best two-ifo coinc by ifar first, then statistic if needed.</p>
+<p>This function picks which of the available double-ifo coincs to use.
+It chooses the best (highest) ifar. The ranking statistic is used as
+a tie-breaker.
+A trials factor is applied if multiple types of coincs are possible
+at this time given the active ifos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>coinc_results</strong> (<em>list of coinc result dicts</em>) – Dictionary by detector pair of coinc result dicts.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>best</strong> – If there is a coinc, this will contain the ‘best’ one. Otherwise
+it will return the provided dict.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">coinc results dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.restore_state">
 <em class="property">static </em><code class="descname">restore_state</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.restore_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.restore_state" title="Permalink to this definition">¶</a></dt>
@@ -431,6 +455,11 @@ by a representative sample of the single triggers in the results.</p>
 <dd><p>Advance the internal time inrement by 1, expiring any triggers that
 are now too old.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.buffer_total">
+<code class="descname">buffer_total</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.buffer_total"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.buffer_total" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="pycbc.events.coinc.MultiRingBuffer.data">
@@ -2151,7 +2180,7 @@ contain a segment table</li>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>

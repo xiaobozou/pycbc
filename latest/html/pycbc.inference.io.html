@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pycbc.inference.io package &mdash; PyCBC 3acd4d documentation</title>
+  <title>pycbc.inference.io package &mdash; PyCBC 422158 documentation</title>
   
 
   
@@ -906,6 +906,20 @@ created.</li>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="pycbc.inference.io.base_mcmc.MCMCMetadataIO.iterations">
+<code class="descname">iterations</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#MCMCMetadataIO.iterations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.MCMCMetadataIO.iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the iteration each sample occurred at.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.inference.io.base_mcmc.MCMCMetadataIO.last_iteration">
+<code class="descname">last_iteration</code><span class="sig-paren">(</span><em>parameter=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#MCMCMetadataIO.last_iteration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.MCMCMetadataIO.last_iteration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the iteration of the last sample of the given parameter.</p>
+<p>If parameter is <code class="docutils literal notranslate"><span class="pre">None</span></code>, will just use the first parameter in the
+samples group.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="pycbc.inference.io.base_mcmc.MCMCMetadataIO.niterations">
 <code class="descname">niterations</code><a class="headerlink" href="#pycbc.inference.io.base_mcmc.MCMCMetadataIO.niterations" title="Permalink to this definition">¶</a></dt>
@@ -932,6 +946,28 @@ created.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.inference.io.base_mcmc.MCMCMetadataIO.thin">
+<code class="descname">thin</code><span class="sig-paren">(</span><em>thin_interval</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#MCMCMetadataIO.thin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.MCMCMetadataIO.thin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thins the samples on disk using the given thinning interval.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>thin_interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The interval to thin by.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.inference.io.base_mcmc.MCMCMetadataIO.thinned_by">
+<code class="descname">thinned_by</code><a class="headerlink" href="#pycbc.inference.io.base_mcmc.MCMCMetadataIO.thinned_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns interval samples have been thinned by on disk.</p>
+<p>This looks for <code class="docutils literal notranslate"><span class="pre">thinned_by</span></code> in the samples group attrs. If none is
+found, will just return 1.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1026,11 +1062,19 @@ requested iteration(s)). Default is True.</li>
 
 <dl class="method">
 <dt id="pycbc.inference.io.base_mcmc.SingleTempMCMCIO.write_samples">
-<code class="descname">write_samples</code><span class="sig-paren">(</span><em>samples</em>, <em>parameters=None</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#SingleTempMCMCIO.write_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.SingleTempMCMCIO.write_samples" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_samples</code><span class="sig-paren">(</span><em>samples</em>, <em>parameters=None</em>, <em>last_iteration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#SingleTempMCMCIO.write_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.SingleTempMCMCIO.write_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes samples to the given file.</p>
 <p>Results are written to <code class="docutils literal notranslate"><span class="pre">samples_group/{vararg}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{vararg}</span></code>
 is the name of a model params. The samples are written as an
-<code class="docutils literal notranslate"><span class="pre">nwalkers</span> <span class="pre">x</span> <span class="pre">niterations</span></code> array.</p>
+<code class="docutils literal notranslate"><span class="pre">nwalkers</span> <span class="pre">x</span> <span class="pre">niterations</span></code> array. If samples already exist, the new
+samples are appended to the current.</p>
+<p>If the current samples on disk have been thinned (determined by the
+<code class="docutils literal notranslate"><span class="pre">thinned_by</span></code> attribute in the samples group), then the samples will
+be thinned by the same amount before being written. The thinning is
+started at the sample in <code class="docutils literal notranslate"><span class="pre">samples</span></code> that occured at the iteration
+equal to the last iteration on disk plus the <code class="docutils literal notranslate"><span class="pre">thinned_by</span></code> interval.
+If this iteration is larger than the iteration of the last given
+sample, then none of the samples will be written.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1040,13 +1084,11 @@ is the name of a model params. The samples are written as an
 shape nwalkers x niterations.</li>
 <li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Only write the specified parameters to the file. If None, will
 write all of the keys in the <code class="docutils literal notranslate"><span class="pre">samples</span></code> dict.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
-iteration. Default is to append after the last iteration in the
-file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
-to. Only applies if the samples have not previously been written
-to file. The default (None) is to use the maximum size allowed by
-h5py.</li>
+<li><strong>last_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The iteration of the last sample. If the file’s <code class="docutils literal notranslate"><span class="pre">thinned_by</span></code>
+attribute is &gt; 1, this is needed to determine where to start
+thinning the samples such that the interval between the last sample
+currently on disk and the first new sample is the same as all of
+the other samples.</li>
 </ul>
 </td>
 </tr>
@@ -1054,6 +1096,40 @@ h5py.</li>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.inference.io.base_mcmc.thin_samples_for_writing">
+<code class="descclassname">pycbc.inference.io.base_mcmc.</code><code class="descname">thin_samples_for_writing</code><span class="sig-paren">(</span><em>fp</em>, <em>samples</em>, <em>parameters</em>, <em>last_iteration</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_mcmc.html#thin_samples_for_writing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_mcmc.thin_samples_for_writing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thins samples for writing to disk.</p>
+<p>The thinning interval to use is determined by the given file handler’s
+<code class="docutils literal notranslate"><span class="pre">thinned_by</span></code> attribute. If that attribute is 1, just returns the samples.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fp</strong> (<em>MCMCMetadataIO instance</em>) – The file the sampels will be written to. Needed to determine the
+thin interval used on disk.</li>
+<li><strong>samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – Dictionary mapping parameter names to arrays of (unthinned) samples.
+The arrays are thinned along their last dimension.</li>
+<li><strong>parameters</strong> (<em>list of str</em>) – The parameters to thin in <code class="docutils literal notranslate"><span class="pre">samples</span></code> before writing. All listed
+parameters must be in <code class="docutils literal notranslate"><span class="pre">samples</span></code>.</li>
+<li><strong>last_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The iteration that the last sample in <code class="docutils literal notranslate"><span class="pre">samples</span></code> occurred at. This is
+needed to figure out where to start the thinning in <code class="docutils literal notranslate"><span class="pre">samples</span></code>, such
+that the interval between the last sample on disk and the first new
+sample is the same as all of the other samples.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary of the thinned samples to write.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -1107,7 +1183,7 @@ retrieved from the fields.</p>
 
 <dl class="method">
 <dt id="pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.write_samples">
-<code class="descname">write_samples</code><span class="sig-paren">(</span><em>samples</em>, <em>parameters=None</em>, <em>start_iteration=None</em>, <em>max_iterations=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_multitemper.html#MultiTemperedMCMCIO.write_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.write_samples" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_samples</code><span class="sig-paren">(</span><em>samples</em>, <em>parameters=None</em>, <em>last_iteration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/inference/io/base_multitemper.html#MultiTemperedMCMCIO.write_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.inference.io.base_multitemper.MultiTemperedMCMCIO.write_samples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes samples to the given file.</p>
 <p>Results are written to <code class="docutils literal notranslate"><span class="pre">samples_group/{vararg}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{vararg}</span></code>
 is the name of a model params. The samples are written as an
@@ -1121,13 +1197,9 @@ is the name of a model params. The samples are written as an
 shape nwalkers x niterations.</li>
 <li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – Only write the specified parameters to the file. If None, will
 write all of the keys in the <code class="docutils literal notranslate"><span class="pre">samples</span></code> dict.</li>
-<li><strong>start_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Write results to the file’s datasets starting at the given
-iteration. Default is to append after the last iteration in the
-file.</li>
-<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Set the maximum size that the arrays in the hdf file may be resized
-to. Only applies if the samples have not previously been written
-to file. The default (None) is to use the maximum size allowed by
-h5py.</li>
+<li><strong>last_iteration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – The iteration of the last sample. If the file’s <code class="docutils literal notranslate"><span class="pre">thinned_by</span></code>
+attribute is &gt; 1, this is needed to determine where to start
+thinning the samples to match what has already been stored on disk.</li>
 </ul>
 </td>
 </tr>
@@ -1769,7 +1841,7 @@ samples.</p>
     <p>
         &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton
       <span class="lastupdated">
-        Last updated on Feb 22, 2019.
+        Last updated on Feb 25, 2019.
       </span>
 
     </p>
