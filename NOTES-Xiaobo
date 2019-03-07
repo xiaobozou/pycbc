@@ -1,0 +1,11 @@
+1. How to install gslal?
+
+cd gstlal
+./00init.sh
+./configure --prefix=/path/to/local
+make -j install
+
+do the same thing for gstlal-ugly and gstlal-inspiral.
+Check if gstlal is installed
+"gst-inspect gstlal"
+(from Dr. Manhattan's Notebook)
